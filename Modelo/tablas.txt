@@ -1,0 +1,8 @@
+-	ordenes
+-	detordenes
+-	despacho
+-	detdespacho
+-	cliente
+-	personal
+-	ubigeos
+-	zonas=
