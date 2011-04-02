@@ -1,0 +1,95 @@
+18-01
+
+Tablas principales
+
+ordenes
+Orden (correlativo)
+Serie (numero por cliente)
+tipo de ingreso (digitado o importado)
+cliente
+area (centro de costo)
+servicio()
+producto (tipo de pedido)
+
+Negocio
+- tnegocio.
+- Puede tener varios serivicui t_servicio
+- Ambito (local, nacional, internacional)
+
+Zona (no aplica para local)
+
+Tipo de transporte (no aplica para local)
+
+Tipo de articulo t_productos (muestras (activo) y documentos)
+
+Tipo de reparto t_reparto
+
+Total de envios = cantidad de cargos (cntadminision)
+
+Fecha de ingreso (de sistema)
+Fecha de inicio (fecha ingresado por el usuario cuando el desea)
+Fecha de vencimiento (fecha ingresado por el usuario cuando el desea)
+Fecha de devolucion (fecha ingresado por el usuario cuando el desea)
+
+Operador (no aplica)
+
+Moneda ( y tipo de cambio t_tipo decambio)
+
+importe
+igv
+total
+
+estadoorden (3 cerrado)
+
+
+detordenes (detalle), ultimo movimiento de la guia del mensajero (serie y numero de guia) y el historico esta en despacho (guia para un mensajero de varios cliente) y detdespacho
+ordenes de servicio
+
+Identifica un cargo
+-serie                char(3)              not null,
+-orden                char(7)              not null,
+-correlativo          char(6)              not null,
+
+Para relacionar con detdespacho
+-serieguia
+-nroguia
+
+cod_estado (estados)
+cod_motivo (motivos)
+04-entregado (tipo de entrega)
+05- (motivos)
+
+
+
+despacho
+(guia para un mensajero de varios cliente)
+-serieguia
+-nroguia
+-codmensajero
+-fecha-salida
+-fecha-ingreso
+-pasaje
+-motivos (cantidas de cargos que tienen motivos)
+-tipofi-tipo de ofina (1-local, 2-nacional)
+-codestado (t_estadoguia)
+
+detdespacho
+-seri-guia
+-nroguia
+-serie (ORDEN)
+-orden (orden)
+-correlativo
+
+-codorigne (sedepro)
+-estacion, contador, volante, estadoveri  (no se usa)
+-codzona(a que zona se envia)
+-
+
+
+Procesos por area
+t_procesos_are
+(serie, orden - orden) 
+item - secuencial para no repetir la llave
+cod-area origen
+cod-area destino
+codestado (pendiente p, recepcionad r, rechaza x, anial a, enve e)
