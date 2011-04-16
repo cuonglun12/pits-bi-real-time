@@ -1,0 +1,66 @@
+<Schema name="Sakila DVD Rentals">
+	<Dimension type="TimeDimension" name="Date" caption="Date">
+		<Hierarchy hasAll="true" allMemberName="All Dates" allMemberCaption="All Dates" primaryKey="date_key">
+			<Table name="dim_date">
+			</Table>
+			<Level name="Year" column="year4" type="Integer" uniqueMembers="true" levelType="TimeYears" hideMemberIf="Never">
+			</Level>
+			<Level name="Quarter" column="quarter_number" type="String" uniqueMembers="false" levelType="TimeQuarters" hideMemberIf="Never" captionColumn="quarter_name">
+			</Level>
+			<Level name="Month" column="month_number" type="String" uniqueMembers="false" levelType="TimeMonths" hideMemberIf="Never" captionColumn="month_abbreviation">
+			</Level>
+			<Level name="Dag" column="day_in_month" type="Integer" uniqueMembers="false" levelType="TimeDays" hideMemberIf="Never">
+			</Level>
+		</Hierarchy>
+	</Dimension>
+	<Dimension name="Customer" caption="Customer">
+		<Hierarchy hasAll="true" allMemberName="All Customers" allMemberCaption="All Customers" primaryKey="customer_key">
+			<Table name="dim_customer">
+			</Table>
+			<Level name="Country" column="customer_country" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never" captionColumn="customer_country">
+			</Level>
+			<Level name="City" column="customer_city" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="customer_city">
+			</Level>
+			<Level name="District" column="customer_district" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="customer_district">
+			</Level>
+		</Hierarchy>
+	</Dimension>
+	<Dimension name="Store" caption="Store">
+		<Hierarchy hasAll="true" allMemberName="All Stores" allMemberCaption="All Stores" primaryKey="store_key">
+			<Table name="dim_store">
+			</Table>
+			<Level name="Country" column="store_country" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never" captionColumn="store_country">
+			</Level>
+			<Level name="City" column="store_city" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="store_city">
+			</Level>
+			<Level name="District" column="store_district" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="store_district">
+			</Level>
+			<Level name="Address" column="store_address" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="store_address">
+			</Level>
+		</Hierarchy>
+	</Dimension>
+	<Dimension name="Film" caption="Film">
+		<Hierarchy hasAll="true" allMemberName="All Films" allMemberCaption="All Films" primaryKey="film_key">
+			<Table name="dim_film">
+			</Table>
+			<Level name="Language" column="film_language" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never" captionColumn="film_language">
+			</Level>
+			<Level name="Rating" column="rating_code" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="rating_text">
+			</Level>
+		</Hierarchy>
+	</Dimension>
+	<Cube name="Rentals" cache="true" enabled="true">
+		<Table name="fact_rental">
+		</Table>
+		<DimensionUsage source="Date" name="Rental Date" foreignKey="rental_date_key">
+		</DimensionUsage>
+		<DimensionUsage source="Customer" name="Customer" foreignKey="customer_key">
+		</DimensionUsage>
+		<DimensionUsage source="Store" name="Store" foreignKey="store_key">
+		</DimensionUsage>
+		<DimensionUsage source="Film" name="Film" foreignKey="film_key">
+		</DimensionUsage>
+		<Measure name="Rentals" column="count_rentals" formatString="Standard" aggregator="sum">
+		</Measure>
+	</Cube>
+</Schema>
