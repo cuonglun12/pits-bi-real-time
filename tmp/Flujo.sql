@@ -6,15 +6,30 @@ and orden='0016127'
 and codcliente='00000000421'
 
 select * from detordenes
+--select codproducto from ordenes
 where
 serie='006'
 and orden='0016127'
 and codcliente='00000000421'
 
-select * from despacho
-where
-serieguia = '001'
-and nroguia = '044651'
+
+
+group by correlativo having count(*)>1
+
+
+select * from detordenes limit 1
+
+SERIE0+GUIA0+CORRELATIVO+MOTIVO (DIMENSION)
+
+
+SERIE1+GUIA1+CORRELATIVO+TIEMPO1+MOTIVO1 (HECHOS)
+SERIE2+GUIA2+CORRELATIVO+TIEMPO2+MOTIVO2(HECHOS)
+SERIE3+GUIA3+CORRELATIVO+TIEMPO3+MOTIVO3 (HECHOS)
+SERIE4+GUIA4+CORRELATIVO+TIEMPO4+MOTIVO5 (HECHOS)
+serie orden correlativo
+001	0005431	000166
+
+select * from detdespacho limit 1
 
 select * from detdespacho
 where
@@ -29,3 +44,17 @@ select * from ubigeos
 select ruc,count(*) from cliente group by ruc having count(*)>1
 select * from t_cliente_personal
 
+
+
+select * from personal where codigopersonal = '007654' 
+select usuario, count(*) from personal group by usuario having count(*)>1 --where codtipo = '01' 
+
+select nombre, count(*) from personal group by nombre having count(*)>1 --where codtipo = '01' 
+select count(*) from personal 
+
+select * from personal where nombre = 'LINARES BACA CESAR'
+select * from t_tipopersonal
+select * from _pg_foreign_data_wrappers
+select * from despacho
+select * from personal where codigopersonal in (select codmensajero from despacho)
+select * from t_tipopersonal

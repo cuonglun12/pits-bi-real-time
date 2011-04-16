@@ -8,8 +8,7 @@ Serie (numero por cliente)
 tipo de ingreso (digitado o importado)
 cliente
 area (centro de costo)
-servicio()
-producto (tipo de pedido)
+	
 
 Negocio
 - tnegocio.
@@ -20,7 +19,7 @@ Zona (no aplica para local)
 
 Tipo de transporte (no aplica para local)
 
-Tipo de articulo t_productos (muestras (activo) y documentos)
+Tipo de articulo t_productos (muestras (activo) "M" y documentos "D")
 
 Tipo de reparto t_reparto
 

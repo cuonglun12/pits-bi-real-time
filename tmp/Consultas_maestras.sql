@@ -7,7 +7,15 @@ select * from t_servicios where codnegocio = '01'
 select * from t_tipoentrega
 --04 Volanteo
 
+select * from tipoentrega
+select * from motivos
+select * from estados
+
 select * from t_paises
+select * from t_documento
+select count(*) from zonas
+select * from t_productos
+select * from t_tipo
 
 
 select * from t_ambitos
