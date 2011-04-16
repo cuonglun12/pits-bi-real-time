@@ -1,4 +1,5 @@
-select * from ordenes
+select * from ordenes where codservicio in ('0014','0020') and codtiporeparto = '04'
+select * from ordenes where codtiporeparto = '04' and codservicio not in ('0014','0020')
 where
 serie='006'
 and orden='0016127'
