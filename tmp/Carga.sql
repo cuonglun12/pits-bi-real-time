@@ -120,3 +120,18 @@ FROM   despacho de
        ON     de.usuariodesp = per2.cod_codigopersonal
        INNER JOIN dim_personal per3
        ON     de.usuariocierre = per3.cod_codigopersonal
+	   
+	   
+	   
+select per.codigopersonal cod_personal, per.tipopers cod_tipopersonal, per.coddepartamento cod_departamento, dep.departamento des_departamento, per.nombre des_nombre, per.estadocivil cod_estadocivil, eci.estadocivil des_estadocivil, 
+ per.fechaingreso::date fec_fechaingreso, per.fechacese::date fec_fechacese, per.sexo cod_sexo, CASE per.sexo 
+  WHEN 'M' THEN 'MASCULINO'
+  WHEN 'F' THEN 'FEMENINO'
+  ELSE '-'
+  END des_sexo 
+from personal per inner join t_tipopersonal tpe
+on per.tipopers = tpe.codtipopersonal
+inner join t_departamento dep
+on per.coddepartamento = dep.coddepartamento
+inner join t_estadocivil eci
+on per.estadocivil = eci.codestadocivil
