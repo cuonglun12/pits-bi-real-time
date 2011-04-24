@@ -123,6 +123,65 @@ FROM   despacho de
 	   
 	   
 	   
+SELECT loc.key_localizacion,
+       cli.key_cliente     ,
+       ser.key_servicio    ,
+       pro.key_producto    ,
+       tsal.key_tiempo     ,
+       tent.key_tiempo     ,
+       estado.key_estado   ,
+       per1.key_personal   ,
+       per2.key_personal   ,
+       per3.key_personal   ,
+       de.serieguia        ,
+       de.nroguia          ,
+       ord.serie,
+       ord.orden,
+	   sum(CASE WHEN det.codestado!='' THEN 1 ELSE 0 END) as cnt_total,
+	   sum(CASE WHEN det.codestado='04' THEN 1 ELSE 0 END) as cnt_entregado,
+	   sum(CASE WHEN det.codestado='05' THEN 1 ELSE 0 END) as cnt_motivos,
+	   sum(CASE WHEN det.codestado='06' THEN 1 ELSE 0 END) as cnt_reenvios,
+	   sum(CASE WHEN det.codestado='09' THEN 1 ELSE 0 END) as cnt_anulados,
+	   sum(CASE WHEN det.codestado='07' THEN 1 ELSE 0 END) as cnt_fuerazona,
+	   sum(CASE WHEN det.codestado='08' THEN 1 ELSE 0 END) as cnt_perdidos
+FROM   despacho de
+       INNER JOIN detdespacho det ON de.serieguia = det.serieguia AND de.nroguia = det.nroguia
+       INNER JOIN ordenes ord ON det.serie = ord.serie AND det.orden = ord.orden
+       INNER JOIN dim_localizacion loc ON de.codzona = loc.cod_zona
+       INNER JOIN dim_cliente cli ON ord.codcliente = cli.cod_cliente
+       INNER JOIN dim_servicio ser ON ord.codservicio = ser.cod_servicio
+       INNER JOIN dim_producto pro ON ord.codproducto = pro.cod_producto
+       INNER JOIN dim_tiempo tsal ON de.fecsalida = tsal.fec_fecha
+       INNER JOIN dim_tiempo tent ON de.fecretorno = tent.fec_fecha
+       INNER JOIN
+              (SELECT key_estado,
+                      cod_estado
+              FROM    dim_estado
+              WHERE   cod_tipo = '01'
+              )
+              AS estado
+       ON     de.codestadoguia = estado.cod_estado
+       INNER JOIN dim_personal per1 ON de.codmensajero = per1.cod_codigopersonal
+       INNER JOIN dim_personal per2 ON de.usuariodesp = per2.cod_codigopersonal
+       INNER JOIN dim_personal per3 ON de.usuariocierre = per3.cod_codigopersonal
+WHERE
+       det.serieguia = '011' and det.nroguia = '101261'
+GROUP BY
+       cli.key_cliente     ,
+       ser.key_servicio    ,
+       pro.key_producto    ,
+	   loc.key_localizacion,
+       tsal.key_tiempo     ,
+       tent.key_tiempo     ,
+       estado.key_estado   ,
+       per1.key_personal   ,
+       per2.key_personal   ,
+       per3.key_personal   ,
+       de.serieguia        ,
+       de.nroguia,
+       ord.serie,
+       ord.orden	   
+	   
 select per.codigopersonal cod_personal, per.tipopers cod_tipopersonal, per.coddepartamento cod_departamento, dep.departamento des_departamento, per.nombre des_nombre, per.estadocivil cod_estadocivil, eci.estadocivil des_estadocivil, 
  per.fechaingreso::date fec_fechaingreso, per.fechacese::date fec_fechacese, per.sexo cod_sexo, CASE per.sexo 
   WHEN 'M' THEN 'MASCULINO'
