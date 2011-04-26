@@ -148,7 +148,7 @@ FROM   despacho de
        INNER JOIN detdespacho det ON de.serieguia = det.serieguia AND de.nroguia = det.nroguia
        INNER JOIN ordenes ord ON det.serie = ord.serie AND det.orden = ord.orden
        INNER JOIN dim_localizacion loc ON de.codzona = loc.cod_zona
-       INNER JOIN dim_cliente cli ON ord.codcliente = cli.cod_cliente
+       INNER JOIN dim_cliente cli ON ord.codcliente = cli.cod_cliente AND ord.codareacliente = cli.cod_area
        INNER JOIN dim_servicio ser ON ord.codservicio = ser.cod_servicio
        INNER JOIN dim_producto pro ON ord.codproducto = pro.cod_producto
        INNER JOIN dim_tiempo tsal ON de.fecsalida = tsal.fec_fecha
