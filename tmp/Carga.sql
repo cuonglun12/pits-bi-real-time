@@ -135,8 +135,6 @@ SELECT loc.key_localizacion,
        per3.key_personal   ,
        de.serieguia        ,
        de.nroguia          ,
-       ord.serie,
-       ord.orden,
 	   sum(CASE WHEN det.codestado!='' THEN 1 ELSE 0 END) as cnt_total,
 	   sum(CASE WHEN det.codestado='04' THEN 1 ELSE 0 END) as cnt_entregado,
 	   sum(CASE WHEN det.codestado='05' THEN 1 ELSE 0 END) as cnt_motivos,
@@ -178,9 +176,7 @@ GROUP BY
        per2.key_personal   ,
        per3.key_personal   ,
        de.serieguia        ,
-       de.nroguia,
-       ord.serie,
-       ord.orden	   
+       de.nroguia	   
 	   
 select per.codigopersonal cod_personal, per.tipopers cod_tipopersonal, per.coddepartamento cod_departamento, dep.departamento des_departamento, per.nombre des_nombre, per.estadocivil cod_estadocivil, eci.estadocivil des_estadocivil, 
  per.fechaingreso::date fec_fechaingreso, per.fechacese::date fec_fechacese, per.sexo cod_sexo, CASE per.sexo 
