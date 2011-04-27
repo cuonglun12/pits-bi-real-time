@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schema name="Pits">
+    <Cube name="Pits">
+        <Table name="fact_orden"/>
+        <Dimension name="Servicio" foreignKey="key_servicio">
+            <Hierarchy name="Servicio" hasAll="true" allMemberName="All servicio" primaryKey="key_servicio">
+                <Table name="dim_servicio"/>
+                <Level name="des_negocio" table="dim_servicio" column="des_negocio" uniqueMembers="true"/>
+                <Level name="des_ambito" table="dim_servicio" column="des_ambito" uniqueMembers="false"/>
+                <Level name="des_servicio" table="dim_servicio" column="des_servicio" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+        <Dimension name="Producto" foreignKey="key_producto">
+            <Hierarchy name="Producto" hasAll="true" allMemberName="All producto" primaryKey="key_producto">
+                <Table name="dim_producto"/>
+                <Level name="des_producto" table="dim_producto" column="des_producto" uniqueMembers="true"/>
+                <Level name="des_tipo" table="dim_producto" column="des_tipo" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+        <Dimension name="Cliente" foreignKey="key_cliente">
+            <Hierarchy name="Cliente" hasAll="true" allMemberName="All cliente" primaryKey="key_cliente">
+                <Table name="dim_cliente"/>
+                <Level name="des_pais" table="dim_cliente" column="des_pais" uniqueMembers="true"/>
+                <Level name="des_departamento" table="dim_cliente" column="des_departamento" uniqueMembers="false"/>
+                <Level name="des_provincia" table="dim_cliente" column="des_provincia" uniqueMembers="false"/>
+                <Level name="des_distrito" table="dim_cliente" column="des_distrito" uniqueMembers="false"/>
+                <Level name="des_cliente" table="dim_cliente" column="des_cliente" uniqueMembers="false"/>
+                <Level name="des_area" table="dim_cliente" column="des_area" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+        <Dimension name="Tiempo" foreignKey="key_tiempo_registro">
+            <Hierarchy name="Tiempo" hasAll="true" allMemberName="All tiempo" primaryKey="key_tiempo">
+                <Table name="dim_tiempo"/>
+                <Level name="num_anio" table="dim_tiempo" column="num_anio" uniqueMembers="true"/>
+                <Level name="des_mes" table="dim_tiempo" column="des_mes" uniqueMembers="false"/>
+                <Level name="fec_fecha" table="dim_tiempo" column="fec_fecha" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+        <Measure name="SUM Cargos" column="num_cargos" aggregator="sum" datatype="Integer" formatString="#,##,###.00"/>
+        <Measure name="SUM IGV (S/.)" column="num_igv" aggregator="sum" datatype="Integer" formatString="#,##,###.00"/>
+        <Measure name="SUM Importe (S/.)" column="num_importe" aggregator="sum" datatype="Integer" formatString="#,##,###.00"/>
+        <Measure name="SUM Total (S/.)" column="num_total" aggregator="sum" datatype="Integer" formatString="#,##,###.00"/>
+    </Cube>
+</Schema>
