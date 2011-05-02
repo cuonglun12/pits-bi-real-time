@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<action-sequence> 
+  <title>entregasTotales2010</title>
+  <version>1</version>
+  <logging-level>TRACE</logging-level>
+  <documentation> 
+    <author>Pits</author>  
+    <description>Entregas del 2010</description>  
+    <help/>  
+    <result-type/>  
+    <icon/> 
+  </documentation>
+
+  <inputs> 
+    <CHARTTYPE type="string"> 
+      <sources> 
+        <request>CHARTTYPE</request> 
+      </sources>  
+      <default-value><![CDATA[LineChart]]></default-value> 
+    </CHARTTYPE> 
+  </inputs>
+
+  <outputs> 
+    <image-tag type="string"/> 
+  </outputs>
+
+  <resources/>
+  
+  <actions> 
+    <action-definition> 
+      <component-name>SQLLookupRule</component-name>
+      <action-type>Relational</action-type>
+      <action-outputs> 
+        <query-result type="result-set" mapping="query_result"/> 
+      </action-outputs>
+      <component-definition> 
+        <jndi><![CDATA[Pits-BI]]></jndi>  
+        <!--query><![CDATA[SELECT PRODUCTS.PRODUCTLINE, SUM(ORDERDETAILS.QUANTITYORDERED*ORDERDETAILS.PRICEEACH) REVENUE FROM ORDERS INNER JOIN ORDERDETAILS ON ORDERS.ORDERNUMBER = ORDERDETAILS.ORDERNUMBER INNER JOIN PRODUCTS ON ORDERDETAILS.PRODUCTCODE =PRODUCTS.PRODUCTCODE  INNER JOIN CUSTOMERS ON ORDERS.CUSTOMERNUMBER =CUSTOMERS.CUSTOMERNUMBER  INNER JOIN EMPLOYEES ON CUSTOMERS.SALESREPEMPLOYEENUMBER = EMPLOYEES.EMPLOYEENUMBER INNER JOIN OFFICES ON EMPLOYEES.OFFICECODE=OFFICES.OFFICECODE GROUP BY PRODUCTS.PRODUCTLINE ORDER BY 2 DESC]]></query-->  
+		
+		<!--query><![CDATA[
+				SELECT
+				DT.DES_MES,
+				SUM(FE.NUM_CARGOS_TOTAL)
+				FROM
+				FAC_ENVIO FE
+				INNER JOIN DIM_PERSONAL DP ON FE.KEY_PERSONAL_MENSAJERO = DP.KEY_PERSONAL
+				INNER JOIN DIM_TIEMPO DT ON FE.KEY_TIEMPO_SALIDA = DT.KEY_TIEMPO
+				WHERE
+				DT.NUM_ANIO = 2010
+				AND DP.KEY_PERSONAL = 54
+				GROUP BY
+				DT.DES_MES
+				ORDER BY DT.DES_MES
+		]]></query-->
+		
+		<query><![CDATA[
+				SELECT
+				DT.DES_MES,
+				SUM(FE.NUM_CARGOS_TOTAL)
+				FROM
+				FAC_ENVIO FE
+				INNER JOIN DIM_TIEMPO DT ON FE.KEY_TIEMPO_SALIDA = DT.KEY_TIEMPO
+				WHERE
+				DT.NUM_ANIO = 2010
+				GROUP BY
+				DT.DES_MES
+				ORDER BY DT.DES_MES
+		]]></query>
+		
+        <live><![CDATA[true]]></live> 
+      </component-definition> 
+    </action-definition>
+  
+    <actions> 
+      <condition><![CDATA[CHARTTYPE=="BarChart"]]></condition>  
+      <action-definition> 
+        <component-name>ChartComponent</component-name>
+        <action-type>Bar Chart</action-type>
+        <action-inputs> 
+          <chart-data type="result-set" mapping="query_result"/>  
+          <productGroup type="string"/> 
+        </action-inputs>
+        <action-outputs> 
+          <image-tag type="string"/> 
+        </action-outputs>
+        <component-definition> 
+          <chart-attributes> 
+            <chart-type>BarChart</chart-type>  
+            <url-template><![CDATA[javascript:Dashboards.fireChange('productGroup', '{productGroup}')]]></url-template>  
+            <series-name>productGroup</series-name>  
+            <use-base-url>false</use-base-url>  
+            <url-target>_blank</url-target>  
+            <border-visible>false</border-visible>  
+            <is-3D>false</is-3D>  
+            <color-palette> 
+              <color>#ee7733</color>  
+              <color>#9EAA36</color>  
+              <color>#BF0000</color>  
+              <color>#FCCF12</color>  
+              <color>#772200</color>  
+              <color>#ddcc88</color>  
+              <color>#123D82</color>  
+              <color>#4A0866</color>  
+              <color>#445500</color>  
+              <color>#FFAA00</color>  
+              <color>#1E8AD3</color>  
+              <color>#AA6611</color>  
+              <color>#772200</color> 
+            </color-palette> 
+          </chart-attributes>  
+          <title><![CDATA[Product Sales Example]]></title>  
+          <by-row>true</by-row>  
+          <width><![CDATA[450]]></width>  
+          <height><![CDATA[300]]></height> 
+        </component-definition> 
+      </action-definition>
+ 
+    </actions>
+  
+    <actions> 
+      <condition><![CDATA[CHARTTYPE=="PieChart"]]></condition>  
+      <action-definition> 
+        <component-name>ChartComponent</component-name>
+        <action-type>Pie Chart</action-type>
+        <action-inputs> 
+          <chart-data type="result-set" mapping="query_result"/>  
+          <productGroup type="string"/> 
+        </action-inputs>
+        <action-outputs> 
+          <image-tag type="string"/> 
+        </action-outputs>
+        <component-definition> 
+          <chart-attributes> 
+            <chart-type>PieChart</chart-type>  
+            <include-legend>false</include-legend>  
+            <domain-label-rotation-dir>down</domain-label-rotation-dir>  
+            <domain-label-rotation>90</domain-label-rotation>  
+            <url-template><![CDATA[javascript:Dashboards.fireChange('productGroup', '{productGroup}')]]></url-template>  
+            <paramName>productGroup</paramName>  
+            <use-base-url>false</use-base-url>  
+            <url-target>_self</url-target>  
+            <color-palette> 
+              <color>#ee7733</color>  
+              <color>#9EAA36</color>  
+              <color>#BF0000</color>  
+              <color>#FCCF12</color>  
+              <color>#772200</color>  
+              <color>#ddcc88</color>  
+              <color>#123D82</color>  
+              <color>#4A0866</color>  
+              <color>#445500</color>  
+              <color>#FFAA00</color>  
+              <color>#1E8AD3</color>  
+              <color>#AA6611</color>  
+              <color>#772200</color> 
+            </color-palette> 
+          </chart-attributes>  
+          <title><![CDATA[Product Sales Example 2]]></title>  
+          <by-row>false</by-row>  
+          <width><![CDATA[450]]></width>  
+          <height><![CDATA[300]]></height> 
+        </component-definition> 
+      </action-definition>
+ 
+    </actions>
+  
+    <actions> 
+      <condition><![CDATA[CHARTTYPE=="LineChart"]]></condition>  
+      <action-definition> 
+        <component-name>ChartComponent</component-name>
+        <action-type>Line Chart</action-type>
+        <action-inputs> 
+          <chart-data type="result-set" mapping="query_result"/>  
+          <productGroup type="string"/> 
+        </action-inputs>
+        <action-outputs> 
+          <image-tag type="string"/> 
+        </action-outputs>
+        <component-definition> 
+          <chart-attributes> 
+            <chart-type>LineChart</chart-type>  
+            <domain-label-rotation-dir>down</domain-label-rotation-dir>  
+            <domain-label-rotation>45</domain-label-rotation>  
+            <url-template><![CDATA[javascript:Dashboards.fireChange('productGroup', '{productGroup}')]]></url-template>  
+            <paramName>productGroup</paramName>  
+            <use-base-url>false</use-base-url>  
+            <url-target>_self</url-target>  
+            <color-palette> 
+              <color>#ee7733</color>  
+              <color>#9EAA36</color>  
+              <color>#BF0000</color>  
+              <color>#FCCF12</color>  
+              <color>#772200</color>  
+              <color>#ddcc88</color>  
+              <color>#123D82</color>  
+              <color>#4A0866</color>  
+              <color>#445500</color>  
+              <color>#FFAA00</color>  
+              <color>#1E8AD3</color>  
+              <color>#AA6611</color>  
+              <color>#772200</color> 
+            </color-palette>  
+            <markers-visible>true</markers-visible> 
+          </chart-attributes>  
+          <title><![CDATA[Product Sales]]></title>  
+          <by-row>false</by-row>  
+          <width><![CDATA[450]]></width>  
+          <height><![CDATA[300]]></height> 
+        </component-definition> 
+      </action-definition>
+ 
+    </actions>
+ 
+  </actions> 
+</action-sequence>
