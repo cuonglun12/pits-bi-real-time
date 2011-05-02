@@ -1,0 +1,74 @@
+<!-- Container div element -->
+<div align="center">
+	<!-- Title Object Object -->
+	<h1><div id="pageTitleObject"></div></h1>
+	<!-- Selector Object -->
+	<div id="chartTypeObject"></div>
+	<!-- Chart Object -->
+	<div id="chartObject"></div>
+</div>
+
+<script language="javascript" type="text/javascript">
+
+var chartType = "BarChart";
+
+// pageTitleString component generates the page title with any other parameters is may need to construct the string
+pageTitleString = 
+{
+  name: "pageTitleString",
+  type: "text",
+  listeners:["chartType"],
+  htmlObject: "pageTitleObject",
+  executeAtStart: true,
+  expression: function(){return "'Chart type selected: ' + chartType"},
+  preExecution:function(){},
+  postExecution:function(){}
+}
+
+// chartTypeRadio component controls if the chart component (xaction) is either a BarChart, PieChart or LineChart
+chartTypeRadio = 
+{
+  name: "chartTypeRadio",
+  type: "radio",
+  solution: "dashboards",
+  path: "chart_selector",
+  action: "chartTypes.xaction",
+  parameters:[],
+  parameter:"chartType",
+  htmlObject: "chartTypeObject",
+  executeAtStart: true,
+  preExecution:function(){},
+  postExecution:function(){}
+}
+
+// chart component generates the productGroup sales chart using various input parameters
+chart = 
+{
+  name: "chart",
+  type: "xaction",
+  solution: "dashboards",
+  path: "chart_selector",
+  action: "productGroupSales.xaction",
+  listeners:["chartType"],
+  parameters: [["CHARTTYPE","chartType"]],
+  htmlObject: "chartObject",
+  executeAtStart: true,
+  preExecution:function(){},
+  postExecution:function(){}
+}
+
+var components = [pageTitleString, chartTypeRadio, chart];
+
+</script>
+
+<script language="javascript" type="text/javascript">
+
+// The intial dashboard load function definition
+function load(){
+	Dashboards.init(components);
+}
+
+// The intial dashboard load function execution
+load();
+
+</script>
