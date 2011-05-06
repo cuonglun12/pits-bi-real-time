@@ -1,0 +1,46 @@
+1|'codsede'|'nomsede'|'direccion'|'ubigeo'|'?column?'|''|'?column?'|'alias_sede'
+2|'L39'|'SEDE LOS OLIVOS'|'Av. Proceres Mza. F2 Lote. 49'|||1||'LOS OLIVOS'
+3|'L03'|'SEDE ATE VITARTE'|'Av. Michael Faraday 628 Urb. Grumete Medina'|||1||'ATE VITARTE'
+4|'C01'|'SEDE CALLAO'|'Av. Tomas Valle Esq. Con Faucett s/n 206'|||0||
+5|'L13'|'SEDE LA VICTORIA'|'Av. Luna Pizarro 597'|||0||
+6|'015'|'SEDE LIMA - PITS LOGÍSTICA INTEGRAL'|'AV. COLONIAL 1566'|'.     '||1||'LIMA'
+7|'151'|'SEDE HUACHO'||||1||'HUACHO'
+8|'T20'|'PUNTO DE VENTA PLAZA VEA ATE'|'Av. Nicolas Ayllon Sector B. Mza. B. Lote. 4 (Zona A - Baja, Esq.Con Av. La Mar) Lima Lima Ate'|||0||'VEA ATE'
+9|'T21'|'PUNTO DE VENTA PLAZA VEA BRASIL'|'Av. Brasil 1599'|||0||
+10|'T22'|'PUNTO DE VENTA PLAZA VEA AYACUCHO'|'Urb. Los Rosales Mza. B2 Lote. 10 Santiago de Surco'|||0||'VEA AYACUCHO'
+11|'T23'|'PUNTO DE VENTA PLAZA VEA LOS OLIVOS'|'Av. Antúñez de Mayolo Urb. Mercurio Mza. B1 Lote. 2 (Cdra 9, Esq.Con Calle Orion) Los Olivos'|||0||'VEA LOS OLIVOS'
+12|'T24'|'PUNTO DE VENTA PLAZA VEA UNIVERSITARIA'|'Av. Universitaria (Cdra.13) Los Olivos'|||0||'VEA UNIVERSITARIA'
+13|'T25'|'PUNTO DE VENTA PLAZA VEA HIGUERTA'|'Av. Aviación 5150 Urb. Higuereta (Tienda B) Santiago de Surco'|||0||'VEA HIGUERETA'
+14|'002'|'EDELNOR'|'.'|'.     '||0||
+15|'T26'|'PUNTO DE VENTA PLAZA VEA ZARATE'|'AV.'|||0||
+16|'003'|'EDELNOR'|'.'|'.     '||0||
+17|'T27'|'PUNTO DE VENTA SEDE LA VICTORIA'||||0||
+18|'T28'|'PUNTO DE VENTA SEDE ATE'||||0||
+19|'T29'|'PUNTO DE VENTA SEDE ATE'||||0||
+20|'T30'|'PUNTO DE VENTA SEDE LOS OLIVOS'||||0||
+21|'T31'|'PUNTO DE VENTA SEDE VILLA EL SALVADOR'||||0||
+22|'004'|'EDELNOR'|'.'|'.     '||0||
+23|'005'|'EDELNOR'|'.'|'.     '||0||
+24|'006'|'EDELNOR'|'.'|'.     '||0||
+25|'007'|'EDELNOR'|'.'|'.     '||0||
+26|'008'|'EDELNOR'|'.'|'.     '||0||
+27|'009'|'EDELNOR'|'.'|'.     '||0||
+28|'010'|'EDELNOR'|'.'|'.     '||0||
+29|'011'|'EDELNOR'|'.'|'.     '||0||
+30|'012'|'EDELNOR'|'.'|'.     '||0||
+31|'013'|'EDELNOR'|'.'|'.     '||0||
+32|'014'|'EDELNOR'|'.'|'.     '||0||
+33|'016'|'EDELNOR'|'.'|'.     '||0||
+34|'017'|'EDELNOR'|'.'|'.     '||0||
+35|'018'|'EDELNOR'|'.'|'.     '||0||
+36|'019'|'EDELNOR'|'.'|'.     '||0||
+37|'020'|'EDELNOR'|'.'|'.     '||0||
+38|'021'|'EDELNOR'|'.'|'.     '||0||
+39|'022'|'EDELNOR'|'.'|'.     '||0||
+40|'023'|'EDELNOR'|'.'|'.     '||0||
+41|'024'|'EDELNOR'|'.'|'.     '||0||
+42|'025'|'EDELNOR'|'.'|'.     '||0||
+43|'001'|'SEDE PUCALLPA - PITS LOGÍSTICA INTEGRAL'|'.'|'.     '||0||
+44|'L01'|'SEDE URGENTES'|'HASTA QUE DEFINAN EL NUEVO LOCAL'|||0||
+45|'L29'|'SEDE VILLA EL SALVADOR '||||1||'SAN JUAN DE MIRAFLORES'
+46|'L42'|'SEDE VILLA EL SALVADOR (SIN USAR)'|'Panamericana Sur Km. 25.3 Conchan'|||0||

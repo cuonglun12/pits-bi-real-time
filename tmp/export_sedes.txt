@@ -1,0 +1,47 @@
+'codsede'|'nomsede'|'direccion'|'ubigeo'|'?column?'|'estado'|'?column?'|'alias_sede'
+'L39'|'SEDE LOS OLIVOS'|'Av. Proceres Mza. F2 Lote. 49'|(null)|distrito|1|estado|'LOS OLIVOS'
+'L03'|'SEDE ATE VITARTE'|'Av. Michael Faraday 628 Urb. Grumete Medina'|(null)|distrito|1|estado|'ATE VITARTE'
+'C01'|'SEDE CALLAO'|'Av. Tomas Valle Esq. Con Faucett s/n 206'|(null)|distrito|0|estado|(null)
+'L13'|'SEDE LA VICTORIA'|'Av. Luna Pizarro 597'|(null)|distrito|0|estado|(null)
+'015'|'SEDE LIMA - PITS LOGÍSTICA INTEGRAL'|'AV. COLONIAL 1566'|'.     '|distrito|1|estado|'LIMA'
+'151'|'SEDE HUACHO'|(null)|(null)|distrito|1|estado|'HUACHO'
+'T20'|'PUNTO DE VENTA PLAZA VEA ATE'|'Av. Nicolas Ayllon Sector B. Mza. B. Lote. 4 (Zona A - Baja, Esq.Con Av. La Mar) Lima Lima Ate'|(null)|distrito|0|estado|'VEA ATE'
+'T21'|'PUNTO DE VENTA PLAZA VEA BRASIL'|'Av. Brasil 1599'|(null)|distrito|0|estado|(null)
+'T22'|'PUNTO DE VENTA PLAZA VEA AYACUCHO'|'Urb. Los Rosales Mza. B2 Lote. 10 Santiago de Surco'|(null)|distrito|0|estado|'VEA AYACUCHO'
+'T23'|'PUNTO DE VENTA PLAZA VEA LOS OLIVOS'|'Av. Antúñez de Mayolo Urb. Mercurio Mza. B1 Lote. 2 (Cdra 9, Esq.Con Calle Orion) Los Olivos'|(null)|distrito|0|estado|'VEA LOS OLIVOS'
+'T24'|'PUNTO DE VENTA PLAZA VEA UNIVERSITARIA'|'Av. Universitaria (Cdra.13) Los Olivos'|(null)|distrito|0|estado|'VEA UNIVERSITARIA'
+'T25'|'PUNTO DE VENTA PLAZA VEA HIGUERTA'|'Av. Aviación 5150 Urb. Higuereta (Tienda B) Santiago de Surco'|(null)|distrito|0|estado|'VEA HIGUERETA'
+'002'|'EDELNOR
+'|'.'|'.     '|distrito|0|estado|(null)
+'T26'|'PUNTO DE VENTA PLAZA VEA ZARATE'|'AV.'|(null)|distrito|0|estado|(null)
+'003'|'EDELNOR'|'.'|'.     '|distrito|0|estado|(null)
+'T27'|'PUNTO DE VENTA SEDE LA VICTORIA'|(null)|(null)|distrito|0|estado|(null)
+'T28'|'PUNTO DE VENTA SEDE ATE'|(null)|(null)|distrito|0|estado|(null)
+'T29'|'PUNTO DE VENTA SEDE ATE'|(null)|(null)|distrito|0|estado|(null)
+'T30'|'PUNTO DE VENTA SEDE LOS OLIVOS'|(null)|(null)|distrito|0|estado|(null)
+'T31'|'PUNTO DE VENTA SEDE VILLA EL SALVADOR'|(null)|(null)|distrito|0|estado|(null)
+'004'|'EDELNOR'|'.'|'.     '|distrito|0|estado|(null)
+'005'|'EDELNOR'|'.'|'.     '|distrito|0|estado|(null)
+'006'|'EDELNOR'|'.'|'.     '|distrito|0|estado|(null)
+'007'|'EDELNOR'|'.'|'.     '|distrito|0|estado|(null)
+'008'|'EDELNOR'|'.'|'.     '|distrito|0|estado|(null)
+'009'|'EDELNOR'|'.'|'.     '|distrito|0|estado|(null)
+'010'|'EDELNOR'|'.'|'.     '|distrito|0|estado|(null)
+'011'|'EDELNOR'|'.'|'.     '|distrito|0|estado|(null)
+'012'|'EDELNOR'|'.'|'.     '|distrito|0|estado|(null)
+'013'|'EDELNOR'|'.'|'.     '|distrito|0|estado|(null)
+'014'|'EDELNOR'|'.'|'.     '|distrito|0|estado|(null)
+'016'|'EDELNOR'|'.'|'.     '|distrito|0|estado|(null)
+'017'|'EDELNOR'|'.'|'.     '|distrito|0|estado|(null)
+'018'|'EDELNOR'|'.'|'.     '|distrito|0|estado|(null)
+'019'|'EDELNOR'|'.'|'.     '|distrito|0|estado|(null)
+'020'|'EDELNOR'|'.'|'.     '|distrito|0|estado|(null)
+'021'|'EDELNOR'|'.'|'.     '|distrito|0|estado|(null)
+'022'|'EDELNOR'|'.'|'.     '|distrito|0|estado|(null)
+'023'|'EDELNOR'|'.'|'.     '|distrito|0|estado|(null)
+'024'|'EDELNOR'|'.'|'.     '|distrito|0|estado|(null)
+'025'|'EDELNOR'|'.'|'.     '|distrito|0|estado|(null)
+'001'|'SEDE PUCALLPA - PITS LOGÍSTICA INTEGRAL'|'.'|'.     '|distrito|0|estado|(null)
+'L01'|'SEDE URGENTES'|'HASTA QUE DEFINAN EL NUEVO LOCAL'|(null)|distrito|0|estado|(null)
+'L29'|'SEDE VILLA EL SALVADOR '|(null)|(null)|distrito|1|estado|'SAN JUAN DE MIRAFLORES'
+'L42'|'SEDE VILLA EL SALVADOR (SIN USAR)'|'Panamericana Sur Km. 25.3 Conchan'|(null)|distrito|0|estado|(null)
