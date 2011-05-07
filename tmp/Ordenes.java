@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.carga.orden;
+package com.carga.ordenes;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -30,20 +30,21 @@ public class Ordenes {
 			System.exit(1);
 		}
 
-		System.out.println("Registered the driver ok, so let's make a connection.");
+		System.out
+				.println("Registered the driver ok, so let's make a connection.");
 
 		Connection corigen = null, cdestino = null;
 
 		try {
 			corigen = DriverManager.getConnection(
-					"jdbc:postgresql://localhost:5432/db_demo", "postgres",
-					"okamismo");
+					"jdbc:postgresql://192.168.1.126:5432/db_prueba", "user_prueba",
+					"!12345678");
 
 			cdestino = DriverManager.getConnection(
 					"jdbc:postgresql://192.168.1.126:5432/db_pitsbi",
 					"user_prueba", "!12345678");
 
-			int ordenes_cliente = 0, ordenes_servicio = 0, ordenes_producto = 0, ordenes_treg = 0, ordenes_tini = 0, ordenes_tven = 0, ordenes_tdev = 0, ordenes_cantidad = 0;
+			int ordenes_cliente = 0, ordenes_servicio = 0, ordenes_producto = 0, ordenes_treg = 0, ordenes_tini = 0, ordenes_tven = 0, ordenes_tdev = 0, ordenes_admision = 0, ordenes_digitado = 0;
 			java.sql.Date ordenes_ingreso = null, ordenes_inicio = null, ordenes_vencimiento = null, ordenes_devolucion = null;
 			String ordenes_estado = "", ordenes_serie = "", ordenes_orden = "";
 			double ordenes_importe = 0.0, ordenes_igv = 0.0, ordenes_total = 0.0;
@@ -54,6 +55,16 @@ public class Ordenes {
 			String detdespacho_estado = "", detdespacho_motivo = "";
 			java.sql.Date detdespacho_salida = null, detdespacho_retorno = null, detdespacho_cierre = null, detdespacho_modificacion = null;
 			int detdespacho_tsal = 0, detdespacho_tret = 0, detdespacho_tcie = 0, detdespacho_tmod = 0;
+
+			// boolean buscarDetOrdenes = true, buscarDetDespacho = true;
+
+			java.sql.Date despacho_salida = null, despacho_cierre = null, despacho_modificacion = null;
+			int despacho_tsal = 0, despacho_tcie = 0, despacho_tmod = 0;
+			
+			int cantidad_cargos_anulados = 0, cantidad_cargos_entregados = 0, cantidad_cargos_fuerazona = 0, cantidad_cargos_motivados = 0, cantidad_cargos_perdidos = 0, cantidad_cargos_reenvios = 0;
+			int estado_orden = 0;
+			int num_dias_excedidos = 0;
+			int cantidad = 0;
 
 			String sqlConsultaOrdenes = "select "
 					+ "cli.key_cliente as cliente, "
@@ -73,7 +84,8 @@ public class Ordenes {
 					+ "ord.importe as importe, "
 					+ "ord.igv as igv, "
 					+ "ord.total as total, "
-					+ "ord.cnt_digitado as cantidad "
+					+ "ord.cnt_admision as admision, "
+					+ "ord.cnt_digitado as digitado "
 					+ "from "
 					+ "ordenes ord "
 					+ "INNER JOIN dim_cliente cli ON ord.codcliente = cli.cod_cliente AND ord.codareacliente = cli.cod_area "
@@ -85,16 +97,17 @@ public class Ordenes {
 					+ "LEFT JOIN dim_tiempo tdev ON ord.fechadevolucion = tdev.fec_fecha";
 
 			String sqlConsultaDetOrden = "select correlativo,codestado as estado, codmotivo as motivo "
-					+ "from detordenes "
-					+ "where orden = ? and serie = ? and codestado not in ('09','12')";
+					+ "from detordenes " + "where orden = ? and serie = ? ";
+			// +
+			// "where orden = ? and serie = ? and codestado not in ('09','12')";
 
 			String sqlConsultaDetDepacho = "select "
 					+ "det.codestado as estado, "
-					+ "det.codmotivo as motivo, "
+					//+ "det.codmotivo as motivo, "
 					+ "(CASE WHEN tsal.key_tiempo is not null THEN tsal.key_tiempo ELSE 0 END) as tsal, "
 					+ "dep.fecsalida as salida, "
-					+ "(CASE WHEN tret.key_tiempo is not null THEN tret.key_tiempo ELSE 0 END) as tret, "
-					+ "dep.fecretorno as retorno, "
+					//+ "(CASE WHEN tret.key_tiempo is not null THEN tret.key_tiempo ELSE 0 END) as tret, "
+					//+ "dep.fecretorno as retorno, "
 					+ "(CASE WHEN tcie.key_tiempo is not null THEN tcie.key_tiempo ELSE 0 END) as tcie, "
 					+ "dep.fechacierre as cierre, "
 					+ "(CASE WHEN tmod.key_tiempo is not null THEN tmod.key_tiempo ELSE 0 END) as tmod, "
@@ -103,15 +116,15 @@ public class Ordenes {
 					+ "detdespacho det "
 					+ "inner join despacho dep on det.serieguia = dep.serieguia and det.nroguia = dep.nroguia "
 					+ "inner join dim_tiempo tsal on dep.fecsalida = tsal.fec_fecha "
-					+ "inner join dim_tiempo tret on dep.fecretorno = tret.fec_fecha "
+					//+ "inner join dim_tiempo tret on dep.fecretorno = tret.fec_fecha "
 					+ "inner join dim_tiempo tcie on date(dep.fechacierre) = tcie.fec_fecha "
 					+ "inner join dim_tiempo tmod on date(dep.fechamod) = tmod.fec_fecha "
-					+ "where "
-					+ "det.orden = ? and det.serie = ? and det.correlativo = ? "
-					+ "order by salida desc limit 1";
+					+ "where " + "det.orden = ? and det.serie = ? ";
+			// + "det.orden = ? and det.serie = ? and det.correlativo = ? ";
+			// + "order by salida desc limit 1";
 
 			String sqlTextInsert = ""
-					+ "INSERT INTO fact_orden"
+					+ "INSERT INTO fac_orden"
 					+ "(key_cliente, key_servicio, key_producto, key_tiempo_registro, key_tiempo_inicio, "
 					+ "key_tiempo_vencimiento, key_tiempo_cierre, key_tiempo_devolucion, "
 					+ "key_estado, num_dias_excedidos, cod_serie, cod_orden, "
@@ -124,6 +137,28 @@ public class Ordenes {
 			ResultSet rsOrdenes = psOrdenes.executeQuery(sqlConsultaOrdenes);
 
 			while (rsOrdenes.next()) {
+
+				cantidad_cargos_anulados = 0;
+				cantidad_cargos_entregados = 0;
+				cantidad_cargos_fuerazona = 0;
+				cantidad_cargos_motivados = 0;
+				cantidad_cargos_perdidos = 0;
+				cantidad_cargos_reenvios = 0;
+
+				// buscarDetOrdenes = true;
+				// buscarDetDespacho = true;
+
+				estado_orden = 0;
+
+				num_dias_excedidos = 0;
+				cantidad = 0;
+				
+				despacho_salida = null;
+				despacho_cierre = null;
+				despacho_modificacion = null;
+				despacho_tsal = 0;
+				despacho_tcie = 0;
+				despacho_tmod = 0;
 
 				ordenes_cliente = rsOrdenes.getInt("cliente");
 				ordenes_servicio = rsOrdenes.getInt("servicio");
@@ -142,67 +177,182 @@ public class Ordenes {
 				ordenes_importe = rsOrdenes.getDouble("importe");
 				ordenes_igv = rsOrdenes.getDouble("igv");
 				ordenes_total = rsOrdenes.getDouble("total");
-				ordenes_cantidad = rsOrdenes.getInt("cantidad");
-				
-				if (!"01".equals(ordenes_estado)
-						&& !"03".equals(ordenes_estado)) {
-					
+				ordenes_admision = rsOrdenes.getInt("admision");
+				ordenes_digitado = rsOrdenes.getInt("digitado");
+
+				if (!"01".equals(ordenes_estado) && !"03".equals(ordenes_estado)) {
+
 					PreparedStatement psOrdenDet = corigen.prepareStatement(sqlConsultaDetOrden);
 					psOrdenDet.setString(1, ordenes_orden);
 					psOrdenDet.setString(2, ordenes_serie);
 					ResultSet rsOrdenDet = psOrdenDet.executeQuery();
 
 					while (rsOrdenDet.next()) {
-
-						
-
+						if ("01".equals(rsOrdenDet.getString("estado"))
+								|| "02".equals(rsOrdenDet.getString("estado"))
+								|| "03".equals(rsOrdenDet.getString("estado"))
+								|| "10".equals(rsOrdenDet.getString("estado"))) {
+							// buscarDetDespacho = false;
+							if ("01".equals(ordenes_estado)) {
+								estado_orden = 7;
+							}
+							if ("03".equals(ordenes_estado)) {
+								estado_orden = 7;
+							}
+						}
 					}
-					
-					
-					
-					
-					
-					detorden_correlativo = rsOrdenDet.getInt("correlativo");
-					detorden_estado = rsOrdenDet.getString("estado");
-					detorden_motivo = rsOrdenDet.getString("motivo");
+
+					// if(buscarDetDespacho){
+					// detorden_correlativo = rsOrdenDet.getInt("correlativo");
+					// detorden_estado = rsOrdenDet.getString("estado");
+					// detorden_motivo = rsOrdenDet.getString("motivo");
 
 					PreparedStatement psDespachoDet = corigen.prepareStatement(sqlConsultaDetDepacho);
 					psDespachoDet.setString(1, ordenes_orden);
 					psDespachoDet.setString(2, ordenes_serie);
-					psDespachoDet.setInt(3, detorden_correlativo);
+					// psDespachoDet.setInt(3, detorden_correlativo);
 					ResultSet rsDespachoDet = psDespachoDet.executeQuery();
 
 					while (rsDespachoDet.next()) {
 						detdespacho_estado = rsDespachoDet.getString("estado");
-						detdespacho_motivo = rsDespachoDet.getString("motivo");
+						//detdespacho_motivo = rsDespachoDet.getString("motivo");
 						detdespacho_tsal = rsDespachoDet.getInt("tsal");
-						detdespacho_tret = rsDespachoDet.getInt("tret");
+						//detdespacho_tret = rsDespachoDet.getInt("tret");
 						detdespacho_tcie = rsDespachoDet.getInt("tcie");
 						detdespacho_tmod = rsDespachoDet.getInt("tmod");
-						detdespacho_salida = rsDespachoDet.getDate("salida");
-						detdespacho_retorno = rsDespachoDet.getDate("retorno");
+						//detdespacho_salida = rsDespachoDet.getDate("salida");
+						//detdespacho_retorno = rsDespachoDet.getDate("retorno");
 						detdespacho_cierre = rsDespachoDet.getDate("cierre");
 						detdespacho_modificacion = rsDespachoDet.getDate("modificacion");
+						
+						if("09".equals(detdespacho_estado)) cantidad_cargos_anulados = cantidad_cargos_anulados + 1;
+						if("04".equals(detdespacho_estado)) cantidad_cargos_entregados = cantidad_cargos_entregados + 1;
+						if("07".equals(detdespacho_estado)) cantidad_cargos_fuerazona = cantidad_cargos_fuerazona + 1;
+						if("05".equals(detdespacho_estado)) cantidad_cargos_motivados = cantidad_cargos_motivados + 1;
+						if("08".equals(detdespacho_estado)) cantidad_cargos_perdidos = cantidad_cargos_perdidos + 1;
+						if("06".equals(detdespacho_estado)) cantidad_cargos_reenvios = cantidad_cargos_reenvios + 1;
+						
+						if(despacho_salida == null){
+							
+							despacho_salida = detdespacho_salida;
+							despacho_cierre = detdespacho_cierre;
+							despacho_modificacion = detdespacho_modificacion;
+							
+							despacho_tsal = detdespacho_tsal;
+							despacho_tcie = detdespacho_tcie;
+							despacho_tmod = detdespacho_tmod;
+							
+						}else{
+							if(despacho_salida.compareTo(detdespacho_salida)<0){
+								despacho_salida = detdespacho_salida;
+								despacho_cierre = detdespacho_cierre;
+								despacho_modificacion = detdespacho_modificacion;
+								
+								despacho_tsal = detdespacho_tsal;
+								despacho_tcie = detdespacho_tcie;
+								despacho_tmod = detdespacho_tmod;
+							}
+						}
 
 					}
 					
-					
-					
-					
-					
-				} else {
-					
-					int estado = 0;
-					if("00".equals(ordenes_estado)) {estado = 6;}
-					//else if("01".equals(ordenes_estado)) {estado = 7;}
-					else if("02".equals(ordenes_estado)) {estado = 8;}
-					///else if("03".equals(ordenes_estado)) {estado = 9;}
-					else {estado = 10;}
-					
-					int num_dias_excedidos = 0;
-					if(ordenes_tini!=0){
-						num_dias_excedidos = (new Long(((new java.sql.Date((new java.util.Date()).getTime())).getTime() - ordenes_inicio.getTime())/(1000*60*60*24))).intValue();
+					if(ordenes_vencimiento == null){
+						estado_orden = 10;
+						num_dias_excedidos = 0;
+					}else{
+						if(estado_orden == 7){
+							if(ordenes_vencimiento.compareTo(new java.sql.Date((new java.util.Date()).getTime()))>0){
+								estado_orden = 2;
+							}else{
+								num_dias_excedidos = (new Long(((new java.sql.Date((new java.util.Date()).getTime())).getTime() - ordenes_vencimiento.getTime()) / (1000 * 60 * 60 * 24))).intValue();
+							}
+						}else{
+							if(despacho_cierre != null){
+								if(ordenes_vencimiento.compareTo(despacho_cierre)>0){
+									estado_orden = 4;
+								}else{
+									estado_orden = 9;
+									num_dias_excedidos = (new Long((despacho_cierre.getTime() - ordenes_inicio.getTime()) / (1000 * 60 * 60 * 24))).intValue();
+								}
+							}else if(despacho_cierre == null && despacho_modificacion != null){
+								
+								despacho_tcie = despacho_tmod;
+								despacho_cierre = despacho_modificacion;
+								
+								if(ordenes_vencimiento.compareTo(despacho_cierre)>0){
+									estado_orden = 4;
+								}else{
+									estado_orden = 9;
+									num_dias_excedidos = (new Long((despacho_cierre.getTime() - ordenes_inicio.getTime()) / (1000 * 60 * 60 * 24))).intValue();
+								}
+							}else{
+								despacho_tcie = 0;
+								if(ordenes_vencimiento.compareTo(new java.sql.Date((new java.util.Date()).getTime()))>0){
+									estado_orden = 5;
+								}else{
+									estado_orden = 10;
+									num_dias_excedidos = (new Long(((new java.sql.Date((new java.util.Date()).getTime())).getTime() - ordenes_vencimiento.getTime()) / (1000 * 60 * 60 * 24))).intValue();
+								}
+							}						
+						}
 					}
+
+					if (ordenes_digitado == 0)
+						cantidad = ordenes_admision;
+					else
+						cantidad = ordenes_digitado;
+
+					PreparedStatement psInsertOrdenes = cdestino.prepareStatement(sqlTextInsert);
+					psInsertOrdenes.setInt(1, ordenes_cliente);
+					psInsertOrdenes.setInt(2, ordenes_servicio);
+					psInsertOrdenes.setInt(3, ordenes_producto);
+					psInsertOrdenes.setInt(4, ordenes_treg);
+					psInsertOrdenes.setInt(5, ordenes_tini);
+					psInsertOrdenes.setInt(6, ordenes_tven);
+					psInsertOrdenes.setInt(7, despacho_tcie);
+					psInsertOrdenes.setInt(8, ordenes_tdev);
+					psInsertOrdenes.setInt(9, estado_orden);
+					psInsertOrdenes.setInt(10, num_dias_excedidos);
+					psInsertOrdenes.setString(11, ordenes_serie);
+					psInsertOrdenes.setString(12, ordenes_orden);
+					psInsertOrdenes.setInt(13, cantidad);
+					psInsertOrdenes.setInt(14, cantidad_cargos_anulados);
+					psInsertOrdenes.setInt(15, cantidad_cargos_entregados);
+					psInsertOrdenes.setInt(16, cantidad_cargos_fuerazona);
+					psInsertOrdenes.setInt(17, cantidad_cargos_motivados);
+					psInsertOrdenes.setInt(18, cantidad_cargos_perdidos);
+					psInsertOrdenes.setInt(19, cantidad_cargos_reenvios);
+					psInsertOrdenes.setDouble(20, ordenes_importe);
+					psInsertOrdenes.setDouble(21, ordenes_igv);
+					psInsertOrdenes.setDouble(22, ordenes_total);
+					psInsertOrdenes.executeUpdate();
+					// }
+
+				} else {
+					if ("00".equals(ordenes_estado)) {
+						estado_orden = 6;
+					}
+					// else if("01".equals(ordenes_estado)) {estado = 7;}
+					else if ("02".equals(ordenes_estado)) {
+						estado_orden = 8;
+					}
+					// /else if("03".equals(ordenes_estado)) {estado = 9;}
+					else {
+						estado_orden = 10;
+					}
+
+					if (ordenes_tini != 0) {
+						if(ordenes_vencimiento != null){
+							num_dias_excedidos = (new Long(((new java.sql.Date((new java.util.Date()).getTime())).getTime() - ordenes_vencimiento.getTime()) / (1000 * 60 * 60 * 24))).intValue();	
+						}else{
+							num_dias_excedidos = 0;
+						}
+					}
+
+					if (ordenes_digitado == 0)
+						cantidad = ordenes_admision;
+					else
+						cantidad = ordenes_digitado;
 
 					PreparedStatement psInsertOrdenes = cdestino.prepareStatement(sqlTextInsert);
 					psInsertOrdenes.setInt(1, ordenes_cliente);
@@ -213,11 +363,11 @@ public class Ordenes {
 					psInsertOrdenes.setInt(6, ordenes_tven);
 					psInsertOrdenes.setInt(7, 0);
 					psInsertOrdenes.setInt(8, ordenes_tdev);
-					psInsertOrdenes.setInt(9, estado);
+					psInsertOrdenes.setInt(9, estado_orden);
 					psInsertOrdenes.setInt(10, num_dias_excedidos);
 					psInsertOrdenes.setString(11, ordenes_serie);
 					psInsertOrdenes.setString(12, ordenes_orden);
-					psInsertOrdenes.setInt(13, ordenes_cantidad);
+					psInsertOrdenes.setInt(13, cantidad);
 					psInsertOrdenes.setInt(14, 0);
 					psInsertOrdenes.setInt(15, 0);
 					psInsertOrdenes.setInt(16, 0);
@@ -228,7 +378,7 @@ public class Ordenes {
 					psInsertOrdenes.setDouble(21, ordenes_igv);
 					psInsertOrdenes.setDouble(22, ordenes_total);
 					psInsertOrdenes.executeUpdate();
-					
+
 				}
 			}
 		} catch (SQLException se) {
@@ -238,10 +388,10 @@ public class Ordenes {
 		}
 
 	}
-	
-	public int getEstado(Connection con, String estado){
+
+	public int getEstado(Connection con, String estado) {
 		int resultado = 0;
-		
+
 		return resultado;
 	}
 

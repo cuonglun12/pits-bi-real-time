@@ -15,6 +15,12 @@ Negocio
 - Puede tener varios serivicui t_servicio
 - Ambito (local, nacional, internacional)
 
+
+
+Servicio
+Siempre es cnt_digitago a excepcion del servicio volante sin cargo.
+
+
 Zona (no aplica para local)
 
 Tipo de transporte (no aplica para local)
