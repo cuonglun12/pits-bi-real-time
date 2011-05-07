@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.carga.ordenes;
+package com.carga.orden;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -59,13 +59,13 @@ public class Ordenes {
 					+ "cli.key_cliente as cliente, "
 					+ "ser.key_servicio as servicio, "
 					+ "pro.key_producto as producto, "
-					+ "treg.key_tiempo as treg, "
+					+ "(CASE WHEN treg.key_tiempo is not null THEN treg.key_tiempo ELSE 0 END) as treg, "
 					+ "ord.fechaingreso as ingreso, "
-					+ "tini.key_tiempo as tini, "
+					+ "(CASE WHEN tini.key_tiempo is not null THEN tini.key_tiempo ELSE 0 END) as tini, "
 					+ "ord.fechainicio as inicio, "
-					+ "tven.key_tiempo as tven, "
+					+ "(CASE WHEN tven.key_tiempo is not null THEN tven.key_tiempo ELSE 0 END) as tven, "
 					+ "ord.fechavencimiento as vencimiento, "
-					+ "tdev.key_tiempo as tdev, "
+					+ "(CASE WHEN tdev.key_tiempo is not null THEN tdev.key_tiempo ELSE 0 END) as tdev, "
 					+ "ord.fechadevolucion as devolucion, "
 					+ "ord.estadoorden as estado, "
 					+ "ord.serie as serie, "
@@ -91,13 +91,13 @@ public class Ordenes {
 			String sqlConsultaDetDepacho = "select "
 					+ "det.codestado as estado, "
 					+ "det.codmotivo as motivo, "
-					+ "tsal.key_tiempo as tsal, "
+					+ "(CASE WHEN tsal.key_tiempo is not null THEN tsal.key_tiempo ELSE 0 END) as tsal, "
 					+ "dep.fecsalida as salida, "
-					+ "tret.key_tiempo as tret, "
+					+ "(CASE WHEN tret.key_tiempo is not null THEN tret.key_tiempo ELSE 0 END) as tret, "
 					+ "dep.fecretorno as retorno, "
-					+ "tcie.key_tiempo as tcie, "
+					+ "(CASE WHEN tcie.key_tiempo is not null THEN tcie.key_tiempo ELSE 0 END) as tcie, "
 					+ "dep.fechacierre as cierre, "
-					+ "tmod.key_tiempo as tmod, "
+					+ "(CASE WHEN tmod.key_tiempo is not null THEN tmod.key_tiempo ELSE 0 END) as tmod, "
 					+ "dep.fechamod as modificacion "
 					+ "from "
 					+ "detdespacho det "
@@ -146,6 +146,7 @@ public class Ordenes {
 				
 				if (!"01".equals(ordenes_estado)
 						&& !"03".equals(ordenes_estado)) {
+					
 					PreparedStatement psOrdenDet = corigen.prepareStatement(sqlConsultaDetOrden);
 					psOrdenDet.setString(1, ordenes_orden);
 					psOrdenDet.setString(2, ordenes_serie);
@@ -153,72 +154,95 @@ public class Ordenes {
 
 					while (rsOrdenDet.next()) {
 
-						detorden_correlativo = rsOrdenDet.getInt("correlativo");
-						detorden_estado = rsOrdenDet.getString("estado");
-						detorden_motivo = rsOrdenDet.getString("motivo");
-
-						PreparedStatement psDespachoDet = corigen.prepareStatement(sqlConsultaDetDepacho);
-						psDespachoDet.setString(1, ordenes_orden);
-						psDespachoDet.setString(2, ordenes_serie);
-						psDespachoDet.setInt(3, detorden_correlativo);
-						ResultSet rsDespachoDet = psDespachoDet.executeQuery();
-
-						while (rsDespachoDet.next()) {
-							detdespacho_estado = rsDespachoDet.getString("estado");
-							detdespacho_motivo = rsDespachoDet.getString("motivo");
-							detdespacho_tsal = rsDespachoDet.getInt("tsal");
-							detdespacho_tret = rsDespachoDet.getInt("tret");
-							detdespacho_tcie = rsDespachoDet.getInt("tcie");
-							detdespacho_tmod = rsDespachoDet.getInt("tmod");
-							detdespacho_salida = rsDespachoDet.getDate("salida");
-							detdespacho_retorno = rsDespachoDet.getDate("retorno");
-							detdespacho_cierre = rsDespachoDet.getDate("cierre");
-							detdespacho_modificacion = rsDespachoDet.getDate("modificacion");
-
-						}
+						
 
 					}
+					
+					
+					
+					
+					
+					detorden_correlativo = rsOrdenDet.getInt("correlativo");
+					detorden_estado = rsOrdenDet.getString("estado");
+					detorden_motivo = rsOrdenDet.getString("motivo");
+
+					PreparedStatement psDespachoDet = corigen.prepareStatement(sqlConsultaDetDepacho);
+					psDespachoDet.setString(1, ordenes_orden);
+					psDespachoDet.setString(2, ordenes_serie);
+					psDespachoDet.setInt(3, detorden_correlativo);
+					ResultSet rsDespachoDet = psDespachoDet.executeQuery();
+
+					while (rsDespachoDet.next()) {
+						detdespacho_estado = rsDespachoDet.getString("estado");
+						detdespacho_motivo = rsDespachoDet.getString("motivo");
+						detdespacho_tsal = rsDespachoDet.getInt("tsal");
+						detdespacho_tret = rsDespachoDet.getInt("tret");
+						detdespacho_tcie = rsDespachoDet.getInt("tcie");
+						detdespacho_tmod = rsDespachoDet.getInt("tmod");
+						detdespacho_salida = rsDespachoDet.getDate("salida");
+						detdespacho_retorno = rsDespachoDet.getDate("retorno");
+						detdespacho_cierre = rsDespachoDet.getDate("cierre");
+						detdespacho_modificacion = rsDespachoDet.getDate("modificacion");
+
+					}
+					
+					
+					
+					
+					
 				} else {
-					Prepara
+					
+					int estado = 0;
+					if("00".equals(ordenes_estado)) {estado = 6;}
+					//else if("01".equals(ordenes_estado)) {estado = 7;}
+					else if("02".equals(ordenes_estado)) {estado = 8;}
+					///else if("03".equals(ordenes_estado)) {estado = 9;}
+					else {estado = 10;}
+					
+					int num_dias_excedidos = 0;
+					if(ordenes_tini!=0){
+						num_dias_excedidos = (new Long(((new java.sql.Date((new java.util.Date()).getTime())).getTime() - ordenes_inicio.getTime())/(1000*60*60*24))).intValue();
+					}
+
+					PreparedStatement psInsertOrdenes = cdestino.prepareStatement(sqlTextInsert);
+					psInsertOrdenes.setInt(1, ordenes_cliente);
+					psInsertOrdenes.setInt(2, ordenes_servicio);
+					psInsertOrdenes.setInt(3, ordenes_producto);
+					psInsertOrdenes.setInt(4, ordenes_treg);
+					psInsertOrdenes.setInt(5, ordenes_tini);
+					psInsertOrdenes.setInt(6, ordenes_tven);
+					psInsertOrdenes.setInt(7, 0);
+					psInsertOrdenes.setInt(8, ordenes_tdev);
+					psInsertOrdenes.setInt(9, estado);
+					psInsertOrdenes.setInt(10, num_dias_excedidos);
+					psInsertOrdenes.setString(11, ordenes_serie);
+					psInsertOrdenes.setString(12, ordenes_orden);
+					psInsertOrdenes.setInt(13, ordenes_cantidad);
+					psInsertOrdenes.setInt(14, 0);
+					psInsertOrdenes.setInt(15, 0);
+					psInsertOrdenes.setInt(16, 0);
+					psInsertOrdenes.setInt(17, 0);
+					psInsertOrdenes.setInt(18, 0);
+					psInsertOrdenes.setInt(19, 0);
+					psInsertOrdenes.setDouble(20, ordenes_importe);
+					psInsertOrdenes.setDouble(21, ordenes_igv);
+					psInsertOrdenes.setDouble(22, ordenes_total);
+					psInsertOrdenes.executeUpdate();
+					
 				}
-
-				
-
-				
-				// PreparedStatement psOrdenes =
-				// corigen.prepareStatement(sqlConsultaOrdenes);
-				// ResultSet rsGuias = psOrdenes.executeQuery();
-				// while(rsGuias.next()){
-				// PreparedStatement psEnvios =
-				// cdestino.prepareStatement(sqlTextInsert);
-				// psEnvios.setInt(1, rsGuias.getInt(1));
-				// psEnvios.setInt(2, rsGuias.getInt(2));
-				// psEnvios.setInt(3, rsGuias.getInt(3));
-				// psEnvios.setInt(4, rsGuias.getInt(4));
-				// psEnvios.setInt(5, rsGuias.getInt(5));
-				// psEnvios.setInt(6, rsGuias.getInt(6));
-				// psEnvios.setInt(7, rsGuias.getInt(7));
-				// psEnvios.setInt(8, rsGuias.getInt(8));
-				// psEnvios.setInt(9, rsGuias.getInt(9));
-				// psEnvios.setInt(10, rsGuias.getInt(10));
-				// psEnvios.setString(11, rsGuias.getString(11));
-				// psEnvios.setString(12, rsGuias.getString(12));
-				// psEnvios.setInt(13, rsGuias.getInt(13));
-				// psEnvios.setInt(14, rsGuias.getInt(14));
-				// psEnvios.setInt(15, rsGuias.getInt(15));
-				// psEnvios.setInt(16, rsGuias.getInt(16));
-				// psEnvios.setInt(17, rsGuias.getInt(17));
-				// psEnvios.setInt(18, rsGuias.getInt(18));
-				// psEnvios.setInt(19, rsGuias.getInt(19));
-				// psEnvios.executeUpdate();
 			}
-			// }
 		} catch (SQLException se) {
 			System.out.println("Couldn't connect: print out a stack trace and exit.");
 			se.printStackTrace();
 			System.exit(1);
 		}
 
+	}
+	
+	public int getEstado(Connection con, String estado){
+		int resultado = 0;
+		
+		return resultado;
 	}
 
 }
