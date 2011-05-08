@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schema name="cube_fac_ordenes">
+    <Cube name="cube_fac_ordenes">
+        <Table name="fac_orden"/>
+        <Measure name="SUM of fac_orden.num_cargos" column="num_cargos" aggregator="sum" datatype="Integer" formatString="#.##0"/>
+        <Measure name="SUM of fac_orden.num_cargos_anulados" column="num_cargos_anulados" aggregator="sum" datatype="Integer" formatString="#.##0"/>
+        <Measure name="SUM of fac_orden.num_cargos_entregados" column="num_cargos_entregados" aggregator="sum" datatype="Integer" formatString="#.##0"/>
+        <Measure name="SUM of fac_orden.num_cargos_fuerazona" column="num_cargos_fuerazona" aggregator="sum" datatype="Integer" formatString="#.##0"/>
+        <Measure name="SUM of fac_orden.num_cargos_motivados" column="num_cargos_motivados" aggregator="sum" datatype="Integer" formatString="#.##0"/>
+        <Measure name="SUM of fac_orden.num_cargos_perdidos" column="num_cargos_perdidos" aggregator="sum" datatype="Integer" formatString="#.##0"/>
+        <Measure name="SUM of fac_orden.num_cargos_reenvios" column="num_cargos_reenvios" aggregator="sum" datatype="Integer" formatString="#.##0"/>
+        <Measure name="SUM of fac_orden.num_dias_excedidos" column="num_dias_excedidos" aggregator="sum" datatype="Integer" formatString="#.##0"/>
+        <Measure name="SUM of fac_orden.num_igv" column="num_igv" aggregator="sum" datatype="Integer" formatString="#.##0"/>
+        <Measure name="SUM of fac_orden.num_importe" column="num_importe" aggregator="sum" datatype="Integer" formatString="#.##0"/>
+        <Measure name="SUM of fac_orden.num_total" column="num_total" aggregator="sum" datatype="Integer" formatString="#.##0"/>
+    </Cube>
+</Schema>

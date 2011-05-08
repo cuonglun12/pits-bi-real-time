@@ -65,7 +65,7 @@ select
     d.serieguia,
     d.nroguia,
     d.fecsalida,
-    d.fecretorno,
+    d.fecretorno retorno_real,
     d.codmensajero,
     d.entregados,
     d.motivos,
@@ -77,6 +77,7 @@ select
 from detdespacho detd
 inner join despacho d on d.serieguia = detd.serieguia and d.nroguia = detd.nroguia
 inner join estados e on detd.codestado = e.codestado
+where d.fecsalida is null
 
 
 select count(*), correlativo from detdespacho
@@ -102,3 +103,17 @@ select codsede, nomsede, direccion, ubigeo, 'distrito', estado, 'estado', alias_
 where estado = 1
 
  INSERT INTO "public"."dim_sede"("key_sede", "cod_sede", "des_nombre", "des_direccion", "cod_ubigeo", "des_distrito", "cod_estado", "des_estado", "des_alias")   VALUES(46, 'L42', 'SEDE VILLA EL SALVADOR (SIN USAR)', 'Panamericana Sur Km. 25.3 Conchan', '', '', '0', '','')
+
+
+select * from despacho where codmensajero = ' '
+
+
+select * from personal where tipopers = '01'
+
+select * from t_tipopersonal 
+
+
+
+select * from despacho where codmensajero not in (select codigopersonal from personal)
+
+sele
