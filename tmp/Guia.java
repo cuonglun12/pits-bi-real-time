@@ -37,12 +37,12 @@ public class Guia {
 
 		try {
 			corigen = DriverManager.getConnection(
-					"jdbc:postgresql://192.168.1.126:5432/db_prueba", "user_prueba",
-					"!12345678");
+					"jdbc:postgresql://localhost:5432/db_prueba", "postgres",
+					"!abc123abc");
 
 			cdestino = DriverManager.getConnection(
-					"jdbc:postgresql://192.168.1.126:5432/db_pitsbi",
-					"user_prueba", "!12345678");
+					"jdbc:postgresql://localhost:5432/db_pitsbi",
+					"postgres", "!abc123abc");
 
 			String sqlConsultaGuias = "select "
 					+ "(CASE WHEN zonas.key_localizacion is not null THEN zonas.key_localizacion ELSE 0 END) as localizacion, "
@@ -67,10 +67,11 @@ public class Guia {
 					+ "dep.perdidos as cantidad_perdidos "
 					+ "from "
 					+ "despacho dep "
-					+ "left join (select zon.codzona, loc.cod_ubigeo, loc.key_localizacion from zonas zon inner join dim_localizacion loc on zon.ubigeo = loc.cod_ubigeo) as zonas on dep.codzona = zonas.codzona "
+					+ "left join (select zon.codzona, loc.cod_ubigeo, loc.key_localizacion from zonas zon inner join dim_localizacion loc on zon.codzona = loc.cod_zona) as zonas on dep.codzona = zonas.codzona "
 					+ "inner join dim_sede sed on dep.codsede = sed.cod_sede "
 					+ "left join dim_tiempo tsal on dep.fecsalida = tsal.fec_fecha "
 					+ "left join dim_tiempo tret on dep.fecretorno = tret.fec_fecha "
+					+ "left join dim_tiempo trea on dep.fechacierre = trea.fec_fecha "
 					+ "inner join dim_personal per on dep.codmensajero = per.cod_codigopersonal ";
 			
 			String sqlConsultaLocalizacion="select " +

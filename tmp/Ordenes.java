@@ -37,12 +37,12 @@ public class Ordenes {
 
 		try {
 			corigen = DriverManager.getConnection(
-					"jdbc:postgresql://192.168.1.126:5432/db_prueba", "user_prueba",
-					"!12345678");
+					"jdbc:postgresql://localhost:5432/db_prueba", "postgres",
+					"!abc123abc");
 
 			cdestino = DriverManager.getConnection(
-					"jdbc:postgresql://192.168.1.126:5432/db_pitsbi",
-					"user_prueba", "!12345678");
+					"jdbc:postgresql://localhost:5432/db_pitsbi",
+					"postgres", "!abc123abc");
 
 			int ordenes_cliente = 0, ordenes_servicio = 0, ordenes_producto = 0, ordenes_treg = 0, ordenes_tini = 0, ordenes_tven = 0, ordenes_tdev = 0, ordenes_admision = 0, ordenes_digitado = 0;
 			java.sql.Date ordenes_ingreso = null, ordenes_inicio = null, ordenes_vencimiento = null, ordenes_devolucion = null;
