@@ -65,6 +65,7 @@ public class Ordenes {
 			int estado_orden = 0;
 			int num_dias_excedidos = 0;
 			int cantidad = 0;
+			int num_ord_cef = 0,num_ord_cff = 0, num_ord_pef = 0, num_ord_pff = 0, num_ord_anulados = 0, num_ord_incosistentes = 0, num_ord = 0;
 
 			String sqlConsultaOrdenes = "select "
 					+ "cli.key_cliente as cliente, "
@@ -94,7 +95,10 @@ public class Ordenes {
 					+ "LEFT JOIN dim_tiempo treg ON ord.fechaingreso = treg.fec_fecha "
 					+ "LEFT JOIN dim_tiempo tini ON ord.fechainicio = tini.fec_fecha "
 					+ "LEFT JOIN dim_tiempo tven ON ord.fechavencimiento = tven.fec_fecha "
-					+ "LEFT JOIN dim_tiempo tdev ON ord.fechadevolucion = tdev.fec_fecha";
+					+ "LEFT JOIN dim_tiempo tdev ON ord.fechadevolucion = tdev.fec_fecha "
+					+ "where "
+					+ "ord.serie > '427' AND ord.orden > '0427739' "
+					+ "order by serie, orden";
 
 			String sqlConsultaDetOrden = "select correlativo,codestado as estado, codmotivo as motivo "
 					+ "from detordenes " + "where orden = ? and serie = ? ";
@@ -130,8 +134,8 @@ public class Ordenes {
 					+ "key_estado, num_dias_excedidos, cod_serie, cod_orden, "
 					+ "num_cargos, num_cargos_anulados, num_cargos_entregados, num_cargos_fuerazona, "
 					+ "num_cargos_motivados, num_cargos_perdidos, num_cargos_reenvios, "
-					+ "num_importe, num_igv, num_total) "
-					+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+					+ "num_importe, num_igv, num_total, num_ord_cef, num_ord_cff, num_ord_pef, num_ord_pff, num_ord_anulados, num_ord_incosistentes, num_ord) "
+					+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 			Statement psOrdenes = corigen.createStatement();
 			ResultSet rsOrdenes = psOrdenes.executeQuery(sqlConsultaOrdenes);
@@ -159,6 +163,14 @@ public class Ordenes {
 				despacho_tsal = 0;
 				despacho_tcie = 0;
 				despacho_tmod = 0;
+				
+				num_ord_cef = 0;
+				num_ord_cff = 0;
+				num_ord_pef = 0;
+				num_ord_pff = 0;
+				num_ord_anulados = 0;
+				num_ord_incosistentes = 0;
+				num_ord = 0;
 
 				ordenes_cliente = rsOrdenes.getInt("cliente");
 				ordenes_servicio = rsOrdenes.getInt("servicio");
@@ -180,13 +192,15 @@ public class Ordenes {
 				ordenes_admision = rsOrdenes.getInt("admision");
 				ordenes_digitado = rsOrdenes.getInt("digitado");
 
-				if (!"01".equals(ordenes_estado) && !"03".equals(ordenes_estado)) {
 
+				if ("01".equals(ordenes_estado) || "03".equals(ordenes_estado)) {
 					PreparedStatement psOrdenDet = corigen.prepareStatement(sqlConsultaDetOrden);
 					psOrdenDet.setString(1, ordenes_orden);
 					psOrdenDet.setString(2, ordenes_serie);
 					ResultSet rsOrdenDet = psOrdenDet.executeQuery();
 
+					num_ord = 1;
+					
 					while (rsOrdenDet.next()) {
 						if ("01".equals(rsOrdenDet.getString("estado"))
 								|| "02".equals(rsOrdenDet.getString("estado"))
@@ -195,12 +209,17 @@ public class Ordenes {
 							// buscarDetDespacho = false;
 							if ("01".equals(ordenes_estado)) {
 								estado_orden = 7;
+								num_ord_pff = 1;
 							}
 							if ("03".equals(ordenes_estado)) {
 								estado_orden = 7;
+								num_ord_pff = 1;
 							}
 						}
 					}
+					
+					rsOrdenDet = null;
+					System.gc();
 
 					// if(buscarDetDespacho){
 					// detorden_correlativo = rsOrdenDet.getInt("correlativo");
@@ -256,13 +275,18 @@ public class Ordenes {
 
 					}
 					
+					rsDespachoDet = null;
+					System.gc();
+					
 					if(ordenes_vencimiento == null){
 						estado_orden = 10;
 						num_dias_excedidos = 0;
+						num_ord_incosistentes = 1;
 					}else{
 						if(estado_orden == 7){
 							if(ordenes_vencimiento.compareTo(new java.sql.Date((new java.util.Date()).getTime()))>0){
 								estado_orden = 2;
+								num_ord_pef = 1;
 							}else{
 								num_dias_excedidos = (new Long(((new java.sql.Date((new java.util.Date()).getTime())).getTime() - ordenes_vencimiento.getTime()) / (1000 * 60 * 60 * 24))).intValue();
 							}
@@ -270,8 +294,10 @@ public class Ordenes {
 							if(despacho_cierre != null){
 								if(ordenes_vencimiento.compareTo(despacho_cierre)>0){
 									estado_orden = 4;
+									num_ord_cef = 1;
 								}else{
 									estado_orden = 9;
+									num_ord_cff = 1;
 									num_dias_excedidos = (new Long((despacho_cierre.getTime() - ordenes_inicio.getTime()) / (1000 * 60 * 60 * 24))).intValue();
 								}
 							}else if(despacho_cierre == null && despacho_modificacion != null){
@@ -281,16 +307,20 @@ public class Ordenes {
 								
 								if(ordenes_vencimiento.compareTo(despacho_cierre)>0){
 									estado_orden = 4;
+									num_ord_cef = 1;
 								}else{
 									estado_orden = 9;
+									num_ord_cff = 1;
 									num_dias_excedidos = (new Long((despacho_cierre.getTime() - ordenes_inicio.getTime()) / (1000 * 60 * 60 * 24))).intValue();
 								}
 							}else{
 								despacho_tcie = 0;
 								if(ordenes_vencimiento.compareTo(new java.sql.Date((new java.util.Date()).getTime()))>0){
 									estado_orden = 5;
+									num_ord_incosistentes = 1;
 								}else{
 									estado_orden = 10;
+									num_ord_incosistentes = 1;
 									num_dias_excedidos = (new Long(((new java.sql.Date((new java.util.Date()).getTime())).getTime() - ordenes_vencimiento.getTime()) / (1000 * 60 * 60 * 24))).intValue();
 								}
 							}						
@@ -325,20 +355,35 @@ public class Ordenes {
 					psInsertOrdenes.setDouble(20, ordenes_importe);
 					psInsertOrdenes.setDouble(21, ordenes_igv);
 					psInsertOrdenes.setDouble(22, ordenes_total);
+					psInsertOrdenes.setInt(23, num_ord_cef);
+					psInsertOrdenes.setInt(24, num_ord_cff);
+					psInsertOrdenes.setInt(25, num_ord_pef);
+					psInsertOrdenes.setInt(26, num_ord_pff);
+					psInsertOrdenes.setInt(27, num_ord_anulados);
+					psInsertOrdenes.setInt(28, num_ord_incosistentes);
+					psInsertOrdenes.setInt(29, num_ord);
+					
 					psInsertOrdenes.executeUpdate();
+					
+					psInsertOrdenes = null;
+					
+					System.gc();
 					// }
 
 				} else {
 					if ("00".equals(ordenes_estado)) {
 						estado_orden = 6;
+						num_ord_pff = 1;
 					}
 					// else if("01".equals(ordenes_estado)) {estado = 7;}
 					else if ("02".equals(ordenes_estado)) {
 						estado_orden = 8;
+						num_ord_anulados = 1;
 					}
 					// /else if("03".equals(ordenes_estado)) {estado = 9;}
 					else {
 						estado_orden = 10;
+						num_ord_incosistentes = 1;
 					}
 
 					if (ordenes_tini != 0) {
@@ -377,7 +422,17 @@ public class Ordenes {
 					psInsertOrdenes.setDouble(20, ordenes_importe);
 					psInsertOrdenes.setDouble(21, ordenes_igv);
 					psInsertOrdenes.setDouble(22, ordenes_total);
+					psInsertOrdenes.setInt(23, num_ord_cef);
+					psInsertOrdenes.setInt(24, num_ord_cff);
+					psInsertOrdenes.setInt(25, num_ord_pef);
+					psInsertOrdenes.setInt(26, num_ord_pff);
+					psInsertOrdenes.setInt(27, num_ord_anulados);
+					psInsertOrdenes.setInt(28, num_ord_incosistentes);
+					psInsertOrdenes.setInt(29, num_ord);
 					psInsertOrdenes.executeUpdate();
+					
+					psInsertOrdenes = null;
+					System.gc();
 
 				}
 			}
@@ -388,11 +443,4 @@ public class Ordenes {
 		}
 
 	}
-
-	public int getEstado(Connection con, String estado) {
-		int resultado = 0;
-
-		return resultado;
-	}
-
 }
