@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schema name="Ordenes">
+    <Cube name="Ordenes">
+        <Table name="fac_orden"/>
+        <Dimension name="Cliente" foreignKey="key_cliente">
+            <Hierarchy name="Cliente" hasAll="true" allMemberName="Todos" primaryKey="key_cliente">
+                <Table name="dim_cliente"/>
+                <!--Level name="des_tipocliente" table="dim_cliente" column="des_tipocliente" uniqueMembers="false"/-->
+                <!--Level name="des_area" table="dim_cliente" column="des_area" uniqueMembers="false"/-->
+                <Level name="des_cliente" table="dim_cliente" column="des_cliente" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+        <Dimension name="Producto" foreignKey="key_producto">
+            <Hierarchy name="Producto" hasAll="true" allMemberName="Todos" primaryKey="key_producto">
+                <Table name="dim_producto"/>
+                <Level name="des_tipo" table="dim_producto" column="des_tipo" uniqueMembers="false"/>
+                <Level name="des_producto" table="dim_producto" column="des_producto" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+        <Dimension name="Servicio" foreignKey="key_servicio">
+            <Hierarchy name="Servicio" hasAll="true" allMemberName="Todos" primaryKey="key_servicio">
+                <Table name="dim_servicio"/>
+                <Level name="des_ambito" table="dim_servicio" column="des_ambito" uniqueMembers="false"/>
+                <Level name="des_negocio" table="dim_servicio" column="des_negocio" uniqueMembers="false"/>
+                <Level name="des_servicio" table="dim_servicio" column="des_servicio" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+        <Dimension name="Estado" foreignKey="key_estado">
+            <Hierarchy name="Estado orden" hasAll="true" allMemberName="Todos" primaryKey="key_estado">
+                <Table name="dim_estado"/>
+                <Level name="des_tipo" table="dim_estado" column="des_tipo" uniqueMembers="false"/>
+                <Level name="des_estadofecha" table="dim_estado" column="des_estadofecha" uniqueMembers="false"/>
+                <Level name="des_estado" table="dim_estado" column="des_estado" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+        <Dimension name="Inicio" foreignKey="key_tiempo_inicio">
+            <Hierarchy name="Fecha de inicio" hasAll="true" allMemberName="Todos" primaryKey="key_tiempo">
+                <Table name="dim_tiempo"/>
+                <Level name="num_anio" table="dim_tiempo" column="num_anio" uniqueMembers="false"/>
+                <Level name="des_mes" table="dim_tiempo" column="des_mes" uniqueMembers="false"/>
+                <Level name="des_dia_semana" table="dim_tiempo" column="des_dia_semana" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+		<Measure name="T.O." column="num_ord" aggregator="sum" datatype="Integer" formatString="0"/>
+		<Measure name="O.C.EF." column="num_ord_cef" aggregator="sum" datatype="Integer" formatString="0"/>
+		<Measure name="O.C.FF." column="num_ord_cff" aggregator="sum" datatype="Integer" formatString="0"/>
+		<Measure name="O.P.EF." column="num_ord_pef" aggregator="sum" datatype="Integer" formatString="0"/>
+		<Measure name="O.P.FF." column="num_ord_pff" aggregator="sum" datatype="Integer" formatString="0"/>
+		<Measure name="O.A." column="num_ord_anulados" aggregator="sum" datatype="Integer" formatString="0"/>
+		<Measure name="O.I." column="num_ord_incosistentes" aggregator="sum" datatype="Integer" formatString="0"/>
+        <!--Measure name="Total Cargos" column="num_cargos" aggregator="sum" datatype="Integer" formatString="#,##0"/-->
+        <!--Measure name="Total cargos anulados" column="num_cargos_anulados" aggregator="sum" datatype="Integer" formatString="#,##0"/-->
+        <!--Measure name="Total cargos entregados" column="num_cargos_entregados" aggregator="sum" datatype="Integer" formatString="#,##0"/-->
+        <!--Measure name="Total cargos fuerazona" column="num_cargos_fuerazona" aggregator="sum" datatype="Integer" formatString="#,##0"/-->
+        <!--Measure name="Total cargos motivados" column="num_cargos_motivados" aggregator="sum" datatype="Integer" formatString="#,##0"/-->
+        <!--Measure name="Total cargos perdidos" column="num_cargos_perdidos" aggregator="sum" datatype="Integer" formatString="#,##0"/-->
+        <!--Measure name="Total cargos reenvios" column="num_cargos_reenvios" aggregator="sum" datatype="Integer" formatString="#,##0"/-->
+        <!--Measure name="Total dias excedidos" column="num_dias_excedidos" aggregator="sum" datatype="Integer" formatString="#,##0"/-->
+        <Measure name="T.IGV" column="num_igv" aggregator="sum" datatype="Integer" formatString="#,###.#00"/>
+        <Measure name="T.Imp." column="num_importe" aggregator="sum" datatype="Integer" formatString="#,###.#00"/>
+        <Measure name="T.Ing." column="num_total" aggregator="sum" datatype="Integer" formatString="#,###.#00"/>
+    </Cube>
+</Schema>
