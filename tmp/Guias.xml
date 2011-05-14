@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schema name="Guias">
+    <Cube name="Guias">
+        <Table name="fac_guia"/>
+        <Dimension name="Tiempo" foreignKey="key_tiempo_salida">
+            <Hierarchy name="Tiempo" hasAll="true" allMemberName="Todos" primaryKey="key_tiempo">
+                <Table name="dim_tiempo"/>
+                <Level name="num_anio" table="dim_tiempo" column="num_anio" uniqueMembers="false"/>
+                <!--Level name="des_trimestre" table="dim_tiempo" column="des_trimestre" uniqueMembers="false"/-->
+                <Level name="des_mes" table="dim_tiempo" column="des_mes" uniqueMembers="false"/>
+                <Level name="num_dia_mes" table="dim_tiempo" column="num_dia_mes" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+        <Dimension name="Sede" foreignKey="key_sede">
+            <Hierarchy name="Sede" hasAll="true" allMemberName="Todos" primaryKey="key_sede">
+                <Table name="dim_sede"/>
+                <Level name="des_distrito" table="dim_sede" column="des_distrito" uniqueMembers="false"/>
+                <Level name="des_nombre" table="dim_sede" column="des_nombre" uniqueMembers="false"/>
+                <Level name="des_estado" table="dim_sede" column="des_estado" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+        <Dimension name="Localizacion" foreignKey="key_localizacion">
+            <Hierarchy name="Localizacion" hasAll="true" allMemberName="Todos" primaryKey="key_localizacion">
+                <Table name="dim_localizacion"/>
+                <Level name="des_pais" table="dim_localizacion" column="des_pais" uniqueMembers="false"/>
+                <Level name="des_departamento" table="dim_localizacion" column="des_departamento" uniqueMembers="false"/>
+                <Level name="des_provincia" table="dim_localizacion" column="des_provincia" uniqueMembers="false"/>
+                <Level name="des_distrito" table="dim_localizacion" column="des_distrito" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+        <Dimension name="Personal" foreignKey="key_personal_mensajero">
+            <Hierarchy name="Personal" hasAll="true" allMemberName="Todos" primaryKey="key_personal">
+                <Table name="dim_personal"/>
+				<Level name="des_tipopersonal" table="dim_personal" column="des_tipopersonal" uniqueMembers="false"/>
+				<Level name="des_departamento" table="dim_personal" column="des_departamento" uniqueMembers="false"/>
+                <Level name="des_sexo" table="dim_personal" column="des_sexo" uniqueMembers="false"/>
+                <Level name="des_estadocivil" table="dim_personal" column="des_estadocivil" uniqueMembers="false"/>
+                <Level name="des_nombre" table="dim_personal" column="des_nombre" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+        <Dimension name="Estado" foreignKey="key_estado_guia">
+            <Hierarchy name="Estado" hasAll="true" allMemberName="All dim_estado.des_estado" primaryKey="key_estado">
+                <Table name="dim_estado"/>
+                <Level name="des_estadofecha" table="dim_estado" column="des_estadofecha" uniqueMembers="false"/>
+                <Level name="des_estado" table="dim_estado" column="des_estado" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+        <Measure name="Cargos totales" column="num_cargos_total" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Cargos Entregados" column="num_cargos_entregados" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Cargos Motivados" column="num_cargos_motivados" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Cargos Reenviados" column="num_cargos_reenvios" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Cargos Anulados" column="num_cargos_anulados" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Cargos Fuera de zona" column="num_cargos_fuerazona" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Cargos Perdidos" column="num_cargos_perdidos" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Días Excedidos" column="num_dias_excedidos" aggregator="sum" datatype="Integer" formatString="0"/>
+    </Cube>
+</Schema>
