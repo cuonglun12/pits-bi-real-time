@@ -37,12 +37,12 @@ public class Guia {
 
 		try {
 			corigen = DriverManager.getConnection(
-					"jdbc:postgresql://localhost:5432/db_prueba", "postgres",
-					"!abc123abc");
+					"jdbc:postgresql://192.168.1.126:5432/db_prueba", "user_prueba",
+					"!12345678");
 
 			cdestino = DriverManager.getConnection(
-					"jdbc:postgresql://localhost:5432/db_pitsbi",
-					"postgres", "!abc123abc");
+					"jdbc:postgresql://192.168.1.126:5432/db_pitsbi",
+					"user_prueba", "!12345678");
 
 			String sqlConsultaGuias = "select "
 					+ "(CASE WHEN zonas.key_localizacion is not null THEN zonas.key_localizacion ELSE 0 END) as localizacion, "
@@ -71,7 +71,7 @@ public class Guia {
 					+ "inner join dim_sede sed on dep.codsede = sed.cod_sede "
 					+ "left join dim_tiempo tsal on dep.fecsalida = tsal.fec_fecha "
 					+ "left join dim_tiempo tret on dep.fecretorno = tret.fec_fecha "
-					+ "left join dim_tiempo trea on dep.fechacierre = trea.fec_fecha "
+					+ "left join dim_tiempo trea on date(dep.fechacierre) = trea.fec_fecha "
 					+ "inner join dim_personal per on dep.codmensajero = per.cod_codigopersonal ";
 			
 			String sqlConsultaLocalizacion="select " +

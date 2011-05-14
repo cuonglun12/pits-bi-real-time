@@ -37,12 +37,12 @@ public class Ordenes {
 
 		try {
 			corigen = DriverManager.getConnection(
-					"jdbc:postgresql://localhost:5432/db_prueba", "postgres",
-					"!abc123abc");
+					"jdbc:postgresql://192.168.1.126:5432/db_prueba", "user_prueba",
+					"!12345678");
 
 			cdestino = DriverManager.getConnection(
-					"jdbc:postgresql://localhost:5432/db_pitsbi",
-					"postgres", "!abc123abc");
+					"jdbc:postgresql://192.168.1.126:5432/db_pitsbi",
+					"user_prueba", "!12345678");
 
 			int ordenes_cliente = 0, ordenes_servicio = 0, ordenes_producto = 0, ordenes_treg = 0, ordenes_tini = 0, ordenes_tven = 0, ordenes_tdev = 0, ordenes_admision = 0, ordenes_digitado = 0;
 			java.sql.Date ordenes_ingreso = null, ordenes_inicio = null, ordenes_vencimiento = null, ordenes_devolucion = null;
@@ -97,8 +97,8 @@ public class Ordenes {
 					+ "LEFT JOIN dim_tiempo tven ON ord.fechavencimiento = tven.fec_fecha "
 					+ "LEFT JOIN dim_tiempo tdev ON ord.fechadevolucion = tdev.fec_fecha "
 					+ "where "
-					+ "ord.serie > '427' AND ord.orden > '0427739' "
-					+ "order by serie, orden";
+					+ "ord.serie||'-'||ord.orden not in (select cod_serie||'-'||cod_orden from fac_orden)";
+					//+ "order by serie, orden";
 
 			String sqlConsultaDetOrden = "select correlativo,codestado as estado, codmotivo as motivo "
 					+ "from detordenes " + "where orden = ? and serie = ? ";
@@ -194,11 +194,16 @@ public class Ordenes {
 
 
 				if ("01".equals(ordenes_estado) || "03".equals(ordenes_estado)) {
+					
+					//System.out.println("1: "+new java.util.Date());
+					
 					PreparedStatement psOrdenDet = corigen.prepareStatement(sqlConsultaDetOrden);
 					psOrdenDet.setString(1, ordenes_orden);
 					psOrdenDet.setString(2, ordenes_serie);
 					ResultSet rsOrdenDet = psOrdenDet.executeQuery();
 
+					//System.out.println("2: "+new java.util.Date());
+					
 					num_ord = 1;
 					
 					while (rsOrdenDet.next()) {
@@ -218,6 +223,8 @@ public class Ordenes {
 						}
 					}
 					
+					//System.out.println("3: "+new java.util.Date());
+					
 					rsOrdenDet = null;
 					System.gc();
 
@@ -226,12 +233,16 @@ public class Ordenes {
 					// detorden_estado = rsOrdenDet.getString("estado");
 					// detorden_motivo = rsOrdenDet.getString("motivo");
 
+					//System.out.println("4: "+new java.util.Date());
+					
 					PreparedStatement psDespachoDet = corigen.prepareStatement(sqlConsultaDetDepacho);
 					psDespachoDet.setString(1, ordenes_orden);
 					psDespachoDet.setString(2, ordenes_serie);
 					// psDespachoDet.setInt(3, detorden_correlativo);
 					ResultSet rsDespachoDet = psDespachoDet.executeQuery();
 
+					//System.out.println("5: "+new java.util.Date());
+					
 					while (rsDespachoDet.next()) {
 						detdespacho_estado = rsDespachoDet.getString("estado");
 						//detdespacho_motivo = rsDespachoDet.getString("motivo");
@@ -274,6 +285,8 @@ public class Ordenes {
 						}
 
 					}
+					
+					//System.out.println("6: "+new java.util.Date());
 					
 					rsDespachoDet = null;
 					System.gc();
