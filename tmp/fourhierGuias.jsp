@@ -7,14 +7,15 @@
    jdbcUser="user_prueba" jdbcPassword="!12345678" connectionPooling="false">
 select 
 {
-	[Cargos totales],
-	[Cargos Entregados],
-	[Cargos Motivados],
-	[Cargos Reenviados],
-	[Cargos Anulados],
-	[Cargos Fuera de zona],
-	[Cargos Perdidos],
-	[Días Excedidos]
+	[Total_Guias],
+	[Cargos_Totales],
+	[Cargos_Entregados],
+	[Cargos_Motivados],
+	[Cargos_Reenviados],
+	[Cargos_Anulados],
+	[Cargos_Fuera_zona],
+	[Cargos_Perdidos],
+	[Dias_Excedidos]
 	
 } on columns,
 
@@ -24,14 +25,14 @@ NON EMPTY
 		[Personal].[Todos],
 		[Tiempo].[Todos],
 		[Sede].[Todos],
-		[Localizacion].[Todos]
+		[Localizacion].[Todos],
 		[Estado].[Todos]
 		
 	)
 } on rows
-  from Ordenes
+  from Guias
 
 </jp:mondrianQuery>
 
-<c:set var="title01" scope="session">Analisis de Cargos</c:set>
+<c:set var="title01" scope="session">Analisis de Guias</c:set>
 

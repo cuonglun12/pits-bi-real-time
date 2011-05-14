@@ -41,23 +41,24 @@
                 <Level name="des_dia_semana" table="dim_tiempo" column="des_dia_semana" uniqueMembers="false"/>
             </Hierarchy>
         </Dimension>
-		<Measure name="T.O." column="num_ord" aggregator="sum" datatype="Integer" formatString="0"/>
-		<Measure name="O.C.EF." column="num_ord_cef" aggregator="sum" datatype="Integer" formatString="0"/>
-		<Measure name="O.C.FF." column="num_ord_cff" aggregator="sum" datatype="Integer" formatString="0"/>
-		<Measure name="O.P.EF." column="num_ord_pef" aggregator="sum" datatype="Integer" formatString="0"/>
-		<Measure name="O.P.FF." column="num_ord_pff" aggregator="sum" datatype="Integer" formatString="0"/>
-		<Measure name="O.A." column="num_ord_anulados" aggregator="sum" datatype="Integer" formatString="0"/>
-		<Measure name="O.I." column="num_ord_incosistentes" aggregator="sum" datatype="Integer" formatString="0"/>
-        <!--Measure name="Total Cargos" column="num_cargos" aggregator="sum" datatype="Integer" formatString="#,##0"/-->
-        <!--Measure name="Total cargos anulados" column="num_cargos_anulados" aggregator="sum" datatype="Integer" formatString="#,##0"/-->
-        <!--Measure name="Total cargos entregados" column="num_cargos_entregados" aggregator="sum" datatype="Integer" formatString="#,##0"/-->
-        <!--Measure name="Total cargos fuerazona" column="num_cargos_fuerazona" aggregator="sum" datatype="Integer" formatString="#,##0"/-->
-        <!--Measure name="Total cargos motivados" column="num_cargos_motivados" aggregator="sum" datatype="Integer" formatString="#,##0"/-->
-        <!--Measure name="Total cargos perdidos" column="num_cargos_perdidos" aggregator="sum" datatype="Integer" formatString="#,##0"/-->
-        <!--Measure name="Total cargos reenvios" column="num_cargos_reenvios" aggregator="sum" datatype="Integer" formatString="#,##0"/-->
-        <!--Measure name="Total dias excedidos" column="num_dias_excedidos" aggregator="sum" datatype="Integer" formatString="#,##0"/-->
-        <Measure name="T.IGV" column="num_igv" aggregator="sum" datatype="Integer" formatString="#,###.#00"/>
-        <Measure name="T.Imp." column="num_importe" aggregator="sum" datatype="Integer" formatString="#,###.#00"/>
-        <Measure name="T.Ing." column="num_total" aggregator="sum" datatype="Integer" formatString="#,###.#00"/>
+		<Measure name="O-Total" column="num_ord" aggregator="sum" datatype="Integer" formatString="0"/>
+		<Measure name="EF-Cerr" column="num_ord_cef" aggregator="sum" datatype="Integer" formatString="0"/>
+		<Measure name="FF-Cerr" column="num_ord_cff" aggregator="sum" datatype="Integer" formatString="0"/>
+		<Measure name="EF-Pend" column="num_ord_pef" aggregator="sum" datatype="Integer" formatString="0"/>
+		<Measure name="FF-Pend" column="num_ord_pff" aggregator="sum" datatype="Integer" formatString="0"/>
+		<Measure name="O-Dias Ex" column="num_dias_excedidos" aggregator="sum" datatype="Integer" formatString="0"/>
+		<Measure name="O-Anulado" column="num_ord_anulados" aggregator="sum" datatype="Integer" formatString="0"/>
+		<Measure name="O-Incosis" column="num_ord_incosistentes" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="C-Total" column="num_cargos" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="C-Anulado" column="num_cargos_anulados" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="C-Entrega" column="num_cargos_entregados" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="C-Fuera Z" column="num_cargos_fuerazona" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="C-Motivad" column="num_cargos_motivados" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="C-Perdido" column="num_cargos_perdidos" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="C-Reenvio" column="num_cargos_reenvios" aggregator="sum" datatype="Integer" formatString="0"/>
+        
+        <!--Measure name="T.IGV" column="num_igv" aggregator="sum" datatype="Integer" formatString="#,###.#00"/-->
+        <!--Measure name="T.Imp." column="num_importe" aggregator="sum" datatype="Integer" formatString="#,###.#00"/-->
+        <!--Measure name="T.Ing." column="num_total" aggregator="sum" datatype="Integer" formatString="#,###.#00"/-->
     </Cube>
 </Schema>

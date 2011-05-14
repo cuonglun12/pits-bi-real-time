@@ -32,26 +32,27 @@
             <Hierarchy name="Personal" hasAll="true" allMemberName="Todos" primaryKey="key_personal">
                 <Table name="dim_personal"/>
 				<Level name="des_tipopersonal" table="dim_personal" column="des_tipopersonal" uniqueMembers="false"/>
-				<Level name="des_departamento" table="dim_personal" column="des_departamento" uniqueMembers="false"/>
+				<!--Level name="des_departamento" table="dim_personal" column="des_departamento" uniqueMembers="false"/>
                 <Level name="des_sexo" table="dim_personal" column="des_sexo" uniqueMembers="false"/>
-                <Level name="des_estadocivil" table="dim_personal" column="des_estadocivil" uniqueMembers="false"/>
+                <Level name="des_estadocivil" table="dim_personal" column="des_estadocivil" uniqueMembers="false"/-->
                 <Level name="des_nombre" table="dim_personal" column="des_nombre" uniqueMembers="false"/>
             </Hierarchy>
         </Dimension>
         <Dimension name="Estado" foreignKey="key_estado_guia">
-            <Hierarchy name="Estado" hasAll="true" allMemberName="All dim_estado.des_estado" primaryKey="key_estado">
+            <Hierarchy name="Estado" hasAll="true" allMemberName="Todos" primaryKey="key_estado">
                 <Table name="dim_estado"/>
                 <Level name="des_estadofecha" table="dim_estado" column="des_estadofecha" uniqueMembers="false"/>
                 <Level name="des_estado" table="dim_estado" column="des_estado" uniqueMembers="false"/>
             </Hierarchy>
         </Dimension>
-        <Measure name="Cargos totales" column="num_cargos_total" aggregator="sum" datatype="Integer" formatString="0"/>
-        <Measure name="Cargos Entregados" column="num_cargos_entregados" aggregator="sum" datatype="Integer" formatString="0"/>
-        <Measure name="Cargos Motivados" column="num_cargos_motivados" aggregator="sum" datatype="Integer" formatString="0"/>
-        <Measure name="Cargos Reenviados" column="num_cargos_reenvios" aggregator="sum" datatype="Integer" formatString="0"/>
-        <Measure name="Cargos Anulados" column="num_cargos_anulados" aggregator="sum" datatype="Integer" formatString="0"/>
-        <Measure name="Cargos Fuera de zona" column="num_cargos_fuerazona" aggregator="sum" datatype="Integer" formatString="0"/>
-        <Measure name="Cargos Perdidos" column="num_cargos_perdidos" aggregator="sum" datatype="Integer" formatString="0"/>
-        <Measure name="Días Excedidos" column="num_dias_excedidos" aggregator="sum" datatype="Integer" formatString="0"/>
+		<Measure name="Total_Guias" column="num_guias" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Cargos_Totales" column="num_cargos_total" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Cargos_Entregados" column="num_cargos_entregados" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Cargos_Motivados" column="num_cargos_motivados" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Cargos_Reenviados" column="num_cargos_reenvios" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Cargos_Anulados" column="num_cargos_anulados" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Cargos_Fuera_zona" column="num_cargos_fuerazona" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Cargos_Perdidos" column="num_cargos_perdidos" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Dias_Excedidos" column="num_dias_excedidos" aggregator="sum" datatype="Integer" formatString="0"/>
     </Cube>
 </Schema>
