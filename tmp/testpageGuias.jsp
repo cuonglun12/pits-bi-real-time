@@ -70,7 +70,8 @@
 </script>
 
 </head>
-<body bgcolor=white onload="modificarTabla()">
+<!--body bgcolor=white onload="modificarTabla()"-->
+<body bgcolor=white>
 <form action="testpageGuias.jsp" method="post">
 
 <%-- include query and title, so this jsp may be used with different queries --%>
