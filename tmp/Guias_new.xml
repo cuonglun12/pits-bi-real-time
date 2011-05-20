@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schema name="Guias">
+    <Cube name="Guias">
+        <Table name="fac_guia"/>
+        <Dimension name="Tiempo" foreignKey="key_tiempo_salida">
+            <Hierarchy name="Tiempo" hasAll="true" allMemberName="Todos" primaryKey="key_tiempo">
+                <Table name="dim_tiempo"/>
+                <Level name="num_anio" table="dim_tiempo" column="num_anio" uniqueMembers="false"/>
+                <Level name="des_mes" table="dim_tiempo" column="des_mes" uniqueMembers="false"/>
+                <Level name="num_dia_mes" table="dim_tiempo" column="num_dia_mes" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+        <Dimension name="Sede" foreignKey="key_sede">
+            <Hierarchy name="Sede" hasAll="true" allMemberName="Todos" primaryKey="key_sede">
+                <Table name="dim_sede"/>
+                <Level name="des_estado" table="dim_sede" column="des_estado" uniqueMembers="false"/>
+                <Level name="des_distrito" table="dim_sede" column="des_distrito" uniqueMembers="false"/>
+                <Level name="des_nombre" table="dim_sede" column="des_nombre" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>		
+        <Dimension name="Localizacion" foreignKey="key_localizacion">
+            <Hierarchy name="Localizacion" hasAll="true" allMemberName="Todos" primaryKey="key_localizacion">
+                <Table name="dim_localizacion"/>
+                <Level name="des_pais" table="dim_localizacion" column="des_pais" uniqueMembers="false"/>
+                <Level name="des_departamento" table="dim_localizacion" column="des_departamento" uniqueMembers="false"/>
+                <Level name="des_provincia" table="dim_localizacion" column="des_provincia" uniqueMembers="false"/>
+                <Level name="des_distrito" table="dim_localizacion" column="des_distrito" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>		
+        <Dimension name="Personal" foreignKey="key_personal_mensajero">
+            <Hierarchy name="Personal" hasAll="true" allMemberName="Todos" primaryKey="key_personal">
+                <Table name="dim_personal"/>
+                <Level name="des_tipopersonal" table="dim_personal" column="des_tipopersonal" uniqueMembers="false"/>
+                <Level name="des_nombre" table="dim_personal" column="des_nombre" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+        <Dimension name="Estado" foreignKey="key_estado_guia">
+            <Hierarchy name="Estado" hasAll="true" allMemberName="Todos" primaryKey="key_estado">
+                <Table name="dim_estado"/>
+                <Level name="des_estadofecha" table="dim_estado" column="des_estadofecha" uniqueMembers="false"/>
+                <Level name="des_estado" table="dim_estado" column="des_estado" uniqueMembers="false"/>
+            </Hierarchy>
+        </Dimension>
+        <Measure name="Cargos_Anulados" column="num_cargos_anulados" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Cargos_Entregados" column="num_cargos_entregados" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Cargos_Fuera_zona" column="num_cargos_fuerazona" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Cargos_Motivados" column="num_cargos_motivados" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Cargos_Perdidos" column="num_cargos_perdidos" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Cargos_Reenviados" column="num_cargos_reenvios" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Cargos_Totales" column="num_cargos_total" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Dias_Excedidos" column="num_dias_excedidos" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Cerrado_en_Fecha" column="num_gui_cef" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Cerrado_Fuera_Fecha" column="num_gui_cff" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Despacho_en_Fecha" column="num_gui_def" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Despacho_Fuera_Fecha" column="num_gui_dff" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Generado_en_Fecha" column="num_gui_gef" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Generado_Fuera_Fecha" column="num_gui_gff" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Pagado_en_Fecha" column="num_gui_pef" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Pagado_Fuera_Fecha" column="num_gui_pff" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Ruta_en_Fecha" column="num_gui_ref" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="ruta_Fuera_Fecha" column="num_gui_rff" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Guias_Anuladas" column="num_gui_anulados" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Guias_Incosistentes" column="num_gui_incosistentes" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Total_Guias" column="num_guias" aggregator="sum" datatype="Integer" formatString="0"/>
+    </Cube>
+</Schema>
