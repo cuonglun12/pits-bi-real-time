@@ -1,0 +1,29 @@
+GetXmlFile.cpp: SetupLogging> ******** Start of Response from device ********
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<ProductInformation xmlns="http://www.hp.com/schemas/imaging/pls/dev/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.hp.com/schemas/imaging/pls/dev/1.0 ProductInformation.xsd">
+  	 <ProductName>HP Color LaserJet 2605dn</ProductName>
+         <FormatterNumber>GD610TM</FormatterNumber>
+	 <PrinterNumber>Q7822A</PrinterNumber> 
+	 <ProductSerialNumber>CNHC83K07K</ProductSerialNumber>
+         <ServiceID>18252</ServiceID>
+	 <FirmwareDatecode>20071108</FirmwareDatecode>
+	 <MaxPrintResolution>0</MaxPrintResolution> 
+         
+	 <MaxColorPrintResolution>2400</MaxColorPrintResolution> 
+         
+         <ControllerNumber>25</ControllerNumber>
+         
+         
+         
+           <IPAddress>Configurando</IPAddress>
+           <HardwareAddress>00:1e:0b:14:53:34</HardwareAddress>
+
+         
+         
+
+
+</ProductInformation>
+
+GetXmlFile.cpp: SetupLogging> ******** End of Response from device ********

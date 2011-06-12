@@ -41,26 +41,26 @@
                 <Level name="des_estado" table="dim_estado" column="des_estado" uniqueMembers="false"/>
             </Hierarchy>
         </Dimension>
-        <Measure name="Cargos_Anulados" column="num_cargos_anulados" aggregator="sum" datatype="Integer" formatString="0"/>
-        <Measure name="Cargos_Entregados" column="num_cargos_entregados" aggregator="sum" datatype="Integer" formatString="0"/>
-        <Measure name="Cargos_Fuera_zona" column="num_cargos_fuerazona" aggregator="sum" datatype="Integer" formatString="0"/>
-        <Measure name="Cargos_Motivados" column="num_cargos_motivados" aggregator="sum" datatype="Integer" formatString="0"/>
-        <Measure name="Cargos_Perdidos" column="num_cargos_perdidos" aggregator="sum" datatype="Integer" formatString="0"/>
-        <Measure name="Cargos_Reenviados" column="num_cargos_reenvios" aggregator="sum" datatype="Integer" formatString="0"/>
-        <Measure name="Cargos_Totales" column="num_cargos_total" aggregator="sum" datatype="Integer" formatString="0"/>
-        <Measure name="Dias_Excedidos" column="num_dias_excedidos" aggregator="sum" datatype="Integer" formatString="0"/>
-        <Measure name="Cerrado_en_Fecha" column="num_gui_cef" aggregator="sum" datatype="Integer" formatString="0"/>
-        <Measure name="Cerrado_Fuera_Fecha" column="num_gui_cff" aggregator="sum" datatype="Integer" formatString="0"/>
-        <Measure name="Despacho_en_Fecha" column="num_gui_def" aggregator="sum" datatype="Integer" formatString="0"/>
-        <Measure name="Despacho_Fuera_Fecha" column="num_gui_dff" aggregator="sum" datatype="Integer" formatString="0"/>
-        <Measure name="Generado_en_Fecha" column="num_gui_gef" aggregator="sum" datatype="Integer" formatString="0"/>
-        <Measure name="Generado_Fuera_Fecha" column="num_gui_gff" aggregator="sum" datatype="Integer" formatString="0"/>
-        <Measure name="Pagado_en_Fecha" column="num_gui_pef" aggregator="sum" datatype="Integer" formatString="0"/>
-        <Measure name="Pagado_Fuera_Fecha" column="num_gui_pff" aggregator="sum" datatype="Integer" formatString="0"/>
-        <Measure name="Ruta_en_Fecha" column="num_gui_ref" aggregator="sum" datatype="Integer" formatString="0"/>
-        <Measure name="ruta_Fuera_Fecha" column="num_gui_rff" aggregator="sum" datatype="Integer" formatString="0"/>
-        <Measure name="Guias_Anuladas" column="num_gui_anulados" aggregator="sum" datatype="Integer" formatString="0"/>
-        <Measure name="Guias_Incosistentes" column="num_gui_incosistentes" aggregator="sum" datatype="Integer" formatString="0"/>
-        <Measure name="Total_Guias" column="num_guias" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Total_cargos" column="num_cargos_total" aggregator="sum" datatype="Integer" formatString="0"/>
+		<Measure name="Cargos_entregados" column="num_cargos_entregados" aggregator="sum" datatype="Integer" formatString="0"/>
+		<Measure name="Cargos_motivados" column="num_cargos_motivados" aggregator="sum" datatype="Integer" formatString="0"/>
+		<Measure name="Cargos_reenviados" column="num_cargos_reenvios" aggregator="sum" datatype="Integer" formatString="0"/>
+		<Measure name="Cargos_fuera_de_zona" column="num_cargos_fuerazona" aggregator="sum" datatype="Integer" formatString="0"/>
+		<Measure name="Cargos_perdidos" column="num_cargos_perdidos" aggregator="sum" datatype="Integer" formatString="0"/>
+		<Measure name="Cargos_anulados" column="num_cargos_anulados" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Numero_dias_excedidos" column="num_dias_excedidos" aggregator="sum" datatype="Integer" formatString="0"/>
+		<Measure name="Total_Guias" column="num_guias" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Guias_cerradas_en_fecha" column="num_gui_cef" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Guais_cerradas_fuera_de_fecha" column="num_gui_cff" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Guias_despachadas_en_fecha" column="num_gui_def" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Guias_despachadas_fuera_de_fecha" column="num_gui_dff" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Guias_generadas_en_fecha" column="num_gui_gef" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Guias_generadas_fuera_de_fecha" column="num_gui_gff" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Guias_pagadas_en_fecha" column="num_gui_pef" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Guias_pagadas_fuera_de_fecha" column="num_gui_pff" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Guias_en_ruta_en_fecha" column="num_gui_ref" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Guias_en_ruta_fuera_de_fecha" column="num_gui_rff" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Guias_anuladas" column="num_gui_anulados" aggregator="sum" datatype="Integer" formatString="0"/>
+        <Measure name="Guias_incosistentes" column="num_gui_incosistentes" aggregator="sum" datatype="Integer" formatString="0"/>        
     </Cube>
 </Schema>
