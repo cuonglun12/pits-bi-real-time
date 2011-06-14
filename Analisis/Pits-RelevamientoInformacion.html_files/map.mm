@@ -1,11 +1,11 @@
 <map version="0.9.0">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
-<node COLOR="#000000" CREATED="1308019530969" ID="Freemind_Link_1061541611" MODIFIED="1308060667722" STYLE="bubble" TEXT="Proyecto Pits">
-<richcontent TYPE="NOTE"><html><head/><body><p>Mejora del proceso de toma de decisiones en una Courier, basado en una solución de inteligencia de negocios en tiempo real</p></body></html></richcontent>
+<node COLOR="#000000" CREATED="1308019530969" ID="Freemind_Link_1061541611" MODIFIED="1308060735843" STYLE="bubble" TEXT="Proyecto Pits">
+<richcontent TYPE="NOTE"><html><head/><body><p>Mejora del proceso de toma de decisiones en una Courier, basado en una soluci?n de inteligencia de negocios en tiempo real</p></body></html></richcontent>
 <cloud/>
 <font ITALIC="true" NAME="SansSerif" SIZE="20"/>
-<hook NAME="accessories/plugins/BlinkingNodeHook.properties"/>
 <hook NAME="accessories/plugins/AutomaticLayout.properties"/>
+<hook NAME="accessories/plugins/BlinkingNodeHook.properties"/>
 <node COLOR="#0033ff" CREATED="1308019577574" ID="_" MODIFIED="1308060667724" POSITION="right" TEXT="Areas">
 <edge STYLE="sharp_bezier" WIDTH="8"/>
 <font NAME="SansSerif" SIZE="18"/>
@@ -258,7 +258,7 @@
 <font NAME="SansSerif" SIZE="16"/>
 </node>
 <node COLOR="#00b439" CREATED="1308021267615" ID="Freemind_Link_7334733" MODIFIED="1308060667730" TEXT="Personal Pits">
-<richcontent TYPE="NOTE"><html><head/><body><p>Brindar la información a los tesistas sobre las actividades que desarrollan</p></body></html></richcontent>
+<richcontent TYPE="NOTE"><html><head/><body><p>Brindar la informaci?n a los tesistas sobre las actividades que desarrollan</p></body></html></richcontent>
 <edge STYLE="bezier" WIDTH="thin"/>
 <font NAME="SansSerif" SIZE="16"/>
 </node>
