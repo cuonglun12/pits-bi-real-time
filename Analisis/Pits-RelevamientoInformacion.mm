@@ -1,20 +1,10 @@
 <map version="0.9.0">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
-<<<<<<< .mine
 <node COLOR="#000000" CREATED="1308019530969" ID="Freemind_Link_1061541611" MODIFIED="1309046442180" STYLE="fork" TEXT="Proyecto Pits">
-<richcontent TYPE="NOTE"><html><head/><body><p>Mejora del proceso de toma de decisiones en una Courier, basado en una solución de inteligencia de negocios en tiempo real</p></body></html></richcontent>
-=======
-<node COLOR="#000000" CREATED="1308019530969" ID="Freemind_Link_1061541611" MODIFIED="1308060667722" STYLE="bubble" TEXT="Proyecto Pits">
-<richcontent TYPE="NOTE"><html><head/><body><p>Mejora del proceso de toma de decisiones en una Courier, basado en una solución de inteligencia de negocios en tiempo real</p></body></html></richcontent>
->>>>>>> .r67
+<richcontent TYPE="NOTE"><html><head/><body><p>Mejora del proceso de toma de decisiones en una Courier, basado en una soluci?n de inteligencia de negocios en tiempo real</p></body></html></richcontent>
 <cloud/>
 <font ITALIC="true" NAME="SansSerif" SIZE="20"/>
-<<<<<<< .mine
-=======
-<hook NAME="accessories/plugins/BlinkingNodeHook.properties"/>
->>>>>>> .r67
 <hook NAME="accessories/plugins/AutomaticLayout.properties"/>
-<<<<<<< .mine
 <node COLOR="#0033ff" CREATED="1308019577574" ID="_" MODIFIED="1309046686851" POSITION="right" STYLE="bubble">
 <richcontent TYPE="NODE"><html>
   <head>
@@ -27,18 +17,9 @@
   </body>
 </html></richcontent>
 <edge STYLE="sharp_bezier" WIDTH="8"/>
-=======
-<node COLOR="#0033ff" CREATED="1308019577574" ID="_" MODIFIED="1308060667724" POSITION="right" TEXT="Areas">
-<edge STYLE="sharp_bezier" WIDTH="8"/>
->>>>>>> .r67
 <font NAME="SansSerif" SIZE="18"/>
-<<<<<<< .mine
 <node COLOR="#00b439" CREATED="1308019696126" FOLDED="true" ID="Freemind_Link_218170146" MODIFIED="1309037045919" TEXT="Ventas">
 <edge STYLE="bezier" WIDTH="thin"/>
-=======
-<node COLOR="#00b439" CREATED="1308019696126" FOLDED="true" ID="Freemind_Link_218170146" MODIFIED="1308060667724" TEXT="Ventas">
-<edge STYLE="bezier" WIDTH="thin"/>
->>>>>>> .r67
 <font NAME="SansSerif" SIZE="16"/>
 <icon BUILTIN="full-6"/>
 <node COLOR="#990000" CREATED="1308019839412" ID="Freemind_Link_1821685577" MODIFIED="1308022470485" TEXT="Responsable: Wendy Aguilar">
@@ -56,13 +37,8 @@
 <font NAME="SansSerif" SIZE="14"/>
 </node>
 </node>
-<<<<<<< .mine
 <node COLOR="#00b439" CREATED="1308019709363" FOLDED="true" ID="Freemind_Link_75478541" MODIFIED="1309044728201" TEXT="Atenci&#xf3;n al Cliente">
 <edge STYLE="bezier" WIDTH="thin"/>
-=======
-<node COLOR="#00b439" CREATED="1308019709363" FOLDED="true" ID="Freemind_Link_75478541" MODIFIED="1308060667724" TEXT="Atenci&#xf3;n al Cliente">
-<edge STYLE="bezier" WIDTH="thin"/>
->>>>>>> .r67
 <font NAME="SansSerif" SIZE="16"/>
 <icon BUILTIN="full-1"/>
 <node COLOR="#990000" CREATED="1308019839412" ID="Freemind_Link_286054549" MODIFIED="1309041034800" TEXT="Responsable: Johanna Busanovich. E-mail: jbusanovich@pits.com.pe">
@@ -80,13 +56,8 @@
 <font NAME="SansSerif" SIZE="14"/>
 </node>
 </node>
-<<<<<<< .mine
 <node COLOR="#00b439" CREATED="1308019715111" FOLDED="true" ID="Freemind_Link_1689000892" MODIFIED="1309044729885" TEXT="Recojo">
 <edge STYLE="bezier" WIDTH="thin"/>
-=======
-<node COLOR="#00b439" CREATED="1308019715111" FOLDED="true" ID="Freemind_Link_1689000892" MODIFIED="1308060673273" TEXT="Recojo">
-<edge STYLE="bezier" WIDTH="thin"/>
->>>>>>> .r67
 <font NAME="SansSerif" SIZE="16"/>
 <icon BUILTIN="full-2"/>
 <node COLOR="#990000" CREATED="1308019839412" ID="Freemind_Link_731793785" MODIFIED="1308022470531" TEXT="Responsable: Carlos Pinedo">
@@ -104,13 +75,8 @@
 <font NAME="SansSerif" SIZE="14"/>
 </node>
 </node>
-<<<<<<< .mine
 <node COLOR="#00b439" CREATED="1308019724830" FOLDED="true" ID="Freemind_Link_1671801194" MODIFIED="1309046692451" TEXT="Digitaci&#xf3;n">
 <edge STYLE="bezier" WIDTH="thin"/>
-=======
-<node COLOR="#00b439" CREATED="1308019724830" FOLDED="true" ID="Freemind_Link_1671801194" MODIFIED="1308060667725" TEXT="Digitaci&#xf3;n">
-<edge STYLE="bezier" WIDTH="thin"/>
->>>>>>> .r67
 <font NAME="SansSerif" SIZE="16"/>
 <icon BUILTIN="full-3"/>
 <node COLOR="#990000" CREATED="1308019839412" ID="Freemind_Link_985850079" MODIFIED="1309038834233" TEXT="Responsable: Pilar Limachi. E-mail: plimachi@pits.com.pe">
@@ -174,7 +140,6 @@
 <node COLOR="#111111" CREATED="1309037945345" ID="ID_1865535762" MODIFIED="1309037969158" TEXT="Maneja un reporte de ordenes de servicio pendientes y en trabajo"/>
 <node COLOR="#111111" CREATED="1309038371591" ID="ID_1248968667" MODIFIED="1309038414725" TEXT="El porcentaje de avance se actuliza al momento de hacer la transferencia de los cargos procesados (entrega a apoyo postal)"/>
 </node>
-<<<<<<< .mine
 <node COLOR="#990000" CREATED="1309038743105" FOLDED="true" ID="ID_346930113" MODIFIED="1309040614395" TEXT="Areas involucradas">
 <font NAME="SansSerif" SIZE="14"/>
 <node COLOR="#111111" CREATED="1309038752629" ID="ID_314679667" MODIFIED="1309038775850" TEXT="Atenci&#xf3;n al Cliente"/>
@@ -187,12 +152,8 @@
 <node COLOR="#111111" CREATED="1309039026159" ID="ID_1600293532" MODIFIED="1309039035933" TEXT="Solicitar diagrama de actividades"/>
 </node>
 </node>
-<node COLOR="#00b439" CREATED="1308019738464" ID="Freemind_Link_1341975468" MODIFIED="1309046693216" TEXT="Apoyo postal">
+<node COLOR="#00b439" CREATED="1308019738464" FOLDED="true" ID="Freemind_Link_1341975468" MODIFIED="1309624432076" TEXT="Apoyo postal">
 <edge STYLE="bezier" WIDTH="thin"/>
-=======
-<node COLOR="#00b439" CREATED="1308019738464" FOLDED="true" ID="Freemind_Link_1341975468" MODIFIED="1308060667726" TEXT="Apoyo postal">
-<edge STYLE="bezier" WIDTH="thin"/>
->>>>>>> .r67
 <font NAME="SansSerif" SIZE="16"/>
 <icon BUILTIN="full-3"/>
 <node COLOR="#990000" CREATED="1308019839412" ID="Freemind_Link_578665540" MODIFIED="1309040950552" TEXT="Responsable: Isidro Palomino. E-mail: ipalomino@pits.com.pe">
@@ -241,7 +202,6 @@
 <node COLOR="#111111" CREATED="1309039194023" ID="ID_464848226" MODIFIED="1309039199280" TEXT="Verificadores"/>
 <node COLOR="#111111" CREATED="1309039200115" ID="ID_1232041302" MODIFIED="1309039205045" TEXT="Pre-clasificacion"/>
 </node>
-<<<<<<< .mine
 <node COLOR="#990000" CREATED="1309039253412" FOLDED="true" ID="ID_129225927" MODIFIED="1309046270783" TEXT="Areas involucradas">
 <font NAME="SansSerif" SIZE="14"/>
 <node COLOR="#111111" CREATED="1309038752629" ID="ID_1013399333" MODIFIED="1309039369086" TEXT="Atenci&#xf3;n al Cliente. Le envio la orden de servicio"/>
@@ -250,7 +210,7 @@
 <node COLOR="#111111" CREATED="1309038791083" ID="ID_247702681" MODIFIED="1309039322731" TEXT="Digitacion"/>
 <node COLOR="#111111" CREATED="1309045420568" ID="ID_670472562" MODIFIED="1309045427556" TEXT="Clasificacion"/>
 </node>
-<node COLOR="#990000" CREATED="1309040032749" ID="ID_789798407" MODIFIED="1309046801854" TEXT="Controles">
+<node COLOR="#990000" CREATED="1309040032749" FOLDED="true" ID="ID_789798407" MODIFIED="1309624430952" TEXT="Controles">
 <font NAME="SansSerif" SIZE="14"/>
 <node COLOR="#111111" CREATED="1309040037921" ID="ID_816776511" MODIFIED="1309040101631" TEXT="Registro de ordenes de servicio"/>
 <node COLOR="#111111" CREATED="1309040103074" ID="ID_492592197" MODIFIED="1309040202922" TEXT="Reporte de la hora en que Digitacion programa la atencion de las ordenes de servicio y cuando se lo envia a Apoyo Postal"/>
@@ -266,10 +226,6 @@
 </node>
 <node COLOR="#00b439" CREATED="1308019758729" FOLDED="true" ID="Freemind_Link_646511617" MODIFIED="1309037045935" TEXT="Clasificaci&#xf3;n">
 <edge STYLE="bezier" WIDTH="thin"/>
-=======
-<node COLOR="#00b439" CREATED="1308019758729" FOLDED="true" ID="Freemind_Link_646511617" MODIFIED="1308060667726" TEXT="Clasificaci&#xf3;n">
-<edge STYLE="bezier" WIDTH="thin"/>
->>>>>>> .r67
 <font NAME="SansSerif" SIZE="16"/>
 <icon BUILTIN="full-4"/>
 <node COLOR="#990000" CREATED="1308019839412" ID="Freemind_Link_1258013035" MODIFIED="1308022470547" TEXT="Responsable: Wendy Aguilar">
@@ -287,13 +243,8 @@
 <font NAME="SansSerif" SIZE="14"/>
 </node>
 </node>
-<<<<<<< .mine
 <node COLOR="#00b439" CREATED="1308019770179" FOLDED="true" ID="Freemind_Link_1528900282" MODIFIED="1309037045935" TEXT="Distribuci&#xf3;n">
 <edge STYLE="bezier" WIDTH="thin"/>
-=======
-<node COLOR="#00b439" CREATED="1308019770179" FOLDED="true" ID="Freemind_Link_1528900282" MODIFIED="1308060667727" TEXT="Distribuci&#xf3;n">
-<edge STYLE="bezier" WIDTH="thin"/>
->>>>>>> .r67
 <font NAME="SansSerif" SIZE="16"/>
 <icon BUILTIN="full-4"/>
 <node COLOR="#990000" CREATED="1308019839412" ID="Freemind_Link_1554450572" MODIFIED="1308022470547" TEXT="Responsable: Wendy Aguilar">
@@ -311,13 +262,8 @@
 <font NAME="SansSerif" SIZE="14"/>
 </node>
 </node>
-<<<<<<< .mine
 <node COLOR="#00b439" CREATED="1308019780335" FOLDED="true" ID="Freemind_Link_1236482904" MODIFIED="1309037045935" TEXT="Despacho">
 <edge STYLE="bezier" WIDTH="thin"/>
-=======
-<node COLOR="#00b439" CREATED="1308019780335" FOLDED="true" ID="Freemind_Link_1236482904" MODIFIED="1308060667727" TEXT="Despacho">
-<edge STYLE="bezier" WIDTH="thin"/>
->>>>>>> .r67
 <font NAME="SansSerif" SIZE="16"/>
 <icon BUILTIN="full-4"/>
 <node COLOR="#990000" CREATED="1308019839412" ID="Freemind_Link_531161208" MODIFIED="1308022470547" TEXT="Responsable: Carlos Berrospi">
@@ -335,13 +281,8 @@
 <font NAME="SansSerif" SIZE="14"/>
 </node>
 </node>
-<<<<<<< .mine
 <node COLOR="#00b439" CREATED="1308019789882" FOLDED="true" ID="Freemind_Link_11290162" MODIFIED="1309037045935" TEXT="Descargo">
 <edge COLOR="#808080" STYLE="bezier" WIDTH="thin"/>
-=======
-<node COLOR="#00b439" CREATED="1308019789882" FOLDED="true" ID="Freemind_Link_11290162" MODIFIED="1308060667728" TEXT="Descargo">
-<edge COLOR="#808080" STYLE="bezier" WIDTH="thin"/>
->>>>>>> .r67
 <font NAME="SansSerif" SIZE="16"/>
 <icon BUILTIN="full-4"/>
 <node COLOR="#990000" CREATED="1308019839412" ID="Freemind_Link_1404523851" MODIFIED="1308022470563" TEXT="Responsable: Carlos Berrospi">
@@ -359,13 +300,8 @@
 <font NAME="SansSerif" SIZE="14"/>
 </node>
 </node>
-<<<<<<< .mine
 <node COLOR="#00b439" CREATED="1308019801785" FOLDED="true" ID="Freemind_Link_77348914" MODIFIED="1309037045935" TEXT="Digitalizaci&#xf3;n">
 <edge STYLE="bezier" WIDTH="thin"/>
-=======
-<node COLOR="#00b439" CREATED="1308019801785" FOLDED="true" ID="Freemind_Link_77348914" MODIFIED="1308060667728" TEXT="Digitalizaci&#xf3;n">
-<edge STYLE="bezier" WIDTH="thin"/>
->>>>>>> .r67
 <font NAME="SansSerif" SIZE="16"/>
 <icon BUILTIN="full-4"/>
 <node COLOR="#990000" CREATED="1308019839412" ID="Freemind_Link_632107097" MODIFIED="1308022470563" TEXT="Responsable: Maria Villantoy">
@@ -383,13 +319,8 @@
 <font NAME="SansSerif" SIZE="14"/>
 </node>
 </node>
-<<<<<<< .mine
 <node COLOR="#00b439" CREATED="1308019814015" FOLDED="true" ID="Freemind_Link_1973885027" MODIFIED="1309037045935" TEXT="Verificaci&#xf3;n">
 <edge STYLE="bezier" WIDTH="thin"/>
-=======
-<node COLOR="#00b439" CREATED="1308019814015" FOLDED="true" ID="Freemind_Link_1973885027" MODIFIED="1308060667729" TEXT="Verificaci&#xf3;n">
-<edge STYLE="bezier" WIDTH="thin"/>
->>>>>>> .r67
 <font NAME="SansSerif" SIZE="16"/>
 <icon BUILTIN="full-5"/>
 <node COLOR="#990000" CREATED="1308019839412" ID="Freemind_Link_1242008136" MODIFIED="1308022470563" TEXT="Responsable: Mirian Fajardo">
@@ -408,13 +339,8 @@
 <font NAME="SansSerif" SIZE="14"/>
 </node>
 </node>
-<<<<<<< .mine
 <node COLOR="#00b439" CREATED="1308019822798" FOLDED="true" ID="Freemind_Link_249031470" MODIFIED="1309037045935" TEXT="Facturaci&#xf3;n">
 <edge STYLE="bezier" WIDTH="thin"/>
-=======
-<node COLOR="#00b439" CREATED="1308019822798" FOLDED="true" ID="Freemind_Link_249031470" MODIFIED="1308060667729" TEXT="Facturaci&#xf3;n">
-<edge STYLE="bezier" WIDTH="thin"/>
->>>>>>> .r67
 <font NAME="SansSerif" SIZE="16"/>
 <icon BUILTIN="full-7"/>
 <node COLOR="#990000" CREATED="1308019839412" ID="Freemind_Link_901515478" MODIFIED="1308022470563" TEXT="Responsable: Sandra">
@@ -433,151 +359,72 @@
 </node>
 </node>
 </node>
-<<<<<<< .mine
 <node COLOR="#0033ff" CREATED="1308021018226" FOLDED="true" ID="Freemind_Link_1514392028" MODIFIED="1309044702164" POSITION="left" STYLE="bubble" TEXT="Equipo de trabajo">
 <edge STYLE="sharp_bezier" WIDTH="8"/>
-=======
-<node COLOR="#0033ff" CREATED="1308021018226" FOLDED="true" ID="Freemind_Link_1514392028" MODIFIED="1308060671305" POSITION="left" STYLE="bubble" TEXT="Equipo de trabajo">
-<edge STYLE="sharp_bezier" WIDTH="8"/>
->>>>>>> .r67
 <font NAME="SansSerif" SIZE="18"/>
-<<<<<<< .mine
 <node COLOR="#00b439" CREATED="1308021026970" ID="Freemind_Link_686170529" MODIFIED="1309037045935" TEXT="Willy Veliz. Jefe de Operaciones de Pits">
 <richcontent TYPE="NOTE"><html><head/><body><p>Gerenciar el proyecto<br/>Seleccionar al grupo de trabajo.<br/>Facilitar los recursos necesarios para el desarrollo del proyecto</p></body></html></richcontent>
 <edge STYLE="bezier" WIDTH="thin"/>
-=======
-<node COLOR="#00b439" CREATED="1308021026970" ID="Freemind_Link_686170529" MODIFIED="1308060667730" TEXT="Willy Veliz. Jefe de Operaciones de Pits">
-<richcontent TYPE="NOTE"><html><head/><body><p>Gerenciar el proyecto<br/>Seleccionar al grupo de trabajo.<br/>Facilitar los recursos necesarios para el desarrollo del proyecto</p></body></html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
->>>>>>> .r67
 <font NAME="SansSerif" SIZE="16"/>
 </node>
-<<<<<<< .mine
 <node COLOR="#00b439" CREATED="1308021051142" ID="Freemind_Link_647276162" MODIFIED="1309037045935" TEXT="Jaime Huarca. Tesista">
 <richcontent TYPE="NOTE"><html><head/><body><p>Desarrollar el proyecto</p></body></html></richcontent>
 <edge STYLE="bezier" WIDTH="thin"/>
-=======
-<node COLOR="#00b439" CREATED="1308021051142" ID="Freemind_Link_647276162" MODIFIED="1308060667730" TEXT="Jaime Huarca. Tesista">
-<richcontent TYPE="NOTE"><html><head/><body><p>Desarrollar el proyecto</p></body></html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
->>>>>>> .r67
 <font NAME="SansSerif" SIZE="16"/>
 </node>
-<<<<<<< .mine
 <node COLOR="#00b439" CREATED="1308021061617" ID="Freemind_Link_228007784" MODIFIED="1309037045935" TEXT="Jose Julca. Tesista">
 <richcontent TYPE="NOTE"><html><head/><body><p>Desarrollar el proyecto</p></body></html></richcontent>
 <edge STYLE="bezier" WIDTH="thin"/>
-=======
-<node COLOR="#00b439" CREATED="1308021061617" ID="Freemind_Link_228007784" MODIFIED="1308060667730" TEXT="Jose Julca. Tesista">
-<richcontent TYPE="NOTE"><html><head/><body><p>Desarrollar el proyecto</p></body></html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
->>>>>>> .r67
 <font NAME="SansSerif" SIZE="16"/>
 </node>
-<<<<<<< .mine
 <node COLOR="#00b439" CREATED="1308021267615" ID="Freemind_Link_7334733" MODIFIED="1309037045935" TEXT="Personal Pits">
-<richcontent TYPE="NOTE"><html><head/><body><p>Brindar la información a los tesistas sobre las actividades que desarrollan</p></body></html></richcontent>
+<richcontent TYPE="NOTE"><html><head/><body><p>Brindar la informaci?n a los tesistas sobre las actividades que desarrollan</p></body></html></richcontent>
 <edge STYLE="bezier" WIDTH="thin"/>
-=======
-<node COLOR="#00b439" CREATED="1308021267615" ID="Freemind_Link_7334733" MODIFIED="1308060667730" TEXT="Personal Pits">
-<richcontent TYPE="NOTE"><html><head/><body><p>Brindar la información a los tesistas sobre las actividades que desarrollan</p></body></html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
->>>>>>> .r67
 <font NAME="SansSerif" SIZE="16"/>
 </node>
 </node>
-<<<<<<< .mine
 <node COLOR="#0033ff" CREATED="1308021092209" FOLDED="true" ID="Freemind_Link_1339008056" MODIFIED="1309044722031" POSITION="right" STYLE="bubble" TEXT="Alcance">
 <edge STYLE="sharp_bezier" WIDTH="8"/>
-=======
-<node COLOR="#0033ff" CREATED="1308021092209" ID="Freemind_Link_1339008056" MODIFIED="1308060667730" POSITION="right" TEXT="Alcance">
-<edge STYLE="sharp_bezier" WIDTH="8"/>
->>>>>>> .r67
 <font NAME="SansSerif" SIZE="18"/>
-<<<<<<< .mine
 <node COLOR="#00b439" CREATED="1308021099767" ID="Freemind_Link_1358531953" MODIFIED="1309037045935" TEXT="Mensajeria local">
 <edge STYLE="bezier" WIDTH="thin"/>
-=======
-<node COLOR="#00b439" CREATED="1308021099767" ID="Freemind_Link_1358531953" MODIFIED="1308060667731" TEXT="Mensajeria local">
-<edge STYLE="bezier" WIDTH="thin"/>
->>>>>>> .r67
 <font NAME="SansSerif" SIZE="16"/>
 </node>
-<<<<<<< .mine
 <node COLOR="#00b439" CREATED="1308021105999" ID="Freemind_Link_417647442" MODIFIED="1309037045935" TEXT="Mensajeria nacional">
 <edge STYLE="bezier" WIDTH="thin"/>
-=======
-<node COLOR="#00b439" CREATED="1308021105999" ID="Freemind_Link_417647442" MODIFIED="1308060667731" TEXT="Mensajeria nacional">
-<edge STYLE="bezier" WIDTH="thin"/>
->>>>>>> .r67
 <font NAME="SansSerif" SIZE="16"/>
 </node>
 </node>
-<<<<<<< .mine
 <node COLOR="#0033ff" CREATED="1308021143416" FOLDED="true" ID="Freemind_Link_237000157" MODIFIED="1309046436174" POSITION="left" STYLE="bubble" TEXT="Requerimientos">
 <edge STYLE="sharp_bezier" WIDTH="8"/>
-=======
-<node COLOR="#0033ff" CREATED="1308021143416" FOLDED="true" ID="Freemind_Link_237000157" MODIFIED="1308060667731" POSITION="left" TEXT="Requerimientos">
-<edge STYLE="sharp_bezier" WIDTH="8"/>
->>>>>>> .r67
 <font NAME="SansSerif" SIZE="18"/>
-<<<<<<< .mine
 <node COLOR="#00b439" CREATED="1308021152909" ID="Freemind_Link_757714482" MODIFIED="1309037045935" TEXT="Una persona que conozca el negocio con la cual nos podamos reunir al menos 2 horas los d&#xed;as s&#xe1;bados. Con el objetivo de conocer los procesos que comprenden el proyecto. A la vez que esta persona ser&#xe1; la que validar&#xe1; nuestro avance.">
 <edge STYLE="bezier" WIDTH="thin"/>
-=======
-<node COLOR="#00b439" CREATED="1308021152909" ID="Freemind_Link_757714482" MODIFIED="1308060667731" TEXT="Una persona que conozca el negocio con la cual nos podamos reunir al menos 2 horas los d&#xed;as s&#xe1;bados. Con el objetivo de conocer los procesos que comprenden el proyecto. A la vez que esta persona ser&#xe1; la que validar&#xe1; nuestro avance.">
-<edge STYLE="bezier" WIDTH="thin"/>
->>>>>>> .r67
 <font NAME="SansSerif" SIZE="16"/>
 <icon BUILTIN="button_ok"/>
 </node>
-<<<<<<< .mine
 <node COLOR="#00b439" CREATED="1308021184241" ID="Freemind_Link_661653470" MODIFIED="1309037045935" TEXT="Una persona del &#xe1;rea de inform&#xe1;tica a la cual le podamos hacer las consultas t&#xe9;cnicas y con la cual validaremos la soluci&#xf3;n e impacto con el actual sistema.">
 <edge STYLE="bezier" WIDTH="thin"/>
-=======
-<node COLOR="#00b439" CREATED="1308021184241" ID="Freemind_Link_661653470" MODIFIED="1308060667731" TEXT="Una persona del &#xe1;rea de inform&#xe1;tica a la cual le podamos hacer las consultas t&#xe9;cnicas y con la cual validaremos la soluci&#xf3;n e impacto con el actual sistema.">
-<edge STYLE="bezier" WIDTH="thin"/>
->>>>>>> .r67
 <font NAME="SansSerif" SIZE="16"/>
 <icon BUILTIN="button_ok"/>
 </node>
-<<<<<<< .mine
 <node COLOR="#00b439" CREATED="1308021201994" ID="Freemind_Link_1130206637" MODIFIED="1309037045935" TEXT="Mantener durante el tiempo que dure el proyecto la disponibilidad de los equipos asignados (PC&apos;s).">
 <edge STYLE="bezier" WIDTH="thin"/>
-=======
-<node COLOR="#00b439" CREATED="1308021201994" ID="Freemind_Link_1130206637" MODIFIED="1308060667731" TEXT="Mantener durante el tiempo que dure el proyecto la disponibilidad de los equipos asignados (PC&apos;s).">
-<edge STYLE="bezier" WIDTH="thin"/>
->>>>>>> .r67
 <font NAME="SansSerif" SIZE="16"/>
 <icon BUILTIN="button_ok"/>
 </node>
-<<<<<<< .mine
 <node COLOR="#00b439" CREATED="1308021210426" ID="Freemind_Link_390811996" MODIFIED="1309037045935" TEXT="Acceso a la informaci&#xf3;n necesaria / disponible: documentos (procedimientos, manuales, instructivos, etc.), base de datos, alguna otra informaci&#xf3;n que se requiera.">
 <edge STYLE="bezier" WIDTH="thin"/>
-=======
-<node COLOR="#00b439" CREATED="1308021210426" ID="Freemind_Link_390811996" MODIFIED="1308060667731" TEXT="Acceso a la informaci&#xf3;n necesaria / disponible: documentos (procedimientos, manuales, instructivos, etc.), base de datos, alguna otra informaci&#xf3;n que se requiera.">
-<edge STYLE="bezier" WIDTH="thin"/>
->>>>>>> .r67
 <font NAME="SansSerif" SIZE="16"/>
 <icon BUILTIN="help"/>
 </node>
-<<<<<<< .mine
 <node COLOR="#00b439" CREATED="1308021213070" ID="Freemind_Link_1045333361" MODIFIED="1309037045935" TEXT="Otros: pizarra acr&#xed;lica, acceso a las impresoras, &#xfa;tiles de escritorio.">
 <edge STYLE="bezier" WIDTH="thin"/>
-=======
-<node COLOR="#00b439" CREATED="1308021213070" ID="Freemind_Link_1045333361" MODIFIED="1308060667731" TEXT="Otros: pizarra acr&#xed;lica, acceso a las impresoras, &#xfa;tiles de escritorio.">
-<edge STYLE="bezier" WIDTH="thin"/>
->>>>>>> .r67
 <font NAME="SansSerif" SIZE="16"/>
 <icon BUILTIN="help"/>
 </node>
-<<<<<<< .mine
 <node COLOR="#00b439" CREATED="1308021225815" ID="Freemind_Link_890192909" MODIFIED="1309037045935" TEXT="Evaluar la posibilidad de un cambio de espacio de trabajo.">
 <edge STYLE="bezier" WIDTH="thin"/>
-=======
-<node COLOR="#00b439" CREATED="1308021225815" ID="Freemind_Link_890192909" MODIFIED="1308060667732" TEXT="Evaluar la posibilidad de un cambio de espacio de trabajo.">
-<edge STYLE="bezier" WIDTH="thin"/>
->>>>>>> .r67
 <font NAME="SansSerif" SIZE="16"/>
 <icon BUILTIN="help"/>
 </node>
