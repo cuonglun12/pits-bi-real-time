@@ -1,0 +1,2 @@
+Para la tabla t_cotizaciones. Por que hay registros con valor null?
+select * from t_cotizaciones where codcliente is null
