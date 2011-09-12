@@ -1,0 +1,10 @@
+Psotgresql
+user:postgres
+BD: db_pitsbi
+sa: _pits1234
+puerto	5432
+
+4E0CE3D7308AA2B2A5330445CBDB8B452C4BCB1D0F300B5958DFE0EA36B51C8F
+
+
+Desa01:/pases/2011/2A5500/00576/ear/administracion-cons.ear
