@@ -1,7 +1,0 @@
-Willy Veliz - Jefe de Operaciones
-- Nro. Celular = 981098677, 109*8677
-- E-mail = w.veliz@pits.com.pe, wveliz@hotmail.com
-
-Juan Aquino - Responsable de Sistemas
-- Nro. Celular =
-- E-mail = jaquino@pits.com.pe
