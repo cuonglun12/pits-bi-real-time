@@ -1,119 +1,246 @@
 /*
-drop index IDX_ARE_CLI_03
-drop index IDX_ARE_CLI_02
-drop index IDX_ARE_CLI_01
-drop index IDX_ARE_CLI_00
-drop table T_AREA_CLIENTE
-drop index IDX_CARG_14
-drop index IDX_CARG_13
-drop index IDX_CARG_12
-drop index IDX_CARG_11
-drop index IDX_CARG_10
-drop index IDX_CARG_09
-drop index IDX_CARG_08
-drop index IDX_CARG_07
-drop index IDX_CARG_06
-drop index IDX_CARG_05
-drop index IDX_CARG_04
-drop index IDX_CARG_03
-drop index IDX_CARG_02
-drop index IDX_CARG_01
-drop index IDX_CARG_00
-drop table T_CARGO
-drop index IDX_CAR_GUI_12
-drop index IDX_CAR_GUI_11
-drop index IDX_CAR_GUI_10
-drop index IDX_CAR_GUI_09
-drop index IDX_CAR_GUI_08
-drop index IDX_CAR_GUI_07
-drop index IDX_CAR_GUI_06
-drop index IDX_CAR_GUI_05
-drop index IDX_CAR_GUI_04
-drop index IDX_CAR_GUI_03
-drop index IDX_CAR_GUI_02
-drop index IDX_CAR_GUI_01
-drop index IDX_CAR_GUI_00
-drop table T_CARGO_GUIA
-drop index IDX_CLI_06
-drop index IDX_CLI_05
-drop index IDX_CLI_04
-drop index IDX_CLI_03
-drop index IDX_CLI_02
-drop index IDX_CLI_01
-drop index IDX_CLI_00
-drop table T_CLIENTE
-drop index IDX_COTI_09
-drop index IDX_COTI_08
-drop index IDX_COTI_07
-drop index IDX_COTI_06
-drop index IDX_COTI_05
-drop index IDX_COTI_04
-drop index IDX_COTI_03
-drop index IDX_COTI_02
-drop index IDX_COTI_01
-drop index IDX_COTI_00
-drop table T_COTIZACION
-drop index IDX_DESP_12
-drop index IDX_DESP_11
-drop index IDX_DESP_10
-drop index IDX_DESP_09
-drop index IDX_DESP_08
-drop index IDX_DESP_07
-drop index IDX_DESP_06
-drop index IDX_DESP_05
-drop index IDX_DESP_04
-drop index IDX_DESP_03
-drop index IDX_DESP_02
-drop index IDX_DESP_01
-drop index IDX_DESP_00
-drop table T_DESPACHO
-drop index IDX_EMP_02
-drop index IDX_EMP_01
-drop index IDX_EMP_00
-drop table T_EMPLEADO
-drop index IDX_EMP_CAT_03
-drop index IDX_EMP_CAT_02
-drop index IDX_EMP_CAT_01
-drop index IDX_EMP_CAT_00
-drop table T_EMPLEADO_CATEGORIA
-drop index IDX_ORD_17
-drop index IDX_ORD_16
-drop index IDX_ORD_15
-drop index IDX_ORD_14
-drop index IDX_ORD_13
-drop index IDX_ORD_12
-drop index IDX_ORD_11
-drop index IDX_ORD_10
-drop index IDX_ORD_09
-drop index IDX_ORD_08
-drop index IDX_ORD_07
-drop index IDX_ORD_06
-drop index IDX_ORD_05
-drop index IDX_ORD_04
-drop index IDX_ORD_03
-drop index IDX_ORD_02
-drop index IDX_ORD_01
-drop index IDX_ORD_00
-drop table T_ORDEN
-drop index IDX_PARAM_02
-drop index IDX_PARAM_01
-drop index IDX_PARAM_00
-drop table T_PARAMETRO
-drop index IDX_PROD_04
-drop index IDX_PROD_03
-drop index IDX_PROD_02
-drop index IDX_PROD_01
-drop index IDX_PROD_00
-drop table T_PRODUCTO
-drop index IDX_RES_DES_02
-drop index IDX_RES_DES_01
-drop index IDX_RES_DES_00
-drop table T_RESULTADO_DESPACHO
-drop index IDX_SEDE_03
-drop index IDX_SEDE_02
-drop index IDX_SEDE_01
-drop index IDX_SEDE_00
+drop index IDX_ARE_CLI_04;
+
+drop index IDX_ARE_CLI_03;
+
+drop index IDX_ARE_CLI_02;
+
+drop index IDX_ARE_CLI_01;
+
+drop index IDX_ARE_CLI_00;
+
+drop table T_AREA_CLIENTE;
+
+drop index IDX_CARG_10;
+
+drop index IDX_CARG_09;
+
+drop index IDX_CARG_08;
+
+drop index IDX_CARG_07;
+
+drop index IDX_CARG_06;
+
+drop index IDX_CARG_05;
+
+drop index IDX_CARG_04;
+
+drop index IDX_CARG_03;
+
+drop index IDX_CARG_02;
+
+drop index IDX_CARG_01;
+
+drop index IDX_CARG_00;
+
+drop table T_CARGO;
+
+drop index IDX_CAR_DESP_10;
+
+drop index IDX_CAR_DESP_09;
+
+drop index IDX_CAR_DESP_08;
+
+drop index IDX_CAR_DESP_07;
+
+drop index IDX_CAR_DESP_06;
+
+drop index IDX_CAR_DESP_05;
+
+drop index IDX_CAR_DESP_04;
+
+drop index IDX_CAR_DESP_03;
+
+drop index IDX_CAR_DESP_02;
+
+drop index IDX_CAR_DESP_01;
+
+drop index IDX_CAR_DESP_00;
+
+drop table T_CARGO_DESPACHO;
+
+drop index IDX_CLI_06;
+
+drop index IDX_CLI_05;
+
+drop index IDX_CLI_04;
+
+drop index IDX_CLI_03;
+
+drop index IDX_CLI_02;
+
+drop index IDX_CLI_01;
+
+drop index IDX_CLI_00;
+
+drop table T_CLIENTE;
+
+drop index IDX_COTI_09;
+
+drop index IDX_COTI_08;
+
+drop index IDX_COTI_07;
+
+drop index IDX_COTI_06;
+
+drop index IDX_COTI_05;
+
+drop index IDX_COTI_04;
+
+drop index IDX_COTI_03;
+
+drop index IDX_COTI_02;
+
+drop index IDX_COTI_01;
+
+drop index IDX_COTI_00;
+
+drop table T_COTIZACION;
+
+drop index IDX_DESP_11;
+
+drop index IDX_DESP_10;
+
+drop index IDX_DESP_09;
+
+drop index IDX_DESP_08;
+
+drop index IDX_DESP_07;
+
+drop index IDX_DESP_06;
+
+drop index IDX_DESP_05;
+
+drop index IDX_DESP_04;
+
+drop index IDX_DESP_03;
+
+drop index IDX_DESP_02;
+
+drop index IDX_DESP_01;
+
+drop index IDX_DESP_00;
+
+drop table T_DESPACHO;
+
+drop index IDX_EMP_02;
+
+drop index IDX_EMP_01;
+
+drop index IDX_EMP_00;
+
+drop table T_EMPLEADO;
+
+drop index IDX_EMP_CAT_03;
+
+drop index IDX_EMP_CAT_02;
+
+drop index IDX_EMP_CAT_01;
+
+drop index IDX_EMP_CAT_00;
+
+drop table T_EMPLEADO_CATEGORIA;
+
+drop index IDX_ORD_17;
+
+drop index IDX_ORD_16;
+
+drop index IDX_ORD_15;
+
+drop index IDX_ORD_14;
+
+drop index IDX_ORD_13;
+
+drop index IDX_ORD_12;
+
+drop index IDX_ORD_11;
+
+drop index IDX_ORD_10;
+
+drop index IDX_ORD_09;
+
+drop index IDX_ORD_08;
+
+drop index IDX_ORD_07;
+
+drop index IDX_ORD_06;
+
+drop index IDX_ORD_05;
+
+drop index IDX_ORD_04;
+
+drop index IDX_ORD_03;
+
+drop index IDX_ORD_02;
+
+drop index IDX_ORD_01;
+
+drop index IDX_ORD_00;
+
+drop table T_ORDEN;
+
+drop index IDX_PARAM_02;
+
+drop index IDX_PARAM_01;
+
+drop index IDX_PARAM_00;
+
+drop table T_PARAMETRO;
+
+drop index IDX_PROD_04;
+
+drop index IDX_PROD_03;
+
+drop index IDX_PROD_02;
+
+drop index IDX_PROD_01;
+
+drop index IDX_PROD_00;
+
+drop table T_PRODUCTO;
+
+drop index IDX_SED_03;
+
+drop index IDX_SED_02;
+
+drop index IDX_SED_01;
+
+drop index IDX_SED_00;
+
 drop table T_SEDE;
+
+drop index IDX_SERV_03;
+
+drop index IDX_SERV_02;
+
+drop index IDX_SERV_01;
+
+drop index IDX_SERV_00;
+
+drop table T_SERVICIO;
+
+drop index IDX_UBI_04;
+
+drop index IDX_UBI_03;
+
+drop index IDX_UBI_02;
+
+drop index IDX_UBI_01;
+
+drop index IDX_UBI_00;
+
+drop table T_UBIGEO;
+
+drop index IDX_ZON_03;
+
+drop index IDX_ZON_02;
+
+drop index IDX_ZON_01;
+
+drop index IDX_ZON_00;
+
+drop table T_ZONA;
+
 */
 
 /*==============================================================*/
@@ -121,12 +248,12 @@ drop table T_SEDE;
 /*==============================================================*/
 create table T_AREA_CLIENTE (
    ARE_CLI_ID           SERIAL               not null,
-   CLI_ID               INT4                 not null,
+   CLI_ID               INT4                 not null default 0,
    ARE_CLI_COD_TIP      INT4                 not null default 0,
-   ARE_CLI_COD_UBI      INT4                 not null default 0,
+   UBI_ID               INT4                 not null default 0,
    ARE_CLI_DES          VARCHAR(250)         not null default '-',
    ARE_CLI_DES_DIR      VARCHAR(250)         null default '-',
-   ARE_CLI_COD          CHAR(8)              not null default '-',
+   ARE_CLI_COD          VARCHAR(30)          not null default '-',
    FEC_NUM_CAM          INT4                 not null default 19000101010101,
    COD_IND_CAM          CHAR(1)              not null default '1',
    constraint PK_T_AREA_CLIENTE primary key (ARE_CLI_ID)
@@ -157,7 +284,14 @@ ARE_CLI_COD_TIP
 /* Index: IDX_ARE_CLI_03                                        */
 /*==============================================================*/
 create  index IDX_ARE_CLI_03 on T_AREA_CLIENTE (
-ARE_CLI_COD_UBI
+UBI_ID
+);
+
+/*==============================================================*/
+/* Index: IDX_ARE_CLI_04                                        */
+/*==============================================================*/
+create unique index IDX_ARE_CLI_04 on T_AREA_CLIENTE (
+ARE_CLI_COD
 );
 
 /*==============================================================*/
@@ -165,15 +299,11 @@ ARE_CLI_COD_UBI
 /*==============================================================*/
 create table T_CARGO (
    CARG_ID              SERIAL               not null,
-   CARG_CORR            INT4                 not null,
-   ORD_ID               INT4                 not null,
-   PROD_ID              INT4                 not null,
-   CARG_COD_UBI         INT4                 not null default 0,
-   CARG_COD_ZON         INT4                 not null default 0,
-   CARG_COD_POS         INT4                 not null default 0,
-   CARG_COD_NEW_UBI     INT4                 not null default 0,
-   CARG_COD_NEW_ZON     INT4                 not null default 0,
-   CARG_COD_NEW_POS     INT4                 not null default 0,
+   CARG_CORR            INT4                 not null default 0,
+   ORD_ID               INT4                 not null default 0,
+   PROD_ID              INT4                 not null default 0,
+   ZON_ID               INT4                 not null default 0,
+   ZON_ID_NEW           INT4                 not null default 0,
    CARG_COD_MOV         INT4                 not null default 0,
    CARG_COD_TIP_ING     INT4                 not null default 0,
    CARG_COD_FEC_DES     DATE                 not null default '1900-01-01',
@@ -229,186 +359,142 @@ PROD_ID
 /* Index: IDX_CARG_05                                           */
 /*==============================================================*/
 create  index IDX_CARG_05 on T_CARGO (
-CARG_COD_UBI
+ZON_ID
 );
 
 /*==============================================================*/
 /* Index: IDX_CARG_06                                           */
 /*==============================================================*/
 create  index IDX_CARG_06 on T_CARGO (
-CARG_COD_ZON
+ZON_ID_NEW
 );
 
 /*==============================================================*/
 /* Index: IDX_CARG_07                                           */
 /*==============================================================*/
 create  index IDX_CARG_07 on T_CARGO (
-CARG_COD_POS
+CARG_COD_MOV
 );
 
 /*==============================================================*/
 /* Index: IDX_CARG_08                                           */
 /*==============================================================*/
 create  index IDX_CARG_08 on T_CARGO (
-CARG_COD_NEW_UBI
+CARG_COD_TIP_ING
 );
 
 /*==============================================================*/
 /* Index: IDX_CARG_09                                           */
 /*==============================================================*/
 create  index IDX_CARG_09 on T_CARGO (
-CARG_COD_NEW_ZON
+CARG_COD_FEC_DES
 );
 
 /*==============================================================*/
 /* Index: IDX_CARG_10                                           */
 /*==============================================================*/
 create  index IDX_CARG_10 on T_CARGO (
-CARG_COD_NEW_POS
-);
-
-/*==============================================================*/
-/* Index: IDX_CARG_11                                           */
-/*==============================================================*/
-create  index IDX_CARG_11 on T_CARGO (
-CARG_COD_MOV
-);
-
-/*==============================================================*/
-/* Index: IDX_CARG_12                                           */
-/*==============================================================*/
-create  index IDX_CARG_12 on T_CARGO (
-CARG_COD_TIP_ING
-);
-
-/*==============================================================*/
-/* Index: IDX_CARG_13                                           */
-/*==============================================================*/
-create  index IDX_CARG_13 on T_CARGO (
-CARG_COD_FEC_DES
-);
-
-/*==============================================================*/
-/* Index: IDX_CARG_14                                           */
-/*==============================================================*/
-create  index IDX_CARG_14 on T_CARGO (
 CARG_COD_FEC_REC
 );
 
 /*==============================================================*/
-/* Table: T_CARGO_GUIA                                          */
+/* Table: T_CARGO_DESPACHO                                      */
 /*==============================================================*/
-create table T_CARGO_GUIA (
-   CAR_GUI_ID           SERIAL               not null,
+create table T_CARGO_DESPACHO (
+   CAR_DESP_ID          SERIAL               not null,
    DESP_ID              INT4                 not null default 0,
-   CARG_ID              INT4                 not null,
-   CAR_GUI_COD_MOV      INT4                 not null default 0,
-   CAR_GUI_COD_UBI      INT4                 not null default 0,
-   CAR_GUI_COD_ZON      INT4                 not null default 0,
-   CAR_GUI_COD_POS      INT4                 not null default 0,
-   CAR_GUI_COD_VER      INT4                 not null default 0,
-   CAR_GUI_DIR          VARCHAR(250)         not null default '-',
-   CAR_GUI_REF          VARCHAR(250)         not null default '-',
-   CAR_GUI_FEC_SAL      DATE                 not null default '1900-01-01',
-   CAR_GUI_FEC_RET_PRO  DATE                 not null default '1900-01-01',
-   CAR_GUI_FEC_RET_REA  DATE                 not null default '1900-01-01',
-   CAR_GUI_FEC_VER      DATE                 not null default '1900-01-01',
-   CAR_GUI_COD_EST      INT4                 not null default 0,
+   CARG_ID              INT4                 not null default 0,
+   ZON_ID               INT4                 null default 0,
+   CAR_DESP_COD_MOV     INT4                 not null default 0,
+   CAR_DESP_COD_VER     INT4                 not null default 0,
+   CAR_DESP_DIR         VARCHAR(250)         not null default '-',
+   CAR_DESP_REF         VARCHAR(250)         not null default '-',
+   CAR_DESP_FEC_SAL     DATE                 not null default '1900-01-01',
+   CAR_DESP_FEC_RET_PRO DATE                 not null default '1900-01-01',
+   CAR_DESP_FEC_RET_REA DATE                 not null default '1900-01-01',
+   CAR_DESP_FEC_VER     DATE                 not null default '1900-01-01',
+   CAR_DESP_COD_EST     INT4                 not null default 0,
    FEC_NUM_CAM          INT4                 not null default 19000101010101,
    COD_IND_CAM          CHAR(1)              not null default '1',
-   constraint PK_T_CARGO_GUIA primary key (CAR_GUI_ID)
+   constraint PK_T_CARGO_DESPACHO primary key (CAR_DESP_ID)
 );
 
 /*==============================================================*/
-/* Index: IDX_CAR_GUI_00                                        */
+/* Index: IDX_CAR_DESP_00                                       */
 /*==============================================================*/
-create  index IDX_CAR_GUI_00 on T_CARGO_GUIA (
+create  index IDX_CAR_DESP_00 on T_CARGO_DESPACHO (
 FEC_NUM_CAM
 );
 
 /*==============================================================*/
-/* Index: IDX_CAR_GUI_01                                        */
+/* Index: IDX_CAR_DESP_01                                       */
 /*==============================================================*/
-create unique index IDX_CAR_GUI_01 on T_CARGO_GUIA (
+create unique index IDX_CAR_DESP_01 on T_CARGO_DESPACHO (
 DESP_ID,
 CARG_ID
 );
 
 /*==============================================================*/
-/* Index: IDX_CAR_GUI_02                                        */
+/* Index: IDX_CAR_DESP_02                                       */
 /*==============================================================*/
-create  index IDX_CAR_GUI_02 on T_CARGO_GUIA (
+create  index IDX_CAR_DESP_02 on T_CARGO_DESPACHO (
 DESP_ID
 );
 
 /*==============================================================*/
-/* Index: IDX_CAR_GUI_03                                        */
+/* Index: IDX_CAR_DESP_03                                       */
 /*==============================================================*/
-create  index IDX_CAR_GUI_03 on T_CARGO_GUIA (
+create  index IDX_CAR_DESP_03 on T_CARGO_DESPACHO (
 CARG_ID
 );
 
 /*==============================================================*/
-/* Index: IDX_CAR_GUI_04                                        */
+/* Index: IDX_CAR_DESP_04                                       */
 /*==============================================================*/
-create  index IDX_CAR_GUI_04 on T_CARGO_GUIA (
-CAR_GUI_COD_MOV
+create  index IDX_CAR_DESP_04 on T_CARGO_DESPACHO (
+CAR_DESP_COD_MOV
 );
 
 /*==============================================================*/
-/* Index: IDX_CAR_GUI_05                                        */
+/* Index: IDX_CAR_DESP_05                                       */
 /*==============================================================*/
-create  index IDX_CAR_GUI_05 on T_CARGO_GUIA (
-CAR_GUI_COD_UBI
+create  index IDX_CAR_DESP_05 on T_CARGO_DESPACHO (
+ZON_ID
 );
 
 /*==============================================================*/
-/* Index: IDX_CAR_GUI_06                                        */
+/* Index: IDX_CAR_DESP_06                                       */
 /*==============================================================*/
-create  index IDX_CAR_GUI_06 on T_CARGO_GUIA (
-CAR_GUI_COD_ZON
+create  index IDX_CAR_DESP_06 on T_CARGO_DESPACHO (
+CAR_DESP_COD_VER
 );
 
 /*==============================================================*/
-/* Index: IDX_CAR_GUI_07                                        */
+/* Index: IDX_CAR_DESP_07                                       */
 /*==============================================================*/
-create  index IDX_CAR_GUI_07 on T_CARGO_GUIA (
-CAR_GUI_COD_POS
+create  index IDX_CAR_DESP_07 on T_CARGO_DESPACHO (
+CAR_DESP_FEC_SAL
 );
 
 /*==============================================================*/
-/* Index: IDX_CAR_GUI_08                                        */
+/* Index: IDX_CAR_DESP_08                                       */
 /*==============================================================*/
-create  index IDX_CAR_GUI_08 on T_CARGO_GUIA (
-CAR_GUI_COD_VER
+create  index IDX_CAR_DESP_08 on T_CARGO_DESPACHO (
+CAR_DESP_FEC_RET_PRO
 );
 
 /*==============================================================*/
-/* Index: IDX_CAR_GUI_09                                        */
+/* Index: IDX_CAR_DESP_09                                       */
 /*==============================================================*/
-create  index IDX_CAR_GUI_09 on T_CARGO_GUIA (
-CAR_GUI_FEC_SAL
+create  index IDX_CAR_DESP_09 on T_CARGO_DESPACHO (
+CAR_DESP_FEC_RET_REA
 );
 
 /*==============================================================*/
-/* Index: IDX_CAR_GUI_10                                        */
+/* Index: IDX_CAR_DESP_10                                       */
 /*==============================================================*/
-create  index IDX_CAR_GUI_10 on T_CARGO_GUIA (
-CAR_GUI_FEC_RET_PRO
-);
-
-/*==============================================================*/
-/* Index: IDX_CAR_GUI_11                                        */
-/*==============================================================*/
-create  index IDX_CAR_GUI_11 on T_CARGO_GUIA (
-CAR_GUI_FEC_RET_REA
-);
-
-/*==============================================================*/
-/* Index: IDX_CAR_GUI_12                                        */
-/*==============================================================*/
-create  index IDX_CAR_GUI_12 on T_CARGO_GUIA (
-CAR_GUI_FEC_VER
+create  index IDX_CAR_DESP_10 on T_CARGO_DESPACHO (
+CAR_DESP_FEC_VER
 );
 
 /*==============================================================*/
@@ -418,20 +504,19 @@ create table T_CLIENTE (
    CLI_ID               SERIAL               not null,
    CLI_COD_TIP          INT4                 not null default 0,
    CLI_COD_CAT          INT4                 not null default 0,
-   CLI_COD_TIP_DOC      CHAR(2)              not null default '-',
-   CLI_NUM_TIP_DOC      CHAR(15)             not null default '-',
-   CLI_DES_RAZ_SOC      VARCHAR(250)         null default '-',
-   CLI_DES_APE_PAT      VARCHAR(100)         null default '-',
-   CLI_DES_APE_MAT      VARCHAR(100)         null default '-',
-   CLI_DES_NOM          VARCHAR(100)         null default '-',
-   CLI_COD_UBI          INT4                 not null default 0,
+   CLI_COD_TIP_DOC      INT4                 not null default 0,
+   CLI_NUM_TIP_DOC      VARCHAR(15)          not null default '-',
+   CLI_DES_RAZ_SOC      VARCHAR(250)         not null default '-',
+   CLI_DES_APE_PAT      VARCHAR(100)         not null default '-',
+   CLI_DES_APE_MAT      VARCHAR(100)         not null default '-',
+   CLI_DES_NOM          VARCHAR(100)         not null default '-',
    CLI_COD_TIP_FAC      INT4                 not null default 0,
    CLI_COD_TIP_CRE      INT4                 not null default 0,
-   CLI_COD              CHAR(20)             not null default '-',
-   CLI_NUM_TEL          VARCHAR(50)          null default '-',
-   CLI_DES_COR          VARCHAR(100)         null default '-',
-   CLI_DES_DIR          VARCHAR(250)         null default '-',
-   CLI_COD_EST          INT4                 not null default 0,
+   UBI_ID               INT4                 not null default 0,
+   CLI_COD              VARCHAR(20)          not null default '-',
+   CLI_NUM_TEL          VARCHAR(50)          not null default '-',
+   CLI_DES_COR          VARCHAR(100)         not null default '-',
+   CLI_DES_DIR          VARCHAR(250)         not null default '-',
    FEC_NUM_CAM          INT4                 not null default 19000101010101,
    COD_IND_CAM          CHAR(1)              not null default '1',
    constraint PK_T_CLIENTE primary key (CLI_ID)
@@ -462,7 +547,7 @@ CLI_COD_CAT
 /* Index: IDX_CLI_03                                            */
 /*==============================================================*/
 create  index IDX_CLI_03 on T_CLIENTE (
-CLI_COD_UBI
+UBI_ID
 );
 
 /*==============================================================*/
@@ -483,8 +568,7 @@ CLI_COD_TIP_CRE
 /* Index: IDX_CLI_06                                            */
 /*==============================================================*/
 create unique index IDX_CLI_06 on T_CLIENTE (
-CLI_COD_TIP_DOC,
-CLI_NUM_TIP_DOC
+CLI_COD
 );
 
 /*==============================================================*/
@@ -498,13 +582,12 @@ create table T_COTIZACION (
    COTI_COD_SERV        INT4                 not null default 0,
    COTI_COD_NEG         INT4                 not null default 0,
    COTI_COD_TIP_DOC     INT4                 not null default 0,
-   COTI_SERIE_DOC       CHAR(6)              not null default '-',
-   COTI_NUM_DOC         CHAR(8)              not null default '-',
+   COTI_SERIE_DOC       VARCHAR(6)           not null default '-',
+   COTI_NUM_DOC         VARCHAR(10)          not null default '-',
    COTI_COD_EST         INT4                 not null default 0,
-   COTI_COD             CHAR(10)             not null default '-',
-   COTI_FEC_APRO        DATE                 not null default '1900-01-01 01:01:01',
-   COTI_FEC_INI         DATE                 not null default '1900-01-01 01:01:01',
-   COTI_FEC_FIN         DATE                 not null default '1900-01-01 01:01:01',
+   COTI_FEC_APRO        DATE                 not null default '1900-01-01',
+   COTI_FEC_INI         DATE                 not null default '1900-01-01',
+   COTI_FEC_FIN         DATE                 not null default '1900-01-01',
    FEC_NUM_CAM          INT4                 not null default 19000101010101,
    COD_IND_CAM          CHAR(1)              not null default '1',
    constraint PK_T_COTIZACION primary key (COTI_ID)
@@ -588,21 +671,20 @@ COTI_NUM_DOC
 create table T_DESPACHO (
    DESP_ID              SERIAL               not null,
    DESP_COD_TIP_DOC     INT4                 not null default 0,
-   DESP_SERIE_DOC       CHAR(6)              not null default '-',
-   DESP_NUMERO_DOC      CHAR(8)              not null default '-',
-   SEDE_ID              INT4                 not null default 0,
+   DESP_SERIE_DOC       VARCHAR(6)           not null default '-',
+   DESP_NUMERO_DOC      VARCHAR(10)          not null default '-',
+   SED_ID               INT4                 not null default 0,
+   ZON_ID               INT4                 not null default 0,
    EMP_CAT_ID           INT4                 not null default 0,
-   DESP_COD_TIP_ENV     INT4                 not null default 0,
-   DESP_COD_UBI         INT4                 not null default 0,
+   DESP_COD_TIP         INT4                 not null default 0,
    DESP_COD_TIP_RUT     INT4                 not null default 0,
-   DESP_COD_ZON         INT4                 not null default 0,
    DESP_COD_VER         INT4                 not null default 0,
-   DESP_NOM_PASAJE      NUMERIC(14,4)        not null default 0,
-   DESP_NUM_CARGOS      INT4                 not null default 0,
-   DESP_FEC_SAL         DATE                 not null default '1900-01-01 01:01:01',
-   DESP_FEC_RET_PRO     DATE                 not null default '1900-01-01 01:01:01',
-   DESP_FEC_RET_REA     DATE                 not null default '1900-01-01 01:01:01',
-   DESP_FEC_VER         DATE                 not null default '1900-01-01 01:01:01',
+   DESP_MON_PASAJE      NUMERIC(14,4)        not null default 0,
+   DESP_CNT_CARGOS      INT4                 not null default 0,
+   DESP_FEC_SAL         DATE                 not null default '1900-01-01',
+   DESP_FEC_RET_PRO     DATE                 not null default '1900-01-01',
+   DESP_FEC_RET_REA     DATE                 not null default '1900-01-01',
+   DESP_FEC_VER         DATE                 not null default '1900-01-01',
    DESP_CAN_PAS         NUMERIC(14,4)        not null default 0,
    DESP_COD_EST         INT4                 not null default 0,
    FEC_NUM_CAM          INT4                 not null default 19000101010101,
@@ -630,7 +712,7 @@ DESP_NUMERO_DOC
 /* Index: IDX_DESP_02                                           */
 /*==============================================================*/
 create  index IDX_DESP_02 on T_DESPACHO (
-SEDE_ID
+SED_ID
 );
 
 /*==============================================================*/
@@ -644,14 +726,14 @@ EMP_CAT_ID
 /* Index: IDX_DESP_04                                           */
 /*==============================================================*/
 create  index IDX_DESP_04 on T_DESPACHO (
-DESP_COD_TIP_ENV
+DESP_COD_TIP
 );
 
 /*==============================================================*/
 /* Index: IDX_DESP_05                                           */
 /*==============================================================*/
 create  index IDX_DESP_05 on T_DESPACHO (
-DESP_COD_UBI
+ZON_ID
 );
 
 /*==============================================================*/
@@ -665,41 +747,34 @@ DESP_COD_TIP_RUT
 /* Index: IDX_DESP_07                                           */
 /*==============================================================*/
 create  index IDX_DESP_07 on T_DESPACHO (
-DESP_COD_ZON
+DESP_COD_VER
 );
 
 /*==============================================================*/
 /* Index: IDX_DESP_08                                           */
 /*==============================================================*/
 create  index IDX_DESP_08 on T_DESPACHO (
-DESP_COD_VER
+DESP_FEC_SAL
 );
 
 /*==============================================================*/
 /* Index: IDX_DESP_09                                           */
 /*==============================================================*/
 create  index IDX_DESP_09 on T_DESPACHO (
-DESP_FEC_SAL
+DESP_FEC_RET_PRO
 );
 
 /*==============================================================*/
 /* Index: IDX_DESP_10                                           */
 /*==============================================================*/
 create  index IDX_DESP_10 on T_DESPACHO (
-DESP_FEC_RET_PRO
+DESP_FEC_RET_REA
 );
 
 /*==============================================================*/
 /* Index: IDX_DESP_11                                           */
 /*==============================================================*/
 create  index IDX_DESP_11 on T_DESPACHO (
-DESP_FEC_RET_REA
-);
-
-/*==============================================================*/
-/* Index: IDX_DESP_12                                           */
-/*==============================================================*/
-create  index IDX_DESP_12 on T_DESPACHO (
 DESP_FEC_VER
 );
 
@@ -708,14 +783,14 @@ DESP_FEC_VER
 /*==============================================================*/
 create table T_EMPLEADO (
    EMP_ID               SERIAL               not null,
-   EMP_COD              CHAR(8)              not null default '-',
-   EMP_COD_TIP_DOC      INT4                 not null,
-   EMP_NUM_TIP_DOC      CHAR(15)             not null default '-',
+   EMP_COD              VARCHAR(10)          not null default '-',
+   EMP_COD_TIP_DOC      INT4                 not null default 0,
+   EMP_NUM_TIP_DOC      VARCHAR(15)          not null default '-',
    EMP_DES_APE_PAT      VARCHAR(100)         not null default '-',
    EMP_DES_APE_MAT      VARCHAR(100)         not null default '-',
    EMP_DES_NOM          VARCHAR(100)         not null default '-',
    EMP_FEC_NAC          DATE                 not null default '1900-01-01',
-   EMP_SEX              CHAR(1)              not null
+   EMP_SEX              CHAR(1)              not null default 'M'
       constraint CKC_EMP_SEX_T_EMPLEA check (EMP_SEX in ('0','1')),
    COD_IND_CAM          CHAR(1)              not null default '1',
    FEC_NUM_CAM          INT4                 not null default 19000101010101,
@@ -739,7 +814,7 @@ EMP_COD
 /*==============================================================*/
 /* Index: IDX_EMP_02                                            */
 /*==============================================================*/
-create unique index IDX_EMP_02 on T_EMPLEADO (
+create  index IDX_EMP_02 on T_EMPLEADO (
 EMP_COD_TIP_DOC,
 EMP_NUM_TIP_DOC
 );
@@ -749,9 +824,9 @@ EMP_NUM_TIP_DOC
 /*==============================================================*/
 create table T_EMPLEADO_CATEGORIA (
    EMP_CAT_ID           SERIAL               not null,
-   EMP_ID               INT4                 not null,
-   EMP_CAT_COD_TIP      INT4                 not null,
-   EMP_CAT_COD          CHAR(10)             not null default '-',
+   EMP_ID               INT4                 not null default 0,
+   EMP_CAT_COD_TIP      INT4                 not null default 0,
+   EMP_CAT_COD          VARCHAR(12)          not null default '-',
    FEC_NUM_CAM          INT4                 not null default 19000101010101,
    COD_IND_CAM          CHAR(1)              not null default '1',
    constraint PK_T_EMPLEADO_CATEGORIA primary key (EMP_CAT_ID)
@@ -793,19 +868,17 @@ create table T_ORDEN (
    COTI_ID              INT4                 not null default 0,
    COD_ARE_CLI          INT4                 not null default 0,
    EMP_CAT_ID           INT4                 not null default 0,
-   ORD_COD_AMB          INT4                 not null default 0,
-   ORD_COD_NEG          INT4                 not null default 0,
-   ORD_COD_SERV         INT4                 not null default 0,
    ORD_COD_TIP_REP      INT4                 not null default 0,
+   SERV_ID              INT4                 not null default 0,
    PROD_ID              INT4                 not null default 0,
    ORD_COD_TIP_PAG      INT4                 not null default 0,
    ORD_COD_TIP_ING      INT4                 not null default 0,
    ORD_COD_TIP_MON      INT4                 not null default 0,
    ORD_COD_TIP_DOC      INT4                 not null default 0,
-   ORD_SERIE_DOC        CHAR(6)              not null default '-',
-   ORD_NUM_DOC          CHAR(8)              not null default '-',
+   ORD_SERIE_DOC        VARCHAR(6)           not null default '-',
+   ORD_NUM_DOC          VARCHAR(10)          not null default '-',
    ORD_TIP_CAMBIO       NUMERIC(6,3)         not null default 1,
-   ORD_NUM_CARGOS       INT4                 not null default 0,
+   ORD_CNT_CARGOS       INT4                 not null default 0,
    ORD_FEC_INI          DATE                 not null default '1900-01-01',
    ORD_FEC_VEN          DATE                 not null default '1900-01-01',
    ORD_FEC_CIE          DATE                 not null default '1900-01-01',
@@ -854,21 +927,21 @@ EMP_CAT_ID
 /* Index: IDX_ORD_04                                            */
 /*==============================================================*/
 create  index IDX_ORD_04 on T_ORDEN (
-ORD_COD_AMB
+
 );
 
 /*==============================================================*/
 /* Index: IDX_ORD_05                                            */
 /*==============================================================*/
 create  index IDX_ORD_05 on T_ORDEN (
-ORD_COD_NEG
+
 );
 
 /*==============================================================*/
 /* Index: IDX_ORD_06                                            */
 /*==============================================================*/
 create  index IDX_ORD_06 on T_ORDEN (
-ORD_COD_SERV
+
 );
 
 /*==============================================================*/
@@ -955,14 +1028,50 @@ ORD_NUM_DOC
 /*==============================================================*/
 create table T_PARAMETRO (
    PARAM_ID             SERIAL               not null,
-   PARAM_COD_TIP        CHAR(4)              not null,
-   PARAM_COD            CHAR(8)              not null default '-',
+   PARAM_COD_TIP        INT4                 not null default 0,
+   PARAM_COD            VARCHAR(10)          not null default '-',
    PARAM_DES            VARCHAR(250)         not null default '-',
    PARAM_REF            INT4                 not null default 0,
    FEC_NUM_CAM          INT4                 not null default 19000101010101,
    COD_IND_CAM          CHAR(1)              not null default '1',
    constraint PK_T_PARAMETRO primary key (PARAM_ID)
 );
+
+comment on column T_PARAMETRO.PARAM_COD_TIP is
+'1: Tipo area cliente
+2: Estado de cargo despacho
+3: Estado de cargo despacho verificacion 
+4: Motivo de cargo despacho
+5: Estado de cargo
+6: Motivo de cargo
+7: Tipo de ingreso cargo
+8: Categoria de cliente
+9: Tipo de cliente
+10: Tipo de credito
+11: Tipo de documento de trabajo
+12: Tipo de facturacion
+13: Tipo de ambito
+14: Estado de cotizacion
+15: Tipo de negocio
+16: Tipo de servicio
+17: Tipo de documento (ruc, dni, guia, factura, etc)
+18: Estado de despacho
+19: Estado de despacho verificacion
+20: Tipo de despacho
+21: Tipo de ruta
+22: Categoria de empleado
+23: Estado de orden
+24: Tipo de ingreso
+25: Tipo de moneda
+26: Tipo de pago
+27: Tipo de reparto
+28: Tipo de producto
+29: Tipo de sede
+30: Pais
+31: Departamento
+32: Provincia
+33: Distrito
+';
 
 /*==============================================================*/
 /* Index: IDX_PARAM_00                                          */
@@ -993,8 +1102,8 @@ create table T_PRODUCTO (
    PROD_ID              SERIAL               not null,
    PROD_COD_TIP         INT4                 not null default 0,
    PROD_COD_AMB         INT4                 not null default 0,
-   PROD_COD_SERV        INT4                 not null default 0,
-   PROD_COD             CHAR(8)              null default '-',
+   PROD_COD_NEG         INT4                 not null default 0,
+   PROD_COD             VARCHAR(10)          not null default '-',
    PROD_DES             VARCHAR(250)         not null default '-',
    PROD_PRE             NUMERIC(14,4)        not null default 0,
    FEC_NUM_CAM          INT4                 not null default 19000101010101,
@@ -1027,7 +1136,7 @@ PROD_COD_AMB
 /* Index: IDX_PROD_03                                           */
 /*==============================================================*/
 create  index IDX_PROD_03 on T_PRODUCTO (
-PROD_COD_SERV
+PROD_COD_NEG
 );
 
 /*==============================================================*/
@@ -1038,78 +1147,177 @@ PROD_COD
 );
 
 /*==============================================================*/
-/* Table: T_RESULTADO_DESPACHO                                  */
-/*==============================================================*/
-create table T_RESULTADO_DESPACHO (
-   RES_DES_ID           SERIAL               not null,
-   DESP_ID              INT4                 not null default 0,
-   RES_DES_COD_MOV      INT4                 not null default 0,
-   RES_DES_NUM_CARGOS   INT4                 not null default 0,
-   RES_DES_COD_EST      INT4                 not null default 0,
-   FEC_NUM_CAM          INT4                 not null default 19000101010101,
-   COD_IND_CAM          CHAR(1)              not null default '1',
-   constraint PK_T_RESULTADO_DESPACHO primary key (RES_DES_ID)
-);
-
-/*==============================================================*/
-/* Index: IDX_RES_DES_00                                        */
-/*==============================================================*/
-create  index IDX_RES_DES_00 on T_RESULTADO_DESPACHO (
-FEC_NUM_CAM
-);
-
-/*==============================================================*/
-/* Index: IDX_RES_DES_01                                        */
-/*==============================================================*/
-create  index IDX_RES_DES_01 on T_RESULTADO_DESPACHO (
-DESP_ID
-);
-
-/*==============================================================*/
-/* Index: IDX_RES_DES_02                                        */
-/*==============================================================*/
-create  index IDX_RES_DES_02 on T_RESULTADO_DESPACHO (
-RES_DES_COD_MOV
-);
-
-/*==============================================================*/
 /* Table: T_SEDE                                                */
 /*==============================================================*/
 create table T_SEDE (
-   SEDE_ID              SERIAL               not null,
-   SEDE_COD             CHAR(8)              not null default '-',
-   SEDE_COD_UBI         INT4                 not null default 0,
-   SEDE_COD_TIP         INT4                 not null default 0,
-   SEDE_DES_DIR         VARCHAR(250)         not null default '-',
+   SED_ID               SERIAL               not null,
+   SED_COD              VARCHAR(10)          not null default '-',
+   UBI_ID               INT4                 not null default 0,
+   SED_COD_TIP          INT4                 not null default 0,
+   SED_DES              VARCHAR(250)         not null default '-',
    FEC_NUM_CAM          INT4                 not null default 19000101010101,
    COD_IND_CAM          CHAR(1)              not null default '1',
-   constraint PK_T_SEDE primary key (SEDE_ID)
+   constraint PK_T_SEDE primary key (SED_ID)
 );
 
 /*==============================================================*/
-/* Index: IDX_SEDE_00                                           */
+/* Index: IDX_SED_00                                            */
 /*==============================================================*/
-create  index IDX_SEDE_00 on T_SEDE (
+create  index IDX_SED_00 on T_SEDE (
 FEC_NUM_CAM
 );
 
 /*==============================================================*/
-/* Index: IDX_SEDE_01                                           */
+/* Index: IDX_SED_01                                            */
 /*==============================================================*/
-create unique index IDX_SEDE_01 on T_SEDE (
-SEDE_COD
+create unique index IDX_SED_01 on T_SEDE (
+SED_COD
 );
 
 /*==============================================================*/
-/* Index: IDX_SEDE_02                                           */
+/* Index: IDX_SED_02                                            */
 /*==============================================================*/
-create  index IDX_SEDE_02 on T_SEDE (
-SEDE_COD_UBI
+create  index IDX_SED_02 on T_SEDE (
+SED_COD_TIP
 );
 
 /*==============================================================*/
-/* Index: IDX_SEDE_03                                           */
+/* Index: IDX_SED_03                                            */
 /*==============================================================*/
-create  index IDX_SEDE_03 on T_SEDE (
-SEDE_COD_TIP
+create  index IDX_SED_03 on T_SEDE (
+UBI_ID
+);
+
+/*==============================================================*/
+/* Table: T_SERVICIO                                            */
+/*==============================================================*/
+create table T_SERVICIO (
+   SERV_ID              SERIAL               not null,
+   SEV_COD              VARCHAR(10)          not null default '-',
+   SERV_COD_NEG         INT4                 not null default 0,
+   SERV_COD_AMB         INT4                 not null default 0,
+   SERV_DES             VARCHAR(250)         not null default '-',
+   COD_IND_CAM          CHAR(1)              not null default '1',
+   FEC_NUM_CAM          INT4                 not null default 19000101010101,
+   constraint PK_T_SERVICIO primary key (SERV_ID)
+);
+
+/*==============================================================*/
+/* Index: IDX_SERV_00                                           */
+/*==============================================================*/
+create  index IDX_SERV_00 on T_SERVICIO (
+FEC_NUM_CAM
+);
+
+/*==============================================================*/
+/* Index: IDX_SERV_01                                           */
+/*==============================================================*/
+create unique index IDX_SERV_01 on T_SERVICIO (
+SEV_COD
+);
+
+/*==============================================================*/
+/* Index: IDX_SERV_02                                           */
+/*==============================================================*/
+create  index IDX_SERV_02 on T_SERVICIO (
+SERV_COD_NEG
+);
+
+/*==============================================================*/
+/* Index: IDX_SERV_03                                           */
+/*==============================================================*/
+create  index IDX_SERV_03 on T_SERVICIO (
+SERV_COD_AMB
+);
+
+/*==============================================================*/
+/* Table: T_UBIGEO                                              */
+/*==============================================================*/
+create table T_UBIGEO (
+   UBI_ID               SERIAL               not null,
+   UBI_COD              VARCHAR(10)          not null default '-',
+   UBI_COD_PAIS         INT4                 not null default 0,
+   UBI_COD_DEPARTAMENTO INT4                 not null default 0,
+   UBI_COD_PROVINCIA    INT4                 not null default 0,
+   UBI_COD_DISTRITO     INT4                 not null default 0,
+   COD_IND_CAM          CHAR(1)              not null default '1',
+   FEC_NUM_CAM          INT4                 not null default 19000101010101,
+   constraint PK_T_UBIGEO primary key (UBI_ID)
+);
+
+/*==============================================================*/
+/* Index: IDX_UBI_00                                            */
+/*==============================================================*/
+create  index IDX_UBI_00 on T_UBIGEO (
+
+);
+
+/*==============================================================*/
+/* Index: IDX_UBI_01                                            */
+/*==============================================================*/
+create  index IDX_UBI_01 on T_UBIGEO (
+UBI_COD_PAIS
+);
+
+/*==============================================================*/
+/* Index: IDX_UBI_02                                            */
+/*==============================================================*/
+create  index IDX_UBI_02 on T_UBIGEO (
+UBI_COD_DEPARTAMENTO
+);
+
+/*==============================================================*/
+/* Index: IDX_UBI_03                                            */
+/*==============================================================*/
+create  index IDX_UBI_03 on T_UBIGEO (
+UBI_COD_PROVINCIA
+);
+
+/*==============================================================*/
+/* Index: IDX_UBI_04                                            */
+/*==============================================================*/
+create  index IDX_UBI_04 on T_UBIGEO (
+UBI_COD_DISTRITO
+);
+
+/*==============================================================*/
+/* Table: T_ZONA                                                */
+/*==============================================================*/
+create table T_ZONA (
+   ZON_ID               SERIAL               not null,
+   ZON_COD              VARCHAR(10)          not null default '-',
+   UBI_ID               INT4                 not null default 0,
+   ZON_DES              VARCHAR(250)         not null default '-',
+   ZON_COD_POSTAL       VARCHAR(10)          not null default '-',
+   COD_IND_CAM          CHAR(1)              not null default '1',
+   FEC_NUM_CAM          INT4                 not null default 19000101010101,
+   constraint PK_T_ZONA primary key (ZON_ID)
+);
+
+/*==============================================================*/
+/* Index: IDX_ZON_00                                            */
+/*==============================================================*/
+create  index IDX_ZON_00 on T_ZONA (
+FEC_NUM_CAM
+);
+
+/*==============================================================*/
+/* Index: IDX_ZON_01                                            */
+/*==============================================================*/
+create unique index IDX_ZON_01 on T_ZONA (
+ZON_COD
+);
+
+/*==============================================================*/
+/* Index: IDX_ZON_02                                            */
+/*==============================================================*/
+create  index IDX_ZON_02 on T_ZONA (
+UBI_ID
+);
+
+/*==============================================================*/
+/* Index: IDX_ZON_03                                            */
+/*==============================================================*/
+create  index IDX_ZON_03 on T_ZONA (
+ZON_COD_POSTAL
 );
