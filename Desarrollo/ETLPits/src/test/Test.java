@@ -14,6 +14,7 @@ import pe.com.j2techcon.bi.etl.domain.generic.TParametro;
 import pe.com.j2techcon.bi.etl.logic.control.TProcesoManager;
 import pe.com.j2techcon.bi.etl.logic.dimensional.DimEstadoManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TParametroManager;
+import pe.com.j2techcon.bi.etl.util.Constantes;
 
 
 public class Test {
@@ -24,6 +25,10 @@ public class Test {
 	public static void main(String[] args) {
 		BeanFactory factory = new ClassPathXmlApplicationContext("application-context.xml");
 		TProcesoManager managerProcesoControl = factory.getBean("tProcesoManager", TProcesoManager.class);
+		
+		Constantes constantes = factory.getBean("constantes", Constantes.class);
+		System.out.println(constantes.toString());
+		
 		//TParametroManager managerParametroGeneric = factory.getBean("tParametroManager", TParametroManager.class);
 		//DimEstadoManager managerEstadoControl = factory.getBean("dimEstadoManager", DimEstadoManager.class);
 		
