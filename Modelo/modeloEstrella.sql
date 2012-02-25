@@ -76,7 +76,7 @@ create table dim_estado (
 estado_key           INT4                 not null default 0,
 estado_cod_tipo      CHAR(4)              not null default '-',
 estado_desc_tipo     VARCHAR(250)         not null default '-',
-estado_cod           V ARCHAR(6)          not null default '-',
+estado_cod           VARCHAR(6)          not null default '-',
 estado_desc          VARCHAR(250)         not null default '-',
 cod_ind_cam          CHAR(1)              not null default '1',
 fec_num_cam          INT4                 not null default 19000101010101,

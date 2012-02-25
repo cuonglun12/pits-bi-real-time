@@ -1,4 +1,5 @@
 /*
+
 drop index IDX_ARE_CLI_04;
 
 drop index IDX_ARE_CLI_03;
@@ -141,12 +142,6 @@ drop index IDX_EMP_CAT_00;
 
 drop table T_EMPLEADO_CATEGORIA;
 
-drop index IDX_ORD_17;
-
-drop index IDX_ORD_16;
-
-drop index IDX_ORD_15;
-
 drop index IDX_ORD_14;
 
 drop index IDX_ORD_13;
@@ -186,6 +181,8 @@ drop index IDX_PARAM_01;
 drop index IDX_PARAM_00;
 
 drop table T_PARAMETRO;
+
+drop table T_PROCESO;
 
 drop index IDX_PROD_04;
 
@@ -927,97 +924,76 @@ EMP_CAT_ID
 /* Index: IDX_ORD_04                                            */
 /*==============================================================*/
 create  index IDX_ORD_04 on T_ORDEN (
-
+ORD_COD_TIP_REP
 );
 
 /*==============================================================*/
 /* Index: IDX_ORD_05                                            */
 /*==============================================================*/
 create  index IDX_ORD_05 on T_ORDEN (
-
+PROD_ID
 );
 
 /*==============================================================*/
 /* Index: IDX_ORD_06                                            */
 /*==============================================================*/
 create  index IDX_ORD_06 on T_ORDEN (
-
+ORD_COD_TIP_PAG
 );
 
 /*==============================================================*/
 /* Index: IDX_ORD_07                                            */
 /*==============================================================*/
 create  index IDX_ORD_07 on T_ORDEN (
-ORD_COD_TIP_REP
+ORD_COD_TIP_ING
 );
 
 /*==============================================================*/
 /* Index: IDX_ORD_08                                            */
 /*==============================================================*/
 create  index IDX_ORD_08 on T_ORDEN (
-PROD_ID
+ORD_COD_TIP_MON
 );
 
 /*==============================================================*/
 /* Index: IDX_ORD_09                                            */
 /*==============================================================*/
 create  index IDX_ORD_09 on T_ORDEN (
-ORD_COD_TIP_PAG
+ORD_FEC_INI
 );
 
 /*==============================================================*/
 /* Index: IDX_ORD_10                                            */
 /*==============================================================*/
 create  index IDX_ORD_10 on T_ORDEN (
-ORD_COD_TIP_ING
+ORD_FEC_VEN
 );
 
 /*==============================================================*/
 /* Index: IDX_ORD_11                                            */
 /*==============================================================*/
 create  index IDX_ORD_11 on T_ORDEN (
-ORD_COD_TIP_MON
+ORD_FEC_CIE
 );
 
 /*==============================================================*/
 /* Index: IDX_ORD_12                                            */
 /*==============================================================*/
 create  index IDX_ORD_12 on T_ORDEN (
-ORD_FEC_INI
+ORD_FEC_DEV
 );
 
 /*==============================================================*/
 /* Index: IDX_ORD_13                                            */
 /*==============================================================*/
 create  index IDX_ORD_13 on T_ORDEN (
-ORD_FEC_VEN
+ORD_FEC_LIQ
 );
 
 /*==============================================================*/
 /* Index: IDX_ORD_14                                            */
 /*==============================================================*/
-create  index IDX_ORD_14 on T_ORDEN (
-ORD_FEC_CIE
-);
-
-/*==============================================================*/
-/* Index: IDX_ORD_15                                            */
-/*==============================================================*/
-create  index IDX_ORD_15 on T_ORDEN (
-ORD_FEC_DEV
-);
-
-/*==============================================================*/
-/* Index: IDX_ORD_16                                            */
-/*==============================================================*/
-create  index IDX_ORD_16 on T_ORDEN (
-ORD_FEC_LIQ
-);
-
-/*==============================================================*/
-/* Index: IDX_ORD_17                                            */
-/*==============================================================*/
-create unique index IDX_ORD_17 on T_ORDEN (
+create unique index IDX_ORD_14 on T_ORDEN (
 ORD_COD_TIP_DOC,
 ORD_SERIE_DOC,
 ORD_NUM_DOC
@@ -1094,6 +1070,34 @@ PARAM_COD
 create  index IDX_PARAM_02 on T_PARAMETRO (
 PARAM_REF
 );
+
+/*==============================================================*/
+/* Table: T_PROCESO                                             */
+/*==============================================================*/
+create table T_PROCESO (
+   PROC_ID              SERIAL               not null,
+   PROC_TIP             CHAR(1)              not null default '1',
+   PROC_FEC_DESDE       TIMESTAMP            not null default '1900-01-01 01:01:01',
+   PROC_FEC_HASTA       TIMESTAMP            not null default '1900-01-01 01:01:01',
+   PROC_CNT_REG_X_BLOQUE INT4                 not null default 0,
+   PROC_NUM_REG_TOT     INT4                 not null default 0,
+   PROC_NUM_REG_PRO     INT4                 not null default 0,
+   PROC_NUM_REG_REC     INT4                 not null default 0,
+   PROC_FEC_INI         TIMESTAMP            not null default '1900-01-01 01:01:01',
+   PROC_FEC_FIN         TIMESTAMP            not null default '1900-01-01 01:01:01',
+   PROC_EST             CHAR(1)              not null default '1',
+   constraint PK_T_PROCESO primary key (PROC_ID)
+);
+
+comment on column T_PROCESO.PROC_TIP is
+'1: Carga Modelo Generico
+2: Carga Modelo Dimensional';
+
+comment on column T_PROCESO.PROC_EST is
+'1: Inciado
+2: Terminado correctamente
+3: Terminado con errores
+4: Cancelado';
 
 /*==============================================================*/
 /* Table: T_PRODUCTO                                            */
@@ -1249,7 +1253,7 @@ create table T_UBIGEO (
 /* Index: IDX_UBI_00                                            */
 /*==============================================================*/
 create  index IDX_UBI_00 on T_UBIGEO (
-
+FEC_NUM_CAM
 );
 
 /*==============================================================*/
