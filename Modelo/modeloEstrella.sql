@@ -1,4 +1,5 @@
 /*
+
 drop table dim_cliente;
 
 drop table dim_estado;
@@ -32,8 +33,12 @@ drop table fact_despacho;
 drop table fact_envio;
 
 drop table fact_orden;
+
 */
 
+/*==============================================================*/
+/* User: postgres                                               */
+/*==============================================================*/
 /*==============================================================*/
 /* Table: dim_cliente                                           */
 /*==============================================================*/
@@ -69,6 +74,9 @@ fec_num_cam          INT4                 not null default 19000101010101,
 constraint PK_DIM_CLIENTE primary key (cliente_key)
 );
 
+comment on table dim_cliente is
+'Cliente de PITS';
+
 /*==============================================================*/
 /* Table: dim_estado                                            */
 /*==============================================================*/
@@ -76,7 +84,7 @@ create table dim_estado (
 estado_key           INT4                 not null default 0,
 estado_cod_tipo      CHAR(4)              not null default '-',
 estado_desc_tipo     VARCHAR(250)         not null default '-',
-estado_cod           VARCHAR(6)          not null default '-',
+estado_cod           VARCHAR(6)           not null default '-',
 estado_desc          VARCHAR(250)         not null default '-',
 cod_ind_cam          CHAR(1)              not null default '1',
 fec_num_cam          INT4                 not null default 19000101010101,

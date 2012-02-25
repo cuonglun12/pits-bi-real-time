@@ -1,5 +1,4 @@
 /*
-
 drop index IDX_ARE_CLI_04;
 
 drop index IDX_ARE_CLI_03;
@@ -182,8 +181,6 @@ drop index IDX_PARAM_00;
 
 drop table T_PARAMETRO;
 
-drop table T_PROCESO;
-
 drop index IDX_PROD_04;
 
 drop index IDX_PROD_03;
@@ -237,7 +234,6 @@ drop index IDX_ZON_01;
 drop index IDX_ZON_00;
 
 drop table T_ZONA;
-
 */
 
 /*==============================================================*/
@@ -1049,6 +1045,11 @@ comment on column T_PARAMETRO.PARAM_COD_TIP is
 33: Distrito
 ';
 
+comment on column T_PARAMETRO.COD_IND_CAM is
+'1: Nuevo
+1: Procesado
+1: Error';
+
 /*==============================================================*/
 /* Index: IDX_PARAM_00                                          */
 /*==============================================================*/
@@ -1070,34 +1071,6 @@ PARAM_COD
 create  index IDX_PARAM_02 on T_PARAMETRO (
 PARAM_REF
 );
-
-/*==============================================================*/
-/* Table: T_PROCESO                                             */
-/*==============================================================*/
-create table T_PROCESO (
-   PROC_ID              SERIAL               not null,
-   PROC_TIP             CHAR(1)              not null default '1',
-   PROC_FEC_DESDE       TIMESTAMP            not null default '1900-01-01 01:01:01',
-   PROC_FEC_HASTA       TIMESTAMP            not null default '1900-01-01 01:01:01',
-   PROC_CNT_REG_X_BLOQUE INT4                 not null default 0,
-   PROC_NUM_REG_TOT     INT4                 not null default 0,
-   PROC_NUM_REG_PRO     INT4                 not null default 0,
-   PROC_NUM_REG_REC     INT4                 not null default 0,
-   PROC_FEC_INI         TIMESTAMP            not null default '1900-01-01 01:01:01',
-   PROC_FEC_FIN         TIMESTAMP            not null default '1900-01-01 01:01:01',
-   PROC_EST             CHAR(1)              not null default '1',
-   constraint PK_T_PROCESO primary key (PROC_ID)
-);
-
-comment on column T_PROCESO.PROC_TIP is
-'1: Carga Modelo Generico
-2: Carga Modelo Dimensional';
-
-comment on column T_PROCESO.PROC_EST is
-'1: Inciado
-2: Terminado correctamente
-3: Terminado con errores
-4: Cancelado';
 
 /*==============================================================*/
 /* Table: T_PRODUCTO                                            */
