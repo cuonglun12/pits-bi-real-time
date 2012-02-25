@@ -9,6 +9,7 @@ public class FactOrdenProcess {
 	private BeanFactory factory;
 	private int sizePage;
 	private int dateTimeFrom;
+	private int dateTimeUntil;
 	private String typeProcess;
 	
 	private int recordTotal;
@@ -39,6 +40,14 @@ public class FactOrdenProcess {
 
 	public void setDateTimeFrom(int dateTimeFrom) {
 		this.dateTimeFrom = dateTimeFrom;
+	}
+
+	public int getDateTimeUntil() {
+		return dateTimeUntil;
+	}
+
+	public void setDateTimeUntil(int dateTimeUntil) {
+		this.dateTimeUntil = dateTimeUntil;
 	}
 
 	public String getTypeProcess() {
@@ -90,10 +99,11 @@ public class FactOrdenProcess {
 	}
 
 	public FactOrdenProcess(BeanFactory factory, int sizePage,
-			int dateTimeFrom, String typeProcess) {
+			int dateTimeFrom, int dateTimeUntil, String typeProcess) {
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
+		this.dateTimeUntil = dateTimeUntil;
 		this.typeProcess = typeProcess;
 		
 		this.recordTotal = 0;
