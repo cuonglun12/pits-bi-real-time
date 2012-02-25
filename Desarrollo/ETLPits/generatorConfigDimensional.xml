@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<classPathEntry location="c:/lib/postgresql-9.0-801.jdbc4.jar" />
+	<context id="DB1" targetRuntime="MyBatis3">
+
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		
+		<jdbcConnection driverClass="org.postgresql.Driver"
+			connectionURL="jdbc:postgresql://localhost:5432/db_bi" userId="postgres"
+			password="123456">
+		</jdbcConnection>
+
+		<javaModelGenerator targetPackage="pe.com.j2techcon.bi.etl.domain.dimensional"
+			targetProject="ETLPits">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<sqlMapGenerator targetPackage="pe.com.j2techcon.bi.etl.dao.sqlmap.dimensional"
+			targetProject="ETLPits">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="pe.com.j2techcon.bi.etl.dao.dimensional" targetProject="ETLPits">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		
+		<table tableName="dim_cliente" modelType="flat" />
+		<table tableName="dim_estado" modelType="flat" />
+		<table tableName="dim_moneda" modelType="flat" />
+		<table tableName="dim_personal" modelType="flat" />
+		<table tableName="dim_producto" modelType="flat" />
+		<table tableName="dim_sede" modelType="flat" />
+		<table tableName="dim_servicio" modelType="flat" />
+		<table tableName="dim_tiempo" modelType="flat" />
+		<table tableName="dim_tipo_documento" modelType="flat" />
+		<table tableName="dim_tipo_pago" modelType="flat" />
+		<table tableName="dim_tipo_reparto" modelType="flat" />
+		<table tableName="dim_tipo_ruta" modelType="flat" />
+		<table tableName="dim_zona" modelType="flat" />
+		<table tableName="fact_cotizacion" modelType="flat" />
+		<table tableName="fact_despacho" modelType="flat" />
+		<table tableName="fact_envio" modelType="flat" />
+		<table tableName="fact_orden" modelType="flat" />
+
+	</context>
+</generatorConfiguration>
+		

@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pe.com.j2techcon.bi.etl.dao.generic.TServicioMapper" >
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.generic.TServicio" >
+    <id column="serv_id" property="servId" jdbcType="INTEGER" />
+    <result column="sev_cod" property="sevCod" jdbcType="VARCHAR" />
+    <result column="serv_cod_neg" property="servCodNeg" jdbcType="INTEGER" />
+    <result column="serv_cod_amb" property="servCodAmb" jdbcType="INTEGER" />
+    <result column="serv_des" property="servDes" jdbcType="VARCHAR" />
+    <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
+    <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    serv_id, sev_cod, serv_cod_neg, serv_cod_amb, serv_des, cod_ind_cam, fec_num_cam
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TServicioExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_servicio
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_servicio
+    where serv_id = #{servId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_servicio
+    where serv_id = #{servId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TServicioExample" >
+    delete from t_servicio
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TServicio" >
+    insert into t_servicio (serv_id, sev_cod, serv_cod_neg, 
+      serv_cod_amb, serv_des, cod_ind_cam, 
+      fec_num_cam)
+    values (#{servId,jdbcType=INTEGER}, #{sevCod,jdbcType=VARCHAR}, #{servCodNeg,jdbcType=INTEGER}, 
+      #{servCodAmb,jdbcType=INTEGER}, #{servDes,jdbcType=VARCHAR}, #{codIndCam,jdbcType=CHAR}, 
+      #{fecNumCam,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TServicio" >
+    insert into t_servicio
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="servId != null" >
+        serv_id,
+      </if>
+      <if test="sevCod != null" >
+        sev_cod,
+      </if>
+      <if test="servCodNeg != null" >
+        serv_cod_neg,
+      </if>
+      <if test="servCodAmb != null" >
+        serv_cod_amb,
+      </if>
+      <if test="servDes != null" >
+        serv_des,
+      </if>
+      <if test="codIndCam != null" >
+        cod_ind_cam,
+      </if>
+      <if test="fecNumCam != null" >
+        fec_num_cam,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="servId != null" >
+        #{servId,jdbcType=INTEGER},
+      </if>
+      <if test="sevCod != null" >
+        #{sevCod,jdbcType=VARCHAR},
+      </if>
+      <if test="servCodNeg != null" >
+        #{servCodNeg,jdbcType=INTEGER},
+      </if>
+      <if test="servCodAmb != null" >
+        #{servCodAmb,jdbcType=INTEGER},
+      </if>
+      <if test="servDes != null" >
+        #{servDes,jdbcType=VARCHAR},
+      </if>
+      <if test="codIndCam != null" >
+        #{codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="fecNumCam != null" >
+        #{fecNumCam,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TServicioExample" resultType="java.lang.Integer" >
+    select count(*) from t_servicio
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_servicio
+    <set >
+      <if test="record.servId != null" >
+        serv_id = #{record.servId,jdbcType=INTEGER},
+      </if>
+      <if test="record.sevCod != null" >
+        sev_cod = #{record.sevCod,jdbcType=VARCHAR},
+      </if>
+      <if test="record.servCodNeg != null" >
+        serv_cod_neg = #{record.servCodNeg,jdbcType=INTEGER},
+      </if>
+      <if test="record.servCodAmb != null" >
+        serv_cod_amb = #{record.servCodAmb,jdbcType=INTEGER},
+      </if>
+      <if test="record.servDes != null" >
+        serv_des = #{record.servDes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codIndCam != null" >
+        cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="record.fecNumCam != null" >
+        fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_servicio
+    set serv_id = #{record.servId,jdbcType=INTEGER},
+      sev_cod = #{record.sevCod,jdbcType=VARCHAR},
+      serv_cod_neg = #{record.servCodNeg,jdbcType=INTEGER},
+      serv_cod_amb = #{record.servCodAmb,jdbcType=INTEGER},
+      serv_des = #{record.servDes,jdbcType=VARCHAR},
+      cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
+      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TServicio" >
+    update t_servicio
+    <set >
+      <if test="sevCod != null" >
+        sev_cod = #{sevCod,jdbcType=VARCHAR},
+      </if>
+      <if test="servCodNeg != null" >
+        serv_cod_neg = #{servCodNeg,jdbcType=INTEGER},
+      </if>
+      <if test="servCodAmb != null" >
+        serv_cod_amb = #{servCodAmb,jdbcType=INTEGER},
+      </if>
+      <if test="servDes != null" >
+        serv_des = #{servDes,jdbcType=VARCHAR},
+      </if>
+      <if test="codIndCam != null" >
+        cod_ind_cam = #{codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="fecNumCam != null" >
+        fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      </if>
+    </set>
+    where serv_id = #{servId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TServicio" >
+    update t_servicio
+    set sev_cod = #{sevCod,jdbcType=VARCHAR},
+      serv_cod_neg = #{servCodNeg,jdbcType=INTEGER},
+      serv_cod_amb = #{servCodAmb,jdbcType=INTEGER},
+      serv_des = #{servDes,jdbcType=VARCHAR},
+      cod_ind_cam = #{codIndCam,jdbcType=CHAR},
+      fec_num_cam = #{fecNumCam,jdbcType=INTEGER}
+    where serv_id = #{servId,jdbcType=INTEGER}
+  </update>
+</mapper>

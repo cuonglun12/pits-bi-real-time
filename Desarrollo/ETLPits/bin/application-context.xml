@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!--      -->
+	
+	<!--bean id="log4jInitializer" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">  
+   		<property name="staticMethod" value="org.springframework.util.Log4jConfigurer.initLogging" />  
+   		<property name="arguments">  
+      		<list>  
+         		<value>log4j.properties</value>  
+      		</list>  
+   		</property>  
+	</bean--> 
+	
+	<!--      -->
+
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"><property name="location"><value>jdbc.properties</value></property></bean>
+
+	<!--      -->
+	<bean id="dataSourceControl" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"><property name="driverClassName" value="${database.control.driverClassName}" /><property name="url" value="${database.control.url}" /><property name="username" value="${database.control.username}" /><property name="password" value="${database.control.password}" /></bean>
+	<bean id="dataSourceGeneric" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"><property name="driverClassName" value="${database.generic.driverClassName}" /><property name="url" value="${database.generic.url}" /><property name="username" value="${database.generic.username}" /><property name="password" value="${database.generic.password}" /></bean>
+	<bean id="dataSourceDimensional" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"><property name="driverClassName" value="${database.dimensional.driverClassName}" /><property name="url" value="${database.dimensional.url}" /><property name="username" value="${database.dimensional.username}" /><property name="password" value="${database.dimensional.password}" /></bean>
+
+	<!--      -->
+	<bean id="transactionManagerControl" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"><property name="dataSource" ref="dataSourceControl" /></bean>
+	<bean id="transactionManagerGeneric" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"><property name="dataSource" ref="dataSourceGeneric" /></bean>
+	<bean id="transactionManagerDimensional" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"><property name="dataSource" ref="dataSourceDimensional" /></bean>
+
+
+	<!--      -->
+	<bean id="sqlSessionFactoryControl" class="org.mybatis.spring.SqlSessionFactoryBean"><property name="dataSource" ref="dataSourceControl" /><property name="configLocation" value="mybatis-config-control.xml" /></bean>
+	<bean id="sqlSessionFactoryGeneric" class="org.mybatis.spring.SqlSessionFactoryBean"><property name="dataSource" ref="dataSourceGeneric" /><property name="configLocation" value="mybatis-config-generic.xml" /></bean>
+	<bean id="sqlSessionFactoryDimensional" class="org.mybatis.spring.SqlSessionFactoryBean"><property name="dataSource" ref="dataSourceDimensional" /><property name="configLocation" value="mybatis-config-dimensional.xml" /></bean>
+
+	<!--      -->
+	
+	<bean id="tProcesoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryControl" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.control.TProcesoMapper" /></bean>		
+						
+	<bean id="dimClienteMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.DimClienteMapper" /></bean>		
+	<bean id="dimEstadoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.DimEstadoMapper" /></bean>		
+	<bean id="dimMonedaMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.DimMonedaMapper" /></bean>		
+	<bean id="dimPersonalMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.DimPersonalMapper" /></bean>		
+	<bean id="dimProductoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.DimProductoMapper" /></bean>		
+	<bean id="dimSedeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.DimSedeMapper" /></bean>		
+	<bean id="dimServicioMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.DimServicioMapper" /></bean>		
+	<bean id="dimTiempoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.DimTiempoMapper" /></bean>		
+	<bean id="dimTipoDocumentoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.DimTipoDocumentoMapper" /></bean>		
+	<bean id="dimTipoPagoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.DimTipoPagoMapper" /></bean>		
+	<bean id="dimTipoRepartoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.DimTipoRepartoMapper" /></bean>		
+	<bean id="dimTipoRutaMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.DimTipoRutaMapper" /></bean>		
+	<bean id="dimZonaMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.DimZonaMapper" /></bean>		
+	<bean id="factCotizacionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.FactCotizacionMapper" /></bean>		
+	<bean id="factDespachoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.FactDespachoMapper" /></bean>		
+	<bean id="factEnvioMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.FactEnvioMapper" /></bean>		
+	<bean id="factOrdenMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.FactOrdenMapper" /></bean>		
+							
+	<bean id="tAreaClienteMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryGeneric" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.generic.TAreaClienteMapper" /></bean>		
+	<bean id="tCargoDespachoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryGeneric" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.generic.TCargoDespachoMapper" /></bean>		
+	<bean id="tCargoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryGeneric" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.generic.TCargoMapper" /></bean>		
+	<bean id="tClienteMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryGeneric" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.generic.TClienteMapper" /></bean>		
+	<bean id="tCotizacionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryGeneric" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.generic.TCotizacionMapper" /></bean>		
+	<bean id="tDespachoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryGeneric" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.generic.TDespachoMapper" /></bean>		
+	<bean id="tEmpleadoCategoriaMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryGeneric" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.generic.TEmpleadoCategoriaMapper" /></bean>		
+	<bean id="tEmpleadoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryGeneric" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.generic.TEmpleadoMapper" /></bean>		
+	<bean id="tOrdenMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryGeneric" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.generic.TOrdenMapper" /></bean>		
+	<bean id="tParametroMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryGeneric" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.generic.TParametroMapper" /></bean>		
+	<bean id="tProductoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryGeneric" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.generic.TProductoMapper" /></bean>		
+	<bean id="tSedeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryGeneric" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.generic.TSedeMapper" /></bean>		
+	<bean id="tServicioMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryGeneric" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.generic.TServicioMapper" /></bean>		
+	<bean id="tUbigeoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryGeneric" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.generic.TUbigeoMapper" /></bean>		
+	<bean id="tZonaMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryGeneric" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.generic.TZonaMapper" /></bean>		
+
+	<!--      -->
+	<bean id="tProcesoManager" class="pe.com.j2techcon.bi.etl.logic.control.TProcesoManager"><property name="tProcesoMapper" ref="tProcesoMapper" /></bean>
+									
+	<bean id="dimClienteManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.DimClienteManager"><property name="dimClienteMapper" ref="dimClienteMapper" /></bean>
+	<bean id="dimEstadoManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.DimEstadoManager"><property name="dimEstadoMapper" ref="dimEstadoMapper" /></bean>
+	<bean id="dimMonedaManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.DimMonedaManager"><property name="dimMonedaMapper" ref="dimMonedaMapper" /></bean>
+	<bean id="dimPersonalManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.DimPersonalManager"><property name="dimPersonalMapper" ref="dimPersonalMapper" /></bean>
+	<bean id="dimProductoManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.DimProductoManager"><property name="dimProductoMapper" ref="dimProductoMapper" /></bean>
+	<bean id="dimSedeManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.DimSedeManager"><property name="dimSedeMapper" ref="dimSedeMapper" /></bean>
+	<bean id="dimServicioManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.DimServicioManager"><property name="dimServicioMapper" ref="dimServicioMapper" /></bean>
+	<bean id="dimTiempoManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.DimTiempoManager"><property name="dimTiempoMapper" ref="dimTiempoMapper" /></bean>
+	<bean id="dimTipoDocumentoManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.DimTipoDocumentoManager"><property name="dimTipoDocumentoMapper" ref="dimTipoDocumentoMapper" /></bean>
+	<bean id="dimTipoPagoManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.DimTipoPagoManager"><property name="dimTipoPagoMapper" ref="dimTipoPagoMapper" /></bean>
+	<bean id="dimTipoRepartoManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.DimTipoRepartoManager"><property name="dimTipoRepartoMapper" ref="dimTipoRepartoMapper" /></bean>
+	<bean id="dimTipoRutaManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.DimTipoRutaManager"><property name="dimTipoRutaMapper" ref="dimTipoRutaMapper" /></bean>
+	<bean id="dimZonaManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.DimZonaManager"><property name="dimZonaMapper" ref="dimZonaMapper" /></bean>
+	<bean id="factCotizacionManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.FactCotizacionManager"><property name="factCotizacionMapper" ref="factCotizacionMapper" /></bean>
+	<bean id="factDespachoManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.FactDespachoManager"><property name="factDespachoMapper" ref="factDespachoMapper" /></bean>
+	<bean id="factEnvioManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.FactEnvioManager"><property name="factEnvioMapper" ref="factEnvioMapper" /></bean>
+	<bean id="factOrdenManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.FactOrdenManager"><property name="factOrdenMapper" ref="factOrdenMapper" /></bean>
+									
+	<bean id="tAreaClienteManager" class="pe.com.j2techcon.bi.etl.logic.generic.TAreaClienteManager"><property name="tAreaClienteMapper" ref="tAreaClienteMapper" /></bean>
+	<bean id="tCargoDespachoManager" class="pe.com.j2techcon.bi.etl.logic.generic.TCargoDespachoManager"><property name="tCargoDespachoMapper" ref="tCargoDespachoMapper" /></bean>
+	<bean id="tCargoManager" class="pe.com.j2techcon.bi.etl.logic.generic.TCargoManager"><property name="tCargoMapper" ref="tCargoMapper" /></bean>
+	<bean id="tClienteManager" class="pe.com.j2techcon.bi.etl.logic.generic.TClienteManager"><property name="tClienteMapper" ref="tClienteMapper" /></bean>
+	<bean id="tCotizacionManager" class="pe.com.j2techcon.bi.etl.logic.generic.TCotizacionManager"><property name="tCotizacionMapper" ref="tCotizacionMapper" /></bean>
+	<bean id="tDespachoManager" class="pe.com.j2techcon.bi.etl.logic.generic.TDespachoManager"><property name="tDespachoMapper" ref="tDespachoMapper" /></bean>
+	<bean id="tEmpleadoCategoriaManager" class="pe.com.j2techcon.bi.etl.logic.generic.TEmpleadoCategoriaManager"><property name="tEmpleadoCategoriaMapper" ref="tEmpleadoCategoriaMapper" /></bean>
+	<bean id="tEmpleadoManager" class="pe.com.j2techcon.bi.etl.logic.generic.TEmpleadoManager"><property name="tEmpleadoMapper" ref="tEmpleadoMapper" /></bean>
+	<bean id="tOrdenManager" class="pe.com.j2techcon.bi.etl.logic.generic.TOrdenManager"><property name="tOrdenMapper" ref="tOrdenMapper" /></bean>
+	<bean id="tParametroManager" class="pe.com.j2techcon.bi.etl.logic.generic.TParametroManager"><property name="tParametroMapper" ref="tParametroMapper" /></bean>
+	<bean id="tProductoManager" class="pe.com.j2techcon.bi.etl.logic.generic.TProductoManager"><property name="tProductoMapper" ref="tProductoMapper" /></bean>
+	<bean id="tSedeManager" class="pe.com.j2techcon.bi.etl.logic.generic.TSedeManager"><property name="tSedeMapper" ref="tSedeMapper" /></bean>
+	<bean id="tServicioManager" class="pe.com.j2techcon.bi.etl.logic.generic.TServicioManager"><property name="tServicioMapper" ref="tServicioMapper" /></bean>
+	<bean id="tUbigeoManager" class="pe.com.j2techcon.bi.etl.logic.generic.TUbigeoManager"><property name="tUbigeoMapper" ref="tUbigeoMapper" /></bean>
+	<bean id="tZonaManager" class="pe.com.j2techcon.bi.etl.logic.generic.TZonaManager"><property name="tZonaMapper" ref="tZonaMapper" /></bean>
+
+	<!--      -->
+
+	<aop:config>
+		<aop:advisor pointcut="execution(* *..TProcesoManager.*(..))" advice-ref="simpleTxAdviceControl" />
+		
+		<aop:advisor pointcut="execution(* *..DimClienteManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
+		<aop:advisor pointcut="execution(* *..DimEstadoManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
+		<aop:advisor pointcut="execution(* *..DimMonedaManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
+		<aop:advisor pointcut="execution(* *..DimPersonalManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
+		<aop:advisor pointcut="execution(* *..DimProductoManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
+		<aop:advisor pointcut="execution(* *..DimSedeManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
+		<aop:advisor pointcut="execution(* *..DimServicioManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
+		<aop:advisor pointcut="execution(* *..DimTiempoManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
+		<aop:advisor pointcut="execution(* *..DimTipoDocumentoManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
+		<aop:advisor pointcut="execution(* *..DimTipoPagoManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
+		<aop:advisor pointcut="execution(* *..DimTipoRepartoManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
+		<aop:advisor pointcut="execution(* *..DimTipoRutaManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
+		<aop:advisor pointcut="execution(* *..DimZonaManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
+		<aop:advisor pointcut="execution(* *..FactCotizacionManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
+		<aop:advisor pointcut="execution(* *..FactDespachoManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
+		<aop:advisor pointcut="execution(* *..FactEnvioManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
+		<aop:advisor pointcut="execution(* *..FactOrdenManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
+				
+		<aop:advisor pointcut="execution(* *..TAreaClienteManager.*(..))" advice-ref="simpleTxAdviceGeneric" />
+		<aop:advisor pointcut="execution(* *..TCargoDespachoManager.*(..))" advice-ref="simpleTxAdviceGeneric" />
+		<aop:advisor pointcut="execution(* *..TCargoManager.*(..))" advice-ref="simpleTxAdviceGeneric" />
+		<aop:advisor pointcut="execution(* *..TClienteManager.*(..))" advice-ref="simpleTxAdviceGeneric" />
+		<aop:advisor pointcut="execution(* *..TCotizacionManager.*(..))" advice-ref="simpleTxAdviceGeneric" />
+		<aop:advisor pointcut="execution(* *..TDespachoManager.*(..))" advice-ref="simpleTxAdviceGeneric" />
+		<aop:advisor pointcut="execution(* *..TEmpleadoCategoriaManager.*(..))" advice-ref="simpleTxAdviceGeneric" />
+		<aop:advisor pointcut="execution(* *..TEmpleadoManager.*(..))" advice-ref="simpleTxAdviceGeneric" />
+		<aop:advisor pointcut="execution(* *..TOrdenManager.*(..))" advice-ref="simpleTxAdviceGeneric" />
+		<aop:advisor pointcut="execution(* *..TParametroManager.*(..))" advice-ref="simpleTxAdviceGeneric" />
+		<aop:advisor pointcut="execution(* *..TProductoManager.*(..))" advice-ref="simpleTxAdviceGeneric" />
+		<aop:advisor pointcut="execution(* *..TSedeManager.*(..))" advice-ref="simpleTxAdviceGeneric" />
+		<aop:advisor pointcut="execution(* *..TServicioManager.*(..))" advice-ref="simpleTxAdviceGeneric" />
+		<aop:advisor pointcut="execution(* *..TUbigeoManager.*(..))" advice-ref="simpleTxAdviceGeneric" />
+		<aop:advisor pointcut="execution(* *..TZonaManager.*(..))" advice-ref="simpleTxAdviceGeneric" />
+	</aop:config>
+
+	<!--      -->
+
+	<tx:advice id="simpleTxAdviceControl" transaction-manager="transactionManagerControl">
+		<tx:attributes>
+			<tx:method name="insert*" />
+			<tx:method name="update*" />
+			<tx:method name="create*" />
+			<tx:method name="delete*" />
+			<tx:method name="*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<tx:advice id="simpleTxAdviceDimensional" transaction-manager="transactionManagerDimensional">
+		<tx:attributes>
+			<tx:method name="insert*" />
+			<tx:method name="update*" />
+			<tx:method name="create*" />
+			<tx:method name="delete*" />
+			<tx:method name="*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<tx:advice id="simpleTxAdviceGeneric" transaction-manager="transactionManagerGeneric">
+		<tx:attributes>
+			<tx:method name="insert*" />
+			<tx:method name="update*" />
+			<tx:method name="create*" />
+			<tx:method name="delete*" />
+			<tx:method name="*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+
+</beans>

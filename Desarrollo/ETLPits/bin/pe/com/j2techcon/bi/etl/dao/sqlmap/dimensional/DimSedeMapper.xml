@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pe.com.j2techcon.bi.etl.dao.dimensional.DimSedeMapper" >
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.dimensional.DimSede" >
+    <id column="sede_key" property="sedeKey" jdbcType="INTEGER" />
+    <result column="sede_cod" property="sedeCod" jdbcType="VARCHAR" />
+    <result column="sede_cod_tipo" property="sedeCodTipo" jdbcType="INTEGER" />
+    <result column="sede_desc_tipo" property="sedeDescTipo" jdbcType="VARCHAR" />
+    <result column="sede_cod_pais" property="sedeCodPais" jdbcType="INTEGER" />
+    <result column="sede_desc_pais" property="sedeDescPais" jdbcType="VARCHAR" />
+    <result column="sede_cod_departamento" property="sedeCodDepartamento" jdbcType="INTEGER" />
+    <result column="sede_desc_departamento" property="sedeDescDepartamento" jdbcType="VARCHAR" />
+    <result column="sede_cod_provincia" property="sedeCodProvincia" jdbcType="INTEGER" />
+    <result column="sede_desc_provincia" property="sedeDescProvincia" jdbcType="VARCHAR" />
+    <result column="sede_cod_distrito" property="sedeCodDistrito" jdbcType="INTEGER" />
+    <result column="sede_desc_distrito" property="sedeDescDistrito" jdbcType="VARCHAR" />
+    <result column="sede_desc" property="sedeDesc" jdbcType="VARCHAR" />
+    <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
+    <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    sede_key, sede_cod, sede_cod_tipo, sede_desc_tipo, sede_cod_pais, sede_desc_pais, 
+    sede_cod_departamento, sede_desc_departamento, sede_cod_provincia, sede_desc_provincia, 
+    sede_cod_distrito, sede_desc_distrito, sede_desc, cod_ind_cam, fec_num_cam
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimSedeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dim_sede
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dim_sede
+    where sede_key = #{sedeKey,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dim_sede
+    where sede_key = #{sedeKey,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimSedeExample" >
+    delete from dim_sede
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimSede" >
+    insert into dim_sede (sede_key, sede_cod, sede_cod_tipo, 
+      sede_desc_tipo, sede_cod_pais, sede_desc_pais, 
+      sede_cod_departamento, sede_desc_departamento, 
+      sede_cod_provincia, sede_desc_provincia, sede_cod_distrito, 
+      sede_desc_distrito, sede_desc, cod_ind_cam, 
+      fec_num_cam)
+    values (#{sedeKey,jdbcType=INTEGER}, #{sedeCod,jdbcType=VARCHAR}, #{sedeCodTipo,jdbcType=INTEGER}, 
+      #{sedeDescTipo,jdbcType=VARCHAR}, #{sedeCodPais,jdbcType=INTEGER}, #{sedeDescPais,jdbcType=VARCHAR}, 
+      #{sedeCodDepartamento,jdbcType=INTEGER}, #{sedeDescDepartamento,jdbcType=VARCHAR}, 
+      #{sedeCodProvincia,jdbcType=INTEGER}, #{sedeDescProvincia,jdbcType=VARCHAR}, #{sedeCodDistrito,jdbcType=INTEGER}, 
+      #{sedeDescDistrito,jdbcType=VARCHAR}, #{sedeDesc,jdbcType=VARCHAR}, #{codIndCam,jdbcType=CHAR}, 
+      #{fecNumCam,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimSede" >
+    insert into dim_sede
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sedeKey != null" >
+        sede_key,
+      </if>
+      <if test="sedeCod != null" >
+        sede_cod,
+      </if>
+      <if test="sedeCodTipo != null" >
+        sede_cod_tipo,
+      </if>
+      <if test="sedeDescTipo != null" >
+        sede_desc_tipo,
+      </if>
+      <if test="sedeCodPais != null" >
+        sede_cod_pais,
+      </if>
+      <if test="sedeDescPais != null" >
+        sede_desc_pais,
+      </if>
+      <if test="sedeCodDepartamento != null" >
+        sede_cod_departamento,
+      </if>
+      <if test="sedeDescDepartamento != null" >
+        sede_desc_departamento,
+      </if>
+      <if test="sedeCodProvincia != null" >
+        sede_cod_provincia,
+      </if>
+      <if test="sedeDescProvincia != null" >
+        sede_desc_provincia,
+      </if>
+      <if test="sedeCodDistrito != null" >
+        sede_cod_distrito,
+      </if>
+      <if test="sedeDescDistrito != null" >
+        sede_desc_distrito,
+      </if>
+      <if test="sedeDesc != null" >
+        sede_desc,
+      </if>
+      <if test="codIndCam != null" >
+        cod_ind_cam,
+      </if>
+      <if test="fecNumCam != null" >
+        fec_num_cam,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sedeKey != null" >
+        #{sedeKey,jdbcType=INTEGER},
+      </if>
+      <if test="sedeCod != null" >
+        #{sedeCod,jdbcType=VARCHAR},
+      </if>
+      <if test="sedeCodTipo != null" >
+        #{sedeCodTipo,jdbcType=INTEGER},
+      </if>
+      <if test="sedeDescTipo != null" >
+        #{sedeDescTipo,jdbcType=VARCHAR},
+      </if>
+      <if test="sedeCodPais != null" >
+        #{sedeCodPais,jdbcType=INTEGER},
+      </if>
+      <if test="sedeDescPais != null" >
+        #{sedeDescPais,jdbcType=VARCHAR},
+      </if>
+      <if test="sedeCodDepartamento != null" >
+        #{sedeCodDepartamento,jdbcType=INTEGER},
+      </if>
+      <if test="sedeDescDepartamento != null" >
+        #{sedeDescDepartamento,jdbcType=VARCHAR},
+      </if>
+      <if test="sedeCodProvincia != null" >
+        #{sedeCodProvincia,jdbcType=INTEGER},
+      </if>
+      <if test="sedeDescProvincia != null" >
+        #{sedeDescProvincia,jdbcType=VARCHAR},
+      </if>
+      <if test="sedeCodDistrito != null" >
+        #{sedeCodDistrito,jdbcType=INTEGER},
+      </if>
+      <if test="sedeDescDistrito != null" >
+        #{sedeDescDistrito,jdbcType=VARCHAR},
+      </if>
+      <if test="sedeDesc != null" >
+        #{sedeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="codIndCam != null" >
+        #{codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="fecNumCam != null" >
+        #{fecNumCam,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimSedeExample" resultType="java.lang.Integer" >
+    select count(*) from dim_sede
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update dim_sede
+    <set >
+      <if test="record.sedeKey != null" >
+        sede_key = #{record.sedeKey,jdbcType=INTEGER},
+      </if>
+      <if test="record.sedeCod != null" >
+        sede_cod = #{record.sedeCod,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sedeCodTipo != null" >
+        sede_cod_tipo = #{record.sedeCodTipo,jdbcType=INTEGER},
+      </if>
+      <if test="record.sedeDescTipo != null" >
+        sede_desc_tipo = #{record.sedeDescTipo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sedeCodPais != null" >
+        sede_cod_pais = #{record.sedeCodPais,jdbcType=INTEGER},
+      </if>
+      <if test="record.sedeDescPais != null" >
+        sede_desc_pais = #{record.sedeDescPais,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sedeCodDepartamento != null" >
+        sede_cod_departamento = #{record.sedeCodDepartamento,jdbcType=INTEGER},
+      </if>
+      <if test="record.sedeDescDepartamento != null" >
+        sede_desc_departamento = #{record.sedeDescDepartamento,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sedeCodProvincia != null" >
+        sede_cod_provincia = #{record.sedeCodProvincia,jdbcType=INTEGER},
+      </if>
+      <if test="record.sedeDescProvincia != null" >
+        sede_desc_provincia = #{record.sedeDescProvincia,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sedeCodDistrito != null" >
+        sede_cod_distrito = #{record.sedeCodDistrito,jdbcType=INTEGER},
+      </if>
+      <if test="record.sedeDescDistrito != null" >
+        sede_desc_distrito = #{record.sedeDescDistrito,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sedeDesc != null" >
+        sede_desc = #{record.sedeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codIndCam != null" >
+        cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="record.fecNumCam != null" >
+        fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update dim_sede
+    set sede_key = #{record.sedeKey,jdbcType=INTEGER},
+      sede_cod = #{record.sedeCod,jdbcType=VARCHAR},
+      sede_cod_tipo = #{record.sedeCodTipo,jdbcType=INTEGER},
+      sede_desc_tipo = #{record.sedeDescTipo,jdbcType=VARCHAR},
+      sede_cod_pais = #{record.sedeCodPais,jdbcType=INTEGER},
+      sede_desc_pais = #{record.sedeDescPais,jdbcType=VARCHAR},
+      sede_cod_departamento = #{record.sedeCodDepartamento,jdbcType=INTEGER},
+      sede_desc_departamento = #{record.sedeDescDepartamento,jdbcType=VARCHAR},
+      sede_cod_provincia = #{record.sedeCodProvincia,jdbcType=INTEGER},
+      sede_desc_provincia = #{record.sedeDescProvincia,jdbcType=VARCHAR},
+      sede_cod_distrito = #{record.sedeCodDistrito,jdbcType=INTEGER},
+      sede_desc_distrito = #{record.sedeDescDistrito,jdbcType=VARCHAR},
+      sede_desc = #{record.sedeDesc,jdbcType=VARCHAR},
+      cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
+      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimSede" >
+    update dim_sede
+    <set >
+      <if test="sedeCod != null" >
+        sede_cod = #{sedeCod,jdbcType=VARCHAR},
+      </if>
+      <if test="sedeCodTipo != null" >
+        sede_cod_tipo = #{sedeCodTipo,jdbcType=INTEGER},
+      </if>
+      <if test="sedeDescTipo != null" >
+        sede_desc_tipo = #{sedeDescTipo,jdbcType=VARCHAR},
+      </if>
+      <if test="sedeCodPais != null" >
+        sede_cod_pais = #{sedeCodPais,jdbcType=INTEGER},
+      </if>
+      <if test="sedeDescPais != null" >
+        sede_desc_pais = #{sedeDescPais,jdbcType=VARCHAR},
+      </if>
+      <if test="sedeCodDepartamento != null" >
+        sede_cod_departamento = #{sedeCodDepartamento,jdbcType=INTEGER},
+      </if>
+      <if test="sedeDescDepartamento != null" >
+        sede_desc_departamento = #{sedeDescDepartamento,jdbcType=VARCHAR},
+      </if>
+      <if test="sedeCodProvincia != null" >
+        sede_cod_provincia = #{sedeCodProvincia,jdbcType=INTEGER},
+      </if>
+      <if test="sedeDescProvincia != null" >
+        sede_desc_provincia = #{sedeDescProvincia,jdbcType=VARCHAR},
+      </if>
+      <if test="sedeCodDistrito != null" >
+        sede_cod_distrito = #{sedeCodDistrito,jdbcType=INTEGER},
+      </if>
+      <if test="sedeDescDistrito != null" >
+        sede_desc_distrito = #{sedeDescDistrito,jdbcType=VARCHAR},
+      </if>
+      <if test="sedeDesc != null" >
+        sede_desc = #{sedeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="codIndCam != null" >
+        cod_ind_cam = #{codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="fecNumCam != null" >
+        fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      </if>
+    </set>
+    where sede_key = #{sedeKey,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimSede" >
+    update dim_sede
+    set sede_cod = #{sedeCod,jdbcType=VARCHAR},
+      sede_cod_tipo = #{sedeCodTipo,jdbcType=INTEGER},
+      sede_desc_tipo = #{sedeDescTipo,jdbcType=VARCHAR},
+      sede_cod_pais = #{sedeCodPais,jdbcType=INTEGER},
+      sede_desc_pais = #{sedeDescPais,jdbcType=VARCHAR},
+      sede_cod_departamento = #{sedeCodDepartamento,jdbcType=INTEGER},
+      sede_desc_departamento = #{sedeDescDepartamento,jdbcType=VARCHAR},
+      sede_cod_provincia = #{sedeCodProvincia,jdbcType=INTEGER},
+      sede_desc_provincia = #{sedeDescProvincia,jdbcType=VARCHAR},
+      sede_cod_distrito = #{sedeCodDistrito,jdbcType=INTEGER},
+      sede_desc_distrito = #{sedeDescDistrito,jdbcType=VARCHAR},
+      sede_desc = #{sedeDesc,jdbcType=VARCHAR},
+      cod_ind_cam = #{codIndCam,jdbcType=CHAR},
+      fec_num_cam = #{fecNumCam,jdbcType=INTEGER}
+    where sede_key = #{sedeKey,jdbcType=INTEGER}
+  </update>
+</mapper>

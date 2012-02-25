@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//www.mybatis.org//DTD Config 3.0//EN"
+    "http://www.mybatis.org/dtd/mybatis-3-config.dtd">
+<!--
+    Copyright 2010 The myBatis Team
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<configuration>
+	<typeAliases>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TAreaCliente" alias="TAreaCliente"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TAreaClienteExample" alias="TAreaClienteExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TCargo" alias="TCargo"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TCargoDespacho" alias="TCargoDespacho"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TCargoDespachoExample" alias="TCargoDespachoExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TCargoExample" alias="TCargoExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TCliente" alias="TCliente"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TClienteExample" alias="TClienteExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TCotizacion" alias="TCotizacion"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TCotizacionExample" alias="TCotizacionExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TDespacho" alias="TDespacho"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TDespachoExample" alias="TDespachoExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TEmpleado" alias="TEmpleado"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TEmpleadoCategoria" alias="TEmpleadoCategoria"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TEmpleadoCategoriaExample" alias="TEmpleadoCategoriaExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TEmpleadoExample" alias="TEmpleadoExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TOrden" alias="TOrden"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TOrdenExample" alias="TOrdenExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TParametro" alias="TParametro"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TParametroExample" alias="TParametroExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TProducto" alias="TProducto"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TProductoExample" alias="TProductoExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TSede" alias="TSede"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TSedeExample" alias="TSedeExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TServicio" alias="TServicio"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TServicioExample" alias="TServicioExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TUbigeo" alias="TUbigeo"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TUbigeoExample" alias="TUbigeoExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TZona" alias="TZona"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.generic.TZonaExample" alias="TZonaExample"/>
+	</typeAliases>
+    <mappers>
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/generic/TAreaClienteMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/generic/TCargoDespachoMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/generic/TCargoMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/generic/TClienteMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/generic/TCotizacionMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/generic/TDespachoMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/generic/TEmpleadoCategoriaMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/generic/TEmpleadoMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/generic/TOrdenMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/generic/TParametroMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/generic/TProductoMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/generic/TSedeMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/generic/TServicioMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/generic/TUbigeoMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/generic/TZonaMapper.xml" />
+    </mappers>
+</configuration>

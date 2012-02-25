@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pe.com.j2techcon.bi.etl.dao.generic.TParametroMapper" >
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.generic.TParametro" >
+    <id column="param_id" property="paramId" jdbcType="INTEGER" />
+    <result column="param_cod_tip" property="paramCodTip" jdbcType="INTEGER" />
+    <result column="param_cod" property="paramCod" jdbcType="VARCHAR" />
+    <result column="param_des" property="paramDes" jdbcType="VARCHAR" />
+    <result column="param_ref" property="paramRef" jdbcType="INTEGER" />
+    <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+    <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    param_id, param_cod_tip, param_cod, param_des, param_ref, fec_num_cam, cod_ind_cam
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TParametroExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_parametro
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_parametro
+    where param_id = #{paramId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_parametro
+    where param_id = #{paramId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TParametroExample" >
+    delete from t_parametro
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TParametro" >
+    insert into t_parametro (param_id, param_cod_tip, param_cod, 
+      param_des, param_ref, fec_num_cam, 
+      cod_ind_cam)
+    values (#{paramId,jdbcType=INTEGER}, #{paramCodTip,jdbcType=INTEGER}, #{paramCod,jdbcType=VARCHAR}, 
+      #{paramDes,jdbcType=VARCHAR}, #{paramRef,jdbcType=INTEGER}, #{fecNumCam,jdbcType=INTEGER}, 
+      #{codIndCam,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TParametro" >
+    insert into t_parametro
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="paramId != null" >
+        param_id,
+      </if>
+      <if test="paramCodTip != null" >
+        param_cod_tip,
+      </if>
+      <if test="paramCod != null" >
+        param_cod,
+      </if>
+      <if test="paramDes != null" >
+        param_des,
+      </if>
+      <if test="paramRef != null" >
+        param_ref,
+      </if>
+      <if test="fecNumCam != null" >
+        fec_num_cam,
+      </if>
+      <if test="codIndCam != null" >
+        cod_ind_cam,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="paramId != null" >
+        #{paramId,jdbcType=INTEGER},
+      </if>
+      <if test="paramCodTip != null" >
+        #{paramCodTip,jdbcType=INTEGER},
+      </if>
+      <if test="paramCod != null" >
+        #{paramCod,jdbcType=VARCHAR},
+      </if>
+      <if test="paramDes != null" >
+        #{paramDes,jdbcType=VARCHAR},
+      </if>
+      <if test="paramRef != null" >
+        #{paramRef,jdbcType=INTEGER},
+      </if>
+      <if test="fecNumCam != null" >
+        #{fecNumCam,jdbcType=INTEGER},
+      </if>
+      <if test="codIndCam != null" >
+        #{codIndCam,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TParametroExample" resultType="java.lang.Integer" >
+    select count(*) from t_parametro
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_parametro
+    <set >
+      <if test="record.paramId != null" >
+        param_id = #{record.paramId,jdbcType=INTEGER},
+      </if>
+      <if test="record.paramCodTip != null" >
+        param_cod_tip = #{record.paramCodTip,jdbcType=INTEGER},
+      </if>
+      <if test="record.paramCod != null" >
+        param_cod = #{record.paramCod,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paramDes != null" >
+        param_des = #{record.paramDes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paramRef != null" >
+        param_ref = #{record.paramRef,jdbcType=INTEGER},
+      </if>
+      <if test="record.fecNumCam != null" >
+        fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      </if>
+      <if test="record.codIndCam != null" >
+        cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_parametro
+    set param_id = #{record.paramId,jdbcType=INTEGER},
+      param_cod_tip = #{record.paramCodTip,jdbcType=INTEGER},
+      param_cod = #{record.paramCod,jdbcType=VARCHAR},
+      param_des = #{record.paramDes,jdbcType=VARCHAR},
+      param_ref = #{record.paramRef,jdbcType=INTEGER},
+      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      cod_ind_cam = #{record.codIndCam,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TParametro" >
+    update t_parametro
+    <set >
+      <if test="paramCodTip != null" >
+        param_cod_tip = #{paramCodTip,jdbcType=INTEGER},
+      </if>
+      <if test="paramCod != null" >
+        param_cod = #{paramCod,jdbcType=VARCHAR},
+      </if>
+      <if test="paramDes != null" >
+        param_des = #{paramDes,jdbcType=VARCHAR},
+      </if>
+      <if test="paramRef != null" >
+        param_ref = #{paramRef,jdbcType=INTEGER},
+      </if>
+      <if test="fecNumCam != null" >
+        fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      </if>
+      <if test="codIndCam != null" >
+        cod_ind_cam = #{codIndCam,jdbcType=CHAR},
+      </if>
+    </set>
+    where param_id = #{paramId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TParametro" >
+    update t_parametro
+    set param_cod_tip = #{paramCodTip,jdbcType=INTEGER},
+      param_cod = #{paramCod,jdbcType=VARCHAR},
+      param_des = #{paramDes,jdbcType=VARCHAR},
+      param_ref = #{paramRef,jdbcType=INTEGER},
+      fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      cod_ind_cam = #{codIndCam,jdbcType=CHAR}
+    where param_id = #{paramId,jdbcType=INTEGER}
+  </update>
+</mapper>

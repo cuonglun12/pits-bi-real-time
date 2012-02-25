@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pe.com.j2techcon.bi.etl.dao.generic.TEmpleadoMapper" >
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.generic.TEmpleado" >
+    <id column="emp_id" property="empId" jdbcType="INTEGER" />
+    <result column="emp_cod" property="empCod" jdbcType="VARCHAR" />
+    <result column="emp_cod_tip_doc" property="empCodTipDoc" jdbcType="INTEGER" />
+    <result column="emp_num_tip_doc" property="empNumTipDoc" jdbcType="VARCHAR" />
+    <result column="emp_des_ape_pat" property="empDesApePat" jdbcType="VARCHAR" />
+    <result column="emp_des_ape_mat" property="empDesApeMat" jdbcType="VARCHAR" />
+    <result column="emp_des_nom" property="empDesNom" jdbcType="VARCHAR" />
+    <result column="emp_fec_nac" property="empFecNac" jdbcType="DATE" />
+    <result column="emp_sex" property="empSex" jdbcType="CHAR" />
+    <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
+    <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    emp_id, emp_cod, emp_cod_tip_doc, emp_num_tip_doc, emp_des_ape_pat, emp_des_ape_mat, 
+    emp_des_nom, emp_fec_nac, emp_sex, cod_ind_cam, fec_num_cam
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TEmpleadoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_empleado
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_empleado
+    where emp_id = #{empId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_empleado
+    where emp_id = #{empId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TEmpleadoExample" >
+    delete from t_empleado
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TEmpleado" >
+    insert into t_empleado (emp_id, emp_cod, emp_cod_tip_doc, 
+      emp_num_tip_doc, emp_des_ape_pat, emp_des_ape_mat, 
+      emp_des_nom, emp_fec_nac, emp_sex, 
+      cod_ind_cam, fec_num_cam)
+    values (#{empId,jdbcType=INTEGER}, #{empCod,jdbcType=VARCHAR}, #{empCodTipDoc,jdbcType=INTEGER}, 
+      #{empNumTipDoc,jdbcType=VARCHAR}, #{empDesApePat,jdbcType=VARCHAR}, #{empDesApeMat,jdbcType=VARCHAR}, 
+      #{empDesNom,jdbcType=VARCHAR}, #{empFecNac,jdbcType=DATE}, #{empSex,jdbcType=CHAR}, 
+      #{codIndCam,jdbcType=CHAR}, #{fecNumCam,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TEmpleado" >
+    insert into t_empleado
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="empId != null" >
+        emp_id,
+      </if>
+      <if test="empCod != null" >
+        emp_cod,
+      </if>
+      <if test="empCodTipDoc != null" >
+        emp_cod_tip_doc,
+      </if>
+      <if test="empNumTipDoc != null" >
+        emp_num_tip_doc,
+      </if>
+      <if test="empDesApePat != null" >
+        emp_des_ape_pat,
+      </if>
+      <if test="empDesApeMat != null" >
+        emp_des_ape_mat,
+      </if>
+      <if test="empDesNom != null" >
+        emp_des_nom,
+      </if>
+      <if test="empFecNac != null" >
+        emp_fec_nac,
+      </if>
+      <if test="empSex != null" >
+        emp_sex,
+      </if>
+      <if test="codIndCam != null" >
+        cod_ind_cam,
+      </if>
+      <if test="fecNumCam != null" >
+        fec_num_cam,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="empId != null" >
+        #{empId,jdbcType=INTEGER},
+      </if>
+      <if test="empCod != null" >
+        #{empCod,jdbcType=VARCHAR},
+      </if>
+      <if test="empCodTipDoc != null" >
+        #{empCodTipDoc,jdbcType=INTEGER},
+      </if>
+      <if test="empNumTipDoc != null" >
+        #{empNumTipDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="empDesApePat != null" >
+        #{empDesApePat,jdbcType=VARCHAR},
+      </if>
+      <if test="empDesApeMat != null" >
+        #{empDesApeMat,jdbcType=VARCHAR},
+      </if>
+      <if test="empDesNom != null" >
+        #{empDesNom,jdbcType=VARCHAR},
+      </if>
+      <if test="empFecNac != null" >
+        #{empFecNac,jdbcType=DATE},
+      </if>
+      <if test="empSex != null" >
+        #{empSex,jdbcType=CHAR},
+      </if>
+      <if test="codIndCam != null" >
+        #{codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="fecNumCam != null" >
+        #{fecNumCam,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TEmpleadoExample" resultType="java.lang.Integer" >
+    select count(*) from t_empleado
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_empleado
+    <set >
+      <if test="record.empId != null" >
+        emp_id = #{record.empId,jdbcType=INTEGER},
+      </if>
+      <if test="record.empCod != null" >
+        emp_cod = #{record.empCod,jdbcType=VARCHAR},
+      </if>
+      <if test="record.empCodTipDoc != null" >
+        emp_cod_tip_doc = #{record.empCodTipDoc,jdbcType=INTEGER},
+      </if>
+      <if test="record.empNumTipDoc != null" >
+        emp_num_tip_doc = #{record.empNumTipDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.empDesApePat != null" >
+        emp_des_ape_pat = #{record.empDesApePat,jdbcType=VARCHAR},
+      </if>
+      <if test="record.empDesApeMat != null" >
+        emp_des_ape_mat = #{record.empDesApeMat,jdbcType=VARCHAR},
+      </if>
+      <if test="record.empDesNom != null" >
+        emp_des_nom = #{record.empDesNom,jdbcType=VARCHAR},
+      </if>
+      <if test="record.empFecNac != null" >
+        emp_fec_nac = #{record.empFecNac,jdbcType=DATE},
+      </if>
+      <if test="record.empSex != null" >
+        emp_sex = #{record.empSex,jdbcType=CHAR},
+      </if>
+      <if test="record.codIndCam != null" >
+        cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="record.fecNumCam != null" >
+        fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_empleado
+    set emp_id = #{record.empId,jdbcType=INTEGER},
+      emp_cod = #{record.empCod,jdbcType=VARCHAR},
+      emp_cod_tip_doc = #{record.empCodTipDoc,jdbcType=INTEGER},
+      emp_num_tip_doc = #{record.empNumTipDoc,jdbcType=VARCHAR},
+      emp_des_ape_pat = #{record.empDesApePat,jdbcType=VARCHAR},
+      emp_des_ape_mat = #{record.empDesApeMat,jdbcType=VARCHAR},
+      emp_des_nom = #{record.empDesNom,jdbcType=VARCHAR},
+      emp_fec_nac = #{record.empFecNac,jdbcType=DATE},
+      emp_sex = #{record.empSex,jdbcType=CHAR},
+      cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
+      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TEmpleado" >
+    update t_empleado
+    <set >
+      <if test="empCod != null" >
+        emp_cod = #{empCod,jdbcType=VARCHAR},
+      </if>
+      <if test="empCodTipDoc != null" >
+        emp_cod_tip_doc = #{empCodTipDoc,jdbcType=INTEGER},
+      </if>
+      <if test="empNumTipDoc != null" >
+        emp_num_tip_doc = #{empNumTipDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="empDesApePat != null" >
+        emp_des_ape_pat = #{empDesApePat,jdbcType=VARCHAR},
+      </if>
+      <if test="empDesApeMat != null" >
+        emp_des_ape_mat = #{empDesApeMat,jdbcType=VARCHAR},
+      </if>
+      <if test="empDesNom != null" >
+        emp_des_nom = #{empDesNom,jdbcType=VARCHAR},
+      </if>
+      <if test="empFecNac != null" >
+        emp_fec_nac = #{empFecNac,jdbcType=DATE},
+      </if>
+      <if test="empSex != null" >
+        emp_sex = #{empSex,jdbcType=CHAR},
+      </if>
+      <if test="codIndCam != null" >
+        cod_ind_cam = #{codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="fecNumCam != null" >
+        fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      </if>
+    </set>
+    where emp_id = #{empId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TEmpleado" >
+    update t_empleado
+    set emp_cod = #{empCod,jdbcType=VARCHAR},
+      emp_cod_tip_doc = #{empCodTipDoc,jdbcType=INTEGER},
+      emp_num_tip_doc = #{empNumTipDoc,jdbcType=VARCHAR},
+      emp_des_ape_pat = #{empDesApePat,jdbcType=VARCHAR},
+      emp_des_ape_mat = #{empDesApeMat,jdbcType=VARCHAR},
+      emp_des_nom = #{empDesNom,jdbcType=VARCHAR},
+      emp_fec_nac = #{empFecNac,jdbcType=DATE},
+      emp_sex = #{empSex,jdbcType=CHAR},
+      cod_ind_cam = #{codIndCam,jdbcType=CHAR},
+      fec_num_cam = #{fecNumCam,jdbcType=INTEGER}
+    where emp_id = #{empId,jdbcType=INTEGER}
+  </update>
+</mapper>

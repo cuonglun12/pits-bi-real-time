@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pe.com.j2techcon.bi.etl.dao.dimensional.DimPersonalMapper" >
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.dimensional.DimPersonal" >
+    <id column="personal_key" property="personalKey" jdbcType="INTEGER" />
+    <result column="personal_codigo" property="personalCodigo" jdbcType="VARCHAR" />
+    <result column="personal_codigo_categoria" property="personalCodigoCategoria" jdbcType="INTEGER" />
+    <result column="personal_descripcion_categoria" property="personalDescripcionCategoria" jdbcType="VARCHAR" />
+    <result column="personal_nombre" property="personalNombre" jdbcType="VARCHAR" />
+    <result column="personal_sexo" property="personalSexo" jdbcType="CHAR" />
+    <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
+    <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    personal_key, personal_codigo, personal_codigo_categoria, personal_descripcion_categoria, 
+    personal_nombre, personal_sexo, cod_ind_cam, fec_num_cam
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimPersonalExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dim_personal
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dim_personal
+    where personal_key = #{personalKey,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dim_personal
+    where personal_key = #{personalKey,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimPersonalExample" >
+    delete from dim_personal
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimPersonal" >
+    insert into dim_personal (personal_key, personal_codigo, personal_codigo_categoria, 
+      personal_descripcion_categoria, personal_nombre, 
+      personal_sexo, cod_ind_cam, fec_num_cam
+      )
+    values (#{personalKey,jdbcType=INTEGER}, #{personalCodigo,jdbcType=VARCHAR}, #{personalCodigoCategoria,jdbcType=INTEGER}, 
+      #{personalDescripcionCategoria,jdbcType=VARCHAR}, #{personalNombre,jdbcType=VARCHAR}, 
+      #{personalSexo,jdbcType=CHAR}, #{codIndCam,jdbcType=CHAR}, #{fecNumCam,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimPersonal" >
+    insert into dim_personal
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="personalKey != null" >
+        personal_key,
+      </if>
+      <if test="personalCodigo != null" >
+        personal_codigo,
+      </if>
+      <if test="personalCodigoCategoria != null" >
+        personal_codigo_categoria,
+      </if>
+      <if test="personalDescripcionCategoria != null" >
+        personal_descripcion_categoria,
+      </if>
+      <if test="personalNombre != null" >
+        personal_nombre,
+      </if>
+      <if test="personalSexo != null" >
+        personal_sexo,
+      </if>
+      <if test="codIndCam != null" >
+        cod_ind_cam,
+      </if>
+      <if test="fecNumCam != null" >
+        fec_num_cam,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="personalKey != null" >
+        #{personalKey,jdbcType=INTEGER},
+      </if>
+      <if test="personalCodigo != null" >
+        #{personalCodigo,jdbcType=VARCHAR},
+      </if>
+      <if test="personalCodigoCategoria != null" >
+        #{personalCodigoCategoria,jdbcType=INTEGER},
+      </if>
+      <if test="personalDescripcionCategoria != null" >
+        #{personalDescripcionCategoria,jdbcType=VARCHAR},
+      </if>
+      <if test="personalNombre != null" >
+        #{personalNombre,jdbcType=VARCHAR},
+      </if>
+      <if test="personalSexo != null" >
+        #{personalSexo,jdbcType=CHAR},
+      </if>
+      <if test="codIndCam != null" >
+        #{codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="fecNumCam != null" >
+        #{fecNumCam,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimPersonalExample" resultType="java.lang.Integer" >
+    select count(*) from dim_personal
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update dim_personal
+    <set >
+      <if test="record.personalKey != null" >
+        personal_key = #{record.personalKey,jdbcType=INTEGER},
+      </if>
+      <if test="record.personalCodigo != null" >
+        personal_codigo = #{record.personalCodigo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.personalCodigoCategoria != null" >
+        personal_codigo_categoria = #{record.personalCodigoCategoria,jdbcType=INTEGER},
+      </if>
+      <if test="record.personalDescripcionCategoria != null" >
+        personal_descripcion_categoria = #{record.personalDescripcionCategoria,jdbcType=VARCHAR},
+      </if>
+      <if test="record.personalNombre != null" >
+        personal_nombre = #{record.personalNombre,jdbcType=VARCHAR},
+      </if>
+      <if test="record.personalSexo != null" >
+        personal_sexo = #{record.personalSexo,jdbcType=CHAR},
+      </if>
+      <if test="record.codIndCam != null" >
+        cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="record.fecNumCam != null" >
+        fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update dim_personal
+    set personal_key = #{record.personalKey,jdbcType=INTEGER},
+      personal_codigo = #{record.personalCodigo,jdbcType=VARCHAR},
+      personal_codigo_categoria = #{record.personalCodigoCategoria,jdbcType=INTEGER},
+      personal_descripcion_categoria = #{record.personalDescripcionCategoria,jdbcType=VARCHAR},
+      personal_nombre = #{record.personalNombre,jdbcType=VARCHAR},
+      personal_sexo = #{record.personalSexo,jdbcType=CHAR},
+      cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
+      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimPersonal" >
+    update dim_personal
+    <set >
+      <if test="personalCodigo != null" >
+        personal_codigo = #{personalCodigo,jdbcType=VARCHAR},
+      </if>
+      <if test="personalCodigoCategoria != null" >
+        personal_codigo_categoria = #{personalCodigoCategoria,jdbcType=INTEGER},
+      </if>
+      <if test="personalDescripcionCategoria != null" >
+        personal_descripcion_categoria = #{personalDescripcionCategoria,jdbcType=VARCHAR},
+      </if>
+      <if test="personalNombre != null" >
+        personal_nombre = #{personalNombre,jdbcType=VARCHAR},
+      </if>
+      <if test="personalSexo != null" >
+        personal_sexo = #{personalSexo,jdbcType=CHAR},
+      </if>
+      <if test="codIndCam != null" >
+        cod_ind_cam = #{codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="fecNumCam != null" >
+        fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      </if>
+    </set>
+    where personal_key = #{personalKey,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimPersonal" >
+    update dim_personal
+    set personal_codigo = #{personalCodigo,jdbcType=VARCHAR},
+      personal_codigo_categoria = #{personalCodigoCategoria,jdbcType=INTEGER},
+      personal_descripcion_categoria = #{personalDescripcionCategoria,jdbcType=VARCHAR},
+      personal_nombre = #{personalNombre,jdbcType=VARCHAR},
+      personal_sexo = #{personalSexo,jdbcType=CHAR},
+      cod_ind_cam = #{codIndCam,jdbcType=CHAR},
+      fec_num_cam = #{fecNumCam,jdbcType=INTEGER}
+    where personal_key = #{personalKey,jdbcType=INTEGER}
+  </update>
+</mapper>

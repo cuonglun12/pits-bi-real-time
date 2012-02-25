@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pe.com.j2techcon.bi.etl.dao.dimensional.DimTipoPagoMapper" >
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoPago" >
+    <id column="tipo_pago_key" property="tipoPagoKey" jdbcType="INTEGER" />
+    <result column="tipo_pago_cod" property="tipoPagoCod" jdbcType="CHAR" />
+    <result column="tipo_pago_desc" property="tipoPagoDesc" jdbcType="VARCHAR" />
+    <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
+    <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    tipo_pago_key, tipo_pago_cod, tipo_pago_desc, cod_ind_cam, fec_num_cam
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoPagoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dim_tipo_pago
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dim_tipo_pago
+    where tipo_pago_key = #{tipoPagoKey,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dim_tipo_pago
+    where tipo_pago_key = #{tipoPagoKey,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoPagoExample" >
+    delete from dim_tipo_pago
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoPago" >
+    insert into dim_tipo_pago (tipo_pago_key, tipo_pago_cod, tipo_pago_desc, 
+      cod_ind_cam, fec_num_cam)
+    values (#{tipoPagoKey,jdbcType=INTEGER}, #{tipoPagoCod,jdbcType=CHAR}, #{tipoPagoDesc,jdbcType=VARCHAR}, 
+      #{codIndCam,jdbcType=CHAR}, #{fecNumCam,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoPago" >
+    insert into dim_tipo_pago
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tipoPagoKey != null" >
+        tipo_pago_key,
+      </if>
+      <if test="tipoPagoCod != null" >
+        tipo_pago_cod,
+      </if>
+      <if test="tipoPagoDesc != null" >
+        tipo_pago_desc,
+      </if>
+      <if test="codIndCam != null" >
+        cod_ind_cam,
+      </if>
+      <if test="fecNumCam != null" >
+        fec_num_cam,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tipoPagoKey != null" >
+        #{tipoPagoKey,jdbcType=INTEGER},
+      </if>
+      <if test="tipoPagoCod != null" >
+        #{tipoPagoCod,jdbcType=CHAR},
+      </if>
+      <if test="tipoPagoDesc != null" >
+        #{tipoPagoDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="codIndCam != null" >
+        #{codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="fecNumCam != null" >
+        #{fecNumCam,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoPagoExample" resultType="java.lang.Integer" >
+    select count(*) from dim_tipo_pago
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update dim_tipo_pago
+    <set >
+      <if test="record.tipoPagoKey != null" >
+        tipo_pago_key = #{record.tipoPagoKey,jdbcType=INTEGER},
+      </if>
+      <if test="record.tipoPagoCod != null" >
+        tipo_pago_cod = #{record.tipoPagoCod,jdbcType=CHAR},
+      </if>
+      <if test="record.tipoPagoDesc != null" >
+        tipo_pago_desc = #{record.tipoPagoDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codIndCam != null" >
+        cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="record.fecNumCam != null" >
+        fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update dim_tipo_pago
+    set tipo_pago_key = #{record.tipoPagoKey,jdbcType=INTEGER},
+      tipo_pago_cod = #{record.tipoPagoCod,jdbcType=CHAR},
+      tipo_pago_desc = #{record.tipoPagoDesc,jdbcType=VARCHAR},
+      cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
+      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoPago" >
+    update dim_tipo_pago
+    <set >
+      <if test="tipoPagoCod != null" >
+        tipo_pago_cod = #{tipoPagoCod,jdbcType=CHAR},
+      </if>
+      <if test="tipoPagoDesc != null" >
+        tipo_pago_desc = #{tipoPagoDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="codIndCam != null" >
+        cod_ind_cam = #{codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="fecNumCam != null" >
+        fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      </if>
+    </set>
+    where tipo_pago_key = #{tipoPagoKey,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoPago" >
+    update dim_tipo_pago
+    set tipo_pago_cod = #{tipoPagoCod,jdbcType=CHAR},
+      tipo_pago_desc = #{tipoPagoDesc,jdbcType=VARCHAR},
+      cod_ind_cam = #{codIndCam,jdbcType=CHAR},
+      fec_num_cam = #{fecNumCam,jdbcType=INTEGER}
+    where tipo_pago_key = #{tipoPagoKey,jdbcType=INTEGER}
+  </update>
+</mapper>

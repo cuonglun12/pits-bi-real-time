@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<classPathEntry location="c:/lib/postgresql-9.0-801.jdbc4.jar" />
+	<context id="DB1" targetRuntime="MyBatis3">
+
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+
+		<jdbcConnection driverClass="org.postgresql.Driver"
+			connectionURL="jdbc:postgresql://localhost:5432/db_generic" userId="postgres"
+			password="123456">
+		</jdbcConnection>
+		
+		<javaModelGenerator targetPackage="pe.com.j2techcon.bi.etl.domain.control"
+			targetProject="ETLPits">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<sqlMapGenerator targetPackage="pe.com.j2techcon.bi.etl.dao.sqlmap.control"
+			targetProject="ETLPits">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="pe.com.j2techcon.bi.etl.dao.control" targetProject="ETLPits">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		
+		<table tableName="t_proceso" modelType="flat" />
+
+	</context>
+</generatorConfiguration>
+		

@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pe.com.j2techcon.bi.etl.dao.generic.TZonaMapper" >
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.generic.TZona" >
+    <id column="zon_id" property="zonId" jdbcType="INTEGER" />
+    <result column="zon_cod" property="zonCod" jdbcType="VARCHAR" />
+    <result column="ubi_id" property="ubiId" jdbcType="INTEGER" />
+    <result column="zon_des" property="zonDes" jdbcType="VARCHAR" />
+    <result column="zon_cod_postal" property="zonCodPostal" jdbcType="VARCHAR" />
+    <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
+    <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    zon_id, zon_cod, ubi_id, zon_des, zon_cod_postal, cod_ind_cam, fec_num_cam
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TZonaExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_zona
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_zona
+    where zon_id = #{zonId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_zona
+    where zon_id = #{zonId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TZonaExample" >
+    delete from t_zona
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TZona" >
+    insert into t_zona (zon_id, zon_cod, ubi_id, 
+      zon_des, zon_cod_postal, cod_ind_cam, 
+      fec_num_cam)
+    values (#{zonId,jdbcType=INTEGER}, #{zonCod,jdbcType=VARCHAR}, #{ubiId,jdbcType=INTEGER}, 
+      #{zonDes,jdbcType=VARCHAR}, #{zonCodPostal,jdbcType=VARCHAR}, #{codIndCam,jdbcType=CHAR}, 
+      #{fecNumCam,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TZona" >
+    insert into t_zona
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="zonId != null" >
+        zon_id,
+      </if>
+      <if test="zonCod != null" >
+        zon_cod,
+      </if>
+      <if test="ubiId != null" >
+        ubi_id,
+      </if>
+      <if test="zonDes != null" >
+        zon_des,
+      </if>
+      <if test="zonCodPostal != null" >
+        zon_cod_postal,
+      </if>
+      <if test="codIndCam != null" >
+        cod_ind_cam,
+      </if>
+      <if test="fecNumCam != null" >
+        fec_num_cam,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="zonId != null" >
+        #{zonId,jdbcType=INTEGER},
+      </if>
+      <if test="zonCod != null" >
+        #{zonCod,jdbcType=VARCHAR},
+      </if>
+      <if test="ubiId != null" >
+        #{ubiId,jdbcType=INTEGER},
+      </if>
+      <if test="zonDes != null" >
+        #{zonDes,jdbcType=VARCHAR},
+      </if>
+      <if test="zonCodPostal != null" >
+        #{zonCodPostal,jdbcType=VARCHAR},
+      </if>
+      <if test="codIndCam != null" >
+        #{codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="fecNumCam != null" >
+        #{fecNumCam,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TZonaExample" resultType="java.lang.Integer" >
+    select count(*) from t_zona
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_zona
+    <set >
+      <if test="record.zonId != null" >
+        zon_id = #{record.zonId,jdbcType=INTEGER},
+      </if>
+      <if test="record.zonCod != null" >
+        zon_cod = #{record.zonCod,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ubiId != null" >
+        ubi_id = #{record.ubiId,jdbcType=INTEGER},
+      </if>
+      <if test="record.zonDes != null" >
+        zon_des = #{record.zonDes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zonCodPostal != null" >
+        zon_cod_postal = #{record.zonCodPostal,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codIndCam != null" >
+        cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="record.fecNumCam != null" >
+        fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_zona
+    set zon_id = #{record.zonId,jdbcType=INTEGER},
+      zon_cod = #{record.zonCod,jdbcType=VARCHAR},
+      ubi_id = #{record.ubiId,jdbcType=INTEGER},
+      zon_des = #{record.zonDes,jdbcType=VARCHAR},
+      zon_cod_postal = #{record.zonCodPostal,jdbcType=VARCHAR},
+      cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
+      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TZona" >
+    update t_zona
+    <set >
+      <if test="zonCod != null" >
+        zon_cod = #{zonCod,jdbcType=VARCHAR},
+      </if>
+      <if test="ubiId != null" >
+        ubi_id = #{ubiId,jdbcType=INTEGER},
+      </if>
+      <if test="zonDes != null" >
+        zon_des = #{zonDes,jdbcType=VARCHAR},
+      </if>
+      <if test="zonCodPostal != null" >
+        zon_cod_postal = #{zonCodPostal,jdbcType=VARCHAR},
+      </if>
+      <if test="codIndCam != null" >
+        cod_ind_cam = #{codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="fecNumCam != null" >
+        fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      </if>
+    </set>
+    where zon_id = #{zonId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TZona" >
+    update t_zona
+    set zon_cod = #{zonCod,jdbcType=VARCHAR},
+      ubi_id = #{ubiId,jdbcType=INTEGER},
+      zon_des = #{zonDes,jdbcType=VARCHAR},
+      zon_cod_postal = #{zonCodPostal,jdbcType=VARCHAR},
+      cod_ind_cam = #{codIndCam,jdbcType=CHAR},
+      fec_num_cam = #{fecNumCam,jdbcType=INTEGER}
+    where zon_id = #{zonId,jdbcType=INTEGER}
+  </update>
+</mapper>

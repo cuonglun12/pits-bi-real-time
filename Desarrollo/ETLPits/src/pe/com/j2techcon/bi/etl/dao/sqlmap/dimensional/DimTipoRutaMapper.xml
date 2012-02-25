@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pe.com.j2techcon.bi.etl.dao.dimensional.DimTipoRutaMapper" >
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoRuta" >
+    <id column="tipo_ruta_key" property="tipoRutaKey" jdbcType="INTEGER" />
+    <result column="tipo_ruta_cod" property="tipoRutaCod" jdbcType="CHAR" />
+    <result column="tipo_ruta_desc" property="tipoRutaDesc" jdbcType="VARCHAR" />
+    <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
+    <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    tipo_ruta_key, tipo_ruta_cod, tipo_ruta_desc, cod_ind_cam, fec_num_cam
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoRutaExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dim_tipo_ruta
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dim_tipo_ruta
+    where tipo_ruta_key = #{tipoRutaKey,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dim_tipo_ruta
+    where tipo_ruta_key = #{tipoRutaKey,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoRutaExample" >
+    delete from dim_tipo_ruta
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoRuta" >
+    insert into dim_tipo_ruta (tipo_ruta_key, tipo_ruta_cod, tipo_ruta_desc, 
+      cod_ind_cam, fec_num_cam)
+    values (#{tipoRutaKey,jdbcType=INTEGER}, #{tipoRutaCod,jdbcType=CHAR}, #{tipoRutaDesc,jdbcType=VARCHAR}, 
+      #{codIndCam,jdbcType=CHAR}, #{fecNumCam,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoRuta" >
+    insert into dim_tipo_ruta
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tipoRutaKey != null" >
+        tipo_ruta_key,
+      </if>
+      <if test="tipoRutaCod != null" >
+        tipo_ruta_cod,
+      </if>
+      <if test="tipoRutaDesc != null" >
+        tipo_ruta_desc,
+      </if>
+      <if test="codIndCam != null" >
+        cod_ind_cam,
+      </if>
+      <if test="fecNumCam != null" >
+        fec_num_cam,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tipoRutaKey != null" >
+        #{tipoRutaKey,jdbcType=INTEGER},
+      </if>
+      <if test="tipoRutaCod != null" >
+        #{tipoRutaCod,jdbcType=CHAR},
+      </if>
+      <if test="tipoRutaDesc != null" >
+        #{tipoRutaDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="codIndCam != null" >
+        #{codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="fecNumCam != null" >
+        #{fecNumCam,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoRutaExample" resultType="java.lang.Integer" >
+    select count(*) from dim_tipo_ruta
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update dim_tipo_ruta
+    <set >
+      <if test="record.tipoRutaKey != null" >
+        tipo_ruta_key = #{record.tipoRutaKey,jdbcType=INTEGER},
+      </if>
+      <if test="record.tipoRutaCod != null" >
+        tipo_ruta_cod = #{record.tipoRutaCod,jdbcType=CHAR},
+      </if>
+      <if test="record.tipoRutaDesc != null" >
+        tipo_ruta_desc = #{record.tipoRutaDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codIndCam != null" >
+        cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="record.fecNumCam != null" >
+        fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update dim_tipo_ruta
+    set tipo_ruta_key = #{record.tipoRutaKey,jdbcType=INTEGER},
+      tipo_ruta_cod = #{record.tipoRutaCod,jdbcType=CHAR},
+      tipo_ruta_desc = #{record.tipoRutaDesc,jdbcType=VARCHAR},
+      cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
+      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoRuta" >
+    update dim_tipo_ruta
+    <set >
+      <if test="tipoRutaCod != null" >
+        tipo_ruta_cod = #{tipoRutaCod,jdbcType=CHAR},
+      </if>
+      <if test="tipoRutaDesc != null" >
+        tipo_ruta_desc = #{tipoRutaDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="codIndCam != null" >
+        cod_ind_cam = #{codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="fecNumCam != null" >
+        fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      </if>
+    </set>
+    where tipo_ruta_key = #{tipoRutaKey,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoRuta" >
+    update dim_tipo_ruta
+    set tipo_ruta_cod = #{tipoRutaCod,jdbcType=CHAR},
+      tipo_ruta_desc = #{tipoRutaDesc,jdbcType=VARCHAR},
+      cod_ind_cam = #{codIndCam,jdbcType=CHAR},
+      fec_num_cam = #{fecNumCam,jdbcType=INTEGER}
+    where tipo_ruta_key = #{tipoRutaKey,jdbcType=INTEGER}
+  </update>
+</mapper>

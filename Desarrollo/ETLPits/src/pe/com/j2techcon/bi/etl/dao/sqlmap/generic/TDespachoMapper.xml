@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pe.com.j2techcon.bi.etl.dao.generic.TDespachoMapper" >
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.generic.TDespacho" >
+    <id column="desp_id" property="despId" jdbcType="INTEGER" />
+    <result column="desp_cod_tip_doc" property="despCodTipDoc" jdbcType="INTEGER" />
+    <result column="desp_serie_doc" property="despSerieDoc" jdbcType="VARCHAR" />
+    <result column="desp_numero_doc" property="despNumeroDoc" jdbcType="VARCHAR" />
+    <result column="sed_id" property="sedId" jdbcType="INTEGER" />
+    <result column="zon_id" property="zonId" jdbcType="INTEGER" />
+    <result column="emp_cat_id" property="empCatId" jdbcType="INTEGER" />
+    <result column="desp_cod_tip" property="despCodTip" jdbcType="INTEGER" />
+    <result column="desp_cod_tip_rut" property="despCodTipRut" jdbcType="INTEGER" />
+    <result column="desp_cod_ver" property="despCodVer" jdbcType="INTEGER" />
+    <result column="desp_mon_pasaje" property="despMonPasaje" jdbcType="NUMERIC" />
+    <result column="desp_cnt_cargos" property="despCntCargos" jdbcType="INTEGER" />
+    <result column="desp_fec_sal" property="despFecSal" jdbcType="DATE" />
+    <result column="desp_fec_ret_pro" property="despFecRetPro" jdbcType="DATE" />
+    <result column="desp_fec_ret_rea" property="despFecRetRea" jdbcType="DATE" />
+    <result column="desp_fec_ver" property="despFecVer" jdbcType="DATE" />
+    <result column="desp_can_pas" property="despCanPas" jdbcType="NUMERIC" />
+    <result column="desp_cod_est" property="despCodEst" jdbcType="INTEGER" />
+    <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+    <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    desp_id, desp_cod_tip_doc, desp_serie_doc, desp_numero_doc, sed_id, zon_id, emp_cat_id, 
+    desp_cod_tip, desp_cod_tip_rut, desp_cod_ver, desp_mon_pasaje, desp_cnt_cargos, desp_fec_sal, 
+    desp_fec_ret_pro, desp_fec_ret_rea, desp_fec_ver, desp_can_pas, desp_cod_est, fec_num_cam, 
+    cod_ind_cam
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TDespachoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_despacho
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_despacho
+    where desp_id = #{despId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_despacho
+    where desp_id = #{despId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TDespachoExample" >
+    delete from t_despacho
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TDespacho" >
+    insert into t_despacho (desp_id, desp_cod_tip_doc, desp_serie_doc, 
+      desp_numero_doc, sed_id, zon_id, 
+      emp_cat_id, desp_cod_tip, desp_cod_tip_rut, 
+      desp_cod_ver, desp_mon_pasaje, desp_cnt_cargos, 
+      desp_fec_sal, desp_fec_ret_pro, desp_fec_ret_rea, 
+      desp_fec_ver, desp_can_pas, desp_cod_est, 
+      fec_num_cam, cod_ind_cam)
+    values (#{despId,jdbcType=INTEGER}, #{despCodTipDoc,jdbcType=INTEGER}, #{despSerieDoc,jdbcType=VARCHAR}, 
+      #{despNumeroDoc,jdbcType=VARCHAR}, #{sedId,jdbcType=INTEGER}, #{zonId,jdbcType=INTEGER}, 
+      #{empCatId,jdbcType=INTEGER}, #{despCodTip,jdbcType=INTEGER}, #{despCodTipRut,jdbcType=INTEGER}, 
+      #{despCodVer,jdbcType=INTEGER}, #{despMonPasaje,jdbcType=NUMERIC}, #{despCntCargos,jdbcType=INTEGER}, 
+      #{despFecSal,jdbcType=DATE}, #{despFecRetPro,jdbcType=DATE}, #{despFecRetRea,jdbcType=DATE}, 
+      #{despFecVer,jdbcType=DATE}, #{despCanPas,jdbcType=NUMERIC}, #{despCodEst,jdbcType=INTEGER}, 
+      #{fecNumCam,jdbcType=INTEGER}, #{codIndCam,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TDespacho" >
+    insert into t_despacho
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="despId != null" >
+        desp_id,
+      </if>
+      <if test="despCodTipDoc != null" >
+        desp_cod_tip_doc,
+      </if>
+      <if test="despSerieDoc != null" >
+        desp_serie_doc,
+      </if>
+      <if test="despNumeroDoc != null" >
+        desp_numero_doc,
+      </if>
+      <if test="sedId != null" >
+        sed_id,
+      </if>
+      <if test="zonId != null" >
+        zon_id,
+      </if>
+      <if test="empCatId != null" >
+        emp_cat_id,
+      </if>
+      <if test="despCodTip != null" >
+        desp_cod_tip,
+      </if>
+      <if test="despCodTipRut != null" >
+        desp_cod_tip_rut,
+      </if>
+      <if test="despCodVer != null" >
+        desp_cod_ver,
+      </if>
+      <if test="despMonPasaje != null" >
+        desp_mon_pasaje,
+      </if>
+      <if test="despCntCargos != null" >
+        desp_cnt_cargos,
+      </if>
+      <if test="despFecSal != null" >
+        desp_fec_sal,
+      </if>
+      <if test="despFecRetPro != null" >
+        desp_fec_ret_pro,
+      </if>
+      <if test="despFecRetRea != null" >
+        desp_fec_ret_rea,
+      </if>
+      <if test="despFecVer != null" >
+        desp_fec_ver,
+      </if>
+      <if test="despCanPas != null" >
+        desp_can_pas,
+      </if>
+      <if test="despCodEst != null" >
+        desp_cod_est,
+      </if>
+      <if test="fecNumCam != null" >
+        fec_num_cam,
+      </if>
+      <if test="codIndCam != null" >
+        cod_ind_cam,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="despId != null" >
+        #{despId,jdbcType=INTEGER},
+      </if>
+      <if test="despCodTipDoc != null" >
+        #{despCodTipDoc,jdbcType=INTEGER},
+      </if>
+      <if test="despSerieDoc != null" >
+        #{despSerieDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="despNumeroDoc != null" >
+        #{despNumeroDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="sedId != null" >
+        #{sedId,jdbcType=INTEGER},
+      </if>
+      <if test="zonId != null" >
+        #{zonId,jdbcType=INTEGER},
+      </if>
+      <if test="empCatId != null" >
+        #{empCatId,jdbcType=INTEGER},
+      </if>
+      <if test="despCodTip != null" >
+        #{despCodTip,jdbcType=INTEGER},
+      </if>
+      <if test="despCodTipRut != null" >
+        #{despCodTipRut,jdbcType=INTEGER},
+      </if>
+      <if test="despCodVer != null" >
+        #{despCodVer,jdbcType=INTEGER},
+      </if>
+      <if test="despMonPasaje != null" >
+        #{despMonPasaje,jdbcType=NUMERIC},
+      </if>
+      <if test="despCntCargos != null" >
+        #{despCntCargos,jdbcType=INTEGER},
+      </if>
+      <if test="despFecSal != null" >
+        #{despFecSal,jdbcType=DATE},
+      </if>
+      <if test="despFecRetPro != null" >
+        #{despFecRetPro,jdbcType=DATE},
+      </if>
+      <if test="despFecRetRea != null" >
+        #{despFecRetRea,jdbcType=DATE},
+      </if>
+      <if test="despFecVer != null" >
+        #{despFecVer,jdbcType=DATE},
+      </if>
+      <if test="despCanPas != null" >
+        #{despCanPas,jdbcType=NUMERIC},
+      </if>
+      <if test="despCodEst != null" >
+        #{despCodEst,jdbcType=INTEGER},
+      </if>
+      <if test="fecNumCam != null" >
+        #{fecNumCam,jdbcType=INTEGER},
+      </if>
+      <if test="codIndCam != null" >
+        #{codIndCam,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TDespachoExample" resultType="java.lang.Integer" >
+    select count(*) from t_despacho
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_despacho
+    <set >
+      <if test="record.despId != null" >
+        desp_id = #{record.despId,jdbcType=INTEGER},
+      </if>
+      <if test="record.despCodTipDoc != null" >
+        desp_cod_tip_doc = #{record.despCodTipDoc,jdbcType=INTEGER},
+      </if>
+      <if test="record.despSerieDoc != null" >
+        desp_serie_doc = #{record.despSerieDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.despNumeroDoc != null" >
+        desp_numero_doc = #{record.despNumeroDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sedId != null" >
+        sed_id = #{record.sedId,jdbcType=INTEGER},
+      </if>
+      <if test="record.zonId != null" >
+        zon_id = #{record.zonId,jdbcType=INTEGER},
+      </if>
+      <if test="record.empCatId != null" >
+        emp_cat_id = #{record.empCatId,jdbcType=INTEGER},
+      </if>
+      <if test="record.despCodTip != null" >
+        desp_cod_tip = #{record.despCodTip,jdbcType=INTEGER},
+      </if>
+      <if test="record.despCodTipRut != null" >
+        desp_cod_tip_rut = #{record.despCodTipRut,jdbcType=INTEGER},
+      </if>
+      <if test="record.despCodVer != null" >
+        desp_cod_ver = #{record.despCodVer,jdbcType=INTEGER},
+      </if>
+      <if test="record.despMonPasaje != null" >
+        desp_mon_pasaje = #{record.despMonPasaje,jdbcType=NUMERIC},
+      </if>
+      <if test="record.despCntCargos != null" >
+        desp_cnt_cargos = #{record.despCntCargos,jdbcType=INTEGER},
+      </if>
+      <if test="record.despFecSal != null" >
+        desp_fec_sal = #{record.despFecSal,jdbcType=DATE},
+      </if>
+      <if test="record.despFecRetPro != null" >
+        desp_fec_ret_pro = #{record.despFecRetPro,jdbcType=DATE},
+      </if>
+      <if test="record.despFecRetRea != null" >
+        desp_fec_ret_rea = #{record.despFecRetRea,jdbcType=DATE},
+      </if>
+      <if test="record.despFecVer != null" >
+        desp_fec_ver = #{record.despFecVer,jdbcType=DATE},
+      </if>
+      <if test="record.despCanPas != null" >
+        desp_can_pas = #{record.despCanPas,jdbcType=NUMERIC},
+      </if>
+      <if test="record.despCodEst != null" >
+        desp_cod_est = #{record.despCodEst,jdbcType=INTEGER},
+      </if>
+      <if test="record.fecNumCam != null" >
+        fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      </if>
+      <if test="record.codIndCam != null" >
+        cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_despacho
+    set desp_id = #{record.despId,jdbcType=INTEGER},
+      desp_cod_tip_doc = #{record.despCodTipDoc,jdbcType=INTEGER},
+      desp_serie_doc = #{record.despSerieDoc,jdbcType=VARCHAR},
+      desp_numero_doc = #{record.despNumeroDoc,jdbcType=VARCHAR},
+      sed_id = #{record.sedId,jdbcType=INTEGER},
+      zon_id = #{record.zonId,jdbcType=INTEGER},
+      emp_cat_id = #{record.empCatId,jdbcType=INTEGER},
+      desp_cod_tip = #{record.despCodTip,jdbcType=INTEGER},
+      desp_cod_tip_rut = #{record.despCodTipRut,jdbcType=INTEGER},
+      desp_cod_ver = #{record.despCodVer,jdbcType=INTEGER},
+      desp_mon_pasaje = #{record.despMonPasaje,jdbcType=NUMERIC},
+      desp_cnt_cargos = #{record.despCntCargos,jdbcType=INTEGER},
+      desp_fec_sal = #{record.despFecSal,jdbcType=DATE},
+      desp_fec_ret_pro = #{record.despFecRetPro,jdbcType=DATE},
+      desp_fec_ret_rea = #{record.despFecRetRea,jdbcType=DATE},
+      desp_fec_ver = #{record.despFecVer,jdbcType=DATE},
+      desp_can_pas = #{record.despCanPas,jdbcType=NUMERIC},
+      desp_cod_est = #{record.despCodEst,jdbcType=INTEGER},
+      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      cod_ind_cam = #{record.codIndCam,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TDespacho" >
+    update t_despacho
+    <set >
+      <if test="despCodTipDoc != null" >
+        desp_cod_tip_doc = #{despCodTipDoc,jdbcType=INTEGER},
+      </if>
+      <if test="despSerieDoc != null" >
+        desp_serie_doc = #{despSerieDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="despNumeroDoc != null" >
+        desp_numero_doc = #{despNumeroDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="sedId != null" >
+        sed_id = #{sedId,jdbcType=INTEGER},
+      </if>
+      <if test="zonId != null" >
+        zon_id = #{zonId,jdbcType=INTEGER},
+      </if>
+      <if test="empCatId != null" >
+        emp_cat_id = #{empCatId,jdbcType=INTEGER},
+      </if>
+      <if test="despCodTip != null" >
+        desp_cod_tip = #{despCodTip,jdbcType=INTEGER},
+      </if>
+      <if test="despCodTipRut != null" >
+        desp_cod_tip_rut = #{despCodTipRut,jdbcType=INTEGER},
+      </if>
+      <if test="despCodVer != null" >
+        desp_cod_ver = #{despCodVer,jdbcType=INTEGER},
+      </if>
+      <if test="despMonPasaje != null" >
+        desp_mon_pasaje = #{despMonPasaje,jdbcType=NUMERIC},
+      </if>
+      <if test="despCntCargos != null" >
+        desp_cnt_cargos = #{despCntCargos,jdbcType=INTEGER},
+      </if>
+      <if test="despFecSal != null" >
+        desp_fec_sal = #{despFecSal,jdbcType=DATE},
+      </if>
+      <if test="despFecRetPro != null" >
+        desp_fec_ret_pro = #{despFecRetPro,jdbcType=DATE},
+      </if>
+      <if test="despFecRetRea != null" >
+        desp_fec_ret_rea = #{despFecRetRea,jdbcType=DATE},
+      </if>
+      <if test="despFecVer != null" >
+        desp_fec_ver = #{despFecVer,jdbcType=DATE},
+      </if>
+      <if test="despCanPas != null" >
+        desp_can_pas = #{despCanPas,jdbcType=NUMERIC},
+      </if>
+      <if test="despCodEst != null" >
+        desp_cod_est = #{despCodEst,jdbcType=INTEGER},
+      </if>
+      <if test="fecNumCam != null" >
+        fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      </if>
+      <if test="codIndCam != null" >
+        cod_ind_cam = #{codIndCam,jdbcType=CHAR},
+      </if>
+    </set>
+    where desp_id = #{despId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TDespacho" >
+    update t_despacho
+    set desp_cod_tip_doc = #{despCodTipDoc,jdbcType=INTEGER},
+      desp_serie_doc = #{despSerieDoc,jdbcType=VARCHAR},
+      desp_numero_doc = #{despNumeroDoc,jdbcType=VARCHAR},
+      sed_id = #{sedId,jdbcType=INTEGER},
+      zon_id = #{zonId,jdbcType=INTEGER},
+      emp_cat_id = #{empCatId,jdbcType=INTEGER},
+      desp_cod_tip = #{despCodTip,jdbcType=INTEGER},
+      desp_cod_tip_rut = #{despCodTipRut,jdbcType=INTEGER},
+      desp_cod_ver = #{despCodVer,jdbcType=INTEGER},
+      desp_mon_pasaje = #{despMonPasaje,jdbcType=NUMERIC},
+      desp_cnt_cargos = #{despCntCargos,jdbcType=INTEGER},
+      desp_fec_sal = #{despFecSal,jdbcType=DATE},
+      desp_fec_ret_pro = #{despFecRetPro,jdbcType=DATE},
+      desp_fec_ret_rea = #{despFecRetRea,jdbcType=DATE},
+      desp_fec_ver = #{despFecVer,jdbcType=DATE},
+      desp_can_pas = #{despCanPas,jdbcType=NUMERIC},
+      desp_cod_est = #{despCodEst,jdbcType=INTEGER},
+      fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      cod_ind_cam = #{codIndCam,jdbcType=CHAR}
+    where desp_id = #{despId,jdbcType=INTEGER}
+  </update>
+</mapper>

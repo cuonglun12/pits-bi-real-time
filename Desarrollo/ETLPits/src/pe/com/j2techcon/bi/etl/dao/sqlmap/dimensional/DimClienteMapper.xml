@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pe.com.j2techcon.bi.etl.dao.dimensional.DimClienteMapper" >
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.dimensional.DimCliente" >
+    <id column="cliente_key" property="clienteKey" jdbcType="INTEGER" />
+    <result column="cliente_cod_tip" property="clienteCodTip" jdbcType="INTEGER" />
+    <result column="cliente_desc_tip" property="clienteDescTip" jdbcType="VARCHAR" />
+    <result column="cliente_cod_categoria" property="clienteCodCategoria" jdbcType="INTEGER" />
+    <result column="cliente_desc_categoria" property="clienteDescCategoria" jdbcType="VARCHAR" />
+    <result column="cliente_cod_facturacion" property="clienteCodFacturacion" jdbcType="INTEGER" />
+    <result column="cliente_desc_facturacion" property="clienteDescFacturacion" jdbcType="VARCHAR" />
+    <result column="cliente_cod_credito" property="clienteCodCredito" jdbcType="INTEGER" />
+    <result column="cliente_desc_credito" property="clienteDescCredito" jdbcType="VARCHAR" />
+    <result column="cliente_cod_tip_doc" property="clienteCodTipDoc" jdbcType="INTEGER" />
+    <result column="cliente_desc_tip_doc" property="clienteDescTipDoc" jdbcType="VARCHAR" />
+    <result column="cliente_num_tip_doc" property="clienteNumTipDoc" jdbcType="CHAR" />
+    <result column="cliente_desc" property="clienteDesc" jdbcType="VARCHAR" />
+    <result column="cliente_area_key" property="clienteAreaKey" jdbcType="INTEGER" />
+    <result column="cliente_area_cod" property="clienteAreaCod" jdbcType="VARCHAR" />
+    <result column="cliente_area_desc" property="clienteAreaDesc" jdbcType="VARCHAR" />
+    <result column="cliente_area_cod_pais" property="clienteAreaCodPais" jdbcType="INTEGER" />
+    <result column="cliente_area_des_pais" property="clienteAreaDesPais" jdbcType="VARCHAR" />
+    <result column="cliente_area_cod_departamento" property="clienteAreaCodDepartamento" jdbcType="INTEGER" />
+    <result column="cliente_area_desc_departamento" property="clienteAreaDescDepartamento" jdbcType="VARCHAR" />
+    <result column="cliente_area_cod_provincia" property="clienteAreaCodProvincia" jdbcType="INTEGER" />
+    <result column="cliente_area_desc_provincia" property="clienteAreaDescProvincia" jdbcType="VARCHAR" />
+    <result column="cliente_area_cod_distrito" property="clienteAreaCodDistrito" jdbcType="INTEGER" />
+    <result column="cliente_area_desc_distrito" property="clienteAreaDescDistrito" jdbcType="VARCHAR" />
+    <result column="cliente_area_cod_estado" property="clienteAreaCodEstado" jdbcType="INTEGER" />
+    <result column="cliente_area_desc_estado" property="clienteAreaDescEstado" jdbcType="VARCHAR" />
+    <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
+    <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    cliente_key, cliente_cod_tip, cliente_desc_tip, cliente_cod_categoria, cliente_desc_categoria, 
+    cliente_cod_facturacion, cliente_desc_facturacion, cliente_cod_credito, cliente_desc_credito, 
+    cliente_cod_tip_doc, cliente_desc_tip_doc, cliente_num_tip_doc, cliente_desc, cliente_area_key, 
+    cliente_area_cod, cliente_area_desc, cliente_area_cod_pais, cliente_area_des_pais, 
+    cliente_area_cod_departamento, cliente_area_desc_departamento, cliente_area_cod_provincia, 
+    cliente_area_desc_provincia, cliente_area_cod_distrito, cliente_area_desc_distrito, 
+    cliente_area_cod_estado, cliente_area_desc_estado, cod_ind_cam, fec_num_cam
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimClienteExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dim_cliente
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dim_cliente
+    where cliente_key = #{clienteKey,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dim_cliente
+    where cliente_key = #{clienteKey,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimClienteExample" >
+    delete from dim_cliente
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimCliente" >
+    insert into dim_cliente (cliente_key, cliente_cod_tip, cliente_desc_tip, 
+      cliente_cod_categoria, cliente_desc_categoria, 
+      cliente_cod_facturacion, cliente_desc_facturacion, 
+      cliente_cod_credito, cliente_desc_credito, 
+      cliente_cod_tip_doc, cliente_desc_tip_doc, cliente_num_tip_doc, 
+      cliente_desc, cliente_area_key, cliente_area_cod, 
+      cliente_area_desc, cliente_area_cod_pais, cliente_area_des_pais, 
+      cliente_area_cod_departamento, cliente_area_desc_departamento, 
+      cliente_area_cod_provincia, cliente_area_desc_provincia, 
+      cliente_area_cod_distrito, cliente_area_desc_distrito, 
+      cliente_area_cod_estado, cliente_area_desc_estado, 
+      cod_ind_cam, fec_num_cam)
+    values (#{clienteKey,jdbcType=INTEGER}, #{clienteCodTip,jdbcType=INTEGER}, #{clienteDescTip,jdbcType=VARCHAR}, 
+      #{clienteCodCategoria,jdbcType=INTEGER}, #{clienteDescCategoria,jdbcType=VARCHAR}, 
+      #{clienteCodFacturacion,jdbcType=INTEGER}, #{clienteDescFacturacion,jdbcType=VARCHAR}, 
+      #{clienteCodCredito,jdbcType=INTEGER}, #{clienteDescCredito,jdbcType=VARCHAR}, 
+      #{clienteCodTipDoc,jdbcType=INTEGER}, #{clienteDescTipDoc,jdbcType=VARCHAR}, #{clienteNumTipDoc,jdbcType=CHAR}, 
+      #{clienteDesc,jdbcType=VARCHAR}, #{clienteAreaKey,jdbcType=INTEGER}, #{clienteAreaCod,jdbcType=VARCHAR}, 
+      #{clienteAreaDesc,jdbcType=VARCHAR}, #{clienteAreaCodPais,jdbcType=INTEGER}, #{clienteAreaDesPais,jdbcType=VARCHAR}, 
+      #{clienteAreaCodDepartamento,jdbcType=INTEGER}, #{clienteAreaDescDepartamento,jdbcType=VARCHAR}, 
+      #{clienteAreaCodProvincia,jdbcType=INTEGER}, #{clienteAreaDescProvincia,jdbcType=VARCHAR}, 
+      #{clienteAreaCodDistrito,jdbcType=INTEGER}, #{clienteAreaDescDistrito,jdbcType=VARCHAR}, 
+      #{clienteAreaCodEstado,jdbcType=INTEGER}, #{clienteAreaDescEstado,jdbcType=VARCHAR}, 
+      #{codIndCam,jdbcType=CHAR}, #{fecNumCam,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimCliente" >
+    insert into dim_cliente
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="clienteKey != null" >
+        cliente_key,
+      </if>
+      <if test="clienteCodTip != null" >
+        cliente_cod_tip,
+      </if>
+      <if test="clienteDescTip != null" >
+        cliente_desc_tip,
+      </if>
+      <if test="clienteCodCategoria != null" >
+        cliente_cod_categoria,
+      </if>
+      <if test="clienteDescCategoria != null" >
+        cliente_desc_categoria,
+      </if>
+      <if test="clienteCodFacturacion != null" >
+        cliente_cod_facturacion,
+      </if>
+      <if test="clienteDescFacturacion != null" >
+        cliente_desc_facturacion,
+      </if>
+      <if test="clienteCodCredito != null" >
+        cliente_cod_credito,
+      </if>
+      <if test="clienteDescCredito != null" >
+        cliente_desc_credito,
+      </if>
+      <if test="clienteCodTipDoc != null" >
+        cliente_cod_tip_doc,
+      </if>
+      <if test="clienteDescTipDoc != null" >
+        cliente_desc_tip_doc,
+      </if>
+      <if test="clienteNumTipDoc != null" >
+        cliente_num_tip_doc,
+      </if>
+      <if test="clienteDesc != null" >
+        cliente_desc,
+      </if>
+      <if test="clienteAreaKey != null" >
+        cliente_area_key,
+      </if>
+      <if test="clienteAreaCod != null" >
+        cliente_area_cod,
+      </if>
+      <if test="clienteAreaDesc != null" >
+        cliente_area_desc,
+      </if>
+      <if test="clienteAreaCodPais != null" >
+        cliente_area_cod_pais,
+      </if>
+      <if test="clienteAreaDesPais != null" >
+        cliente_area_des_pais,
+      </if>
+      <if test="clienteAreaCodDepartamento != null" >
+        cliente_area_cod_departamento,
+      </if>
+      <if test="clienteAreaDescDepartamento != null" >
+        cliente_area_desc_departamento,
+      </if>
+      <if test="clienteAreaCodProvincia != null" >
+        cliente_area_cod_provincia,
+      </if>
+      <if test="clienteAreaDescProvincia != null" >
+        cliente_area_desc_provincia,
+      </if>
+      <if test="clienteAreaCodDistrito != null" >
+        cliente_area_cod_distrito,
+      </if>
+      <if test="clienteAreaDescDistrito != null" >
+        cliente_area_desc_distrito,
+      </if>
+      <if test="clienteAreaCodEstado != null" >
+        cliente_area_cod_estado,
+      </if>
+      <if test="clienteAreaDescEstado != null" >
+        cliente_area_desc_estado,
+      </if>
+      <if test="codIndCam != null" >
+        cod_ind_cam,
+      </if>
+      <if test="fecNumCam != null" >
+        fec_num_cam,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="clienteKey != null" >
+        #{clienteKey,jdbcType=INTEGER},
+      </if>
+      <if test="clienteCodTip != null" >
+        #{clienteCodTip,jdbcType=INTEGER},
+      </if>
+      <if test="clienteDescTip != null" >
+        #{clienteDescTip,jdbcType=VARCHAR},
+      </if>
+      <if test="clienteCodCategoria != null" >
+        #{clienteCodCategoria,jdbcType=INTEGER},
+      </if>
+      <if test="clienteDescCategoria != null" >
+        #{clienteDescCategoria,jdbcType=VARCHAR},
+      </if>
+      <if test="clienteCodFacturacion != null" >
+        #{clienteCodFacturacion,jdbcType=INTEGER},
+      </if>
+      <if test="clienteDescFacturacion != null" >
+        #{clienteDescFacturacion,jdbcType=VARCHAR},
+      </if>
+      <if test="clienteCodCredito != null" >
+        #{clienteCodCredito,jdbcType=INTEGER},
+      </if>
+      <if test="clienteDescCredito != null" >
+        #{clienteDescCredito,jdbcType=VARCHAR},
+      </if>
+      <if test="clienteCodTipDoc != null" >
+        #{clienteCodTipDoc,jdbcType=INTEGER},
+      </if>
+      <if test="clienteDescTipDoc != null" >
+        #{clienteDescTipDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="clienteNumTipDoc != null" >
+        #{clienteNumTipDoc,jdbcType=CHAR},
+      </if>
+      <if test="clienteDesc != null" >
+        #{clienteDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="clienteAreaKey != null" >
+        #{clienteAreaKey,jdbcType=INTEGER},
+      </if>
+      <if test="clienteAreaCod != null" >
+        #{clienteAreaCod,jdbcType=VARCHAR},
+      </if>
+      <if test="clienteAreaDesc != null" >
+        #{clienteAreaDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="clienteAreaCodPais != null" >
+        #{clienteAreaCodPais,jdbcType=INTEGER},
+      </if>
+      <if test="clienteAreaDesPais != null" >
+        #{clienteAreaDesPais,jdbcType=VARCHAR},
+      </if>
+      <if test="clienteAreaCodDepartamento != null" >
+        #{clienteAreaCodDepartamento,jdbcType=INTEGER},
+      </if>
+      <if test="clienteAreaDescDepartamento != null" >
+        #{clienteAreaDescDepartamento,jdbcType=VARCHAR},
+      </if>
+      <if test="clienteAreaCodProvincia != null" >
+        #{clienteAreaCodProvincia,jdbcType=INTEGER},
+      </if>
+      <if test="clienteAreaDescProvincia != null" >
+        #{clienteAreaDescProvincia,jdbcType=VARCHAR},
+      </if>
+      <if test="clienteAreaCodDistrito != null" >
+        #{clienteAreaCodDistrito,jdbcType=INTEGER},
+      </if>
+      <if test="clienteAreaDescDistrito != null" >
+        #{clienteAreaDescDistrito,jdbcType=VARCHAR},
+      </if>
+      <if test="clienteAreaCodEstado != null" >
+        #{clienteAreaCodEstado,jdbcType=INTEGER},
+      </if>
+      <if test="clienteAreaDescEstado != null" >
+        #{clienteAreaDescEstado,jdbcType=VARCHAR},
+      </if>
+      <if test="codIndCam != null" >
+        #{codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="fecNumCam != null" >
+        #{fecNumCam,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimClienteExample" resultType="java.lang.Integer" >
+    select count(*) from dim_cliente
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update dim_cliente
+    <set >
+      <if test="record.clienteKey != null" >
+        cliente_key = #{record.clienteKey,jdbcType=INTEGER},
+      </if>
+      <if test="record.clienteCodTip != null" >
+        cliente_cod_tip = #{record.clienteCodTip,jdbcType=INTEGER},
+      </if>
+      <if test="record.clienteDescTip != null" >
+        cliente_desc_tip = #{record.clienteDescTip,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clienteCodCategoria != null" >
+        cliente_cod_categoria = #{record.clienteCodCategoria,jdbcType=INTEGER},
+      </if>
+      <if test="record.clienteDescCategoria != null" >
+        cliente_desc_categoria = #{record.clienteDescCategoria,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clienteCodFacturacion != null" >
+        cliente_cod_facturacion = #{record.clienteCodFacturacion,jdbcType=INTEGER},
+      </if>
+      <if test="record.clienteDescFacturacion != null" >
+        cliente_desc_facturacion = #{record.clienteDescFacturacion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clienteCodCredito != null" >
+        cliente_cod_credito = #{record.clienteCodCredito,jdbcType=INTEGER},
+      </if>
+      <if test="record.clienteDescCredito != null" >
+        cliente_desc_credito = #{record.clienteDescCredito,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clienteCodTipDoc != null" >
+        cliente_cod_tip_doc = #{record.clienteCodTipDoc,jdbcType=INTEGER},
+      </if>
+      <if test="record.clienteDescTipDoc != null" >
+        cliente_desc_tip_doc = #{record.clienteDescTipDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clienteNumTipDoc != null" >
+        cliente_num_tip_doc = #{record.clienteNumTipDoc,jdbcType=CHAR},
+      </if>
+      <if test="record.clienteDesc != null" >
+        cliente_desc = #{record.clienteDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clienteAreaKey != null" >
+        cliente_area_key = #{record.clienteAreaKey,jdbcType=INTEGER},
+      </if>
+      <if test="record.clienteAreaCod != null" >
+        cliente_area_cod = #{record.clienteAreaCod,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clienteAreaDesc != null" >
+        cliente_area_desc = #{record.clienteAreaDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clienteAreaCodPais != null" >
+        cliente_area_cod_pais = #{record.clienteAreaCodPais,jdbcType=INTEGER},
+      </if>
+      <if test="record.clienteAreaDesPais != null" >
+        cliente_area_des_pais = #{record.clienteAreaDesPais,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clienteAreaCodDepartamento != null" >
+        cliente_area_cod_departamento = #{record.clienteAreaCodDepartamento,jdbcType=INTEGER},
+      </if>
+      <if test="record.clienteAreaDescDepartamento != null" >
+        cliente_area_desc_departamento = #{record.clienteAreaDescDepartamento,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clienteAreaCodProvincia != null" >
+        cliente_area_cod_provincia = #{record.clienteAreaCodProvincia,jdbcType=INTEGER},
+      </if>
+      <if test="record.clienteAreaDescProvincia != null" >
+        cliente_area_desc_provincia = #{record.clienteAreaDescProvincia,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clienteAreaCodDistrito != null" >
+        cliente_area_cod_distrito = #{record.clienteAreaCodDistrito,jdbcType=INTEGER},
+      </if>
+      <if test="record.clienteAreaDescDistrito != null" >
+        cliente_area_desc_distrito = #{record.clienteAreaDescDistrito,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clienteAreaCodEstado != null" >
+        cliente_area_cod_estado = #{record.clienteAreaCodEstado,jdbcType=INTEGER},
+      </if>
+      <if test="record.clienteAreaDescEstado != null" >
+        cliente_area_desc_estado = #{record.clienteAreaDescEstado,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codIndCam != null" >
+        cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="record.fecNumCam != null" >
+        fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update dim_cliente
+    set cliente_key = #{record.clienteKey,jdbcType=INTEGER},
+      cliente_cod_tip = #{record.clienteCodTip,jdbcType=INTEGER},
+      cliente_desc_tip = #{record.clienteDescTip,jdbcType=VARCHAR},
+      cliente_cod_categoria = #{record.clienteCodCategoria,jdbcType=INTEGER},
+      cliente_desc_categoria = #{record.clienteDescCategoria,jdbcType=VARCHAR},
+      cliente_cod_facturacion = #{record.clienteCodFacturacion,jdbcType=INTEGER},
+      cliente_desc_facturacion = #{record.clienteDescFacturacion,jdbcType=VARCHAR},
+      cliente_cod_credito = #{record.clienteCodCredito,jdbcType=INTEGER},
+      cliente_desc_credito = #{record.clienteDescCredito,jdbcType=VARCHAR},
+      cliente_cod_tip_doc = #{record.clienteCodTipDoc,jdbcType=INTEGER},
+      cliente_desc_tip_doc = #{record.clienteDescTipDoc,jdbcType=VARCHAR},
+      cliente_num_tip_doc = #{record.clienteNumTipDoc,jdbcType=CHAR},
+      cliente_desc = #{record.clienteDesc,jdbcType=VARCHAR},
+      cliente_area_key = #{record.clienteAreaKey,jdbcType=INTEGER},
+      cliente_area_cod = #{record.clienteAreaCod,jdbcType=VARCHAR},
+      cliente_area_desc = #{record.clienteAreaDesc,jdbcType=VARCHAR},
+      cliente_area_cod_pais = #{record.clienteAreaCodPais,jdbcType=INTEGER},
+      cliente_area_des_pais = #{record.clienteAreaDesPais,jdbcType=VARCHAR},
+      cliente_area_cod_departamento = #{record.clienteAreaCodDepartamento,jdbcType=INTEGER},
+      cliente_area_desc_departamento = #{record.clienteAreaDescDepartamento,jdbcType=VARCHAR},
+      cliente_area_cod_provincia = #{record.clienteAreaCodProvincia,jdbcType=INTEGER},
+      cliente_area_desc_provincia = #{record.clienteAreaDescProvincia,jdbcType=VARCHAR},
+      cliente_area_cod_distrito = #{record.clienteAreaCodDistrito,jdbcType=INTEGER},
+      cliente_area_desc_distrito = #{record.clienteAreaDescDistrito,jdbcType=VARCHAR},
+      cliente_area_cod_estado = #{record.clienteAreaCodEstado,jdbcType=INTEGER},
+      cliente_area_desc_estado = #{record.clienteAreaDescEstado,jdbcType=VARCHAR},
+      cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
+      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimCliente" >
+    update dim_cliente
+    <set >
+      <if test="clienteCodTip != null" >
+        cliente_cod_tip = #{clienteCodTip,jdbcType=INTEGER},
+      </if>
+      <if test="clienteDescTip != null" >
+        cliente_desc_tip = #{clienteDescTip,jdbcType=VARCHAR},
+      </if>
+      <if test="clienteCodCategoria != null" >
+        cliente_cod_categoria = #{clienteCodCategoria,jdbcType=INTEGER},
+      </if>
+      <if test="clienteDescCategoria != null" >
+        cliente_desc_categoria = #{clienteDescCategoria,jdbcType=VARCHAR},
+      </if>
+      <if test="clienteCodFacturacion != null" >
+        cliente_cod_facturacion = #{clienteCodFacturacion,jdbcType=INTEGER},
+      </if>
+      <if test="clienteDescFacturacion != null" >
+        cliente_desc_facturacion = #{clienteDescFacturacion,jdbcType=VARCHAR},
+      </if>
+      <if test="clienteCodCredito != null" >
+        cliente_cod_credito = #{clienteCodCredito,jdbcType=INTEGER},
+      </if>
+      <if test="clienteDescCredito != null" >
+        cliente_desc_credito = #{clienteDescCredito,jdbcType=VARCHAR},
+      </if>
+      <if test="clienteCodTipDoc != null" >
+        cliente_cod_tip_doc = #{clienteCodTipDoc,jdbcType=INTEGER},
+      </if>
+      <if test="clienteDescTipDoc != null" >
+        cliente_desc_tip_doc = #{clienteDescTipDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="clienteNumTipDoc != null" >
+        cliente_num_tip_doc = #{clienteNumTipDoc,jdbcType=CHAR},
+      </if>
+      <if test="clienteDesc != null" >
+        cliente_desc = #{clienteDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="clienteAreaKey != null" >
+        cliente_area_key = #{clienteAreaKey,jdbcType=INTEGER},
+      </if>
+      <if test="clienteAreaCod != null" >
+        cliente_area_cod = #{clienteAreaCod,jdbcType=VARCHAR},
+      </if>
+      <if test="clienteAreaDesc != null" >
+        cliente_area_desc = #{clienteAreaDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="clienteAreaCodPais != null" >
+        cliente_area_cod_pais = #{clienteAreaCodPais,jdbcType=INTEGER},
+      </if>
+      <if test="clienteAreaDesPais != null" >
+        cliente_area_des_pais = #{clienteAreaDesPais,jdbcType=VARCHAR},
+      </if>
+      <if test="clienteAreaCodDepartamento != null" >
+        cliente_area_cod_departamento = #{clienteAreaCodDepartamento,jdbcType=INTEGER},
+      </if>
+      <if test="clienteAreaDescDepartamento != null" >
+        cliente_area_desc_departamento = #{clienteAreaDescDepartamento,jdbcType=VARCHAR},
+      </if>
+      <if test="clienteAreaCodProvincia != null" >
+        cliente_area_cod_provincia = #{clienteAreaCodProvincia,jdbcType=INTEGER},
+      </if>
+      <if test="clienteAreaDescProvincia != null" >
+        cliente_area_desc_provincia = #{clienteAreaDescProvincia,jdbcType=VARCHAR},
+      </if>
+      <if test="clienteAreaCodDistrito != null" >
+        cliente_area_cod_distrito = #{clienteAreaCodDistrito,jdbcType=INTEGER},
+      </if>
+      <if test="clienteAreaDescDistrito != null" >
+        cliente_area_desc_distrito = #{clienteAreaDescDistrito,jdbcType=VARCHAR},
+      </if>
+      <if test="clienteAreaCodEstado != null" >
+        cliente_area_cod_estado = #{clienteAreaCodEstado,jdbcType=INTEGER},
+      </if>
+      <if test="clienteAreaDescEstado != null" >
+        cliente_area_desc_estado = #{clienteAreaDescEstado,jdbcType=VARCHAR},
+      </if>
+      <if test="codIndCam != null" >
+        cod_ind_cam = #{codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="fecNumCam != null" >
+        fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      </if>
+    </set>
+    where cliente_key = #{clienteKey,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimCliente" >
+    update dim_cliente
+    set cliente_cod_tip = #{clienteCodTip,jdbcType=INTEGER},
+      cliente_desc_tip = #{clienteDescTip,jdbcType=VARCHAR},
+      cliente_cod_categoria = #{clienteCodCategoria,jdbcType=INTEGER},
+      cliente_desc_categoria = #{clienteDescCategoria,jdbcType=VARCHAR},
+      cliente_cod_facturacion = #{clienteCodFacturacion,jdbcType=INTEGER},
+      cliente_desc_facturacion = #{clienteDescFacturacion,jdbcType=VARCHAR},
+      cliente_cod_credito = #{clienteCodCredito,jdbcType=INTEGER},
+      cliente_desc_credito = #{clienteDescCredito,jdbcType=VARCHAR},
+      cliente_cod_tip_doc = #{clienteCodTipDoc,jdbcType=INTEGER},
+      cliente_desc_tip_doc = #{clienteDescTipDoc,jdbcType=VARCHAR},
+      cliente_num_tip_doc = #{clienteNumTipDoc,jdbcType=CHAR},
+      cliente_desc = #{clienteDesc,jdbcType=VARCHAR},
+      cliente_area_key = #{clienteAreaKey,jdbcType=INTEGER},
+      cliente_area_cod = #{clienteAreaCod,jdbcType=VARCHAR},
+      cliente_area_desc = #{clienteAreaDesc,jdbcType=VARCHAR},
+      cliente_area_cod_pais = #{clienteAreaCodPais,jdbcType=INTEGER},
+      cliente_area_des_pais = #{clienteAreaDesPais,jdbcType=VARCHAR},
+      cliente_area_cod_departamento = #{clienteAreaCodDepartamento,jdbcType=INTEGER},
+      cliente_area_desc_departamento = #{clienteAreaDescDepartamento,jdbcType=VARCHAR},
+      cliente_area_cod_provincia = #{clienteAreaCodProvincia,jdbcType=INTEGER},
+      cliente_area_desc_provincia = #{clienteAreaDescProvincia,jdbcType=VARCHAR},
+      cliente_area_cod_distrito = #{clienteAreaCodDistrito,jdbcType=INTEGER},
+      cliente_area_desc_distrito = #{clienteAreaDescDistrito,jdbcType=VARCHAR},
+      cliente_area_cod_estado = #{clienteAreaCodEstado,jdbcType=INTEGER},
+      cliente_area_desc_estado = #{clienteAreaDescEstado,jdbcType=VARCHAR},
+      cod_ind_cam = #{codIndCam,jdbcType=CHAR},
+      fec_num_cam = #{fecNumCam,jdbcType=INTEGER}
+    where cliente_key = #{clienteKey,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//www.mybatis.org//DTD Config 3.0//EN"
+    "http://www.mybatis.org/dtd/mybatis-3-config.dtd">
+<!--
+    Copyright 2010 The myBatis Team
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<configuration>
+	<typeAliases>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimCliente" alias="DimCliente"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimClienteExample" alias="DimClienteExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimEstado" alias="DimEstado"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimEstadoExample" alias="DimEstadoExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimMoneda" alias="DimMoneda"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimMonedaExample" alias="DimMonedaExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimPersonal" alias="DimPersonal"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimPersonalExample" alias="DimPersonalExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimProducto" alias="DimProducto"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimProductoExample" alias="DimProductoExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimSede" alias="DimSede"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimSedeExample" alias="DimSedeExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimServicio" alias="DimServicio"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimServicioExample" alias="DimServicioExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimTiempo" alias="DimTiempo"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimTiempoExample" alias="DimTiempoExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoDocumento" alias="DimTipoDocumento"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoDocumentoExample" alias="DimTipoDocumentoExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoPago" alias="DimTipoPago"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoPagoExample" alias="DimTipoPagoExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoReparto" alias="DimTipoReparto"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoRepartoExample" alias="DimTipoRepartoExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoRuta" alias="DimTipoRuta"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoRutaExample" alias="DimTipoRutaExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimZona" alias="DimZona"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimZonaExample" alias="DimZonaExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.FactCotizacion" alias="FactCotizacion"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.FactCotizacionExample" alias="FactCotizacionExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.FactDespacho" alias="FactDespacho"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.FactDespachoExample" alias="FactDespachoExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.FactEnvio" alias="FactEnvio"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.FactEnvioExample" alias="FactEnvioExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.FactOrden" alias="FactOrden"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.FactOrdenExample" alias="FactOrdenExample"/>
+	</typeAliases>
+    <mappers>
+        <mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/DimClienteMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/DimEstadoMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/DimMonedaMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/DimPersonalMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/DimProductoMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/DimSedeMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/DimServicioMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/DimTiempoMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/DimTipoDocumentoMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/DimTipoPagoMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/DimTipoRepartoMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/DimTipoRutaMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/DimZonaMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/FactCotizacionMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/FactDespachoMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/FactEnvioMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/FactOrdenMapper.xml" />
+    </mappers>
+</configuration>
