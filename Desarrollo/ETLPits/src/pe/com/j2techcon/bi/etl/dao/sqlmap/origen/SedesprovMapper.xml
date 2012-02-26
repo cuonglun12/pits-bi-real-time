@@ -1,40 +1,40 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.origen.SedesprovMapper">
-  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.origen.Sedesprov">
-    <result column="codsede" jdbcType="CHAR" property="codsede" />
-    <result column="nomsede" jdbcType="VARCHAR" property="nomsede" />
-    <result column="direccion" jdbcType="VARCHAR" property="direccion" />
-    <result column="ubigeo" jdbcType="CHAR" property="ubigeo" />
-    <result column="ciudad" jdbcType="VARCHAR" property="ciudad" />
-    <result column="url" jdbcType="VARCHAR" property="url" />
-    <result column="estado" jdbcType="SMALLINT" property="estado" />
-    <result column="alias_sede" jdbcType="VARCHAR" property="aliasSede" />
-    <result column="ip_sede" jdbcType="VARCHAR" property="ipSede" />
-    <result column="nro_maq_reg" jdbcType="VARCHAR" property="nroMaqReg" />
-    <result column="nro_autorizacion" jdbcType="VARCHAR" property="nroAutorizacion" />
-    <result column="tipo" jdbcType="SMALLINT" property="tipo" />
-    <result column="tipo1" jdbcType="SMALLINT" property="tipo1" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pe.com.j2techcon.bi.etl.dao.origen.SedesprovMapper" >
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.origen.Sedesprov" >
+    <result column="codsede" property="codsede" jdbcType="CHAR" />
+    <result column="nomsede" property="nomsede" jdbcType="VARCHAR" />
+    <result column="direccion" property="direccion" jdbcType="VARCHAR" />
+    <result column="ubigeo" property="ubigeo" jdbcType="CHAR" />
+    <result column="ciudad" property="ciudad" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="estado" property="estado" jdbcType="SMALLINT" />
+    <result column="alias_sede" property="aliasSede" jdbcType="VARCHAR" />
+    <result column="ip_sede" property="ipSede" jdbcType="VARCHAR" />
+    <result column="nro_maq_reg" property="nroMaqReg" jdbcType="VARCHAR" />
+    <result column="nro_autorizacion" property="nroAutorizacion" jdbcType="VARCHAR" />
+    <result column="tipo" property="tipo" jdbcType="SMALLINT" />
+    <result column="tipo1" property="tipo1" jdbcType="SMALLINT" />
   </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue">
+                <when test="criterion.singleValue" >
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue">
+                <when test="criterion.betweenValue" >
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue">
+                <when test="criterion.listValue" >
                   and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
                     #{listItem}
                   </foreach>
                 </when>
@@ -45,25 +45,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue">
+                <when test="criterion.singleValue" >
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue">
+                <when test="criterion.betweenValue" >
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue">
+                <when test="criterion.listValue" >
                   and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
                     #{listItem}
                   </foreach>
                 </when>
@@ -74,31 +74,31 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     codsede, nomsede, direccion, ubigeo, ciudad, url, estado, alias_sede, ip_sede, nro_maq_reg, 
     nro_autorizacion, tipo, tipo1
   </sql>
-  <select id="selectByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.SedesprovExample" resultMap="BaseResultMap">
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.origen.SedesprovExample" >
     select
-    <if test="distinct">
+    <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
     from sedesprov
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null">
+    <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.SedesprovExample">
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.SedesprovExample" >
     delete from sedesprov
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Sedesprov">
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Sedesprov" >
     insert into sedesprov (codsede, nomsede, direccion, 
       ubigeo, ciudad, url, estado, 
       alias_sede, ip_sede, nro_maq_reg, 
@@ -110,145 +110,145 @@
       #{nroAutorizacion,jdbcType=VARCHAR}, #{tipo,jdbcType=SMALLINT}, #{tipo1,jdbcType=SMALLINT}
       )
   </insert>
-  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Sedesprov">
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Sedesprov" >
     insert into sedesprov
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="codsede != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="codsede != null" >
         codsede,
       </if>
-      <if test="nomsede != null">
+      <if test="nomsede != null" >
         nomsede,
       </if>
-      <if test="direccion != null">
+      <if test="direccion != null" >
         direccion,
       </if>
-      <if test="ubigeo != null">
+      <if test="ubigeo != null" >
         ubigeo,
       </if>
-      <if test="ciudad != null">
+      <if test="ciudad != null" >
         ciudad,
       </if>
-      <if test="url != null">
+      <if test="url != null" >
         url,
       </if>
-      <if test="estado != null">
+      <if test="estado != null" >
         estado,
       </if>
-      <if test="aliasSede != null">
+      <if test="aliasSede != null" >
         alias_sede,
       </if>
-      <if test="ipSede != null">
+      <if test="ipSede != null" >
         ip_sede,
       </if>
-      <if test="nroMaqReg != null">
+      <if test="nroMaqReg != null" >
         nro_maq_reg,
       </if>
-      <if test="nroAutorizacion != null">
+      <if test="nroAutorizacion != null" >
         nro_autorizacion,
       </if>
-      <if test="tipo != null">
+      <if test="tipo != null" >
         tipo,
       </if>
-      <if test="tipo1 != null">
+      <if test="tipo1 != null" >
         tipo1,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="codsede != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="codsede != null" >
         #{codsede,jdbcType=CHAR},
       </if>
-      <if test="nomsede != null">
+      <if test="nomsede != null" >
         #{nomsede,jdbcType=VARCHAR},
       </if>
-      <if test="direccion != null">
+      <if test="direccion != null" >
         #{direccion,jdbcType=VARCHAR},
       </if>
-      <if test="ubigeo != null">
+      <if test="ubigeo != null" >
         #{ubigeo,jdbcType=CHAR},
       </if>
-      <if test="ciudad != null">
+      <if test="ciudad != null" >
         #{ciudad,jdbcType=VARCHAR},
       </if>
-      <if test="url != null">
+      <if test="url != null" >
         #{url,jdbcType=VARCHAR},
       </if>
-      <if test="estado != null">
+      <if test="estado != null" >
         #{estado,jdbcType=SMALLINT},
       </if>
-      <if test="aliasSede != null">
+      <if test="aliasSede != null" >
         #{aliasSede,jdbcType=VARCHAR},
       </if>
-      <if test="ipSede != null">
+      <if test="ipSede != null" >
         #{ipSede,jdbcType=VARCHAR},
       </if>
-      <if test="nroMaqReg != null">
+      <if test="nroMaqReg != null" >
         #{nroMaqReg,jdbcType=VARCHAR},
       </if>
-      <if test="nroAutorizacion != null">
+      <if test="nroAutorizacion != null" >
         #{nroAutorizacion,jdbcType=VARCHAR},
       </if>
-      <if test="tipo != null">
+      <if test="tipo != null" >
         #{tipo,jdbcType=SMALLINT},
       </if>
-      <if test="tipo1 != null">
+      <if test="tipo1 != null" >
         #{tipo1,jdbcType=SMALLINT},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.SedesprovExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.SedesprovExample" resultType="java.lang.Integer" >
     select count(*) from sedesprov
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map">
+  <update id="updateByExampleSelective" parameterType="map" >
     update sedesprov
-    <set>
-      <if test="record.codsede != null">
+    <set >
+      <if test="record.codsede != null" >
         codsede = #{record.codsede,jdbcType=CHAR},
       </if>
-      <if test="record.nomsede != null">
+      <if test="record.nomsede != null" >
         nomsede = #{record.nomsede,jdbcType=VARCHAR},
       </if>
-      <if test="record.direccion != null">
+      <if test="record.direccion != null" >
         direccion = #{record.direccion,jdbcType=VARCHAR},
       </if>
-      <if test="record.ubigeo != null">
+      <if test="record.ubigeo != null" >
         ubigeo = #{record.ubigeo,jdbcType=CHAR},
       </if>
-      <if test="record.ciudad != null">
+      <if test="record.ciudad != null" >
         ciudad = #{record.ciudad,jdbcType=VARCHAR},
       </if>
-      <if test="record.url != null">
+      <if test="record.url != null" >
         url = #{record.url,jdbcType=VARCHAR},
       </if>
-      <if test="record.estado != null">
+      <if test="record.estado != null" >
         estado = #{record.estado,jdbcType=SMALLINT},
       </if>
-      <if test="record.aliasSede != null">
+      <if test="record.aliasSede != null" >
         alias_sede = #{record.aliasSede,jdbcType=VARCHAR},
       </if>
-      <if test="record.ipSede != null">
+      <if test="record.ipSede != null" >
         ip_sede = #{record.ipSede,jdbcType=VARCHAR},
       </if>
-      <if test="record.nroMaqReg != null">
+      <if test="record.nroMaqReg != null" >
         nro_maq_reg = #{record.nroMaqReg,jdbcType=VARCHAR},
       </if>
-      <if test="record.nroAutorizacion != null">
+      <if test="record.nroAutorizacion != null" >
         nro_autorizacion = #{record.nroAutorizacion,jdbcType=VARCHAR},
       </if>
-      <if test="record.tipo != null">
+      <if test="record.tipo != null" >
         tipo = #{record.tipo,jdbcType=SMALLINT},
       </if>
-      <if test="record.tipo1 != null">
+      <if test="record.tipo1 != null" >
         tipo1 = #{record.tipo1,jdbcType=SMALLINT},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map">
+  <update id="updateByExample" parameterType="map" >
     update sedesprov
     set codsede = #{record.codsede,jdbcType=CHAR},
       nomsede = #{record.nomsede,jdbcType=VARCHAR},
@@ -263,273 +263,7 @@
       nro_autorizacion = #{record.nroAutorizacion,jdbcType=VARCHAR},
       tipo = #{record.tipo,jdbcType=SMALLINT},
       tipo1 = #{record.tipo1,jdbcType=SMALLINT}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.origen.Sedesprov">
-    <result column="codsede" jdbcType="CHAR" property="codsede" />
-    <result column="nomsede" jdbcType="VARCHAR" property="nomsede" />
-    <result column="direccion" jdbcType="VARCHAR" property="direccion" />
-    <result column="ubigeo" jdbcType="CHAR" property="ubigeo" />
-    <result column="ciudad" jdbcType="VARCHAR" property="ciudad" />
-    <result column="url" jdbcType="VARCHAR" property="url" />
-    <result column="estado" jdbcType="SMALLINT" property="estado" />
-    <result column="alias_sede" jdbcType="VARCHAR" property="aliasSede" />
-    <result column="ip_sede" jdbcType="VARCHAR" property="ipSede" />
-    <result column="nro_maq_reg" jdbcType="VARCHAR" property="nroMaqReg" />
-    <result column="nro_autorizacion" jdbcType="VARCHAR" property="nroAutorizacion" />
-    <result column="tipo" jdbcType="SMALLINT" property="tipo" />
-    <result column="tipo1" jdbcType="SMALLINT" property="tipo1" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    codsede, nomsede, direccion, ubigeo, ciudad, url, estado, alias_sede, ip_sede, nro_maq_reg, 
-    nro_autorizacion, tipo, tipo1
-  </sql>
-  <select id="selectByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.SedesprovExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from sedesprov
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.SedesprovExample">
-    delete from sedesprov
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Sedesprov">
-    insert into sedesprov (codsede, nomsede, direccion, 
-      ubigeo, ciudad, url, estado, 
-      alias_sede, ip_sede, nro_maq_reg, 
-      nro_autorizacion, tipo, tipo1
-      )
-    values (#{codsede,jdbcType=CHAR}, #{nomsede,jdbcType=VARCHAR}, #{direccion,jdbcType=VARCHAR}, 
-      #{ubigeo,jdbcType=CHAR}, #{ciudad,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{estado,jdbcType=SMALLINT}, 
-      #{aliasSede,jdbcType=VARCHAR}, #{ipSede,jdbcType=VARCHAR}, #{nroMaqReg,jdbcType=VARCHAR}, 
-      #{nroAutorizacion,jdbcType=VARCHAR}, #{tipo,jdbcType=SMALLINT}, #{tipo1,jdbcType=SMALLINT}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Sedesprov">
-    insert into sedesprov
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="codsede != null">
-        codsede,
-      </if>
-      <if test="nomsede != null">
-        nomsede,
-      </if>
-      <if test="direccion != null">
-        direccion,
-      </if>
-      <if test="ubigeo != null">
-        ubigeo,
-      </if>
-      <if test="ciudad != null">
-        ciudad,
-      </if>
-      <if test="url != null">
-        url,
-      </if>
-      <if test="estado != null">
-        estado,
-      </if>
-      <if test="aliasSede != null">
-        alias_sede,
-      </if>
-      <if test="ipSede != null">
-        ip_sede,
-      </if>
-      <if test="nroMaqReg != null">
-        nro_maq_reg,
-      </if>
-      <if test="nroAutorizacion != null">
-        nro_autorizacion,
-      </if>
-      <if test="tipo != null">
-        tipo,
-      </if>
-      <if test="tipo1 != null">
-        tipo1,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="codsede != null">
-        #{codsede,jdbcType=CHAR},
-      </if>
-      <if test="nomsede != null">
-        #{nomsede,jdbcType=VARCHAR},
-      </if>
-      <if test="direccion != null">
-        #{direccion,jdbcType=VARCHAR},
-      </if>
-      <if test="ubigeo != null">
-        #{ubigeo,jdbcType=CHAR},
-      </if>
-      <if test="ciudad != null">
-        #{ciudad,jdbcType=VARCHAR},
-      </if>
-      <if test="url != null">
-        #{url,jdbcType=VARCHAR},
-      </if>
-      <if test="estado != null">
-        #{estado,jdbcType=SMALLINT},
-      </if>
-      <if test="aliasSede != null">
-        #{aliasSede,jdbcType=VARCHAR},
-      </if>
-      <if test="ipSede != null">
-        #{ipSede,jdbcType=VARCHAR},
-      </if>
-      <if test="nroMaqReg != null">
-        #{nroMaqReg,jdbcType=VARCHAR},
-      </if>
-      <if test="nroAutorizacion != null">
-        #{nroAutorizacion,jdbcType=VARCHAR},
-      </if>
-      <if test="tipo != null">
-        #{tipo,jdbcType=SMALLINT},
-      </if>
-      <if test="tipo1 != null">
-        #{tipo1,jdbcType=SMALLINT},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.SedesprovExample" resultType="java.lang.Integer">
-    select count(*) from sedesprov
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update sedesprov
-    <set>
-      <if test="record.codsede != null">
-        codsede = #{record.codsede,jdbcType=CHAR},
-      </if>
-      <if test="record.nomsede != null">
-        nomsede = #{record.nomsede,jdbcType=VARCHAR},
-      </if>
-      <if test="record.direccion != null">
-        direccion = #{record.direccion,jdbcType=VARCHAR},
-      </if>
-      <if test="record.ubigeo != null">
-        ubigeo = #{record.ubigeo,jdbcType=CHAR},
-      </if>
-      <if test="record.ciudad != null">
-        ciudad = #{record.ciudad,jdbcType=VARCHAR},
-      </if>
-      <if test="record.url != null">
-        url = #{record.url,jdbcType=VARCHAR},
-      </if>
-      <if test="record.estado != null">
-        estado = #{record.estado,jdbcType=SMALLINT},
-      </if>
-      <if test="record.aliasSede != null">
-        alias_sede = #{record.aliasSede,jdbcType=VARCHAR},
-      </if>
-      <if test="record.ipSede != null">
-        ip_sede = #{record.ipSede,jdbcType=VARCHAR},
-      </if>
-      <if test="record.nroMaqReg != null">
-        nro_maq_reg = #{record.nroMaqReg,jdbcType=VARCHAR},
-      </if>
-      <if test="record.nroAutorizacion != null">
-        nro_autorizacion = #{record.nroAutorizacion,jdbcType=VARCHAR},
-      </if>
-      <if test="record.tipo != null">
-        tipo = #{record.tipo,jdbcType=SMALLINT},
-      </if>
-      <if test="record.tipo1 != null">
-        tipo1 = #{record.tipo1,jdbcType=SMALLINT},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update sedesprov
-    set codsede = #{record.codsede,jdbcType=CHAR},
-      nomsede = #{record.nomsede,jdbcType=VARCHAR},
-      direccion = #{record.direccion,jdbcType=VARCHAR},
-      ubigeo = #{record.ubigeo,jdbcType=CHAR},
-      ciudad = #{record.ciudad,jdbcType=VARCHAR},
-      url = #{record.url,jdbcType=VARCHAR},
-      estado = #{record.estado,jdbcType=SMALLINT},
-      alias_sede = #{record.aliasSede,jdbcType=VARCHAR},
-      ip_sede = #{record.ipSede,jdbcType=VARCHAR},
-      nro_maq_reg = #{record.nroMaqReg,jdbcType=VARCHAR},
-      nro_autorizacion = #{record.nroAutorizacion,jdbcType=VARCHAR},
-      tipo = #{record.tipo,jdbcType=SMALLINT},
-      tipo1 = #{record.tipo1,jdbcType=SMALLINT}
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

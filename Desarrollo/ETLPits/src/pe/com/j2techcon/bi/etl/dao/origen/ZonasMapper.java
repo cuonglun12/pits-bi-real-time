@@ -8,22 +8,6 @@ import pe.com.j2techcon.bi.etl.domain.origen.ZonasExample;
 public interface ZonasMapper {
     int countByExample(ZonasExample example);
 
-	int deleteByExample(ZonasExample example);
-
-	int insert(Zonas record);
-
-	int insertSelective(Zonas record);
-
-	List<Zonas> selectByExample(ZonasExample example);
-
-	int updateByExampleSelective(@Param("record") Zonas record,
-			@Param("example") ZonasExample example);
-
-	int updateByExample(@Param("record") Zonas record,
-			@Param("example") ZonasExample example);
-
-	int countByExample(ZonasExample example);
-
     int deleteByExample(ZonasExample example);
 
     int insert(Zonas record);

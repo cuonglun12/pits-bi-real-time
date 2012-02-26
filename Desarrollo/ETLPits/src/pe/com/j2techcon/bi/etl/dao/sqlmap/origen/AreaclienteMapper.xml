@@ -1,47 +1,47 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.origen.AreaclienteMapper">
-  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.origen.Areacliente">
-    <id column="codareacliente" jdbcType="CHAR" property="codareacliente" />
-    <id column="codcliente" jdbcType="CHAR" property="codcliente" />
-    <result column="ruc" jdbcType="VARCHAR" property="ruc" />
-    <result column="areacliente" jdbcType="VARCHAR" property="areacliente" />
-    <result column="direccion" jdbcType="VARCHAR" property="direccion" />
-    <result column="ubigeo" jdbcType="VARCHAR" property="ubigeo" />
-    <result column="codpais" jdbcType="VARCHAR" property="codpais" />
-    <result column="telefono" jdbcType="VARCHAR" property="telefono" />
-    <result column="movil" jdbcType="VARCHAR" property="movil" />
-    <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="codejecutiva" jdbcType="CHAR" property="codejecutiva" />
-    <result column="observacion" jdbcType="VARCHAR" property="observacion" />
-    <result column="usuario" jdbcType="CHAR" property="usuario" />
-    <result column="fecha" jdbcType="TIMESTAMP" property="fecha" />
-    <result column="usuariomod" jdbcType="CHAR" property="usuariomod" />
-    <result column="fechamod" jdbcType="TIMESTAMP" property="fechamod" />
-    <result column="estado" jdbcType="SMALLINT" property="estado" />
-    <result column="contacto" jdbcType="VARCHAR" property="contacto" />
-    <result column="areacontacto" jdbcType="VARCHAR" property="areacontacto" />
-    <result column="preorden" jdbcType="VARCHAR" property="preorden" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pe.com.j2techcon.bi.etl.dao.origen.AreaclienteMapper" >
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.origen.Areacliente" >
+    <id column="codareacliente" property="codareacliente" jdbcType="CHAR" />
+    <id column="codcliente" property="codcliente" jdbcType="CHAR" />
+    <result column="ruc" property="ruc" jdbcType="VARCHAR" />
+    <result column="areacliente" property="areacliente" jdbcType="VARCHAR" />
+    <result column="direccion" property="direccion" jdbcType="VARCHAR" />
+    <result column="ubigeo" property="ubigeo" jdbcType="VARCHAR" />
+    <result column="codpais" property="codpais" jdbcType="VARCHAR" />
+    <result column="telefono" property="telefono" jdbcType="VARCHAR" />
+    <result column="movil" property="movil" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="codejecutiva" property="codejecutiva" jdbcType="CHAR" />
+    <result column="observacion" property="observacion" jdbcType="VARCHAR" />
+    <result column="usuario" property="usuario" jdbcType="CHAR" />
+    <result column="fecha" property="fecha" jdbcType="TIMESTAMP" />
+    <result column="usuariomod" property="usuariomod" jdbcType="CHAR" />
+    <result column="fechamod" property="fechamod" jdbcType="TIMESTAMP" />
+    <result column="estado" property="estado" jdbcType="SMALLINT" />
+    <result column="contacto" property="contacto" jdbcType="VARCHAR" />
+    <result column="areacontacto" property="areacontacto" jdbcType="VARCHAR" />
+    <result column="preorden" property="preorden" jdbcType="VARCHAR" />
   </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue">
+                <when test="criterion.singleValue" >
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue">
+                <when test="criterion.betweenValue" >
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue">
+                <when test="criterion.listValue" >
                   and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
                     #{listItem}
                   </foreach>
                 </when>
@@ -52,25 +52,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue">
+                <when test="criterion.singleValue" >
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue">
+                <when test="criterion.betweenValue" >
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue">
+                <when test="criterion.listValue" >
                   and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
                     #{listItem}
                   </foreach>
                 </when>
@@ -81,44 +81,44 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     codareacliente, codcliente, ruc, areacliente, direccion, ubigeo, codpais, telefono, 
     movil, email, codejecutiva, observacion, usuario, fecha, usuariomod, fechamod, estado, 
     contacto, areacontacto, preorden
   </sql>
-  <select id="selectByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.AreaclienteExample" resultMap="BaseResultMap">
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.origen.AreaclienteExample" >
     select
-    <if test="distinct">
+    <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
     from areacliente
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null">
+    <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
     select 
     <include refid="Base_Column_List" />
     from areacliente
     where codareacliente = #{codareacliente,jdbcType=CHAR}
       and codcliente = #{codcliente,jdbcType=CHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="map">
+  <delete id="deleteByPrimaryKey" parameterType="map" >
     delete from areacliente
     where codareacliente = #{codareacliente,jdbcType=CHAR}
       and codcliente = #{codcliente,jdbcType=CHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.AreaclienteExample">
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.AreaclienteExample" >
     delete from areacliente
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Areacliente">
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Areacliente" >
     insert into areacliente (codareacliente, codcliente, ruc, 
       areacliente, direccion, ubigeo, 
       codpais, telefono, movil, 
@@ -134,208 +134,208 @@
       #{fechamod,jdbcType=TIMESTAMP}, #{estado,jdbcType=SMALLINT}, #{contacto,jdbcType=VARCHAR}, 
       #{areacontacto,jdbcType=VARCHAR}, #{preorden,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Areacliente">
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Areacliente" >
     insert into areacliente
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="codareacliente != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="codareacliente != null" >
         codareacliente,
       </if>
-      <if test="codcliente != null">
+      <if test="codcliente != null" >
         codcliente,
       </if>
-      <if test="ruc != null">
+      <if test="ruc != null" >
         ruc,
       </if>
-      <if test="areacliente != null">
+      <if test="areacliente != null" >
         areacliente,
       </if>
-      <if test="direccion != null">
+      <if test="direccion != null" >
         direccion,
       </if>
-      <if test="ubigeo != null">
+      <if test="ubigeo != null" >
         ubigeo,
       </if>
-      <if test="codpais != null">
+      <if test="codpais != null" >
         codpais,
       </if>
-      <if test="telefono != null">
+      <if test="telefono != null" >
         telefono,
       </if>
-      <if test="movil != null">
+      <if test="movil != null" >
         movil,
       </if>
-      <if test="email != null">
+      <if test="email != null" >
         email,
       </if>
-      <if test="codejecutiva != null">
+      <if test="codejecutiva != null" >
         codejecutiva,
       </if>
-      <if test="observacion != null">
+      <if test="observacion != null" >
         observacion,
       </if>
-      <if test="usuario != null">
+      <if test="usuario != null" >
         usuario,
       </if>
-      <if test="fecha != null">
+      <if test="fecha != null" >
         fecha,
       </if>
-      <if test="usuariomod != null">
+      <if test="usuariomod != null" >
         usuariomod,
       </if>
-      <if test="fechamod != null">
+      <if test="fechamod != null" >
         fechamod,
       </if>
-      <if test="estado != null">
+      <if test="estado != null" >
         estado,
       </if>
-      <if test="contacto != null">
+      <if test="contacto != null" >
         contacto,
       </if>
-      <if test="areacontacto != null">
+      <if test="areacontacto != null" >
         areacontacto,
       </if>
-      <if test="preorden != null">
+      <if test="preorden != null" >
         preorden,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="codareacliente != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="codareacliente != null" >
         #{codareacliente,jdbcType=CHAR},
       </if>
-      <if test="codcliente != null">
+      <if test="codcliente != null" >
         #{codcliente,jdbcType=CHAR},
       </if>
-      <if test="ruc != null">
+      <if test="ruc != null" >
         #{ruc,jdbcType=VARCHAR},
       </if>
-      <if test="areacliente != null">
+      <if test="areacliente != null" >
         #{areacliente,jdbcType=VARCHAR},
       </if>
-      <if test="direccion != null">
+      <if test="direccion != null" >
         #{direccion,jdbcType=VARCHAR},
       </if>
-      <if test="ubigeo != null">
+      <if test="ubigeo != null" >
         #{ubigeo,jdbcType=VARCHAR},
       </if>
-      <if test="codpais != null">
+      <if test="codpais != null" >
         #{codpais,jdbcType=VARCHAR},
       </if>
-      <if test="telefono != null">
+      <if test="telefono != null" >
         #{telefono,jdbcType=VARCHAR},
       </if>
-      <if test="movil != null">
+      <if test="movil != null" >
         #{movil,jdbcType=VARCHAR},
       </if>
-      <if test="email != null">
+      <if test="email != null" >
         #{email,jdbcType=VARCHAR},
       </if>
-      <if test="codejecutiva != null">
+      <if test="codejecutiva != null" >
         #{codejecutiva,jdbcType=CHAR},
       </if>
-      <if test="observacion != null">
+      <if test="observacion != null" >
         #{observacion,jdbcType=VARCHAR},
       </if>
-      <if test="usuario != null">
+      <if test="usuario != null" >
         #{usuario,jdbcType=CHAR},
       </if>
-      <if test="fecha != null">
+      <if test="fecha != null" >
         #{fecha,jdbcType=TIMESTAMP},
       </if>
-      <if test="usuariomod != null">
+      <if test="usuariomod != null" >
         #{usuariomod,jdbcType=CHAR},
       </if>
-      <if test="fechamod != null">
+      <if test="fechamod != null" >
         #{fechamod,jdbcType=TIMESTAMP},
       </if>
-      <if test="estado != null">
+      <if test="estado != null" >
         #{estado,jdbcType=SMALLINT},
       </if>
-      <if test="contacto != null">
+      <if test="contacto != null" >
         #{contacto,jdbcType=VARCHAR},
       </if>
-      <if test="areacontacto != null">
+      <if test="areacontacto != null" >
         #{areacontacto,jdbcType=VARCHAR},
       </if>
-      <if test="preorden != null">
+      <if test="preorden != null" >
         #{preorden,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.AreaclienteExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.AreaclienteExample" resultType="java.lang.Integer" >
     select count(*) from areacliente
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map">
+  <update id="updateByExampleSelective" parameterType="map" >
     update areacliente
-    <set>
-      <if test="record.codareacliente != null">
+    <set >
+      <if test="record.codareacliente != null" >
         codareacliente = #{record.codareacliente,jdbcType=CHAR},
       </if>
-      <if test="record.codcliente != null">
+      <if test="record.codcliente != null" >
         codcliente = #{record.codcliente,jdbcType=CHAR},
       </if>
-      <if test="record.ruc != null">
+      <if test="record.ruc != null" >
         ruc = #{record.ruc,jdbcType=VARCHAR},
       </if>
-      <if test="record.areacliente != null">
+      <if test="record.areacliente != null" >
         areacliente = #{record.areacliente,jdbcType=VARCHAR},
       </if>
-      <if test="record.direccion != null">
+      <if test="record.direccion != null" >
         direccion = #{record.direccion,jdbcType=VARCHAR},
       </if>
-      <if test="record.ubigeo != null">
+      <if test="record.ubigeo != null" >
         ubigeo = #{record.ubigeo,jdbcType=VARCHAR},
       </if>
-      <if test="record.codpais != null">
+      <if test="record.codpais != null" >
         codpais = #{record.codpais,jdbcType=VARCHAR},
       </if>
-      <if test="record.telefono != null">
+      <if test="record.telefono != null" >
         telefono = #{record.telefono,jdbcType=VARCHAR},
       </if>
-      <if test="record.movil != null">
+      <if test="record.movil != null" >
         movil = #{record.movil,jdbcType=VARCHAR},
       </if>
-      <if test="record.email != null">
+      <if test="record.email != null" >
         email = #{record.email,jdbcType=VARCHAR},
       </if>
-      <if test="record.codejecutiva != null">
+      <if test="record.codejecutiva != null" >
         codejecutiva = #{record.codejecutiva,jdbcType=CHAR},
       </if>
-      <if test="record.observacion != null">
+      <if test="record.observacion != null" >
         observacion = #{record.observacion,jdbcType=VARCHAR},
       </if>
-      <if test="record.usuario != null">
+      <if test="record.usuario != null" >
         usuario = #{record.usuario,jdbcType=CHAR},
       </if>
-      <if test="record.fecha != null">
+      <if test="record.fecha != null" >
         fecha = #{record.fecha,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.usuariomod != null">
+      <if test="record.usuariomod != null" >
         usuariomod = #{record.usuariomod,jdbcType=CHAR},
       </if>
-      <if test="record.fechamod != null">
+      <if test="record.fechamod != null" >
         fechamod = #{record.fechamod,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.estado != null">
+      <if test="record.estado != null" >
         estado = #{record.estado,jdbcType=SMALLINT},
       </if>
-      <if test="record.contacto != null">
+      <if test="record.contacto != null" >
         contacto = #{record.contacto,jdbcType=VARCHAR},
       </if>
-      <if test="record.areacontacto != null">
+      <if test="record.areacontacto != null" >
         areacontacto = #{record.areacontacto,jdbcType=VARCHAR},
       </if>
-      <if test="record.preorden != null">
+      <if test="record.preorden != null" >
         preorden = #{record.preorden,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map">
+  <update id="updateByExample" parameterType="map" >
     update areacliente
     set codareacliente = #{record.codareacliente,jdbcType=CHAR},
       codcliente = #{record.codcliente,jdbcType=CHAR},
@@ -357,516 +357,72 @@
       contacto = #{record.contacto,jdbcType=VARCHAR},
       areacontacto = #{record.areacontacto,jdbcType=VARCHAR},
       preorden = #{record.preorden,jdbcType=VARCHAR}
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Areacliente">
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Areacliente" >
     update areacliente
-    <set>
-      <if test="ruc != null">
+    <set >
+      <if test="ruc != null" >
         ruc = #{ruc,jdbcType=VARCHAR},
       </if>
-      <if test="areacliente != null">
+      <if test="areacliente != null" >
         areacliente = #{areacliente,jdbcType=VARCHAR},
       </if>
-      <if test="direccion != null">
+      <if test="direccion != null" >
         direccion = #{direccion,jdbcType=VARCHAR},
       </if>
-      <if test="ubigeo != null">
+      <if test="ubigeo != null" >
         ubigeo = #{ubigeo,jdbcType=VARCHAR},
       </if>
-      <if test="codpais != null">
+      <if test="codpais != null" >
         codpais = #{codpais,jdbcType=VARCHAR},
       </if>
-      <if test="telefono != null">
+      <if test="telefono != null" >
         telefono = #{telefono,jdbcType=VARCHAR},
       </if>
-      <if test="movil != null">
+      <if test="movil != null" >
         movil = #{movil,jdbcType=VARCHAR},
       </if>
-      <if test="email != null">
+      <if test="email != null" >
         email = #{email,jdbcType=VARCHAR},
       </if>
-      <if test="codejecutiva != null">
+      <if test="codejecutiva != null" >
         codejecutiva = #{codejecutiva,jdbcType=CHAR},
       </if>
-      <if test="observacion != null">
+      <if test="observacion != null" >
         observacion = #{observacion,jdbcType=VARCHAR},
       </if>
-      <if test="usuario != null">
+      <if test="usuario != null" >
         usuario = #{usuario,jdbcType=CHAR},
       </if>
-      <if test="fecha != null">
+      <if test="fecha != null" >
         fecha = #{fecha,jdbcType=TIMESTAMP},
       </if>
-      <if test="usuariomod != null">
+      <if test="usuariomod != null" >
         usuariomod = #{usuariomod,jdbcType=CHAR},
       </if>
-      <if test="fechamod != null">
+      <if test="fechamod != null" >
         fechamod = #{fechamod,jdbcType=TIMESTAMP},
       </if>
-      <if test="estado != null">
+      <if test="estado != null" >
         estado = #{estado,jdbcType=SMALLINT},
       </if>
-      <if test="contacto != null">
+      <if test="contacto != null" >
         contacto = #{contacto,jdbcType=VARCHAR},
       </if>
-      <if test="areacontacto != null">
+      <if test="areacontacto != null" >
         areacontacto = #{areacontacto,jdbcType=VARCHAR},
       </if>
-      <if test="preorden != null">
+      <if test="preorden != null" >
         preorden = #{preorden,jdbcType=VARCHAR},
       </if>
     </set>
     where codareacliente = #{codareacliente,jdbcType=CHAR}
       and codcliente = #{codcliente,jdbcType=CHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Areacliente">
-    update areacliente
-    set ruc = #{ruc,jdbcType=VARCHAR},
-      areacliente = #{areacliente,jdbcType=VARCHAR},
-      direccion = #{direccion,jdbcType=VARCHAR},
-      ubigeo = #{ubigeo,jdbcType=VARCHAR},
-      codpais = #{codpais,jdbcType=VARCHAR},
-      telefono = #{telefono,jdbcType=VARCHAR},
-      movil = #{movil,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR},
-      codejecutiva = #{codejecutiva,jdbcType=CHAR},
-      observacion = #{observacion,jdbcType=VARCHAR},
-      usuario = #{usuario,jdbcType=CHAR},
-      fecha = #{fecha,jdbcType=TIMESTAMP},
-      usuariomod = #{usuariomod,jdbcType=CHAR},
-      fechamod = #{fechamod,jdbcType=TIMESTAMP},
-      estado = #{estado,jdbcType=SMALLINT},
-      contacto = #{contacto,jdbcType=VARCHAR},
-      areacontacto = #{areacontacto,jdbcType=VARCHAR},
-      preorden = #{preorden,jdbcType=VARCHAR}
-    where codareacliente = #{codareacliente,jdbcType=CHAR}
-      and codcliente = #{codcliente,jdbcType=CHAR}
-  </update>
-  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.origen.Areacliente">
-    <id column="codareacliente" jdbcType="CHAR" property="codareacliente" />
-    <id column="codcliente" jdbcType="CHAR" property="codcliente" />
-    <result column="ruc" jdbcType="VARCHAR" property="ruc" />
-    <result column="areacliente" jdbcType="VARCHAR" property="areacliente" />
-    <result column="direccion" jdbcType="VARCHAR" property="direccion" />
-    <result column="ubigeo" jdbcType="VARCHAR" property="ubigeo" />
-    <result column="codpais" jdbcType="VARCHAR" property="codpais" />
-    <result column="telefono" jdbcType="VARCHAR" property="telefono" />
-    <result column="movil" jdbcType="VARCHAR" property="movil" />
-    <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="codejecutiva" jdbcType="CHAR" property="codejecutiva" />
-    <result column="observacion" jdbcType="VARCHAR" property="observacion" />
-    <result column="usuario" jdbcType="CHAR" property="usuario" />
-    <result column="fecha" jdbcType="TIMESTAMP" property="fecha" />
-    <result column="usuariomod" jdbcType="CHAR" property="usuariomod" />
-    <result column="fechamod" jdbcType="TIMESTAMP" property="fechamod" />
-    <result column="estado" jdbcType="SMALLINT" property="estado" />
-    <result column="contacto" jdbcType="VARCHAR" property="contacto" />
-    <result column="areacontacto" jdbcType="VARCHAR" property="areacontacto" />
-    <result column="preorden" jdbcType="VARCHAR" property="preorden" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    codareacliente, codcliente, ruc, areacliente, direccion, ubigeo, codpais, telefono, 
-    movil, email, codejecutiva, observacion, usuario, fecha, usuariomod, fechamod, estado, 
-    contacto, areacontacto, preorden
-  </sql>
-  <select id="selectByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.AreaclienteExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from areacliente
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from areacliente
-    where codareacliente = #{codareacliente,jdbcType=CHAR}
-      and codcliente = #{codcliente,jdbcType=CHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="map">
-    delete from areacliente
-    where codareacliente = #{codareacliente,jdbcType=CHAR}
-      and codcliente = #{codcliente,jdbcType=CHAR}
-  </delete>
-  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.AreaclienteExample">
-    delete from areacliente
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Areacliente">
-    insert into areacliente (codareacliente, codcliente, ruc, 
-      areacliente, direccion, ubigeo, 
-      codpais, telefono, movil, 
-      email, codejecutiva, observacion, 
-      usuario, fecha, usuariomod, 
-      fechamod, estado, contacto, 
-      areacontacto, preorden)
-    values (#{codareacliente,jdbcType=CHAR}, #{codcliente,jdbcType=CHAR}, #{ruc,jdbcType=VARCHAR}, 
-      #{areacliente,jdbcType=VARCHAR}, #{direccion,jdbcType=VARCHAR}, #{ubigeo,jdbcType=VARCHAR}, 
-      #{codpais,jdbcType=VARCHAR}, #{telefono,jdbcType=VARCHAR}, #{movil,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{codejecutiva,jdbcType=CHAR}, #{observacion,jdbcType=VARCHAR}, 
-      #{usuario,jdbcType=CHAR}, #{fecha,jdbcType=TIMESTAMP}, #{usuariomod,jdbcType=CHAR}, 
-      #{fechamod,jdbcType=TIMESTAMP}, #{estado,jdbcType=SMALLINT}, #{contacto,jdbcType=VARCHAR}, 
-      #{areacontacto,jdbcType=VARCHAR}, #{preorden,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Areacliente">
-    insert into areacliente
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="codareacliente != null">
-        codareacliente,
-      </if>
-      <if test="codcliente != null">
-        codcliente,
-      </if>
-      <if test="ruc != null">
-        ruc,
-      </if>
-      <if test="areacliente != null">
-        areacliente,
-      </if>
-      <if test="direccion != null">
-        direccion,
-      </if>
-      <if test="ubigeo != null">
-        ubigeo,
-      </if>
-      <if test="codpais != null">
-        codpais,
-      </if>
-      <if test="telefono != null">
-        telefono,
-      </if>
-      <if test="movil != null">
-        movil,
-      </if>
-      <if test="email != null">
-        email,
-      </if>
-      <if test="codejecutiva != null">
-        codejecutiva,
-      </if>
-      <if test="observacion != null">
-        observacion,
-      </if>
-      <if test="usuario != null">
-        usuario,
-      </if>
-      <if test="fecha != null">
-        fecha,
-      </if>
-      <if test="usuariomod != null">
-        usuariomod,
-      </if>
-      <if test="fechamod != null">
-        fechamod,
-      </if>
-      <if test="estado != null">
-        estado,
-      </if>
-      <if test="contacto != null">
-        contacto,
-      </if>
-      <if test="areacontacto != null">
-        areacontacto,
-      </if>
-      <if test="preorden != null">
-        preorden,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="codareacliente != null">
-        #{codareacliente,jdbcType=CHAR},
-      </if>
-      <if test="codcliente != null">
-        #{codcliente,jdbcType=CHAR},
-      </if>
-      <if test="ruc != null">
-        #{ruc,jdbcType=VARCHAR},
-      </if>
-      <if test="areacliente != null">
-        #{areacliente,jdbcType=VARCHAR},
-      </if>
-      <if test="direccion != null">
-        #{direccion,jdbcType=VARCHAR},
-      </if>
-      <if test="ubigeo != null">
-        #{ubigeo,jdbcType=VARCHAR},
-      </if>
-      <if test="codpais != null">
-        #{codpais,jdbcType=VARCHAR},
-      </if>
-      <if test="telefono != null">
-        #{telefono,jdbcType=VARCHAR},
-      </if>
-      <if test="movil != null">
-        #{movil,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null">
-        #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="codejecutiva != null">
-        #{codejecutiva,jdbcType=CHAR},
-      </if>
-      <if test="observacion != null">
-        #{observacion,jdbcType=VARCHAR},
-      </if>
-      <if test="usuario != null">
-        #{usuario,jdbcType=CHAR},
-      </if>
-      <if test="fecha != null">
-        #{fecha,jdbcType=TIMESTAMP},
-      </if>
-      <if test="usuariomod != null">
-        #{usuariomod,jdbcType=CHAR},
-      </if>
-      <if test="fechamod != null">
-        #{fechamod,jdbcType=TIMESTAMP},
-      </if>
-      <if test="estado != null">
-        #{estado,jdbcType=SMALLINT},
-      </if>
-      <if test="contacto != null">
-        #{contacto,jdbcType=VARCHAR},
-      </if>
-      <if test="areacontacto != null">
-        #{areacontacto,jdbcType=VARCHAR},
-      </if>
-      <if test="preorden != null">
-        #{preorden,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.AreaclienteExample" resultType="java.lang.Integer">
-    select count(*) from areacliente
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update areacliente
-    <set>
-      <if test="record.codareacliente != null">
-        codareacliente = #{record.codareacliente,jdbcType=CHAR},
-      </if>
-      <if test="record.codcliente != null">
-        codcliente = #{record.codcliente,jdbcType=CHAR},
-      </if>
-      <if test="record.ruc != null">
-        ruc = #{record.ruc,jdbcType=VARCHAR},
-      </if>
-      <if test="record.areacliente != null">
-        areacliente = #{record.areacliente,jdbcType=VARCHAR},
-      </if>
-      <if test="record.direccion != null">
-        direccion = #{record.direccion,jdbcType=VARCHAR},
-      </if>
-      <if test="record.ubigeo != null">
-        ubigeo = #{record.ubigeo,jdbcType=VARCHAR},
-      </if>
-      <if test="record.codpais != null">
-        codpais = #{record.codpais,jdbcType=VARCHAR},
-      </if>
-      <if test="record.telefono != null">
-        telefono = #{record.telefono,jdbcType=VARCHAR},
-      </if>
-      <if test="record.movil != null">
-        movil = #{record.movil,jdbcType=VARCHAR},
-      </if>
-      <if test="record.email != null">
-        email = #{record.email,jdbcType=VARCHAR},
-      </if>
-      <if test="record.codejecutiva != null">
-        codejecutiva = #{record.codejecutiva,jdbcType=CHAR},
-      </if>
-      <if test="record.observacion != null">
-        observacion = #{record.observacion,jdbcType=VARCHAR},
-      </if>
-      <if test="record.usuario != null">
-        usuario = #{record.usuario,jdbcType=CHAR},
-      </if>
-      <if test="record.fecha != null">
-        fecha = #{record.fecha,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.usuariomod != null">
-        usuariomod = #{record.usuariomod,jdbcType=CHAR},
-      </if>
-      <if test="record.fechamod != null">
-        fechamod = #{record.fechamod,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.estado != null">
-        estado = #{record.estado,jdbcType=SMALLINT},
-      </if>
-      <if test="record.contacto != null">
-        contacto = #{record.contacto,jdbcType=VARCHAR},
-      </if>
-      <if test="record.areacontacto != null">
-        areacontacto = #{record.areacontacto,jdbcType=VARCHAR},
-      </if>
-      <if test="record.preorden != null">
-        preorden = #{record.preorden,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update areacliente
-    set codareacliente = #{record.codareacliente,jdbcType=CHAR},
-      codcliente = #{record.codcliente,jdbcType=CHAR},
-      ruc = #{record.ruc,jdbcType=VARCHAR},
-      areacliente = #{record.areacliente,jdbcType=VARCHAR},
-      direccion = #{record.direccion,jdbcType=VARCHAR},
-      ubigeo = #{record.ubigeo,jdbcType=VARCHAR},
-      codpais = #{record.codpais,jdbcType=VARCHAR},
-      telefono = #{record.telefono,jdbcType=VARCHAR},
-      movil = #{record.movil,jdbcType=VARCHAR},
-      email = #{record.email,jdbcType=VARCHAR},
-      codejecutiva = #{record.codejecutiva,jdbcType=CHAR},
-      observacion = #{record.observacion,jdbcType=VARCHAR},
-      usuario = #{record.usuario,jdbcType=CHAR},
-      fecha = #{record.fecha,jdbcType=TIMESTAMP},
-      usuariomod = #{record.usuariomod,jdbcType=CHAR},
-      fechamod = #{record.fechamod,jdbcType=TIMESTAMP},
-      estado = #{record.estado,jdbcType=SMALLINT},
-      contacto = #{record.contacto,jdbcType=VARCHAR},
-      areacontacto = #{record.areacontacto,jdbcType=VARCHAR},
-      preorden = #{record.preorden,jdbcType=VARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Areacliente">
-    update areacliente
-    <set>
-      <if test="ruc != null">
-        ruc = #{ruc,jdbcType=VARCHAR},
-      </if>
-      <if test="areacliente != null">
-        areacliente = #{areacliente,jdbcType=VARCHAR},
-      </if>
-      <if test="direccion != null">
-        direccion = #{direccion,jdbcType=VARCHAR},
-      </if>
-      <if test="ubigeo != null">
-        ubigeo = #{ubigeo,jdbcType=VARCHAR},
-      </if>
-      <if test="codpais != null">
-        codpais = #{codpais,jdbcType=VARCHAR},
-      </if>
-      <if test="telefono != null">
-        telefono = #{telefono,jdbcType=VARCHAR},
-      </if>
-      <if test="movil != null">
-        movil = #{movil,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null">
-        email = #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="codejecutiva != null">
-        codejecutiva = #{codejecutiva,jdbcType=CHAR},
-      </if>
-      <if test="observacion != null">
-        observacion = #{observacion,jdbcType=VARCHAR},
-      </if>
-      <if test="usuario != null">
-        usuario = #{usuario,jdbcType=CHAR},
-      </if>
-      <if test="fecha != null">
-        fecha = #{fecha,jdbcType=TIMESTAMP},
-      </if>
-      <if test="usuariomod != null">
-        usuariomod = #{usuariomod,jdbcType=CHAR},
-      </if>
-      <if test="fechamod != null">
-        fechamod = #{fechamod,jdbcType=TIMESTAMP},
-      </if>
-      <if test="estado != null">
-        estado = #{estado,jdbcType=SMALLINT},
-      </if>
-      <if test="contacto != null">
-        contacto = #{contacto,jdbcType=VARCHAR},
-      </if>
-      <if test="areacontacto != null">
-        areacontacto = #{areacontacto,jdbcType=VARCHAR},
-      </if>
-      <if test="preorden != null">
-        preorden = #{preorden,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where codareacliente = #{codareacliente,jdbcType=CHAR}
-      and codcliente = #{codcliente,jdbcType=CHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Areacliente">
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Areacliente" >
     update areacliente
     set ruc = #{ruc,jdbcType=VARCHAR},
       areacliente = #{areacliente,jdbcType=VARCHAR},
