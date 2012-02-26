@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pe.com.j2techcon.bi.etl.dao.origen.TServiciosMapper">
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.origen.TServicios">
+    <id column="codservicio" jdbcType="CHAR" property="codservicio" />
+    <result column="servicio" jdbcType="VARCHAR" property="servicio" />
+    <result column="codnegocio" jdbcType="CHAR" property="codnegocio" />
+    <result column="codambito" jdbcType="CHAR" property="codambito" />
+    <result column="estado" jdbcType="SMALLINT" property="estado" />
+    <result column="dias" jdbcType="SMALLINT" property="dias" />
+    <result column="fecha" jdbcType="TIMESTAMP" property="fecha" />
+    <result column="usuario" jdbcType="CHAR" property="usuario" />
+    <result column="fechamod" jdbcType="TIMESTAMP" property="fechamod" />
+    <result column="usuariomod" jdbcType="CHAR" property="usuariomod" />
+    <result column="tiposervicio" jdbcType="CHAR" property="tiposervicio" />
+    <result column="obs" jdbcType="VARCHAR" property="obs" />
+    <result column="precio_periferia" jdbcType="NUMERIC" property="precioPeriferia" />
+    <result column="cod_centro_costo" jdbcType="NUMERIC" property="codCentroCosto" />
+    <result column="tipo1" jdbcType="SMALLINT" property="tipo1" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    codservicio, servicio, codnegocio, codambito, estado, dias, fecha, usuario, fechamod, 
+    usuariomod, tiposervicio, obs, precio_periferia, cod_centro_costo, tipo1
+  </sql>
+  <select id="selectByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.TServiciosExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_servicios
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_servicios
+    where codservicio = #{codservicio,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_servicios
+    where codservicio = #{codservicio,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.TServiciosExample">
+    delete from t_servicios
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.origen.TServicios">
+    insert into t_servicios (codservicio, servicio, codnegocio, 
+      codambito, estado, dias, 
+      fecha, usuario, fechamod, 
+      usuariomod, tiposervicio, obs, 
+      precio_periferia, cod_centro_costo, tipo1
+      )
+    values (#{codservicio,jdbcType=CHAR}, #{servicio,jdbcType=VARCHAR}, #{codnegocio,jdbcType=CHAR}, 
+      #{codambito,jdbcType=CHAR}, #{estado,jdbcType=SMALLINT}, #{dias,jdbcType=SMALLINT}, 
+      #{fecha,jdbcType=TIMESTAMP}, #{usuario,jdbcType=CHAR}, #{fechamod,jdbcType=TIMESTAMP}, 
+      #{usuariomod,jdbcType=CHAR}, #{tiposervicio,jdbcType=CHAR}, #{obs,jdbcType=VARCHAR}, 
+      #{precioPeriferia,jdbcType=NUMERIC}, #{codCentroCosto,jdbcType=NUMERIC}, #{tipo1,jdbcType=SMALLINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.TServicios">
+    insert into t_servicios
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="codservicio != null">
+        codservicio,
+      </if>
+      <if test="servicio != null">
+        servicio,
+      </if>
+      <if test="codnegocio != null">
+        codnegocio,
+      </if>
+      <if test="codambito != null">
+        codambito,
+      </if>
+      <if test="estado != null">
+        estado,
+      </if>
+      <if test="dias != null">
+        dias,
+      </if>
+      <if test="fecha != null">
+        fecha,
+      </if>
+      <if test="usuario != null">
+        usuario,
+      </if>
+      <if test="fechamod != null">
+        fechamod,
+      </if>
+      <if test="usuariomod != null">
+        usuariomod,
+      </if>
+      <if test="tiposervicio != null">
+        tiposervicio,
+      </if>
+      <if test="obs != null">
+        obs,
+      </if>
+      <if test="precioPeriferia != null">
+        precio_periferia,
+      </if>
+      <if test="codCentroCosto != null">
+        cod_centro_costo,
+      </if>
+      <if test="tipo1 != null">
+        tipo1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="codservicio != null">
+        #{codservicio,jdbcType=CHAR},
+      </if>
+      <if test="servicio != null">
+        #{servicio,jdbcType=VARCHAR},
+      </if>
+      <if test="codnegocio != null">
+        #{codnegocio,jdbcType=CHAR},
+      </if>
+      <if test="codambito != null">
+        #{codambito,jdbcType=CHAR},
+      </if>
+      <if test="estado != null">
+        #{estado,jdbcType=SMALLINT},
+      </if>
+      <if test="dias != null">
+        #{dias,jdbcType=SMALLINT},
+      </if>
+      <if test="fecha != null">
+        #{fecha,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usuario != null">
+        #{usuario,jdbcType=CHAR},
+      </if>
+      <if test="fechamod != null">
+        #{fechamod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usuariomod != null">
+        #{usuariomod,jdbcType=CHAR},
+      </if>
+      <if test="tiposervicio != null">
+        #{tiposervicio,jdbcType=CHAR},
+      </if>
+      <if test="obs != null">
+        #{obs,jdbcType=VARCHAR},
+      </if>
+      <if test="precioPeriferia != null">
+        #{precioPeriferia,jdbcType=NUMERIC},
+      </if>
+      <if test="codCentroCosto != null">
+        #{codCentroCosto,jdbcType=NUMERIC},
+      </if>
+      <if test="tipo1 != null">
+        #{tipo1,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.TServiciosExample" resultType="java.lang.Integer">
+    select count(*) from t_servicios
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_servicios
+    <set>
+      <if test="record.codservicio != null">
+        codservicio = #{record.codservicio,jdbcType=CHAR},
+      </if>
+      <if test="record.servicio != null">
+        servicio = #{record.servicio,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codnegocio != null">
+        codnegocio = #{record.codnegocio,jdbcType=CHAR},
+      </if>
+      <if test="record.codambito != null">
+        codambito = #{record.codambito,jdbcType=CHAR},
+      </if>
+      <if test="record.estado != null">
+        estado = #{record.estado,jdbcType=SMALLINT},
+      </if>
+      <if test="record.dias != null">
+        dias = #{record.dias,jdbcType=SMALLINT},
+      </if>
+      <if test="record.fecha != null">
+        fecha = #{record.fecha,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.usuario != null">
+        usuario = #{record.usuario,jdbcType=CHAR},
+      </if>
+      <if test="record.fechamod != null">
+        fechamod = #{record.fechamod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.usuariomod != null">
+        usuariomod = #{record.usuariomod,jdbcType=CHAR},
+      </if>
+      <if test="record.tiposervicio != null">
+        tiposervicio = #{record.tiposervicio,jdbcType=CHAR},
+      </if>
+      <if test="record.obs != null">
+        obs = #{record.obs,jdbcType=VARCHAR},
+      </if>
+      <if test="record.precioPeriferia != null">
+        precio_periferia = #{record.precioPeriferia,jdbcType=NUMERIC},
+      </if>
+      <if test="record.codCentroCosto != null">
+        cod_centro_costo = #{record.codCentroCosto,jdbcType=NUMERIC},
+      </if>
+      <if test="record.tipo1 != null">
+        tipo1 = #{record.tipo1,jdbcType=SMALLINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_servicios
+    set codservicio = #{record.codservicio,jdbcType=CHAR},
+      servicio = #{record.servicio,jdbcType=VARCHAR},
+      codnegocio = #{record.codnegocio,jdbcType=CHAR},
+      codambito = #{record.codambito,jdbcType=CHAR},
+      estado = #{record.estado,jdbcType=SMALLINT},
+      dias = #{record.dias,jdbcType=SMALLINT},
+      fecha = #{record.fecha,jdbcType=TIMESTAMP},
+      usuario = #{record.usuario,jdbcType=CHAR},
+      fechamod = #{record.fechamod,jdbcType=TIMESTAMP},
+      usuariomod = #{record.usuariomod,jdbcType=CHAR},
+      tiposervicio = #{record.tiposervicio,jdbcType=CHAR},
+      obs = #{record.obs,jdbcType=VARCHAR},
+      precio_periferia = #{record.precioPeriferia,jdbcType=NUMERIC},
+      cod_centro_costo = #{record.codCentroCosto,jdbcType=NUMERIC},
+      tipo1 = #{record.tipo1,jdbcType=SMALLINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.TServicios">
+    update t_servicios
+    <set>
+      <if test="servicio != null">
+        servicio = #{servicio,jdbcType=VARCHAR},
+      </if>
+      <if test="codnegocio != null">
+        codnegocio = #{codnegocio,jdbcType=CHAR},
+      </if>
+      <if test="codambito != null">
+        codambito = #{codambito,jdbcType=CHAR},
+      </if>
+      <if test="estado != null">
+        estado = #{estado,jdbcType=SMALLINT},
+      </if>
+      <if test="dias != null">
+        dias = #{dias,jdbcType=SMALLINT},
+      </if>
+      <if test="fecha != null">
+        fecha = #{fecha,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usuario != null">
+        usuario = #{usuario,jdbcType=CHAR},
+      </if>
+      <if test="fechamod != null">
+        fechamod = #{fechamod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usuariomod != null">
+        usuariomod = #{usuariomod,jdbcType=CHAR},
+      </if>
+      <if test="tiposervicio != null">
+        tiposervicio = #{tiposervicio,jdbcType=CHAR},
+      </if>
+      <if test="obs != null">
+        obs = #{obs,jdbcType=VARCHAR},
+      </if>
+      <if test="precioPeriferia != null">
+        precio_periferia = #{precioPeriferia,jdbcType=NUMERIC},
+      </if>
+      <if test="codCentroCosto != null">
+        cod_centro_costo = #{codCentroCosto,jdbcType=NUMERIC},
+      </if>
+      <if test="tipo1 != null">
+        tipo1 = #{tipo1,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where codservicio = #{codservicio,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.origen.TServicios">
+    update t_servicios
+    set servicio = #{servicio,jdbcType=VARCHAR},
+      codnegocio = #{codnegocio,jdbcType=CHAR},
+      codambito = #{codambito,jdbcType=CHAR},
+      estado = #{estado,jdbcType=SMALLINT},
+      dias = #{dias,jdbcType=SMALLINT},
+      fecha = #{fecha,jdbcType=TIMESTAMP},
+      usuario = #{usuario,jdbcType=CHAR},
+      fechamod = #{fechamod,jdbcType=TIMESTAMP},
+      usuariomod = #{usuariomod,jdbcType=CHAR},
+      tiposervicio = #{tiposervicio,jdbcType=CHAR},
+      obs = #{obs,jdbcType=VARCHAR},
+      precio_periferia = #{precioPeriferia,jdbcType=NUMERIC},
+      cod_centro_costo = #{codCentroCosto,jdbcType=NUMERIC},
+      tipo1 = #{tipo1,jdbcType=SMALLINT}
+    where codservicio = #{codservicio,jdbcType=CHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.origen.TServicios">
+    <id column="codservicio" jdbcType="CHAR" property="codservicio" />
+    <result column="servicio" jdbcType="VARCHAR" property="servicio" />
+    <result column="codnegocio" jdbcType="CHAR" property="codnegocio" />
+    <result column="codambito" jdbcType="CHAR" property="codambito" />
+    <result column="estado" jdbcType="SMALLINT" property="estado" />
+    <result column="dias" jdbcType="SMALLINT" property="dias" />
+    <result column="fecha" jdbcType="TIMESTAMP" property="fecha" />
+    <result column="usuario" jdbcType="CHAR" property="usuario" />
+    <result column="fechamod" jdbcType="TIMESTAMP" property="fechamod" />
+    <result column="usuariomod" jdbcType="CHAR" property="usuariomod" />
+    <result column="tiposervicio" jdbcType="CHAR" property="tiposervicio" />
+    <result column="obs" jdbcType="VARCHAR" property="obs" />
+    <result column="precio_periferia" jdbcType="NUMERIC" property="precioPeriferia" />
+    <result column="cod_centro_costo" jdbcType="NUMERIC" property="codCentroCosto" />
+    <result column="tipo1" jdbcType="SMALLINT" property="tipo1" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    codservicio, servicio, codnegocio, codambito, estado, dias, fecha, usuario, fechamod, 
+    usuariomod, tiposervicio, obs, precio_periferia, cod_centro_costo, tipo1
+  </sql>
+  <select id="selectByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.TServiciosExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_servicios
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_servicios
+    where codservicio = #{codservicio,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_servicios
+    where codservicio = #{codservicio,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.TServiciosExample">
+    delete from t_servicios
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.origen.TServicios">
+    insert into t_servicios (codservicio, servicio, codnegocio, 
+      codambito, estado, dias, 
+      fecha, usuario, fechamod, 
+      usuariomod, tiposervicio, obs, 
+      precio_periferia, cod_centro_costo, tipo1
+      )
+    values (#{codservicio,jdbcType=CHAR}, #{servicio,jdbcType=VARCHAR}, #{codnegocio,jdbcType=CHAR}, 
+      #{codambito,jdbcType=CHAR}, #{estado,jdbcType=SMALLINT}, #{dias,jdbcType=SMALLINT}, 
+      #{fecha,jdbcType=TIMESTAMP}, #{usuario,jdbcType=CHAR}, #{fechamod,jdbcType=TIMESTAMP}, 
+      #{usuariomod,jdbcType=CHAR}, #{tiposervicio,jdbcType=CHAR}, #{obs,jdbcType=VARCHAR}, 
+      #{precioPeriferia,jdbcType=NUMERIC}, #{codCentroCosto,jdbcType=NUMERIC}, #{tipo1,jdbcType=SMALLINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.TServicios">
+    insert into t_servicios
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="codservicio != null">
+        codservicio,
+      </if>
+      <if test="servicio != null">
+        servicio,
+      </if>
+      <if test="codnegocio != null">
+        codnegocio,
+      </if>
+      <if test="codambito != null">
+        codambito,
+      </if>
+      <if test="estado != null">
+        estado,
+      </if>
+      <if test="dias != null">
+        dias,
+      </if>
+      <if test="fecha != null">
+        fecha,
+      </if>
+      <if test="usuario != null">
+        usuario,
+      </if>
+      <if test="fechamod != null">
+        fechamod,
+      </if>
+      <if test="usuariomod != null">
+        usuariomod,
+      </if>
+      <if test="tiposervicio != null">
+        tiposervicio,
+      </if>
+      <if test="obs != null">
+        obs,
+      </if>
+      <if test="precioPeriferia != null">
+        precio_periferia,
+      </if>
+      <if test="codCentroCosto != null">
+        cod_centro_costo,
+      </if>
+      <if test="tipo1 != null">
+        tipo1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="codservicio != null">
+        #{codservicio,jdbcType=CHAR},
+      </if>
+      <if test="servicio != null">
+        #{servicio,jdbcType=VARCHAR},
+      </if>
+      <if test="codnegocio != null">
+        #{codnegocio,jdbcType=CHAR},
+      </if>
+      <if test="codambito != null">
+        #{codambito,jdbcType=CHAR},
+      </if>
+      <if test="estado != null">
+        #{estado,jdbcType=SMALLINT},
+      </if>
+      <if test="dias != null">
+        #{dias,jdbcType=SMALLINT},
+      </if>
+      <if test="fecha != null">
+        #{fecha,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usuario != null">
+        #{usuario,jdbcType=CHAR},
+      </if>
+      <if test="fechamod != null">
+        #{fechamod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usuariomod != null">
+        #{usuariomod,jdbcType=CHAR},
+      </if>
+      <if test="tiposervicio != null">
+        #{tiposervicio,jdbcType=CHAR},
+      </if>
+      <if test="obs != null">
+        #{obs,jdbcType=VARCHAR},
+      </if>
+      <if test="precioPeriferia != null">
+        #{precioPeriferia,jdbcType=NUMERIC},
+      </if>
+      <if test="codCentroCosto != null">
+        #{codCentroCosto,jdbcType=NUMERIC},
+      </if>
+      <if test="tipo1 != null">
+        #{tipo1,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.TServiciosExample" resultType="java.lang.Integer">
+    select count(*) from t_servicios
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_servicios
+    <set>
+      <if test="record.codservicio != null">
+        codservicio = #{record.codservicio,jdbcType=CHAR},
+      </if>
+      <if test="record.servicio != null">
+        servicio = #{record.servicio,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codnegocio != null">
+        codnegocio = #{record.codnegocio,jdbcType=CHAR},
+      </if>
+      <if test="record.codambito != null">
+        codambito = #{record.codambito,jdbcType=CHAR},
+      </if>
+      <if test="record.estado != null">
+        estado = #{record.estado,jdbcType=SMALLINT},
+      </if>
+      <if test="record.dias != null">
+        dias = #{record.dias,jdbcType=SMALLINT},
+      </if>
+      <if test="record.fecha != null">
+        fecha = #{record.fecha,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.usuario != null">
+        usuario = #{record.usuario,jdbcType=CHAR},
+      </if>
+      <if test="record.fechamod != null">
+        fechamod = #{record.fechamod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.usuariomod != null">
+        usuariomod = #{record.usuariomod,jdbcType=CHAR},
+      </if>
+      <if test="record.tiposervicio != null">
+        tiposervicio = #{record.tiposervicio,jdbcType=CHAR},
+      </if>
+      <if test="record.obs != null">
+        obs = #{record.obs,jdbcType=VARCHAR},
+      </if>
+      <if test="record.precioPeriferia != null">
+        precio_periferia = #{record.precioPeriferia,jdbcType=NUMERIC},
+      </if>
+      <if test="record.codCentroCosto != null">
+        cod_centro_costo = #{record.codCentroCosto,jdbcType=NUMERIC},
+      </if>
+      <if test="record.tipo1 != null">
+        tipo1 = #{record.tipo1,jdbcType=SMALLINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_servicios
+    set codservicio = #{record.codservicio,jdbcType=CHAR},
+      servicio = #{record.servicio,jdbcType=VARCHAR},
+      codnegocio = #{record.codnegocio,jdbcType=CHAR},
+      codambito = #{record.codambito,jdbcType=CHAR},
+      estado = #{record.estado,jdbcType=SMALLINT},
+      dias = #{record.dias,jdbcType=SMALLINT},
+      fecha = #{record.fecha,jdbcType=TIMESTAMP},
+      usuario = #{record.usuario,jdbcType=CHAR},
+      fechamod = #{record.fechamod,jdbcType=TIMESTAMP},
+      usuariomod = #{record.usuariomod,jdbcType=CHAR},
+      tiposervicio = #{record.tiposervicio,jdbcType=CHAR},
+      obs = #{record.obs,jdbcType=VARCHAR},
+      precio_periferia = #{record.precioPeriferia,jdbcType=NUMERIC},
+      cod_centro_costo = #{record.codCentroCosto,jdbcType=NUMERIC},
+      tipo1 = #{record.tipo1,jdbcType=SMALLINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.TServicios">
+    update t_servicios
+    <set>
+      <if test="servicio != null">
+        servicio = #{servicio,jdbcType=VARCHAR},
+      </if>
+      <if test="codnegocio != null">
+        codnegocio = #{codnegocio,jdbcType=CHAR},
+      </if>
+      <if test="codambito != null">
+        codambito = #{codambito,jdbcType=CHAR},
+      </if>
+      <if test="estado != null">
+        estado = #{estado,jdbcType=SMALLINT},
+      </if>
+      <if test="dias != null">
+        dias = #{dias,jdbcType=SMALLINT},
+      </if>
+      <if test="fecha != null">
+        fecha = #{fecha,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usuario != null">
+        usuario = #{usuario,jdbcType=CHAR},
+      </if>
+      <if test="fechamod != null">
+        fechamod = #{fechamod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usuariomod != null">
+        usuariomod = #{usuariomod,jdbcType=CHAR},
+      </if>
+      <if test="tiposervicio != null">
+        tiposervicio = #{tiposervicio,jdbcType=CHAR},
+      </if>
+      <if test="obs != null">
+        obs = #{obs,jdbcType=VARCHAR},
+      </if>
+      <if test="precioPeriferia != null">
+        precio_periferia = #{precioPeriferia,jdbcType=NUMERIC},
+      </if>
+      <if test="codCentroCosto != null">
+        cod_centro_costo = #{codCentroCosto,jdbcType=NUMERIC},
+      </if>
+      <if test="tipo1 != null">
+        tipo1 = #{tipo1,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where codservicio = #{codservicio,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.origen.TServicios">
+    update t_servicios
+    set servicio = #{servicio,jdbcType=VARCHAR},
+      codnegocio = #{codnegocio,jdbcType=CHAR},
+      codambito = #{codambito,jdbcType=CHAR},
+      estado = #{estado,jdbcType=SMALLINT},
+      dias = #{dias,jdbcType=SMALLINT},
+      fecha = #{fecha,jdbcType=TIMESTAMP},
+      usuario = #{usuario,jdbcType=CHAR},
+      fechamod = #{fechamod,jdbcType=TIMESTAMP},
+      usuariomod = #{usuariomod,jdbcType=CHAR},
+      tiposervicio = #{tiposervicio,jdbcType=CHAR},
+      obs = #{obs,jdbcType=VARCHAR},
+      precio_periferia = #{precioPeriferia,jdbcType=NUMERIC},
+      cod_centro_costo = #{codCentroCosto,jdbcType=NUMERIC},
+      tipo1 = #{tipo1,jdbcType=SMALLINT}
+    where codservicio = #{codservicio,jdbcType=CHAR}
+  </update>
+</mapper>

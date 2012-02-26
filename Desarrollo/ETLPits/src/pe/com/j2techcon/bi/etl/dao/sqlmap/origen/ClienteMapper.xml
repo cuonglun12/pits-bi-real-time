@@ -1,0 +1,1556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pe.com.j2techcon.bi.etl.dao.origen.ClienteMapper">
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.origen.Cliente">
+    <id column="codcliente" jdbcType="CHAR" property="codcliente" />
+    <result column="ruc" jdbcType="VARCHAR" property="ruc" />
+    <result column="cliente" jdbcType="VARCHAR" property="cliente" />
+    <result column="tipocliente" jdbcType="CHAR" property="tipocliente" />
+    <result column="rubro" jdbcType="VARCHAR" property="rubro" />
+    <result column="alias" jdbcType="VARCHAR" property="alias" />
+    <result column="direccion" jdbcType="VARCHAR" property="direccion" />
+    <result column="ubigeo" jdbcType="CHAR" property="ubigeo" />
+    <result column="codpais" jdbcType="VARCHAR" property="codpais" />
+    <result column="telefono" jdbcType="VARCHAR" property="telefono" />
+    <result column="movil" jdbcType="VARCHAR" property="movil" />
+    <result column="lim" jdbcType="VARCHAR" property="lim" />
+    <result column="codejecutiva" jdbcType="CHAR" property="codejecutiva" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="tipo_credito" jdbcType="CHAR" property="tipoCredito" />
+    <result column="tipo_facturacion" jdbcType="CHAR" property="tipoFacturacion" />
+    <result column="usuario" jdbcType="CHAR" property="usuario" />
+    <result column="fecha" jdbcType="TIMESTAMP" property="fecha" />
+    <result column="fechamod" jdbcType="TIMESTAMP" property="fechamod" />
+    <result column="usuariomod" jdbcType="CHAR" property="usuariomod" />
+    <result column="periodo_fac" jdbcType="CHAR" property="periodoFac" />
+    <result column="dias_credito" jdbcType="NUMERIC" property="diasCredito" />
+    <result column="credito" jdbcType="NUMERIC" property="credito" />
+    <result column="credito_utilizado" jdbcType="NUMERIC" property="creditoUtilizado" />
+    <result column="credito_disponible" jdbcType="NUMERIC" property="creditoDisponible" />
+    <result column="sobregiro" jdbcType="NUMERIC" property="sobregiro" />
+    <result column="estado" jdbcType="SMALLINT" property="estado" />
+    <result column="observacion" jdbcType="VARCHAR" property="observacion" />
+    <result column="fecha_inicio_credito" jdbcType="DATE" property="fechaInicioCredito" />
+    <result column="fecha_vence_credito" jdbcType="DATE" property="fechaVenceCredito" />
+    <result column="tipo_documento" jdbcType="CHAR" property="tipoDocumento" />
+    <result column="referencia" jdbcType="VARCHAR" property="referencia" />
+    <result column="telefono1" jdbcType="VARCHAR" property="telefono1" />
+    <result column="cod_encuesta" jdbcType="VARCHAR" property="codEncuesta" />
+    <result column="h_pactada" jdbcType="NUMERIC" property="hPactada" />
+    <result column="t_cliente" jdbcType="NUMERIC" property="tCliente" />
+    <result column="t_h_adicional" jdbcType="NUMERIC" property="tHAdicional" />
+    <result column="t_km_adicional" jdbcType="NUMERIC" property="tKmAdicional" />
+    <result column="email_2" jdbcType="VARCHAR" property="email2" />
+    <result column="clasifica" jdbcType="VARCHAR" property="clasifica" />
+    <result column="codempresa" jdbcType="VARCHAR" property="codempresa" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    codcliente, ruc, cliente, tipocliente, rubro, alias, direccion, ubigeo, codpais, 
+    telefono, movil, lim, codejecutiva, email, tipo_credito, tipo_facturacion, usuario, 
+    fecha, fechamod, usuariomod, periodo_fac, dias_credito, credito, credito_utilizado, 
+    credito_disponible, sobregiro, estado, observacion, fecha_inicio_credito, fecha_vence_credito, 
+    tipo_documento, referencia, telefono1, cod_encuesta, h_pactada, t_cliente, t_h_adicional, 
+    t_km_adicional, email_2, clasifica, codempresa
+  </sql>
+  <select id="selectByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.ClienteExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from cliente
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cliente
+    where codcliente = #{codcliente,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from cliente
+    where codcliente = #{codcliente,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.ClienteExample">
+    delete from cliente
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Cliente">
+    insert into cliente (codcliente, ruc, cliente, 
+      tipocliente, rubro, alias, 
+      direccion, ubigeo, codpais, 
+      telefono, movil, lim, 
+      codejecutiva, email, tipo_credito, 
+      tipo_facturacion, usuario, fecha, 
+      fechamod, usuariomod, periodo_fac, 
+      dias_credito, credito, credito_utilizado, 
+      credito_disponible, sobregiro, estado, 
+      observacion, fecha_inicio_credito, fecha_vence_credito, 
+      tipo_documento, referencia, telefono1, 
+      cod_encuesta, h_pactada, t_cliente, 
+      t_h_adicional, t_km_adicional, email_2, 
+      clasifica, codempresa)
+    values (#{codcliente,jdbcType=CHAR}, #{ruc,jdbcType=VARCHAR}, #{cliente,jdbcType=VARCHAR}, 
+      #{tipocliente,jdbcType=CHAR}, #{rubro,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}, 
+      #{direccion,jdbcType=VARCHAR}, #{ubigeo,jdbcType=CHAR}, #{codpais,jdbcType=VARCHAR}, 
+      #{telefono,jdbcType=VARCHAR}, #{movil,jdbcType=VARCHAR}, #{lim,jdbcType=VARCHAR}, 
+      #{codejecutiva,jdbcType=CHAR}, #{email,jdbcType=VARCHAR}, #{tipoCredito,jdbcType=CHAR}, 
+      #{tipoFacturacion,jdbcType=CHAR}, #{usuario,jdbcType=CHAR}, #{fecha,jdbcType=TIMESTAMP}, 
+      #{fechamod,jdbcType=TIMESTAMP}, #{usuariomod,jdbcType=CHAR}, #{periodoFac,jdbcType=CHAR}, 
+      #{diasCredito,jdbcType=NUMERIC}, #{credito,jdbcType=NUMERIC}, #{creditoUtilizado,jdbcType=NUMERIC}, 
+      #{creditoDisponible,jdbcType=NUMERIC}, #{sobregiro,jdbcType=NUMERIC}, #{estado,jdbcType=SMALLINT}, 
+      #{observacion,jdbcType=VARCHAR}, #{fechaInicioCredito,jdbcType=DATE}, #{fechaVenceCredito,jdbcType=DATE}, 
+      #{tipoDocumento,jdbcType=CHAR}, #{referencia,jdbcType=VARCHAR}, #{telefono1,jdbcType=VARCHAR}, 
+      #{codEncuesta,jdbcType=VARCHAR}, #{hPactada,jdbcType=NUMERIC}, #{tCliente,jdbcType=NUMERIC}, 
+      #{tHAdicional,jdbcType=NUMERIC}, #{tKmAdicional,jdbcType=NUMERIC}, #{email2,jdbcType=VARCHAR}, 
+      #{clasifica,jdbcType=VARCHAR}, #{codempresa,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Cliente">
+    insert into cliente
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="codcliente != null">
+        codcliente,
+      </if>
+      <if test="ruc != null">
+        ruc,
+      </if>
+      <if test="cliente != null">
+        cliente,
+      </if>
+      <if test="tipocliente != null">
+        tipocliente,
+      </if>
+      <if test="rubro != null">
+        rubro,
+      </if>
+      <if test="alias != null">
+        alias,
+      </if>
+      <if test="direccion != null">
+        direccion,
+      </if>
+      <if test="ubigeo != null">
+        ubigeo,
+      </if>
+      <if test="codpais != null">
+        codpais,
+      </if>
+      <if test="telefono != null">
+        telefono,
+      </if>
+      <if test="movil != null">
+        movil,
+      </if>
+      <if test="lim != null">
+        lim,
+      </if>
+      <if test="codejecutiva != null">
+        codejecutiva,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="tipoCredito != null">
+        tipo_credito,
+      </if>
+      <if test="tipoFacturacion != null">
+        tipo_facturacion,
+      </if>
+      <if test="usuario != null">
+        usuario,
+      </if>
+      <if test="fecha != null">
+        fecha,
+      </if>
+      <if test="fechamod != null">
+        fechamod,
+      </if>
+      <if test="usuariomod != null">
+        usuariomod,
+      </if>
+      <if test="periodoFac != null">
+        periodo_fac,
+      </if>
+      <if test="diasCredito != null">
+        dias_credito,
+      </if>
+      <if test="credito != null">
+        credito,
+      </if>
+      <if test="creditoUtilizado != null">
+        credito_utilizado,
+      </if>
+      <if test="creditoDisponible != null">
+        credito_disponible,
+      </if>
+      <if test="sobregiro != null">
+        sobregiro,
+      </if>
+      <if test="estado != null">
+        estado,
+      </if>
+      <if test="observacion != null">
+        observacion,
+      </if>
+      <if test="fechaInicioCredito != null">
+        fecha_inicio_credito,
+      </if>
+      <if test="fechaVenceCredito != null">
+        fecha_vence_credito,
+      </if>
+      <if test="tipoDocumento != null">
+        tipo_documento,
+      </if>
+      <if test="referencia != null">
+        referencia,
+      </if>
+      <if test="telefono1 != null">
+        telefono1,
+      </if>
+      <if test="codEncuesta != null">
+        cod_encuesta,
+      </if>
+      <if test="hPactada != null">
+        h_pactada,
+      </if>
+      <if test="tCliente != null">
+        t_cliente,
+      </if>
+      <if test="tHAdicional != null">
+        t_h_adicional,
+      </if>
+      <if test="tKmAdicional != null">
+        t_km_adicional,
+      </if>
+      <if test="email2 != null">
+        email_2,
+      </if>
+      <if test="clasifica != null">
+        clasifica,
+      </if>
+      <if test="codempresa != null">
+        codempresa,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="codcliente != null">
+        #{codcliente,jdbcType=CHAR},
+      </if>
+      <if test="ruc != null">
+        #{ruc,jdbcType=VARCHAR},
+      </if>
+      <if test="cliente != null">
+        #{cliente,jdbcType=VARCHAR},
+      </if>
+      <if test="tipocliente != null">
+        #{tipocliente,jdbcType=CHAR},
+      </if>
+      <if test="rubro != null">
+        #{rubro,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null">
+        #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="direccion != null">
+        #{direccion,jdbcType=VARCHAR},
+      </if>
+      <if test="ubigeo != null">
+        #{ubigeo,jdbcType=CHAR},
+      </if>
+      <if test="codpais != null">
+        #{codpais,jdbcType=VARCHAR},
+      </if>
+      <if test="telefono != null">
+        #{telefono,jdbcType=VARCHAR},
+      </if>
+      <if test="movil != null">
+        #{movil,jdbcType=VARCHAR},
+      </if>
+      <if test="lim != null">
+        #{lim,jdbcType=VARCHAR},
+      </if>
+      <if test="codejecutiva != null">
+        #{codejecutiva,jdbcType=CHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="tipoCredito != null">
+        #{tipoCredito,jdbcType=CHAR},
+      </if>
+      <if test="tipoFacturacion != null">
+        #{tipoFacturacion,jdbcType=CHAR},
+      </if>
+      <if test="usuario != null">
+        #{usuario,jdbcType=CHAR},
+      </if>
+      <if test="fecha != null">
+        #{fecha,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fechamod != null">
+        #{fechamod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usuariomod != null">
+        #{usuariomod,jdbcType=CHAR},
+      </if>
+      <if test="periodoFac != null">
+        #{periodoFac,jdbcType=CHAR},
+      </if>
+      <if test="diasCredito != null">
+        #{diasCredito,jdbcType=NUMERIC},
+      </if>
+      <if test="credito != null">
+        #{credito,jdbcType=NUMERIC},
+      </if>
+      <if test="creditoUtilizado != null">
+        #{creditoUtilizado,jdbcType=NUMERIC},
+      </if>
+      <if test="creditoDisponible != null">
+        #{creditoDisponible,jdbcType=NUMERIC},
+      </if>
+      <if test="sobregiro != null">
+        #{sobregiro,jdbcType=NUMERIC},
+      </if>
+      <if test="estado != null">
+        #{estado,jdbcType=SMALLINT},
+      </if>
+      <if test="observacion != null">
+        #{observacion,jdbcType=VARCHAR},
+      </if>
+      <if test="fechaInicioCredito != null">
+        #{fechaInicioCredito,jdbcType=DATE},
+      </if>
+      <if test="fechaVenceCredito != null">
+        #{fechaVenceCredito,jdbcType=DATE},
+      </if>
+      <if test="tipoDocumento != null">
+        #{tipoDocumento,jdbcType=CHAR},
+      </if>
+      <if test="referencia != null">
+        #{referencia,jdbcType=VARCHAR},
+      </if>
+      <if test="telefono1 != null">
+        #{telefono1,jdbcType=VARCHAR},
+      </if>
+      <if test="codEncuesta != null">
+        #{codEncuesta,jdbcType=VARCHAR},
+      </if>
+      <if test="hPactada != null">
+        #{hPactada,jdbcType=NUMERIC},
+      </if>
+      <if test="tCliente != null">
+        #{tCliente,jdbcType=NUMERIC},
+      </if>
+      <if test="tHAdicional != null">
+        #{tHAdicional,jdbcType=NUMERIC},
+      </if>
+      <if test="tKmAdicional != null">
+        #{tKmAdicional,jdbcType=NUMERIC},
+      </if>
+      <if test="email2 != null">
+        #{email2,jdbcType=VARCHAR},
+      </if>
+      <if test="clasifica != null">
+        #{clasifica,jdbcType=VARCHAR},
+      </if>
+      <if test="codempresa != null">
+        #{codempresa,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.ClienteExample" resultType="java.lang.Integer">
+    select count(*) from cliente
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update cliente
+    <set>
+      <if test="record.codcliente != null">
+        codcliente = #{record.codcliente,jdbcType=CHAR},
+      </if>
+      <if test="record.ruc != null">
+        ruc = #{record.ruc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cliente != null">
+        cliente = #{record.cliente,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tipocliente != null">
+        tipocliente = #{record.tipocliente,jdbcType=CHAR},
+      </if>
+      <if test="record.rubro != null">
+        rubro = #{record.rubro,jdbcType=VARCHAR},
+      </if>
+      <if test="record.alias != null">
+        alias = #{record.alias,jdbcType=VARCHAR},
+      </if>
+      <if test="record.direccion != null">
+        direccion = #{record.direccion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ubigeo != null">
+        ubigeo = #{record.ubigeo,jdbcType=CHAR},
+      </if>
+      <if test="record.codpais != null">
+        codpais = #{record.codpais,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telefono != null">
+        telefono = #{record.telefono,jdbcType=VARCHAR},
+      </if>
+      <if test="record.movil != null">
+        movil = #{record.movil,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lim != null">
+        lim = #{record.lim,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codejecutiva != null">
+        codejecutiva = #{record.codejecutiva,jdbcType=CHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tipoCredito != null">
+        tipo_credito = #{record.tipoCredito,jdbcType=CHAR},
+      </if>
+      <if test="record.tipoFacturacion != null">
+        tipo_facturacion = #{record.tipoFacturacion,jdbcType=CHAR},
+      </if>
+      <if test="record.usuario != null">
+        usuario = #{record.usuario,jdbcType=CHAR},
+      </if>
+      <if test="record.fecha != null">
+        fecha = #{record.fecha,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.fechamod != null">
+        fechamod = #{record.fechamod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.usuariomod != null">
+        usuariomod = #{record.usuariomod,jdbcType=CHAR},
+      </if>
+      <if test="record.periodoFac != null">
+        periodo_fac = #{record.periodoFac,jdbcType=CHAR},
+      </if>
+      <if test="record.diasCredito != null">
+        dias_credito = #{record.diasCredito,jdbcType=NUMERIC},
+      </if>
+      <if test="record.credito != null">
+        credito = #{record.credito,jdbcType=NUMERIC},
+      </if>
+      <if test="record.creditoUtilizado != null">
+        credito_utilizado = #{record.creditoUtilizado,jdbcType=NUMERIC},
+      </if>
+      <if test="record.creditoDisponible != null">
+        credito_disponible = #{record.creditoDisponible,jdbcType=NUMERIC},
+      </if>
+      <if test="record.sobregiro != null">
+        sobregiro = #{record.sobregiro,jdbcType=NUMERIC},
+      </if>
+      <if test="record.estado != null">
+        estado = #{record.estado,jdbcType=SMALLINT},
+      </if>
+      <if test="record.observacion != null">
+        observacion = #{record.observacion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fechaInicioCredito != null">
+        fecha_inicio_credito = #{record.fechaInicioCredito,jdbcType=DATE},
+      </if>
+      <if test="record.fechaVenceCredito != null">
+        fecha_vence_credito = #{record.fechaVenceCredito,jdbcType=DATE},
+      </if>
+      <if test="record.tipoDocumento != null">
+        tipo_documento = #{record.tipoDocumento,jdbcType=CHAR},
+      </if>
+      <if test="record.referencia != null">
+        referencia = #{record.referencia,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telefono1 != null">
+        telefono1 = #{record.telefono1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codEncuesta != null">
+        cod_encuesta = #{record.codEncuesta,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hPactada != null">
+        h_pactada = #{record.hPactada,jdbcType=NUMERIC},
+      </if>
+      <if test="record.tCliente != null">
+        t_cliente = #{record.tCliente,jdbcType=NUMERIC},
+      </if>
+      <if test="record.tHAdicional != null">
+        t_h_adicional = #{record.tHAdicional,jdbcType=NUMERIC},
+      </if>
+      <if test="record.tKmAdicional != null">
+        t_km_adicional = #{record.tKmAdicional,jdbcType=NUMERIC},
+      </if>
+      <if test="record.email2 != null">
+        email_2 = #{record.email2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clasifica != null">
+        clasifica = #{record.clasifica,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codempresa != null">
+        codempresa = #{record.codempresa,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update cliente
+    set codcliente = #{record.codcliente,jdbcType=CHAR},
+      ruc = #{record.ruc,jdbcType=VARCHAR},
+      cliente = #{record.cliente,jdbcType=VARCHAR},
+      tipocliente = #{record.tipocliente,jdbcType=CHAR},
+      rubro = #{record.rubro,jdbcType=VARCHAR},
+      alias = #{record.alias,jdbcType=VARCHAR},
+      direccion = #{record.direccion,jdbcType=VARCHAR},
+      ubigeo = #{record.ubigeo,jdbcType=CHAR},
+      codpais = #{record.codpais,jdbcType=VARCHAR},
+      telefono = #{record.telefono,jdbcType=VARCHAR},
+      movil = #{record.movil,jdbcType=VARCHAR},
+      lim = #{record.lim,jdbcType=VARCHAR},
+      codejecutiva = #{record.codejecutiva,jdbcType=CHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      tipo_credito = #{record.tipoCredito,jdbcType=CHAR},
+      tipo_facturacion = #{record.tipoFacturacion,jdbcType=CHAR},
+      usuario = #{record.usuario,jdbcType=CHAR},
+      fecha = #{record.fecha,jdbcType=TIMESTAMP},
+      fechamod = #{record.fechamod,jdbcType=TIMESTAMP},
+      usuariomod = #{record.usuariomod,jdbcType=CHAR},
+      periodo_fac = #{record.periodoFac,jdbcType=CHAR},
+      dias_credito = #{record.diasCredito,jdbcType=NUMERIC},
+      credito = #{record.credito,jdbcType=NUMERIC},
+      credito_utilizado = #{record.creditoUtilizado,jdbcType=NUMERIC},
+      credito_disponible = #{record.creditoDisponible,jdbcType=NUMERIC},
+      sobregiro = #{record.sobregiro,jdbcType=NUMERIC},
+      estado = #{record.estado,jdbcType=SMALLINT},
+      observacion = #{record.observacion,jdbcType=VARCHAR},
+      fecha_inicio_credito = #{record.fechaInicioCredito,jdbcType=DATE},
+      fecha_vence_credito = #{record.fechaVenceCredito,jdbcType=DATE},
+      tipo_documento = #{record.tipoDocumento,jdbcType=CHAR},
+      referencia = #{record.referencia,jdbcType=VARCHAR},
+      telefono1 = #{record.telefono1,jdbcType=VARCHAR},
+      cod_encuesta = #{record.codEncuesta,jdbcType=VARCHAR},
+      h_pactada = #{record.hPactada,jdbcType=NUMERIC},
+      t_cliente = #{record.tCliente,jdbcType=NUMERIC},
+      t_h_adicional = #{record.tHAdicional,jdbcType=NUMERIC},
+      t_km_adicional = #{record.tKmAdicional,jdbcType=NUMERIC},
+      email_2 = #{record.email2,jdbcType=VARCHAR},
+      clasifica = #{record.clasifica,jdbcType=VARCHAR},
+      codempresa = #{record.codempresa,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Cliente">
+    update cliente
+    <set>
+      <if test="ruc != null">
+        ruc = #{ruc,jdbcType=VARCHAR},
+      </if>
+      <if test="cliente != null">
+        cliente = #{cliente,jdbcType=VARCHAR},
+      </if>
+      <if test="tipocliente != null">
+        tipocliente = #{tipocliente,jdbcType=CHAR},
+      </if>
+      <if test="rubro != null">
+        rubro = #{rubro,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null">
+        alias = #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="direccion != null">
+        direccion = #{direccion,jdbcType=VARCHAR},
+      </if>
+      <if test="ubigeo != null">
+        ubigeo = #{ubigeo,jdbcType=CHAR},
+      </if>
+      <if test="codpais != null">
+        codpais = #{codpais,jdbcType=VARCHAR},
+      </if>
+      <if test="telefono != null">
+        telefono = #{telefono,jdbcType=VARCHAR},
+      </if>
+      <if test="movil != null">
+        movil = #{movil,jdbcType=VARCHAR},
+      </if>
+      <if test="lim != null">
+        lim = #{lim,jdbcType=VARCHAR},
+      </if>
+      <if test="codejecutiva != null">
+        codejecutiva = #{codejecutiva,jdbcType=CHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="tipoCredito != null">
+        tipo_credito = #{tipoCredito,jdbcType=CHAR},
+      </if>
+      <if test="tipoFacturacion != null">
+        tipo_facturacion = #{tipoFacturacion,jdbcType=CHAR},
+      </if>
+      <if test="usuario != null">
+        usuario = #{usuario,jdbcType=CHAR},
+      </if>
+      <if test="fecha != null">
+        fecha = #{fecha,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fechamod != null">
+        fechamod = #{fechamod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usuariomod != null">
+        usuariomod = #{usuariomod,jdbcType=CHAR},
+      </if>
+      <if test="periodoFac != null">
+        periodo_fac = #{periodoFac,jdbcType=CHAR},
+      </if>
+      <if test="diasCredito != null">
+        dias_credito = #{diasCredito,jdbcType=NUMERIC},
+      </if>
+      <if test="credito != null">
+        credito = #{credito,jdbcType=NUMERIC},
+      </if>
+      <if test="creditoUtilizado != null">
+        credito_utilizado = #{creditoUtilizado,jdbcType=NUMERIC},
+      </if>
+      <if test="creditoDisponible != null">
+        credito_disponible = #{creditoDisponible,jdbcType=NUMERIC},
+      </if>
+      <if test="sobregiro != null">
+        sobregiro = #{sobregiro,jdbcType=NUMERIC},
+      </if>
+      <if test="estado != null">
+        estado = #{estado,jdbcType=SMALLINT},
+      </if>
+      <if test="observacion != null">
+        observacion = #{observacion,jdbcType=VARCHAR},
+      </if>
+      <if test="fechaInicioCredito != null">
+        fecha_inicio_credito = #{fechaInicioCredito,jdbcType=DATE},
+      </if>
+      <if test="fechaVenceCredito != null">
+        fecha_vence_credito = #{fechaVenceCredito,jdbcType=DATE},
+      </if>
+      <if test="tipoDocumento != null">
+        tipo_documento = #{tipoDocumento,jdbcType=CHAR},
+      </if>
+      <if test="referencia != null">
+        referencia = #{referencia,jdbcType=VARCHAR},
+      </if>
+      <if test="telefono1 != null">
+        telefono1 = #{telefono1,jdbcType=VARCHAR},
+      </if>
+      <if test="codEncuesta != null">
+        cod_encuesta = #{codEncuesta,jdbcType=VARCHAR},
+      </if>
+      <if test="hPactada != null">
+        h_pactada = #{hPactada,jdbcType=NUMERIC},
+      </if>
+      <if test="tCliente != null">
+        t_cliente = #{tCliente,jdbcType=NUMERIC},
+      </if>
+      <if test="tHAdicional != null">
+        t_h_adicional = #{tHAdicional,jdbcType=NUMERIC},
+      </if>
+      <if test="tKmAdicional != null">
+        t_km_adicional = #{tKmAdicional,jdbcType=NUMERIC},
+      </if>
+      <if test="email2 != null">
+        email_2 = #{email2,jdbcType=VARCHAR},
+      </if>
+      <if test="clasifica != null">
+        clasifica = #{clasifica,jdbcType=VARCHAR},
+      </if>
+      <if test="codempresa != null">
+        codempresa = #{codempresa,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where codcliente = #{codcliente,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Cliente">
+    update cliente
+    set ruc = #{ruc,jdbcType=VARCHAR},
+      cliente = #{cliente,jdbcType=VARCHAR},
+      tipocliente = #{tipocliente,jdbcType=CHAR},
+      rubro = #{rubro,jdbcType=VARCHAR},
+      alias = #{alias,jdbcType=VARCHAR},
+      direccion = #{direccion,jdbcType=VARCHAR},
+      ubigeo = #{ubigeo,jdbcType=CHAR},
+      codpais = #{codpais,jdbcType=VARCHAR},
+      telefono = #{telefono,jdbcType=VARCHAR},
+      movil = #{movil,jdbcType=VARCHAR},
+      lim = #{lim,jdbcType=VARCHAR},
+      codejecutiva = #{codejecutiva,jdbcType=CHAR},
+      email = #{email,jdbcType=VARCHAR},
+      tipo_credito = #{tipoCredito,jdbcType=CHAR},
+      tipo_facturacion = #{tipoFacturacion,jdbcType=CHAR},
+      usuario = #{usuario,jdbcType=CHAR},
+      fecha = #{fecha,jdbcType=TIMESTAMP},
+      fechamod = #{fechamod,jdbcType=TIMESTAMP},
+      usuariomod = #{usuariomod,jdbcType=CHAR},
+      periodo_fac = #{periodoFac,jdbcType=CHAR},
+      dias_credito = #{diasCredito,jdbcType=NUMERIC},
+      credito = #{credito,jdbcType=NUMERIC},
+      credito_utilizado = #{creditoUtilizado,jdbcType=NUMERIC},
+      credito_disponible = #{creditoDisponible,jdbcType=NUMERIC},
+      sobregiro = #{sobregiro,jdbcType=NUMERIC},
+      estado = #{estado,jdbcType=SMALLINT},
+      observacion = #{observacion,jdbcType=VARCHAR},
+      fecha_inicio_credito = #{fechaInicioCredito,jdbcType=DATE},
+      fecha_vence_credito = #{fechaVenceCredito,jdbcType=DATE},
+      tipo_documento = #{tipoDocumento,jdbcType=CHAR},
+      referencia = #{referencia,jdbcType=VARCHAR},
+      telefono1 = #{telefono1,jdbcType=VARCHAR},
+      cod_encuesta = #{codEncuesta,jdbcType=VARCHAR},
+      h_pactada = #{hPactada,jdbcType=NUMERIC},
+      t_cliente = #{tCliente,jdbcType=NUMERIC},
+      t_h_adicional = #{tHAdicional,jdbcType=NUMERIC},
+      t_km_adicional = #{tKmAdicional,jdbcType=NUMERIC},
+      email_2 = #{email2,jdbcType=VARCHAR},
+      clasifica = #{clasifica,jdbcType=VARCHAR},
+      codempresa = #{codempresa,jdbcType=VARCHAR}
+    where codcliente = #{codcliente,jdbcType=CHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.origen.Cliente">
+    <id column="codcliente" jdbcType="CHAR" property="codcliente" />
+    <result column="ruc" jdbcType="VARCHAR" property="ruc" />
+    <result column="cliente" jdbcType="VARCHAR" property="cliente" />
+    <result column="tipocliente" jdbcType="CHAR" property="tipocliente" />
+    <result column="rubro" jdbcType="VARCHAR" property="rubro" />
+    <result column="alias" jdbcType="VARCHAR" property="alias" />
+    <result column="direccion" jdbcType="VARCHAR" property="direccion" />
+    <result column="ubigeo" jdbcType="CHAR" property="ubigeo" />
+    <result column="codpais" jdbcType="VARCHAR" property="codpais" />
+    <result column="telefono" jdbcType="VARCHAR" property="telefono" />
+    <result column="movil" jdbcType="VARCHAR" property="movil" />
+    <result column="lim" jdbcType="VARCHAR" property="lim" />
+    <result column="codejecutiva" jdbcType="CHAR" property="codejecutiva" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="tipo_credito" jdbcType="CHAR" property="tipoCredito" />
+    <result column="tipo_facturacion" jdbcType="CHAR" property="tipoFacturacion" />
+    <result column="usuario" jdbcType="CHAR" property="usuario" />
+    <result column="fecha" jdbcType="TIMESTAMP" property="fecha" />
+    <result column="fechamod" jdbcType="TIMESTAMP" property="fechamod" />
+    <result column="usuariomod" jdbcType="CHAR" property="usuariomod" />
+    <result column="periodo_fac" jdbcType="CHAR" property="periodoFac" />
+    <result column="dias_credito" jdbcType="NUMERIC" property="diasCredito" />
+    <result column="credito" jdbcType="NUMERIC" property="credito" />
+    <result column="credito_utilizado" jdbcType="NUMERIC" property="creditoUtilizado" />
+    <result column="credito_disponible" jdbcType="NUMERIC" property="creditoDisponible" />
+    <result column="sobregiro" jdbcType="NUMERIC" property="sobregiro" />
+    <result column="estado" jdbcType="SMALLINT" property="estado" />
+    <result column="observacion" jdbcType="VARCHAR" property="observacion" />
+    <result column="fecha_inicio_credito" jdbcType="DATE" property="fechaInicioCredito" />
+    <result column="fecha_vence_credito" jdbcType="DATE" property="fechaVenceCredito" />
+    <result column="tipo_documento" jdbcType="CHAR" property="tipoDocumento" />
+    <result column="referencia" jdbcType="VARCHAR" property="referencia" />
+    <result column="telefono1" jdbcType="VARCHAR" property="telefono1" />
+    <result column="cod_encuesta" jdbcType="VARCHAR" property="codEncuesta" />
+    <result column="h_pactada" jdbcType="NUMERIC" property="hPactada" />
+    <result column="t_cliente" jdbcType="NUMERIC" property="tCliente" />
+    <result column="t_h_adicional" jdbcType="NUMERIC" property="tHAdicional" />
+    <result column="t_km_adicional" jdbcType="NUMERIC" property="tKmAdicional" />
+    <result column="email_2" jdbcType="VARCHAR" property="email2" />
+    <result column="clasifica" jdbcType="VARCHAR" property="clasifica" />
+    <result column="codempresa" jdbcType="VARCHAR" property="codempresa" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    codcliente, ruc, cliente, tipocliente, rubro, alias, direccion, ubigeo, codpais, 
+    telefono, movil, lim, codejecutiva, email, tipo_credito, tipo_facturacion, usuario, 
+    fecha, fechamod, usuariomod, periodo_fac, dias_credito, credito, credito_utilizado, 
+    credito_disponible, sobregiro, estado, observacion, fecha_inicio_credito, fecha_vence_credito, 
+    tipo_documento, referencia, telefono1, cod_encuesta, h_pactada, t_cliente, t_h_adicional, 
+    t_km_adicional, email_2, clasifica, codempresa
+  </sql>
+  <select id="selectByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.ClienteExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from cliente
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cliente
+    where codcliente = #{codcliente,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from cliente
+    where codcliente = #{codcliente,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.ClienteExample">
+    delete from cliente
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Cliente">
+    insert into cliente (codcliente, ruc, cliente, 
+      tipocliente, rubro, alias, 
+      direccion, ubigeo, codpais, 
+      telefono, movil, lim, 
+      codejecutiva, email, tipo_credito, 
+      tipo_facturacion, usuario, fecha, 
+      fechamod, usuariomod, periodo_fac, 
+      dias_credito, credito, credito_utilizado, 
+      credito_disponible, sobregiro, estado, 
+      observacion, fecha_inicio_credito, fecha_vence_credito, 
+      tipo_documento, referencia, telefono1, 
+      cod_encuesta, h_pactada, t_cliente, 
+      t_h_adicional, t_km_adicional, email_2, 
+      clasifica, codempresa)
+    values (#{codcliente,jdbcType=CHAR}, #{ruc,jdbcType=VARCHAR}, #{cliente,jdbcType=VARCHAR}, 
+      #{tipocliente,jdbcType=CHAR}, #{rubro,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}, 
+      #{direccion,jdbcType=VARCHAR}, #{ubigeo,jdbcType=CHAR}, #{codpais,jdbcType=VARCHAR}, 
+      #{telefono,jdbcType=VARCHAR}, #{movil,jdbcType=VARCHAR}, #{lim,jdbcType=VARCHAR}, 
+      #{codejecutiva,jdbcType=CHAR}, #{email,jdbcType=VARCHAR}, #{tipoCredito,jdbcType=CHAR}, 
+      #{tipoFacturacion,jdbcType=CHAR}, #{usuario,jdbcType=CHAR}, #{fecha,jdbcType=TIMESTAMP}, 
+      #{fechamod,jdbcType=TIMESTAMP}, #{usuariomod,jdbcType=CHAR}, #{periodoFac,jdbcType=CHAR}, 
+      #{diasCredito,jdbcType=NUMERIC}, #{credito,jdbcType=NUMERIC}, #{creditoUtilizado,jdbcType=NUMERIC}, 
+      #{creditoDisponible,jdbcType=NUMERIC}, #{sobregiro,jdbcType=NUMERIC}, #{estado,jdbcType=SMALLINT}, 
+      #{observacion,jdbcType=VARCHAR}, #{fechaInicioCredito,jdbcType=DATE}, #{fechaVenceCredito,jdbcType=DATE}, 
+      #{tipoDocumento,jdbcType=CHAR}, #{referencia,jdbcType=VARCHAR}, #{telefono1,jdbcType=VARCHAR}, 
+      #{codEncuesta,jdbcType=VARCHAR}, #{hPactada,jdbcType=NUMERIC}, #{tCliente,jdbcType=NUMERIC}, 
+      #{tHAdicional,jdbcType=NUMERIC}, #{tKmAdicional,jdbcType=NUMERIC}, #{email2,jdbcType=VARCHAR}, 
+      #{clasifica,jdbcType=VARCHAR}, #{codempresa,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Cliente">
+    insert into cliente
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="codcliente != null">
+        codcliente,
+      </if>
+      <if test="ruc != null">
+        ruc,
+      </if>
+      <if test="cliente != null">
+        cliente,
+      </if>
+      <if test="tipocliente != null">
+        tipocliente,
+      </if>
+      <if test="rubro != null">
+        rubro,
+      </if>
+      <if test="alias != null">
+        alias,
+      </if>
+      <if test="direccion != null">
+        direccion,
+      </if>
+      <if test="ubigeo != null">
+        ubigeo,
+      </if>
+      <if test="codpais != null">
+        codpais,
+      </if>
+      <if test="telefono != null">
+        telefono,
+      </if>
+      <if test="movil != null">
+        movil,
+      </if>
+      <if test="lim != null">
+        lim,
+      </if>
+      <if test="codejecutiva != null">
+        codejecutiva,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="tipoCredito != null">
+        tipo_credito,
+      </if>
+      <if test="tipoFacturacion != null">
+        tipo_facturacion,
+      </if>
+      <if test="usuario != null">
+        usuario,
+      </if>
+      <if test="fecha != null">
+        fecha,
+      </if>
+      <if test="fechamod != null">
+        fechamod,
+      </if>
+      <if test="usuariomod != null">
+        usuariomod,
+      </if>
+      <if test="periodoFac != null">
+        periodo_fac,
+      </if>
+      <if test="diasCredito != null">
+        dias_credito,
+      </if>
+      <if test="credito != null">
+        credito,
+      </if>
+      <if test="creditoUtilizado != null">
+        credito_utilizado,
+      </if>
+      <if test="creditoDisponible != null">
+        credito_disponible,
+      </if>
+      <if test="sobregiro != null">
+        sobregiro,
+      </if>
+      <if test="estado != null">
+        estado,
+      </if>
+      <if test="observacion != null">
+        observacion,
+      </if>
+      <if test="fechaInicioCredito != null">
+        fecha_inicio_credito,
+      </if>
+      <if test="fechaVenceCredito != null">
+        fecha_vence_credito,
+      </if>
+      <if test="tipoDocumento != null">
+        tipo_documento,
+      </if>
+      <if test="referencia != null">
+        referencia,
+      </if>
+      <if test="telefono1 != null">
+        telefono1,
+      </if>
+      <if test="codEncuesta != null">
+        cod_encuesta,
+      </if>
+      <if test="hPactada != null">
+        h_pactada,
+      </if>
+      <if test="tCliente != null">
+        t_cliente,
+      </if>
+      <if test="tHAdicional != null">
+        t_h_adicional,
+      </if>
+      <if test="tKmAdicional != null">
+        t_km_adicional,
+      </if>
+      <if test="email2 != null">
+        email_2,
+      </if>
+      <if test="clasifica != null">
+        clasifica,
+      </if>
+      <if test="codempresa != null">
+        codempresa,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="codcliente != null">
+        #{codcliente,jdbcType=CHAR},
+      </if>
+      <if test="ruc != null">
+        #{ruc,jdbcType=VARCHAR},
+      </if>
+      <if test="cliente != null">
+        #{cliente,jdbcType=VARCHAR},
+      </if>
+      <if test="tipocliente != null">
+        #{tipocliente,jdbcType=CHAR},
+      </if>
+      <if test="rubro != null">
+        #{rubro,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null">
+        #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="direccion != null">
+        #{direccion,jdbcType=VARCHAR},
+      </if>
+      <if test="ubigeo != null">
+        #{ubigeo,jdbcType=CHAR},
+      </if>
+      <if test="codpais != null">
+        #{codpais,jdbcType=VARCHAR},
+      </if>
+      <if test="telefono != null">
+        #{telefono,jdbcType=VARCHAR},
+      </if>
+      <if test="movil != null">
+        #{movil,jdbcType=VARCHAR},
+      </if>
+      <if test="lim != null">
+        #{lim,jdbcType=VARCHAR},
+      </if>
+      <if test="codejecutiva != null">
+        #{codejecutiva,jdbcType=CHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="tipoCredito != null">
+        #{tipoCredito,jdbcType=CHAR},
+      </if>
+      <if test="tipoFacturacion != null">
+        #{tipoFacturacion,jdbcType=CHAR},
+      </if>
+      <if test="usuario != null">
+        #{usuario,jdbcType=CHAR},
+      </if>
+      <if test="fecha != null">
+        #{fecha,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fechamod != null">
+        #{fechamod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usuariomod != null">
+        #{usuariomod,jdbcType=CHAR},
+      </if>
+      <if test="periodoFac != null">
+        #{periodoFac,jdbcType=CHAR},
+      </if>
+      <if test="diasCredito != null">
+        #{diasCredito,jdbcType=NUMERIC},
+      </if>
+      <if test="credito != null">
+        #{credito,jdbcType=NUMERIC},
+      </if>
+      <if test="creditoUtilizado != null">
+        #{creditoUtilizado,jdbcType=NUMERIC},
+      </if>
+      <if test="creditoDisponible != null">
+        #{creditoDisponible,jdbcType=NUMERIC},
+      </if>
+      <if test="sobregiro != null">
+        #{sobregiro,jdbcType=NUMERIC},
+      </if>
+      <if test="estado != null">
+        #{estado,jdbcType=SMALLINT},
+      </if>
+      <if test="observacion != null">
+        #{observacion,jdbcType=VARCHAR},
+      </if>
+      <if test="fechaInicioCredito != null">
+        #{fechaInicioCredito,jdbcType=DATE},
+      </if>
+      <if test="fechaVenceCredito != null">
+        #{fechaVenceCredito,jdbcType=DATE},
+      </if>
+      <if test="tipoDocumento != null">
+        #{tipoDocumento,jdbcType=CHAR},
+      </if>
+      <if test="referencia != null">
+        #{referencia,jdbcType=VARCHAR},
+      </if>
+      <if test="telefono1 != null">
+        #{telefono1,jdbcType=VARCHAR},
+      </if>
+      <if test="codEncuesta != null">
+        #{codEncuesta,jdbcType=VARCHAR},
+      </if>
+      <if test="hPactada != null">
+        #{hPactada,jdbcType=NUMERIC},
+      </if>
+      <if test="tCliente != null">
+        #{tCliente,jdbcType=NUMERIC},
+      </if>
+      <if test="tHAdicional != null">
+        #{tHAdicional,jdbcType=NUMERIC},
+      </if>
+      <if test="tKmAdicional != null">
+        #{tKmAdicional,jdbcType=NUMERIC},
+      </if>
+      <if test="email2 != null">
+        #{email2,jdbcType=VARCHAR},
+      </if>
+      <if test="clasifica != null">
+        #{clasifica,jdbcType=VARCHAR},
+      </if>
+      <if test="codempresa != null">
+        #{codempresa,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.ClienteExample" resultType="java.lang.Integer">
+    select count(*) from cliente
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update cliente
+    <set>
+      <if test="record.codcliente != null">
+        codcliente = #{record.codcliente,jdbcType=CHAR},
+      </if>
+      <if test="record.ruc != null">
+        ruc = #{record.ruc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cliente != null">
+        cliente = #{record.cliente,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tipocliente != null">
+        tipocliente = #{record.tipocliente,jdbcType=CHAR},
+      </if>
+      <if test="record.rubro != null">
+        rubro = #{record.rubro,jdbcType=VARCHAR},
+      </if>
+      <if test="record.alias != null">
+        alias = #{record.alias,jdbcType=VARCHAR},
+      </if>
+      <if test="record.direccion != null">
+        direccion = #{record.direccion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ubigeo != null">
+        ubigeo = #{record.ubigeo,jdbcType=CHAR},
+      </if>
+      <if test="record.codpais != null">
+        codpais = #{record.codpais,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telefono != null">
+        telefono = #{record.telefono,jdbcType=VARCHAR},
+      </if>
+      <if test="record.movil != null">
+        movil = #{record.movil,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lim != null">
+        lim = #{record.lim,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codejecutiva != null">
+        codejecutiva = #{record.codejecutiva,jdbcType=CHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tipoCredito != null">
+        tipo_credito = #{record.tipoCredito,jdbcType=CHAR},
+      </if>
+      <if test="record.tipoFacturacion != null">
+        tipo_facturacion = #{record.tipoFacturacion,jdbcType=CHAR},
+      </if>
+      <if test="record.usuario != null">
+        usuario = #{record.usuario,jdbcType=CHAR},
+      </if>
+      <if test="record.fecha != null">
+        fecha = #{record.fecha,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.fechamod != null">
+        fechamod = #{record.fechamod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.usuariomod != null">
+        usuariomod = #{record.usuariomod,jdbcType=CHAR},
+      </if>
+      <if test="record.periodoFac != null">
+        periodo_fac = #{record.periodoFac,jdbcType=CHAR},
+      </if>
+      <if test="record.diasCredito != null">
+        dias_credito = #{record.diasCredito,jdbcType=NUMERIC},
+      </if>
+      <if test="record.credito != null">
+        credito = #{record.credito,jdbcType=NUMERIC},
+      </if>
+      <if test="record.creditoUtilizado != null">
+        credito_utilizado = #{record.creditoUtilizado,jdbcType=NUMERIC},
+      </if>
+      <if test="record.creditoDisponible != null">
+        credito_disponible = #{record.creditoDisponible,jdbcType=NUMERIC},
+      </if>
+      <if test="record.sobregiro != null">
+        sobregiro = #{record.sobregiro,jdbcType=NUMERIC},
+      </if>
+      <if test="record.estado != null">
+        estado = #{record.estado,jdbcType=SMALLINT},
+      </if>
+      <if test="record.observacion != null">
+        observacion = #{record.observacion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fechaInicioCredito != null">
+        fecha_inicio_credito = #{record.fechaInicioCredito,jdbcType=DATE},
+      </if>
+      <if test="record.fechaVenceCredito != null">
+        fecha_vence_credito = #{record.fechaVenceCredito,jdbcType=DATE},
+      </if>
+      <if test="record.tipoDocumento != null">
+        tipo_documento = #{record.tipoDocumento,jdbcType=CHAR},
+      </if>
+      <if test="record.referencia != null">
+        referencia = #{record.referencia,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telefono1 != null">
+        telefono1 = #{record.telefono1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codEncuesta != null">
+        cod_encuesta = #{record.codEncuesta,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hPactada != null">
+        h_pactada = #{record.hPactada,jdbcType=NUMERIC},
+      </if>
+      <if test="record.tCliente != null">
+        t_cliente = #{record.tCliente,jdbcType=NUMERIC},
+      </if>
+      <if test="record.tHAdicional != null">
+        t_h_adicional = #{record.tHAdicional,jdbcType=NUMERIC},
+      </if>
+      <if test="record.tKmAdicional != null">
+        t_km_adicional = #{record.tKmAdicional,jdbcType=NUMERIC},
+      </if>
+      <if test="record.email2 != null">
+        email_2 = #{record.email2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clasifica != null">
+        clasifica = #{record.clasifica,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codempresa != null">
+        codempresa = #{record.codempresa,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update cliente
+    set codcliente = #{record.codcliente,jdbcType=CHAR},
+      ruc = #{record.ruc,jdbcType=VARCHAR},
+      cliente = #{record.cliente,jdbcType=VARCHAR},
+      tipocliente = #{record.tipocliente,jdbcType=CHAR},
+      rubro = #{record.rubro,jdbcType=VARCHAR},
+      alias = #{record.alias,jdbcType=VARCHAR},
+      direccion = #{record.direccion,jdbcType=VARCHAR},
+      ubigeo = #{record.ubigeo,jdbcType=CHAR},
+      codpais = #{record.codpais,jdbcType=VARCHAR},
+      telefono = #{record.telefono,jdbcType=VARCHAR},
+      movil = #{record.movil,jdbcType=VARCHAR},
+      lim = #{record.lim,jdbcType=VARCHAR},
+      codejecutiva = #{record.codejecutiva,jdbcType=CHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      tipo_credito = #{record.tipoCredito,jdbcType=CHAR},
+      tipo_facturacion = #{record.tipoFacturacion,jdbcType=CHAR},
+      usuario = #{record.usuario,jdbcType=CHAR},
+      fecha = #{record.fecha,jdbcType=TIMESTAMP},
+      fechamod = #{record.fechamod,jdbcType=TIMESTAMP},
+      usuariomod = #{record.usuariomod,jdbcType=CHAR},
+      periodo_fac = #{record.periodoFac,jdbcType=CHAR},
+      dias_credito = #{record.diasCredito,jdbcType=NUMERIC},
+      credito = #{record.credito,jdbcType=NUMERIC},
+      credito_utilizado = #{record.creditoUtilizado,jdbcType=NUMERIC},
+      credito_disponible = #{record.creditoDisponible,jdbcType=NUMERIC},
+      sobregiro = #{record.sobregiro,jdbcType=NUMERIC},
+      estado = #{record.estado,jdbcType=SMALLINT},
+      observacion = #{record.observacion,jdbcType=VARCHAR},
+      fecha_inicio_credito = #{record.fechaInicioCredito,jdbcType=DATE},
+      fecha_vence_credito = #{record.fechaVenceCredito,jdbcType=DATE},
+      tipo_documento = #{record.tipoDocumento,jdbcType=CHAR},
+      referencia = #{record.referencia,jdbcType=VARCHAR},
+      telefono1 = #{record.telefono1,jdbcType=VARCHAR},
+      cod_encuesta = #{record.codEncuesta,jdbcType=VARCHAR},
+      h_pactada = #{record.hPactada,jdbcType=NUMERIC},
+      t_cliente = #{record.tCliente,jdbcType=NUMERIC},
+      t_h_adicional = #{record.tHAdicional,jdbcType=NUMERIC},
+      t_km_adicional = #{record.tKmAdicional,jdbcType=NUMERIC},
+      email_2 = #{record.email2,jdbcType=VARCHAR},
+      clasifica = #{record.clasifica,jdbcType=VARCHAR},
+      codempresa = #{record.codempresa,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Cliente">
+    update cliente
+    <set>
+      <if test="ruc != null">
+        ruc = #{ruc,jdbcType=VARCHAR},
+      </if>
+      <if test="cliente != null">
+        cliente = #{cliente,jdbcType=VARCHAR},
+      </if>
+      <if test="tipocliente != null">
+        tipocliente = #{tipocliente,jdbcType=CHAR},
+      </if>
+      <if test="rubro != null">
+        rubro = #{rubro,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null">
+        alias = #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="direccion != null">
+        direccion = #{direccion,jdbcType=VARCHAR},
+      </if>
+      <if test="ubigeo != null">
+        ubigeo = #{ubigeo,jdbcType=CHAR},
+      </if>
+      <if test="codpais != null">
+        codpais = #{codpais,jdbcType=VARCHAR},
+      </if>
+      <if test="telefono != null">
+        telefono = #{telefono,jdbcType=VARCHAR},
+      </if>
+      <if test="movil != null">
+        movil = #{movil,jdbcType=VARCHAR},
+      </if>
+      <if test="lim != null">
+        lim = #{lim,jdbcType=VARCHAR},
+      </if>
+      <if test="codejecutiva != null">
+        codejecutiva = #{codejecutiva,jdbcType=CHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="tipoCredito != null">
+        tipo_credito = #{tipoCredito,jdbcType=CHAR},
+      </if>
+      <if test="tipoFacturacion != null">
+        tipo_facturacion = #{tipoFacturacion,jdbcType=CHAR},
+      </if>
+      <if test="usuario != null">
+        usuario = #{usuario,jdbcType=CHAR},
+      </if>
+      <if test="fecha != null">
+        fecha = #{fecha,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fechamod != null">
+        fechamod = #{fechamod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usuariomod != null">
+        usuariomod = #{usuariomod,jdbcType=CHAR},
+      </if>
+      <if test="periodoFac != null">
+        periodo_fac = #{periodoFac,jdbcType=CHAR},
+      </if>
+      <if test="diasCredito != null">
+        dias_credito = #{diasCredito,jdbcType=NUMERIC},
+      </if>
+      <if test="credito != null">
+        credito = #{credito,jdbcType=NUMERIC},
+      </if>
+      <if test="creditoUtilizado != null">
+        credito_utilizado = #{creditoUtilizado,jdbcType=NUMERIC},
+      </if>
+      <if test="creditoDisponible != null">
+        credito_disponible = #{creditoDisponible,jdbcType=NUMERIC},
+      </if>
+      <if test="sobregiro != null">
+        sobregiro = #{sobregiro,jdbcType=NUMERIC},
+      </if>
+      <if test="estado != null">
+        estado = #{estado,jdbcType=SMALLINT},
+      </if>
+      <if test="observacion != null">
+        observacion = #{observacion,jdbcType=VARCHAR},
+      </if>
+      <if test="fechaInicioCredito != null">
+        fecha_inicio_credito = #{fechaInicioCredito,jdbcType=DATE},
+      </if>
+      <if test="fechaVenceCredito != null">
+        fecha_vence_credito = #{fechaVenceCredito,jdbcType=DATE},
+      </if>
+      <if test="tipoDocumento != null">
+        tipo_documento = #{tipoDocumento,jdbcType=CHAR},
+      </if>
+      <if test="referencia != null">
+        referencia = #{referencia,jdbcType=VARCHAR},
+      </if>
+      <if test="telefono1 != null">
+        telefono1 = #{telefono1,jdbcType=VARCHAR},
+      </if>
+      <if test="codEncuesta != null">
+        cod_encuesta = #{codEncuesta,jdbcType=VARCHAR},
+      </if>
+      <if test="hPactada != null">
+        h_pactada = #{hPactada,jdbcType=NUMERIC},
+      </if>
+      <if test="tCliente != null">
+        t_cliente = #{tCliente,jdbcType=NUMERIC},
+      </if>
+      <if test="tHAdicional != null">
+        t_h_adicional = #{tHAdicional,jdbcType=NUMERIC},
+      </if>
+      <if test="tKmAdicional != null">
+        t_km_adicional = #{tKmAdicional,jdbcType=NUMERIC},
+      </if>
+      <if test="email2 != null">
+        email_2 = #{email2,jdbcType=VARCHAR},
+      </if>
+      <if test="clasifica != null">
+        clasifica = #{clasifica,jdbcType=VARCHAR},
+      </if>
+      <if test="codempresa != null">
+        codempresa = #{codempresa,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where codcliente = #{codcliente,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Cliente">
+    update cliente
+    set ruc = #{ruc,jdbcType=VARCHAR},
+      cliente = #{cliente,jdbcType=VARCHAR},
+      tipocliente = #{tipocliente,jdbcType=CHAR},
+      rubro = #{rubro,jdbcType=VARCHAR},
+      alias = #{alias,jdbcType=VARCHAR},
+      direccion = #{direccion,jdbcType=VARCHAR},
+      ubigeo = #{ubigeo,jdbcType=CHAR},
+      codpais = #{codpais,jdbcType=VARCHAR},
+      telefono = #{telefono,jdbcType=VARCHAR},
+      movil = #{movil,jdbcType=VARCHAR},
+      lim = #{lim,jdbcType=VARCHAR},
+      codejecutiva = #{codejecutiva,jdbcType=CHAR},
+      email = #{email,jdbcType=VARCHAR},
+      tipo_credito = #{tipoCredito,jdbcType=CHAR},
+      tipo_facturacion = #{tipoFacturacion,jdbcType=CHAR},
+      usuario = #{usuario,jdbcType=CHAR},
+      fecha = #{fecha,jdbcType=TIMESTAMP},
+      fechamod = #{fechamod,jdbcType=TIMESTAMP},
+      usuariomod = #{usuariomod,jdbcType=CHAR},
+      periodo_fac = #{periodoFac,jdbcType=CHAR},
+      dias_credito = #{diasCredito,jdbcType=NUMERIC},
+      credito = #{credito,jdbcType=NUMERIC},
+      credito_utilizado = #{creditoUtilizado,jdbcType=NUMERIC},
+      credito_disponible = #{creditoDisponible,jdbcType=NUMERIC},
+      sobregiro = #{sobregiro,jdbcType=NUMERIC},
+      estado = #{estado,jdbcType=SMALLINT},
+      observacion = #{observacion,jdbcType=VARCHAR},
+      fecha_inicio_credito = #{fechaInicioCredito,jdbcType=DATE},
+      fecha_vence_credito = #{fechaVenceCredito,jdbcType=DATE},
+      tipo_documento = #{tipoDocumento,jdbcType=CHAR},
+      referencia = #{referencia,jdbcType=VARCHAR},
+      telefono1 = #{telefono1,jdbcType=VARCHAR},
+      cod_encuesta = #{codEncuesta,jdbcType=VARCHAR},
+      h_pactada = #{hPactada,jdbcType=NUMERIC},
+      t_cliente = #{tCliente,jdbcType=NUMERIC},
+      t_h_adicional = #{tHAdicional,jdbcType=NUMERIC},
+      t_km_adicional = #{tKmAdicional,jdbcType=NUMERIC},
+      email_2 = #{email2,jdbcType=VARCHAR},
+      clasifica = #{clasifica,jdbcType=VARCHAR},
+      codempresa = #{codempresa,jdbcType=VARCHAR}
+    where codcliente = #{codcliente,jdbcType=CHAR}
+  </update>
+</mapper>

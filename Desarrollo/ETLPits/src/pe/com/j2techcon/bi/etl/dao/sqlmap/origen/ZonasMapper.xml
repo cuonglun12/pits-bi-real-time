@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pe.com.j2techcon.bi.etl.dao.origen.ZonasMapper">
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.origen.Zonas">
+    <result column="codzona" jdbcType="CHAR" property="codzona" />
+    <result column="codpostal" jdbcType="CHAR" property="codpostal" />
+    <result column="codclasificador" jdbcType="CHAR" property="codclasificador" />
+    <result column="bonozona" jdbcType="CHAR" property="bonozona" />
+    <result column="descripcion" jdbcType="VARCHAR" property="descripcion" />
+    <result column="pasaje" jdbcType="NUMERIC" property="pasaje" />
+    <result column="monto" jdbcType="NUMERIC" property="monto" />
+    <result column="fecha" jdbcType="TIMESTAMP" property="fecha" />
+    <result column="usuariomod" jdbcType="CHAR" property="usuariomod" />
+    <result column="fechamod" jdbcType="TIMESTAMP" property="fechamod" />
+    <result column="estado" jdbcType="SMALLINT" property="estado" />
+    <result column="usuario" jdbcType="CHAR" property="usuario" />
+    <result column="bono" jdbcType="NUMERIC" property="bono" />
+    <result column="efectividad" jdbcType="SMALLINT" property="efectividad" />
+    <result column="ubigeo" jdbcType="CHAR" property="ubigeo" />
+    <result column="tipozona" jdbcType="CHAR" property="tipozona" />
+    <result column="cantidad" jdbcType="SMALLINT" property="cantidad" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    codzona, codpostal, codclasificador, bonozona, descripcion, pasaje, monto, fecha, 
+    usuariomod, fechamod, estado, usuario, bono, efectividad, ubigeo, tipozona, cantidad
+  </sql>
+  <select id="selectByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.ZonasExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from zonas
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.ZonasExample">
+    delete from zonas
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Zonas">
+    insert into zonas (codzona, codpostal, codclasificador, 
+      bonozona, descripcion, pasaje, 
+      monto, fecha, usuariomod, 
+      fechamod, estado, usuario, 
+      bono, efectividad, ubigeo, 
+      tipozona, cantidad)
+    values (#{codzona,jdbcType=CHAR}, #{codpostal,jdbcType=CHAR}, #{codclasificador,jdbcType=CHAR}, 
+      #{bonozona,jdbcType=CHAR}, #{descripcion,jdbcType=VARCHAR}, #{pasaje,jdbcType=NUMERIC}, 
+      #{monto,jdbcType=NUMERIC}, #{fecha,jdbcType=TIMESTAMP}, #{usuariomod,jdbcType=CHAR}, 
+      #{fechamod,jdbcType=TIMESTAMP}, #{estado,jdbcType=SMALLINT}, #{usuario,jdbcType=CHAR}, 
+      #{bono,jdbcType=NUMERIC}, #{efectividad,jdbcType=SMALLINT}, #{ubigeo,jdbcType=CHAR}, 
+      #{tipozona,jdbcType=CHAR}, #{cantidad,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Zonas">
+    insert into zonas
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="codzona != null">
+        codzona,
+      </if>
+      <if test="codpostal != null">
+        codpostal,
+      </if>
+      <if test="codclasificador != null">
+        codclasificador,
+      </if>
+      <if test="bonozona != null">
+        bonozona,
+      </if>
+      <if test="descripcion != null">
+        descripcion,
+      </if>
+      <if test="pasaje != null">
+        pasaje,
+      </if>
+      <if test="monto != null">
+        monto,
+      </if>
+      <if test="fecha != null">
+        fecha,
+      </if>
+      <if test="usuariomod != null">
+        usuariomod,
+      </if>
+      <if test="fechamod != null">
+        fechamod,
+      </if>
+      <if test="estado != null">
+        estado,
+      </if>
+      <if test="usuario != null">
+        usuario,
+      </if>
+      <if test="bono != null">
+        bono,
+      </if>
+      <if test="efectividad != null">
+        efectividad,
+      </if>
+      <if test="ubigeo != null">
+        ubigeo,
+      </if>
+      <if test="tipozona != null">
+        tipozona,
+      </if>
+      <if test="cantidad != null">
+        cantidad,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="codzona != null">
+        #{codzona,jdbcType=CHAR},
+      </if>
+      <if test="codpostal != null">
+        #{codpostal,jdbcType=CHAR},
+      </if>
+      <if test="codclasificador != null">
+        #{codclasificador,jdbcType=CHAR},
+      </if>
+      <if test="bonozona != null">
+        #{bonozona,jdbcType=CHAR},
+      </if>
+      <if test="descripcion != null">
+        #{descripcion,jdbcType=VARCHAR},
+      </if>
+      <if test="pasaje != null">
+        #{pasaje,jdbcType=NUMERIC},
+      </if>
+      <if test="monto != null">
+        #{monto,jdbcType=NUMERIC},
+      </if>
+      <if test="fecha != null">
+        #{fecha,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usuariomod != null">
+        #{usuariomod,jdbcType=CHAR},
+      </if>
+      <if test="fechamod != null">
+        #{fechamod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="estado != null">
+        #{estado,jdbcType=SMALLINT},
+      </if>
+      <if test="usuario != null">
+        #{usuario,jdbcType=CHAR},
+      </if>
+      <if test="bono != null">
+        #{bono,jdbcType=NUMERIC},
+      </if>
+      <if test="efectividad != null">
+        #{efectividad,jdbcType=SMALLINT},
+      </if>
+      <if test="ubigeo != null">
+        #{ubigeo,jdbcType=CHAR},
+      </if>
+      <if test="tipozona != null">
+        #{tipozona,jdbcType=CHAR},
+      </if>
+      <if test="cantidad != null">
+        #{cantidad,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.ZonasExample" resultType="java.lang.Integer">
+    select count(*) from zonas
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update zonas
+    <set>
+      <if test="record.codzona != null">
+        codzona = #{record.codzona,jdbcType=CHAR},
+      </if>
+      <if test="record.codpostal != null">
+        codpostal = #{record.codpostal,jdbcType=CHAR},
+      </if>
+      <if test="record.codclasificador != null">
+        codclasificador = #{record.codclasificador,jdbcType=CHAR},
+      </if>
+      <if test="record.bonozona != null">
+        bonozona = #{record.bonozona,jdbcType=CHAR},
+      </if>
+      <if test="record.descripcion != null">
+        descripcion = #{record.descripcion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pasaje != null">
+        pasaje = #{record.pasaje,jdbcType=NUMERIC},
+      </if>
+      <if test="record.monto != null">
+        monto = #{record.monto,jdbcType=NUMERIC},
+      </if>
+      <if test="record.fecha != null">
+        fecha = #{record.fecha,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.usuariomod != null">
+        usuariomod = #{record.usuariomod,jdbcType=CHAR},
+      </if>
+      <if test="record.fechamod != null">
+        fechamod = #{record.fechamod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.estado != null">
+        estado = #{record.estado,jdbcType=SMALLINT},
+      </if>
+      <if test="record.usuario != null">
+        usuario = #{record.usuario,jdbcType=CHAR},
+      </if>
+      <if test="record.bono != null">
+        bono = #{record.bono,jdbcType=NUMERIC},
+      </if>
+      <if test="record.efectividad != null">
+        efectividad = #{record.efectividad,jdbcType=SMALLINT},
+      </if>
+      <if test="record.ubigeo != null">
+        ubigeo = #{record.ubigeo,jdbcType=CHAR},
+      </if>
+      <if test="record.tipozona != null">
+        tipozona = #{record.tipozona,jdbcType=CHAR},
+      </if>
+      <if test="record.cantidad != null">
+        cantidad = #{record.cantidad,jdbcType=SMALLINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update zonas
+    set codzona = #{record.codzona,jdbcType=CHAR},
+      codpostal = #{record.codpostal,jdbcType=CHAR},
+      codclasificador = #{record.codclasificador,jdbcType=CHAR},
+      bonozona = #{record.bonozona,jdbcType=CHAR},
+      descripcion = #{record.descripcion,jdbcType=VARCHAR},
+      pasaje = #{record.pasaje,jdbcType=NUMERIC},
+      monto = #{record.monto,jdbcType=NUMERIC},
+      fecha = #{record.fecha,jdbcType=TIMESTAMP},
+      usuariomod = #{record.usuariomod,jdbcType=CHAR},
+      fechamod = #{record.fechamod,jdbcType=TIMESTAMP},
+      estado = #{record.estado,jdbcType=SMALLINT},
+      usuario = #{record.usuario,jdbcType=CHAR},
+      bono = #{record.bono,jdbcType=NUMERIC},
+      efectividad = #{record.efectividad,jdbcType=SMALLINT},
+      ubigeo = #{record.ubigeo,jdbcType=CHAR},
+      tipozona = #{record.tipozona,jdbcType=CHAR},
+      cantidad = #{record.cantidad,jdbcType=SMALLINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.origen.Zonas">
+    <result column="codzona" jdbcType="CHAR" property="codzona" />
+    <result column="codpostal" jdbcType="CHAR" property="codpostal" />
+    <result column="codclasificador" jdbcType="CHAR" property="codclasificador" />
+    <result column="bonozona" jdbcType="CHAR" property="bonozona" />
+    <result column="descripcion" jdbcType="VARCHAR" property="descripcion" />
+    <result column="pasaje" jdbcType="NUMERIC" property="pasaje" />
+    <result column="monto" jdbcType="NUMERIC" property="monto" />
+    <result column="fecha" jdbcType="TIMESTAMP" property="fecha" />
+    <result column="usuariomod" jdbcType="CHAR" property="usuariomod" />
+    <result column="fechamod" jdbcType="TIMESTAMP" property="fechamod" />
+    <result column="estado" jdbcType="SMALLINT" property="estado" />
+    <result column="usuario" jdbcType="CHAR" property="usuario" />
+    <result column="bono" jdbcType="NUMERIC" property="bono" />
+    <result column="efectividad" jdbcType="SMALLINT" property="efectividad" />
+    <result column="ubigeo" jdbcType="CHAR" property="ubigeo" />
+    <result column="tipozona" jdbcType="CHAR" property="tipozona" />
+    <result column="cantidad" jdbcType="SMALLINT" property="cantidad" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    codzona, codpostal, codclasificador, bonozona, descripcion, pasaje, monto, fecha, 
+    usuariomod, fechamod, estado, usuario, bono, efectividad, ubigeo, tipozona, cantidad
+  </sql>
+  <select id="selectByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.ZonasExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from zonas
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.ZonasExample">
+    delete from zonas
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Zonas">
+    insert into zonas (codzona, codpostal, codclasificador, 
+      bonozona, descripcion, pasaje, 
+      monto, fecha, usuariomod, 
+      fechamod, estado, usuario, 
+      bono, efectividad, ubigeo, 
+      tipozona, cantidad)
+    values (#{codzona,jdbcType=CHAR}, #{codpostal,jdbcType=CHAR}, #{codclasificador,jdbcType=CHAR}, 
+      #{bonozona,jdbcType=CHAR}, #{descripcion,jdbcType=VARCHAR}, #{pasaje,jdbcType=NUMERIC}, 
+      #{monto,jdbcType=NUMERIC}, #{fecha,jdbcType=TIMESTAMP}, #{usuariomod,jdbcType=CHAR}, 
+      #{fechamod,jdbcType=TIMESTAMP}, #{estado,jdbcType=SMALLINT}, #{usuario,jdbcType=CHAR}, 
+      #{bono,jdbcType=NUMERIC}, #{efectividad,jdbcType=SMALLINT}, #{ubigeo,jdbcType=CHAR}, 
+      #{tipozona,jdbcType=CHAR}, #{cantidad,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Zonas">
+    insert into zonas
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="codzona != null">
+        codzona,
+      </if>
+      <if test="codpostal != null">
+        codpostal,
+      </if>
+      <if test="codclasificador != null">
+        codclasificador,
+      </if>
+      <if test="bonozona != null">
+        bonozona,
+      </if>
+      <if test="descripcion != null">
+        descripcion,
+      </if>
+      <if test="pasaje != null">
+        pasaje,
+      </if>
+      <if test="monto != null">
+        monto,
+      </if>
+      <if test="fecha != null">
+        fecha,
+      </if>
+      <if test="usuariomod != null">
+        usuariomod,
+      </if>
+      <if test="fechamod != null">
+        fechamod,
+      </if>
+      <if test="estado != null">
+        estado,
+      </if>
+      <if test="usuario != null">
+        usuario,
+      </if>
+      <if test="bono != null">
+        bono,
+      </if>
+      <if test="efectividad != null">
+        efectividad,
+      </if>
+      <if test="ubigeo != null">
+        ubigeo,
+      </if>
+      <if test="tipozona != null">
+        tipozona,
+      </if>
+      <if test="cantidad != null">
+        cantidad,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="codzona != null">
+        #{codzona,jdbcType=CHAR},
+      </if>
+      <if test="codpostal != null">
+        #{codpostal,jdbcType=CHAR},
+      </if>
+      <if test="codclasificador != null">
+        #{codclasificador,jdbcType=CHAR},
+      </if>
+      <if test="bonozona != null">
+        #{bonozona,jdbcType=CHAR},
+      </if>
+      <if test="descripcion != null">
+        #{descripcion,jdbcType=VARCHAR},
+      </if>
+      <if test="pasaje != null">
+        #{pasaje,jdbcType=NUMERIC},
+      </if>
+      <if test="monto != null">
+        #{monto,jdbcType=NUMERIC},
+      </if>
+      <if test="fecha != null">
+        #{fecha,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usuariomod != null">
+        #{usuariomod,jdbcType=CHAR},
+      </if>
+      <if test="fechamod != null">
+        #{fechamod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="estado != null">
+        #{estado,jdbcType=SMALLINT},
+      </if>
+      <if test="usuario != null">
+        #{usuario,jdbcType=CHAR},
+      </if>
+      <if test="bono != null">
+        #{bono,jdbcType=NUMERIC},
+      </if>
+      <if test="efectividad != null">
+        #{efectividad,jdbcType=SMALLINT},
+      </if>
+      <if test="ubigeo != null">
+        #{ubigeo,jdbcType=CHAR},
+      </if>
+      <if test="tipozona != null">
+        #{tipozona,jdbcType=CHAR},
+      </if>
+      <if test="cantidad != null">
+        #{cantidad,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.ZonasExample" resultType="java.lang.Integer">
+    select count(*) from zonas
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update zonas
+    <set>
+      <if test="record.codzona != null">
+        codzona = #{record.codzona,jdbcType=CHAR},
+      </if>
+      <if test="record.codpostal != null">
+        codpostal = #{record.codpostal,jdbcType=CHAR},
+      </if>
+      <if test="record.codclasificador != null">
+        codclasificador = #{record.codclasificador,jdbcType=CHAR},
+      </if>
+      <if test="record.bonozona != null">
+        bonozona = #{record.bonozona,jdbcType=CHAR},
+      </if>
+      <if test="record.descripcion != null">
+        descripcion = #{record.descripcion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pasaje != null">
+        pasaje = #{record.pasaje,jdbcType=NUMERIC},
+      </if>
+      <if test="record.monto != null">
+        monto = #{record.monto,jdbcType=NUMERIC},
+      </if>
+      <if test="record.fecha != null">
+        fecha = #{record.fecha,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.usuariomod != null">
+        usuariomod = #{record.usuariomod,jdbcType=CHAR},
+      </if>
+      <if test="record.fechamod != null">
+        fechamod = #{record.fechamod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.estado != null">
+        estado = #{record.estado,jdbcType=SMALLINT},
+      </if>
+      <if test="record.usuario != null">
+        usuario = #{record.usuario,jdbcType=CHAR},
+      </if>
+      <if test="record.bono != null">
+        bono = #{record.bono,jdbcType=NUMERIC},
+      </if>
+      <if test="record.efectividad != null">
+        efectividad = #{record.efectividad,jdbcType=SMALLINT},
+      </if>
+      <if test="record.ubigeo != null">
+        ubigeo = #{record.ubigeo,jdbcType=CHAR},
+      </if>
+      <if test="record.tipozona != null">
+        tipozona = #{record.tipozona,jdbcType=CHAR},
+      </if>
+      <if test="record.cantidad != null">
+        cantidad = #{record.cantidad,jdbcType=SMALLINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update zonas
+    set codzona = #{record.codzona,jdbcType=CHAR},
+      codpostal = #{record.codpostal,jdbcType=CHAR},
+      codclasificador = #{record.codclasificador,jdbcType=CHAR},
+      bonozona = #{record.bonozona,jdbcType=CHAR},
+      descripcion = #{record.descripcion,jdbcType=VARCHAR},
+      pasaje = #{record.pasaje,jdbcType=NUMERIC},
+      monto = #{record.monto,jdbcType=NUMERIC},
+      fecha = #{record.fecha,jdbcType=TIMESTAMP},
+      usuariomod = #{record.usuariomod,jdbcType=CHAR},
+      fechamod = #{record.fechamod,jdbcType=TIMESTAMP},
+      estado = #{record.estado,jdbcType=SMALLINT},
+      usuario = #{record.usuario,jdbcType=CHAR},
+      bono = #{record.bono,jdbcType=NUMERIC},
+      efectividad = #{record.efectividad,jdbcType=SMALLINT},
+      ubigeo = #{record.ubigeo,jdbcType=CHAR},
+      tipozona = #{record.tipozona,jdbcType=CHAR},
+      cantidad = #{record.cantidad,jdbcType=SMALLINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
