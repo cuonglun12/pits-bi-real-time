@@ -1,4 +1,5 @@
 /*
+
 drop index IDX_ARE_CLI_04;
 
 drop index IDX_ARE_CLI_03;
@@ -234,6 +235,7 @@ drop index IDX_ZON_01;
 drop index IDX_ZON_00;
 
 drop table T_ZONA;
+
 */
 
 /*==============================================================*/
@@ -249,6 +251,7 @@ create table T_AREA_CLIENTE (
    ARE_CLI_COD          VARCHAR(30)          not null default '-',
    FEC_NUM_CAM          INT4                 not null default 19000101010101,
    COD_IND_CAM          CHAR(1)              not null default '1',
+   PROC_ID              INT4                 not null default 0,
    constraint PK_T_AREA_CLIENTE primary key (ARE_CLI_ID)
 );
 
@@ -309,6 +312,7 @@ create table T_CARGO (
    CARG_COD_EST         INT4                 not null default 0,
    FEC_NUM_CAM          INT4                 not null default 19000101010101,
    COD_IND_CAM          CHAR(1)              not null default '1',
+   PROC_ID              INT4                 not null default 0,
    constraint PK_T_CARGO primary key (CARG_ID)
 );
 
@@ -409,6 +413,7 @@ create table T_CARGO_DESPACHO (
    CAR_DESP_COD_EST     INT4                 not null default 0,
    FEC_NUM_CAM          INT4                 not null default 19000101010101,
    COD_IND_CAM          CHAR(1)              not null default '1',
+   PROC_ID              INT4                 not null default 0,
    constraint PK_T_CARGO_DESPACHO primary key (CAR_DESP_ID)
 );
 
@@ -512,6 +517,7 @@ create table T_CLIENTE (
    CLI_DES_DIR          VARCHAR(250)         not null default '-',
    FEC_NUM_CAM          INT4                 not null default 19000101010101,
    COD_IND_CAM          CHAR(1)              not null default '1',
+   PROC_ID              INT4                 not null default 0,
    constraint PK_T_CLIENTE primary key (CLI_ID)
 );
 
@@ -583,6 +589,7 @@ create table T_COTIZACION (
    COTI_FEC_FIN         DATE                 not null default '1900-01-01',
    FEC_NUM_CAM          INT4                 not null default 19000101010101,
    COD_IND_CAM          CHAR(1)              not null default '1',
+   PROC_ID              INT4                 not null default 0,
    constraint PK_T_COTIZACION primary key (COTI_ID)
 );
 
@@ -682,6 +689,7 @@ create table T_DESPACHO (
    DESP_COD_EST         INT4                 not null default 0,
    FEC_NUM_CAM          INT4                 not null default 19000101010101,
    COD_IND_CAM          CHAR(1)              not null default '1',
+   PROC_ID              INT4                 not null default 0,
    constraint PK_T_DESPACHO primary key (DESP_ID)
 );
 
@@ -787,6 +795,7 @@ create table T_EMPLEADO (
       constraint CKC_EMP_SEX_T_EMPLEA check (EMP_SEX in ('0','1')),
    COD_IND_CAM          CHAR(1)              not null default '1',
    FEC_NUM_CAM          INT4                 not null default 19000101010101,
+   PROC_ID              INT4                 not null default 0,
    constraint PK_T_EMPLEADO primary key (EMP_ID)
 );
 
@@ -822,6 +831,7 @@ create table T_EMPLEADO_CATEGORIA (
    EMP_CAT_COD          VARCHAR(12)          not null default '-',
    FEC_NUM_CAM          INT4                 not null default 19000101010101,
    COD_IND_CAM          CHAR(1)              not null default '1',
+   PROC_ID              INT4                 not null default 0,
    constraint PK_T_EMPLEADO_CATEGORIA primary key (EMP_CAT_ID)
 );
 
@@ -885,6 +895,7 @@ create table T_ORDEN (
    ORD_COD_EST          INT4                 not null default 0,
    FEC_NUM_CAM          INT4                 not null default 19000101010101,
    COD_IND_CAM          CHAR(1)              not null default '1',
+   PROC_ID              INT4                 not null default 0,
    constraint PK_T_ORDEN primary key (ORD_ID)
 );
 
@@ -1006,6 +1017,7 @@ create table T_PARAMETRO (
    PARAM_REF            INT4                 not null default 0,
    FEC_NUM_CAM          INT4                 not null default 19000101010101,
    COD_IND_CAM          CHAR(1)              not null default '1',
+   PROC_ID              INT4                 not null default 0,
    constraint PK_T_PARAMETRO primary key (PARAM_ID)
 );
 
@@ -1085,6 +1097,7 @@ create table T_PRODUCTO (
    PROD_PRE             NUMERIC(14,4)        not null default 0,
    FEC_NUM_CAM          INT4                 not null default 19000101010101,
    COD_IND_CAM          CHAR(1)              not null default '1',
+   PROC_ID              INT4                 not null default 0,
    constraint PK_T_PRODUCTO primary key (PROD_ID)
 );
 
@@ -1134,6 +1147,7 @@ create table T_SEDE (
    SED_DES              VARCHAR(250)         not null default '-',
    FEC_NUM_CAM          INT4                 not null default 19000101010101,
    COD_IND_CAM          CHAR(1)              not null default '1',
+   PROC_ID              INT4                 not null default 0,
    constraint PK_T_SEDE primary key (SED_ID)
 );
 
@@ -1176,6 +1190,7 @@ create table T_SERVICIO (
    SERV_DES             VARCHAR(250)         not null default '-',
    COD_IND_CAM          CHAR(1)              not null default '1',
    FEC_NUM_CAM          INT4                 not null default 19000101010101,
+   PROC_ID              INT4                 not null default 0,
    constraint PK_T_SERVICIO primary key (SERV_ID)
 );
 
@@ -1219,6 +1234,7 @@ create table T_UBIGEO (
    UBI_COD_DISTRITO     INT4                 not null default 0,
    COD_IND_CAM          CHAR(1)              not null default '1',
    FEC_NUM_CAM          INT4                 not null default 19000101010101,
+   PROC_ID              INT4                 not null default 0,
    constraint PK_T_UBIGEO primary key (UBI_ID)
 );
 
@@ -1268,6 +1284,7 @@ create table T_ZONA (
    ZON_COD_POSTAL       VARCHAR(10)          not null default '-',
    COD_IND_CAM          CHAR(1)              not null default '1',
    FEC_NUM_CAM          INT4                 not null default 19000101010101,
+   PROC_ID              INT4                 not null default 0,
    constraint PK_T_ZONA primary key (ZON_ID)
 );
 
