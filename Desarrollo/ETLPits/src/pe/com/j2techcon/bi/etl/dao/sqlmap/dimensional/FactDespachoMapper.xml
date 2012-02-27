@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.dimensional.FactDespachoMapper" >
+<mapper namespace="fact_despacho" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.dimensional.FactDespacho" >
     <result column="despacho_key" property="despachoKey" jdbcType="INTEGER" />
     <result column="despacho_key_sede" property="despachoKeySede" jdbcType="INTEGER" />
@@ -23,6 +23,7 @@
     <result column="despacho_cnt_perd" property="despachoCntPerd" jdbcType="INTEGER" />
     <result column="despacho_trab_en_fec" property="despachoTrabEnFec" jdbcType="SMALLINT" />
     <result column="despacho_trab_fuera_fec" property="despachoTrabFueraFec" jdbcType="SMALLINT" />
+    <result column="proc_id" property="procId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -87,7 +88,7 @@
     despacho_key_fec_sal, despacho_key_fec_retp, despacho_key_fec_retr, despacho_key_estado, 
     despacho_mon_pasaje, despacho_ind_unidad, despacho_cnt_dias_exc, despacho_cnt_cargos, 
     despacho_cnt_ent, despacho_cnt_mot, despacho_cnt_ree, despacho_cnt_anu, despacho_cnt_fue_zon, 
-    despacho_cnt_perd, despacho_trab_en_fec, despacho_trab_fuera_fec
+    despacho_cnt_perd, despacho_trab_en_fec, despacho_trab_fuera_fec, proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactDespachoExample" >
     select
@@ -121,8 +122,8 @@
       despacho_cnt_dias_exc, despacho_cnt_cargos, 
       despacho_cnt_ent, despacho_cnt_mot, despacho_cnt_ree, 
       despacho_cnt_anu, despacho_cnt_fue_zon, despacho_cnt_perd, 
-      despacho_trab_en_fec, despacho_trab_fuera_fec
-      )
+      despacho_trab_en_fec, despacho_trab_fuera_fec, 
+      proc_id)
     values (#{despachoKey,jdbcType=INTEGER}, #{despachoKeySede,jdbcType=INTEGER}, #{despachoKeyZona,jdbcType=INTEGER}, 
       #{despachoKeyPersonal,jdbcType=INTEGER}, #{despachoKeyTipoRuta,jdbcType=INTEGER}, 
       #{despachoKeyFecSal,jdbcType=INTEGER}, #{despachoKeyFecRetp,jdbcType=INTEGER}, 
@@ -131,8 +132,8 @@
       #{despachoCntDiasExc,jdbcType=INTEGER}, #{despachoCntCargos,jdbcType=INTEGER}, 
       #{despachoCntEnt,jdbcType=INTEGER}, #{despachoCntMot,jdbcType=INTEGER}, #{despachoCntRee,jdbcType=INTEGER}, 
       #{despachoCntAnu,jdbcType=INTEGER}, #{despachoCntFueZon,jdbcType=INTEGER}, #{despachoCntPerd,jdbcType=INTEGER}, 
-      #{despachoTrabEnFec,jdbcType=SMALLINT}, #{despachoTrabFueraFec,jdbcType=SMALLINT}
-      )
+      #{despachoTrabEnFec,jdbcType=SMALLINT}, #{despachoTrabFueraFec,jdbcType=SMALLINT}, 
+      #{procId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactDespacho" >
     insert into fact_despacho
@@ -200,6 +201,9 @@
       <if test="despachoTrabFueraFec != null" >
         despacho_trab_fuera_fec,
       </if>
+      <if test="procId != null" >
+        proc_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="despachoKey != null" >
@@ -264,6 +268,9 @@
       </if>
       <if test="despachoTrabFueraFec != null" >
         #{despachoTrabFueraFec,jdbcType=SMALLINT},
+      </if>
+      <if test="procId != null" >
+        #{procId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -339,6 +346,9 @@
       <if test="record.despachoTrabFueraFec != null" >
         despacho_trab_fuera_fec = #{record.despachoTrabFueraFec,jdbcType=SMALLINT},
       </if>
+      <if test="record.procId != null" >
+        proc_id = #{record.procId,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -366,7 +376,8 @@
       despacho_cnt_fue_zon = #{record.despachoCntFueZon,jdbcType=INTEGER},
       despacho_cnt_perd = #{record.despachoCntPerd,jdbcType=INTEGER},
       despacho_trab_en_fec = #{record.despachoTrabEnFec,jdbcType=SMALLINT},
-      despacho_trab_fuera_fec = #{record.despachoTrabFueraFec,jdbcType=SMALLINT}
+      despacho_trab_fuera_fec = #{record.despachoTrabFueraFec,jdbcType=SMALLINT},
+      proc_id = #{record.procId,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>

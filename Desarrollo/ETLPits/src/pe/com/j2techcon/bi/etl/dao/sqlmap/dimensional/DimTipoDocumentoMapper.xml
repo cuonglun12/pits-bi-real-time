@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.dimensional.DimTipoDocumentoMapper" >
+<mapper namespace="dim_tipo_documento" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoDocumento" >
     <id column="tipo_documento_key" property="tipoDocumentoKey" jdbcType="INTEGER" />
     <result column="tipo_documento_cod" property="tipoDocumentoCod" jdbcType="CHAR" />
     <result column="tipo_documento_desc" property="tipoDocumentoDesc" jdbcType="VARCHAR" />
-    <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
-    <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+    <result column="proc_id" property="procId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    tipo_documento_key, tipo_documento_cod, tipo_documento_desc, cod_ind_cam, fec_num_cam
+    tipo_documento_key, tipo_documento_cod, tipo_documento_desc, proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoDocumentoExample" >
     select
@@ -104,11 +103,9 @@
   </delete>
   <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoDocumento" >
     insert into dim_tipo_documento (tipo_documento_key, tipo_documento_cod, 
-      tipo_documento_desc, cod_ind_cam, fec_num_cam
-      )
+      tipo_documento_desc, proc_id)
     values (#{tipoDocumentoKey,jdbcType=INTEGER}, #{tipoDocumentoCod,jdbcType=CHAR}, 
-      #{tipoDocumentoDesc,jdbcType=VARCHAR}, #{codIndCam,jdbcType=CHAR}, #{fecNumCam,jdbcType=INTEGER}
-      )
+      #{tipoDocumentoDesc,jdbcType=VARCHAR}, #{procId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoDocumento" >
     insert into dim_tipo_documento
@@ -122,11 +119,8 @@
       <if test="tipoDocumentoDesc != null" >
         tipo_documento_desc,
       </if>
-      <if test="codIndCam != null" >
-        cod_ind_cam,
-      </if>
-      <if test="fecNumCam != null" >
-        fec_num_cam,
+      <if test="procId != null" >
+        proc_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -139,11 +133,8 @@
       <if test="tipoDocumentoDesc != null" >
         #{tipoDocumentoDesc,jdbcType=VARCHAR},
       </if>
-      <if test="codIndCam != null" >
-        #{codIndCam,jdbcType=CHAR},
-      </if>
-      <if test="fecNumCam != null" >
-        #{fecNumCam,jdbcType=INTEGER},
+      <if test="procId != null" >
+        #{procId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -165,11 +156,8 @@
       <if test="record.tipoDocumentoDesc != null" >
         tipo_documento_desc = #{record.tipoDocumentoDesc,jdbcType=VARCHAR},
       </if>
-      <if test="record.codIndCam != null" >
-        cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
-      </if>
-      <if test="record.fecNumCam != null" >
-        fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      <if test="record.procId != null" >
+        proc_id = #{record.procId,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -181,8 +169,7 @@
     set tipo_documento_key = #{record.tipoDocumentoKey,jdbcType=INTEGER},
       tipo_documento_cod = #{record.tipoDocumentoCod,jdbcType=CHAR},
       tipo_documento_desc = #{record.tipoDocumentoDesc,jdbcType=VARCHAR},
-      cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
-      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER}
+      proc_id = #{record.procId,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -196,11 +183,8 @@
       <if test="tipoDocumentoDesc != null" >
         tipo_documento_desc = #{tipoDocumentoDesc,jdbcType=VARCHAR},
       </if>
-      <if test="codIndCam != null" >
-        cod_ind_cam = #{codIndCam,jdbcType=CHAR},
-      </if>
-      <if test="fecNumCam != null" >
-        fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      <if test="procId != null" >
+        proc_id = #{procId,jdbcType=INTEGER},
       </if>
     </set>
     where tipo_documento_key = #{tipoDocumentoKey,jdbcType=INTEGER}
@@ -209,8 +193,7 @@
     update dim_tipo_documento
     set tipo_documento_cod = #{tipoDocumentoCod,jdbcType=CHAR},
       tipo_documento_desc = #{tipoDocumentoDesc,jdbcType=VARCHAR},
-      cod_ind_cam = #{codIndCam,jdbcType=CHAR},
-      fec_num_cam = #{fecNumCam,jdbcType=INTEGER}
+      proc_id = #{procId,jdbcType=INTEGER}
     where tipo_documento_key = #{tipoDocumentoKey,jdbcType=INTEGER}
   </update>
 </mapper>

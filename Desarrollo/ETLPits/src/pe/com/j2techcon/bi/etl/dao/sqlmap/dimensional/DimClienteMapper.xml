@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.dimensional.DimClienteMapper" >
+<mapper namespace="dim_cliente" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.dimensional.DimCliente" >
     <id column="cliente_key" property="clienteKey" jdbcType="INTEGER" />
     <result column="cliente_cod_tip" property="clienteCodTip" jdbcType="INTEGER" />
@@ -26,10 +26,7 @@
     <result column="cliente_area_desc_provincia" property="clienteAreaDescProvincia" jdbcType="VARCHAR" />
     <result column="cliente_area_cod_distrito" property="clienteAreaCodDistrito" jdbcType="INTEGER" />
     <result column="cliente_area_desc_distrito" property="clienteAreaDescDistrito" jdbcType="VARCHAR" />
-    <result column="cliente_area_cod_estado" property="clienteAreaCodEstado" jdbcType="INTEGER" />
-    <result column="cliente_area_desc_estado" property="clienteAreaDescEstado" jdbcType="VARCHAR" />
-    <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
-    <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+    <result column="proc_id" property="procId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -96,7 +93,7 @@
     cliente_area_cod, cliente_area_desc, cliente_area_cod_pais, cliente_area_des_pais, 
     cliente_area_cod_departamento, cliente_area_desc_departamento, cliente_area_cod_provincia, 
     cliente_area_desc_provincia, cliente_area_cod_distrito, cliente_area_desc_distrito, 
-    cliente_area_cod_estado, cliente_area_desc_estado, cod_ind_cam, fec_num_cam
+    proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimClienteExample" >
     select
@@ -142,8 +139,7 @@
       cliente_area_cod_departamento, cliente_area_desc_departamento, 
       cliente_area_cod_provincia, cliente_area_desc_provincia, 
       cliente_area_cod_distrito, cliente_area_desc_distrito, 
-      cliente_area_cod_estado, cliente_area_desc_estado, 
-      cod_ind_cam, fec_num_cam)
+      proc_id)
     values (#{clienteKey,jdbcType=INTEGER}, #{clienteCodTip,jdbcType=INTEGER}, #{clienteDescTip,jdbcType=VARCHAR}, 
       #{clienteCodCategoria,jdbcType=INTEGER}, #{clienteDescCategoria,jdbcType=VARCHAR}, 
       #{clienteCodFacturacion,jdbcType=INTEGER}, #{clienteDescFacturacion,jdbcType=VARCHAR}, 
@@ -154,8 +150,7 @@
       #{clienteAreaCodDepartamento,jdbcType=INTEGER}, #{clienteAreaDescDepartamento,jdbcType=VARCHAR}, 
       #{clienteAreaCodProvincia,jdbcType=INTEGER}, #{clienteAreaDescProvincia,jdbcType=VARCHAR}, 
       #{clienteAreaCodDistrito,jdbcType=INTEGER}, #{clienteAreaDescDistrito,jdbcType=VARCHAR}, 
-      #{clienteAreaCodEstado,jdbcType=INTEGER}, #{clienteAreaDescEstado,jdbcType=VARCHAR}, 
-      #{codIndCam,jdbcType=CHAR}, #{fecNumCam,jdbcType=INTEGER})
+      #{procId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimCliente" >
     insert into dim_cliente
@@ -232,17 +227,8 @@
       <if test="clienteAreaDescDistrito != null" >
         cliente_area_desc_distrito,
       </if>
-      <if test="clienteAreaCodEstado != null" >
-        cliente_area_cod_estado,
-      </if>
-      <if test="clienteAreaDescEstado != null" >
-        cliente_area_desc_estado,
-      </if>
-      <if test="codIndCam != null" >
-        cod_ind_cam,
-      </if>
-      <if test="fecNumCam != null" >
-        fec_num_cam,
+      <if test="procId != null" >
+        proc_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -318,17 +304,8 @@
       <if test="clienteAreaDescDistrito != null" >
         #{clienteAreaDescDistrito,jdbcType=VARCHAR},
       </if>
-      <if test="clienteAreaCodEstado != null" >
-        #{clienteAreaCodEstado,jdbcType=INTEGER},
-      </if>
-      <if test="clienteAreaDescEstado != null" >
-        #{clienteAreaDescEstado,jdbcType=VARCHAR},
-      </if>
-      <if test="codIndCam != null" >
-        #{codIndCam,jdbcType=CHAR},
-      </if>
-      <if test="fecNumCam != null" >
-        #{fecNumCam,jdbcType=INTEGER},
+      <if test="procId != null" >
+        #{procId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -413,17 +390,8 @@
       <if test="record.clienteAreaDescDistrito != null" >
         cliente_area_desc_distrito = #{record.clienteAreaDescDistrito,jdbcType=VARCHAR},
       </if>
-      <if test="record.clienteAreaCodEstado != null" >
-        cliente_area_cod_estado = #{record.clienteAreaCodEstado,jdbcType=INTEGER},
-      </if>
-      <if test="record.clienteAreaDescEstado != null" >
-        cliente_area_desc_estado = #{record.clienteAreaDescEstado,jdbcType=VARCHAR},
-      </if>
-      <if test="record.codIndCam != null" >
-        cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
-      </if>
-      <if test="record.fecNumCam != null" >
-        fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      <if test="record.procId != null" >
+        proc_id = #{record.procId,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -456,10 +424,7 @@
       cliente_area_desc_provincia = #{record.clienteAreaDescProvincia,jdbcType=VARCHAR},
       cliente_area_cod_distrito = #{record.clienteAreaCodDistrito,jdbcType=INTEGER},
       cliente_area_desc_distrito = #{record.clienteAreaDescDistrito,jdbcType=VARCHAR},
-      cliente_area_cod_estado = #{record.clienteAreaCodEstado,jdbcType=INTEGER},
-      cliente_area_desc_estado = #{record.clienteAreaDescEstado,jdbcType=VARCHAR},
-      cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
-      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER}
+      proc_id = #{record.procId,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -536,17 +501,8 @@
       <if test="clienteAreaDescDistrito != null" >
         cliente_area_desc_distrito = #{clienteAreaDescDistrito,jdbcType=VARCHAR},
       </if>
-      <if test="clienteAreaCodEstado != null" >
-        cliente_area_cod_estado = #{clienteAreaCodEstado,jdbcType=INTEGER},
-      </if>
-      <if test="clienteAreaDescEstado != null" >
-        cliente_area_desc_estado = #{clienteAreaDescEstado,jdbcType=VARCHAR},
-      </if>
-      <if test="codIndCam != null" >
-        cod_ind_cam = #{codIndCam,jdbcType=CHAR},
-      </if>
-      <if test="fecNumCam != null" >
-        fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      <if test="procId != null" >
+        proc_id = #{procId,jdbcType=INTEGER},
       </if>
     </set>
     where cliente_key = #{clienteKey,jdbcType=INTEGER}
@@ -576,10 +532,7 @@
       cliente_area_desc_provincia = #{clienteAreaDescProvincia,jdbcType=VARCHAR},
       cliente_area_cod_distrito = #{clienteAreaCodDistrito,jdbcType=INTEGER},
       cliente_area_desc_distrito = #{clienteAreaDescDistrito,jdbcType=VARCHAR},
-      cliente_area_cod_estado = #{clienteAreaCodEstado,jdbcType=INTEGER},
-      cliente_area_desc_estado = #{clienteAreaDescEstado,jdbcType=VARCHAR},
-      cod_ind_cam = #{codIndCam,jdbcType=CHAR},
-      fec_num_cam = #{fecNumCam,jdbcType=INTEGER}
+      proc_id = #{procId,jdbcType=INTEGER}
     where cliente_key = #{clienteKey,jdbcType=INTEGER}
   </update>
 </mapper>

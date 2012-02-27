@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.dimensional.DimEstadoMapper" >
+<mapper namespace="dim_estado" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.dimensional.DimEstado" >
     <id column="estado_key" property="estadoKey" jdbcType="INTEGER" />
     <result column="estado_cod_tipo" property="estadoCodTipo" jdbcType="CHAR" />
     <result column="estado_desc_tipo" property="estadoDescTipo" jdbcType="VARCHAR" />
     <result column="estado_cod" property="estadoCod" jdbcType="VARCHAR" />
     <result column="estado_desc" property="estadoDesc" jdbcType="VARCHAR" />
-    <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
-    <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+    <result column="proc_id" property="procId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,8 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    estado_key, estado_cod_tipo, estado_desc_tipo, estado_cod, estado_desc, cod_ind_cam, 
-    fec_num_cam
+    estado_key, estado_cod_tipo, estado_desc_tipo, estado_cod, estado_desc, proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimEstadoExample" >
     select
@@ -107,11 +105,11 @@
   </delete>
   <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimEstado" >
     insert into dim_estado (estado_key, estado_cod_tipo, estado_desc_tipo, 
-      estado_cod, estado_desc, cod_ind_cam, 
-      fec_num_cam)
+      estado_cod, estado_desc, proc_id
+      )
     values (#{estadoKey,jdbcType=INTEGER}, #{estadoCodTipo,jdbcType=CHAR}, #{estadoDescTipo,jdbcType=VARCHAR}, 
-      #{estadoCod,jdbcType=VARCHAR}, #{estadoDesc,jdbcType=VARCHAR}, #{codIndCam,jdbcType=CHAR}, 
-      #{fecNumCam,jdbcType=INTEGER})
+      #{estadoCod,jdbcType=VARCHAR}, #{estadoDesc,jdbcType=VARCHAR}, #{procId,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimEstado" >
     insert into dim_estado
@@ -131,11 +129,8 @@
       <if test="estadoDesc != null" >
         estado_desc,
       </if>
-      <if test="codIndCam != null" >
-        cod_ind_cam,
-      </if>
-      <if test="fecNumCam != null" >
-        fec_num_cam,
+      <if test="procId != null" >
+        proc_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -154,11 +149,8 @@
       <if test="estadoDesc != null" >
         #{estadoDesc,jdbcType=VARCHAR},
       </if>
-      <if test="codIndCam != null" >
-        #{codIndCam,jdbcType=CHAR},
-      </if>
-      <if test="fecNumCam != null" >
-        #{fecNumCam,jdbcType=INTEGER},
+      <if test="procId != null" >
+        #{procId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -186,11 +178,8 @@
       <if test="record.estadoDesc != null" >
         estado_desc = #{record.estadoDesc,jdbcType=VARCHAR},
       </if>
-      <if test="record.codIndCam != null" >
-        cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
-      </if>
-      <if test="record.fecNumCam != null" >
-        fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      <if test="record.procId != null" >
+        proc_id = #{record.procId,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -204,8 +193,7 @@
       estado_desc_tipo = #{record.estadoDescTipo,jdbcType=VARCHAR},
       estado_cod = #{record.estadoCod,jdbcType=VARCHAR},
       estado_desc = #{record.estadoDesc,jdbcType=VARCHAR},
-      cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
-      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER}
+      proc_id = #{record.procId,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -225,11 +213,8 @@
       <if test="estadoDesc != null" >
         estado_desc = #{estadoDesc,jdbcType=VARCHAR},
       </if>
-      <if test="codIndCam != null" >
-        cod_ind_cam = #{codIndCam,jdbcType=CHAR},
-      </if>
-      <if test="fecNumCam != null" >
-        fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      <if test="procId != null" >
+        proc_id = #{procId,jdbcType=INTEGER},
       </if>
     </set>
     where estado_key = #{estadoKey,jdbcType=INTEGER}
@@ -240,8 +225,7 @@
       estado_desc_tipo = #{estadoDescTipo,jdbcType=VARCHAR},
       estado_cod = #{estadoCod,jdbcType=VARCHAR},
       estado_desc = #{estadoDesc,jdbcType=VARCHAR},
-      cod_ind_cam = #{codIndCam,jdbcType=CHAR},
-      fec_num_cam = #{fecNumCam,jdbcType=INTEGER}
+      proc_id = #{procId,jdbcType=INTEGER}
     where estado_key = #{estadoKey,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.dimensional.DimSedeMapper" >
+<mapper namespace="dim_sede" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.dimensional.DimSede" >
     <id column="sede_key" property="sedeKey" jdbcType="INTEGER" />
     <result column="sede_cod" property="sedeCod" jdbcType="VARCHAR" />
@@ -15,8 +15,7 @@
     <result column="sede_cod_distrito" property="sedeCodDistrito" jdbcType="INTEGER" />
     <result column="sede_desc_distrito" property="sedeDescDistrito" jdbcType="VARCHAR" />
     <result column="sede_desc" property="sedeDesc" jdbcType="VARCHAR" />
-    <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
-    <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+    <result column="proc_id" property="procId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -79,7 +78,7 @@
   <sql id="Base_Column_List" >
     sede_key, sede_cod, sede_cod_tipo, sede_desc_tipo, sede_cod_pais, sede_desc_pais, 
     sede_cod_departamento, sede_desc_departamento, sede_cod_provincia, sede_desc_provincia, 
-    sede_cod_distrito, sede_desc_distrito, sede_desc, cod_ind_cam, fec_num_cam
+    sede_cod_distrito, sede_desc_distrito, sede_desc, proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimSedeExample" >
     select
@@ -119,14 +118,14 @@
       sede_desc_tipo, sede_cod_pais, sede_desc_pais, 
       sede_cod_departamento, sede_desc_departamento, 
       sede_cod_provincia, sede_desc_provincia, sede_cod_distrito, 
-      sede_desc_distrito, sede_desc, cod_ind_cam, 
-      fec_num_cam)
+      sede_desc_distrito, sede_desc, proc_id
+      )
     values (#{sedeKey,jdbcType=INTEGER}, #{sedeCod,jdbcType=VARCHAR}, #{sedeCodTipo,jdbcType=INTEGER}, 
       #{sedeDescTipo,jdbcType=VARCHAR}, #{sedeCodPais,jdbcType=INTEGER}, #{sedeDescPais,jdbcType=VARCHAR}, 
       #{sedeCodDepartamento,jdbcType=INTEGER}, #{sedeDescDepartamento,jdbcType=VARCHAR}, 
       #{sedeCodProvincia,jdbcType=INTEGER}, #{sedeDescProvincia,jdbcType=VARCHAR}, #{sedeCodDistrito,jdbcType=INTEGER}, 
-      #{sedeDescDistrito,jdbcType=VARCHAR}, #{sedeDesc,jdbcType=VARCHAR}, #{codIndCam,jdbcType=CHAR}, 
-      #{fecNumCam,jdbcType=INTEGER})
+      #{sedeDescDistrito,jdbcType=VARCHAR}, #{sedeDesc,jdbcType=VARCHAR}, #{procId,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimSede" >
     insert into dim_sede
@@ -170,11 +169,8 @@
       <if test="sedeDesc != null" >
         sede_desc,
       </if>
-      <if test="codIndCam != null" >
-        cod_ind_cam,
-      </if>
-      <if test="fecNumCam != null" >
-        fec_num_cam,
+      <if test="procId != null" >
+        proc_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -217,11 +213,8 @@
       <if test="sedeDesc != null" >
         #{sedeDesc,jdbcType=VARCHAR},
       </if>
-      <if test="codIndCam != null" >
-        #{codIndCam,jdbcType=CHAR},
-      </if>
-      <if test="fecNumCam != null" >
-        #{fecNumCam,jdbcType=INTEGER},
+      <if test="procId != null" >
+        #{procId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -273,11 +266,8 @@
       <if test="record.sedeDesc != null" >
         sede_desc = #{record.sedeDesc,jdbcType=VARCHAR},
       </if>
-      <if test="record.codIndCam != null" >
-        cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
-      </if>
-      <if test="record.fecNumCam != null" >
-        fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      <if test="record.procId != null" >
+        proc_id = #{record.procId,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -299,8 +289,7 @@
       sede_cod_distrito = #{record.sedeCodDistrito,jdbcType=INTEGER},
       sede_desc_distrito = #{record.sedeDescDistrito,jdbcType=VARCHAR},
       sede_desc = #{record.sedeDesc,jdbcType=VARCHAR},
-      cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
-      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER}
+      proc_id = #{record.procId,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -344,11 +333,8 @@
       <if test="sedeDesc != null" >
         sede_desc = #{sedeDesc,jdbcType=VARCHAR},
       </if>
-      <if test="codIndCam != null" >
-        cod_ind_cam = #{codIndCam,jdbcType=CHAR},
-      </if>
-      <if test="fecNumCam != null" >
-        fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      <if test="procId != null" >
+        proc_id = #{procId,jdbcType=INTEGER},
       </if>
     </set>
     where sede_key = #{sedeKey,jdbcType=INTEGER}
@@ -367,8 +353,7 @@
       sede_cod_distrito = #{sedeCodDistrito,jdbcType=INTEGER},
       sede_desc_distrito = #{sedeDescDistrito,jdbcType=VARCHAR},
       sede_desc = #{sedeDesc,jdbcType=VARCHAR},
-      cod_ind_cam = #{codIndCam,jdbcType=CHAR},
-      fec_num_cam = #{fecNumCam,jdbcType=INTEGER}
+      proc_id = #{procId,jdbcType=INTEGER}
     where sede_key = #{sedeKey,jdbcType=INTEGER}
   </update>
 </mapper>

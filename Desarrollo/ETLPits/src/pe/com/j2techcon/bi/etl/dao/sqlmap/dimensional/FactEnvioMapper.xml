@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.dimensional.FactEnvioMapper" >
+<mapper namespace="fact_envio" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.dimensional.FactEnvio" >
     <result column="envio_key_cliente" property="envioKeyCliente" jdbcType="INTEGER" />
     <result column="envio_key_servicio" property="envioKeyServicio" jdbcType="INTEGER" />
@@ -18,6 +18,7 @@
     <result column="envio_ind_anu" property="envioIndAnu" jdbcType="SMALLINT" />
     <result column="envio_ind_fue_zon" property="envioIndFueZon" jdbcType="SMALLINT" />
     <result column="envio_ind_perd" property="envioIndPerd" jdbcType="SMALLINT" />
+    <result column="proc_id" property="procId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -80,7 +81,8 @@
   <sql id="Base_Column_List" >
     envio_key_cliente, envio_key_servicio, envio_key_producto, envio_key_zona, envio_key_personal, 
     envio_key_fec_sal, envio_key_fec_retp, envio_key_fec_retr, envio_key_estado, envio_ind_unidad, 
-    envio_ind_ent, envio_ind_mot, envio_ind_ree, envio_ind_anu, envio_ind_fue_zon, envio_ind_perd
+    envio_ind_ent, envio_ind_mot, envio_ind_ree, envio_ind_anu, envio_ind_fue_zon, envio_ind_perd, 
+    proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactEnvioExample" >
     select
@@ -111,13 +113,15 @@
       envio_key_fec_sal, envio_key_fec_retp, envio_key_fec_retr, 
       envio_key_estado, envio_ind_unidad, envio_ind_ent, 
       envio_ind_mot, envio_ind_ree, envio_ind_anu, 
-      envio_ind_fue_zon, envio_ind_perd)
+      envio_ind_fue_zon, envio_ind_perd, proc_id
+      )
     values (#{envioKeyCliente,jdbcType=INTEGER}, #{envioKeyServicio,jdbcType=INTEGER}, 
       #{envioKeyProducto,jdbcType=INTEGER}, #{envioKeyZona,jdbcType=INTEGER}, #{envioKeyPersonal,jdbcType=INTEGER}, 
       #{envioKeyFecSal,jdbcType=INTEGER}, #{envioKeyFecRetp,jdbcType=INTEGER}, #{envioKeyFecRetr,jdbcType=INTEGER}, 
       #{envioKeyEstado,jdbcType=INTEGER}, #{envioIndUnidad,jdbcType=SMALLINT}, #{envioIndEnt,jdbcType=SMALLINT}, 
       #{envioIndMot,jdbcType=SMALLINT}, #{envioIndRee,jdbcType=SMALLINT}, #{envioIndAnu,jdbcType=SMALLINT}, 
-      #{envioIndFueZon,jdbcType=SMALLINT}, #{envioIndPerd,jdbcType=SMALLINT})
+      #{envioIndFueZon,jdbcType=SMALLINT}, #{envioIndPerd,jdbcType=SMALLINT}, #{procId,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactEnvio" >
     insert into fact_envio
@@ -170,6 +174,9 @@
       <if test="envioIndPerd != null" >
         envio_ind_perd,
       </if>
+      <if test="procId != null" >
+        proc_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="envioKeyCliente != null" >
@@ -219,6 +226,9 @@
       </if>
       <if test="envioIndPerd != null" >
         #{envioIndPerd,jdbcType=SMALLINT},
+      </if>
+      <if test="procId != null" >
+        #{procId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -279,6 +289,9 @@
       <if test="record.envioIndPerd != null" >
         envio_ind_perd = #{record.envioIndPerd,jdbcType=SMALLINT},
       </if>
+      <if test="record.procId != null" >
+        proc_id = #{record.procId,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -301,7 +314,8 @@
       envio_ind_ree = #{record.envioIndRee,jdbcType=SMALLINT},
       envio_ind_anu = #{record.envioIndAnu,jdbcType=SMALLINT},
       envio_ind_fue_zon = #{record.envioIndFueZon,jdbcType=SMALLINT},
-      envio_ind_perd = #{record.envioIndPerd,jdbcType=SMALLINT}
+      envio_ind_perd = #{record.envioIndPerd,jdbcType=SMALLINT},
+      proc_id = #{record.procId,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>

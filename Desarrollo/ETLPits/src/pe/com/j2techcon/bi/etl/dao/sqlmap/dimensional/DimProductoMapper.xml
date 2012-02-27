@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.dimensional.DimProductoMapper" >
+<mapper namespace="dim_producto" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.dimensional.DimProducto" >
     <id column="producto_key" property="productoKey" jdbcType="INTEGER" />
     <result column="producto_cod" property="productoCod" jdbcType="VARCHAR" />
     <result column="producto_cod_tip" property="productoCodTip" jdbcType="INTEGER" />
     <result column="producto_desc_tip" property="productoDescTip" jdbcType="VARCHAR" />
     <result column="producto_desc" property="productoDesc" jdbcType="VARCHAR" />
-    <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
-    <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
+    <result column="proc_id" property="procId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,8 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    producto_key, producto_cod, producto_cod_tip, producto_desc_tip, producto_desc, fec_num_cam, 
-    cod_ind_cam
+    producto_key, producto_cod, producto_cod_tip, producto_desc_tip, producto_desc, proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimProductoExample" >
     select
@@ -107,11 +105,11 @@
   </delete>
   <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimProducto" >
     insert into dim_producto (producto_key, producto_cod, producto_cod_tip, 
-      producto_desc_tip, producto_desc, fec_num_cam, 
-      cod_ind_cam)
+      producto_desc_tip, producto_desc, proc_id
+      )
     values (#{productoKey,jdbcType=INTEGER}, #{productoCod,jdbcType=VARCHAR}, #{productoCodTip,jdbcType=INTEGER}, 
-      #{productoDescTip,jdbcType=VARCHAR}, #{productoDesc,jdbcType=VARCHAR}, #{fecNumCam,jdbcType=INTEGER}, 
-      #{codIndCam,jdbcType=CHAR})
+      #{productoDescTip,jdbcType=VARCHAR}, #{productoDesc,jdbcType=VARCHAR}, #{procId,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimProducto" >
     insert into dim_producto
@@ -131,11 +129,8 @@
       <if test="productoDesc != null" >
         producto_desc,
       </if>
-      <if test="fecNumCam != null" >
-        fec_num_cam,
-      </if>
-      <if test="codIndCam != null" >
-        cod_ind_cam,
+      <if test="procId != null" >
+        proc_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -154,11 +149,8 @@
       <if test="productoDesc != null" >
         #{productoDesc,jdbcType=VARCHAR},
       </if>
-      <if test="fecNumCam != null" >
-        #{fecNumCam,jdbcType=INTEGER},
-      </if>
-      <if test="codIndCam != null" >
-        #{codIndCam,jdbcType=CHAR},
+      <if test="procId != null" >
+        #{procId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -186,11 +178,8 @@
       <if test="record.productoDesc != null" >
         producto_desc = #{record.productoDesc,jdbcType=VARCHAR},
       </if>
-      <if test="record.fecNumCam != null" >
-        fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
-      </if>
-      <if test="record.codIndCam != null" >
-        cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
+      <if test="record.procId != null" >
+        proc_id = #{record.procId,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -204,8 +193,7 @@
       producto_cod_tip = #{record.productoCodTip,jdbcType=INTEGER},
       producto_desc_tip = #{record.productoDescTip,jdbcType=VARCHAR},
       producto_desc = #{record.productoDesc,jdbcType=VARCHAR},
-      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
-      cod_ind_cam = #{record.codIndCam,jdbcType=CHAR}
+      proc_id = #{record.procId,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -225,11 +213,8 @@
       <if test="productoDesc != null" >
         producto_desc = #{productoDesc,jdbcType=VARCHAR},
       </if>
-      <if test="fecNumCam != null" >
-        fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
-      </if>
-      <if test="codIndCam != null" >
-        cod_ind_cam = #{codIndCam,jdbcType=CHAR},
+      <if test="procId != null" >
+        proc_id = #{procId,jdbcType=INTEGER},
       </if>
     </set>
     where producto_key = #{productoKey,jdbcType=INTEGER}
@@ -240,8 +225,7 @@
       producto_cod_tip = #{productoCodTip,jdbcType=INTEGER},
       producto_desc_tip = #{productoDescTip,jdbcType=VARCHAR},
       producto_desc = #{productoDesc,jdbcType=VARCHAR},
-      fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
-      cod_ind_cam = #{codIndCam,jdbcType=CHAR}
+      proc_id = #{procId,jdbcType=INTEGER}
     where producto_key = #{productoKey,jdbcType=INTEGER}
   </update>
 </mapper>

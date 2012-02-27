@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.dimensional.FactOrdenMapper" >
+<mapper namespace="fact_orden" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.dimensional.FactOrden" >
     <result column="orden_key" property="ordenKey" jdbcType="INTEGER" />
     <result column="orden_key_cliente" property="ordenKeyCliente" jdbcType="INTEGER" />
@@ -31,6 +31,7 @@
     <result column="orden_mon_descuento" property="ordenMonDescuento" jdbcType="NUMERIC" />
     <result column="orden_mon_igv" property="ordenMonIgv" jdbcType="NUMERIC" />
     <result column="orden_mon_total" property="ordenMonTotal" jdbcType="NUMERIC" />
+    <result column="proc_id" property="procId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -97,7 +98,7 @@
     orden_aten_en_fec, orden_aten_fuera_fec, orden_ind_unidad, orden_cnt_dias_exc, orden_cnt_cargos, 
     orden_cnt_cargos_anu, orden_cnt_cargos_ent, orden_cnt_cargos_fue_zon, orden_cnt_cargos_mot, 
     orden_cnt_cargos_perd, orden_cnt_cargos_ree, orden_mon_importe, orden_mon_descuento, 
-    orden_mon_igv, orden_mon_total
+    orden_mon_igv, orden_mon_total, proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactOrdenExample" >
     select
@@ -133,7 +134,8 @@
       orden_cnt_cargos_anu, orden_cnt_cargos_ent, orden_cnt_cargos_fue_zon, 
       orden_cnt_cargos_mot, orden_cnt_cargos_perd, 
       orden_cnt_cargos_ree, orden_mon_importe, orden_mon_descuento, 
-      orden_mon_igv, orden_mon_total)
+      orden_mon_igv, orden_mon_total, proc_id
+      )
     values (#{ordenKey,jdbcType=INTEGER}, #{ordenKeyCliente,jdbcType=INTEGER}, #{ordenKeyServicio,jdbcType=INTEGER}, 
       #{ordenKeyProducto,jdbcType=INTEGER}, #{ordenKeyTipoReparto,jdbcType=INTEGER}, 
       #{ordenKeyTipoDocumento,jdbcType=INTEGER}, #{ordenKeyTipoPago,jdbcType=INTEGER}, 
@@ -144,7 +146,8 @@
       #{ordenCntCargosAnu,jdbcType=INTEGER}, #{ordenCntCargosEnt,jdbcType=INTEGER}, #{ordenCntCargosFueZon,jdbcType=INTEGER}, 
       #{ordenCntCargosMot,jdbcType=INTEGER}, #{ordenCntCargosPerd,jdbcType=INTEGER}, 
       #{ordenCntCargosRee,jdbcType=INTEGER}, #{ordenMonImporte,jdbcType=NUMERIC}, #{ordenMonDescuento,jdbcType=NUMERIC}, 
-      #{ordenMonIgv,jdbcType=NUMERIC}, #{ordenMonTotal,jdbcType=NUMERIC})
+      #{ordenMonIgv,jdbcType=NUMERIC}, #{ordenMonTotal,jdbcType=NUMERIC}, #{procId,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactOrden" >
     insert into fact_orden
@@ -236,6 +239,9 @@
       <if test="ordenMonTotal != null" >
         orden_mon_total,
       </if>
+      <if test="procId != null" >
+        proc_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="ordenKey != null" >
@@ -324,6 +330,9 @@
       </if>
       <if test="ordenMonTotal != null" >
         #{ordenMonTotal,jdbcType=NUMERIC},
+      </if>
+      <if test="procId != null" >
+        #{procId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -423,6 +432,9 @@
       <if test="record.ordenMonTotal != null" >
         orden_mon_total = #{record.ordenMonTotal,jdbcType=NUMERIC},
       </if>
+      <if test="record.procId != null" >
+        proc_id = #{record.procId,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -458,7 +470,8 @@
       orden_mon_importe = #{record.ordenMonImporte,jdbcType=NUMERIC},
       orden_mon_descuento = #{record.ordenMonDescuento,jdbcType=NUMERIC},
       orden_mon_igv = #{record.ordenMonIgv,jdbcType=NUMERIC},
-      orden_mon_total = #{record.ordenMonTotal,jdbcType=NUMERIC}
+      orden_mon_total = #{record.ordenMonTotal,jdbcType=NUMERIC},
+      proc_id = #{record.procId,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>

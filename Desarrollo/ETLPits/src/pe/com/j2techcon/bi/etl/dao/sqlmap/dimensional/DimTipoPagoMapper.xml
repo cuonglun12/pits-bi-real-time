@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.dimensional.DimTipoPagoMapper" >
+<mapper namespace="dim_tipo_pago" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoPago" >
     <id column="tipo_pago_key" property="tipoPagoKey" jdbcType="INTEGER" />
     <result column="tipo_pago_cod" property="tipoPagoCod" jdbcType="CHAR" />
     <result column="tipo_pago_desc" property="tipoPagoDesc" jdbcType="VARCHAR" />
-    <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
-    <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+    <result column="proc_id" property="procId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    tipo_pago_key, tipo_pago_cod, tipo_pago_desc, cod_ind_cam, fec_num_cam
+    tipo_pago_key, tipo_pago_cod, tipo_pago_desc, proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoPagoExample" >
     select
@@ -104,9 +103,9 @@
   </delete>
   <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoPago" >
     insert into dim_tipo_pago (tipo_pago_key, tipo_pago_cod, tipo_pago_desc, 
-      cod_ind_cam, fec_num_cam)
+      proc_id)
     values (#{tipoPagoKey,jdbcType=INTEGER}, #{tipoPagoCod,jdbcType=CHAR}, #{tipoPagoDesc,jdbcType=VARCHAR}, 
-      #{codIndCam,jdbcType=CHAR}, #{fecNumCam,jdbcType=INTEGER})
+      #{procId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoPago" >
     insert into dim_tipo_pago
@@ -120,11 +119,8 @@
       <if test="tipoPagoDesc != null" >
         tipo_pago_desc,
       </if>
-      <if test="codIndCam != null" >
-        cod_ind_cam,
-      </if>
-      <if test="fecNumCam != null" >
-        fec_num_cam,
+      <if test="procId != null" >
+        proc_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -137,11 +133,8 @@
       <if test="tipoPagoDesc != null" >
         #{tipoPagoDesc,jdbcType=VARCHAR},
       </if>
-      <if test="codIndCam != null" >
-        #{codIndCam,jdbcType=CHAR},
-      </if>
-      <if test="fecNumCam != null" >
-        #{fecNumCam,jdbcType=INTEGER},
+      <if test="procId != null" >
+        #{procId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -163,11 +156,8 @@
       <if test="record.tipoPagoDesc != null" >
         tipo_pago_desc = #{record.tipoPagoDesc,jdbcType=VARCHAR},
       </if>
-      <if test="record.codIndCam != null" >
-        cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
-      </if>
-      <if test="record.fecNumCam != null" >
-        fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      <if test="record.procId != null" >
+        proc_id = #{record.procId,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -179,8 +169,7 @@
     set tipo_pago_key = #{record.tipoPagoKey,jdbcType=INTEGER},
       tipo_pago_cod = #{record.tipoPagoCod,jdbcType=CHAR},
       tipo_pago_desc = #{record.tipoPagoDesc,jdbcType=VARCHAR},
-      cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
-      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER}
+      proc_id = #{record.procId,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -194,11 +183,8 @@
       <if test="tipoPagoDesc != null" >
         tipo_pago_desc = #{tipoPagoDesc,jdbcType=VARCHAR},
       </if>
-      <if test="codIndCam != null" >
-        cod_ind_cam = #{codIndCam,jdbcType=CHAR},
-      </if>
-      <if test="fecNumCam != null" >
-        fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      <if test="procId != null" >
+        proc_id = #{procId,jdbcType=INTEGER},
       </if>
     </set>
     where tipo_pago_key = #{tipoPagoKey,jdbcType=INTEGER}
@@ -207,8 +193,7 @@
     update dim_tipo_pago
     set tipo_pago_cod = #{tipoPagoCod,jdbcType=CHAR},
       tipo_pago_desc = #{tipoPagoDesc,jdbcType=VARCHAR},
-      cod_ind_cam = #{codIndCam,jdbcType=CHAR},
-      fec_num_cam = #{fecNumCam,jdbcType=INTEGER}
+      proc_id = #{procId,jdbcType=INTEGER}
     where tipo_pago_key = #{tipoPagoKey,jdbcType=INTEGER}
   </update>
 </mapper>

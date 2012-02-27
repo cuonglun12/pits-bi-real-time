@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.dimensional.FactCotizacionMapper" >
+<mapper namespace="fact_cotizacion" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.dimensional.FactCotizacion" >
     <result column="cotizacion_key" property="cotizacionKey" jdbcType="INTEGER" />
     <result column="cotizacion_key_cliente" property="cotizacionKeyCliente" jdbcType="INTEGER" />
@@ -11,7 +11,7 @@
     <result column="cotizacion_key_fec_ini" property="cotizacionKeyFecIni" jdbcType="INTEGER" />
     <result column="cotizacion_key_fec_fin" property="cotizacionKeyFecFin" jdbcType="INTEGER" />
     <result column="cotizacion_key_estado" property="cotizacionKeyEstado" jdbcType="INTEGER" />
-    <result column="cotizacion_cnt" property="cotizacionCnt" jdbcType="SMALLINT" />
+    <result column="cotizacion_cnt" property="cotizacionCnt" jdbcType="INTEGER" />
     <result column="cotizacion_cnt_ord_total" property="cotizacionCntOrdTotal" jdbcType="INTEGER" />
     <result column="cotizacion_cnt_ord_en_trab" property="cotizacionCntOrdEnTrab" jdbcType="INTEGER" />
     <result column="cotizacion_cnt_ord_cer" property="cotizacionCntOrdCer" jdbcType="INTEGER" />
@@ -22,6 +22,7 @@
     <result column="cotizacion_mon_importe" property="cotizacionMonImporte" jdbcType="NUMERIC" />
     <result column="cotizacion_mon_igv" property="cotizacionMonIgv" jdbcType="NUMERIC" />
     <result column="cotizacion_mon_total" property="cotizacionMonTotal" jdbcType="NUMERIC" />
+    <result column="proc_id" property="procId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -87,7 +88,7 @@
     cotizacion_key_estado, cotizacion_cnt, cotizacion_cnt_ord_total, cotizacion_cnt_ord_en_trab, 
     cotizacion_cnt_ord_cer, cotizacion_cnt_ord_catiempo, cotizacion_cnt_ord_cftiempo, 
     cotizacion_cnt_ord_fac, cotizacion_cnt_ord_can, cotizacion_mon_importe, cotizacion_mon_igv, 
-    cotizacion_mon_total
+    cotizacion_mon_total, proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactCotizacionExample" >
     select
@@ -122,17 +123,17 @@
       cotizacion_cnt_ord_catiempo, cotizacion_cnt_ord_cftiempo, 
       cotizacion_cnt_ord_fac, cotizacion_cnt_ord_can, 
       cotizacion_mon_importe, cotizacion_mon_igv, 
-      cotizacion_mon_total)
+      cotizacion_mon_total, proc_id)
     values (#{cotizacionKey,jdbcType=INTEGER}, #{cotizacionKeyCliente,jdbcType=INTEGER}, 
       #{cotizacionKeyServicio,jdbcType=INTEGER}, #{cotizacionKeyProducto,jdbcType=INTEGER}, 
       #{cotizacionKeyFecReg,jdbcType=INTEGER}, #{cotizacionKeyFecApro,jdbcType=INTEGER}, 
       #{cotizacionKeyFecIni,jdbcType=INTEGER}, #{cotizacionKeyFecFin,jdbcType=INTEGER}, 
-      #{cotizacionKeyEstado,jdbcType=INTEGER}, #{cotizacionCnt,jdbcType=SMALLINT}, #{cotizacionCntOrdTotal,jdbcType=INTEGER}, 
+      #{cotizacionKeyEstado,jdbcType=INTEGER}, #{cotizacionCnt,jdbcType=INTEGER}, #{cotizacionCntOrdTotal,jdbcType=INTEGER}, 
       #{cotizacionCntOrdEnTrab,jdbcType=INTEGER}, #{cotizacionCntOrdCer,jdbcType=INTEGER}, 
       #{cotizacionCntOrdCatiempo,jdbcType=INTEGER}, #{cotizacionCntOrdCftiempo,jdbcType=INTEGER}, 
       #{cotizacionCntOrdFac,jdbcType=INTEGER}, #{cotizacionCntOrdCan,jdbcType=INTEGER}, 
       #{cotizacionMonImporte,jdbcType=NUMERIC}, #{cotizacionMonIgv,jdbcType=NUMERIC}, 
-      #{cotizacionMonTotal,jdbcType=NUMERIC})
+      #{cotizacionMonTotal,jdbcType=NUMERIC}, #{procId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactCotizacion" >
     insert into fact_cotizacion
@@ -197,6 +198,9 @@
       <if test="cotizacionMonTotal != null" >
         cotizacion_mon_total,
       </if>
+      <if test="procId != null" >
+        proc_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="cotizacionKey != null" >
@@ -227,7 +231,7 @@
         #{cotizacionKeyEstado,jdbcType=INTEGER},
       </if>
       <if test="cotizacionCnt != null" >
-        #{cotizacionCnt,jdbcType=SMALLINT},
+        #{cotizacionCnt,jdbcType=INTEGER},
       </if>
       <if test="cotizacionCntOrdTotal != null" >
         #{cotizacionCntOrdTotal,jdbcType=INTEGER},
@@ -258,6 +262,9 @@
       </if>
       <if test="cotizacionMonTotal != null" >
         #{cotizacionMonTotal,jdbcType=NUMERIC},
+      </if>
+      <if test="procId != null" >
+        #{procId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -298,7 +305,7 @@
         cotizacion_key_estado = #{record.cotizacionKeyEstado,jdbcType=INTEGER},
       </if>
       <if test="record.cotizacionCnt != null" >
-        cotizacion_cnt = #{record.cotizacionCnt,jdbcType=SMALLINT},
+        cotizacion_cnt = #{record.cotizacionCnt,jdbcType=INTEGER},
       </if>
       <if test="record.cotizacionCntOrdTotal != null" >
         cotizacion_cnt_ord_total = #{record.cotizacionCntOrdTotal,jdbcType=INTEGER},
@@ -330,6 +337,9 @@
       <if test="record.cotizacionMonTotal != null" >
         cotizacion_mon_total = #{record.cotizacionMonTotal,jdbcType=NUMERIC},
       </if>
+      <if test="record.procId != null" >
+        proc_id = #{record.procId,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -346,7 +356,7 @@
       cotizacion_key_fec_ini = #{record.cotizacionKeyFecIni,jdbcType=INTEGER},
       cotizacion_key_fec_fin = #{record.cotizacionKeyFecFin,jdbcType=INTEGER},
       cotizacion_key_estado = #{record.cotizacionKeyEstado,jdbcType=INTEGER},
-      cotizacion_cnt = #{record.cotizacionCnt,jdbcType=SMALLINT},
+      cotizacion_cnt = #{record.cotizacionCnt,jdbcType=INTEGER},
       cotizacion_cnt_ord_total = #{record.cotizacionCntOrdTotal,jdbcType=INTEGER},
       cotizacion_cnt_ord_en_trab = #{record.cotizacionCntOrdEnTrab,jdbcType=INTEGER},
       cotizacion_cnt_ord_cer = #{record.cotizacionCntOrdCer,jdbcType=INTEGER},
@@ -356,7 +366,8 @@
       cotizacion_cnt_ord_can = #{record.cotizacionCntOrdCan,jdbcType=INTEGER},
       cotizacion_mon_importe = #{record.cotizacionMonImporte,jdbcType=NUMERIC},
       cotizacion_mon_igv = #{record.cotizacionMonIgv,jdbcType=NUMERIC},
-      cotizacion_mon_total = #{record.cotizacionMonTotal,jdbcType=NUMERIC}
+      cotizacion_mon_total = #{record.cotizacionMonTotal,jdbcType=NUMERIC},
+      proc_id = #{record.procId,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
