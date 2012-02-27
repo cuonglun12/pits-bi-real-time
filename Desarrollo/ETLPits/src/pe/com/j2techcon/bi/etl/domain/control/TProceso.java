@@ -23,6 +23,8 @@ public class TProceso {
 
     private Date procFecFin;
 
+    private Date procFecAct;
+
     private String procEst;
 
     public Integer getProcId() {
@@ -105,12 +107,24 @@ public class TProceso {
         this.procFecFin = procFecFin;
     }
 
+    public Date getProcFecAct() {
+        return procFecAct;
+    }
+
+    public void setProcFecAct(Date procFecAct) {
+        this.procFecAct = procFecAct;
+    }
+
     public String getProcEst() {
         return procEst;
     }
 
     public void setProcEst(String procEst) {
         this.procEst = procEst == null ? null : procEst.trim();
+    }
+    
+    public void clear(){
+    	
     }
 
 	@Override
@@ -121,6 +135,6 @@ public class TProceso {
 				+ ", procNumRegTot=" + procNumRegTot + ", procNumRegPro="
 				+ procNumRegPro + ", procNumRegRec=" + procNumRegRec
 				+ ", procFecIni=" + procFecIni + ", procFecFin=" + procFecFin
-				+ ", procEst=" + procEst + "]";
+				+ ", procFecAct=" + procFecAct + ", procEst=" + procEst + "]";
 	}
 }

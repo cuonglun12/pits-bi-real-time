@@ -5,10 +5,10 @@ import java.util.Date;
 import java.util.List;
 
 public class TProcesoExample {
-	
+    
 	protected String paginationByClause;
 	
-    protected String orderByClause;
+	protected String orderByClause;
 
     protected boolean distinct;
 
@@ -724,6 +724,66 @@ public class TProcesoExample {
 
         public Criteria andProcFecFinNotBetween(Date value1, Date value2) {
             addCriterion("proc_fec_fin not between", value1, value2, "procFecFin");
+            return (Criteria) this;
+        }
+
+        public Criteria andProcFecActIsNull() {
+            addCriterion("proc_fec_act is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProcFecActIsNotNull() {
+            addCriterion("proc_fec_act is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProcFecActEqualTo(Date value) {
+            addCriterion("proc_fec_act =", value, "procFecAct");
+            return (Criteria) this;
+        }
+
+        public Criteria andProcFecActNotEqualTo(Date value) {
+            addCriterion("proc_fec_act <>", value, "procFecAct");
+            return (Criteria) this;
+        }
+
+        public Criteria andProcFecActGreaterThan(Date value) {
+            addCriterion("proc_fec_act >", value, "procFecAct");
+            return (Criteria) this;
+        }
+
+        public Criteria andProcFecActGreaterThanOrEqualTo(Date value) {
+            addCriterion("proc_fec_act >=", value, "procFecAct");
+            return (Criteria) this;
+        }
+
+        public Criteria andProcFecActLessThan(Date value) {
+            addCriterion("proc_fec_act <", value, "procFecAct");
+            return (Criteria) this;
+        }
+
+        public Criteria andProcFecActLessThanOrEqualTo(Date value) {
+            addCriterion("proc_fec_act <=", value, "procFecAct");
+            return (Criteria) this;
+        }
+
+        public Criteria andProcFecActIn(List<Date> values) {
+            addCriterion("proc_fec_act in", values, "procFecAct");
+            return (Criteria) this;
+        }
+
+        public Criteria andProcFecActNotIn(List<Date> values) {
+            addCriterion("proc_fec_act not in", values, "procFecAct");
+            return (Criteria) this;
+        }
+
+        public Criteria andProcFecActBetween(Date value1, Date value2) {
+            addCriterion("proc_fec_act between", value1, value2, "procFecAct");
+            return (Criteria) this;
+        }
+
+        public Criteria andProcFecActNotBetween(Date value1, Date value2) {
+            addCriterion("proc_fec_act not between", value1, value2, "procFecAct");
             return (Criteria) this;
         }
 
