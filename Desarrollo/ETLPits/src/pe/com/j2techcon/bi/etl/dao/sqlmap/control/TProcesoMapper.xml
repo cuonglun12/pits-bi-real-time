@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.control.TProcesoMapper" >
-  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.control.TProceso" >
+<mapper namespace="pe.com.j2techcon.bi.etl.dao.control1.TProcesoMapper" >
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.control1.TProceso" >
     <id column="proc_id" property="procId" jdbcType="INTEGER" />
     <result column="proc_tip" property="procTip" jdbcType="CHAR" />
     <result column="proc_fec_desde" property="procFecDesde" jdbcType="TIMESTAMP" />
@@ -12,6 +12,7 @@
     <result column="proc_num_reg_rec" property="procNumRegRec" jdbcType="INTEGER" />
     <result column="proc_fec_ini" property="procFecIni" jdbcType="TIMESTAMP" />
     <result column="proc_fec_fin" property="procFecFin" jdbcType="TIMESTAMP" />
+    <result column="proc_fec_act" property="procFecAct" jdbcType="TIMESTAMP" />
     <result column="proc_est" property="procEst" jdbcType="CHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -74,9 +75,9 @@
   </sql>
   <sql id="Base_Column_List" >
     proc_id, proc_tip, proc_fec_desde, proc_fec_hasta, proc_cnt_reg_x_bloque, proc_num_reg_tot, 
-    proc_num_reg_pro, proc_num_reg_rec, proc_fec_ini, proc_fec_fin, proc_est
+    proc_num_reg_pro, proc_num_reg_rec, proc_fec_ini, proc_fec_fin, proc_fec_act, proc_est
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.control.TProcesoExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.control1.TProcesoExample" >
     select
     <if test="distinct" >
       distinct
@@ -103,23 +104,25 @@
     delete from t_proceso
     where proc_id = #{procId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.control.TProcesoExample" >
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.control1.TProcesoExample" >
     delete from t_proceso
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.control.TProceso" >
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.control1.TProceso" >
     insert into t_proceso (proc_id, proc_tip, proc_fec_desde, 
       proc_fec_hasta, proc_cnt_reg_x_bloque, proc_num_reg_tot, 
       proc_num_reg_pro, proc_num_reg_rec, proc_fec_ini, 
-      proc_fec_fin, proc_est)
+      proc_fec_fin, proc_fec_act, proc_est
+      )
     values (#{procId,jdbcType=INTEGER}, #{procTip,jdbcType=CHAR}, #{procFecDesde,jdbcType=TIMESTAMP}, 
       #{procFecHasta,jdbcType=TIMESTAMP}, #{procCntRegXBloque,jdbcType=INTEGER}, #{procNumRegTot,jdbcType=INTEGER}, 
       #{procNumRegPro,jdbcType=INTEGER}, #{procNumRegRec,jdbcType=INTEGER}, #{procFecIni,jdbcType=TIMESTAMP}, 
-      #{procFecFin,jdbcType=TIMESTAMP}, #{procEst,jdbcType=CHAR})
+      #{procFecFin,jdbcType=TIMESTAMP}, #{procFecAct,jdbcType=TIMESTAMP}, #{procEst,jdbcType=CHAR}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.control.TProceso" >
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.control1.TProceso" >
     insert into t_proceso
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="procId != null" >
@@ -151,6 +154,9 @@
       </if>
       <if test="procFecFin != null" >
         proc_fec_fin,
+      </if>
+      <if test="procFecAct != null" >
+        proc_fec_act,
       </if>
       <if test="procEst != null" >
         proc_est,
@@ -187,12 +193,15 @@
       <if test="procFecFin != null" >
         #{procFecFin,jdbcType=TIMESTAMP},
       </if>
+      <if test="procFecAct != null" >
+        #{procFecAct,jdbcType=TIMESTAMP},
+      </if>
       <if test="procEst != null" >
         #{procEst,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.control.TProcesoExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.control1.TProcesoExample" resultType="java.lang.Integer" >
     select count(*) from t_proceso
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -231,6 +240,9 @@
       <if test="record.procFecFin != null" >
         proc_fec_fin = #{record.procFecFin,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.procFecAct != null" >
+        proc_fec_act = #{record.procFecAct,jdbcType=TIMESTAMP},
+      </if>
       <if test="record.procEst != null" >
         proc_est = #{record.procEst,jdbcType=CHAR},
       </if>
@@ -251,12 +263,13 @@
       proc_num_reg_rec = #{record.procNumRegRec,jdbcType=INTEGER},
       proc_fec_ini = #{record.procFecIni,jdbcType=TIMESTAMP},
       proc_fec_fin = #{record.procFecFin,jdbcType=TIMESTAMP},
+      proc_fec_act = #{record.procFecAct,jdbcType=TIMESTAMP},
       proc_est = #{record.procEst,jdbcType=CHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.control.TProceso" >
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.control1.TProceso" >
     update t_proceso
     <set >
       <if test="procTip != null" >
@@ -286,13 +299,16 @@
       <if test="procFecFin != null" >
         proc_fec_fin = #{procFecFin,jdbcType=TIMESTAMP},
       </if>
+      <if test="procFecAct != null" >
+        proc_fec_act = #{procFecAct,jdbcType=TIMESTAMP},
+      </if>
       <if test="procEst != null" >
         proc_est = #{procEst,jdbcType=CHAR},
       </if>
     </set>
     where proc_id = #{procId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.control.TProceso" >
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.control1.TProceso" >
     update t_proceso
     set proc_tip = #{procTip,jdbcType=CHAR},
       proc_fec_desde = #{procFecDesde,jdbcType=TIMESTAMP},
@@ -303,6 +319,7 @@
       proc_num_reg_rec = #{procNumRegRec,jdbcType=INTEGER},
       proc_fec_ini = #{procFecIni,jdbcType=TIMESTAMP},
       proc_fec_fin = #{procFecFin,jdbcType=TIMESTAMP},
+      proc_fec_act = #{procFecAct,jdbcType=TIMESTAMP},
       proc_est = #{procEst,jdbcType=CHAR}
     where proc_id = #{procId,jdbcType=INTEGER}
   </update>
