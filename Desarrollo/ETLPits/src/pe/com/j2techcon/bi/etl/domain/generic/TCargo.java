@@ -39,6 +39,8 @@ public class TCargo {
 
     private String codIndCam;
 
+    private Integer procId;
+
     public Integer getCargId() {
         return cargId;
     }
@@ -183,6 +185,18 @@ public class TCargo {
         this.codIndCam = codIndCam == null ? null : codIndCam.trim();
     }
 
+    public Integer getProcId() {
+        return procId;
+    }
+
+    public void setProcId(Integer procId) {
+        this.procId = procId;
+    }
+    
+    public void clear(){
+    	
+    }
+
 	@Override
 	public String toString() {
 		return "TCargo [cargId=" + cargId + ", cargCorr=" + cargCorr
@@ -194,6 +208,6 @@ public class TCargo {
 				+ ", cargDir=" + cargDir + ", cargRef=" + cargRef
 				+ ", cargNewDir=" + cargNewDir + ", cargNewRef=" + cargNewRef
 				+ ", cargCodEst=" + cargCodEst + ", fecNumCam=" + fecNumCam
-				+ ", codIndCam=" + codIndCam + "]";
+				+ ", codIndCam=" + codIndCam + ", procId=" + procId + "]";
 	}
 }

@@ -17,6 +17,8 @@ public class TUbigeo {
 
     private Integer fecNumCam;
 
+    private Integer procId;
+
     public Integer getUbiId() {
         return ubiId;
     }
@@ -81,12 +83,25 @@ public class TUbigeo {
         this.fecNumCam = fecNumCam;
     }
 
+    public Integer getProcId() {
+        return procId;
+    }
+
+    public void setProcId(Integer procId) {
+        this.procId = procId;
+    }
+    
+    public void clear(){
+    	
+    }
+
 	@Override
 	public String toString() {
 		return "TUbigeo [ubiId=" + ubiId + ", ubiCod=" + ubiCod
 				+ ", ubiCodPais=" + ubiCodPais + ", ubiCodDepartamento="
 				+ ubiCodDepartamento + ", ubiCodProvincia=" + ubiCodProvincia
 				+ ", ubiCodDistrito=" + ubiCodDistrito + ", codIndCam="
-				+ codIndCam + ", fecNumCam=" + fecNumCam + "]";
+				+ codIndCam + ", fecNumCam=" + fecNumCam + ", procId=" + procId
+				+ "]";
 	}
 }

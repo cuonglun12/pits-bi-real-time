@@ -19,6 +19,8 @@ public class TAreaCliente {
 
     private String codIndCam;
 
+    private Integer procId;
+
     public Integer getAreCliId() {
         return areCliId;
     }
@@ -91,12 +93,24 @@ public class TAreaCliente {
         this.codIndCam = codIndCam == null ? null : codIndCam.trim();
     }
 
+    public Integer getProcId() {
+        return procId;
+    }
+
+    public void setProcId(Integer procId) {
+        this.procId = procId;
+    }
+    
+    public void clear(){
+    	
+    }
+
 	@Override
 	public String toString() {
 		return "TAreaCliente [areCliId=" + areCliId + ", cliId=" + cliId
 				+ ", areCliCodTip=" + areCliCodTip + ", ubiId=" + ubiId
 				+ ", areCliDes=" + areCliDes + ", areCliDesDir=" + areCliDesDir
 				+ ", areCliCod=" + areCliCod + ", fecNumCam=" + fecNumCam
-				+ ", codIndCam=" + codIndCam + "]";
+				+ ", codIndCam=" + codIndCam + ", procId=" + procId + "]";
 	}
 }

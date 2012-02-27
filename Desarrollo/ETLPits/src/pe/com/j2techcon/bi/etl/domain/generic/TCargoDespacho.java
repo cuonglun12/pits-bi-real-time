@@ -33,6 +33,8 @@ public class TCargoDespacho {
 
     private String codIndCam;
 
+    private Integer procId;
+
     public Integer getCarDespId() {
         return carDespId;
     }
@@ -153,6 +155,18 @@ public class TCargoDespacho {
         this.codIndCam = codIndCam == null ? null : codIndCam.trim();
     }
 
+    public Integer getProcId() {
+        return procId;
+    }
+
+    public void setProcId(Integer procId) {
+        this.procId = procId;
+    }
+    
+    public void clear(){
+    	
+    }
+
 	@Override
 	public String toString() {
 		return "TCargoDespacho [carDespId=" + carDespId + ", despId=" + despId
@@ -163,6 +177,7 @@ public class TCargoDespacho {
 				+ carDespFecSal + ", carDespFecRetPro=" + carDespFecRetPro
 				+ ", carDespFecRetRea=" + carDespFecRetRea + ", carDespFecVer="
 				+ carDespFecVer + ", carDespCodEst=" + carDespCodEst
-				+ ", fecNumCam=" + fecNumCam + ", codIndCam=" + codIndCam + "]";
+				+ ", fecNumCam=" + fecNumCam + ", codIndCam=" + codIndCam
+				+ ", procId=" + procId + "]";
 	}
 }

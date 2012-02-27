@@ -21,6 +21,8 @@ public class TProducto {
 
     private String codIndCam;
 
+    private Integer procId;
+
     public Integer getProdId() {
         return prodId;
     }
@@ -93,12 +95,24 @@ public class TProducto {
         this.codIndCam = codIndCam == null ? null : codIndCam.trim();
     }
 
+    public Integer getProcId() {
+        return procId;
+    }
+
+    public void setProcId(Integer procId) {
+        this.procId = procId;
+    }
+    
+    public void clear(){
+    	
+    }
+
 	@Override
 	public String toString() {
 		return "TProducto [prodId=" + prodId + ", prodCodTip=" + prodCodTip
 				+ ", prodCodAmb=" + prodCodAmb + ", prodCodNeg=" + prodCodNeg
 				+ ", prodCod=" + prodCod + ", prodDes=" + prodDes
 				+ ", prodPre=" + prodPre + ", fecNumCam=" + fecNumCam
-				+ ", codIndCam=" + codIndCam + "]";
+				+ ", codIndCam=" + codIndCam + ", procId=" + procId + "]";
 	}
 }

@@ -15,6 +15,8 @@ public class TParametro {
 
     private String codIndCam;
 
+    private Integer procId;
+
     public Integer getParamId() {
         return paramId;
     }
@@ -71,11 +73,24 @@ public class TParametro {
         this.codIndCam = codIndCam == null ? null : codIndCam.trim();
     }
 
+    public Integer getProcId() {
+        return procId;
+    }
+
+    public void setProcId(Integer procId) {
+        this.procId = procId;
+    }
+    
+    public void clear(){
+    	
+    }
+
 	@Override
 	public String toString() {
 		return "TParametro [paramId=" + paramId + ", paramCodTip="
 				+ paramCodTip + ", paramCod=" + paramCod + ", paramDes="
 				+ paramDes + ", paramRef=" + paramRef + ", fecNumCam="
-				+ fecNumCam + ", codIndCam=" + codIndCam + "]";
+				+ fecNumCam + ", codIndCam=" + codIndCam + ", procId=" + procId
+				+ "]";
 	}
 }

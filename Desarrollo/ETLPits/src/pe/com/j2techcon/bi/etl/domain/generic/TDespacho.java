@@ -44,6 +44,8 @@ public class TDespacho {
 
     private String codIndCam;
 
+    private Integer procId;
+
     public Integer getDespId() {
         return despId;
     }
@@ -204,6 +206,18 @@ public class TDespacho {
         this.codIndCam = codIndCam == null ? null : codIndCam.trim();
     }
 
+    public Integer getProcId() {
+        return procId;
+    }
+
+    public void setProcId(Integer procId) {
+        this.procId = procId;
+    }
+    
+    public void clear(){
+    	
+    }
+
 	@Override
 	public String toString() {
 		return "TDespacho [despId=" + despId + ", despCodTipDoc="
@@ -217,6 +231,7 @@ public class TDespacho {
 				+ ", despFecRetPro=" + despFecRetPro + ", despFecRetRea="
 				+ despFecRetRea + ", despFecVer=" + despFecVer
 				+ ", despCanPas=" + despCanPas + ", despCodEst=" + despCodEst
-				+ ", fecNumCam=" + fecNumCam + ", codIndCam=" + codIndCam + "]";
+				+ ", fecNumCam=" + fecNumCam + ", codIndCam=" + codIndCam
+				+ ", procId=" + procId + "]";
 	}
 }

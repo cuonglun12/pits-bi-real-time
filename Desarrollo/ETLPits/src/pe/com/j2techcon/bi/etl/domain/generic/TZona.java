@@ -15,6 +15,8 @@ public class TZona {
 
     private Integer fecNumCam;
 
+    private Integer procId;
+
     public Integer getZonId() {
         return zonId;
     }
@@ -71,11 +73,23 @@ public class TZona {
         this.fecNumCam = fecNumCam;
     }
 
+    public Integer getProcId() {
+        return procId;
+    }
+
+    public void setProcId(Integer procId) {
+        this.procId = procId;
+    }
+    
+    public void clear(){
+    	
+    }
+
 	@Override
 	public String toString() {
 		return "TZona [zonId=" + zonId + ", zonCod=" + zonCod + ", ubiId="
 				+ ubiId + ", zonDes=" + zonDes + ", zonCodPostal="
 				+ zonCodPostal + ", codIndCam=" + codIndCam + ", fecNumCam="
-				+ fecNumCam + "]";
+				+ fecNumCam + ", procId=" + procId + "]";
 	}
 }

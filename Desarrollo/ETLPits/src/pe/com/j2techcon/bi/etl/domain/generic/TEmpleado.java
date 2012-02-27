@@ -25,6 +25,8 @@ public class TEmpleado {
 
     private Integer fecNumCam;
 
+    private Integer procId;
+
     public Integer getEmpId() {
         return empId;
     }
@@ -113,6 +115,18 @@ public class TEmpleado {
         this.fecNumCam = fecNumCam;
     }
 
+    public Integer getProcId() {
+        return procId;
+    }
+
+    public void setProcId(Integer procId) {
+        this.procId = procId;
+    }
+    
+    public void clear(){
+    	
+    }
+
 	@Override
 	public String toString() {
 		return "TEmpleado [empId=" + empId + ", empCod=" + empCod
@@ -120,6 +134,7 @@ public class TEmpleado {
 				+ empNumTipDoc + ", empDesApePat=" + empDesApePat
 				+ ", empDesApeMat=" + empDesApeMat + ", empDesNom=" + empDesNom
 				+ ", empFecNac=" + empFecNac + ", empSex=" + empSex
-				+ ", codIndCam=" + codIndCam + ", fecNumCam=" + fecNumCam + "]";
+				+ ", codIndCam=" + codIndCam + ", fecNumCam=" + fecNumCam
+				+ ", procId=" + procId + "]";
 	}
 }

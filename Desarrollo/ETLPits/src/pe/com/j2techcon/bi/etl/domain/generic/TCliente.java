@@ -37,6 +37,8 @@ public class TCliente {
 
     private String codIndCam;
 
+    private Integer procId;
+
     public Integer getCliId() {
         return cliId;
     }
@@ -181,6 +183,18 @@ public class TCliente {
         this.codIndCam = codIndCam == null ? null : codIndCam.trim();
     }
 
+    public Integer getProcId() {
+        return procId;
+    }
+
+    public void setProcId(Integer procId) {
+        this.procId = procId;
+    }
+    
+    public void clear(){
+    	
+    }
+
 	@Override
 	public String toString() {
 		return "TCliente [cliId=" + cliId + ", cliCodTip=" + cliCodTip
@@ -192,6 +206,6 @@ public class TCliente {
 				+ cliCodTipCre + ", ubiId=" + ubiId + ", cliCod=" + cliCod
 				+ ", cliNumTel=" + cliNumTel + ", cliDesCor=" + cliDesCor
 				+ ", cliDesDir=" + cliDesDir + ", fecNumCam=" + fecNumCam
-				+ ", codIndCam=" + codIndCam + "]";
+				+ ", codIndCam=" + codIndCam + ", procId=" + procId + "]";
 	}
 }

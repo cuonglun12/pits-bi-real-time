@@ -60,6 +60,8 @@ public class TOrden {
 
     private String codIndCam;
 
+    private Integer procId;
+
     public Integer getOrdId() {
         return ordId;
     }
@@ -284,6 +286,18 @@ public class TOrden {
         this.codIndCam = codIndCam == null ? null : codIndCam.trim();
     }
 
+    public Integer getProcId() {
+        return procId;
+    }
+
+    public void setProcId(Integer procId) {
+        this.procId = procId;
+    }
+    
+    public void clear(){
+    	
+    }
+
 	@Override
 	public String toString() {
 		return "TOrden [ordId=" + ordId + ", cotiId=" + cotiId + ", codAreCli="
@@ -300,6 +314,6 @@ public class TOrden {
 				+ ", ordDescuento=" + ordDescuento + ", ordVenta=" + ordVenta
 				+ ", ordIgv=" + ordIgv + ", ordTotal=" + ordTotal
 				+ ", ordCodEst=" + ordCodEst + ", fecNumCam=" + fecNumCam
-				+ ", codIndCam=" + codIndCam + "]";
+				+ ", codIndCam=" + codIndCam + ", procId=" + procId + "]";
 	}
 }

@@ -15,6 +15,8 @@ public class TServicio {
 
     private Integer fecNumCam;
 
+    private Integer procId;
+
     public Integer getServId() {
         return servId;
     }
@@ -71,11 +73,23 @@ public class TServicio {
         this.fecNumCam = fecNumCam;
     }
 
+    public Integer getProcId() {
+        return procId;
+    }
+
+    public void setProcId(Integer procId) {
+        this.procId = procId;
+    }
+    
+    public void clear(){
+    	
+    }
+
 	@Override
 	public String toString() {
 		return "TServicio [servId=" + servId + ", sevCod=" + sevCod
 				+ ", servCodNeg=" + servCodNeg + ", servCodAmb=" + servCodAmb
 				+ ", servDes=" + servDes + ", codIndCam=" + codIndCam
-				+ ", fecNumCam=" + fecNumCam + "]";
+				+ ", fecNumCam=" + fecNumCam + ", procId=" + procId + "]";
 	}
 }
