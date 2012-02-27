@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.generic.TCargoDespachoMapper" >
+<mapper namespace="t_cargo_despacho" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.generic.TCargoDespacho" >
     <id column="car_desp_id" property="carDespId" jdbcType="INTEGER" />
     <result column="desp_id" property="despId" jdbcType="INTEGER" />
@@ -17,6 +17,7 @@
     <result column="car_desp_cod_est" property="carDespCodEst" jdbcType="INTEGER" />
     <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
     <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
+    <result column="proc_id" property="procId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -79,7 +80,7 @@
   <sql id="Base_Column_List" >
     car_desp_id, desp_id, carg_id, zon_id, car_desp_cod_mov, car_desp_cod_ver, car_desp_dir, 
     car_desp_ref, car_desp_fec_sal, car_desp_fec_ret_pro, car_desp_fec_ret_rea, car_desp_fec_ver, 
-    car_desp_cod_est, fec_num_cam, cod_ind_cam
+    car_desp_cod_est, fec_num_cam, cod_ind_cam, proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCargoDespachoExample" >
     select
@@ -119,14 +120,14 @@
       zon_id, car_desp_cod_mov, car_desp_cod_ver, 
       car_desp_dir, car_desp_ref, car_desp_fec_sal, 
       car_desp_fec_ret_pro, car_desp_fec_ret_rea, car_desp_fec_ver, 
-      car_desp_cod_est, fec_num_cam, cod_ind_cam
-      )
+      car_desp_cod_est, fec_num_cam, cod_ind_cam, 
+      proc_id)
     values (#{carDespId,jdbcType=INTEGER}, #{despId,jdbcType=INTEGER}, #{cargId,jdbcType=INTEGER}, 
       #{zonId,jdbcType=INTEGER}, #{carDespCodMov,jdbcType=INTEGER}, #{carDespCodVer,jdbcType=INTEGER}, 
       #{carDespDir,jdbcType=VARCHAR}, #{carDespRef,jdbcType=VARCHAR}, #{carDespFecSal,jdbcType=DATE}, 
       #{carDespFecRetPro,jdbcType=DATE}, #{carDespFecRetRea,jdbcType=DATE}, #{carDespFecVer,jdbcType=DATE}, 
-      #{carDespCodEst,jdbcType=INTEGER}, #{fecNumCam,jdbcType=INTEGER}, #{codIndCam,jdbcType=CHAR}
-      )
+      #{carDespCodEst,jdbcType=INTEGER}, #{fecNumCam,jdbcType=INTEGER}, #{codIndCam,jdbcType=CHAR}, 
+      #{procId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCargoDespacho" >
     insert into t_cargo_despacho
@@ -176,6 +177,9 @@
       <if test="codIndCam != null" >
         cod_ind_cam,
       </if>
+      <if test="procId != null" >
+        proc_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="carDespId != null" >
@@ -222,6 +226,9 @@
       </if>
       <if test="codIndCam != null" >
         #{codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="procId != null" >
+        #{procId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -279,6 +286,9 @@
       <if test="record.codIndCam != null" >
         cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
       </if>
+      <if test="record.procId != null" >
+        proc_id = #{record.procId,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -300,7 +310,8 @@
       car_desp_fec_ver = #{record.carDespFecVer,jdbcType=DATE},
       car_desp_cod_est = #{record.carDespCodEst,jdbcType=INTEGER},
       fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
-      cod_ind_cam = #{record.codIndCam,jdbcType=CHAR}
+      cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
+      proc_id = #{record.procId,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -350,6 +361,9 @@
       <if test="codIndCam != null" >
         cod_ind_cam = #{codIndCam,jdbcType=CHAR},
       </if>
+      <if test="procId != null" >
+        proc_id = #{procId,jdbcType=INTEGER},
+      </if>
     </set>
     where car_desp_id = #{carDespId,jdbcType=INTEGER}
   </update>
@@ -368,7 +382,8 @@
       car_desp_fec_ver = #{carDespFecVer,jdbcType=DATE},
       car_desp_cod_est = #{carDespCodEst,jdbcType=INTEGER},
       fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
-      cod_ind_cam = #{codIndCam,jdbcType=CHAR}
+      cod_ind_cam = #{codIndCam,jdbcType=CHAR},
+      proc_id = #{procId,jdbcType=INTEGER}
     where car_desp_id = #{carDespId,jdbcType=INTEGER}
   </update>
 </mapper>

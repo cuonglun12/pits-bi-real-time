@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.generic.TServicioMapper" >
+<mapper namespace="t_servicio" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.generic.TServicio" >
     <id column="serv_id" property="servId" jdbcType="INTEGER" />
     <result column="sev_cod" property="sevCod" jdbcType="VARCHAR" />
@@ -9,6 +9,7 @@
     <result column="serv_des" property="servDes" jdbcType="VARCHAR" />
     <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
     <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+    <result column="proc_id" property="procId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,7 +70,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    serv_id, sev_cod, serv_cod_neg, serv_cod_amb, serv_des, cod_ind_cam, fec_num_cam
+    serv_id, sev_cod, serv_cod_neg, serv_cod_amb, serv_des, cod_ind_cam, fec_num_cam, 
+    proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TServicioExample" >
     select
@@ -107,10 +109,10 @@
   <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TServicio" >
     insert into t_servicio (serv_id, sev_cod, serv_cod_neg, 
       serv_cod_amb, serv_des, cod_ind_cam, 
-      fec_num_cam)
+      fec_num_cam, proc_id)
     values (#{servId,jdbcType=INTEGER}, #{sevCod,jdbcType=VARCHAR}, #{servCodNeg,jdbcType=INTEGER}, 
       #{servCodAmb,jdbcType=INTEGER}, #{servDes,jdbcType=VARCHAR}, #{codIndCam,jdbcType=CHAR}, 
-      #{fecNumCam,jdbcType=INTEGER})
+      #{fecNumCam,jdbcType=INTEGER}, #{procId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TServicio" >
     insert into t_servicio
@@ -136,6 +138,9 @@
       <if test="fecNumCam != null" >
         fec_num_cam,
       </if>
+      <if test="procId != null" >
+        proc_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="servId != null" >
@@ -158,6 +163,9 @@
       </if>
       <if test="fecNumCam != null" >
         #{fecNumCam,jdbcType=INTEGER},
+      </if>
+      <if test="procId != null" >
+        #{procId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -191,6 +199,9 @@
       <if test="record.fecNumCam != null" >
         fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
       </if>
+      <if test="record.procId != null" >
+        proc_id = #{record.procId,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -204,7 +215,8 @@
       serv_cod_amb = #{record.servCodAmb,jdbcType=INTEGER},
       serv_des = #{record.servDes,jdbcType=VARCHAR},
       cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
-      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER}
+      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      proc_id = #{record.procId,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -230,6 +242,9 @@
       <if test="fecNumCam != null" >
         fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
       </if>
+      <if test="procId != null" >
+        proc_id = #{procId,jdbcType=INTEGER},
+      </if>
     </set>
     where serv_id = #{servId,jdbcType=INTEGER}
   </update>
@@ -240,7 +255,8 @@
       serv_cod_amb = #{servCodAmb,jdbcType=INTEGER},
       serv_des = #{servDes,jdbcType=VARCHAR},
       cod_ind_cam = #{codIndCam,jdbcType=CHAR},
-      fec_num_cam = #{fecNumCam,jdbcType=INTEGER}
+      fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      proc_id = #{procId,jdbcType=INTEGER}
     where serv_id = #{servId,jdbcType=INTEGER}
   </update>
 </mapper>

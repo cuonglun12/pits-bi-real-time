@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.generic.TParametroMapper" >
+<mapper namespace="t_parametro" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.generic.TParametro" >
     <id column="param_id" property="paramId" jdbcType="INTEGER" />
     <result column="param_cod_tip" property="paramCodTip" jdbcType="INTEGER" />
@@ -9,6 +9,7 @@
     <result column="param_ref" property="paramRef" jdbcType="INTEGER" />
     <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
     <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
+    <result column="proc_id" property="procId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,7 +70,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    param_id, param_cod_tip, param_cod, param_des, param_ref, fec_num_cam, cod_ind_cam
+    param_id, param_cod_tip, param_cod, param_des, param_ref, fec_num_cam, cod_ind_cam, 
+    proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TParametroExample" >
     select
@@ -107,10 +109,10 @@
   <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TParametro" >
     insert into t_parametro (param_id, param_cod_tip, param_cod, 
       param_des, param_ref, fec_num_cam, 
-      cod_ind_cam)
+      cod_ind_cam, proc_id)
     values (#{paramId,jdbcType=INTEGER}, #{paramCodTip,jdbcType=INTEGER}, #{paramCod,jdbcType=VARCHAR}, 
       #{paramDes,jdbcType=VARCHAR}, #{paramRef,jdbcType=INTEGER}, #{fecNumCam,jdbcType=INTEGER}, 
-      #{codIndCam,jdbcType=CHAR})
+      #{codIndCam,jdbcType=CHAR}, #{procId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TParametro" >
     insert into t_parametro
@@ -136,6 +138,9 @@
       <if test="codIndCam != null" >
         cod_ind_cam,
       </if>
+      <if test="procId != null" >
+        proc_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="paramId != null" >
@@ -158,6 +163,9 @@
       </if>
       <if test="codIndCam != null" >
         #{codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="procId != null" >
+        #{procId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -191,6 +199,9 @@
       <if test="record.codIndCam != null" >
         cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
       </if>
+      <if test="record.procId != null" >
+        proc_id = #{record.procId,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -204,7 +215,8 @@
       param_des = #{record.paramDes,jdbcType=VARCHAR},
       param_ref = #{record.paramRef,jdbcType=INTEGER},
       fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
-      cod_ind_cam = #{record.codIndCam,jdbcType=CHAR}
+      cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
+      proc_id = #{record.procId,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -230,6 +242,9 @@
       <if test="codIndCam != null" >
         cod_ind_cam = #{codIndCam,jdbcType=CHAR},
       </if>
+      <if test="procId != null" >
+        proc_id = #{procId,jdbcType=INTEGER},
+      </if>
     </set>
     where param_id = #{paramId,jdbcType=INTEGER}
   </update>
@@ -240,7 +255,8 @@
       param_des = #{paramDes,jdbcType=VARCHAR},
       param_ref = #{paramRef,jdbcType=INTEGER},
       fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
-      cod_ind_cam = #{codIndCam,jdbcType=CHAR}
+      cod_ind_cam = #{codIndCam,jdbcType=CHAR},
+      proc_id = #{procId,jdbcType=INTEGER}
     where param_id = #{paramId,jdbcType=INTEGER}
   </update>
 </mapper>

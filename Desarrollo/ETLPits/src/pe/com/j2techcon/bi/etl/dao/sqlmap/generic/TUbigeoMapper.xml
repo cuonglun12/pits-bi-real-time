@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.generic.TUbigeoMapper" >
+<mapper namespace="t_ubigeo" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.generic.TUbigeo" >
     <id column="ubi_id" property="ubiId" jdbcType="INTEGER" />
     <result column="ubi_cod" property="ubiCod" jdbcType="VARCHAR" />
@@ -10,6 +10,7 @@
     <result column="ubi_cod_distrito" property="ubiCodDistrito" jdbcType="INTEGER" />
     <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
     <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+    <result column="proc_id" property="procId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,7 +72,7 @@
   </sql>
   <sql id="Base_Column_List" >
     ubi_id, ubi_cod, ubi_cod_pais, ubi_cod_departamento, ubi_cod_provincia, ubi_cod_distrito, 
-    cod_ind_cam, fec_num_cam
+    cod_ind_cam, fec_num_cam, proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TUbigeoExample" >
     select
@@ -109,10 +110,12 @@
   <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TUbigeo" >
     insert into t_ubigeo (ubi_id, ubi_cod, ubi_cod_pais, 
       ubi_cod_departamento, ubi_cod_provincia, ubi_cod_distrito, 
-      cod_ind_cam, fec_num_cam)
+      cod_ind_cam, fec_num_cam, proc_id
+      )
     values (#{ubiId,jdbcType=INTEGER}, #{ubiCod,jdbcType=VARCHAR}, #{ubiCodPais,jdbcType=INTEGER}, 
       #{ubiCodDepartamento,jdbcType=INTEGER}, #{ubiCodProvincia,jdbcType=INTEGER}, #{ubiCodDistrito,jdbcType=INTEGER}, 
-      #{codIndCam,jdbcType=CHAR}, #{fecNumCam,jdbcType=INTEGER})
+      #{codIndCam,jdbcType=CHAR}, #{fecNumCam,jdbcType=INTEGER}, #{procId,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TUbigeo" >
     insert into t_ubigeo
@@ -141,6 +144,9 @@
       <if test="fecNumCam != null" >
         fec_num_cam,
       </if>
+      <if test="procId != null" >
+        proc_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="ubiId != null" >
@@ -166,6 +172,9 @@
       </if>
       <if test="fecNumCam != null" >
         #{fecNumCam,jdbcType=INTEGER},
+      </if>
+      <if test="procId != null" >
+        #{procId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -202,6 +211,9 @@
       <if test="record.fecNumCam != null" >
         fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
       </if>
+      <if test="record.procId != null" >
+        proc_id = #{record.procId,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -216,7 +228,8 @@
       ubi_cod_provincia = #{record.ubiCodProvincia,jdbcType=INTEGER},
       ubi_cod_distrito = #{record.ubiCodDistrito,jdbcType=INTEGER},
       cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
-      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER}
+      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      proc_id = #{record.procId,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -245,6 +258,9 @@
       <if test="fecNumCam != null" >
         fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
       </if>
+      <if test="procId != null" >
+        proc_id = #{procId,jdbcType=INTEGER},
+      </if>
     </set>
     where ubi_id = #{ubiId,jdbcType=INTEGER}
   </update>
@@ -256,7 +272,8 @@
       ubi_cod_provincia = #{ubiCodProvincia,jdbcType=INTEGER},
       ubi_cod_distrito = #{ubiCodDistrito,jdbcType=INTEGER},
       cod_ind_cam = #{codIndCam,jdbcType=CHAR},
-      fec_num_cam = #{fecNumCam,jdbcType=INTEGER}
+      fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      proc_id = #{procId,jdbcType=INTEGER}
     where ubi_id = #{ubiId,jdbcType=INTEGER}
   </update>
 </mapper>
