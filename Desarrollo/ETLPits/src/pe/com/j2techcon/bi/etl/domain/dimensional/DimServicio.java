@@ -15,9 +15,7 @@ public class DimServicio {
 
     private String servicioDesc;
 
-    private String codIndCam;
-
-    private Integer fecNumCam;
+    private Integer procId;
 
     public Integer getServicioKey() {
         return servicioKey;
@@ -75,20 +73,16 @@ public class DimServicio {
         this.servicioDesc = servicioDesc == null ? null : servicioDesc.trim();
     }
 
-    public String getCodIndCam() {
-        return codIndCam;
+    public Integer getProcId() {
+        return procId;
     }
 
-    public void setCodIndCam(String codIndCam) {
-        this.codIndCam = codIndCam == null ? null : codIndCam.trim();
+    public void setProcId(Integer procId) {
+        this.procId = procId;
     }
-
-    public Integer getFecNumCam() {
-        return fecNumCam;
-    }
-
-    public void setFecNumCam(Integer fecNumCam) {
-        this.fecNumCam = fecNumCam;
+    
+    public void clear(){
+    	
     }
 
 	@Override
@@ -98,7 +92,6 @@ public class DimServicio {
 				+ ", servicioDescAmbito=" + servicioDescAmbito
 				+ ", servicioCodNegocio=" + servicioCodNegocio
 				+ ", servicioDescNegocio=" + servicioDescNegocio
-				+ ", servicioDesc=" + servicioDesc + ", codIndCam=" + codIndCam
-				+ ", fecNumCam=" + fecNumCam + "]";
+				+ ", servicioDesc=" + servicioDesc + ", procId=" + procId + "]";
 	}
 }

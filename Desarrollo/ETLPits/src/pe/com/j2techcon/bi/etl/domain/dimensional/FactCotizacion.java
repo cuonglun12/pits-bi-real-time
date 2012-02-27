@@ -21,7 +21,7 @@ public class FactCotizacion {
 
     private Integer cotizacionKeyEstado;
 
-    private Short cotizacionCnt;
+    private Integer cotizacionCnt;
 
     private Integer cotizacionCntOrdTotal;
 
@@ -42,6 +42,8 @@ public class FactCotizacion {
     private BigDecimal cotizacionMonIgv;
 
     private BigDecimal cotizacionMonTotal;
+
+    private Integer procId;
 
     public Integer getCotizacionKey() {
         return cotizacionKey;
@@ -115,11 +117,11 @@ public class FactCotizacion {
         this.cotizacionKeyEstado = cotizacionKeyEstado;
     }
 
-    public Short getCotizacionCnt() {
+    public Integer getCotizacionCnt() {
         return cotizacionCnt;
     }
 
-    public void setCotizacionCnt(Short cotizacionCnt) {
+    public void setCotizacionCnt(Integer cotizacionCnt) {
         this.cotizacionCnt = cotizacionCnt;
     }
 
@@ -203,6 +205,18 @@ public class FactCotizacion {
         this.cotizacionMonTotal = cotizacionMonTotal;
     }
 
+    public Integer getProcId() {
+        return procId;
+    }
+
+    public void setProcId(Integer procId) {
+        this.procId = procId;
+    }
+    
+    public void clear(){
+    	
+    }
+
 	@Override
 	public String toString() {
 		return "FactCotizacion [cotizacionKey=" + cotizacionKey
@@ -224,6 +238,7 @@ public class FactCotizacion {
 				+ ", cotizacionCntOrdCan=" + cotizacionCntOrdCan
 				+ ", cotizacionMonImporte=" + cotizacionMonImporte
 				+ ", cotizacionMonIgv=" + cotizacionMonIgv
-				+ ", cotizacionMonTotal=" + cotizacionMonTotal + "]";
+				+ ", cotizacionMonTotal=" + cotizacionMonTotal + ", procId="
+				+ procId + "]";
 	}
 }

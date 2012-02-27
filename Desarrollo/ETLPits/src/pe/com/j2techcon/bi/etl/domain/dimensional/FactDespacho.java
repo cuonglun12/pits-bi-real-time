@@ -45,6 +45,8 @@ public class FactDespacho {
 
     private Short despachoTrabFueraFec;
 
+    private Integer procId;
+
     public Integer getDespachoKey() {
         return despachoKey;
     }
@@ -213,6 +215,18 @@ public class FactDespacho {
         this.despachoTrabFueraFec = despachoTrabFueraFec;
     }
 
+    public Integer getProcId() {
+        return procId;
+    }
+
+    public void setProcId(Integer procId) {
+        this.procId = procId;
+    }
+    
+    public void clear(){
+    	
+    }
+
 	@Override
 	public String toString() {
 		return "FactDespacho [despachoKey=" + despachoKey
@@ -233,6 +247,7 @@ public class FactDespacho {
 				+ ", despachoCntFueZon=" + despachoCntFueZon
 				+ ", despachoCntPerd=" + despachoCntPerd
 				+ ", despachoTrabEnFec=" + despachoTrabEnFec
-				+ ", despachoTrabFueraFec=" + despachoTrabFueraFec + "]";
+				+ ", despachoTrabFueraFec=" + despachoTrabFueraFec
+				+ ", procId=" + procId + "]";
 	}
 }

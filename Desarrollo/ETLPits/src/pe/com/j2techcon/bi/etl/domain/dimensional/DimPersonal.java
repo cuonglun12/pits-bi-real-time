@@ -13,9 +13,7 @@ public class DimPersonal {
 
     private String personalSexo;
 
-    private String codIndCam;
-
-    private Integer fecNumCam;
+    private Integer procId;
 
     public Integer getPersonalKey() {
         return personalKey;
@@ -65,20 +63,16 @@ public class DimPersonal {
         this.personalSexo = personalSexo == null ? null : personalSexo.trim();
     }
 
-    public String getCodIndCam() {
-        return codIndCam;
+    public Integer getProcId() {
+        return procId;
     }
 
-    public void setCodIndCam(String codIndCam) {
-        this.codIndCam = codIndCam == null ? null : codIndCam.trim();
+    public void setProcId(Integer procId) {
+        this.procId = procId;
     }
-
-    public Integer getFecNumCam() {
-        return fecNumCam;
-    }
-
-    public void setFecNumCam(Integer fecNumCam) {
-        this.fecNumCam = fecNumCam;
+    
+    public void clear(){
+    	
     }
 
 	@Override
@@ -88,6 +82,6 @@ public class DimPersonal {
 				+ personalCodigoCategoria + ", personalDescripcionCategoria="
 				+ personalDescripcionCategoria + ", personalNombre="
 				+ personalNombre + ", personalSexo=" + personalSexo
-				+ ", codIndCam=" + codIndCam + ", fecNumCam=" + fecNumCam + "]";
+				+ ", procId=" + procId + "]";
 	}
 }

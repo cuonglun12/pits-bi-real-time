@@ -516,133 +516,63 @@ public class DimPersonalExample {
             return (Criteria) this;
         }
 
-        public Criteria andCodIndCamIsNull() {
-            addCriterion("cod_ind_cam is null");
+        public Criteria andProcIdIsNull() {
+            addCriterion("proc_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andCodIndCamIsNotNull() {
-            addCriterion("cod_ind_cam is not null");
+        public Criteria andProcIdIsNotNull() {
+            addCriterion("proc_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCodIndCamEqualTo(String value) {
-            addCriterion("cod_ind_cam =", value, "codIndCam");
+        public Criteria andProcIdEqualTo(Integer value) {
+            addCriterion("proc_id =", value, "procId");
             return (Criteria) this;
         }
 
-        public Criteria andCodIndCamNotEqualTo(String value) {
-            addCriterion("cod_ind_cam <>", value, "codIndCam");
+        public Criteria andProcIdNotEqualTo(Integer value) {
+            addCriterion("proc_id <>", value, "procId");
             return (Criteria) this;
         }
 
-        public Criteria andCodIndCamGreaterThan(String value) {
-            addCriterion("cod_ind_cam >", value, "codIndCam");
+        public Criteria andProcIdGreaterThan(Integer value) {
+            addCriterion("proc_id >", value, "procId");
             return (Criteria) this;
         }
 
-        public Criteria andCodIndCamGreaterThanOrEqualTo(String value) {
-            addCriterion("cod_ind_cam >=", value, "codIndCam");
+        public Criteria andProcIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("proc_id >=", value, "procId");
             return (Criteria) this;
         }
 
-        public Criteria andCodIndCamLessThan(String value) {
-            addCriterion("cod_ind_cam <", value, "codIndCam");
+        public Criteria andProcIdLessThan(Integer value) {
+            addCriterion("proc_id <", value, "procId");
             return (Criteria) this;
         }
 
-        public Criteria andCodIndCamLessThanOrEqualTo(String value) {
-            addCriterion("cod_ind_cam <=", value, "codIndCam");
+        public Criteria andProcIdLessThanOrEqualTo(Integer value) {
+            addCriterion("proc_id <=", value, "procId");
             return (Criteria) this;
         }
 
-        public Criteria andCodIndCamLike(String value) {
-            addCriterion("cod_ind_cam like", value, "codIndCam");
+        public Criteria andProcIdIn(List<Integer> values) {
+            addCriterion("proc_id in", values, "procId");
             return (Criteria) this;
         }
 
-        public Criteria andCodIndCamNotLike(String value) {
-            addCriterion("cod_ind_cam not like", value, "codIndCam");
+        public Criteria andProcIdNotIn(List<Integer> values) {
+            addCriterion("proc_id not in", values, "procId");
             return (Criteria) this;
         }
 
-        public Criteria andCodIndCamIn(List<String> values) {
-            addCriterion("cod_ind_cam in", values, "codIndCam");
+        public Criteria andProcIdBetween(Integer value1, Integer value2) {
+            addCriterion("proc_id between", value1, value2, "procId");
             return (Criteria) this;
         }
 
-        public Criteria andCodIndCamNotIn(List<String> values) {
-            addCriterion("cod_ind_cam not in", values, "codIndCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andCodIndCamBetween(String value1, String value2) {
-            addCriterion("cod_ind_cam between", value1, value2, "codIndCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andCodIndCamNotBetween(String value1, String value2) {
-            addCriterion("cod_ind_cam not between", value1, value2, "codIndCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andFecNumCamIsNull() {
-            addCriterion("fec_num_cam is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andFecNumCamIsNotNull() {
-            addCriterion("fec_num_cam is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andFecNumCamEqualTo(Integer value) {
-            addCriterion("fec_num_cam =", value, "fecNumCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andFecNumCamNotEqualTo(Integer value) {
-            addCriterion("fec_num_cam <>", value, "fecNumCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andFecNumCamGreaterThan(Integer value) {
-            addCriterion("fec_num_cam >", value, "fecNumCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andFecNumCamGreaterThanOrEqualTo(Integer value) {
-            addCriterion("fec_num_cam >=", value, "fecNumCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andFecNumCamLessThan(Integer value) {
-            addCriterion("fec_num_cam <", value, "fecNumCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andFecNumCamLessThanOrEqualTo(Integer value) {
-            addCriterion("fec_num_cam <=", value, "fecNumCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andFecNumCamIn(List<Integer> values) {
-            addCriterion("fec_num_cam in", values, "fecNumCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andFecNumCamNotIn(List<Integer> values) {
-            addCriterion("fec_num_cam not in", values, "fecNumCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andFecNumCamBetween(Integer value1, Integer value2) {
-            addCriterion("fec_num_cam between", value1, value2, "fecNumCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andFecNumCamNotBetween(Integer value1, Integer value2) {
-            addCriterion("fec_num_cam not between", value1, value2, "fecNumCam");
+        public Criteria andProcIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("proc_id not between", value1, value2, "procId");
             return (Criteria) this;
         }
     }

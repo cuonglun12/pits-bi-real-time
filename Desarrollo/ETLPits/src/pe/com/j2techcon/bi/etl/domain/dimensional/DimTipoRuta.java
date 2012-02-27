@@ -7,9 +7,7 @@ public class DimTipoRuta {
 
     private String tipoRutaDesc;
 
-    private String codIndCam;
-
-    private Integer fecNumCam;
+    private Integer procId;
 
     public Integer getTipoRutaKey() {
         return tipoRutaKey;
@@ -35,26 +33,22 @@ public class DimTipoRuta {
         this.tipoRutaDesc = tipoRutaDesc == null ? null : tipoRutaDesc.trim();
     }
 
-    public String getCodIndCam() {
-        return codIndCam;
+    public Integer getProcId() {
+        return procId;
     }
 
-    public void setCodIndCam(String codIndCam) {
-        this.codIndCam = codIndCam == null ? null : codIndCam.trim();
+    public void setProcId(Integer procId) {
+        this.procId = procId;
     }
-
-    public Integer getFecNumCam() {
-        return fecNumCam;
-    }
-
-    public void setFecNumCam(Integer fecNumCam) {
-        this.fecNumCam = fecNumCam;
+    
+    public void clear(){
+    	
     }
 
 	@Override
 	public String toString() {
 		return "DimTipoRuta [tipoRutaKey=" + tipoRutaKey + ", tipoRutaCod="
-				+ tipoRutaCod + ", tipoRutaDesc=" + tipoRutaDesc
-				+ ", codIndCam=" + codIndCam + ", fecNumCam=" + fecNumCam + "]";
+				+ tipoRutaCod + ", tipoRutaDesc=" + tipoRutaDesc + ", procId="
+				+ procId + "]";
 	}
 }

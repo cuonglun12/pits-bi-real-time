@@ -70,8 +70,8 @@ public class DimClienteExample {
 
     public void clear() {
         oredCriteria.clear();
-        orderByClause = null;
         paginationByClause = null;
+        orderByClause = null;
         distinct = false;
     }
 
@@ -1686,263 +1686,63 @@ public class DimClienteExample {
             return (Criteria) this;
         }
 
-        public Criteria andClienteAreaCodEstadoIsNull() {
-            addCriterion("cliente_area_cod_estado is null");
+        public Criteria andProcIdIsNull() {
+            addCriterion("proc_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andClienteAreaCodEstadoIsNotNull() {
-            addCriterion("cliente_area_cod_estado is not null");
+        public Criteria andProcIdIsNotNull() {
+            addCriterion("proc_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andClienteAreaCodEstadoEqualTo(Integer value) {
-            addCriterion("cliente_area_cod_estado =", value, "clienteAreaCodEstado");
+        public Criteria andProcIdEqualTo(Integer value) {
+            addCriterion("proc_id =", value, "procId");
             return (Criteria) this;
         }
 
-        public Criteria andClienteAreaCodEstadoNotEqualTo(Integer value) {
-            addCriterion("cliente_area_cod_estado <>", value, "clienteAreaCodEstado");
+        public Criteria andProcIdNotEqualTo(Integer value) {
+            addCriterion("proc_id <>", value, "procId");
             return (Criteria) this;
         }
 
-        public Criteria andClienteAreaCodEstadoGreaterThan(Integer value) {
-            addCriterion("cliente_area_cod_estado >", value, "clienteAreaCodEstado");
+        public Criteria andProcIdGreaterThan(Integer value) {
+            addCriterion("proc_id >", value, "procId");
             return (Criteria) this;
         }
 
-        public Criteria andClienteAreaCodEstadoGreaterThanOrEqualTo(Integer value) {
-            addCriterion("cliente_area_cod_estado >=", value, "clienteAreaCodEstado");
+        public Criteria andProcIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("proc_id >=", value, "procId");
             return (Criteria) this;
         }
 
-        public Criteria andClienteAreaCodEstadoLessThan(Integer value) {
-            addCriterion("cliente_area_cod_estado <", value, "clienteAreaCodEstado");
+        public Criteria andProcIdLessThan(Integer value) {
+            addCriterion("proc_id <", value, "procId");
             return (Criteria) this;
         }
 
-        public Criteria andClienteAreaCodEstadoLessThanOrEqualTo(Integer value) {
-            addCriterion("cliente_area_cod_estado <=", value, "clienteAreaCodEstado");
+        public Criteria andProcIdLessThanOrEqualTo(Integer value) {
+            addCriterion("proc_id <=", value, "procId");
             return (Criteria) this;
         }
 
-        public Criteria andClienteAreaCodEstadoIn(List<Integer> values) {
-            addCriterion("cliente_area_cod_estado in", values, "clienteAreaCodEstado");
+        public Criteria andProcIdIn(List<Integer> values) {
+            addCriterion("proc_id in", values, "procId");
             return (Criteria) this;
         }
 
-        public Criteria andClienteAreaCodEstadoNotIn(List<Integer> values) {
-            addCriterion("cliente_area_cod_estado not in", values, "clienteAreaCodEstado");
+        public Criteria andProcIdNotIn(List<Integer> values) {
+            addCriterion("proc_id not in", values, "procId");
             return (Criteria) this;
         }
 
-        public Criteria andClienteAreaCodEstadoBetween(Integer value1, Integer value2) {
-            addCriterion("cliente_area_cod_estado between", value1, value2, "clienteAreaCodEstado");
+        public Criteria andProcIdBetween(Integer value1, Integer value2) {
+            addCriterion("proc_id between", value1, value2, "procId");
             return (Criteria) this;
         }
 
-        public Criteria andClienteAreaCodEstadoNotBetween(Integer value1, Integer value2) {
-            addCriterion("cliente_area_cod_estado not between", value1, value2, "clienteAreaCodEstado");
-            return (Criteria) this;
-        }
-
-        public Criteria andClienteAreaDescEstadoIsNull() {
-            addCriterion("cliente_area_desc_estado is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andClienteAreaDescEstadoIsNotNull() {
-            addCriterion("cliente_area_desc_estado is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andClienteAreaDescEstadoEqualTo(String value) {
-            addCriterion("cliente_area_desc_estado =", value, "clienteAreaDescEstado");
-            return (Criteria) this;
-        }
-
-        public Criteria andClienteAreaDescEstadoNotEqualTo(String value) {
-            addCriterion("cliente_area_desc_estado <>", value, "clienteAreaDescEstado");
-            return (Criteria) this;
-        }
-
-        public Criteria andClienteAreaDescEstadoGreaterThan(String value) {
-            addCriterion("cliente_area_desc_estado >", value, "clienteAreaDescEstado");
-            return (Criteria) this;
-        }
-
-        public Criteria andClienteAreaDescEstadoGreaterThanOrEqualTo(String value) {
-            addCriterion("cliente_area_desc_estado >=", value, "clienteAreaDescEstado");
-            return (Criteria) this;
-        }
-
-        public Criteria andClienteAreaDescEstadoLessThan(String value) {
-            addCriterion("cliente_area_desc_estado <", value, "clienteAreaDescEstado");
-            return (Criteria) this;
-        }
-
-        public Criteria andClienteAreaDescEstadoLessThanOrEqualTo(String value) {
-            addCriterion("cliente_area_desc_estado <=", value, "clienteAreaDescEstado");
-            return (Criteria) this;
-        }
-
-        public Criteria andClienteAreaDescEstadoLike(String value) {
-            addCriterion("cliente_area_desc_estado like", value, "clienteAreaDescEstado");
-            return (Criteria) this;
-        }
-
-        public Criteria andClienteAreaDescEstadoNotLike(String value) {
-            addCriterion("cliente_area_desc_estado not like", value, "clienteAreaDescEstado");
-            return (Criteria) this;
-        }
-
-        public Criteria andClienteAreaDescEstadoIn(List<String> values) {
-            addCriterion("cliente_area_desc_estado in", values, "clienteAreaDescEstado");
-            return (Criteria) this;
-        }
-
-        public Criteria andClienteAreaDescEstadoNotIn(List<String> values) {
-            addCriterion("cliente_area_desc_estado not in", values, "clienteAreaDescEstado");
-            return (Criteria) this;
-        }
-
-        public Criteria andClienteAreaDescEstadoBetween(String value1, String value2) {
-            addCriterion("cliente_area_desc_estado between", value1, value2, "clienteAreaDescEstado");
-            return (Criteria) this;
-        }
-
-        public Criteria andClienteAreaDescEstadoNotBetween(String value1, String value2) {
-            addCriterion("cliente_area_desc_estado not between", value1, value2, "clienteAreaDescEstado");
-            return (Criteria) this;
-        }
-
-        public Criteria andCodIndCamIsNull() {
-            addCriterion("cod_ind_cam is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCodIndCamIsNotNull() {
-            addCriterion("cod_ind_cam is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCodIndCamEqualTo(String value) {
-            addCriterion("cod_ind_cam =", value, "codIndCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andCodIndCamNotEqualTo(String value) {
-            addCriterion("cod_ind_cam <>", value, "codIndCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andCodIndCamGreaterThan(String value) {
-            addCriterion("cod_ind_cam >", value, "codIndCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andCodIndCamGreaterThanOrEqualTo(String value) {
-            addCriterion("cod_ind_cam >=", value, "codIndCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andCodIndCamLessThan(String value) {
-            addCriterion("cod_ind_cam <", value, "codIndCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andCodIndCamLessThanOrEqualTo(String value) {
-            addCriterion("cod_ind_cam <=", value, "codIndCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andCodIndCamLike(String value) {
-            addCriterion("cod_ind_cam like", value, "codIndCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andCodIndCamNotLike(String value) {
-            addCriterion("cod_ind_cam not like", value, "codIndCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andCodIndCamIn(List<String> values) {
-            addCriterion("cod_ind_cam in", values, "codIndCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andCodIndCamNotIn(List<String> values) {
-            addCriterion("cod_ind_cam not in", values, "codIndCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andCodIndCamBetween(String value1, String value2) {
-            addCriterion("cod_ind_cam between", value1, value2, "codIndCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andCodIndCamNotBetween(String value1, String value2) {
-            addCriterion("cod_ind_cam not between", value1, value2, "codIndCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andFecNumCamIsNull() {
-            addCriterion("fec_num_cam is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andFecNumCamIsNotNull() {
-            addCriterion("fec_num_cam is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andFecNumCamEqualTo(Integer value) {
-            addCriterion("fec_num_cam =", value, "fecNumCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andFecNumCamNotEqualTo(Integer value) {
-            addCriterion("fec_num_cam <>", value, "fecNumCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andFecNumCamGreaterThan(Integer value) {
-            addCriterion("fec_num_cam >", value, "fecNumCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andFecNumCamGreaterThanOrEqualTo(Integer value) {
-            addCriterion("fec_num_cam >=", value, "fecNumCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andFecNumCamLessThan(Integer value) {
-            addCriterion("fec_num_cam <", value, "fecNumCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andFecNumCamLessThanOrEqualTo(Integer value) {
-            addCriterion("fec_num_cam <=", value, "fecNumCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andFecNumCamIn(List<Integer> values) {
-            addCriterion("fec_num_cam in", values, "fecNumCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andFecNumCamNotIn(List<Integer> values) {
-            addCriterion("fec_num_cam not in", values, "fecNumCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andFecNumCamBetween(Integer value1, Integer value2) {
-            addCriterion("fec_num_cam between", value1, value2, "fecNumCam");
-            return (Criteria) this;
-        }
-
-        public Criteria andFecNumCamNotBetween(Integer value1, Integer value2) {
-            addCriterion("fec_num_cam not between", value1, value2, "fecNumCam");
+        public Criteria andProcIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("proc_id not between", value1, value2, "procId");
             return (Criteria) this;
         }
     }

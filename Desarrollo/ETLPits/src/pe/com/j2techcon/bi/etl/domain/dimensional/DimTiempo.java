@@ -152,6 +152,10 @@ public class DimTiempo {
     public void setTiempoEsFeriado(String tiempoEsFeriado) {
         this.tiempoEsFeriado = tiempoEsFeriado == null ? null : tiempoEsFeriado.trim();
     }
+    
+    public void clear(){
+    	
+    }
 
 	@Override
 	public String toString() {

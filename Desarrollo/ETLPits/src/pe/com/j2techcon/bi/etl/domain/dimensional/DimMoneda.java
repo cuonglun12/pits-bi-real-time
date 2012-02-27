@@ -7,9 +7,7 @@ public class DimMoneda {
 
     private String monedaDesc;
 
-    private String codIndCam;
-
-    private Integer fecNumCam;
+    private Integer procId;
 
     public Integer getMonedaKey() {
         return monedaKey;
@@ -35,28 +33,21 @@ public class DimMoneda {
         this.monedaDesc = monedaDesc == null ? null : monedaDesc.trim();
     }
 
-    public String getCodIndCam() {
-        return codIndCam;
+    public Integer getProcId() {
+        return procId;
     }
 
-    public void setCodIndCam(String codIndCam) {
-        this.codIndCam = codIndCam == null ? null : codIndCam.trim();
+    public void setProcId(Integer procId) {
+        this.procId = procId;
     }
-
-    public Integer getFecNumCam() {
-        return fecNumCam;
-    }
-
-    public void setFecNumCam(Integer fecNumCam) {
-        this.fecNumCam = fecNumCam;
+    
+    public void clear(){
+    	
     }
 
 	@Override
 	public String toString() {
 		return "DimMoneda [monedaKey=" + monedaKey + ", monedaCod=" + monedaCod
-				+ ", monedaDesc=" + monedaDesc + ", codIndCam=" + codIndCam
-				+ ", fecNumCam=" + fecNumCam + "]";
+				+ ", monedaDesc=" + monedaDesc + ", procId=" + procId + "]";
 	}
-    
-    
 }

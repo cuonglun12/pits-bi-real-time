@@ -11,9 +11,7 @@ public class DimProducto {
 
     private String productoDesc;
 
-    private Integer fecNumCam;
-
-    private String codIndCam;
+    private Integer procId;
 
     public Integer getProductoKey() {
         return productoKey;
@@ -55,20 +53,16 @@ public class DimProducto {
         this.productoDesc = productoDesc == null ? null : productoDesc.trim();
     }
 
-    public Integer getFecNumCam() {
-        return fecNumCam;
+    public Integer getProcId() {
+        return procId;
     }
 
-    public void setFecNumCam(Integer fecNumCam) {
-        this.fecNumCam = fecNumCam;
+    public void setProcId(Integer procId) {
+        this.procId = procId;
     }
-
-    public String getCodIndCam() {
-        return codIndCam;
-    }
-
-    public void setCodIndCam(String codIndCam) {
-        this.codIndCam = codIndCam == null ? null : codIndCam.trim();
+    
+    public void clear(){
+    	
     }
 
 	@Override
@@ -76,7 +70,6 @@ public class DimProducto {
 		return "DimProducto [productoKey=" + productoKey + ", productoCod="
 				+ productoCod + ", productoCodTip=" + productoCodTip
 				+ ", productoDescTip=" + productoDescTip + ", productoDesc="
-				+ productoDesc + ", fecNumCam=" + fecNumCam + ", codIndCam="
-				+ codIndCam + "]";
+				+ productoDesc + ", procId=" + procId + "]";
 	}
 }

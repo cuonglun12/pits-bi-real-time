@@ -7,9 +7,7 @@ public class DimTipoPago {
 
     private String tipoPagoDesc;
 
-    private String codIndCam;
-
-    private Integer fecNumCam;
+    private Integer procId;
 
     public Integer getTipoPagoKey() {
         return tipoPagoKey;
@@ -35,26 +33,22 @@ public class DimTipoPago {
         this.tipoPagoDesc = tipoPagoDesc == null ? null : tipoPagoDesc.trim();
     }
 
-    public String getCodIndCam() {
-        return codIndCam;
+    public Integer getProcId() {
+        return procId;
     }
 
-    public void setCodIndCam(String codIndCam) {
-        this.codIndCam = codIndCam == null ? null : codIndCam.trim();
+    public void setProcId(Integer procId) {
+        this.procId = procId;
     }
-
-    public Integer getFecNumCam() {
-        return fecNumCam;
-    }
-
-    public void setFecNumCam(Integer fecNumCam) {
-        this.fecNumCam = fecNumCam;
+    
+    public void clear(){
+    	
     }
 
 	@Override
 	public String toString() {
 		return "DimTipoPago [tipoPagoKey=" + tipoPagoKey + ", tipoPagoCod="
-				+ tipoPagoCod + ", tipoPagoDesc=" + tipoPagoDesc
-				+ ", codIndCam=" + codIndCam + ", fecNumCam=" + fecNumCam + "]";
+				+ tipoPagoCod + ", tipoPagoDesc=" + tipoPagoDesc + ", procId="
+				+ procId + "]";
 	}
 }

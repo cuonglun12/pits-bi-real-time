@@ -61,6 +61,8 @@ public class FactOrden {
 
     private BigDecimal ordenMonTotal;
 
+    private Integer procId;
+
     public Integer getOrdenKey() {
         return ordenKey;
     }
@@ -293,6 +295,18 @@ public class FactOrden {
         this.ordenMonTotal = ordenMonTotal;
     }
 
+    public Integer getProcId() {
+        return procId;
+    }
+
+    public void setProcId(Integer procId) {
+        this.procId = procId;
+    }
+    
+    public void clear(){
+    	
+    }
+
 	@Override
 	public String toString() {
 		return "FactOrden [ordenKey=" + ordenKey + ", ordenKeyCliente="
@@ -317,6 +331,7 @@ public class FactOrden {
 				+ ", ordenCntCargosRee=" + ordenCntCargosRee
 				+ ", ordenMonImporte=" + ordenMonImporte
 				+ ", ordenMonDescuento=" + ordenMonDescuento + ", ordenMonIgv="
-				+ ordenMonIgv + ", ordenMonTotal=" + ordenMonTotal + "]";
+				+ ordenMonIgv + ", ordenMonTotal=" + ordenMonTotal
+				+ ", procId=" + procId + "]";
 	}
 }

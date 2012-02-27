@@ -49,13 +49,7 @@ public class DimCliente {
 
     private String clienteAreaDescDistrito;
 
-    private Integer clienteAreaCodEstado;
-
-    private String clienteAreaDescEstado;
-
-    private String codIndCam;
-
-    private Integer fecNumCam;
+    private Integer procId;
 
     public Integer getClienteKey() {
         return clienteKey;
@@ -249,36 +243,16 @@ public class DimCliente {
         this.clienteAreaDescDistrito = clienteAreaDescDistrito == null ? null : clienteAreaDescDistrito.trim();
     }
 
-    public Integer getClienteAreaCodEstado() {
-        return clienteAreaCodEstado;
+    public Integer getProcId() {
+        return procId;
     }
 
-    public void setClienteAreaCodEstado(Integer clienteAreaCodEstado) {
-        this.clienteAreaCodEstado = clienteAreaCodEstado;
+    public void setProcId(Integer procId) {
+        this.procId = procId;
     }
-
-    public String getClienteAreaDescEstado() {
-        return clienteAreaDescEstado;
-    }
-
-    public void setClienteAreaDescEstado(String clienteAreaDescEstado) {
-        this.clienteAreaDescEstado = clienteAreaDescEstado == null ? null : clienteAreaDescEstado.trim();
-    }
-
-    public String getCodIndCam() {
-        return codIndCam;
-    }
-
-    public void setCodIndCam(String codIndCam) {
-        this.codIndCam = codIndCam == null ? null : codIndCam.trim();
-    }
-
-    public Integer getFecNumCam() {
-        return fecNumCam;
-    }
-
-    public void setFecNumCam(Integer fecNumCam) {
-        this.fecNumCam = fecNumCam;
+    
+    public void clear(){
+    	
     }
 
 	@Override
@@ -304,9 +278,6 @@ public class DimCliente {
 				+ clienteAreaCodProvincia + ", clienteAreaDescProvincia="
 				+ clienteAreaDescProvincia + ", clienteAreaCodDistrito="
 				+ clienteAreaCodDistrito + ", clienteAreaDescDistrito="
-				+ clienteAreaDescDistrito + ", clienteAreaCodEstado="
-				+ clienteAreaCodEstado + ", clienteAreaDescEstado="
-				+ clienteAreaDescEstado + ", codIndCam=" + codIndCam
-				+ ", fecNumCam=" + fecNumCam + "]";
+				+ clienteAreaDescDistrito + ", procId=" + procId + "]";
 	}
 }

@@ -11,9 +11,7 @@ public class DimEstado {
 
     private String estadoDesc;
 
-    private String codIndCam;
-
-    private Integer fecNumCam;
+    private Integer procId;
 
     public Integer getEstadoKey() {
         return estadoKey;
@@ -55,20 +53,16 @@ public class DimEstado {
         this.estadoDesc = estadoDesc == null ? null : estadoDesc.trim();
     }
 
-    public String getCodIndCam() {
-        return codIndCam;
+    public Integer getProcId() {
+        return procId;
     }
 
-    public void setCodIndCam(String codIndCam) {
-        this.codIndCam = codIndCam == null ? null : codIndCam.trim();
+    public void setProcId(Integer procId) {
+        this.procId = procId;
     }
-
-    public Integer getFecNumCam() {
-        return fecNumCam;
-    }
-
-    public void setFecNumCam(Integer fecNumCam) {
-        this.fecNumCam = fecNumCam;
+    
+    public void clear(){
+    	
     }
 
 	@Override
@@ -76,8 +70,6 @@ public class DimEstado {
 		return "DimEstado [estadoKey=" + estadoKey + ", estadoCodTipo="
 				+ estadoCodTipo + ", estadoDescTipo=" + estadoDescTipo
 				+ ", estadoCod=" + estadoCod + ", estadoDesc=" + estadoDesc
-				+ ", codIndCam=" + codIndCam + ", fecNumCam=" + fecNumCam + "]";
+				+ ", procId=" + procId + "]";
 	}
-    
-    
 }

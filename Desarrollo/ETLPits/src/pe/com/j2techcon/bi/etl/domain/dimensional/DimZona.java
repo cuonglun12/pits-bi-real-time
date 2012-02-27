@@ -23,9 +23,7 @@ public class DimZona {
 
     private String zonaCodPostal;
 
-    private String codIndCam;
-
-    private Integer fecNumCam;
+    private Integer procId;
 
     public Integer getZonaKey() {
         return zonaKey;
@@ -115,20 +113,16 @@ public class DimZona {
         this.zonaCodPostal = zonaCodPostal == null ? null : zonaCodPostal.trim();
     }
 
-    public String getCodIndCam() {
-        return codIndCam;
+    public Integer getProcId() {
+        return procId;
     }
 
-    public void setCodIndCam(String codIndCam) {
-        this.codIndCam = codIndCam == null ? null : codIndCam.trim();
+    public void setProcId(Integer procId) {
+        this.procId = procId;
     }
-
-    public Integer getFecNumCam() {
-        return fecNumCam;
-    }
-
-    public void setFecNumCam(Integer fecNumCam) {
-        this.fecNumCam = fecNumCam;
+    
+    public void clear(){
+    	
     }
 
 	@Override
@@ -140,7 +134,7 @@ public class DimZona {
 				+ zonaCodProvincia + ", zonaDescProvincia=" + zonaDescProvincia
 				+ ", zonaCodDistrito=" + zonaCodDistrito
 				+ ", zonaDescDistrito=" + zonaDescDistrito + ", zonaCod="
-				+ zonaCod + ", zonaCodPostal=" + zonaCodPostal + ", codIndCam="
-				+ codIndCam + ", fecNumCam=" + fecNumCam + "]";
+				+ zonaCod + ", zonaCodPostal=" + zonaCodPostal + ", procId="
+				+ procId + "]";
 	}
 }

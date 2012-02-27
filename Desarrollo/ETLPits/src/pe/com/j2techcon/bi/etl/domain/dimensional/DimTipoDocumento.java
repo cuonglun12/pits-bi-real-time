@@ -7,9 +7,7 @@ public class DimTipoDocumento {
 
     private String tipoDocumentoDesc;
 
-    private String codIndCam;
-
-    private Integer fecNumCam;
+    private Integer procId;
 
     public Integer getTipoDocumentoKey() {
         return tipoDocumentoKey;
@@ -35,27 +33,23 @@ public class DimTipoDocumento {
         this.tipoDocumentoDesc = tipoDocumentoDesc == null ? null : tipoDocumentoDesc.trim();
     }
 
-    public String getCodIndCam() {
-        return codIndCam;
+    public Integer getProcId() {
+        return procId;
     }
 
-    public void setCodIndCam(String codIndCam) {
-        this.codIndCam = codIndCam == null ? null : codIndCam.trim();
+    public void setProcId(Integer procId) {
+        this.procId = procId;
     }
-
-    public Integer getFecNumCam() {
-        return fecNumCam;
-    }
-
-    public void setFecNumCam(Integer fecNumCam) {
-        this.fecNumCam = fecNumCam;
+    
+    public void clear(){
+    	
     }
 
 	@Override
 	public String toString() {
 		return "DimTipoDocumento [tipoDocumentoKey=" + tipoDocumentoKey
 				+ ", tipoDocumentoCod=" + tipoDocumentoCod
-				+ ", tipoDocumentoDesc=" + tipoDocumentoDesc + ", codIndCam="
-				+ codIndCam + ", fecNumCam=" + fecNumCam + "]";
+				+ ", tipoDocumentoDesc=" + tipoDocumentoDesc + ", procId="
+				+ procId + "]";
 	}
 }

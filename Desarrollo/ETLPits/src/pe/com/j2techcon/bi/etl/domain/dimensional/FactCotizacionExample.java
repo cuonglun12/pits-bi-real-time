@@ -667,52 +667,52 @@ public class FactCotizacionExample {
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionCntEqualTo(Short value) {
+        public Criteria andCotizacionCntEqualTo(Integer value) {
             addCriterion("cotizacion_cnt =", value, "cotizacionCnt");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionCntNotEqualTo(Short value) {
+        public Criteria andCotizacionCntNotEqualTo(Integer value) {
             addCriterion("cotizacion_cnt <>", value, "cotizacionCnt");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionCntGreaterThan(Short value) {
+        public Criteria andCotizacionCntGreaterThan(Integer value) {
             addCriterion("cotizacion_cnt >", value, "cotizacionCnt");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionCntGreaterThanOrEqualTo(Short value) {
+        public Criteria andCotizacionCntGreaterThanOrEqualTo(Integer value) {
             addCriterion("cotizacion_cnt >=", value, "cotizacionCnt");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionCntLessThan(Short value) {
+        public Criteria andCotizacionCntLessThan(Integer value) {
             addCriterion("cotizacion_cnt <", value, "cotizacionCnt");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionCntLessThanOrEqualTo(Short value) {
+        public Criteria andCotizacionCntLessThanOrEqualTo(Integer value) {
             addCriterion("cotizacion_cnt <=", value, "cotizacionCnt");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionCntIn(List<Short> values) {
+        public Criteria andCotizacionCntIn(List<Integer> values) {
             addCriterion("cotizacion_cnt in", values, "cotizacionCnt");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionCntNotIn(List<Short> values) {
+        public Criteria andCotizacionCntNotIn(List<Integer> values) {
             addCriterion("cotizacion_cnt not in", values, "cotizacionCnt");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionCntBetween(Short value1, Short value2) {
+        public Criteria andCotizacionCntBetween(Integer value1, Integer value2) {
             addCriterion("cotizacion_cnt between", value1, value2, "cotizacionCnt");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionCntNotBetween(Short value1, Short value2) {
+        public Criteria andCotizacionCntNotBetween(Integer value1, Integer value2) {
             addCriterion("cotizacion_cnt not between", value1, value2, "cotizacionCnt");
             return (Criteria) this;
         }
@@ -1314,6 +1314,66 @@ public class FactCotizacionExample {
 
         public Criteria andCotizacionMonTotalNotBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("cotizacion_mon_total not between", value1, value2, "cotizacionMonTotal");
+            return (Criteria) this;
+        }
+
+        public Criteria andProcIdIsNull() {
+            addCriterion("proc_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProcIdIsNotNull() {
+            addCriterion("proc_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProcIdEqualTo(Integer value) {
+            addCriterion("proc_id =", value, "procId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProcIdNotEqualTo(Integer value) {
+            addCriterion("proc_id <>", value, "procId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProcIdGreaterThan(Integer value) {
+            addCriterion("proc_id >", value, "procId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProcIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("proc_id >=", value, "procId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProcIdLessThan(Integer value) {
+            addCriterion("proc_id <", value, "procId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProcIdLessThanOrEqualTo(Integer value) {
+            addCriterion("proc_id <=", value, "procId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProcIdIn(List<Integer> values) {
+            addCriterion("proc_id in", values, "procId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProcIdNotIn(List<Integer> values) {
+            addCriterion("proc_id not in", values, "procId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProcIdBetween(Integer value1, Integer value2) {
+            addCriterion("proc_id between", value1, value2, "procId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProcIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("proc_id not between", value1, value2, "procId");
             return (Criteria) this;
         }
     }

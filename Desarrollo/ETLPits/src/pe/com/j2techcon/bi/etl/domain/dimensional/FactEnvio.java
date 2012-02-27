@@ -33,6 +33,8 @@ public class FactEnvio {
 
     private Short envioIndPerd;
 
+    private Integer procId;
+
     public Integer getEnvioKeyCliente() {
         return envioKeyCliente;
     }
@@ -161,6 +163,18 @@ public class FactEnvio {
         this.envioIndPerd = envioIndPerd;
     }
 
+    public Integer getProcId() {
+        return procId;
+    }
+
+    public void setProcId(Integer procId) {
+        this.procId = procId;
+    }
+    
+    public void clear(){
+    	
+    }
+
 	@Override
 	public String toString() {
 		return "FactEnvio [envioKeyCliente=" + envioKeyCliente
@@ -174,6 +188,6 @@ public class FactEnvio {
 				+ ", envioIndMot=" + envioIndMot + ", envioIndRee="
 				+ envioIndRee + ", envioIndAnu=" + envioIndAnu
 				+ ", envioIndFueZon=" + envioIndFueZon + ", envioIndPerd="
-				+ envioIndPerd + "]";
+				+ envioIndPerd + ", procId=" + procId + "]";
 	}
 }
