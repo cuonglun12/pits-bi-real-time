@@ -43,6 +43,7 @@ drop table fact_orden;
 /* Table: dim_cliente                                           */
 /*==============================================================*/
 create table dim_cliente (
+cliente_area_key     INT4                 not null default 0,
 cliente_key          INT4                 not null default 0,
 cliente_cod_tip      INT4                 not null default 0,
 cliente_desc_tip     VARCHAR(250)         not null default '-',
@@ -56,7 +57,6 @@ cliente_cod_tip_doc  INT4                 not null default 0,
 cliente_desc_tip_doc VARCHAR(250)         not null default '-',
 cliente_num_tip_doc  CHAR(15)             not null default '-',
 cliente_desc         VARCHAR(250)         not null default '-',
-cliente_area_key     INT4                 not null default 0,
 cliente_area_cod     VARCHAR(30)          not null default '-',
 cliente_area_desc    VARCHAR(250)         not null default '-',
 cliente_area_cod_pais INT4                 not null default 0,
@@ -68,7 +68,7 @@ cliente_area_desc_provincia VARCHAR(250)         not null default '-',
 cliente_area_cod_distrito INT4                 not null default 0,
 cliente_area_desc_distrito VARCHAR(250)         not null default '-',
 proc_id              INT4                 not null default 0,
-constraint PK_DIM_CLIENTE primary key (cliente_key)
+constraint PK_DIM_CLIENTE primary key (cliente_area_key)
 );
 
 comment on table dim_cliente is
@@ -251,7 +251,7 @@ constraint PK_DIM_ZONA primary key (zona_key)
 /*==============================================================*/
 create table fact_cotizacion (
 cotizacion_key       INT4                 not null default 0,
-cotizacion_key_cliente INT4                 not null default 0,
+cotizacion_key_cliente_area INT4                 not null default 0,
 cotizacion_key_servicio INT4                 not null default 0,
 cotizacion_key_producto INT4                 not null default 0,
 cotizacion_key_fec_reg INT4                 not null default 0,
@@ -278,14 +278,14 @@ proc_id              INT4                 not null default 0
 /*==============================================================*/
 create table fact_despacho (
 despacho_key         INT4                 not null default 0,
-despacho_key_sede    INT4                 null default 0,
-despacho_key_zona    INT4                 null default 0,
-despacho_key_personal INT4                 null default 0,
-despacho_key_tipo_ruta INT4                 null default 0,
-despacho_key_fec_sal INT4                 null default 0,
-despacho_key_fec_retp INT4                 null default 0,
-despacho_key_fec_retr INT4                 null default 0,
-despacho_key_estado  INT4                 null default 0,
+despacho_key_sede    INT4                 not null default 0,
+despacho_key_zona    INT4                 not null default 0,
+despacho_key_personal INT4                 not null default 0,
+despacho_key_tipo_ruta INT4                 not null default 0,
+despacho_key_fec_sal INT4                 not null default 0,
+despacho_key_fec_retp INT4                 not null default 0,
+despacho_key_fec_retr INT4                 not null default 0,
+despacho_key_estado  INT4                 not null default 0,
 despacho_mon_pasaje  NUMERIC(15,4)        not null default 0,
 despacho_ind_unidad  INT2                 not null default 1,
 despacho_cnt_dias_exc INT4                 not null default 0,
@@ -305,15 +305,15 @@ proc_id              INT4                 not null default 0
 /* Table: fact_envio                                            */
 /*==============================================================*/
 create table fact_envio (
-envio_key_cliente    INT4                 null default 0,
-envio_key_servicio   INT4                 null default 0,
-envio_key_producto   INT4                 null default 0,
-envio_key_zona       INT4                 null default 0,
-envio_key_personal   INT4                 null default 0,
-envio_key_fec_sal    INT4                 null default 0,
-envio_key_fec_retp   INT4                 null default 0,
-envio_key_fec_retr   INT4                 null default 0,
-envio_key_estado     INT4                 null default 0,
+envio_key_cliente_area INT4                 not null default 0,
+envio_key_servicio   INT4                 not null default 0,
+envio_key_producto   INT4                 not null default 0,
+envio_key_zona       INT4                 not null default 0,
+envio_key_personal   INT4                 not null default 0,
+envio_key_fec_sal    INT4                 not null default 0,
+envio_key_fec_retp   INT4                 not null default 0,
+envio_key_fec_retr   INT4                 not null default 0,
+envio_key_estado     INT4                 not null default 0,
 envio_ind_unidad     INT2                 not null default 1,
 envio_ind_ent        INT2                 not null default 0,
 envio_ind_mot        INT2                 not null default 0,
@@ -329,7 +329,7 @@ proc_id              INT4                 not null default 0
 /*==============================================================*/
 create table fact_orden (
 orden_key            INT4                 not null default 0,
-orden_key_cliente    INT4                 not null default 0,
+orden_key_cliente_area INT4                 not null default 0,
 orden_key_servicio   INT4                 not null default 0,
 orden_key_producto   INT4                 not null default 0,
 orden_key_tipo_reparto INT4                 not null default 0,
