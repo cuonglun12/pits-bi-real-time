@@ -124,7 +124,18 @@ public class TEmpleado {
     }
     
     public void clear(){
-    	
+    	empId=null;
+    	empCod=null;
+    	empCodTipDoc=null;
+    	empNumTipDoc=null;
+    	empDesApePat=null;
+    	empDesApeMat=null;
+    	empDesNom=null;
+    	empFecNac=null;
+    	empSex=null;
+    	codIndCam=null;
+    	fecNumCam=null;
+    	procId=null;
     }
 
 	@Override

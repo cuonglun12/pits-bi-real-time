@@ -142,7 +142,20 @@ public class DimSede {
     }
     
     public void clear(){
-    	
+    	sedeKey=null;
+    	sedeCod=null;
+    	sedeCodTipo=null;
+    	sedeDescTipo=null;
+    	sedeCodPais=null;
+    	sedeDescPais=null;
+    	sedeCodDepartamento=null;
+    	sedeDescDepartamento=null;
+    	sedeCodProvincia=null;
+    	sedeDescProvincia=null;
+    	sedeCodDistrito=null;
+    	sedeDescDistrito=null;
+    	sedeDesc=null;
+    	procId=null;
     }
 
 	@Override

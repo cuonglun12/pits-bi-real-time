@@ -215,7 +215,27 @@ public class TDespacho {
     }
     
     public void clear(){
-    	
+    	despId=null;
+    	despCodTipDoc=null;
+    	despSerieDoc=null;
+    	despNumeroDoc=null;
+    	sedId=null;
+    	zonId=null;
+    	empCatId=null;
+    	despCodTip=null;
+    	despCodTipRut=null;
+    	despCodVer=null;
+    	despMonPasaje=null;
+    	despCntCargos=null;
+    	despFecSal=null;
+    	despFecRetPro=null;
+    	despFecRetRea=null;
+    	despFecVer=null;
+    	despCanPas=null;
+    	despCodEst=null;
+    	fecNumCam=null;
+    	codIndCam=null;
+    	procId=null;
     }
 
 	@Override

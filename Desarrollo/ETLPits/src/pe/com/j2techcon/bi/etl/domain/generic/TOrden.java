@@ -295,7 +295,35 @@ public class TOrden {
     }
     
     public void clear(){
-    	
+    	ordId=null;
+    	cotiId=null;
+    	codAreCli=null;
+    	empCatId=null;
+    	ordCodTipRep=null;
+    	servId=null;
+    	prodId=null;
+    	ordCodTipPag=null;
+    	ordCodTipIng=null;
+    	ordCodTipMon=null;
+    	ordCodTipDoc=null;
+    	ordSerieDoc=null;
+    	ordNumDoc=null;
+    	ordTipCambio=null;
+    	ordCntCargos=null;
+    	ordFecIni=null;
+    	ordFecVen=null;
+    	ordFecCie=null;
+    	ordFecDev=null;
+    	ordFecLiq=null;
+    	ordImporte=null;
+    	ordDescuento=null;
+    	ordVenta=null;
+    	ordIgv=null;
+    	ordTotal=null;
+    	ordCodEst=null;
+    	fecNumCam=null;
+    	codIndCam=null;
+    	procId=null;
     }
 
 	@Override

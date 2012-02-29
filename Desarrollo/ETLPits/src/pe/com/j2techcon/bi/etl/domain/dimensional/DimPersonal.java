@@ -72,7 +72,13 @@ public class DimPersonal {
     }
     
     public void clear(){
-    	
+    	personalKey=null;
+    	personalCodigo=null;
+    	personalCodigoCategoria=null;
+    	personalDescripcionCategoria=null;
+    	personalNombre=null;
+    	personalSexo=null;
+    	procId=null;
     }
 
 	@Override

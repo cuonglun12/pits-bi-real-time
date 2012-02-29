@@ -62,7 +62,12 @@ public class DimProducto {
     }
     
     public void clear(){
-    	
+    	productoKey=null;
+    	productoCod=null;
+    	productoCodTip=null;
+    	productoDescTip=null;
+    	productoDesc=null;
+    	procId=null;
     }
 
 	@Override

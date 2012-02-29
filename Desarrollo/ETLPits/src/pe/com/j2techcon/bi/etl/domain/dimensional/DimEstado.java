@@ -62,7 +62,12 @@ public class DimEstado {
     }
     
     public void clear(){
-    	
+    	estadoKey=null;
+    	estadoCodTipo=null;
+    	estadoDescTipo=null;
+    	estadoCod=null;
+    	estadoDesc=null;
+    	procId=null;
     }
 
 	@Override

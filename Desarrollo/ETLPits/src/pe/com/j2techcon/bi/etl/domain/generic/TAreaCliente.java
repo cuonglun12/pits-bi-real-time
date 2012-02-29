@@ -102,7 +102,16 @@ public class TAreaCliente {
     }
     
     public void clear(){
-    	
+    	areCliId=null;
+    	cliId=null;
+    	areCliCodTip=null;
+    	ubiId=null;
+    	areCliDes=null;
+    	areCliDesDir=null;
+    	areCliCod=null;
+    	fecNumCam=null;
+    	codIndCam=null;
+    	procId=null;
     }
 
 	@Override

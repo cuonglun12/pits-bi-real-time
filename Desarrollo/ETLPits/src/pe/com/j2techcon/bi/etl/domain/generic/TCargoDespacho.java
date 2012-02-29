@@ -164,7 +164,22 @@ public class TCargoDespacho {
     }
     
     public void clear(){
-    	
+    	carDespId=null;
+    	despId=null;
+    	cargId=null;
+    	zonId=null;
+    	carDespCodMov=null;
+    	carDespCodVer=null;
+    	carDespDir=null;
+    	carDespRef=null;
+    	carDespFecSal=null;
+    	carDespFecRetPro=null;
+    	carDespFecRetRea=null;
+    	carDespFecVer=null;
+    	carDespCodEst=null;
+    	fecNumCam=null;
+    	codIndCam=null;
+    	procId=null;
     }
 
 	@Override

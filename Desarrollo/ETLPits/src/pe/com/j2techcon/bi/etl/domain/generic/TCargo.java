@@ -194,7 +194,25 @@ public class TCargo {
     }
     
     public void clear(){
-    	
+    	cargId=null;
+    	cargCorr=null;
+    	ordId=null;
+    	prodId=null;
+    	zonId=null;
+    	zonIdNew=null;
+    	cargCodMov=null;
+    	cargCodTipIng=null;
+    	cargCodFecDes=null;
+    	cargCodFecRec=null;
+    	cargDestinatario=null;
+    	cargDir=null;
+    	cargRef=null;
+    	cargNewDir=null;
+    	cargNewRef=null;
+    	cargCodEst=null;
+    	fecNumCam=null;
+    	codIndCam=null;
+    	procId=null;
     }
 
 	@Override

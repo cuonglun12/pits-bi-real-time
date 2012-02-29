@@ -224,7 +224,28 @@ public class FactDespacho {
     }
     
     public void clear(){
-    	
+    	despachoKey=null;
+    	despachoKeySede=null;
+    	despachoKeyZona=null;
+    	despachoKeyPersonal=null;
+    	despachoKeyTipoRuta=null;
+    	despachoKeyFecSal=null;
+    	despachoKeyFecRetp=null;
+    	despachoKeyFecRetr=null;
+    	despachoKeyEstado=null;
+    	despachoMonPasaje=null;
+    	despachoIndUnidad=null;
+    	despachoCntDiasExc=null;
+    	despachoCntCargos=null;
+    	despachoCntEnt=null;
+    	despachoCntMot=null;
+    	despachoCntRee=null;
+    	despachoCntAnu=null;
+    	despachoCntFueZon=null;
+    	despachoCntPerd=null;
+    	despachoTrabEnFec=null;
+    	despachoTrabFueraFec=null;
+    	procId=null;
     }
 
 	@Override

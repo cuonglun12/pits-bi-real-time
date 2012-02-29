@@ -42,7 +42,10 @@ public class DimTipoReparto {
     }
     
     public void clear(){
-    	
+    	tipoRepartoKey=null;
+    	tipoRepartoCod=null;
+    	tipoRepartoDesc=null;
+    	procId=null;
     }
 
 	@Override

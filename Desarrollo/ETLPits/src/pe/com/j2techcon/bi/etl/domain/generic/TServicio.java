@@ -82,7 +82,14 @@ public class TServicio {
     }
     
     public void clear(){
-    	
+    	servId=null;
+    	sevCod=null;
+    	servCodNeg=null;
+    	servCodAmb=null;
+    	servDes=null;
+    	codIndCam=null;
+    	fecNumCam=null;
+    	procId=null;
     }
 
 	@Override

@@ -252,7 +252,31 @@ public class DimCliente {
     }
     
     public void clear(){
-    	
+    	clienteAreaKey=null;
+    	clienteKey=null;
+    	clienteCodTip=null;
+    	clienteDescTip=null;
+    	clienteCodCategoria=null;
+    	clienteDescCategoria=null;
+    	clienteCodFacturacion=null;
+    	clienteDescFacturacion=null;
+    	clienteCodCredito=null;
+    	clienteDescCredito=null;
+    	clienteCodTipDoc=null;
+    	clienteDescTipDoc=null;
+    	clienteNumTipDoc=null;
+    	clienteDesc=null;
+    	clienteAreaCod=null;
+    	clienteAreaDesc=null;
+    	clienteAreaCodPais=null;
+    	clienteAreaDesPais=null;
+    	clienteAreaCodDepartamento=null;
+    	clienteAreaDescDepartamento=null;
+    	clienteAreaCodProvincia=null;
+    	clienteAreaDescProvincia=null;
+    	clienteAreaCodDistrito=null;
+    	clienteAreaDescDistrito=null;
+    	procId=null;
     }
 
 	@Override

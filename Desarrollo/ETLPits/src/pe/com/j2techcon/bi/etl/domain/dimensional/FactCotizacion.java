@@ -214,7 +214,27 @@ public class FactCotizacion {
     }
     
     public void clear(){
-    	
+    	cotizacionKey=null;
+    	cotizacionKeyClienteArea=null;
+    	cotizacionKeyServicio=null;
+    	cotizacionKeyProducto=null;
+    	cotizacionKeyFecReg=null;
+    	cotizacionKeyFecApro=null;
+    	cotizacionKeyFecIni=null;
+    	cotizacionKeyFecFin=null;
+    	cotizacionKeyEstado=null;
+    	cotizacionCnt=null;
+    	cotizacionCntOrdTotal=null;
+    	cotizacionCntOrdEnTrab=null;
+    	cotizacionCntOrdCer=null;
+    	cotizacionCntOrdCatiempo=null;
+    	cotizacionCntOrdCftiempo=null;
+    	cotizacionCntOrdFac=null;
+    	cotizacionCntOrdCan=null;
+    	cotizacionMonImporte=null;
+    	cotizacionMonIgv=null;
+    	cotizacionMonTotal=null;
+    	procId=null;
     }
 
 	@Override

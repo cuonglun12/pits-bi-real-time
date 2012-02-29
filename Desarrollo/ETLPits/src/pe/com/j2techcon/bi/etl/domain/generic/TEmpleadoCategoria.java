@@ -72,7 +72,13 @@ public class TEmpleadoCategoria {
     }
     
     public void clear(){
-    	
+    	empCatId=null;
+    	empId=null;
+    	empCatCodTip=null;
+    	empCatCod=null;
+    	fecNumCam=null;
+    	codIndCam=null;
+    	procId=null;
     }
 
 	@Override

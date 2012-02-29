@@ -304,7 +304,36 @@ public class FactOrden {
     }
     
     public void clear(){
-    	
+    	ordenKey=null;
+    	ordenKeyClienteArea=null;
+    	ordenKeyServicio=null;
+    	ordenKeyProducto=null;
+    	ordenKeyTipoReparto=null;
+    	ordenKeyTipoDocumento=null;
+    	ordenKeyTipoPago=null;
+    	ordenKeyMoneda=null;
+    	ordenKeyFecReg=null;
+    	ordenKeyFecIni=null;
+    	ordenKeyFecVen=null;
+    	ordenKeyFecCie=null;
+    	ordenKeyFecDev=null;
+    	ordenKeyEstado=null;
+    	ordenAtenEnFec=null;
+    	ordenAtenFueraFec=null;
+    	ordenIndUnidad=null;
+    	ordenCntDiasExc=null;
+    	ordenCntCargos=null;
+    	ordenCntCargosAnu=null;
+    	ordenCntCargosEnt=null;
+    	ordenCntCargosFueZon=null;
+    	ordenCntCargosMot=null;
+    	ordenCntCargosPerd=null;
+    	ordenCntCargosRee=null;
+    	ordenMonImporte=null;
+    	ordenMonDescuento=null;
+    	ordenMonIgv=null;
+    	ordenMonTotal=null;
+    	procId=null;
     }
 
 	@Override

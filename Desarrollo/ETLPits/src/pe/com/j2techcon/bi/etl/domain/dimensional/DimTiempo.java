@@ -154,7 +154,21 @@ public class DimTiempo {
     }
     
     public void clear(){
-    	
+    	tiempoKey=null;
+    	tiempoFecha=null;
+    	tiempoDiaSemana=null;
+    	tiempoDiaMes=null;
+    	tiempoNombreDia=null;
+    	tiempoSemanaMes=null;
+    	tiempoSemanaAnio=null;
+    	tiempoMes=null;
+    	tiempoNombreMes=null;
+    	tiempoTrimestre=null;
+    	tiempoNombreTrimestre=null;
+    	tiempoSemestre=null;
+    	tiempoNombreSemestre=null;
+    	tiempoAnio=null;
+    	tiempoEsFeriado=null;
     }
 
 	@Override

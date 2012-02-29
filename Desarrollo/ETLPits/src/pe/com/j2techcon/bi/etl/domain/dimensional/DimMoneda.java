@@ -42,7 +42,10 @@ public class DimMoneda {
     }
     
     public void clear(){
-    	
+    	monedaKey=null;
+    	monedaCod=null;
+    	monedaDesc=null;
+    	procId=null;
     }
 
 	@Override

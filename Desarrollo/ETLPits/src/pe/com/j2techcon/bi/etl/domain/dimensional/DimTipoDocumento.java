@@ -42,7 +42,10 @@ public class DimTipoDocumento {
     }
     
     public void clear(){
-    	
+    	tipoDocumentoKey=null;
+    	tipoDocumentoCod=null;
+    	tipoDocumentoDesc=null;
+    	procId=null;
     }
 
 	@Override

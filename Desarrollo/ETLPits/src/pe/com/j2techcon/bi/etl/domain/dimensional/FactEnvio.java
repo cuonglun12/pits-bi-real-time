@@ -172,7 +172,23 @@ public class FactEnvio {
     }
     
     public void clear(){
-    	
+    	envioKeyClienteArea=null;
+    	envioKeyServicio=null;
+    	envioKeyProducto=null;
+    	envioKeyZona=null;
+    	envioKeyPersonal=null;
+    	envioKeyFecSal=null;
+    	envioKeyFecRetp=null;
+    	envioKeyFecRetr=null;
+    	envioKeyEstado=null;
+    	envioIndUnidad=null;
+    	envioIndEnt=null;
+    	envioIndMot=null;
+    	envioIndRee=null;
+    	envioIndAnu=null;
+    	envioIndFueZon=null;
+    	envioIndPerd=null;
+    	procId=null;
     }
 
 	@Override

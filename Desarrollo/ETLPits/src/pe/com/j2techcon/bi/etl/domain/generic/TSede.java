@@ -82,7 +82,14 @@ public class TSede {
     }
     
     public void clear(){
-    	
+    	sedId=null;
+    	sedCod=null;
+    	ubiId=null;
+    	sedCodTip=null;
+    	sedDes=null;
+    	fecNumCam=null;
+    	codIndCam=null;
+    	procId=null;
     }
 
 	@Override

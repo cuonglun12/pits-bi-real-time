@@ -82,7 +82,14 @@ public class TParametro {
     }
     
     public void clear(){
-    	
+    	paramId=null;
+    	paramCodTip=null;
+    	paramCod=null;
+    	paramDes=null;
+    	paramRef=null;
+    	fecNumCam=null;
+    	codIndCam=null;
+    	procId=null;
     }
 
 	@Override

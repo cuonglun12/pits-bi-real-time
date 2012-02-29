@@ -164,7 +164,22 @@ public class TCotizacion {
     }
     
     public void clear(){
-    	
+    	cotiId=null;
+    	empCatId=null;
+    	areCliId=null;
+    	cotiCodAmb=null;
+    	cotiCodServ=null;
+    	cotiCodNeg=null;
+    	cotiCodTipDoc=null;
+    	cotiSerieDoc=null;
+    	cotiNumDoc=null;
+    	cotiCodEst=null;
+    	cotiFecApro=null;
+    	cotiFecIni=null;
+    	cotiFecFin=null;
+    	fecNumCam=null;
+    	codIndCam=null;
+    	procId=null;
     }
 
 	@Override

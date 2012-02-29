@@ -192,7 +192,25 @@ public class TCliente {
     }
     
     public void clear(){
-    	
+    	cliId=null;
+    	cliCodTip=null;
+    	cliCodCat=null;
+    	cliCodTipDoc=null;
+    	cliNumTipDoc=null;
+    	cliDesRazSoc=null;
+    	cliDesApePat=null;
+    	cliDesApeMat=null;
+    	cliDesNom=null;
+    	cliCodTipFac=null;
+    	cliCodTipCre=null;
+    	ubiId=null;
+    	cliCod=null;
+    	cliNumTel=null;
+    	cliDesCor=null;
+    	cliDesDir=null;
+    	fecNumCam=null;
+    	codIndCam=null;
+    	procId=null;
     }
 
 	@Override

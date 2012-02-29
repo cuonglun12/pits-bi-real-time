@@ -124,7 +124,18 @@ public class TProceso {
     }
     
     public void clear(){
-    	
+    	procId=null;
+    	procTip=null;
+    	procFecDesde=null;
+    	procFecHasta=null;
+    	procCntRegXBloque=null;
+    	procNumRegTot=null;
+    	procNumRegPro=null;
+    	procNumRegRec=null;
+    	procFecIni=null;
+    	procFecFin=null;
+    	procFecAct=null;
+    	procEst=null;
     }
 
 	@Override

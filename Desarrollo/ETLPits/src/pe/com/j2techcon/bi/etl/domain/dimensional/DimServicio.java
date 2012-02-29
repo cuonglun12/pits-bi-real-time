@@ -82,7 +82,14 @@ public class DimServicio {
     }
     
     public void clear(){
-    	
+    	servicioKey=null;
+    	servicioCod=null;
+    	servicioCodAmbito=null;
+    	servicioDescAmbito=null;
+    	servicioCodNegocio=null;
+    	servicioDescNegocio=null;
+    	servicioDesc=null;
+    	procId=null;
     }
 
 	@Override

@@ -42,7 +42,10 @@ public class DimTipoPago {
     }
     
     public void clear(){
-    	
+    	tipoPagoKey=null;
+    	tipoPagoCod=null;
+    	tipoPagoDesc=null;
+    	procId=null;
     }
 
 	@Override

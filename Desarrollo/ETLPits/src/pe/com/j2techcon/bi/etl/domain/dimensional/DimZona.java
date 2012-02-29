@@ -122,7 +122,18 @@ public class DimZona {
     }
     
     public void clear(){
-    	
+    	zonaKey=null;
+    	zonaCodPais=null;
+    	zonaDescPais=null;
+    	zonaCodDepartamento=null;
+    	zonaDescDepartamento=null;
+    	zonaCodProvincia=null;
+    	zonaDescProvincia=null;
+    	zonaCodDistrito=null;
+    	zonaDescDistrito=null;
+    	zonaCod=null;
+    	zonaCodPostal=null;
+    	procId=null;
     }
 
 	@Override

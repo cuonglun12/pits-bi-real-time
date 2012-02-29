@@ -92,7 +92,15 @@ public class TUbigeo {
     }
     
     public void clear(){
-    	
+    	ubiId=null;
+    	ubiCod=null;
+    	ubiCodPais=null;
+    	ubiCodDepartamento=null;
+    	ubiCodProvincia=null;
+    	ubiCodDistrito=null;
+    	codIndCam=null;
+    	fecNumCam=null;
+    	procId=null;
     }
 
 	@Override

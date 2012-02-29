@@ -104,7 +104,16 @@ public class TProducto {
     }
     
     public void clear(){
-    	
+    	prodId=null;
+    	prodCodTip=null;
+    	prodCodAmb=null;
+    	prodCodNeg=null;
+    	prodCod=null;
+    	prodDes=null;
+    	prodPre=null;
+    	fecNumCam=null;
+    	codIndCam=null;
+    	procId=null;
     }
 
 	@Override

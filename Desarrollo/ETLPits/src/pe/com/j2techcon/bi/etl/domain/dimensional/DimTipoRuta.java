@@ -42,7 +42,10 @@ public class DimTipoRuta {
     }
     
     public void clear(){
-    	
+    	tipoRutaKey=null;
+    	tipoRutaCod=null;
+    	tipoRutaDesc=null;
+    	procId=null;
     }
 
 	@Override
