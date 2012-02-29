@@ -2,6 +2,9 @@ package pe.com.j2techcon.bi.etl.util;
 
 public class Constantes {
 	
+	private String valueStringDefault;
+	private int valueNumberDefault;
+	
 	private String stateRecordNew;
 	private String stateRecordProcessed;
 	private String stateRecordInconsistent;
@@ -15,7 +18,27 @@ public class Constantes {
 	
 	private int resultTransactionNoResult;
 	
+	private int resultProcessStarted;
+	private int resultProcessCompletedCorrectly;
+	private int resultProcessCompletedErrors;
+	
 	private int sizePage;
+
+	public String getValueStringDefault() {
+		return valueStringDefault;
+	}
+
+	public void setValueStringDefault(String valueStringDefault) {
+		this.valueStringDefault = valueStringDefault;
+	}
+
+	public int getValueNumberDefault() {
+		return valueNumberDefault;
+	}
+
+	public void setValueNumberDefault(int valueNumberDefault) {
+		this.valueNumberDefault = valueNumberDefault;
+	}
 
 	public String getStateRecordNew() {
 		return stateRecordNew;
@@ -90,6 +113,31 @@ public class Constantes {
 		this.resultTransactionNoResult = resultTransactionNoResult;
 	}
 
+	public int getResultProcessStarted() {
+		return resultProcessStarted;
+	}
+
+	public void setResultProcessStarted(int resultProcessStarted) {
+		this.resultProcessStarted = resultProcessStarted;
+	}
+
+	public int getResultProcessCompletedCorrectly() {
+		return resultProcessCompletedCorrectly;
+	}
+
+	public void setResultProcessCompletedCorrectly(
+			int resultProcessCompletedCorrectly) {
+		this.resultProcessCompletedCorrectly = resultProcessCompletedCorrectly;
+	}
+
+	public int getResultProcessCompletedErrors() {
+		return resultProcessCompletedErrors;
+	}
+
+	public void setResultProcessCompletedErrors(int resultProcessCompletedErrors) {
+		this.resultProcessCompletedErrors = resultProcessCompletedErrors;
+	}
+
 	public int getSizePage() {
 		return sizePage;
 	}
@@ -100,7 +148,9 @@ public class Constantes {
 
 	@Override
 	public String toString() {
-		return "Constantes [stateRecordNew=" + stateRecordNew
+		return "Constantes [valueStringDefault=" + valueStringDefault
+				+ ", valueNumberDefault=" + valueNumberDefault
+				+ ", stateRecordNew=" + stateRecordNew
 				+ ", stateRecordProcessed=" + stateRecordProcessed
 				+ ", stateRecordInconsistent=" + stateRecordInconsistent
 				+ ", stateProcessStarted=" + stateProcessStarted
@@ -110,8 +160,13 @@ public class Constantes {
 				+ stateProcessCompletedErrors + ", typeProcessSimple="
 				+ typeProcessSimple + ", typeProcessReProcess="
 				+ typeProcessReProcess + ", resultTransactionNoResult="
-				+ resultTransactionNoResult + ", sizePage=" + sizePage + "]";
+				+ resultTransactionNoResult + ", resultProcessStarted="
+				+ resultProcessStarted + ", resultProcessCompletedCorrectly="
+				+ resultProcessCompletedCorrectly
+				+ ", resultProcessCompletedErrors="
+				+ resultProcessCompletedErrors + ", sizePage=" + sizePage + "]";
 	}
+
 	
 }
 

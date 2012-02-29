@@ -177,63 +177,63 @@ public class FactCotizacionExample {
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionKeyClienteIsNull() {
-            addCriterion("cotizacion_key_cliente is null");
+        public Criteria andCotizacionKeyClienteAreaIsNull() {
+            addCriterion("cotizacion_key_cliente_area is null");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionKeyClienteIsNotNull() {
-            addCriterion("cotizacion_key_cliente is not null");
+        public Criteria andCotizacionKeyClienteAreaIsNotNull() {
+            addCriterion("cotizacion_key_cliente_area is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionKeyClienteEqualTo(Integer value) {
-            addCriterion("cotizacion_key_cliente =", value, "cotizacionKeyCliente");
+        public Criteria andCotizacionKeyClienteAreaEqualTo(Integer value) {
+            addCriterion("cotizacion_key_cliente_area =", value, "cotizacionKeyClienteArea");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionKeyClienteNotEqualTo(Integer value) {
-            addCriterion("cotizacion_key_cliente <>", value, "cotizacionKeyCliente");
+        public Criteria andCotizacionKeyClienteAreaNotEqualTo(Integer value) {
+            addCriterion("cotizacion_key_cliente_area <>", value, "cotizacionKeyClienteArea");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionKeyClienteGreaterThan(Integer value) {
-            addCriterion("cotizacion_key_cliente >", value, "cotizacionKeyCliente");
+        public Criteria andCotizacionKeyClienteAreaGreaterThan(Integer value) {
+            addCriterion("cotizacion_key_cliente_area >", value, "cotizacionKeyClienteArea");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionKeyClienteGreaterThanOrEqualTo(Integer value) {
-            addCriterion("cotizacion_key_cliente >=", value, "cotizacionKeyCliente");
+        public Criteria andCotizacionKeyClienteAreaGreaterThanOrEqualTo(Integer value) {
+            addCriterion("cotizacion_key_cliente_area >=", value, "cotizacionKeyClienteArea");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionKeyClienteLessThan(Integer value) {
-            addCriterion("cotizacion_key_cliente <", value, "cotizacionKeyCliente");
+        public Criteria andCotizacionKeyClienteAreaLessThan(Integer value) {
+            addCriterion("cotizacion_key_cliente_area <", value, "cotizacionKeyClienteArea");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionKeyClienteLessThanOrEqualTo(Integer value) {
-            addCriterion("cotizacion_key_cliente <=", value, "cotizacionKeyCliente");
+        public Criteria andCotizacionKeyClienteAreaLessThanOrEqualTo(Integer value) {
+            addCriterion("cotizacion_key_cliente_area <=", value, "cotizacionKeyClienteArea");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionKeyClienteIn(List<Integer> values) {
-            addCriterion("cotizacion_key_cliente in", values, "cotizacionKeyCliente");
+        public Criteria andCotizacionKeyClienteAreaIn(List<Integer> values) {
+            addCriterion("cotizacion_key_cliente_area in", values, "cotizacionKeyClienteArea");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionKeyClienteNotIn(List<Integer> values) {
-            addCriterion("cotizacion_key_cliente not in", values, "cotizacionKeyCliente");
+        public Criteria andCotizacionKeyClienteAreaNotIn(List<Integer> values) {
+            addCriterion("cotizacion_key_cliente_area not in", values, "cotizacionKeyClienteArea");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionKeyClienteBetween(Integer value1, Integer value2) {
-            addCriterion("cotizacion_key_cliente between", value1, value2, "cotizacionKeyCliente");
+        public Criteria andCotizacionKeyClienteAreaBetween(Integer value1, Integer value2) {
+            addCriterion("cotizacion_key_cliente_area between", value1, value2, "cotizacionKeyClienteArea");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionKeyClienteNotBetween(Integer value1, Integer value2) {
-            addCriterion("cotizacion_key_cliente not between", value1, value2, "cotizacionKeyCliente");
+        public Criteria andCotizacionKeyClienteAreaNotBetween(Integer value1, Integer value2) {
+            addCriterion("cotizacion_key_cliente_area not between", value1, value2, "cotizacionKeyClienteArea");
             return (Criteria) this;
         }
 

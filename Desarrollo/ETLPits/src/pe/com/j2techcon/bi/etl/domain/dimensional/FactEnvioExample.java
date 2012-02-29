@@ -116,63 +116,63 @@ public class FactEnvioExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andEnvioKeyClienteIsNull() {
-            addCriterion("envio_key_cliente is null");
+        public Criteria andEnvioKeyClienteAreaIsNull() {
+            addCriterion("envio_key_cliente_area is null");
             return (Criteria) this;
         }
 
-        public Criteria andEnvioKeyClienteIsNotNull() {
-            addCriterion("envio_key_cliente is not null");
+        public Criteria andEnvioKeyClienteAreaIsNotNull() {
+            addCriterion("envio_key_cliente_area is not null");
             return (Criteria) this;
         }
 
-        public Criteria andEnvioKeyClienteEqualTo(Integer value) {
-            addCriterion("envio_key_cliente =", value, "envioKeyCliente");
+        public Criteria andEnvioKeyClienteAreaEqualTo(Integer value) {
+            addCriterion("envio_key_cliente_area =", value, "envioKeyClienteArea");
             return (Criteria) this;
         }
 
-        public Criteria andEnvioKeyClienteNotEqualTo(Integer value) {
-            addCriterion("envio_key_cliente <>", value, "envioKeyCliente");
+        public Criteria andEnvioKeyClienteAreaNotEqualTo(Integer value) {
+            addCriterion("envio_key_cliente_area <>", value, "envioKeyClienteArea");
             return (Criteria) this;
         }
 
-        public Criteria andEnvioKeyClienteGreaterThan(Integer value) {
-            addCriterion("envio_key_cliente >", value, "envioKeyCliente");
+        public Criteria andEnvioKeyClienteAreaGreaterThan(Integer value) {
+            addCriterion("envio_key_cliente_area >", value, "envioKeyClienteArea");
             return (Criteria) this;
         }
 
-        public Criteria andEnvioKeyClienteGreaterThanOrEqualTo(Integer value) {
-            addCriterion("envio_key_cliente >=", value, "envioKeyCliente");
+        public Criteria andEnvioKeyClienteAreaGreaterThanOrEqualTo(Integer value) {
+            addCriterion("envio_key_cliente_area >=", value, "envioKeyClienteArea");
             return (Criteria) this;
         }
 
-        public Criteria andEnvioKeyClienteLessThan(Integer value) {
-            addCriterion("envio_key_cliente <", value, "envioKeyCliente");
+        public Criteria andEnvioKeyClienteAreaLessThan(Integer value) {
+            addCriterion("envio_key_cliente_area <", value, "envioKeyClienteArea");
             return (Criteria) this;
         }
 
-        public Criteria andEnvioKeyClienteLessThanOrEqualTo(Integer value) {
-            addCriterion("envio_key_cliente <=", value, "envioKeyCliente");
+        public Criteria andEnvioKeyClienteAreaLessThanOrEqualTo(Integer value) {
+            addCriterion("envio_key_cliente_area <=", value, "envioKeyClienteArea");
             return (Criteria) this;
         }
 
-        public Criteria andEnvioKeyClienteIn(List<Integer> values) {
-            addCriterion("envio_key_cliente in", values, "envioKeyCliente");
+        public Criteria andEnvioKeyClienteAreaIn(List<Integer> values) {
+            addCriterion("envio_key_cliente_area in", values, "envioKeyClienteArea");
             return (Criteria) this;
         }
 
-        public Criteria andEnvioKeyClienteNotIn(List<Integer> values) {
-            addCriterion("envio_key_cliente not in", values, "envioKeyCliente");
+        public Criteria andEnvioKeyClienteAreaNotIn(List<Integer> values) {
+            addCriterion("envio_key_cliente_area not in", values, "envioKeyClienteArea");
             return (Criteria) this;
         }
 
-        public Criteria andEnvioKeyClienteBetween(Integer value1, Integer value2) {
-            addCriterion("envio_key_cliente between", value1, value2, "envioKeyCliente");
+        public Criteria andEnvioKeyClienteAreaBetween(Integer value1, Integer value2) {
+            addCriterion("envio_key_cliente_area between", value1, value2, "envioKeyClienteArea");
             return (Criteria) this;
         }
 
-        public Criteria andEnvioKeyClienteNotBetween(Integer value1, Integer value2) {
-            addCriterion("envio_key_cliente not between", value1, value2, "envioKeyCliente");
+        public Criteria andEnvioKeyClienteAreaNotBetween(Integer value1, Integer value2) {
+            addCriterion("envio_key_cliente_area not between", value1, value2, "envioKeyClienteArea");
             return (Criteria) this;
         }
 

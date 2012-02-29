@@ -1,7 +1,7 @@
 package pe.com.j2techcon.bi.etl.domain.dimensional;
 
 public class FactEnvio {
-    private Integer envioKeyCliente;
+    private Integer envioKeyClienteArea;
 
     private Integer envioKeyServicio;
 
@@ -35,12 +35,12 @@ public class FactEnvio {
 
     private Integer procId;
 
-    public Integer getEnvioKeyCliente() {
-        return envioKeyCliente;
+    public Integer getEnvioKeyClienteArea() {
+        return envioKeyClienteArea;
     }
 
-    public void setEnvioKeyCliente(Integer envioKeyCliente) {
-        this.envioKeyCliente = envioKeyCliente;
+    public void setEnvioKeyClienteArea(Integer envioKeyClienteArea) {
+        this.envioKeyClienteArea = envioKeyClienteArea;
     }
 
     public Integer getEnvioKeyServicio() {
@@ -177,7 +177,7 @@ public class FactEnvio {
 
 	@Override
 	public String toString() {
-		return "FactEnvio [envioKeyCliente=" + envioKeyCliente
+		return "FactEnvio [envioKeyClienteArea=" + envioKeyClienteArea
 				+ ", envioKeyServicio=" + envioKeyServicio
 				+ ", envioKeyProducto=" + envioKeyProducto + ", envioKeyZona="
 				+ envioKeyZona + ", envioKeyPersonal=" + envioKeyPersonal

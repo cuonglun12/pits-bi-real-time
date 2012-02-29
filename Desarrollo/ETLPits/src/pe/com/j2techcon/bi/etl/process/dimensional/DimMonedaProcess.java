@@ -116,6 +116,9 @@ public class DimMonedaProcess {
 	
 	public int startProcess(){
 		DimMonedaManager dimMonedaManager = factory.getBean("dimMonedaManager", DimMonedaManager.class);
+		while(true){
+			break;
+		}
 		return getResultProcess();
 	}
 	

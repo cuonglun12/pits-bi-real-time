@@ -177,63 +177,63 @@ public class FactOrdenExample {
             return (Criteria) this;
         }
 
-        public Criteria andOrdenKeyClienteIsNull() {
-            addCriterion("orden_key_cliente is null");
+        public Criteria andOrdenKeyClienteAreaIsNull() {
+            addCriterion("orden_key_cliente_area is null");
             return (Criteria) this;
         }
 
-        public Criteria andOrdenKeyClienteIsNotNull() {
-            addCriterion("orden_key_cliente is not null");
+        public Criteria andOrdenKeyClienteAreaIsNotNull() {
+            addCriterion("orden_key_cliente_area is not null");
             return (Criteria) this;
         }
 
-        public Criteria andOrdenKeyClienteEqualTo(Integer value) {
-            addCriterion("orden_key_cliente =", value, "ordenKeyCliente");
+        public Criteria andOrdenKeyClienteAreaEqualTo(Integer value) {
+            addCriterion("orden_key_cliente_area =", value, "ordenKeyClienteArea");
             return (Criteria) this;
         }
 
-        public Criteria andOrdenKeyClienteNotEqualTo(Integer value) {
-            addCriterion("orden_key_cliente <>", value, "ordenKeyCliente");
+        public Criteria andOrdenKeyClienteAreaNotEqualTo(Integer value) {
+            addCriterion("orden_key_cliente_area <>", value, "ordenKeyClienteArea");
             return (Criteria) this;
         }
 
-        public Criteria andOrdenKeyClienteGreaterThan(Integer value) {
-            addCriterion("orden_key_cliente >", value, "ordenKeyCliente");
+        public Criteria andOrdenKeyClienteAreaGreaterThan(Integer value) {
+            addCriterion("orden_key_cliente_area >", value, "ordenKeyClienteArea");
             return (Criteria) this;
         }
 
-        public Criteria andOrdenKeyClienteGreaterThanOrEqualTo(Integer value) {
-            addCriterion("orden_key_cliente >=", value, "ordenKeyCliente");
+        public Criteria andOrdenKeyClienteAreaGreaterThanOrEqualTo(Integer value) {
+            addCriterion("orden_key_cliente_area >=", value, "ordenKeyClienteArea");
             return (Criteria) this;
         }
 
-        public Criteria andOrdenKeyClienteLessThan(Integer value) {
-            addCriterion("orden_key_cliente <", value, "ordenKeyCliente");
+        public Criteria andOrdenKeyClienteAreaLessThan(Integer value) {
+            addCriterion("orden_key_cliente_area <", value, "ordenKeyClienteArea");
             return (Criteria) this;
         }
 
-        public Criteria andOrdenKeyClienteLessThanOrEqualTo(Integer value) {
-            addCriterion("orden_key_cliente <=", value, "ordenKeyCliente");
+        public Criteria andOrdenKeyClienteAreaLessThanOrEqualTo(Integer value) {
+            addCriterion("orden_key_cliente_area <=", value, "ordenKeyClienteArea");
             return (Criteria) this;
         }
 
-        public Criteria andOrdenKeyClienteIn(List<Integer> values) {
-            addCriterion("orden_key_cliente in", values, "ordenKeyCliente");
+        public Criteria andOrdenKeyClienteAreaIn(List<Integer> values) {
+            addCriterion("orden_key_cliente_area in", values, "ordenKeyClienteArea");
             return (Criteria) this;
         }
 
-        public Criteria andOrdenKeyClienteNotIn(List<Integer> values) {
-            addCriterion("orden_key_cliente not in", values, "ordenKeyCliente");
+        public Criteria andOrdenKeyClienteAreaNotIn(List<Integer> values) {
+            addCriterion("orden_key_cliente_area not in", values, "ordenKeyClienteArea");
             return (Criteria) this;
         }
 
-        public Criteria andOrdenKeyClienteBetween(Integer value1, Integer value2) {
-            addCriterion("orden_key_cliente between", value1, value2, "ordenKeyCliente");
+        public Criteria andOrdenKeyClienteAreaBetween(Integer value1, Integer value2) {
+            addCriterion("orden_key_cliente_area between", value1, value2, "ordenKeyClienteArea");
             return (Criteria) this;
         }
 
-        public Criteria andOrdenKeyClienteNotBetween(Integer value1, Integer value2) {
-            addCriterion("orden_key_cliente not between", value1, value2, "ordenKeyCliente");
+        public Criteria andOrdenKeyClienteAreaNotBetween(Integer value1, Integer value2) {
+            addCriterion("orden_key_cliente_area not between", value1, value2, "ordenKeyClienteArea");
             return (Criteria) this;
         }
 

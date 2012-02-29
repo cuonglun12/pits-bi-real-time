@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public class FactCotizacion {
     private Integer cotizacionKey;
 
-    private Integer cotizacionKeyCliente;
+    private Integer cotizacionKeyClienteArea;
 
     private Integer cotizacionKeyServicio;
 
@@ -53,12 +53,12 @@ public class FactCotizacion {
         this.cotizacionKey = cotizacionKey;
     }
 
-    public Integer getCotizacionKeyCliente() {
-        return cotizacionKeyCliente;
+    public Integer getCotizacionKeyClienteArea() {
+        return cotizacionKeyClienteArea;
     }
 
-    public void setCotizacionKeyCliente(Integer cotizacionKeyCliente) {
-        this.cotizacionKeyCliente = cotizacionKeyCliente;
+    public void setCotizacionKeyClienteArea(Integer cotizacionKeyClienteArea) {
+        this.cotizacionKeyClienteArea = cotizacionKeyClienteArea;
     }
 
     public Integer getCotizacionKeyServicio() {
@@ -220,7 +220,7 @@ public class FactCotizacion {
 	@Override
 	public String toString() {
 		return "FactCotizacion [cotizacionKey=" + cotizacionKey
-				+ ", cotizacionKeyCliente=" + cotizacionKeyCliente
+				+ ", cotizacionKeyClienteArea=" + cotizacionKeyClienteArea
 				+ ", cotizacionKeyServicio=" + cotizacionKeyServicio
 				+ ", cotizacionKeyProducto=" + cotizacionKeyProducto
 				+ ", cotizacionKeyFecReg=" + cotizacionKeyFecReg

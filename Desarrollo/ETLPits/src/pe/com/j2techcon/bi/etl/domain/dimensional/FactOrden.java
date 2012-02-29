@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public class FactOrden {
     private Integer ordenKey;
 
-    private Integer ordenKeyCliente;
+    private Integer ordenKeyClienteArea;
 
     private Integer ordenKeyServicio;
 
@@ -71,12 +71,12 @@ public class FactOrden {
         this.ordenKey = ordenKey;
     }
 
-    public Integer getOrdenKeyCliente() {
-        return ordenKeyCliente;
+    public Integer getOrdenKeyClienteArea() {
+        return ordenKeyClienteArea;
     }
 
-    public void setOrdenKeyCliente(Integer ordenKeyCliente) {
-        this.ordenKeyCliente = ordenKeyCliente;
+    public void setOrdenKeyClienteArea(Integer ordenKeyClienteArea) {
+        this.ordenKeyClienteArea = ordenKeyClienteArea;
     }
 
     public Integer getOrdenKeyServicio() {
@@ -309,9 +309,9 @@ public class FactOrden {
 
 	@Override
 	public String toString() {
-		return "FactOrden [ordenKey=" + ordenKey + ", ordenKeyCliente="
-				+ ordenKeyCliente + ", ordenKeyServicio=" + ordenKeyServicio
-				+ ", ordenKeyProducto=" + ordenKeyProducto
+		return "FactOrden [ordenKey=" + ordenKey + ", ordenKeyClienteArea="
+				+ ordenKeyClienteArea + ", ordenKeyServicio="
+				+ ordenKeyServicio + ", ordenKeyProducto=" + ordenKeyProducto
 				+ ", ordenKeyTipoReparto=" + ordenKeyTipoReparto
 				+ ", ordenKeyTipoDocumento=" + ordenKeyTipoDocumento
 				+ ", ordenKeyTipoPago=" + ordenKeyTipoPago

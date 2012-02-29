@@ -1,6 +1,8 @@
 package pe.com.j2techcon.bi.etl.domain.dimensional;
 
 public class DimCliente {
+    private Integer clienteAreaKey;
+
     private Integer clienteKey;
 
     private Integer clienteCodTip;
@@ -27,8 +29,6 @@ public class DimCliente {
 
     private String clienteDesc;
 
-    private Integer clienteAreaKey;
-
     private String clienteAreaCod;
 
     private String clienteAreaDesc;
@@ -50,6 +50,14 @@ public class DimCliente {
     private String clienteAreaDescDistrito;
 
     private Integer procId;
+
+    public Integer getClienteAreaKey() {
+        return clienteAreaKey;
+    }
+
+    public void setClienteAreaKey(Integer clienteAreaKey) {
+        this.clienteAreaKey = clienteAreaKey;
+    }
 
     public Integer getClienteKey() {
         return clienteKey;
@@ -155,14 +163,6 @@ public class DimCliente {
         this.clienteDesc = clienteDesc == null ? null : clienteDesc.trim();
     }
 
-    public Integer getClienteAreaKey() {
-        return clienteAreaKey;
-    }
-
-    public void setClienteAreaKey(Integer clienteAreaKey) {
-        this.clienteAreaKey = clienteAreaKey;
-    }
-
     public String getClienteAreaCod() {
         return clienteAreaCod;
     }
@@ -257,8 +257,9 @@ public class DimCliente {
 
 	@Override
 	public String toString() {
-		return "DimCliente [clienteKey=" + clienteKey + ", clienteCodTip="
-				+ clienteCodTip + ", clienteDescTip=" + clienteDescTip
+		return "DimCliente [clienteAreaKey=" + clienteAreaKey + ", clienteKey="
+				+ clienteKey + ", clienteCodTip=" + clienteCodTip
+				+ ", clienteDescTip=" + clienteDescTip
 				+ ", clienteCodCategoria=" + clienteCodCategoria
 				+ ", clienteDescCategoria=" + clienteDescCategoria
 				+ ", clienteCodFacturacion=" + clienteCodFacturacion
@@ -268,12 +269,12 @@ public class DimCliente {
 				+ ", clienteCodTipDoc=" + clienteCodTipDoc
 				+ ", clienteDescTipDoc=" + clienteDescTipDoc
 				+ ", clienteNumTipDoc=" + clienteNumTipDoc + ", clienteDesc="
-				+ clienteDesc + ", clienteAreaKey=" + clienteAreaKey
-				+ ", clienteAreaCod=" + clienteAreaCod + ", clienteAreaDesc="
-				+ clienteAreaDesc + ", clienteAreaCodPais="
-				+ clienteAreaCodPais + ", clienteAreaDesPais="
-				+ clienteAreaDesPais + ", clienteAreaCodDepartamento="
-				+ clienteAreaCodDepartamento + ", clienteAreaDescDepartamento="
+				+ clienteDesc + ", clienteAreaCod=" + clienteAreaCod
+				+ ", clienteAreaDesc=" + clienteAreaDesc
+				+ ", clienteAreaCodPais=" + clienteAreaCodPais
+				+ ", clienteAreaDesPais=" + clienteAreaDesPais
+				+ ", clienteAreaCodDepartamento=" + clienteAreaCodDepartamento
+				+ ", clienteAreaDescDepartamento="
 				+ clienteAreaDescDepartamento + ", clienteAreaCodProvincia="
 				+ clienteAreaCodProvincia + ", clienteAreaDescProvincia="
 				+ clienteAreaDescProvincia + ", clienteAreaCodDistrito="

@@ -116,6 +116,9 @@ public class DimEstadoProcess {
 	
 	public int startProcess(){
 		DimEstadoManager dimEstadoManager = factory.getBean("dimEstadoManager", DimEstadoManager.class);
+		while(true){
+			break;
+		}
 		return getResultProcess();
 	}
 	

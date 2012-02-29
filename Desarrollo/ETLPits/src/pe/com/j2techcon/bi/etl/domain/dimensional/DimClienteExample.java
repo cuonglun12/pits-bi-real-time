@@ -116,6 +116,66 @@ public class DimClienteExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
+        public Criteria andClienteAreaKeyIsNull() {
+            addCriterion("cliente_area_key is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andClienteAreaKeyIsNotNull() {
+            addCriterion("cliente_area_key is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andClienteAreaKeyEqualTo(Integer value) {
+            addCriterion("cliente_area_key =", value, "clienteAreaKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andClienteAreaKeyNotEqualTo(Integer value) {
+            addCriterion("cliente_area_key <>", value, "clienteAreaKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andClienteAreaKeyGreaterThan(Integer value) {
+            addCriterion("cliente_area_key >", value, "clienteAreaKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andClienteAreaKeyGreaterThanOrEqualTo(Integer value) {
+            addCriterion("cliente_area_key >=", value, "clienteAreaKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andClienteAreaKeyLessThan(Integer value) {
+            addCriterion("cliente_area_key <", value, "clienteAreaKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andClienteAreaKeyLessThanOrEqualTo(Integer value) {
+            addCriterion("cliente_area_key <=", value, "clienteAreaKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andClienteAreaKeyIn(List<Integer> values) {
+            addCriterion("cliente_area_key in", values, "clienteAreaKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andClienteAreaKeyNotIn(List<Integer> values) {
+            addCriterion("cliente_area_key not in", values, "clienteAreaKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andClienteAreaKeyBetween(Integer value1, Integer value2) {
+            addCriterion("cliente_area_key between", value1, value2, "clienteAreaKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andClienteAreaKeyNotBetween(Integer value1, Integer value2) {
+            addCriterion("cliente_area_key not between", value1, value2, "clienteAreaKey");
+            return (Criteria) this;
+        }
+
         public Criteria andClienteKeyIsNull() {
             addCriterion("cliente_key is null");
             return (Criteria) this;
@@ -963,66 +1023,6 @@ public class DimClienteExample {
 
         public Criteria andClienteDescNotBetween(String value1, String value2) {
             addCriterion("cliente_desc not between", value1, value2, "clienteDesc");
-            return (Criteria) this;
-        }
-
-        public Criteria andClienteAreaKeyIsNull() {
-            addCriterion("cliente_area_key is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andClienteAreaKeyIsNotNull() {
-            addCriterion("cliente_area_key is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andClienteAreaKeyEqualTo(Integer value) {
-            addCriterion("cliente_area_key =", value, "clienteAreaKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andClienteAreaKeyNotEqualTo(Integer value) {
-            addCriterion("cliente_area_key <>", value, "clienteAreaKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andClienteAreaKeyGreaterThan(Integer value) {
-            addCriterion("cliente_area_key >", value, "clienteAreaKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andClienteAreaKeyGreaterThanOrEqualTo(Integer value) {
-            addCriterion("cliente_area_key >=", value, "clienteAreaKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andClienteAreaKeyLessThan(Integer value) {
-            addCriterion("cliente_area_key <", value, "clienteAreaKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andClienteAreaKeyLessThanOrEqualTo(Integer value) {
-            addCriterion("cliente_area_key <=", value, "clienteAreaKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andClienteAreaKeyIn(List<Integer> values) {
-            addCriterion("cliente_area_key in", values, "clienteAreaKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andClienteAreaKeyNotIn(List<Integer> values) {
-            addCriterion("cliente_area_key not in", values, "clienteAreaKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andClienteAreaKeyBetween(Integer value1, Integer value2) {
-            addCriterion("cliente_area_key between", value1, value2, "clienteAreaKey");
-            return (Criteria) this;
-        }
-
-        public Criteria andClienteAreaKeyNotBetween(Integer value1, Integer value2) {
-            addCriterion("cliente_area_key not between", value1, value2, "clienteAreaKey");
             return (Criteria) this;
         }
 

@@ -3,7 +3,7 @@
 <mapper namespace="fact_orden" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.dimensional.FactOrden" >
     <result column="orden_key" property="ordenKey" jdbcType="INTEGER" />
-    <result column="orden_key_cliente" property="ordenKeyCliente" jdbcType="INTEGER" />
+    <result column="orden_key_cliente_area" property="ordenKeyClienteArea" jdbcType="INTEGER" />
     <result column="orden_key_servicio" property="ordenKeyServicio" jdbcType="INTEGER" />
     <result column="orden_key_producto" property="ordenKeyProducto" jdbcType="INTEGER" />
     <result column="orden_key_tipo_reparto" property="ordenKeyTipoReparto" jdbcType="INTEGER" />
@@ -92,7 +92,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    orden_key, orden_key_cliente, orden_key_servicio, orden_key_producto, orden_key_tipo_reparto, 
+    orden_key, orden_key_cliente_area, orden_key_servicio, orden_key_producto, orden_key_tipo_reparto, 
     orden_key_tipo_documento, orden_key_tipo_pago, orden_key_moneda, orden_key_fec_reg, 
     orden_key_fec_ini, orden_key_fec_ven, orden_key_fec_cie, orden_key_fec_dev, orden_key_estado, 
     orden_aten_en_fec, orden_aten_fuera_fec, orden_ind_unidad, orden_cnt_dias_exc, orden_cnt_cargos, 
@@ -124,7 +124,7 @@
     </if>
   </delete>
   <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactOrden" >
-    insert into fact_orden (orden_key, orden_key_cliente, orden_key_servicio, 
+    insert into fact_orden (orden_key, orden_key_cliente_area, orden_key_servicio, 
       orden_key_producto, orden_key_tipo_reparto, 
       orden_key_tipo_documento, orden_key_tipo_pago, 
       orden_key_moneda, orden_key_fec_reg, orden_key_fec_ini, 
@@ -136,7 +136,7 @@
       orden_cnt_cargos_ree, orden_mon_importe, orden_mon_descuento, 
       orden_mon_igv, orden_mon_total, proc_id
       )
-    values (#{ordenKey,jdbcType=INTEGER}, #{ordenKeyCliente,jdbcType=INTEGER}, #{ordenKeyServicio,jdbcType=INTEGER}, 
+    values (#{ordenKey,jdbcType=INTEGER}, #{ordenKeyClienteArea,jdbcType=INTEGER}, #{ordenKeyServicio,jdbcType=INTEGER}, 
       #{ordenKeyProducto,jdbcType=INTEGER}, #{ordenKeyTipoReparto,jdbcType=INTEGER}, 
       #{ordenKeyTipoDocumento,jdbcType=INTEGER}, #{ordenKeyTipoPago,jdbcType=INTEGER}, 
       #{ordenKeyMoneda,jdbcType=INTEGER}, #{ordenKeyFecReg,jdbcType=INTEGER}, #{ordenKeyFecIni,jdbcType=INTEGER}, 
@@ -155,8 +155,8 @@
       <if test="ordenKey != null" >
         orden_key,
       </if>
-      <if test="ordenKeyCliente != null" >
-        orden_key_cliente,
+      <if test="ordenKeyClienteArea != null" >
+        orden_key_cliente_area,
       </if>
       <if test="ordenKeyServicio != null" >
         orden_key_servicio,
@@ -247,8 +247,8 @@
       <if test="ordenKey != null" >
         #{ordenKey,jdbcType=INTEGER},
       </if>
-      <if test="ordenKeyCliente != null" >
-        #{ordenKeyCliente,jdbcType=INTEGER},
+      <if test="ordenKeyClienteArea != null" >
+        #{ordenKeyClienteArea,jdbcType=INTEGER},
       </if>
       <if test="ordenKeyServicio != null" >
         #{ordenKeyServicio,jdbcType=INTEGER},
@@ -348,8 +348,8 @@
       <if test="record.ordenKey != null" >
         orden_key = #{record.ordenKey,jdbcType=INTEGER},
       </if>
-      <if test="record.ordenKeyCliente != null" >
-        orden_key_cliente = #{record.ordenKeyCliente,jdbcType=INTEGER},
+      <if test="record.ordenKeyClienteArea != null" >
+        orden_key_cliente_area = #{record.ordenKeyClienteArea,jdbcType=INTEGER},
       </if>
       <if test="record.ordenKeyServicio != null" >
         orden_key_servicio = #{record.ordenKeyServicio,jdbcType=INTEGER},
@@ -443,7 +443,7 @@
   <update id="updateByExample" parameterType="map" >
     update fact_orden
     set orden_key = #{record.ordenKey,jdbcType=INTEGER},
-      orden_key_cliente = #{record.ordenKeyCliente,jdbcType=INTEGER},
+      orden_key_cliente_area = #{record.ordenKeyClienteArea,jdbcType=INTEGER},
       orden_key_servicio = #{record.ordenKeyServicio,jdbcType=INTEGER},
       orden_key_producto = #{record.ordenKeyProducto,jdbcType=INTEGER},
       orden_key_tipo_reparto = #{record.ordenKeyTipoReparto,jdbcType=INTEGER},
