@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dim_zona" >
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.dimensional.DimZona" >
+    <id column="zona_key" property="zonaKey" jdbcType="INTEGER" />
+    <result column="zona_cod_pais" property="zonaCodPais" jdbcType="INTEGER" />
+    <result column="zona_desc_pais" property="zonaDescPais" jdbcType="VARCHAR" />
+    <result column="zona_cod_departamento" property="zonaCodDepartamento" jdbcType="INTEGER" />
+    <result column="zona_desc_departamento" property="zonaDescDepartamento" jdbcType="VARCHAR" />
+    <result column="zona_cod_provincia" property="zonaCodProvincia" jdbcType="INTEGER" />
+    <result column="zona_desc_provincia" property="zonaDescProvincia" jdbcType="VARCHAR" />
+    <result column="zona_cod_distrito" property="zonaCodDistrito" jdbcType="INTEGER" />
+    <result column="zona_desc_distrito" property="zonaDescDistrito" jdbcType="VARCHAR" />
+    <result column="zona_cod" property="zonaCod" jdbcType="VARCHAR" />
+    <result column="zona_cod_postal" property="zonaCodPostal" jdbcType="VARCHAR" />
+    <result column="proc_id" property="procId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    zona_key, zona_cod_pais, zona_desc_pais, zona_cod_departamento, zona_desc_departamento, 
+    zona_cod_provincia, zona_desc_provincia, zona_cod_distrito, zona_desc_distrito, zona_cod, 
+    zona_cod_postal, proc_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimZonaExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dim_zona
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dim_zona
+    where zona_key = #{zonaKey,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dim_zona
+    where zona_key = #{zonaKey,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimZonaExample" >
+    delete from dim_zona
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimZona" >
+    insert into dim_zona (zona_key, zona_cod_pais, zona_desc_pais, 
+      zona_cod_departamento, zona_desc_departamento, 
+      zona_cod_provincia, zona_desc_provincia, zona_cod_distrito, 
+      zona_desc_distrito, zona_cod, zona_cod_postal, 
+      proc_id)
+    values (#{zonaKey,jdbcType=INTEGER}, #{zonaCodPais,jdbcType=INTEGER}, #{zonaDescPais,jdbcType=VARCHAR}, 
+      #{zonaCodDepartamento,jdbcType=INTEGER}, #{zonaDescDepartamento,jdbcType=VARCHAR}, 
+      #{zonaCodProvincia,jdbcType=INTEGER}, #{zonaDescProvincia,jdbcType=VARCHAR}, #{zonaCodDistrito,jdbcType=INTEGER}, 
+      #{zonaDescDistrito,jdbcType=VARCHAR}, #{zonaCod,jdbcType=VARCHAR}, #{zonaCodPostal,jdbcType=VARCHAR}, 
+      #{procId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimZona" >
+    insert into dim_zona
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="zonaKey != null" >
+        zona_key,
+      </if>
+      <if test="zonaCodPais != null" >
+        zona_cod_pais,
+      </if>
+      <if test="zonaDescPais != null" >
+        zona_desc_pais,
+      </if>
+      <if test="zonaCodDepartamento != null" >
+        zona_cod_departamento,
+      </if>
+      <if test="zonaDescDepartamento != null" >
+        zona_desc_departamento,
+      </if>
+      <if test="zonaCodProvincia != null" >
+        zona_cod_provincia,
+      </if>
+      <if test="zonaDescProvincia != null" >
+        zona_desc_provincia,
+      </if>
+      <if test="zonaCodDistrito != null" >
+        zona_cod_distrito,
+      </if>
+      <if test="zonaDescDistrito != null" >
+        zona_desc_distrito,
+      </if>
+      <if test="zonaCod != null" >
+        zona_cod,
+      </if>
+      <if test="zonaCodPostal != null" >
+        zona_cod_postal,
+      </if>
+      <if test="procId != null" >
+        proc_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="zonaKey != null" >
+        #{zonaKey,jdbcType=INTEGER},
+      </if>
+      <if test="zonaCodPais != null" >
+        #{zonaCodPais,jdbcType=INTEGER},
+      </if>
+      <if test="zonaDescPais != null" >
+        #{zonaDescPais,jdbcType=VARCHAR},
+      </if>
+      <if test="zonaCodDepartamento != null" >
+        #{zonaCodDepartamento,jdbcType=INTEGER},
+      </if>
+      <if test="zonaDescDepartamento != null" >
+        #{zonaDescDepartamento,jdbcType=VARCHAR},
+      </if>
+      <if test="zonaCodProvincia != null" >
+        #{zonaCodProvincia,jdbcType=INTEGER},
+      </if>
+      <if test="zonaDescProvincia != null" >
+        #{zonaDescProvincia,jdbcType=VARCHAR},
+      </if>
+      <if test="zonaCodDistrito != null" >
+        #{zonaCodDistrito,jdbcType=INTEGER},
+      </if>
+      <if test="zonaDescDistrito != null" >
+        #{zonaDescDistrito,jdbcType=VARCHAR},
+      </if>
+      <if test="zonaCod != null" >
+        #{zonaCod,jdbcType=VARCHAR},
+      </if>
+      <if test="zonaCodPostal != null" >
+        #{zonaCodPostal,jdbcType=VARCHAR},
+      </if>
+      <if test="procId != null" >
+        #{procId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimZonaExample" resultType="java.lang.Integer" >
+    select count(*) from dim_zona
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update dim_zona
+    <set >
+      <if test="record.zonaKey != null" >
+        zona_key = #{record.zonaKey,jdbcType=INTEGER},
+      </if>
+      <if test="record.zonaCodPais != null" >
+        zona_cod_pais = #{record.zonaCodPais,jdbcType=INTEGER},
+      </if>
+      <if test="record.zonaDescPais != null" >
+        zona_desc_pais = #{record.zonaDescPais,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zonaCodDepartamento != null" >
+        zona_cod_departamento = #{record.zonaCodDepartamento,jdbcType=INTEGER},
+      </if>
+      <if test="record.zonaDescDepartamento != null" >
+        zona_desc_departamento = #{record.zonaDescDepartamento,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zonaCodProvincia != null" >
+        zona_cod_provincia = #{record.zonaCodProvincia,jdbcType=INTEGER},
+      </if>
+      <if test="record.zonaDescProvincia != null" >
+        zona_desc_provincia = #{record.zonaDescProvincia,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zonaCodDistrito != null" >
+        zona_cod_distrito = #{record.zonaCodDistrito,jdbcType=INTEGER},
+      </if>
+      <if test="record.zonaDescDistrito != null" >
+        zona_desc_distrito = #{record.zonaDescDistrito,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zonaCod != null" >
+        zona_cod = #{record.zonaCod,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zonaCodPostal != null" >
+        zona_cod_postal = #{record.zonaCodPostal,jdbcType=VARCHAR},
+      </if>
+      <if test="record.procId != null" >
+        proc_id = #{record.procId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update dim_zona
+    set zona_key = #{record.zonaKey,jdbcType=INTEGER},
+      zona_cod_pais = #{record.zonaCodPais,jdbcType=INTEGER},
+      zona_desc_pais = #{record.zonaDescPais,jdbcType=VARCHAR},
+      zona_cod_departamento = #{record.zonaCodDepartamento,jdbcType=INTEGER},
+      zona_desc_departamento = #{record.zonaDescDepartamento,jdbcType=VARCHAR},
+      zona_cod_provincia = #{record.zonaCodProvincia,jdbcType=INTEGER},
+      zona_desc_provincia = #{record.zonaDescProvincia,jdbcType=VARCHAR},
+      zona_cod_distrito = #{record.zonaCodDistrito,jdbcType=INTEGER},
+      zona_desc_distrito = #{record.zonaDescDistrito,jdbcType=VARCHAR},
+      zona_cod = #{record.zonaCod,jdbcType=VARCHAR},
+      zona_cod_postal = #{record.zonaCodPostal,jdbcType=VARCHAR},
+      proc_id = #{record.procId,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimZona" >
+    update dim_zona
+    <set >
+      <if test="zonaCodPais != null" >
+        zona_cod_pais = #{zonaCodPais,jdbcType=INTEGER},
+      </if>
+      <if test="zonaDescPais != null" >
+        zona_desc_pais = #{zonaDescPais,jdbcType=VARCHAR},
+      </if>
+      <if test="zonaCodDepartamento != null" >
+        zona_cod_departamento = #{zonaCodDepartamento,jdbcType=INTEGER},
+      </if>
+      <if test="zonaDescDepartamento != null" >
+        zona_desc_departamento = #{zonaDescDepartamento,jdbcType=VARCHAR},
+      </if>
+      <if test="zonaCodProvincia != null" >
+        zona_cod_provincia = #{zonaCodProvincia,jdbcType=INTEGER},
+      </if>
+      <if test="zonaDescProvincia != null" >
+        zona_desc_provincia = #{zonaDescProvincia,jdbcType=VARCHAR},
+      </if>
+      <if test="zonaCodDistrito != null" >
+        zona_cod_distrito = #{zonaCodDistrito,jdbcType=INTEGER},
+      </if>
+      <if test="zonaDescDistrito != null" >
+        zona_desc_distrito = #{zonaDescDistrito,jdbcType=VARCHAR},
+      </if>
+      <if test="zonaCod != null" >
+        zona_cod = #{zonaCod,jdbcType=VARCHAR},
+      </if>
+      <if test="zonaCodPostal != null" >
+        zona_cod_postal = #{zonaCodPostal,jdbcType=VARCHAR},
+      </if>
+      <if test="procId != null" >
+        proc_id = #{procId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where zona_key = #{zonaKey,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimZona" >
+    update dim_zona
+    set zona_cod_pais = #{zonaCodPais,jdbcType=INTEGER},
+      zona_desc_pais = #{zonaDescPais,jdbcType=VARCHAR},
+      zona_cod_departamento = #{zonaCodDepartamento,jdbcType=INTEGER},
+      zona_desc_departamento = #{zonaDescDepartamento,jdbcType=VARCHAR},
+      zona_cod_provincia = #{zonaCodProvincia,jdbcType=INTEGER},
+      zona_desc_provincia = #{zonaDescProvincia,jdbcType=VARCHAR},
+      zona_cod_distrito = #{zonaCodDistrito,jdbcType=INTEGER},
+      zona_desc_distrito = #{zonaDescDistrito,jdbcType=VARCHAR},
+      zona_cod = #{zonaCod,jdbcType=VARCHAR},
+      zona_cod_postal = #{zonaCodPostal,jdbcType=VARCHAR},
+      proc_id = #{procId,jdbcType=INTEGER}
+    where zona_key = #{zonaKey,jdbcType=INTEGER}
+  </update>
+</mapper>

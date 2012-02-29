@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dim_tipo_documento" >
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoDocumento" >
+    <id column="tipo_documento_key" property="tipoDocumentoKey" jdbcType="INTEGER" />
+    <result column="tipo_documento_cod" property="tipoDocumentoCod" jdbcType="CHAR" />
+    <result column="tipo_documento_desc" property="tipoDocumentoDesc" jdbcType="VARCHAR" />
+    <result column="proc_id" property="procId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    tipo_documento_key, tipo_documento_cod, tipo_documento_desc, proc_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoDocumentoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dim_tipo_documento
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dim_tipo_documento
+    where tipo_documento_key = #{tipoDocumentoKey,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dim_tipo_documento
+    where tipo_documento_key = #{tipoDocumentoKey,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoDocumentoExample" >
+    delete from dim_tipo_documento
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoDocumento" >
+    insert into dim_tipo_documento (tipo_documento_key, tipo_documento_cod, 
+      tipo_documento_desc, proc_id)
+    values (#{tipoDocumentoKey,jdbcType=INTEGER}, #{tipoDocumentoCod,jdbcType=CHAR}, 
+      #{tipoDocumentoDesc,jdbcType=VARCHAR}, #{procId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoDocumento" >
+    insert into dim_tipo_documento
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tipoDocumentoKey != null" >
+        tipo_documento_key,
+      </if>
+      <if test="tipoDocumentoCod != null" >
+        tipo_documento_cod,
+      </if>
+      <if test="tipoDocumentoDesc != null" >
+        tipo_documento_desc,
+      </if>
+      <if test="procId != null" >
+        proc_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tipoDocumentoKey != null" >
+        #{tipoDocumentoKey,jdbcType=INTEGER},
+      </if>
+      <if test="tipoDocumentoCod != null" >
+        #{tipoDocumentoCod,jdbcType=CHAR},
+      </if>
+      <if test="tipoDocumentoDesc != null" >
+        #{tipoDocumentoDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="procId != null" >
+        #{procId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoDocumentoExample" resultType="java.lang.Integer" >
+    select count(*) from dim_tipo_documento
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update dim_tipo_documento
+    <set >
+      <if test="record.tipoDocumentoKey != null" >
+        tipo_documento_key = #{record.tipoDocumentoKey,jdbcType=INTEGER},
+      </if>
+      <if test="record.tipoDocumentoCod != null" >
+        tipo_documento_cod = #{record.tipoDocumentoCod,jdbcType=CHAR},
+      </if>
+      <if test="record.tipoDocumentoDesc != null" >
+        tipo_documento_desc = #{record.tipoDocumentoDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.procId != null" >
+        proc_id = #{record.procId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update dim_tipo_documento
+    set tipo_documento_key = #{record.tipoDocumentoKey,jdbcType=INTEGER},
+      tipo_documento_cod = #{record.tipoDocumentoCod,jdbcType=CHAR},
+      tipo_documento_desc = #{record.tipoDocumentoDesc,jdbcType=VARCHAR},
+      proc_id = #{record.procId,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoDocumento" >
+    update dim_tipo_documento
+    <set >
+      <if test="tipoDocumentoCod != null" >
+        tipo_documento_cod = #{tipoDocumentoCod,jdbcType=CHAR},
+      </if>
+      <if test="tipoDocumentoDesc != null" >
+        tipo_documento_desc = #{tipoDocumentoDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="procId != null" >
+        proc_id = #{procId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where tipo_documento_key = #{tipoDocumentoKey,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoDocumento" >
+    update dim_tipo_documento
+    set tipo_documento_cod = #{tipoDocumentoCod,jdbcType=CHAR},
+      tipo_documento_desc = #{tipoDocumentoDesc,jdbcType=VARCHAR},
+      proc_id = #{procId,jdbcType=INTEGER}
+    where tipo_documento_key = #{tipoDocumentoKey,jdbcType=INTEGER}
+  </update>
+</mapper>

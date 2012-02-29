@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="t_cotizacion" >
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.generic.TCotizacion" >
+    <id column="coti_id" property="cotiId" jdbcType="INTEGER" />
+    <result column="emp_cat_id" property="empCatId" jdbcType="INTEGER" />
+    <result column="are_cli_id" property="areCliId" jdbcType="INTEGER" />
+    <result column="coti_cod_amb" property="cotiCodAmb" jdbcType="INTEGER" />
+    <result column="coti_cod_serv" property="cotiCodServ" jdbcType="INTEGER" />
+    <result column="coti_cod_neg" property="cotiCodNeg" jdbcType="INTEGER" />
+    <result column="coti_cod_tip_doc" property="cotiCodTipDoc" jdbcType="INTEGER" />
+    <result column="coti_serie_doc" property="cotiSerieDoc" jdbcType="VARCHAR" />
+    <result column="coti_num_doc" property="cotiNumDoc" jdbcType="VARCHAR" />
+    <result column="coti_cod_est" property="cotiCodEst" jdbcType="INTEGER" />
+    <result column="coti_fec_apro" property="cotiFecApro" jdbcType="DATE" />
+    <result column="coti_fec_ini" property="cotiFecIni" jdbcType="DATE" />
+    <result column="coti_fec_fin" property="cotiFecFin" jdbcType="DATE" />
+    <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+    <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
+    <result column="proc_id" property="procId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    coti_id, emp_cat_id, are_cli_id, coti_cod_amb, coti_cod_serv, coti_cod_neg, coti_cod_tip_doc, 
+    coti_serie_doc, coti_num_doc, coti_cod_est, coti_fec_apro, coti_fec_ini, coti_fec_fin, 
+    fec_num_cam, cod_ind_cam, proc_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCotizacionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_cotizacion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_cotizacion
+    where coti_id = #{cotiId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_cotizacion
+    where coti_id = #{cotiId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCotizacionExample" >
+    delete from t_cotizacion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCotizacion" >
+    insert into t_cotizacion (coti_id, emp_cat_id, are_cli_id, 
+      coti_cod_amb, coti_cod_serv, coti_cod_neg, 
+      coti_cod_tip_doc, coti_serie_doc, coti_num_doc, 
+      coti_cod_est, coti_fec_apro, coti_fec_ini, 
+      coti_fec_fin, fec_num_cam, cod_ind_cam, 
+      proc_id)
+    values (#{cotiId,jdbcType=INTEGER}, #{empCatId,jdbcType=INTEGER}, #{areCliId,jdbcType=INTEGER}, 
+      #{cotiCodAmb,jdbcType=INTEGER}, #{cotiCodServ,jdbcType=INTEGER}, #{cotiCodNeg,jdbcType=INTEGER}, 
+      #{cotiCodTipDoc,jdbcType=INTEGER}, #{cotiSerieDoc,jdbcType=VARCHAR}, #{cotiNumDoc,jdbcType=VARCHAR}, 
+      #{cotiCodEst,jdbcType=INTEGER}, #{cotiFecApro,jdbcType=DATE}, #{cotiFecIni,jdbcType=DATE}, 
+      #{cotiFecFin,jdbcType=DATE}, #{fecNumCam,jdbcType=INTEGER}, #{codIndCam,jdbcType=CHAR}, 
+      #{procId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCotizacion" >
+    insert into t_cotizacion
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cotiId != null" >
+        coti_id,
+      </if>
+      <if test="empCatId != null" >
+        emp_cat_id,
+      </if>
+      <if test="areCliId != null" >
+        are_cli_id,
+      </if>
+      <if test="cotiCodAmb != null" >
+        coti_cod_amb,
+      </if>
+      <if test="cotiCodServ != null" >
+        coti_cod_serv,
+      </if>
+      <if test="cotiCodNeg != null" >
+        coti_cod_neg,
+      </if>
+      <if test="cotiCodTipDoc != null" >
+        coti_cod_tip_doc,
+      </if>
+      <if test="cotiSerieDoc != null" >
+        coti_serie_doc,
+      </if>
+      <if test="cotiNumDoc != null" >
+        coti_num_doc,
+      </if>
+      <if test="cotiCodEst != null" >
+        coti_cod_est,
+      </if>
+      <if test="cotiFecApro != null" >
+        coti_fec_apro,
+      </if>
+      <if test="cotiFecIni != null" >
+        coti_fec_ini,
+      </if>
+      <if test="cotiFecFin != null" >
+        coti_fec_fin,
+      </if>
+      <if test="fecNumCam != null" >
+        fec_num_cam,
+      </if>
+      <if test="codIndCam != null" >
+        cod_ind_cam,
+      </if>
+      <if test="procId != null" >
+        proc_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cotiId != null" >
+        #{cotiId,jdbcType=INTEGER},
+      </if>
+      <if test="empCatId != null" >
+        #{empCatId,jdbcType=INTEGER},
+      </if>
+      <if test="areCliId != null" >
+        #{areCliId,jdbcType=INTEGER},
+      </if>
+      <if test="cotiCodAmb != null" >
+        #{cotiCodAmb,jdbcType=INTEGER},
+      </if>
+      <if test="cotiCodServ != null" >
+        #{cotiCodServ,jdbcType=INTEGER},
+      </if>
+      <if test="cotiCodNeg != null" >
+        #{cotiCodNeg,jdbcType=INTEGER},
+      </if>
+      <if test="cotiCodTipDoc != null" >
+        #{cotiCodTipDoc,jdbcType=INTEGER},
+      </if>
+      <if test="cotiSerieDoc != null" >
+        #{cotiSerieDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="cotiNumDoc != null" >
+        #{cotiNumDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="cotiCodEst != null" >
+        #{cotiCodEst,jdbcType=INTEGER},
+      </if>
+      <if test="cotiFecApro != null" >
+        #{cotiFecApro,jdbcType=DATE},
+      </if>
+      <if test="cotiFecIni != null" >
+        #{cotiFecIni,jdbcType=DATE},
+      </if>
+      <if test="cotiFecFin != null" >
+        #{cotiFecFin,jdbcType=DATE},
+      </if>
+      <if test="fecNumCam != null" >
+        #{fecNumCam,jdbcType=INTEGER},
+      </if>
+      <if test="codIndCam != null" >
+        #{codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="procId != null" >
+        #{procId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCotizacionExample" resultType="java.lang.Integer" >
+    select count(*) from t_cotizacion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_cotizacion
+    <set >
+      <if test="record.cotiId != null" >
+        coti_id = #{record.cotiId,jdbcType=INTEGER},
+      </if>
+      <if test="record.empCatId != null" >
+        emp_cat_id = #{record.empCatId,jdbcType=INTEGER},
+      </if>
+      <if test="record.areCliId != null" >
+        are_cli_id = #{record.areCliId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cotiCodAmb != null" >
+        coti_cod_amb = #{record.cotiCodAmb,jdbcType=INTEGER},
+      </if>
+      <if test="record.cotiCodServ != null" >
+        coti_cod_serv = #{record.cotiCodServ,jdbcType=INTEGER},
+      </if>
+      <if test="record.cotiCodNeg != null" >
+        coti_cod_neg = #{record.cotiCodNeg,jdbcType=INTEGER},
+      </if>
+      <if test="record.cotiCodTipDoc != null" >
+        coti_cod_tip_doc = #{record.cotiCodTipDoc,jdbcType=INTEGER},
+      </if>
+      <if test="record.cotiSerieDoc != null" >
+        coti_serie_doc = #{record.cotiSerieDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cotiNumDoc != null" >
+        coti_num_doc = #{record.cotiNumDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cotiCodEst != null" >
+        coti_cod_est = #{record.cotiCodEst,jdbcType=INTEGER},
+      </if>
+      <if test="record.cotiFecApro != null" >
+        coti_fec_apro = #{record.cotiFecApro,jdbcType=DATE},
+      </if>
+      <if test="record.cotiFecIni != null" >
+        coti_fec_ini = #{record.cotiFecIni,jdbcType=DATE},
+      </if>
+      <if test="record.cotiFecFin != null" >
+        coti_fec_fin = #{record.cotiFecFin,jdbcType=DATE},
+      </if>
+      <if test="record.fecNumCam != null" >
+        fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      </if>
+      <if test="record.codIndCam != null" >
+        cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="record.procId != null" >
+        proc_id = #{record.procId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_cotizacion
+    set coti_id = #{record.cotiId,jdbcType=INTEGER},
+      emp_cat_id = #{record.empCatId,jdbcType=INTEGER},
+      are_cli_id = #{record.areCliId,jdbcType=INTEGER},
+      coti_cod_amb = #{record.cotiCodAmb,jdbcType=INTEGER},
+      coti_cod_serv = #{record.cotiCodServ,jdbcType=INTEGER},
+      coti_cod_neg = #{record.cotiCodNeg,jdbcType=INTEGER},
+      coti_cod_tip_doc = #{record.cotiCodTipDoc,jdbcType=INTEGER},
+      coti_serie_doc = #{record.cotiSerieDoc,jdbcType=VARCHAR},
+      coti_num_doc = #{record.cotiNumDoc,jdbcType=VARCHAR},
+      coti_cod_est = #{record.cotiCodEst,jdbcType=INTEGER},
+      coti_fec_apro = #{record.cotiFecApro,jdbcType=DATE},
+      coti_fec_ini = #{record.cotiFecIni,jdbcType=DATE},
+      coti_fec_fin = #{record.cotiFecFin,jdbcType=DATE},
+      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
+      proc_id = #{record.procId,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCotizacion" >
+    update t_cotizacion
+    <set >
+      <if test="empCatId != null" >
+        emp_cat_id = #{empCatId,jdbcType=INTEGER},
+      </if>
+      <if test="areCliId != null" >
+        are_cli_id = #{areCliId,jdbcType=INTEGER},
+      </if>
+      <if test="cotiCodAmb != null" >
+        coti_cod_amb = #{cotiCodAmb,jdbcType=INTEGER},
+      </if>
+      <if test="cotiCodServ != null" >
+        coti_cod_serv = #{cotiCodServ,jdbcType=INTEGER},
+      </if>
+      <if test="cotiCodNeg != null" >
+        coti_cod_neg = #{cotiCodNeg,jdbcType=INTEGER},
+      </if>
+      <if test="cotiCodTipDoc != null" >
+        coti_cod_tip_doc = #{cotiCodTipDoc,jdbcType=INTEGER},
+      </if>
+      <if test="cotiSerieDoc != null" >
+        coti_serie_doc = #{cotiSerieDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="cotiNumDoc != null" >
+        coti_num_doc = #{cotiNumDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="cotiCodEst != null" >
+        coti_cod_est = #{cotiCodEst,jdbcType=INTEGER},
+      </if>
+      <if test="cotiFecApro != null" >
+        coti_fec_apro = #{cotiFecApro,jdbcType=DATE},
+      </if>
+      <if test="cotiFecIni != null" >
+        coti_fec_ini = #{cotiFecIni,jdbcType=DATE},
+      </if>
+      <if test="cotiFecFin != null" >
+        coti_fec_fin = #{cotiFecFin,jdbcType=DATE},
+      </if>
+      <if test="fecNumCam != null" >
+        fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      </if>
+      <if test="codIndCam != null" >
+        cod_ind_cam = #{codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="procId != null" >
+        proc_id = #{procId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where coti_id = #{cotiId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCotizacion" >
+    update t_cotizacion
+    set emp_cat_id = #{empCatId,jdbcType=INTEGER},
+      are_cli_id = #{areCliId,jdbcType=INTEGER},
+      coti_cod_amb = #{cotiCodAmb,jdbcType=INTEGER},
+      coti_cod_serv = #{cotiCodServ,jdbcType=INTEGER},
+      coti_cod_neg = #{cotiCodNeg,jdbcType=INTEGER},
+      coti_cod_tip_doc = #{cotiCodTipDoc,jdbcType=INTEGER},
+      coti_serie_doc = #{cotiSerieDoc,jdbcType=VARCHAR},
+      coti_num_doc = #{cotiNumDoc,jdbcType=VARCHAR},
+      coti_cod_est = #{cotiCodEst,jdbcType=INTEGER},
+      coti_fec_apro = #{cotiFecApro,jdbcType=DATE},
+      coti_fec_ini = #{cotiFecIni,jdbcType=DATE},
+      coti_fec_fin = #{cotiFecFin,jdbcType=DATE},
+      fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      cod_ind_cam = #{codIndCam,jdbcType=CHAR},
+      proc_id = #{procId,jdbcType=INTEGER}
+    where coti_id = #{cotiId,jdbcType=INTEGER}
+  </update>
+</mapper>

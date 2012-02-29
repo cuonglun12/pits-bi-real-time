@@ -1,0 +1,659 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pe.com.j2techcon.bi.etl.dao.origen.DespachoMapper" >
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.origen.Despacho" >
+    <result column="serieguia" property="serieguia" jdbcType="CHAR" />
+    <result column="nroguia" property="nroguia" jdbcType="CHAR" />
+    <result column="fecsalida" property="fecsalida" jdbcType="DATE" />
+    <result column="fecretorno" property="fecretorno" jdbcType="DATE" />
+    <result column="codmensajero" property="codmensajero" jdbcType="CHAR" />
+    <result column="pasaje" property="pasaje" jdbcType="NUMERIC" />
+    <result column="total" property="total" jdbcType="INTEGER" />
+    <result column="entregados" property="entregados" jdbcType="INTEGER" />
+    <result column="motivos" property="motivos" jdbcType="INTEGER" />
+    <result column="reenvios" property="reenvios" jdbcType="INTEGER" />
+    <result column="anulados" property="anulados" jdbcType="INTEGER" />
+    <result column="fuerazona" property="fuerazona" jdbcType="INTEGER" />
+    <result column="perdidos" property="perdidos" jdbcType="INTEGER" />
+    <result column="observacion" property="observacion" jdbcType="VARCHAR" />
+    <result column="tiporuta" property="tiporuta" jdbcType="CHAR" />
+    <result column="monto" property="monto" jdbcType="NUMERIC" />
+    <result column="codestadoguia" property="codestadoguia" jdbcType="CHAR" />
+    <result column="estadoveri" property="estadoveri" jdbcType="CHAR" />
+    <result column="usuariodesp" property="usuariodesp" jdbcType="CHAR" />
+    <result column="fechadesp" property="fechadesp" jdbcType="TIMESTAMP" />
+    <result column="usuariocierre" property="usuariocierre" jdbcType="CHAR" />
+    <result column="fechacierre" property="fechacierre" jdbcType="TIMESTAMP" />
+    <result column="codtipopago" property="codtipopago" jdbcType="CHAR" />
+    <result column="horaretorno" property="horaretorno" jdbcType="CHAR" />
+    <result column="codzona" property="codzona" jdbcType="CHAR" />
+    <result column="userasigna" property="userasigna" jdbcType="CHAR" />
+    <result column="fecasigna" property="fecasigna" jdbcType="TIMESTAMP" />
+    <result column="codorigen" property="codorigen" jdbcType="CHAR" />
+    <result column="codsede" property="codsede" jdbcType="CHAR" />
+    <result column="tipofi" property="tipofi" jdbcType="SMALLINT" />
+    <result column="usuarioflete" property="usuarioflete" jdbcType="CHAR" />
+    <result column="fechaflete" property="fechaflete" jdbcType="DATE" />
+    <result column="nrocaja" property="nrocaja" jdbcType="SMALLINT" />
+    <result column="flete" property="flete" jdbcType="CHAR" />
+    <result column="horasalida" property="horasalida" jdbcType="TIMESTAMP" />
+    <result column="horaflete" property="horaflete" jdbcType="TIME" />
+    <result column="usuariomod" property="usuariomod" jdbcType="CHAR" />
+    <result column="fechamod" property="fechamod" jdbcType="TIMESTAMP" />
+    <result column="codplanilla" property="codplanilla" jdbcType="CHAR" />
+    <result column="brevete" property="brevete" jdbcType="VARCHAR" />
+    <result column="cod_ayudante" property="codAyudante" jdbcType="CHAR" />
+    <result column="cod_unidad" property="codUnidad" jdbcType="CHAR" />
+    <result column="placa" property="placa" jdbcType="VARCHAR" />
+    <result column="des_unidad" property="desUnidad" jdbcType="VARCHAR" />
+    <result column="cod_tracking_guia" property="codTrackingGuia" jdbcType="SMALLINT" />
+    <result column="flag_envio" property="flagEnvio" jdbcType="SMALLINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    serieguia, nroguia, fecsalida, fecretorno, codmensajero, pasaje, total, entregados, 
+    motivos, reenvios, anulados, fuerazona, perdidos, observacion, tiporuta, monto, codestadoguia, 
+    estadoveri, usuariodesp, fechadesp, usuariocierre, fechacierre, codtipopago, horaretorno, 
+    codzona, userasigna, fecasigna, codorigen, codsede, tipofi, usuarioflete, fechaflete, 
+    nrocaja, flete, horasalida, horaflete, usuariomod, fechamod, codplanilla, brevete, 
+    cod_ayudante, cod_unidad, placa, des_unidad, cod_tracking_guia, flag_envio
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.origen.DespachoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from despacho
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.DespachoExample" >
+    delete from despacho
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Despacho" >
+    insert into despacho (serieguia, nroguia, fecsalida, 
+      fecretorno, codmensajero, pasaje, 
+      total, entregados, motivos, 
+      reenvios, anulados, fuerazona, 
+      perdidos, observacion, tiporuta, 
+      monto, codestadoguia, estadoveri, 
+      usuariodesp, fechadesp, usuariocierre, 
+      fechacierre, codtipopago, horaretorno, 
+      codzona, userasigna, fecasigna, 
+      codorigen, codsede, tipofi, 
+      usuarioflete, fechaflete, nrocaja, 
+      flete, horasalida, horaflete, 
+      usuariomod, fechamod, codplanilla, 
+      brevete, cod_ayudante, cod_unidad, 
+      placa, des_unidad, cod_tracking_guia, 
+      flag_envio)
+    values (#{serieguia,jdbcType=CHAR}, #{nroguia,jdbcType=CHAR}, #{fecsalida,jdbcType=DATE}, 
+      #{fecretorno,jdbcType=DATE}, #{codmensajero,jdbcType=CHAR}, #{pasaje,jdbcType=NUMERIC}, 
+      #{total,jdbcType=INTEGER}, #{entregados,jdbcType=INTEGER}, #{motivos,jdbcType=INTEGER}, 
+      #{reenvios,jdbcType=INTEGER}, #{anulados,jdbcType=INTEGER}, #{fuerazona,jdbcType=INTEGER}, 
+      #{perdidos,jdbcType=INTEGER}, #{observacion,jdbcType=VARCHAR}, #{tiporuta,jdbcType=CHAR}, 
+      #{monto,jdbcType=NUMERIC}, #{codestadoguia,jdbcType=CHAR}, #{estadoveri,jdbcType=CHAR}, 
+      #{usuariodesp,jdbcType=CHAR}, #{fechadesp,jdbcType=TIMESTAMP}, #{usuariocierre,jdbcType=CHAR}, 
+      #{fechacierre,jdbcType=TIMESTAMP}, #{codtipopago,jdbcType=CHAR}, #{horaretorno,jdbcType=CHAR}, 
+      #{codzona,jdbcType=CHAR}, #{userasigna,jdbcType=CHAR}, #{fecasigna,jdbcType=TIMESTAMP}, 
+      #{codorigen,jdbcType=CHAR}, #{codsede,jdbcType=CHAR}, #{tipofi,jdbcType=SMALLINT}, 
+      #{usuarioflete,jdbcType=CHAR}, #{fechaflete,jdbcType=DATE}, #{nrocaja,jdbcType=SMALLINT}, 
+      #{flete,jdbcType=CHAR}, #{horasalida,jdbcType=TIMESTAMP}, #{horaflete,jdbcType=TIME}, 
+      #{usuariomod,jdbcType=CHAR}, #{fechamod,jdbcType=TIMESTAMP}, #{codplanilla,jdbcType=CHAR}, 
+      #{brevete,jdbcType=VARCHAR}, #{codAyudante,jdbcType=CHAR}, #{codUnidad,jdbcType=CHAR}, 
+      #{placa,jdbcType=VARCHAR}, #{desUnidad,jdbcType=VARCHAR}, #{codTrackingGuia,jdbcType=SMALLINT}, 
+      #{flagEnvio,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Despacho" >
+    insert into despacho
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="serieguia != null" >
+        serieguia,
+      </if>
+      <if test="nroguia != null" >
+        nroguia,
+      </if>
+      <if test="fecsalida != null" >
+        fecsalida,
+      </if>
+      <if test="fecretorno != null" >
+        fecretorno,
+      </if>
+      <if test="codmensajero != null" >
+        codmensajero,
+      </if>
+      <if test="pasaje != null" >
+        pasaje,
+      </if>
+      <if test="total != null" >
+        total,
+      </if>
+      <if test="entregados != null" >
+        entregados,
+      </if>
+      <if test="motivos != null" >
+        motivos,
+      </if>
+      <if test="reenvios != null" >
+        reenvios,
+      </if>
+      <if test="anulados != null" >
+        anulados,
+      </if>
+      <if test="fuerazona != null" >
+        fuerazona,
+      </if>
+      <if test="perdidos != null" >
+        perdidos,
+      </if>
+      <if test="observacion != null" >
+        observacion,
+      </if>
+      <if test="tiporuta != null" >
+        tiporuta,
+      </if>
+      <if test="monto != null" >
+        monto,
+      </if>
+      <if test="codestadoguia != null" >
+        codestadoguia,
+      </if>
+      <if test="estadoveri != null" >
+        estadoveri,
+      </if>
+      <if test="usuariodesp != null" >
+        usuariodesp,
+      </if>
+      <if test="fechadesp != null" >
+        fechadesp,
+      </if>
+      <if test="usuariocierre != null" >
+        usuariocierre,
+      </if>
+      <if test="fechacierre != null" >
+        fechacierre,
+      </if>
+      <if test="codtipopago != null" >
+        codtipopago,
+      </if>
+      <if test="horaretorno != null" >
+        horaretorno,
+      </if>
+      <if test="codzona != null" >
+        codzona,
+      </if>
+      <if test="userasigna != null" >
+        userasigna,
+      </if>
+      <if test="fecasigna != null" >
+        fecasigna,
+      </if>
+      <if test="codorigen != null" >
+        codorigen,
+      </if>
+      <if test="codsede != null" >
+        codsede,
+      </if>
+      <if test="tipofi != null" >
+        tipofi,
+      </if>
+      <if test="usuarioflete != null" >
+        usuarioflete,
+      </if>
+      <if test="fechaflete != null" >
+        fechaflete,
+      </if>
+      <if test="nrocaja != null" >
+        nrocaja,
+      </if>
+      <if test="flete != null" >
+        flete,
+      </if>
+      <if test="horasalida != null" >
+        horasalida,
+      </if>
+      <if test="horaflete != null" >
+        horaflete,
+      </if>
+      <if test="usuariomod != null" >
+        usuariomod,
+      </if>
+      <if test="fechamod != null" >
+        fechamod,
+      </if>
+      <if test="codplanilla != null" >
+        codplanilla,
+      </if>
+      <if test="brevete != null" >
+        brevete,
+      </if>
+      <if test="codAyudante != null" >
+        cod_ayudante,
+      </if>
+      <if test="codUnidad != null" >
+        cod_unidad,
+      </if>
+      <if test="placa != null" >
+        placa,
+      </if>
+      <if test="desUnidad != null" >
+        des_unidad,
+      </if>
+      <if test="codTrackingGuia != null" >
+        cod_tracking_guia,
+      </if>
+      <if test="flagEnvio != null" >
+        flag_envio,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="serieguia != null" >
+        #{serieguia,jdbcType=CHAR},
+      </if>
+      <if test="nroguia != null" >
+        #{nroguia,jdbcType=CHAR},
+      </if>
+      <if test="fecsalida != null" >
+        #{fecsalida,jdbcType=DATE},
+      </if>
+      <if test="fecretorno != null" >
+        #{fecretorno,jdbcType=DATE},
+      </if>
+      <if test="codmensajero != null" >
+        #{codmensajero,jdbcType=CHAR},
+      </if>
+      <if test="pasaje != null" >
+        #{pasaje,jdbcType=NUMERIC},
+      </if>
+      <if test="total != null" >
+        #{total,jdbcType=INTEGER},
+      </if>
+      <if test="entregados != null" >
+        #{entregados,jdbcType=INTEGER},
+      </if>
+      <if test="motivos != null" >
+        #{motivos,jdbcType=INTEGER},
+      </if>
+      <if test="reenvios != null" >
+        #{reenvios,jdbcType=INTEGER},
+      </if>
+      <if test="anulados != null" >
+        #{anulados,jdbcType=INTEGER},
+      </if>
+      <if test="fuerazona != null" >
+        #{fuerazona,jdbcType=INTEGER},
+      </if>
+      <if test="perdidos != null" >
+        #{perdidos,jdbcType=INTEGER},
+      </if>
+      <if test="observacion != null" >
+        #{observacion,jdbcType=VARCHAR},
+      </if>
+      <if test="tiporuta != null" >
+        #{tiporuta,jdbcType=CHAR},
+      </if>
+      <if test="monto != null" >
+        #{monto,jdbcType=NUMERIC},
+      </if>
+      <if test="codestadoguia != null" >
+        #{codestadoguia,jdbcType=CHAR},
+      </if>
+      <if test="estadoveri != null" >
+        #{estadoveri,jdbcType=CHAR},
+      </if>
+      <if test="usuariodesp != null" >
+        #{usuariodesp,jdbcType=CHAR},
+      </if>
+      <if test="fechadesp != null" >
+        #{fechadesp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usuariocierre != null" >
+        #{usuariocierre,jdbcType=CHAR},
+      </if>
+      <if test="fechacierre != null" >
+        #{fechacierre,jdbcType=TIMESTAMP},
+      </if>
+      <if test="codtipopago != null" >
+        #{codtipopago,jdbcType=CHAR},
+      </if>
+      <if test="horaretorno != null" >
+        #{horaretorno,jdbcType=CHAR},
+      </if>
+      <if test="codzona != null" >
+        #{codzona,jdbcType=CHAR},
+      </if>
+      <if test="userasigna != null" >
+        #{userasigna,jdbcType=CHAR},
+      </if>
+      <if test="fecasigna != null" >
+        #{fecasigna,jdbcType=TIMESTAMP},
+      </if>
+      <if test="codorigen != null" >
+        #{codorigen,jdbcType=CHAR},
+      </if>
+      <if test="codsede != null" >
+        #{codsede,jdbcType=CHAR},
+      </if>
+      <if test="tipofi != null" >
+        #{tipofi,jdbcType=SMALLINT},
+      </if>
+      <if test="usuarioflete != null" >
+        #{usuarioflete,jdbcType=CHAR},
+      </if>
+      <if test="fechaflete != null" >
+        #{fechaflete,jdbcType=DATE},
+      </if>
+      <if test="nrocaja != null" >
+        #{nrocaja,jdbcType=SMALLINT},
+      </if>
+      <if test="flete != null" >
+        #{flete,jdbcType=CHAR},
+      </if>
+      <if test="horasalida != null" >
+        #{horasalida,jdbcType=TIMESTAMP},
+      </if>
+      <if test="horaflete != null" >
+        #{horaflete,jdbcType=TIME},
+      </if>
+      <if test="usuariomod != null" >
+        #{usuariomod,jdbcType=CHAR},
+      </if>
+      <if test="fechamod != null" >
+        #{fechamod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="codplanilla != null" >
+        #{codplanilla,jdbcType=CHAR},
+      </if>
+      <if test="brevete != null" >
+        #{brevete,jdbcType=VARCHAR},
+      </if>
+      <if test="codAyudante != null" >
+        #{codAyudante,jdbcType=CHAR},
+      </if>
+      <if test="codUnidad != null" >
+        #{codUnidad,jdbcType=CHAR},
+      </if>
+      <if test="placa != null" >
+        #{placa,jdbcType=VARCHAR},
+      </if>
+      <if test="desUnidad != null" >
+        #{desUnidad,jdbcType=VARCHAR},
+      </if>
+      <if test="codTrackingGuia != null" >
+        #{codTrackingGuia,jdbcType=SMALLINT},
+      </if>
+      <if test="flagEnvio != null" >
+        #{flagEnvio,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.DespachoExample" resultType="java.lang.Integer" >
+    select count(*) from despacho
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update despacho
+    <set >
+      <if test="record.serieguia != null" >
+        serieguia = #{record.serieguia,jdbcType=CHAR},
+      </if>
+      <if test="record.nroguia != null" >
+        nroguia = #{record.nroguia,jdbcType=CHAR},
+      </if>
+      <if test="record.fecsalida != null" >
+        fecsalida = #{record.fecsalida,jdbcType=DATE},
+      </if>
+      <if test="record.fecretorno != null" >
+        fecretorno = #{record.fecretorno,jdbcType=DATE},
+      </if>
+      <if test="record.codmensajero != null" >
+        codmensajero = #{record.codmensajero,jdbcType=CHAR},
+      </if>
+      <if test="record.pasaje != null" >
+        pasaje = #{record.pasaje,jdbcType=NUMERIC},
+      </if>
+      <if test="record.total != null" >
+        total = #{record.total,jdbcType=INTEGER},
+      </if>
+      <if test="record.entregados != null" >
+        entregados = #{record.entregados,jdbcType=INTEGER},
+      </if>
+      <if test="record.motivos != null" >
+        motivos = #{record.motivos,jdbcType=INTEGER},
+      </if>
+      <if test="record.reenvios != null" >
+        reenvios = #{record.reenvios,jdbcType=INTEGER},
+      </if>
+      <if test="record.anulados != null" >
+        anulados = #{record.anulados,jdbcType=INTEGER},
+      </if>
+      <if test="record.fuerazona != null" >
+        fuerazona = #{record.fuerazona,jdbcType=INTEGER},
+      </if>
+      <if test="record.perdidos != null" >
+        perdidos = #{record.perdidos,jdbcType=INTEGER},
+      </if>
+      <if test="record.observacion != null" >
+        observacion = #{record.observacion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tiporuta != null" >
+        tiporuta = #{record.tiporuta,jdbcType=CHAR},
+      </if>
+      <if test="record.monto != null" >
+        monto = #{record.monto,jdbcType=NUMERIC},
+      </if>
+      <if test="record.codestadoguia != null" >
+        codestadoguia = #{record.codestadoguia,jdbcType=CHAR},
+      </if>
+      <if test="record.estadoveri != null" >
+        estadoveri = #{record.estadoveri,jdbcType=CHAR},
+      </if>
+      <if test="record.usuariodesp != null" >
+        usuariodesp = #{record.usuariodesp,jdbcType=CHAR},
+      </if>
+      <if test="record.fechadesp != null" >
+        fechadesp = #{record.fechadesp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.usuariocierre != null" >
+        usuariocierre = #{record.usuariocierre,jdbcType=CHAR},
+      </if>
+      <if test="record.fechacierre != null" >
+        fechacierre = #{record.fechacierre,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.codtipopago != null" >
+        codtipopago = #{record.codtipopago,jdbcType=CHAR},
+      </if>
+      <if test="record.horaretorno != null" >
+        horaretorno = #{record.horaretorno,jdbcType=CHAR},
+      </if>
+      <if test="record.codzona != null" >
+        codzona = #{record.codzona,jdbcType=CHAR},
+      </if>
+      <if test="record.userasigna != null" >
+        userasigna = #{record.userasigna,jdbcType=CHAR},
+      </if>
+      <if test="record.fecasigna != null" >
+        fecasigna = #{record.fecasigna,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.codorigen != null" >
+        codorigen = #{record.codorigen,jdbcType=CHAR},
+      </if>
+      <if test="record.codsede != null" >
+        codsede = #{record.codsede,jdbcType=CHAR},
+      </if>
+      <if test="record.tipofi != null" >
+        tipofi = #{record.tipofi,jdbcType=SMALLINT},
+      </if>
+      <if test="record.usuarioflete != null" >
+        usuarioflete = #{record.usuarioflete,jdbcType=CHAR},
+      </if>
+      <if test="record.fechaflete != null" >
+        fechaflete = #{record.fechaflete,jdbcType=DATE},
+      </if>
+      <if test="record.nrocaja != null" >
+        nrocaja = #{record.nrocaja,jdbcType=SMALLINT},
+      </if>
+      <if test="record.flete != null" >
+        flete = #{record.flete,jdbcType=CHAR},
+      </if>
+      <if test="record.horasalida != null" >
+        horasalida = #{record.horasalida,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.horaflete != null" >
+        horaflete = #{record.horaflete,jdbcType=TIME},
+      </if>
+      <if test="record.usuariomod != null" >
+        usuariomod = #{record.usuariomod,jdbcType=CHAR},
+      </if>
+      <if test="record.fechamod != null" >
+        fechamod = #{record.fechamod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.codplanilla != null" >
+        codplanilla = #{record.codplanilla,jdbcType=CHAR},
+      </if>
+      <if test="record.brevete != null" >
+        brevete = #{record.brevete,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codAyudante != null" >
+        cod_ayudante = #{record.codAyudante,jdbcType=CHAR},
+      </if>
+      <if test="record.codUnidad != null" >
+        cod_unidad = #{record.codUnidad,jdbcType=CHAR},
+      </if>
+      <if test="record.placa != null" >
+        placa = #{record.placa,jdbcType=VARCHAR},
+      </if>
+      <if test="record.desUnidad != null" >
+        des_unidad = #{record.desUnidad,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codTrackingGuia != null" >
+        cod_tracking_guia = #{record.codTrackingGuia,jdbcType=SMALLINT},
+      </if>
+      <if test="record.flagEnvio != null" >
+        flag_envio = #{record.flagEnvio,jdbcType=SMALLINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update despacho
+    set serieguia = #{record.serieguia,jdbcType=CHAR},
+      nroguia = #{record.nroguia,jdbcType=CHAR},
+      fecsalida = #{record.fecsalida,jdbcType=DATE},
+      fecretorno = #{record.fecretorno,jdbcType=DATE},
+      codmensajero = #{record.codmensajero,jdbcType=CHAR},
+      pasaje = #{record.pasaje,jdbcType=NUMERIC},
+      total = #{record.total,jdbcType=INTEGER},
+      entregados = #{record.entregados,jdbcType=INTEGER},
+      motivos = #{record.motivos,jdbcType=INTEGER},
+      reenvios = #{record.reenvios,jdbcType=INTEGER},
+      anulados = #{record.anulados,jdbcType=INTEGER},
+      fuerazona = #{record.fuerazona,jdbcType=INTEGER},
+      perdidos = #{record.perdidos,jdbcType=INTEGER},
+      observacion = #{record.observacion,jdbcType=VARCHAR},
+      tiporuta = #{record.tiporuta,jdbcType=CHAR},
+      monto = #{record.monto,jdbcType=NUMERIC},
+      codestadoguia = #{record.codestadoguia,jdbcType=CHAR},
+      estadoveri = #{record.estadoveri,jdbcType=CHAR},
+      usuariodesp = #{record.usuariodesp,jdbcType=CHAR},
+      fechadesp = #{record.fechadesp,jdbcType=TIMESTAMP},
+      usuariocierre = #{record.usuariocierre,jdbcType=CHAR},
+      fechacierre = #{record.fechacierre,jdbcType=TIMESTAMP},
+      codtipopago = #{record.codtipopago,jdbcType=CHAR},
+      horaretorno = #{record.horaretorno,jdbcType=CHAR},
+      codzona = #{record.codzona,jdbcType=CHAR},
+      userasigna = #{record.userasigna,jdbcType=CHAR},
+      fecasigna = #{record.fecasigna,jdbcType=TIMESTAMP},
+      codorigen = #{record.codorigen,jdbcType=CHAR},
+      codsede = #{record.codsede,jdbcType=CHAR},
+      tipofi = #{record.tipofi,jdbcType=SMALLINT},
+      usuarioflete = #{record.usuarioflete,jdbcType=CHAR},
+      fechaflete = #{record.fechaflete,jdbcType=DATE},
+      nrocaja = #{record.nrocaja,jdbcType=SMALLINT},
+      flete = #{record.flete,jdbcType=CHAR},
+      horasalida = #{record.horasalida,jdbcType=TIMESTAMP},
+      horaflete = #{record.horaflete,jdbcType=TIME},
+      usuariomod = #{record.usuariomod,jdbcType=CHAR},
+      fechamod = #{record.fechamod,jdbcType=TIMESTAMP},
+      codplanilla = #{record.codplanilla,jdbcType=CHAR},
+      brevete = #{record.brevete,jdbcType=VARCHAR},
+      cod_ayudante = #{record.codAyudante,jdbcType=CHAR},
+      cod_unidad = #{record.codUnidad,jdbcType=CHAR},
+      placa = #{record.placa,jdbcType=VARCHAR},
+      des_unidad = #{record.desUnidad,jdbcType=VARCHAR},
+      cod_tracking_guia = #{record.codTrackingGuia,jdbcType=SMALLINT},
+      flag_envio = #{record.flagEnvio,jdbcType=SMALLINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

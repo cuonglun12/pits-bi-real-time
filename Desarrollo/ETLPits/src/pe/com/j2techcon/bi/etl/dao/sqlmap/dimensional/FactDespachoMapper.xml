@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="fact_despacho" >
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.dimensional.FactDespacho" >
+    <result column="despacho_key" property="despachoKey" jdbcType="INTEGER" />
+    <result column="despacho_key_sede" property="despachoKeySede" jdbcType="INTEGER" />
+    <result column="despacho_key_zona" property="despachoKeyZona" jdbcType="INTEGER" />
+    <result column="despacho_key_personal" property="despachoKeyPersonal" jdbcType="INTEGER" />
+    <result column="despacho_key_tipo_ruta" property="despachoKeyTipoRuta" jdbcType="INTEGER" />
+    <result column="despacho_key_fec_sal" property="despachoKeyFecSal" jdbcType="INTEGER" />
+    <result column="despacho_key_fec_retp" property="despachoKeyFecRetp" jdbcType="INTEGER" />
+    <result column="despacho_key_fec_retr" property="despachoKeyFecRetr" jdbcType="INTEGER" />
+    <result column="despacho_key_estado" property="despachoKeyEstado" jdbcType="INTEGER" />
+    <result column="despacho_mon_pasaje" property="despachoMonPasaje" jdbcType="NUMERIC" />
+    <result column="despacho_ind_unidad" property="despachoIndUnidad" jdbcType="SMALLINT" />
+    <result column="despacho_cnt_dias_exc" property="despachoCntDiasExc" jdbcType="INTEGER" />
+    <result column="despacho_cnt_cargos" property="despachoCntCargos" jdbcType="INTEGER" />
+    <result column="despacho_cnt_ent" property="despachoCntEnt" jdbcType="INTEGER" />
+    <result column="despacho_cnt_mot" property="despachoCntMot" jdbcType="INTEGER" />
+    <result column="despacho_cnt_ree" property="despachoCntRee" jdbcType="INTEGER" />
+    <result column="despacho_cnt_anu" property="despachoCntAnu" jdbcType="INTEGER" />
+    <result column="despacho_cnt_fue_zon" property="despachoCntFueZon" jdbcType="INTEGER" />
+    <result column="despacho_cnt_perd" property="despachoCntPerd" jdbcType="INTEGER" />
+    <result column="despacho_trab_en_fec" property="despachoTrabEnFec" jdbcType="SMALLINT" />
+    <result column="despacho_trab_fuera_fec" property="despachoTrabFueraFec" jdbcType="SMALLINT" />
+    <result column="proc_id" property="procId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    despacho_key, despacho_key_sede, despacho_key_zona, despacho_key_personal, despacho_key_tipo_ruta, 
+    despacho_key_fec_sal, despacho_key_fec_retp, despacho_key_fec_retr, despacho_key_estado, 
+    despacho_mon_pasaje, despacho_ind_unidad, despacho_cnt_dias_exc, despacho_cnt_cargos, 
+    despacho_cnt_ent, despacho_cnt_mot, despacho_cnt_ree, despacho_cnt_anu, despacho_cnt_fue_zon, 
+    despacho_cnt_perd, despacho_trab_en_fec, despacho_trab_fuera_fec, proc_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactDespachoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from fact_despacho
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactDespachoExample" >
+    delete from fact_despacho
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactDespacho" >
+    insert into fact_despacho (despacho_key, despacho_key_sede, despacho_key_zona, 
+      despacho_key_personal, despacho_key_tipo_ruta, 
+      despacho_key_fec_sal, despacho_key_fec_retp, 
+      despacho_key_fec_retr, despacho_key_estado, 
+      despacho_mon_pasaje, despacho_ind_unidad, 
+      despacho_cnt_dias_exc, despacho_cnt_cargos, 
+      despacho_cnt_ent, despacho_cnt_mot, despacho_cnt_ree, 
+      despacho_cnt_anu, despacho_cnt_fue_zon, despacho_cnt_perd, 
+      despacho_trab_en_fec, despacho_trab_fuera_fec, 
+      proc_id)
+    values (#{despachoKey,jdbcType=INTEGER}, #{despachoKeySede,jdbcType=INTEGER}, #{despachoKeyZona,jdbcType=INTEGER}, 
+      #{despachoKeyPersonal,jdbcType=INTEGER}, #{despachoKeyTipoRuta,jdbcType=INTEGER}, 
+      #{despachoKeyFecSal,jdbcType=INTEGER}, #{despachoKeyFecRetp,jdbcType=INTEGER}, 
+      #{despachoKeyFecRetr,jdbcType=INTEGER}, #{despachoKeyEstado,jdbcType=INTEGER}, 
+      #{despachoMonPasaje,jdbcType=NUMERIC}, #{despachoIndUnidad,jdbcType=SMALLINT}, 
+      #{despachoCntDiasExc,jdbcType=INTEGER}, #{despachoCntCargos,jdbcType=INTEGER}, 
+      #{despachoCntEnt,jdbcType=INTEGER}, #{despachoCntMot,jdbcType=INTEGER}, #{despachoCntRee,jdbcType=INTEGER}, 
+      #{despachoCntAnu,jdbcType=INTEGER}, #{despachoCntFueZon,jdbcType=INTEGER}, #{despachoCntPerd,jdbcType=INTEGER}, 
+      #{despachoTrabEnFec,jdbcType=SMALLINT}, #{despachoTrabFueraFec,jdbcType=SMALLINT}, 
+      #{procId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactDespacho" >
+    insert into fact_despacho
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="despachoKey != null" >
+        despacho_key,
+      </if>
+      <if test="despachoKeySede != null" >
+        despacho_key_sede,
+      </if>
+      <if test="despachoKeyZona != null" >
+        despacho_key_zona,
+      </if>
+      <if test="despachoKeyPersonal != null" >
+        despacho_key_personal,
+      </if>
+      <if test="despachoKeyTipoRuta != null" >
+        despacho_key_tipo_ruta,
+      </if>
+      <if test="despachoKeyFecSal != null" >
+        despacho_key_fec_sal,
+      </if>
+      <if test="despachoKeyFecRetp != null" >
+        despacho_key_fec_retp,
+      </if>
+      <if test="despachoKeyFecRetr != null" >
+        despacho_key_fec_retr,
+      </if>
+      <if test="despachoKeyEstado != null" >
+        despacho_key_estado,
+      </if>
+      <if test="despachoMonPasaje != null" >
+        despacho_mon_pasaje,
+      </if>
+      <if test="despachoIndUnidad != null" >
+        despacho_ind_unidad,
+      </if>
+      <if test="despachoCntDiasExc != null" >
+        despacho_cnt_dias_exc,
+      </if>
+      <if test="despachoCntCargos != null" >
+        despacho_cnt_cargos,
+      </if>
+      <if test="despachoCntEnt != null" >
+        despacho_cnt_ent,
+      </if>
+      <if test="despachoCntMot != null" >
+        despacho_cnt_mot,
+      </if>
+      <if test="despachoCntRee != null" >
+        despacho_cnt_ree,
+      </if>
+      <if test="despachoCntAnu != null" >
+        despacho_cnt_anu,
+      </if>
+      <if test="despachoCntFueZon != null" >
+        despacho_cnt_fue_zon,
+      </if>
+      <if test="despachoCntPerd != null" >
+        despacho_cnt_perd,
+      </if>
+      <if test="despachoTrabEnFec != null" >
+        despacho_trab_en_fec,
+      </if>
+      <if test="despachoTrabFueraFec != null" >
+        despacho_trab_fuera_fec,
+      </if>
+      <if test="procId != null" >
+        proc_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="despachoKey != null" >
+        #{despachoKey,jdbcType=INTEGER},
+      </if>
+      <if test="despachoKeySede != null" >
+        #{despachoKeySede,jdbcType=INTEGER},
+      </if>
+      <if test="despachoKeyZona != null" >
+        #{despachoKeyZona,jdbcType=INTEGER},
+      </if>
+      <if test="despachoKeyPersonal != null" >
+        #{despachoKeyPersonal,jdbcType=INTEGER},
+      </if>
+      <if test="despachoKeyTipoRuta != null" >
+        #{despachoKeyTipoRuta,jdbcType=INTEGER},
+      </if>
+      <if test="despachoKeyFecSal != null" >
+        #{despachoKeyFecSal,jdbcType=INTEGER},
+      </if>
+      <if test="despachoKeyFecRetp != null" >
+        #{despachoKeyFecRetp,jdbcType=INTEGER},
+      </if>
+      <if test="despachoKeyFecRetr != null" >
+        #{despachoKeyFecRetr,jdbcType=INTEGER},
+      </if>
+      <if test="despachoKeyEstado != null" >
+        #{despachoKeyEstado,jdbcType=INTEGER},
+      </if>
+      <if test="despachoMonPasaje != null" >
+        #{despachoMonPasaje,jdbcType=NUMERIC},
+      </if>
+      <if test="despachoIndUnidad != null" >
+        #{despachoIndUnidad,jdbcType=SMALLINT},
+      </if>
+      <if test="despachoCntDiasExc != null" >
+        #{despachoCntDiasExc,jdbcType=INTEGER},
+      </if>
+      <if test="despachoCntCargos != null" >
+        #{despachoCntCargos,jdbcType=INTEGER},
+      </if>
+      <if test="despachoCntEnt != null" >
+        #{despachoCntEnt,jdbcType=INTEGER},
+      </if>
+      <if test="despachoCntMot != null" >
+        #{despachoCntMot,jdbcType=INTEGER},
+      </if>
+      <if test="despachoCntRee != null" >
+        #{despachoCntRee,jdbcType=INTEGER},
+      </if>
+      <if test="despachoCntAnu != null" >
+        #{despachoCntAnu,jdbcType=INTEGER},
+      </if>
+      <if test="despachoCntFueZon != null" >
+        #{despachoCntFueZon,jdbcType=INTEGER},
+      </if>
+      <if test="despachoCntPerd != null" >
+        #{despachoCntPerd,jdbcType=INTEGER},
+      </if>
+      <if test="despachoTrabEnFec != null" >
+        #{despachoTrabEnFec,jdbcType=SMALLINT},
+      </if>
+      <if test="despachoTrabFueraFec != null" >
+        #{despachoTrabFueraFec,jdbcType=SMALLINT},
+      </if>
+      <if test="procId != null" >
+        #{procId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactDespachoExample" resultType="java.lang.Integer" >
+    select count(*) from fact_despacho
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update fact_despacho
+    <set >
+      <if test="record.despachoKey != null" >
+        despacho_key = #{record.despachoKey,jdbcType=INTEGER},
+      </if>
+      <if test="record.despachoKeySede != null" >
+        despacho_key_sede = #{record.despachoKeySede,jdbcType=INTEGER},
+      </if>
+      <if test="record.despachoKeyZona != null" >
+        despacho_key_zona = #{record.despachoKeyZona,jdbcType=INTEGER},
+      </if>
+      <if test="record.despachoKeyPersonal != null" >
+        despacho_key_personal = #{record.despachoKeyPersonal,jdbcType=INTEGER},
+      </if>
+      <if test="record.despachoKeyTipoRuta != null" >
+        despacho_key_tipo_ruta = #{record.despachoKeyTipoRuta,jdbcType=INTEGER},
+      </if>
+      <if test="record.despachoKeyFecSal != null" >
+        despacho_key_fec_sal = #{record.despachoKeyFecSal,jdbcType=INTEGER},
+      </if>
+      <if test="record.despachoKeyFecRetp != null" >
+        despacho_key_fec_retp = #{record.despachoKeyFecRetp,jdbcType=INTEGER},
+      </if>
+      <if test="record.despachoKeyFecRetr != null" >
+        despacho_key_fec_retr = #{record.despachoKeyFecRetr,jdbcType=INTEGER},
+      </if>
+      <if test="record.despachoKeyEstado != null" >
+        despacho_key_estado = #{record.despachoKeyEstado,jdbcType=INTEGER},
+      </if>
+      <if test="record.despachoMonPasaje != null" >
+        despacho_mon_pasaje = #{record.despachoMonPasaje,jdbcType=NUMERIC},
+      </if>
+      <if test="record.despachoIndUnidad != null" >
+        despacho_ind_unidad = #{record.despachoIndUnidad,jdbcType=SMALLINT},
+      </if>
+      <if test="record.despachoCntDiasExc != null" >
+        despacho_cnt_dias_exc = #{record.despachoCntDiasExc,jdbcType=INTEGER},
+      </if>
+      <if test="record.despachoCntCargos != null" >
+        despacho_cnt_cargos = #{record.despachoCntCargos,jdbcType=INTEGER},
+      </if>
+      <if test="record.despachoCntEnt != null" >
+        despacho_cnt_ent = #{record.despachoCntEnt,jdbcType=INTEGER},
+      </if>
+      <if test="record.despachoCntMot != null" >
+        despacho_cnt_mot = #{record.despachoCntMot,jdbcType=INTEGER},
+      </if>
+      <if test="record.despachoCntRee != null" >
+        despacho_cnt_ree = #{record.despachoCntRee,jdbcType=INTEGER},
+      </if>
+      <if test="record.despachoCntAnu != null" >
+        despacho_cnt_anu = #{record.despachoCntAnu,jdbcType=INTEGER},
+      </if>
+      <if test="record.despachoCntFueZon != null" >
+        despacho_cnt_fue_zon = #{record.despachoCntFueZon,jdbcType=INTEGER},
+      </if>
+      <if test="record.despachoCntPerd != null" >
+        despacho_cnt_perd = #{record.despachoCntPerd,jdbcType=INTEGER},
+      </if>
+      <if test="record.despachoTrabEnFec != null" >
+        despacho_trab_en_fec = #{record.despachoTrabEnFec,jdbcType=SMALLINT},
+      </if>
+      <if test="record.despachoTrabFueraFec != null" >
+        despacho_trab_fuera_fec = #{record.despachoTrabFueraFec,jdbcType=SMALLINT},
+      </if>
+      <if test="record.procId != null" >
+        proc_id = #{record.procId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update fact_despacho
+    set despacho_key = #{record.despachoKey,jdbcType=INTEGER},
+      despacho_key_sede = #{record.despachoKeySede,jdbcType=INTEGER},
+      despacho_key_zona = #{record.despachoKeyZona,jdbcType=INTEGER},
+      despacho_key_personal = #{record.despachoKeyPersonal,jdbcType=INTEGER},
+      despacho_key_tipo_ruta = #{record.despachoKeyTipoRuta,jdbcType=INTEGER},
+      despacho_key_fec_sal = #{record.despachoKeyFecSal,jdbcType=INTEGER},
+      despacho_key_fec_retp = #{record.despachoKeyFecRetp,jdbcType=INTEGER},
+      despacho_key_fec_retr = #{record.despachoKeyFecRetr,jdbcType=INTEGER},
+      despacho_key_estado = #{record.despachoKeyEstado,jdbcType=INTEGER},
+      despacho_mon_pasaje = #{record.despachoMonPasaje,jdbcType=NUMERIC},
+      despacho_ind_unidad = #{record.despachoIndUnidad,jdbcType=SMALLINT},
+      despacho_cnt_dias_exc = #{record.despachoCntDiasExc,jdbcType=INTEGER},
+      despacho_cnt_cargos = #{record.despachoCntCargos,jdbcType=INTEGER},
+      despacho_cnt_ent = #{record.despachoCntEnt,jdbcType=INTEGER},
+      despacho_cnt_mot = #{record.despachoCntMot,jdbcType=INTEGER},
+      despacho_cnt_ree = #{record.despachoCntRee,jdbcType=INTEGER},
+      despacho_cnt_anu = #{record.despachoCntAnu,jdbcType=INTEGER},
+      despacho_cnt_fue_zon = #{record.despachoCntFueZon,jdbcType=INTEGER},
+      despacho_cnt_perd = #{record.despachoCntPerd,jdbcType=INTEGER},
+      despacho_trab_en_fec = #{record.despachoTrabEnFec,jdbcType=SMALLINT},
+      despacho_trab_fuera_fec = #{record.despachoTrabFueraFec,jdbcType=SMALLINT},
+      proc_id = #{record.procId,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
