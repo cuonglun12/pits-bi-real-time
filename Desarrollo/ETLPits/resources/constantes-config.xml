@@ -9,15 +9,26 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
 	<bean id="constantes" class="pe.com.j2techcon.bi.etl.util.Constantes">
+		<property name="valueStringDefault" value="${value.string.default}"></property>
+		<property name="valueNumberDefault" value="${value.number.default}"></property>
+		
 		<property name="stateRecordNew" value="${state.record.new}"></property>
 		<property name="stateRecordProcessed" value="${state.record.processed}"></property>
 		<property name="stateRecordInconsistent" value="${state.record.inconsistent}"></property>
+		
 		<property name="stateProcessStarted" value="${state.process.started}"></property>
 		<property name="stateProcessCompletedCorrectly" value="${state.process.completed.correctly}"></property>
 		<property name="stateProcessCompletedErrors" value="${state.process.completed.errors}"></property>
+		
 		<property name="typeProcessSimple" value="${type.process.simple}"></property>
 		<property name="typeProcessReProcess" value="${type.process.reprocess}"></property>
+		
 		<property name="resultTransactionNoResult" value="${result.transaction.noresult}"></property>
+		
+		<property name="resultProcessStarted" value="${result.process.started}"></property>
+		<property name="resultProcessCompletedCorrectly" value="${result.process.completed.correctly}"></property>
+		<property name="resultProcessCompletedErrors" value="${result.process.completed.errors}"></property>
+
 		<property name="sizePage" value="${size.page}"></property>
 	</bean>
 
