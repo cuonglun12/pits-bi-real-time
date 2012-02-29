@@ -20,8 +20,19 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 	</bean--> 
 	
 	<!--      -->
+	
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>jdbc.properties</value>
+				<value>constantes.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!--      -->
 
-	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"><property name="location"><value>jdbc.properties</value></property></bean>
+	<import resource="constantes-config.xml"/>
 
 	<!--      -->
 	<bean id="dataSourceControl" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"><property name="driverClassName" value="${database.control.driverClassName}" /><property name="url" value="${database.control.url}" /><property name="username" value="${database.control.username}" /><property name="password" value="${database.control.password}" /></bean>
