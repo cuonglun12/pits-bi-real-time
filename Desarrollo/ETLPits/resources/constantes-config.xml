@@ -9,6 +9,41 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
 	<bean id="constantes" class="pe.com.j2techcon.bi.etl.util.Constantes">
+		
+		<property name="paramCodeTipoAreaCliente" value="${param.code.tipo.area.cliente}"></property>
+		<property name="paramCodeEstadoCargoDespacho" value="${param.code.estado.cargo.despacho}"></property>
+		<property name="paramCodeEstadoCargoDespachoVerificacion" value="${param.code.estado.cargo.despacho.verificacion}"></property>
+		<property name="paramCodeMotivoCargoDespacho" value="${param.code.motivo.cargo.despacho}"></property>
+		<property name="paramCodeEstadoCargo" value="${param.code.estado.cargo}"></property>
+		<property name="paramCodeMotivoCargo" value="${param.code.motivo.cargo}"></property>
+		<property name="paramCodeTipoIngresoCargo" value="${param.code.tipo.ingreso.cargo}"></property>
+		<property name="paramCodeCategoriaCliente" value="${param.code.categoria.cliente}"></property>
+		<property name="paramCodeTipoCliente" value="${param.code.tipo.cliente}"></property>
+		<property name="paramCodeTipoCredito" value="${param.code.tipo.credito}"></property>
+		<property name="paramCodeTipoDocumentoTrabajo" value="${param.code.tipo.documento.trabajo}"></property>
+		<property name="paramCodeTipoFacturacion" value="${param.code.tipo.facturacion}"></property>
+		<property name="paramCodeTipoCambio" value="${param.code.tipo.cambio}"></property>
+		<property name="paramCodeEstadoCotizacion" value="${param.code.estado.cotizacion}"></property>
+		<property name="paramCodeTipoNegocio" value="${param.code.tipo.negocio}"></property>
+		<property name="paramCodeTipoServicio" value="${param.code.tipo.servicio}"></property>
+		<property name="paramCodeTipoDocumento" value="${param.code.tipo.documento}"></property>
+		<property name="paramCodeEstadoDespacho" value="${param.code.estado.despacho}"></property>
+		<property name="paramCodeEstadoDespachoVerificacion" value="${param.code.estado.despacho.verificacion}"></property>
+		<property name="paramCodeTipoDespacho" value="${param.code.tipo.despacho}"></property>
+		<property name="paramCodeTipoRuta" value="${param.code.tipo.ruta}"></property>
+		<property name="paramCodeCategoriaEmpleado" value="${param.code.categoria.empleado}"></property>
+		<property name="paramCodeEstadoOrden" value="${param.code.estado.orden}"></property>
+		<property name="paramCodeTipoIngreso" value="${param.code.tipo.ingreso}"></property>
+		<property name="paramCodeTipoMoneda" value="${param.code.tipo.moneda}"></property>
+		<property name="paramCodeTipoPago" value="${param.code.tipo.pago}"></property>
+		<property name="paramCodeTipoReparto" value="${param.code.tipo.reparto}"></property>
+		<property name="paramCodeTipoProducto" value="${param.code.tipo.producto}"></property>
+		<property name="paramCodeTipoSede" value="${param.code.tipo.sede}"></property>
+		<property name="paramCodeUbigeoPais" value="${param.code.ubigeo.pais}"></property>
+		<property name="paramCodeUbigeoDepartamento" value="${param.code.ubigeo.departamento}"></property>
+		<property name="paramCodeUbigeoProvincia" value="${param.code.ubigeo.provincia}"></property>
+		<property name="paramCodeUbigeoDistrito" value="${param.code.ubigeo.distrito}"></property>
+
 		<property name="valueStringDefault" value="${value.string.default}"></property>
 		<property name="valueNumberDefault" value="${value.number.default}"></property>
 		
