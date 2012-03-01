@@ -319,6 +319,7 @@ public class DimClienteProcess {
 		tClienteManager = factory.getBean("tClienteManager", TClienteManager.class);
 		tAreaClienteManager = factory.getBean("tAreaClienteManager", TAreaClienteManager.class);
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
+		tUbigeoManager = factory.getBean("tUbigeoManager", TUbigeoManager.class);
 		dimClienteManager = factory.getBean("dimClienteManager", DimClienteManager.class);
 		
 		constantes = factory.getBean("constantes", Constantes.class);

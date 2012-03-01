@@ -21,6 +21,8 @@ public class DimZona {
 
     private String zonaCod;
 
+    private String zonaDesc;
+
     private String zonaCodPostal;
 
     private Integer procId;
@@ -105,6 +107,14 @@ public class DimZona {
         this.zonaCod = zonaCod == null ? null : zonaCod.trim();
     }
 
+    public String getZonaDesc() {
+        return zonaDesc;
+    }
+
+    public void setZonaDesc(String zonaDesc) {
+        this.zonaDesc = zonaDesc == null ? null : zonaDesc.trim();
+    }
+
     public String getZonaCodPostal() {
         return zonaCodPostal;
     }
@@ -132,6 +142,7 @@ public class DimZona {
     	zonaCodDistrito=null;
     	zonaDescDistrito=null;
     	zonaCod=null;
+    	zonaDesc=null;
     	zonaCodPostal=null;
     	procId=null;
     }
@@ -145,7 +156,7 @@ public class DimZona {
 				+ zonaCodProvincia + ", zonaDescProvincia=" + zonaDescProvincia
 				+ ", zonaCodDistrito=" + zonaCodDistrito
 				+ ", zonaDescDistrito=" + zonaDescDistrito + ", zonaCod="
-				+ zonaCod + ", zonaCodPostal=" + zonaCodPostal + ", procId="
-				+ procId + "]";
+				+ zonaCod + ", zonaDesc=" + zonaDesc + ", zonaCodPostal="
+				+ zonaCodPostal + ", procId=" + procId + "]";
 	}
 }

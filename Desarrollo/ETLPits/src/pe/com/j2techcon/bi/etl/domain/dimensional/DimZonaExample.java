@@ -766,6 +766,76 @@ public class DimZonaExample {
             return (Criteria) this;
         }
 
+        public Criteria andZonaDescIsNull() {
+            addCriterion("zona_desc is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andZonaDescIsNotNull() {
+            addCriterion("zona_desc is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andZonaDescEqualTo(String value) {
+            addCriterion("zona_desc =", value, "zonaDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andZonaDescNotEqualTo(String value) {
+            addCriterion("zona_desc <>", value, "zonaDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andZonaDescGreaterThan(String value) {
+            addCriterion("zona_desc >", value, "zonaDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andZonaDescGreaterThanOrEqualTo(String value) {
+            addCriterion("zona_desc >=", value, "zonaDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andZonaDescLessThan(String value) {
+            addCriterion("zona_desc <", value, "zonaDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andZonaDescLessThanOrEqualTo(String value) {
+            addCriterion("zona_desc <=", value, "zonaDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andZonaDescLike(String value) {
+            addCriterion("zona_desc like", value, "zonaDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andZonaDescNotLike(String value) {
+            addCriterion("zona_desc not like", value, "zonaDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andZonaDescIn(List<String> values) {
+            addCriterion("zona_desc in", values, "zonaDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andZonaDescNotIn(List<String> values) {
+            addCriterion("zona_desc not in", values, "zonaDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andZonaDescBetween(String value1, String value2) {
+            addCriterion("zona_desc between", value1, value2, "zonaDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andZonaDescNotBetween(String value1, String value2) {
+            addCriterion("zona_desc not between", value1, value2, "zonaDesc");
+            return (Criteria) this;
+        }
+
         public Criteria andZonaCodPostalIsNull() {
             addCriterion("zona_cod_postal is null");
             return (Criteria) this;

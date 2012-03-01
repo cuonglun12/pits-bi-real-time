@@ -12,6 +12,7 @@
     <result column="zona_cod_distrito" property="zonaCodDistrito" jdbcType="INTEGER" />
     <result column="zona_desc_distrito" property="zonaDescDistrito" jdbcType="VARCHAR" />
     <result column="zona_cod" property="zonaCod" jdbcType="VARCHAR" />
+    <result column="zona_desc" property="zonaDesc" jdbcType="VARCHAR" />
     <result column="zona_cod_postal" property="zonaCodPostal" jdbcType="VARCHAR" />
     <result column="proc_id" property="procId" jdbcType="INTEGER" />
   </resultMap>
@@ -76,7 +77,7 @@
   <sql id="Base_Column_List" >
     zona_key, zona_cod_pais, zona_desc_pais, zona_cod_departamento, zona_desc_departamento, 
     zona_cod_provincia, zona_desc_provincia, zona_cod_distrito, zona_desc_distrito, zona_cod, 
-    zona_cod_postal, proc_id
+    zona_desc, zona_cod_postal, proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimZonaExample" >
     select
@@ -115,13 +116,13 @@
     insert into dim_zona (zona_key, zona_cod_pais, zona_desc_pais, 
       zona_cod_departamento, zona_desc_departamento, 
       zona_cod_provincia, zona_desc_provincia, zona_cod_distrito, 
-      zona_desc_distrito, zona_cod, zona_cod_postal, 
-      proc_id)
+      zona_desc_distrito, zona_cod, zona_desc, 
+      zona_cod_postal, proc_id)
     values (#{zonaKey,jdbcType=INTEGER}, #{zonaCodPais,jdbcType=INTEGER}, #{zonaDescPais,jdbcType=VARCHAR}, 
       #{zonaCodDepartamento,jdbcType=INTEGER}, #{zonaDescDepartamento,jdbcType=VARCHAR}, 
       #{zonaCodProvincia,jdbcType=INTEGER}, #{zonaDescProvincia,jdbcType=VARCHAR}, #{zonaCodDistrito,jdbcType=INTEGER}, 
-      #{zonaDescDistrito,jdbcType=VARCHAR}, #{zonaCod,jdbcType=VARCHAR}, #{zonaCodPostal,jdbcType=VARCHAR}, 
-      #{procId,jdbcType=INTEGER})
+      #{zonaDescDistrito,jdbcType=VARCHAR}, #{zonaCod,jdbcType=VARCHAR}, #{zonaDesc,jdbcType=VARCHAR}, 
+      #{zonaCodPostal,jdbcType=VARCHAR}, #{procId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimZona" >
     insert into dim_zona
@@ -155,6 +156,9 @@
       </if>
       <if test="zonaCod != null" >
         zona_cod,
+      </if>
+      <if test="zonaDesc != null" >
+        zona_desc,
       </if>
       <if test="zonaCodPostal != null" >
         zona_cod_postal,
@@ -193,6 +197,9 @@
       </if>
       <if test="zonaCod != null" >
         #{zonaCod,jdbcType=VARCHAR},
+      </if>
+      <if test="zonaDesc != null" >
+        #{zonaDesc,jdbcType=VARCHAR},
       </if>
       <if test="zonaCodPostal != null" >
         #{zonaCodPostal,jdbcType=VARCHAR},
@@ -241,6 +248,9 @@
       <if test="record.zonaCod != null" >
         zona_cod = #{record.zonaCod,jdbcType=VARCHAR},
       </if>
+      <if test="record.zonaDesc != null" >
+        zona_desc = #{record.zonaDesc,jdbcType=VARCHAR},
+      </if>
       <if test="record.zonaCodPostal != null" >
         zona_cod_postal = #{record.zonaCodPostal,jdbcType=VARCHAR},
       </if>
@@ -264,6 +274,7 @@
       zona_cod_distrito = #{record.zonaCodDistrito,jdbcType=INTEGER},
       zona_desc_distrito = #{record.zonaDescDistrito,jdbcType=VARCHAR},
       zona_cod = #{record.zonaCod,jdbcType=VARCHAR},
+      zona_desc = #{record.zonaDesc,jdbcType=VARCHAR},
       zona_cod_postal = #{record.zonaCodPostal,jdbcType=VARCHAR},
       proc_id = #{record.procId,jdbcType=INTEGER}
     <if test="_parameter != null" >
@@ -300,6 +311,9 @@
       <if test="zonaCod != null" >
         zona_cod = #{zonaCod,jdbcType=VARCHAR},
       </if>
+      <if test="zonaDesc != null" >
+        zona_desc = #{zonaDesc,jdbcType=VARCHAR},
+      </if>
       <if test="zonaCodPostal != null" >
         zona_cod_postal = #{zonaCodPostal,jdbcType=VARCHAR},
       </if>
@@ -320,6 +334,7 @@
       zona_cod_distrito = #{zonaCodDistrito,jdbcType=INTEGER},
       zona_desc_distrito = #{zonaDescDistrito,jdbcType=VARCHAR},
       zona_cod = #{zonaCod,jdbcType=VARCHAR},
+      zona_desc = #{zonaDesc,jdbcType=VARCHAR},
       zona_cod_postal = #{zonaCodPostal,jdbcType=VARCHAR},
       proc_id = #{procId,jdbcType=INTEGER}
     where zona_key = #{zonaKey,jdbcType=INTEGER}
