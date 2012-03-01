@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="t_cliente" >
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.generic.TCliente" >
+    <id column="cli_id" property="cliId" jdbcType="INTEGER" />
+    <result column="cli_cod_tip" property="cliCodTip" jdbcType="INTEGER" />
+    <result column="cli_cod_cat" property="cliCodCat" jdbcType="INTEGER" />
+    <result column="cli_cod_tip_doc" property="cliCodTipDoc" jdbcType="INTEGER" />
+    <result column="cli_num_tip_doc" property="cliNumTipDoc" jdbcType="VARCHAR" />
+    <result column="cli_des_raz_soc" property="cliDesRazSoc" jdbcType="VARCHAR" />
+    <result column="cli_des_ape_pat" property="cliDesApePat" jdbcType="VARCHAR" />
+    <result column="cli_des_ape_mat" property="cliDesApeMat" jdbcType="VARCHAR" />
+    <result column="cli_des_nom" property="cliDesNom" jdbcType="VARCHAR" />
+    <result column="cli_cod_tip_fac" property="cliCodTipFac" jdbcType="INTEGER" />
+    <result column="cli_cod_tip_cre" property="cliCodTipCre" jdbcType="INTEGER" />
+    <result column="ubi_id" property="ubiId" jdbcType="INTEGER" />
+    <result column="cli_cod" property="cliCod" jdbcType="VARCHAR" />
+    <result column="cli_num_tel" property="cliNumTel" jdbcType="VARCHAR" />
+    <result column="cli_des_cor" property="cliDesCor" jdbcType="VARCHAR" />
+    <result column="cli_des_dir" property="cliDesDir" jdbcType="VARCHAR" />
+    <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+    <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
+    <result column="proc_id" property="procId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    cli_id, cli_cod_tip, cli_cod_cat, cli_cod_tip_doc, cli_num_tip_doc, cli_des_raz_soc, 
+    cli_des_ape_pat, cli_des_ape_mat, cli_des_nom, cli_cod_tip_fac, cli_cod_tip_cre, 
+    ubi_id, cli_cod, cli_num_tel, cli_des_cor, cli_des_dir, fec_num_cam, cod_ind_cam, 
+    proc_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TClienteExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_cliente
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_cliente
+    where cli_id = #{cliId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_cliente
+    where cli_id = #{cliId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TClienteExample" >
+    delete from t_cliente
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCliente" >
+    insert into t_cliente (cli_id, cli_cod_tip, cli_cod_cat, 
+      cli_cod_tip_doc, cli_num_tip_doc, cli_des_raz_soc, 
+      cli_des_ape_pat, cli_des_ape_mat, cli_des_nom, 
+      cli_cod_tip_fac, cli_cod_tip_cre, ubi_id, 
+      cli_cod, cli_num_tel, cli_des_cor, 
+      cli_des_dir, fec_num_cam, cod_ind_cam, 
+      proc_id)
+    values (#{cliId,jdbcType=INTEGER}, #{cliCodTip,jdbcType=INTEGER}, #{cliCodCat,jdbcType=INTEGER}, 
+      #{cliCodTipDoc,jdbcType=INTEGER}, #{cliNumTipDoc,jdbcType=VARCHAR}, #{cliDesRazSoc,jdbcType=VARCHAR}, 
+      #{cliDesApePat,jdbcType=VARCHAR}, #{cliDesApeMat,jdbcType=VARCHAR}, #{cliDesNom,jdbcType=VARCHAR}, 
+      #{cliCodTipFac,jdbcType=INTEGER}, #{cliCodTipCre,jdbcType=INTEGER}, #{ubiId,jdbcType=INTEGER}, 
+      #{cliCod,jdbcType=VARCHAR}, #{cliNumTel,jdbcType=VARCHAR}, #{cliDesCor,jdbcType=VARCHAR}, 
+      #{cliDesDir,jdbcType=VARCHAR}, #{fecNumCam,jdbcType=INTEGER}, #{codIndCam,jdbcType=CHAR}, 
+      #{procId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCliente" >
+    insert into t_cliente
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cliId != null" >
+        cli_id,
+      </if>
+      <if test="cliCodTip != null" >
+        cli_cod_tip,
+      </if>
+      <if test="cliCodCat != null" >
+        cli_cod_cat,
+      </if>
+      <if test="cliCodTipDoc != null" >
+        cli_cod_tip_doc,
+      </if>
+      <if test="cliNumTipDoc != null" >
+        cli_num_tip_doc,
+      </if>
+      <if test="cliDesRazSoc != null" >
+        cli_des_raz_soc,
+      </if>
+      <if test="cliDesApePat != null" >
+        cli_des_ape_pat,
+      </if>
+      <if test="cliDesApeMat != null" >
+        cli_des_ape_mat,
+      </if>
+      <if test="cliDesNom != null" >
+        cli_des_nom,
+      </if>
+      <if test="cliCodTipFac != null" >
+        cli_cod_tip_fac,
+      </if>
+      <if test="cliCodTipCre != null" >
+        cli_cod_tip_cre,
+      </if>
+      <if test="ubiId != null" >
+        ubi_id,
+      </if>
+      <if test="cliCod != null" >
+        cli_cod,
+      </if>
+      <if test="cliNumTel != null" >
+        cli_num_tel,
+      </if>
+      <if test="cliDesCor != null" >
+        cli_des_cor,
+      </if>
+      <if test="cliDesDir != null" >
+        cli_des_dir,
+      </if>
+      <if test="fecNumCam != null" >
+        fec_num_cam,
+      </if>
+      <if test="codIndCam != null" >
+        cod_ind_cam,
+      </if>
+      <if test="procId != null" >
+        proc_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cliId != null" >
+        #{cliId,jdbcType=INTEGER},
+      </if>
+      <if test="cliCodTip != null" >
+        #{cliCodTip,jdbcType=INTEGER},
+      </if>
+      <if test="cliCodCat != null" >
+        #{cliCodCat,jdbcType=INTEGER},
+      </if>
+      <if test="cliCodTipDoc != null" >
+        #{cliCodTipDoc,jdbcType=INTEGER},
+      </if>
+      <if test="cliNumTipDoc != null" >
+        #{cliNumTipDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="cliDesRazSoc != null" >
+        #{cliDesRazSoc,jdbcType=VARCHAR},
+      </if>
+      <if test="cliDesApePat != null" >
+        #{cliDesApePat,jdbcType=VARCHAR},
+      </if>
+      <if test="cliDesApeMat != null" >
+        #{cliDesApeMat,jdbcType=VARCHAR},
+      </if>
+      <if test="cliDesNom != null" >
+        #{cliDesNom,jdbcType=VARCHAR},
+      </if>
+      <if test="cliCodTipFac != null" >
+        #{cliCodTipFac,jdbcType=INTEGER},
+      </if>
+      <if test="cliCodTipCre != null" >
+        #{cliCodTipCre,jdbcType=INTEGER},
+      </if>
+      <if test="ubiId != null" >
+        #{ubiId,jdbcType=INTEGER},
+      </if>
+      <if test="cliCod != null" >
+        #{cliCod,jdbcType=VARCHAR},
+      </if>
+      <if test="cliNumTel != null" >
+        #{cliNumTel,jdbcType=VARCHAR},
+      </if>
+      <if test="cliDesCor != null" >
+        #{cliDesCor,jdbcType=VARCHAR},
+      </if>
+      <if test="cliDesDir != null" >
+        #{cliDesDir,jdbcType=VARCHAR},
+      </if>
+      <if test="fecNumCam != null" >
+        #{fecNumCam,jdbcType=INTEGER},
+      </if>
+      <if test="codIndCam != null" >
+        #{codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="procId != null" >
+        #{procId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TClienteExample" resultType="java.lang.Integer" >
+    select count(*) from t_cliente
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_cliente
+    <set >
+      <if test="record.cliId != null" >
+        cli_id = #{record.cliId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cliCodTip != null" >
+        cli_cod_tip = #{record.cliCodTip,jdbcType=INTEGER},
+      </if>
+      <if test="record.cliCodCat != null" >
+        cli_cod_cat = #{record.cliCodCat,jdbcType=INTEGER},
+      </if>
+      <if test="record.cliCodTipDoc != null" >
+        cli_cod_tip_doc = #{record.cliCodTipDoc,jdbcType=INTEGER},
+      </if>
+      <if test="record.cliNumTipDoc != null" >
+        cli_num_tip_doc = #{record.cliNumTipDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cliDesRazSoc != null" >
+        cli_des_raz_soc = #{record.cliDesRazSoc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cliDesApePat != null" >
+        cli_des_ape_pat = #{record.cliDesApePat,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cliDesApeMat != null" >
+        cli_des_ape_mat = #{record.cliDesApeMat,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cliDesNom != null" >
+        cli_des_nom = #{record.cliDesNom,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cliCodTipFac != null" >
+        cli_cod_tip_fac = #{record.cliCodTipFac,jdbcType=INTEGER},
+      </if>
+      <if test="record.cliCodTipCre != null" >
+        cli_cod_tip_cre = #{record.cliCodTipCre,jdbcType=INTEGER},
+      </if>
+      <if test="record.ubiId != null" >
+        ubi_id = #{record.ubiId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cliCod != null" >
+        cli_cod = #{record.cliCod,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cliNumTel != null" >
+        cli_num_tel = #{record.cliNumTel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cliDesCor != null" >
+        cli_des_cor = #{record.cliDesCor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cliDesDir != null" >
+        cli_des_dir = #{record.cliDesDir,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fecNumCam != null" >
+        fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      </if>
+      <if test="record.codIndCam != null" >
+        cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="record.procId != null" >
+        proc_id = #{record.procId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_cliente
+    set cli_id = #{record.cliId,jdbcType=INTEGER},
+      cli_cod_tip = #{record.cliCodTip,jdbcType=INTEGER},
+      cli_cod_cat = #{record.cliCodCat,jdbcType=INTEGER},
+      cli_cod_tip_doc = #{record.cliCodTipDoc,jdbcType=INTEGER},
+      cli_num_tip_doc = #{record.cliNumTipDoc,jdbcType=VARCHAR},
+      cli_des_raz_soc = #{record.cliDesRazSoc,jdbcType=VARCHAR},
+      cli_des_ape_pat = #{record.cliDesApePat,jdbcType=VARCHAR},
+      cli_des_ape_mat = #{record.cliDesApeMat,jdbcType=VARCHAR},
+      cli_des_nom = #{record.cliDesNom,jdbcType=VARCHAR},
+      cli_cod_tip_fac = #{record.cliCodTipFac,jdbcType=INTEGER},
+      cli_cod_tip_cre = #{record.cliCodTipCre,jdbcType=INTEGER},
+      ubi_id = #{record.ubiId,jdbcType=INTEGER},
+      cli_cod = #{record.cliCod,jdbcType=VARCHAR},
+      cli_num_tel = #{record.cliNumTel,jdbcType=VARCHAR},
+      cli_des_cor = #{record.cliDesCor,jdbcType=VARCHAR},
+      cli_des_dir = #{record.cliDesDir,jdbcType=VARCHAR},
+      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
+      proc_id = #{record.procId,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCliente" >
+    update t_cliente
+    <set >
+      <if test="cliCodTip != null" >
+        cli_cod_tip = #{cliCodTip,jdbcType=INTEGER},
+      </if>
+      <if test="cliCodCat != null" >
+        cli_cod_cat = #{cliCodCat,jdbcType=INTEGER},
+      </if>
+      <if test="cliCodTipDoc != null" >
+        cli_cod_tip_doc = #{cliCodTipDoc,jdbcType=INTEGER},
+      </if>
+      <if test="cliNumTipDoc != null" >
+        cli_num_tip_doc = #{cliNumTipDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="cliDesRazSoc != null" >
+        cli_des_raz_soc = #{cliDesRazSoc,jdbcType=VARCHAR},
+      </if>
+      <if test="cliDesApePat != null" >
+        cli_des_ape_pat = #{cliDesApePat,jdbcType=VARCHAR},
+      </if>
+      <if test="cliDesApeMat != null" >
+        cli_des_ape_mat = #{cliDesApeMat,jdbcType=VARCHAR},
+      </if>
+      <if test="cliDesNom != null" >
+        cli_des_nom = #{cliDesNom,jdbcType=VARCHAR},
+      </if>
+      <if test="cliCodTipFac != null" >
+        cli_cod_tip_fac = #{cliCodTipFac,jdbcType=INTEGER},
+      </if>
+      <if test="cliCodTipCre != null" >
+        cli_cod_tip_cre = #{cliCodTipCre,jdbcType=INTEGER},
+      </if>
+      <if test="ubiId != null" >
+        ubi_id = #{ubiId,jdbcType=INTEGER},
+      </if>
+      <if test="cliCod != null" >
+        cli_cod = #{cliCod,jdbcType=VARCHAR},
+      </if>
+      <if test="cliNumTel != null" >
+        cli_num_tel = #{cliNumTel,jdbcType=VARCHAR},
+      </if>
+      <if test="cliDesCor != null" >
+        cli_des_cor = #{cliDesCor,jdbcType=VARCHAR},
+      </if>
+      <if test="cliDesDir != null" >
+        cli_des_dir = #{cliDesDir,jdbcType=VARCHAR},
+      </if>
+      <if test="fecNumCam != null" >
+        fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      </if>
+      <if test="codIndCam != null" >
+        cod_ind_cam = #{codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="procId != null" >
+        proc_id = #{procId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where cli_id = #{cliId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCliente" >
+    update t_cliente
+    set cli_cod_tip = #{cliCodTip,jdbcType=INTEGER},
+      cli_cod_cat = #{cliCodCat,jdbcType=INTEGER},
+      cli_cod_tip_doc = #{cliCodTipDoc,jdbcType=INTEGER},
+      cli_num_tip_doc = #{cliNumTipDoc,jdbcType=VARCHAR},
+      cli_des_raz_soc = #{cliDesRazSoc,jdbcType=VARCHAR},
+      cli_des_ape_pat = #{cliDesApePat,jdbcType=VARCHAR},
+      cli_des_ape_mat = #{cliDesApeMat,jdbcType=VARCHAR},
+      cli_des_nom = #{cliDesNom,jdbcType=VARCHAR},
+      cli_cod_tip_fac = #{cliCodTipFac,jdbcType=INTEGER},
+      cli_cod_tip_cre = #{cliCodTipCre,jdbcType=INTEGER},
+      ubi_id = #{ubiId,jdbcType=INTEGER},
+      cli_cod = #{cliCod,jdbcType=VARCHAR},
+      cli_num_tel = #{cliNumTel,jdbcType=VARCHAR},
+      cli_des_cor = #{cliDesCor,jdbcType=VARCHAR},
+      cli_des_dir = #{cliDesDir,jdbcType=VARCHAR},
+      fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      cod_ind_cam = #{codIndCam,jdbcType=CHAR},
+      proc_id = #{procId,jdbcType=INTEGER}
+    where cli_id = #{cliId,jdbcType=INTEGER}
+  </update>
+</mapper>

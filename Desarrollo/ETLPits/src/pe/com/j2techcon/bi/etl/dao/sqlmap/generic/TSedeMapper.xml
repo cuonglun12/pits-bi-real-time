@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="t_sede" >
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.generic.TSede" >
+    <id column="sed_id" property="sedId" jdbcType="INTEGER" />
+    <result column="sed_cod" property="sedCod" jdbcType="VARCHAR" />
+    <result column="ubi_id" property="ubiId" jdbcType="INTEGER" />
+    <result column="sed_cod_tip" property="sedCodTip" jdbcType="INTEGER" />
+    <result column="sed_des" property="sedDes" jdbcType="VARCHAR" />
+    <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+    <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
+    <result column="proc_id" property="procId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    sed_id, sed_cod, ubi_id, sed_cod_tip, sed_des, fec_num_cam, cod_ind_cam, proc_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TSedeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_sede
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sede
+    where sed_id = #{sedId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_sede
+    where sed_id = #{sedId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TSedeExample" >
+    delete from t_sede
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TSede" >
+    insert into t_sede (sed_id, sed_cod, ubi_id, 
+      sed_cod_tip, sed_des, fec_num_cam, 
+      cod_ind_cam, proc_id)
+    values (#{sedId,jdbcType=INTEGER}, #{sedCod,jdbcType=VARCHAR}, #{ubiId,jdbcType=INTEGER}, 
+      #{sedCodTip,jdbcType=INTEGER}, #{sedDes,jdbcType=VARCHAR}, #{fecNumCam,jdbcType=INTEGER}, 
+      #{codIndCam,jdbcType=CHAR}, #{procId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TSede" >
+    insert into t_sede
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sedId != null" >
+        sed_id,
+      </if>
+      <if test="sedCod != null" >
+        sed_cod,
+      </if>
+      <if test="ubiId != null" >
+        ubi_id,
+      </if>
+      <if test="sedCodTip != null" >
+        sed_cod_tip,
+      </if>
+      <if test="sedDes != null" >
+        sed_des,
+      </if>
+      <if test="fecNumCam != null" >
+        fec_num_cam,
+      </if>
+      <if test="codIndCam != null" >
+        cod_ind_cam,
+      </if>
+      <if test="procId != null" >
+        proc_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sedId != null" >
+        #{sedId,jdbcType=INTEGER},
+      </if>
+      <if test="sedCod != null" >
+        #{sedCod,jdbcType=VARCHAR},
+      </if>
+      <if test="ubiId != null" >
+        #{ubiId,jdbcType=INTEGER},
+      </if>
+      <if test="sedCodTip != null" >
+        #{sedCodTip,jdbcType=INTEGER},
+      </if>
+      <if test="sedDes != null" >
+        #{sedDes,jdbcType=VARCHAR},
+      </if>
+      <if test="fecNumCam != null" >
+        #{fecNumCam,jdbcType=INTEGER},
+      </if>
+      <if test="codIndCam != null" >
+        #{codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="procId != null" >
+        #{procId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TSedeExample" resultType="java.lang.Integer" >
+    select count(*) from t_sede
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_sede
+    <set >
+      <if test="record.sedId != null" >
+        sed_id = #{record.sedId,jdbcType=INTEGER},
+      </if>
+      <if test="record.sedCod != null" >
+        sed_cod = #{record.sedCod,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ubiId != null" >
+        ubi_id = #{record.ubiId,jdbcType=INTEGER},
+      </if>
+      <if test="record.sedCodTip != null" >
+        sed_cod_tip = #{record.sedCodTip,jdbcType=INTEGER},
+      </if>
+      <if test="record.sedDes != null" >
+        sed_des = #{record.sedDes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fecNumCam != null" >
+        fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      </if>
+      <if test="record.codIndCam != null" >
+        cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="record.procId != null" >
+        proc_id = #{record.procId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_sede
+    set sed_id = #{record.sedId,jdbcType=INTEGER},
+      sed_cod = #{record.sedCod,jdbcType=VARCHAR},
+      ubi_id = #{record.ubiId,jdbcType=INTEGER},
+      sed_cod_tip = #{record.sedCodTip,jdbcType=INTEGER},
+      sed_des = #{record.sedDes,jdbcType=VARCHAR},
+      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
+      proc_id = #{record.procId,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TSede" >
+    update t_sede
+    <set >
+      <if test="sedCod != null" >
+        sed_cod = #{sedCod,jdbcType=VARCHAR},
+      </if>
+      <if test="ubiId != null" >
+        ubi_id = #{ubiId,jdbcType=INTEGER},
+      </if>
+      <if test="sedCodTip != null" >
+        sed_cod_tip = #{sedCodTip,jdbcType=INTEGER},
+      </if>
+      <if test="sedDes != null" >
+        sed_des = #{sedDes,jdbcType=VARCHAR},
+      </if>
+      <if test="fecNumCam != null" >
+        fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      </if>
+      <if test="codIndCam != null" >
+        cod_ind_cam = #{codIndCam,jdbcType=CHAR},
+      </if>
+      <if test="procId != null" >
+        proc_id = #{procId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where sed_id = #{sedId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TSede" >
+    update t_sede
+    set sed_cod = #{sedCod,jdbcType=VARCHAR},
+      ubi_id = #{ubiId,jdbcType=INTEGER},
+      sed_cod_tip = #{sedCodTip,jdbcType=INTEGER},
+      sed_des = #{sedDes,jdbcType=VARCHAR},
+      fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      cod_ind_cam = #{codIndCam,jdbcType=CHAR},
+      proc_id = #{procId,jdbcType=INTEGER}
+    where sed_id = #{sedId,jdbcType=INTEGER}
+  </update>
+</mapper>

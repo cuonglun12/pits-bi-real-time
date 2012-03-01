@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dim_moneda" >
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.dimensional.DimMoneda" >
+    <id column="moneda_key" property="monedaKey" jdbcType="INTEGER" />
+    <result column="moneda_cod" property="monedaCod" jdbcType="CHAR" />
+    <result column="moneda_desc" property="monedaDesc" jdbcType="VARCHAR" />
+    <result column="proc_id" property="procId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    moneda_key, moneda_cod, moneda_desc, proc_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimMonedaExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dim_moneda
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dim_moneda
+    where moneda_key = #{monedaKey,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dim_moneda
+    where moneda_key = #{monedaKey,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimMonedaExample" >
+    delete from dim_moneda
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimMoneda" >
+    insert into dim_moneda (moneda_key, moneda_cod, moneda_desc, 
+      proc_id)
+    values (#{monedaKey,jdbcType=INTEGER}, #{monedaCod,jdbcType=CHAR}, #{monedaDesc,jdbcType=VARCHAR}, 
+      #{procId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimMoneda" >
+    insert into dim_moneda
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="monedaKey != null" >
+        moneda_key,
+      </if>
+      <if test="monedaCod != null" >
+        moneda_cod,
+      </if>
+      <if test="monedaDesc != null" >
+        moneda_desc,
+      </if>
+      <if test="procId != null" >
+        proc_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="monedaKey != null" >
+        #{monedaKey,jdbcType=INTEGER},
+      </if>
+      <if test="monedaCod != null" >
+        #{monedaCod,jdbcType=CHAR},
+      </if>
+      <if test="monedaDesc != null" >
+        #{monedaDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="procId != null" >
+        #{procId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimMonedaExample" resultType="java.lang.Integer" >
+    select count(*) from dim_moneda
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update dim_moneda
+    <set >
+      <if test="record.monedaKey != null" >
+        moneda_key = #{record.monedaKey,jdbcType=INTEGER},
+      </if>
+      <if test="record.monedaCod != null" >
+        moneda_cod = #{record.monedaCod,jdbcType=CHAR},
+      </if>
+      <if test="record.monedaDesc != null" >
+        moneda_desc = #{record.monedaDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.procId != null" >
+        proc_id = #{record.procId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update dim_moneda
+    set moneda_key = #{record.monedaKey,jdbcType=INTEGER},
+      moneda_cod = #{record.monedaCod,jdbcType=CHAR},
+      moneda_desc = #{record.monedaDesc,jdbcType=VARCHAR},
+      proc_id = #{record.procId,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimMoneda" >
+    update dim_moneda
+    <set >
+      <if test="monedaCod != null" >
+        moneda_cod = #{monedaCod,jdbcType=CHAR},
+      </if>
+      <if test="monedaDesc != null" >
+        moneda_desc = #{monedaDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="procId != null" >
+        proc_id = #{procId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where moneda_key = #{monedaKey,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimMoneda" >
+    update dim_moneda
+    set moneda_cod = #{monedaCod,jdbcType=CHAR},
+      moneda_desc = #{monedaDesc,jdbcType=VARCHAR},
+      proc_id = #{procId,jdbcType=INTEGER}
+    where moneda_key = #{monedaKey,jdbcType=INTEGER}
+  </update>
+</mapper>

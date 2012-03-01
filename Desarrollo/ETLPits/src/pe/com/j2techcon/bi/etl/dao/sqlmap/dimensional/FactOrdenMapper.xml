@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="fact_orden" >
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.dimensional.FactOrden" >
+    <result column="orden_key" property="ordenKey" jdbcType="INTEGER" />
+    <result column="orden_key_cliente_area" property="ordenKeyClienteArea" jdbcType="INTEGER" />
+    <result column="orden_key_servicio" property="ordenKeyServicio" jdbcType="INTEGER" />
+    <result column="orden_key_producto" property="ordenKeyProducto" jdbcType="INTEGER" />
+    <result column="orden_key_tipo_reparto" property="ordenKeyTipoReparto" jdbcType="INTEGER" />
+    <result column="orden_key_tipo_documento" property="ordenKeyTipoDocumento" jdbcType="INTEGER" />
+    <result column="orden_key_tipo_pago" property="ordenKeyTipoPago" jdbcType="INTEGER" />
+    <result column="orden_key_moneda" property="ordenKeyMoneda" jdbcType="INTEGER" />
+    <result column="orden_key_fec_reg" property="ordenKeyFecReg" jdbcType="INTEGER" />
+    <result column="orden_key_fec_ini" property="ordenKeyFecIni" jdbcType="INTEGER" />
+    <result column="orden_key_fec_ven" property="ordenKeyFecVen" jdbcType="INTEGER" />
+    <result column="orden_key_fec_cie" property="ordenKeyFecCie" jdbcType="INTEGER" />
+    <result column="orden_key_fec_dev" property="ordenKeyFecDev" jdbcType="INTEGER" />
+    <result column="orden_key_estado" property="ordenKeyEstado" jdbcType="INTEGER" />
+    <result column="orden_aten_en_fec" property="ordenAtenEnFec" jdbcType="SMALLINT" />
+    <result column="orden_aten_fuera_fec" property="ordenAtenFueraFec" jdbcType="SMALLINT" />
+    <result column="orden_ind_unidad" property="ordenIndUnidad" jdbcType="SMALLINT" />
+    <result column="orden_cnt_dias_exc" property="ordenCntDiasExc" jdbcType="INTEGER" />
+    <result column="orden_cnt_cargos" property="ordenCntCargos" jdbcType="INTEGER" />
+    <result column="orden_cnt_cargos_anu" property="ordenCntCargosAnu" jdbcType="INTEGER" />
+    <result column="orden_cnt_cargos_ent" property="ordenCntCargosEnt" jdbcType="INTEGER" />
+    <result column="orden_cnt_cargos_fue_zon" property="ordenCntCargosFueZon" jdbcType="INTEGER" />
+    <result column="orden_cnt_cargos_mot" property="ordenCntCargosMot" jdbcType="INTEGER" />
+    <result column="orden_cnt_cargos_perd" property="ordenCntCargosPerd" jdbcType="INTEGER" />
+    <result column="orden_cnt_cargos_ree" property="ordenCntCargosRee" jdbcType="INTEGER" />
+    <result column="orden_mon_importe" property="ordenMonImporte" jdbcType="NUMERIC" />
+    <result column="orden_mon_descuento" property="ordenMonDescuento" jdbcType="NUMERIC" />
+    <result column="orden_mon_igv" property="ordenMonIgv" jdbcType="NUMERIC" />
+    <result column="orden_mon_total" property="ordenMonTotal" jdbcType="NUMERIC" />
+    <result column="proc_id" property="procId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    orden_key, orden_key_cliente_area, orden_key_servicio, orden_key_producto, orden_key_tipo_reparto, 
+    orden_key_tipo_documento, orden_key_tipo_pago, orden_key_moneda, orden_key_fec_reg, 
+    orden_key_fec_ini, orden_key_fec_ven, orden_key_fec_cie, orden_key_fec_dev, orden_key_estado, 
+    orden_aten_en_fec, orden_aten_fuera_fec, orden_ind_unidad, orden_cnt_dias_exc, orden_cnt_cargos, 
+    orden_cnt_cargos_anu, orden_cnt_cargos_ent, orden_cnt_cargos_fue_zon, orden_cnt_cargos_mot, 
+    orden_cnt_cargos_perd, orden_cnt_cargos_ree, orden_mon_importe, orden_mon_descuento, 
+    orden_mon_igv, orden_mon_total, proc_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactOrdenExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from fact_orden
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactOrdenExample" >
+    delete from fact_orden
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactOrden" >
+    insert into fact_orden (orden_key, orden_key_cliente_area, orden_key_servicio, 
+      orden_key_producto, orden_key_tipo_reparto, 
+      orden_key_tipo_documento, orden_key_tipo_pago, 
+      orden_key_moneda, orden_key_fec_reg, orden_key_fec_ini, 
+      orden_key_fec_ven, orden_key_fec_cie, orden_key_fec_dev, 
+      orden_key_estado, orden_aten_en_fec, orden_aten_fuera_fec, 
+      orden_ind_unidad, orden_cnt_dias_exc, orden_cnt_cargos, 
+      orden_cnt_cargos_anu, orden_cnt_cargos_ent, orden_cnt_cargos_fue_zon, 
+      orden_cnt_cargos_mot, orden_cnt_cargos_perd, 
+      orden_cnt_cargos_ree, orden_mon_importe, orden_mon_descuento, 
+      orden_mon_igv, orden_mon_total, proc_id
+      )
+    values (#{ordenKey,jdbcType=INTEGER}, #{ordenKeyClienteArea,jdbcType=INTEGER}, #{ordenKeyServicio,jdbcType=INTEGER}, 
+      #{ordenKeyProducto,jdbcType=INTEGER}, #{ordenKeyTipoReparto,jdbcType=INTEGER}, 
+      #{ordenKeyTipoDocumento,jdbcType=INTEGER}, #{ordenKeyTipoPago,jdbcType=INTEGER}, 
+      #{ordenKeyMoneda,jdbcType=INTEGER}, #{ordenKeyFecReg,jdbcType=INTEGER}, #{ordenKeyFecIni,jdbcType=INTEGER}, 
+      #{ordenKeyFecVen,jdbcType=INTEGER}, #{ordenKeyFecCie,jdbcType=INTEGER}, #{ordenKeyFecDev,jdbcType=INTEGER}, 
+      #{ordenKeyEstado,jdbcType=INTEGER}, #{ordenAtenEnFec,jdbcType=SMALLINT}, #{ordenAtenFueraFec,jdbcType=SMALLINT}, 
+      #{ordenIndUnidad,jdbcType=SMALLINT}, #{ordenCntDiasExc,jdbcType=INTEGER}, #{ordenCntCargos,jdbcType=INTEGER}, 
+      #{ordenCntCargosAnu,jdbcType=INTEGER}, #{ordenCntCargosEnt,jdbcType=INTEGER}, #{ordenCntCargosFueZon,jdbcType=INTEGER}, 
+      #{ordenCntCargosMot,jdbcType=INTEGER}, #{ordenCntCargosPerd,jdbcType=INTEGER}, 
+      #{ordenCntCargosRee,jdbcType=INTEGER}, #{ordenMonImporte,jdbcType=NUMERIC}, #{ordenMonDescuento,jdbcType=NUMERIC}, 
+      #{ordenMonIgv,jdbcType=NUMERIC}, #{ordenMonTotal,jdbcType=NUMERIC}, #{procId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactOrden" >
+    insert into fact_orden
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ordenKey != null" >
+        orden_key,
+      </if>
+      <if test="ordenKeyClienteArea != null" >
+        orden_key_cliente_area,
+      </if>
+      <if test="ordenKeyServicio != null" >
+        orden_key_servicio,
+      </if>
+      <if test="ordenKeyProducto != null" >
+        orden_key_producto,
+      </if>
+      <if test="ordenKeyTipoReparto != null" >
+        orden_key_tipo_reparto,
+      </if>
+      <if test="ordenKeyTipoDocumento != null" >
+        orden_key_tipo_documento,
+      </if>
+      <if test="ordenKeyTipoPago != null" >
+        orden_key_tipo_pago,
+      </if>
+      <if test="ordenKeyMoneda != null" >
+        orden_key_moneda,
+      </if>
+      <if test="ordenKeyFecReg != null" >
+        orden_key_fec_reg,
+      </if>
+      <if test="ordenKeyFecIni != null" >
+        orden_key_fec_ini,
+      </if>
+      <if test="ordenKeyFecVen != null" >
+        orden_key_fec_ven,
+      </if>
+      <if test="ordenKeyFecCie != null" >
+        orden_key_fec_cie,
+      </if>
+      <if test="ordenKeyFecDev != null" >
+        orden_key_fec_dev,
+      </if>
+      <if test="ordenKeyEstado != null" >
+        orden_key_estado,
+      </if>
+      <if test="ordenAtenEnFec != null" >
+        orden_aten_en_fec,
+      </if>
+      <if test="ordenAtenFueraFec != null" >
+        orden_aten_fuera_fec,
+      </if>
+      <if test="ordenIndUnidad != null" >
+        orden_ind_unidad,
+      </if>
+      <if test="ordenCntDiasExc != null" >
+        orden_cnt_dias_exc,
+      </if>
+      <if test="ordenCntCargos != null" >
+        orden_cnt_cargos,
+      </if>
+      <if test="ordenCntCargosAnu != null" >
+        orden_cnt_cargos_anu,
+      </if>
+      <if test="ordenCntCargosEnt != null" >
+        orden_cnt_cargos_ent,
+      </if>
+      <if test="ordenCntCargosFueZon != null" >
+        orden_cnt_cargos_fue_zon,
+      </if>
+      <if test="ordenCntCargosMot != null" >
+        orden_cnt_cargos_mot,
+      </if>
+      <if test="ordenCntCargosPerd != null" >
+        orden_cnt_cargos_perd,
+      </if>
+      <if test="ordenCntCargosRee != null" >
+        orden_cnt_cargos_ree,
+      </if>
+      <if test="ordenMonImporte != null" >
+        orden_mon_importe,
+      </if>
+      <if test="ordenMonDescuento != null" >
+        orden_mon_descuento,
+      </if>
+      <if test="ordenMonIgv != null" >
+        orden_mon_igv,
+      </if>
+      <if test="ordenMonTotal != null" >
+        orden_mon_total,
+      </if>
+      <if test="procId != null" >
+        proc_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ordenKey != null" >
+        #{ordenKey,jdbcType=INTEGER},
+      </if>
+      <if test="ordenKeyClienteArea != null" >
+        #{ordenKeyClienteArea,jdbcType=INTEGER},
+      </if>
+      <if test="ordenKeyServicio != null" >
+        #{ordenKeyServicio,jdbcType=INTEGER},
+      </if>
+      <if test="ordenKeyProducto != null" >
+        #{ordenKeyProducto,jdbcType=INTEGER},
+      </if>
+      <if test="ordenKeyTipoReparto != null" >
+        #{ordenKeyTipoReparto,jdbcType=INTEGER},
+      </if>
+      <if test="ordenKeyTipoDocumento != null" >
+        #{ordenKeyTipoDocumento,jdbcType=INTEGER},
+      </if>
+      <if test="ordenKeyTipoPago != null" >
+        #{ordenKeyTipoPago,jdbcType=INTEGER},
+      </if>
+      <if test="ordenKeyMoneda != null" >
+        #{ordenKeyMoneda,jdbcType=INTEGER},
+      </if>
+      <if test="ordenKeyFecReg != null" >
+        #{ordenKeyFecReg,jdbcType=INTEGER},
+      </if>
+      <if test="ordenKeyFecIni != null" >
+        #{ordenKeyFecIni,jdbcType=INTEGER},
+      </if>
+      <if test="ordenKeyFecVen != null" >
+        #{ordenKeyFecVen,jdbcType=INTEGER},
+      </if>
+      <if test="ordenKeyFecCie != null" >
+        #{ordenKeyFecCie,jdbcType=INTEGER},
+      </if>
+      <if test="ordenKeyFecDev != null" >
+        #{ordenKeyFecDev,jdbcType=INTEGER},
+      </if>
+      <if test="ordenKeyEstado != null" >
+        #{ordenKeyEstado,jdbcType=INTEGER},
+      </if>
+      <if test="ordenAtenEnFec != null" >
+        #{ordenAtenEnFec,jdbcType=SMALLINT},
+      </if>
+      <if test="ordenAtenFueraFec != null" >
+        #{ordenAtenFueraFec,jdbcType=SMALLINT},
+      </if>
+      <if test="ordenIndUnidad != null" >
+        #{ordenIndUnidad,jdbcType=SMALLINT},
+      </if>
+      <if test="ordenCntDiasExc != null" >
+        #{ordenCntDiasExc,jdbcType=INTEGER},
+      </if>
+      <if test="ordenCntCargos != null" >
+        #{ordenCntCargos,jdbcType=INTEGER},
+      </if>
+      <if test="ordenCntCargosAnu != null" >
+        #{ordenCntCargosAnu,jdbcType=INTEGER},
+      </if>
+      <if test="ordenCntCargosEnt != null" >
+        #{ordenCntCargosEnt,jdbcType=INTEGER},
+      </if>
+      <if test="ordenCntCargosFueZon != null" >
+        #{ordenCntCargosFueZon,jdbcType=INTEGER},
+      </if>
+      <if test="ordenCntCargosMot != null" >
+        #{ordenCntCargosMot,jdbcType=INTEGER},
+      </if>
+      <if test="ordenCntCargosPerd != null" >
+        #{ordenCntCargosPerd,jdbcType=INTEGER},
+      </if>
+      <if test="ordenCntCargosRee != null" >
+        #{ordenCntCargosRee,jdbcType=INTEGER},
+      </if>
+      <if test="ordenMonImporte != null" >
+        #{ordenMonImporte,jdbcType=NUMERIC},
+      </if>
+      <if test="ordenMonDescuento != null" >
+        #{ordenMonDescuento,jdbcType=NUMERIC},
+      </if>
+      <if test="ordenMonIgv != null" >
+        #{ordenMonIgv,jdbcType=NUMERIC},
+      </if>
+      <if test="ordenMonTotal != null" >
+        #{ordenMonTotal,jdbcType=NUMERIC},
+      </if>
+      <if test="procId != null" >
+        #{procId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactOrdenExample" resultType="java.lang.Integer" >
+    select count(*) from fact_orden
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update fact_orden
+    <set >
+      <if test="record.ordenKey != null" >
+        orden_key = #{record.ordenKey,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordenKeyClienteArea != null" >
+        orden_key_cliente_area = #{record.ordenKeyClienteArea,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordenKeyServicio != null" >
+        orden_key_servicio = #{record.ordenKeyServicio,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordenKeyProducto != null" >
+        orden_key_producto = #{record.ordenKeyProducto,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordenKeyTipoReparto != null" >
+        orden_key_tipo_reparto = #{record.ordenKeyTipoReparto,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordenKeyTipoDocumento != null" >
+        orden_key_tipo_documento = #{record.ordenKeyTipoDocumento,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordenKeyTipoPago != null" >
+        orden_key_tipo_pago = #{record.ordenKeyTipoPago,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordenKeyMoneda != null" >
+        orden_key_moneda = #{record.ordenKeyMoneda,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordenKeyFecReg != null" >
+        orden_key_fec_reg = #{record.ordenKeyFecReg,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordenKeyFecIni != null" >
+        orden_key_fec_ini = #{record.ordenKeyFecIni,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordenKeyFecVen != null" >
+        orden_key_fec_ven = #{record.ordenKeyFecVen,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordenKeyFecCie != null" >
+        orden_key_fec_cie = #{record.ordenKeyFecCie,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordenKeyFecDev != null" >
+        orden_key_fec_dev = #{record.ordenKeyFecDev,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordenKeyEstado != null" >
+        orden_key_estado = #{record.ordenKeyEstado,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordenAtenEnFec != null" >
+        orden_aten_en_fec = #{record.ordenAtenEnFec,jdbcType=SMALLINT},
+      </if>
+      <if test="record.ordenAtenFueraFec != null" >
+        orden_aten_fuera_fec = #{record.ordenAtenFueraFec,jdbcType=SMALLINT},
+      </if>
+      <if test="record.ordenIndUnidad != null" >
+        orden_ind_unidad = #{record.ordenIndUnidad,jdbcType=SMALLINT},
+      </if>
+      <if test="record.ordenCntDiasExc != null" >
+        orden_cnt_dias_exc = #{record.ordenCntDiasExc,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordenCntCargos != null" >
+        orden_cnt_cargos = #{record.ordenCntCargos,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordenCntCargosAnu != null" >
+        orden_cnt_cargos_anu = #{record.ordenCntCargosAnu,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordenCntCargosEnt != null" >
+        orden_cnt_cargos_ent = #{record.ordenCntCargosEnt,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordenCntCargosFueZon != null" >
+        orden_cnt_cargos_fue_zon = #{record.ordenCntCargosFueZon,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordenCntCargosMot != null" >
+        orden_cnt_cargos_mot = #{record.ordenCntCargosMot,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordenCntCargosPerd != null" >
+        orden_cnt_cargos_perd = #{record.ordenCntCargosPerd,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordenCntCargosRee != null" >
+        orden_cnt_cargos_ree = #{record.ordenCntCargosRee,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordenMonImporte != null" >
+        orden_mon_importe = #{record.ordenMonImporte,jdbcType=NUMERIC},
+      </if>
+      <if test="record.ordenMonDescuento != null" >
+        orden_mon_descuento = #{record.ordenMonDescuento,jdbcType=NUMERIC},
+      </if>
+      <if test="record.ordenMonIgv != null" >
+        orden_mon_igv = #{record.ordenMonIgv,jdbcType=NUMERIC},
+      </if>
+      <if test="record.ordenMonTotal != null" >
+        orden_mon_total = #{record.ordenMonTotal,jdbcType=NUMERIC},
+      </if>
+      <if test="record.procId != null" >
+        proc_id = #{record.procId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update fact_orden
+    set orden_key = #{record.ordenKey,jdbcType=INTEGER},
+      orden_key_cliente_area = #{record.ordenKeyClienteArea,jdbcType=INTEGER},
+      orden_key_servicio = #{record.ordenKeyServicio,jdbcType=INTEGER},
+      orden_key_producto = #{record.ordenKeyProducto,jdbcType=INTEGER},
+      orden_key_tipo_reparto = #{record.ordenKeyTipoReparto,jdbcType=INTEGER},
+      orden_key_tipo_documento = #{record.ordenKeyTipoDocumento,jdbcType=INTEGER},
+      orden_key_tipo_pago = #{record.ordenKeyTipoPago,jdbcType=INTEGER},
+      orden_key_moneda = #{record.ordenKeyMoneda,jdbcType=INTEGER},
+      orden_key_fec_reg = #{record.ordenKeyFecReg,jdbcType=INTEGER},
+      orden_key_fec_ini = #{record.ordenKeyFecIni,jdbcType=INTEGER},
+      orden_key_fec_ven = #{record.ordenKeyFecVen,jdbcType=INTEGER},
+      orden_key_fec_cie = #{record.ordenKeyFecCie,jdbcType=INTEGER},
+      orden_key_fec_dev = #{record.ordenKeyFecDev,jdbcType=INTEGER},
+      orden_key_estado = #{record.ordenKeyEstado,jdbcType=INTEGER},
+      orden_aten_en_fec = #{record.ordenAtenEnFec,jdbcType=SMALLINT},
+      orden_aten_fuera_fec = #{record.ordenAtenFueraFec,jdbcType=SMALLINT},
+      orden_ind_unidad = #{record.ordenIndUnidad,jdbcType=SMALLINT},
+      orden_cnt_dias_exc = #{record.ordenCntDiasExc,jdbcType=INTEGER},
+      orden_cnt_cargos = #{record.ordenCntCargos,jdbcType=INTEGER},
+      orden_cnt_cargos_anu = #{record.ordenCntCargosAnu,jdbcType=INTEGER},
+      orden_cnt_cargos_ent = #{record.ordenCntCargosEnt,jdbcType=INTEGER},
+      orden_cnt_cargos_fue_zon = #{record.ordenCntCargosFueZon,jdbcType=INTEGER},
+      orden_cnt_cargos_mot = #{record.ordenCntCargosMot,jdbcType=INTEGER},
+      orden_cnt_cargos_perd = #{record.ordenCntCargosPerd,jdbcType=INTEGER},
+      orden_cnt_cargos_ree = #{record.ordenCntCargosRee,jdbcType=INTEGER},
+      orden_mon_importe = #{record.ordenMonImporte,jdbcType=NUMERIC},
+      orden_mon_descuento = #{record.ordenMonDescuento,jdbcType=NUMERIC},
+      orden_mon_igv = #{record.ordenMonIgv,jdbcType=NUMERIC},
+      orden_mon_total = #{record.ordenMonTotal,jdbcType=NUMERIC},
+      proc_id = #{record.procId,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
