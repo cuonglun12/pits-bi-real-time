@@ -241,6 +241,7 @@ zona_desc_provincia  VARCHAR(250)         not null default '-',
 zona_cod_distrito    INT4                 not null default 0,
 zona_desc_distrito   VARCHAR(250)         not null default '-',
 zona_cod             VARCHAR(10)          not null default '-',
+zona_desc			 VARCHAR(250)         not null default '-',
 zona_cod_postal      VARCHAR(10)          not null default '-',
 proc_id              INT4                 not null default 0,
 constraint PK_DIM_ZONA primary key (zona_key)
