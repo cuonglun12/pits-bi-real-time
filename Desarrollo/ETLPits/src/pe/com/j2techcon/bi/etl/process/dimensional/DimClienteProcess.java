@@ -339,10 +339,7 @@ public class DimClienteProcess {
 					processRecordAreaCliente();
 				}
 				offset = offset + constantes.getSizePage();
-			}
-			
-			if(lstAreaCliente.size()<constantes.getSizePage()){
-				
+			}else{
 				tAreaClienteExample.clear();
 				tAreaClienteExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
 				tAreaClienteExample.createCriteria().andProcIdNotEqualTo(process);
@@ -376,10 +373,7 @@ public class DimClienteProcess {
 					processRecordCliente();
 				}
 				offset = offset + constantes.getSizePage();
-			}
-			
-			if(lstCliente.size()<constantes.getSizePage()){
-				
+			}else{
 				tClienteExample.clear();
 				tClienteExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
 				tClienteExample.createCriteria().andProcIdNotEqualTo(process);
