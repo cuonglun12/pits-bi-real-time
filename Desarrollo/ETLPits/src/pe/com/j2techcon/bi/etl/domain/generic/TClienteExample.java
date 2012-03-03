@@ -1176,52 +1176,52 @@ public class TClienteExample {
             return (Criteria) this;
         }
 
-        public Criteria andFecNumCamEqualTo(Integer value) {
+        public Criteria andFecNumCamEqualTo(Long value) {
             addCriterion("fec_num_cam =", value, "fecNumCam");
             return (Criteria) this;
         }
 
-        public Criteria andFecNumCamNotEqualTo(Integer value) {
+        public Criteria andFecNumCamNotEqualTo(Long value) {
             addCriterion("fec_num_cam <>", value, "fecNumCam");
             return (Criteria) this;
         }
 
-        public Criteria andFecNumCamGreaterThan(Integer value) {
+        public Criteria andFecNumCamGreaterThan(Long value) {
             addCriterion("fec_num_cam >", value, "fecNumCam");
             return (Criteria) this;
         }
 
-        public Criteria andFecNumCamGreaterThanOrEqualTo(Integer value) {
+        public Criteria andFecNumCamGreaterThanOrEqualTo(Long value) {
             addCriterion("fec_num_cam >=", value, "fecNumCam");
             return (Criteria) this;
         }
 
-        public Criteria andFecNumCamLessThan(Integer value) {
+        public Criteria andFecNumCamLessThan(Long value) {
             addCriterion("fec_num_cam <", value, "fecNumCam");
             return (Criteria) this;
         }
 
-        public Criteria andFecNumCamLessThanOrEqualTo(Integer value) {
+        public Criteria andFecNumCamLessThanOrEqualTo(Long value) {
             addCriterion("fec_num_cam <=", value, "fecNumCam");
             return (Criteria) this;
         }
 
-        public Criteria andFecNumCamIn(List<Integer> values) {
+        public Criteria andFecNumCamIn(List<Long> values) {
             addCriterion("fec_num_cam in", values, "fecNumCam");
             return (Criteria) this;
         }
 
-        public Criteria andFecNumCamNotIn(List<Integer> values) {
+        public Criteria andFecNumCamNotIn(List<Long> values) {
             addCriterion("fec_num_cam not in", values, "fecNumCam");
             return (Criteria) this;
         }
 
-        public Criteria andFecNumCamBetween(Integer value1, Integer value2) {
+        public Criteria andFecNumCamBetween(Long value1, Long value2) {
             addCriterion("fec_num_cam between", value1, value2, "fecNumCam");
             return (Criteria) this;
         }
 
-        public Criteria andFecNumCamNotBetween(Integer value1, Integer value2) {
+        public Criteria andFecNumCamNotBetween(Long value1, Long value2) {
             addCriterion("fec_num_cam not between", value1, value2, "fecNumCam");
             return (Criteria) this;
         }

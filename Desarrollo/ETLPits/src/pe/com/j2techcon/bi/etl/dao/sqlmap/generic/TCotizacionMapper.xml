@@ -16,7 +16,7 @@
     <result column="coti_fec_apro" property="cotiFecApro" jdbcType="DATE" />
     <result column="coti_fec_ini" property="cotiFecIni" jdbcType="DATE" />
     <result column="coti_fec_fin" property="cotiFecFin" jdbcType="DATE" />
-    <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+    <result column="fec_num_cam" property="fecNumCam" jdbcType="BIGINT" />
     <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
     <result column="proc_id" property="procId" jdbcType="INTEGER" />
   </resultMap>
@@ -127,7 +127,7 @@
       #{prodId,jdbcType=INTEGER}, #{cotiCodAmb,jdbcType=INTEGER}, #{cotiCodServ,jdbcType=INTEGER}, 
       #{cotiCodNeg,jdbcType=INTEGER}, #{cotiCodTipDoc,jdbcType=INTEGER}, #{cotiSerieDoc,jdbcType=VARCHAR}, 
       #{cotiNumDoc,jdbcType=VARCHAR}, #{cotiCodEst,jdbcType=INTEGER}, #{cotiFecApro,jdbcType=DATE}, 
-      #{cotiFecIni,jdbcType=DATE}, #{cotiFecFin,jdbcType=DATE}, #{fecNumCam,jdbcType=INTEGER}, 
+      #{cotiFecIni,jdbcType=DATE}, #{cotiFecFin,jdbcType=DATE}, #{fecNumCam,jdbcType=BIGINT}, 
       #{codIndCam,jdbcType=CHAR}, #{procId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCotizacion" >
@@ -229,7 +229,7 @@
         #{cotiFecFin,jdbcType=DATE},
       </if>
       <if test="fecNumCam != null" >
-        #{fecNumCam,jdbcType=INTEGER},
+        #{fecNumCam,jdbcType=BIGINT},
       </if>
       <if test="codIndCam != null" >
         #{codIndCam,jdbcType=CHAR},
@@ -291,7 +291,7 @@
         coti_fec_fin = #{record.cotiFecFin,jdbcType=DATE},
       </if>
       <if test="record.fecNumCam != null" >
-        fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+        fec_num_cam = #{record.fecNumCam,jdbcType=BIGINT},
       </if>
       <if test="record.codIndCam != null" >
         cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
@@ -320,7 +320,7 @@
       coti_fec_apro = #{record.cotiFecApro,jdbcType=DATE},
       coti_fec_ini = #{record.cotiFecIni,jdbcType=DATE},
       coti_fec_fin = #{record.cotiFecFin,jdbcType=DATE},
-      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      fec_num_cam = #{record.fecNumCam,jdbcType=BIGINT},
       cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
       proc_id = #{record.procId,jdbcType=INTEGER}
     <if test="_parameter != null" >
@@ -370,7 +370,7 @@
         coti_fec_fin = #{cotiFecFin,jdbcType=DATE},
       </if>
       <if test="fecNumCam != null" >
-        fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+        fec_num_cam = #{fecNumCam,jdbcType=BIGINT},
       </if>
       <if test="codIndCam != null" >
         cod_ind_cam = #{codIndCam,jdbcType=CHAR},
@@ -396,7 +396,7 @@
       coti_fec_apro = #{cotiFecApro,jdbcType=DATE},
       coti_fec_ini = #{cotiFecIni,jdbcType=DATE},
       coti_fec_fin = #{cotiFecFin,jdbcType=DATE},
-      fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      fec_num_cam = #{fecNumCam,jdbcType=BIGINT},
       cod_ind_cam = #{codIndCam,jdbcType=CHAR},
       proc_id = #{procId,jdbcType=INTEGER}
     where coti_id = #{cotiId,jdbcType=INTEGER}

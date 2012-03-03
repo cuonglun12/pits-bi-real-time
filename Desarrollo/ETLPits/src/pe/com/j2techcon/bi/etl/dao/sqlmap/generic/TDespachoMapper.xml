@@ -20,7 +20,7 @@
     <result column="desp_fec_ver" property="despFecVer" jdbcType="DATE" />
     <result column="desp_can_pas" property="despCanPas" jdbcType="NUMERIC" />
     <result column="desp_cod_est" property="despCodEst" jdbcType="INTEGER" />
-    <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+    <result column="fec_num_cam" property="fecNumCam" jdbcType="BIGINT" />
     <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
     <result column="proc_id" property="procId" jdbcType="INTEGER" />
   </resultMap>
@@ -136,7 +136,7 @@
       #{despCodVer,jdbcType=INTEGER}, #{despMonPasaje,jdbcType=NUMERIC}, #{despCntCargos,jdbcType=INTEGER}, 
       #{despFecSal,jdbcType=DATE}, #{despFecRetPro,jdbcType=DATE}, #{despFecRetRea,jdbcType=DATE}, 
       #{despFecVer,jdbcType=DATE}, #{despCanPas,jdbcType=NUMERIC}, #{despCodEst,jdbcType=INTEGER}, 
-      #{fecNumCam,jdbcType=INTEGER}, #{codIndCam,jdbcType=CHAR}, #{procId,jdbcType=INTEGER}
+      #{fecNumCam,jdbcType=BIGINT}, #{codIndCam,jdbcType=CHAR}, #{procId,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TDespacho" >
@@ -262,7 +262,7 @@
         #{despCodEst,jdbcType=INTEGER},
       </if>
       <if test="fecNumCam != null" >
-        #{fecNumCam,jdbcType=INTEGER},
+        #{fecNumCam,jdbcType=BIGINT},
       </if>
       <if test="codIndCam != null" >
         #{codIndCam,jdbcType=CHAR},
@@ -336,7 +336,7 @@
         desp_cod_est = #{record.despCodEst,jdbcType=INTEGER},
       </if>
       <if test="record.fecNumCam != null" >
-        fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+        fec_num_cam = #{record.fecNumCam,jdbcType=BIGINT},
       </if>
       <if test="record.codIndCam != null" >
         cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
@@ -369,7 +369,7 @@
       desp_fec_ver = #{record.despFecVer,jdbcType=DATE},
       desp_can_pas = #{record.despCanPas,jdbcType=NUMERIC},
       desp_cod_est = #{record.despCodEst,jdbcType=INTEGER},
-      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      fec_num_cam = #{record.fecNumCam,jdbcType=BIGINT},
       cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
       proc_id = #{record.procId,jdbcType=INTEGER}
     <if test="_parameter != null" >
@@ -431,7 +431,7 @@
         desp_cod_est = #{despCodEst,jdbcType=INTEGER},
       </if>
       <if test="fecNumCam != null" >
-        fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+        fec_num_cam = #{fecNumCam,jdbcType=BIGINT},
       </if>
       <if test="codIndCam != null" >
         cod_ind_cam = #{codIndCam,jdbcType=CHAR},
@@ -461,7 +461,7 @@
       desp_fec_ver = #{despFecVer,jdbcType=DATE},
       desp_can_pas = #{despCanPas,jdbcType=NUMERIC},
       desp_cod_est = #{despCodEst,jdbcType=INTEGER},
-      fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      fec_num_cam = #{fecNumCam,jdbcType=BIGINT},
       cod_ind_cam = #{codIndCam,jdbcType=CHAR},
       proc_id = #{procId,jdbcType=INTEGER}
     where desp_id = #{despId,jdbcType=INTEGER}

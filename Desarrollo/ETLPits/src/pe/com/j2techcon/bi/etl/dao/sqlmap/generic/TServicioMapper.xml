@@ -8,7 +8,7 @@
     <result column="serv_cod_amb" property="servCodAmb" jdbcType="INTEGER" />
     <result column="serv_des" property="servDes" jdbcType="VARCHAR" />
     <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
-    <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+    <result column="fec_num_cam" property="fecNumCam" jdbcType="BIGINT" />
     <result column="proc_id" property="procId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -112,7 +112,7 @@
       fec_num_cam, proc_id)
     values (#{servId,jdbcType=INTEGER}, #{sevCod,jdbcType=VARCHAR}, #{servCodNeg,jdbcType=INTEGER}, 
       #{servCodAmb,jdbcType=INTEGER}, #{servDes,jdbcType=VARCHAR}, #{codIndCam,jdbcType=CHAR}, 
-      #{fecNumCam,jdbcType=INTEGER}, #{procId,jdbcType=INTEGER})
+      #{fecNumCam,jdbcType=BIGINT}, #{procId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TServicio" >
     insert into t_servicio
@@ -162,7 +162,7 @@
         #{codIndCam,jdbcType=CHAR},
       </if>
       <if test="fecNumCam != null" >
-        #{fecNumCam,jdbcType=INTEGER},
+        #{fecNumCam,jdbcType=BIGINT},
       </if>
       <if test="procId != null" >
         #{procId,jdbcType=INTEGER},
@@ -197,7 +197,7 @@
         cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
       </if>
       <if test="record.fecNumCam != null" >
-        fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+        fec_num_cam = #{record.fecNumCam,jdbcType=BIGINT},
       </if>
       <if test="record.procId != null" >
         proc_id = #{record.procId,jdbcType=INTEGER},
@@ -215,7 +215,7 @@
       serv_cod_amb = #{record.servCodAmb,jdbcType=INTEGER},
       serv_des = #{record.servDes,jdbcType=VARCHAR},
       cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
-      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      fec_num_cam = #{record.fecNumCam,jdbcType=BIGINT},
       proc_id = #{record.procId,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -240,7 +240,7 @@
         cod_ind_cam = #{codIndCam,jdbcType=CHAR},
       </if>
       <if test="fecNumCam != null" >
-        fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+        fec_num_cam = #{fecNumCam,jdbcType=BIGINT},
       </if>
       <if test="procId != null" >
         proc_id = #{procId,jdbcType=INTEGER},
@@ -255,7 +255,7 @@
       serv_cod_amb = #{servCodAmb,jdbcType=INTEGER},
       serv_des = #{servDes,jdbcType=VARCHAR},
       cod_ind_cam = #{codIndCam,jdbcType=CHAR},
-      fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      fec_num_cam = #{fecNumCam,jdbcType=BIGINT},
       proc_id = #{procId,jdbcType=INTEGER}
     where serv_id = #{servId,jdbcType=INTEGER}
   </update>

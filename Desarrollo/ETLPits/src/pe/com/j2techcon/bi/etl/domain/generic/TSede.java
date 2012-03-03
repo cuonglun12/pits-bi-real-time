@@ -11,7 +11,7 @@ public class TSede {
 
     private String sedDes;
 
-    private Integer fecNumCam;
+    private Long fecNumCam;
 
     private String codIndCam;
 
@@ -57,11 +57,11 @@ public class TSede {
         this.sedDes = sedDes == null ? null : sedDes.trim();
     }
 
-    public Integer getFecNumCam() {
+    public Long getFecNumCam() {
         return fecNumCam;
     }
 
-    public void setFecNumCam(Integer fecNumCam) {
+    public void setFecNumCam(Long fecNumCam) {
         this.fecNumCam = fecNumCam;
     }
 

@@ -56,7 +56,7 @@ public class TOrden {
 
     private Integer ordCodEst;
 
-    private Integer fecNumCam;
+    private Long fecNumCam;
 
     private String codIndCam;
 
@@ -270,11 +270,11 @@ public class TOrden {
         this.ordCodEst = ordCodEst;
     }
 
-    public Integer getFecNumCam() {
+    public Long getFecNumCam() {
         return fecNumCam;
     }
 
-    public void setFecNumCam(Integer fecNumCam) {
+    public void setFecNumCam(Long fecNumCam) {
         this.fecNumCam = fecNumCam;
     }
 

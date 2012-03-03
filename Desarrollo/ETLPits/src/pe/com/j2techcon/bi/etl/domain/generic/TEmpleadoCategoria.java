@@ -9,7 +9,7 @@ public class TEmpleadoCategoria {
 
     private String empCatCod;
 
-    private Integer fecNumCam;
+    private Long fecNumCam;
 
     private String codIndCam;
 
@@ -47,11 +47,11 @@ public class TEmpleadoCategoria {
         this.empCatCod = empCatCod == null ? null : empCatCod.trim();
     }
 
-    public Integer getFecNumCam() {
+    public Long getFecNumCam() {
         return fecNumCam;
     }
 
-    public void setFecNumCam(Integer fecNumCam) {
+    public void setFecNumCam(Long fecNumCam) {
         this.fecNumCam = fecNumCam;
     }
 

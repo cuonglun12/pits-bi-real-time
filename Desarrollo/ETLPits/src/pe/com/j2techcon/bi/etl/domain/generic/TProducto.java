@@ -17,7 +17,7 @@ public class TProducto {
 
     private BigDecimal prodPre;
 
-    private Integer fecNumCam;
+    private Long fecNumCam;
 
     private String codIndCam;
 
@@ -79,11 +79,11 @@ public class TProducto {
         this.prodPre = prodPre;
     }
 
-    public Integer getFecNumCam() {
+    public Long getFecNumCam() {
         return fecNumCam;
     }
 
-    public void setFecNumCam(Integer fecNumCam) {
+    public void setFecNumCam(Long fecNumCam) {
         this.fecNumCam = fecNumCam;
     }
 

@@ -6,7 +6,7 @@
     <result column="emp_id" property="empId" jdbcType="INTEGER" />
     <result column="emp_cat_cod_tip" property="empCatCodTip" jdbcType="INTEGER" />
     <result column="emp_cat_cod" property="empCatCod" jdbcType="VARCHAR" />
-    <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+    <result column="fec_num_cam" property="fecNumCam" jdbcType="BIGINT" />
     <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
     <result column="proc_id" property="procId" jdbcType="INTEGER" />
   </resultMap>
@@ -109,7 +109,7 @@
       emp_cat_cod, fec_num_cam, cod_ind_cam, 
       proc_id)
     values (#{empCatId,jdbcType=INTEGER}, #{empId,jdbcType=INTEGER}, #{empCatCodTip,jdbcType=INTEGER}, 
-      #{empCatCod,jdbcType=VARCHAR}, #{fecNumCam,jdbcType=INTEGER}, #{codIndCam,jdbcType=CHAR}, 
+      #{empCatCod,jdbcType=VARCHAR}, #{fecNumCam,jdbcType=BIGINT}, #{codIndCam,jdbcType=CHAR}, 
       #{procId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TEmpleadoCategoria" >
@@ -151,7 +151,7 @@
         #{empCatCod,jdbcType=VARCHAR},
       </if>
       <if test="fecNumCam != null" >
-        #{fecNumCam,jdbcType=INTEGER},
+        #{fecNumCam,jdbcType=BIGINT},
       </if>
       <if test="codIndCam != null" >
         #{codIndCam,jdbcType=CHAR},
@@ -183,7 +183,7 @@
         emp_cat_cod = #{record.empCatCod,jdbcType=VARCHAR},
       </if>
       <if test="record.fecNumCam != null" >
-        fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+        fec_num_cam = #{record.fecNumCam,jdbcType=BIGINT},
       </if>
       <if test="record.codIndCam != null" >
         cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
@@ -202,7 +202,7 @@
       emp_id = #{record.empId,jdbcType=INTEGER},
       emp_cat_cod_tip = #{record.empCatCodTip,jdbcType=INTEGER},
       emp_cat_cod = #{record.empCatCod,jdbcType=VARCHAR},
-      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      fec_num_cam = #{record.fecNumCam,jdbcType=BIGINT},
       cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
       proc_id = #{record.procId,jdbcType=INTEGER}
     <if test="_parameter != null" >
@@ -222,7 +222,7 @@
         emp_cat_cod = #{empCatCod,jdbcType=VARCHAR},
       </if>
       <if test="fecNumCam != null" >
-        fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+        fec_num_cam = #{fecNumCam,jdbcType=BIGINT},
       </if>
       <if test="codIndCam != null" >
         cod_ind_cam = #{codIndCam,jdbcType=CHAR},
@@ -238,7 +238,7 @@
     set emp_id = #{empId,jdbcType=INTEGER},
       emp_cat_cod_tip = #{empCatCodTip,jdbcType=INTEGER},
       emp_cat_cod = #{empCatCod,jdbcType=VARCHAR},
-      fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      fec_num_cam = #{fecNumCam,jdbcType=BIGINT},
       cod_ind_cam = #{codIndCam,jdbcType=CHAR},
       proc_id = #{procId,jdbcType=INTEGER}
     where emp_cat_id = #{empCatId,jdbcType=INTEGER}

@@ -18,7 +18,7 @@
     <result column="carg_new_dir" property="cargNewDir" jdbcType="VARCHAR" />
     <result column="carg_new_ref" property="cargNewRef" jdbcType="VARCHAR" />
     <result column="carg_cod_est" property="cargCodEst" jdbcType="INTEGER" />
-    <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+    <result column="fec_num_cam" property="fecNumCam" jdbcType="BIGINT" />
     <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
     <result column="proc_id" property="procId" jdbcType="INTEGER" />
   </resultMap>
@@ -131,7 +131,7 @@
       #{cargCodMov,jdbcType=INTEGER}, #{cargCodTipIng,jdbcType=INTEGER}, #{cargCodFecDes,jdbcType=DATE}, 
       #{cargCodFecRec,jdbcType=DATE}, #{cargDestinatario,jdbcType=VARCHAR}, #{cargDir,jdbcType=VARCHAR}, 
       #{cargRef,jdbcType=VARCHAR}, #{cargNewDir,jdbcType=VARCHAR}, #{cargNewRef,jdbcType=VARCHAR}, 
-      #{cargCodEst,jdbcType=INTEGER}, #{fecNumCam,jdbcType=INTEGER}, #{codIndCam,jdbcType=CHAR}, 
+      #{cargCodEst,jdbcType=INTEGER}, #{fecNumCam,jdbcType=BIGINT}, #{codIndCam,jdbcType=CHAR}, 
       #{procId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCargo" >
@@ -245,7 +245,7 @@
         #{cargCodEst,jdbcType=INTEGER},
       </if>
       <if test="fecNumCam != null" >
-        #{fecNumCam,jdbcType=INTEGER},
+        #{fecNumCam,jdbcType=BIGINT},
       </if>
       <if test="codIndCam != null" >
         #{codIndCam,jdbcType=CHAR},
@@ -313,7 +313,7 @@
         carg_cod_est = #{record.cargCodEst,jdbcType=INTEGER},
       </if>
       <if test="record.fecNumCam != null" >
-        fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+        fec_num_cam = #{record.fecNumCam,jdbcType=BIGINT},
       </if>
       <if test="record.codIndCam != null" >
         cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
@@ -344,7 +344,7 @@
       carg_new_dir = #{record.cargNewDir,jdbcType=VARCHAR},
       carg_new_ref = #{record.cargNewRef,jdbcType=VARCHAR},
       carg_cod_est = #{record.cargCodEst,jdbcType=INTEGER},
-      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      fec_num_cam = #{record.fecNumCam,jdbcType=BIGINT},
       cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
       proc_id = #{record.procId,jdbcType=INTEGER}
     <if test="_parameter != null" >
@@ -400,7 +400,7 @@
         carg_cod_est = #{cargCodEst,jdbcType=INTEGER},
       </if>
       <if test="fecNumCam != null" >
-        fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+        fec_num_cam = #{fecNumCam,jdbcType=BIGINT},
       </if>
       <if test="codIndCam != null" >
         cod_ind_cam = #{codIndCam,jdbcType=CHAR},
@@ -428,7 +428,7 @@
       carg_new_dir = #{cargNewDir,jdbcType=VARCHAR},
       carg_new_ref = #{cargNewRef,jdbcType=VARCHAR},
       carg_cod_est = #{cargCodEst,jdbcType=INTEGER},
-      fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      fec_num_cam = #{fecNumCam,jdbcType=BIGINT},
       cod_ind_cam = #{codIndCam,jdbcType=CHAR},
       proc_id = #{procId,jdbcType=INTEGER}
     where carg_id = #{cargId,jdbcType=INTEGER}

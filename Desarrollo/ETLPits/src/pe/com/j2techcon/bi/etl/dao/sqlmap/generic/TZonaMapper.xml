@@ -8,7 +8,7 @@
     <result column="zon_des" property="zonDes" jdbcType="VARCHAR" />
     <result column="zon_cod_postal" property="zonCodPostal" jdbcType="VARCHAR" />
     <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
-    <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+    <result column="fec_num_cam" property="fecNumCam" jdbcType="BIGINT" />
     <result column="proc_id" property="procId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -111,7 +111,7 @@
       fec_num_cam, proc_id)
     values (#{zonId,jdbcType=INTEGER}, #{zonCod,jdbcType=VARCHAR}, #{ubiId,jdbcType=INTEGER}, 
       #{zonDes,jdbcType=VARCHAR}, #{zonCodPostal,jdbcType=VARCHAR}, #{codIndCam,jdbcType=CHAR}, 
-      #{fecNumCam,jdbcType=INTEGER}, #{procId,jdbcType=INTEGER})
+      #{fecNumCam,jdbcType=BIGINT}, #{procId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TZona" >
     insert into t_zona
@@ -161,7 +161,7 @@
         #{codIndCam,jdbcType=CHAR},
       </if>
       <if test="fecNumCam != null" >
-        #{fecNumCam,jdbcType=INTEGER},
+        #{fecNumCam,jdbcType=BIGINT},
       </if>
       <if test="procId != null" >
         #{procId,jdbcType=INTEGER},
@@ -196,7 +196,7 @@
         cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
       </if>
       <if test="record.fecNumCam != null" >
-        fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+        fec_num_cam = #{record.fecNumCam,jdbcType=BIGINT},
       </if>
       <if test="record.procId != null" >
         proc_id = #{record.procId,jdbcType=INTEGER},
@@ -214,7 +214,7 @@
       zon_des = #{record.zonDes,jdbcType=VARCHAR},
       zon_cod_postal = #{record.zonCodPostal,jdbcType=VARCHAR},
       cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
-      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      fec_num_cam = #{record.fecNumCam,jdbcType=BIGINT},
       proc_id = #{record.procId,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -239,7 +239,7 @@
         cod_ind_cam = #{codIndCam,jdbcType=CHAR},
       </if>
       <if test="fecNumCam != null" >
-        fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+        fec_num_cam = #{fecNumCam,jdbcType=BIGINT},
       </if>
       <if test="procId != null" >
         proc_id = #{procId,jdbcType=INTEGER},
@@ -254,7 +254,7 @@
       zon_des = #{zonDes,jdbcType=VARCHAR},
       zon_cod_postal = #{zonCodPostal,jdbcType=VARCHAR},
       cod_ind_cam = #{codIndCam,jdbcType=CHAR},
-      fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      fec_num_cam = #{fecNumCam,jdbcType=BIGINT},
       proc_id = #{procId,jdbcType=INTEGER}
     where zon_id = #{zonId,jdbcType=INTEGER}
   </update>

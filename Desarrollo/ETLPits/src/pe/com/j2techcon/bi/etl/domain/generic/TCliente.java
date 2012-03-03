@@ -33,7 +33,7 @@ public class TCliente {
 
     private String cliDesDir;
 
-    private Integer fecNumCam;
+    private Long fecNumCam;
 
     private String codIndCam;
 
@@ -167,11 +167,11 @@ public class TCliente {
         this.cliDesDir = cliDesDir == null ? null : cliDesDir.trim();
     }
 
-    public Integer getFecNumCam() {
+    public Long getFecNumCam() {
         return fecNumCam;
     }
 
-    public void setFecNumCam(Integer fecNumCam) {
+    public void setFecNumCam(Long fecNumCam) {
         this.fecNumCam = fecNumCam;
     }
 

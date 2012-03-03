@@ -9,7 +9,7 @@
     <result column="ubi_cod_provincia" property="ubiCodProvincia" jdbcType="INTEGER" />
     <result column="ubi_cod_distrito" property="ubiCodDistrito" jdbcType="INTEGER" />
     <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
-    <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+    <result column="fec_num_cam" property="fecNumCam" jdbcType="BIGINT" />
     <result column="proc_id" property="procId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -114,7 +114,7 @@
       )
     values (#{ubiId,jdbcType=INTEGER}, #{ubiCod,jdbcType=VARCHAR}, #{ubiCodPais,jdbcType=INTEGER}, 
       #{ubiCodDepartamento,jdbcType=INTEGER}, #{ubiCodProvincia,jdbcType=INTEGER}, #{ubiCodDistrito,jdbcType=INTEGER}, 
-      #{codIndCam,jdbcType=CHAR}, #{fecNumCam,jdbcType=INTEGER}, #{procId,jdbcType=INTEGER}
+      #{codIndCam,jdbcType=CHAR}, #{fecNumCam,jdbcType=BIGINT}, #{procId,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TUbigeo" >
@@ -171,7 +171,7 @@
         #{codIndCam,jdbcType=CHAR},
       </if>
       <if test="fecNumCam != null" >
-        #{fecNumCam,jdbcType=INTEGER},
+        #{fecNumCam,jdbcType=BIGINT},
       </if>
       <if test="procId != null" >
         #{procId,jdbcType=INTEGER},
@@ -209,7 +209,7 @@
         cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
       </if>
       <if test="record.fecNumCam != null" >
-        fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+        fec_num_cam = #{record.fecNumCam,jdbcType=BIGINT},
       </if>
       <if test="record.procId != null" >
         proc_id = #{record.procId,jdbcType=INTEGER},
@@ -228,7 +228,7 @@
       ubi_cod_provincia = #{record.ubiCodProvincia,jdbcType=INTEGER},
       ubi_cod_distrito = #{record.ubiCodDistrito,jdbcType=INTEGER},
       cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
-      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      fec_num_cam = #{record.fecNumCam,jdbcType=BIGINT},
       proc_id = #{record.procId,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -256,7 +256,7 @@
         cod_ind_cam = #{codIndCam,jdbcType=CHAR},
       </if>
       <if test="fecNumCam != null" >
-        fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+        fec_num_cam = #{fecNumCam,jdbcType=BIGINT},
       </if>
       <if test="procId != null" >
         proc_id = #{procId,jdbcType=INTEGER},
@@ -272,7 +272,7 @@
       ubi_cod_provincia = #{ubiCodProvincia,jdbcType=INTEGER},
       ubi_cod_distrito = #{ubiCodDistrito,jdbcType=INTEGER},
       cod_ind_cam = #{codIndCam,jdbcType=CHAR},
-      fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      fec_num_cam = #{fecNumCam,jdbcType=BIGINT},
       proc_id = #{procId,jdbcType=INTEGER}
     where ubi_id = #{ubiId,jdbcType=INTEGER}
   </update>

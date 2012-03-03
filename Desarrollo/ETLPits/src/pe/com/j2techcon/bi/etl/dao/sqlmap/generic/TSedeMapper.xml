@@ -7,7 +7,7 @@
     <result column="ubi_id" property="ubiId" jdbcType="INTEGER" />
     <result column="sed_cod_tip" property="sedCodTip" jdbcType="INTEGER" />
     <result column="sed_des" property="sedDes" jdbcType="VARCHAR" />
-    <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+    <result column="fec_num_cam" property="fecNumCam" jdbcType="BIGINT" />
     <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
     <result column="proc_id" property="procId" jdbcType="INTEGER" />
   </resultMap>
@@ -110,7 +110,7 @@
       sed_cod_tip, sed_des, fec_num_cam, 
       cod_ind_cam, proc_id)
     values (#{sedId,jdbcType=INTEGER}, #{sedCod,jdbcType=VARCHAR}, #{ubiId,jdbcType=INTEGER}, 
-      #{sedCodTip,jdbcType=INTEGER}, #{sedDes,jdbcType=VARCHAR}, #{fecNumCam,jdbcType=INTEGER}, 
+      #{sedCodTip,jdbcType=INTEGER}, #{sedDes,jdbcType=VARCHAR}, #{fecNumCam,jdbcType=BIGINT}, 
       #{codIndCam,jdbcType=CHAR}, #{procId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TSede" >
@@ -158,7 +158,7 @@
         #{sedDes,jdbcType=VARCHAR},
       </if>
       <if test="fecNumCam != null" >
-        #{fecNumCam,jdbcType=INTEGER},
+        #{fecNumCam,jdbcType=BIGINT},
       </if>
       <if test="codIndCam != null" >
         #{codIndCam,jdbcType=CHAR},
@@ -193,7 +193,7 @@
         sed_des = #{record.sedDes,jdbcType=VARCHAR},
       </if>
       <if test="record.fecNumCam != null" >
-        fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+        fec_num_cam = #{record.fecNumCam,jdbcType=BIGINT},
       </if>
       <if test="record.codIndCam != null" >
         cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
@@ -213,7 +213,7 @@
       ubi_id = #{record.ubiId,jdbcType=INTEGER},
       sed_cod_tip = #{record.sedCodTip,jdbcType=INTEGER},
       sed_des = #{record.sedDes,jdbcType=VARCHAR},
-      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      fec_num_cam = #{record.fecNumCam,jdbcType=BIGINT},
       cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
       proc_id = #{record.procId,jdbcType=INTEGER}
     <if test="_parameter != null" >
@@ -236,7 +236,7 @@
         sed_des = #{sedDes,jdbcType=VARCHAR},
       </if>
       <if test="fecNumCam != null" >
-        fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+        fec_num_cam = #{fecNumCam,jdbcType=BIGINT},
       </if>
       <if test="codIndCam != null" >
         cod_ind_cam = #{codIndCam,jdbcType=CHAR},
@@ -253,7 +253,7 @@
       ubi_id = #{ubiId,jdbcType=INTEGER},
       sed_cod_tip = #{sedCodTip,jdbcType=INTEGER},
       sed_des = #{sedDes,jdbcType=VARCHAR},
-      fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      fec_num_cam = #{fecNumCam,jdbcType=BIGINT},
       cod_ind_cam = #{codIndCam,jdbcType=CHAR},
       proc_id = #{procId,jdbcType=INTEGER}
     where sed_id = #{sedId,jdbcType=INTEGER}

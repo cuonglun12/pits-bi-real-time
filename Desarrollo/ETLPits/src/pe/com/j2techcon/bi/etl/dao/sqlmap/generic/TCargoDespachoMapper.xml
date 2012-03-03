@@ -15,7 +15,7 @@
     <result column="car_desp_fec_ret_rea" property="carDespFecRetRea" jdbcType="DATE" />
     <result column="car_desp_fec_ver" property="carDespFecVer" jdbcType="DATE" />
     <result column="car_desp_cod_est" property="carDespCodEst" jdbcType="INTEGER" />
-    <result column="fec_num_cam" property="fecNumCam" jdbcType="INTEGER" />
+    <result column="fec_num_cam" property="fecNumCam" jdbcType="BIGINT" />
     <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
     <result column="proc_id" property="procId" jdbcType="INTEGER" />
   </resultMap>
@@ -126,7 +126,7 @@
       #{zonId,jdbcType=INTEGER}, #{carDespCodMov,jdbcType=INTEGER}, #{carDespCodVer,jdbcType=INTEGER}, 
       #{carDespDir,jdbcType=VARCHAR}, #{carDespRef,jdbcType=VARCHAR}, #{carDespFecSal,jdbcType=DATE}, 
       #{carDespFecRetPro,jdbcType=DATE}, #{carDespFecRetRea,jdbcType=DATE}, #{carDespFecVer,jdbcType=DATE}, 
-      #{carDespCodEst,jdbcType=INTEGER}, #{fecNumCam,jdbcType=INTEGER}, #{codIndCam,jdbcType=CHAR}, 
+      #{carDespCodEst,jdbcType=INTEGER}, #{fecNumCam,jdbcType=BIGINT}, #{codIndCam,jdbcType=CHAR}, 
       #{procId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCargoDespacho" >
@@ -222,7 +222,7 @@
         #{carDespCodEst,jdbcType=INTEGER},
       </if>
       <if test="fecNumCam != null" >
-        #{fecNumCam,jdbcType=INTEGER},
+        #{fecNumCam,jdbcType=BIGINT},
       </if>
       <if test="codIndCam != null" >
         #{codIndCam,jdbcType=CHAR},
@@ -281,7 +281,7 @@
         car_desp_cod_est = #{record.carDespCodEst,jdbcType=INTEGER},
       </if>
       <if test="record.fecNumCam != null" >
-        fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+        fec_num_cam = #{record.fecNumCam,jdbcType=BIGINT},
       </if>
       <if test="record.codIndCam != null" >
         cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
@@ -309,7 +309,7 @@
       car_desp_fec_ret_rea = #{record.carDespFecRetRea,jdbcType=DATE},
       car_desp_fec_ver = #{record.carDespFecVer,jdbcType=DATE},
       car_desp_cod_est = #{record.carDespCodEst,jdbcType=INTEGER},
-      fec_num_cam = #{record.fecNumCam,jdbcType=INTEGER},
+      fec_num_cam = #{record.fecNumCam,jdbcType=BIGINT},
       cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
       proc_id = #{record.procId,jdbcType=INTEGER}
     <if test="_parameter != null" >
@@ -356,7 +356,7 @@
         car_desp_cod_est = #{carDespCodEst,jdbcType=INTEGER},
       </if>
       <if test="fecNumCam != null" >
-        fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+        fec_num_cam = #{fecNumCam,jdbcType=BIGINT},
       </if>
       <if test="codIndCam != null" >
         cod_ind_cam = #{codIndCam,jdbcType=CHAR},
@@ -381,7 +381,7 @@
       car_desp_fec_ret_rea = #{carDespFecRetRea,jdbcType=DATE},
       car_desp_fec_ver = #{carDespFecVer,jdbcType=DATE},
       car_desp_cod_est = #{carDespCodEst,jdbcType=INTEGER},
-      fec_num_cam = #{fecNumCam,jdbcType=INTEGER},
+      fec_num_cam = #{fecNumCam,jdbcType=BIGINT},
       cod_ind_cam = #{codIndCam,jdbcType=CHAR},
       proc_id = #{procId,jdbcType=INTEGER}
     where car_desp_id = #{carDespId,jdbcType=INTEGER}

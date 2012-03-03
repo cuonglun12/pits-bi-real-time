@@ -15,7 +15,7 @@ public class TUbigeo {
 
     private String codIndCam;
 
-    private Integer fecNumCam;
+    private Long fecNumCam;
 
     private Integer procId;
 
@@ -75,11 +75,11 @@ public class TUbigeo {
         this.codIndCam = codIndCam == null ? null : codIndCam.trim();
     }
 
-    public Integer getFecNumCam() {
+    public Long getFecNumCam() {
         return fecNumCam;
     }
 
-    public void setFecNumCam(Integer fecNumCam) {
+    public void setFecNumCam(Long fecNumCam) {
         this.fecNumCam = fecNumCam;
     }
 

@@ -17,8 +17,8 @@ public class DimTipoPagoProcess {
 	
 	private BeanFactory factory;
 	private int sizePage;
-	private int dateTimeFrom;
-	private int dateTimeUntil;
+	private long dateTimeFrom;
+	private long dateTimeUntil;
 	private String typeProcess;
 	private int process;
 	
@@ -58,19 +58,19 @@ public class DimTipoPagoProcess {
 		this.sizePage = sizePage;
 	}
 
-	public int getDateTimeFrom() {
+	public long getDateTimeFrom() {
 		return dateTimeFrom;
 	}
 
-	public void setDateTimeFrom(int dateTimeFrom) {
+	public void setDateTimeFrom(long dateTimeFrom) {
 		this.dateTimeFrom = dateTimeFrom;
 	}
 
-	public int getDateTimeUntil() {
+	public long getDateTimeUntil() {
 		return dateTimeUntil;
 	}
 
-	public void setDateTimeUntil(int dateTimeUntil) {
+	public void setDateTimeUntil(long dateTimeUntil) {
 		this.dateTimeUntil = dateTimeUntil;
 	}
 
@@ -203,7 +203,7 @@ public class DimTipoPagoProcess {
 	}
 
 	public DimTipoPagoProcess(BeanFactory factory, int sizePage,
-			int dateTimeFrom, int dateTimeUntil, String typeProcess, int process) {
+			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
