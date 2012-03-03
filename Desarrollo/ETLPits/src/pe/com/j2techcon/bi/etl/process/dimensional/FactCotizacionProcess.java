@@ -354,43 +354,9 @@ public class FactCotizacionProcess {
 		dimCotizacion.setCotizacionKey(tCotizacion.getCotiId());
 		dimCotizacion.setCotizacionKeyClienteArea(tCotizacion.getAreCliId());
 		dimCotizacion.setCotizacionKeyServicio(tCotizacion.getCotiCodServ());
-		dimCotizacion.setCotizacionKeyProducto(tCotizacion.get);
+		dimCotizacion.setCotizacionKeyProducto(tCotizacion.getProdId());
 		
-		dimCotizacion.setCotizacionCodPais(tUbigeo.getUbiCodPais());
-		if(tUbigeo.getUbiCodPais() != constantes.getValueNumberDefault()){
-			tParametro = tParametroManager.selectByPrimaryKey(tUbigeo.getUbiCodPais());
-			dimCotizacion.setCotizacionDescPais(tParametro.getParamDes());
-		}else{
-			dimCotizacion.setCotizacionDescPais(constantes.getValueStringDefault());
-		}
 		
-		dimCotizacion.setCotizacionCodDepartamento(tUbigeo.getUbiCodDepartamento());
-		if(tUbigeo.getUbiCodDepartamento() != constantes.getValueNumberDefault()){
-			tParametro = tParametroManager.selectByPrimaryKey(tUbigeo.getUbiCodDepartamento());
-			dimCotizacion.setCotizacionDescDepartamento(tParametro.getParamDes());
-		}else{
-			dimCotizacion.setCotizacionDescDepartamento(constantes.getValueStringDefault());
-		}
-		
-		dimCotizacion.setCotizacionCodProvincia(tUbigeo.getUbiCodProvincia());
-		if(tUbigeo.getUbiCodProvincia() != constantes.getValueNumberDefault()){
-			tParametro = tParametroManager.selectByPrimaryKey(tUbigeo.getUbiCodProvincia());
-			dimCotizacion.setCotizacionDescProvincia(tParametro.getParamDes());
-		}else{
-			dimCotizacion.setCotizacionDescProvincia(constantes.getValueStringDefault());
-		}
-		
-		dimCotizacion.setCotizacionCodDistrito(tUbigeo.getUbiCodDistrito());
-		if(tUbigeo.getUbiCodDistrito() != constantes.getValueNumberDefault()){
-			tParametro = tParametroManager.selectByPrimaryKey(tUbigeo.getUbiCodDistrito());
-			dimCotizacion.setCotizacionDescDistrito(tParametro.getParamDes());
-		}else{
-			dimCotizacion.setCotizacionDescDistrito(constantes.getValueStringDefault());
-		}
-		
-		dimCotizacion.setCotizacionCod(tCotizacion.getZonCod());
-		dimCotizacion.setCotizacionCodPostal(tCotizacion.getZonCodPostal());
-		dimCotizacion.setCotizacionDesc(tCotizacion.getZonDes());
 		dimCotizacion.setProcId(process);
 	}
 	

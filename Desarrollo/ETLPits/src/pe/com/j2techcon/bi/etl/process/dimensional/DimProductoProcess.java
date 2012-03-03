@@ -298,10 +298,10 @@ public class DimProductoProcess {
 		}
 		
 		if(recordRejected > 0) {
-			resultProcess = constantes.getResultProcessCompletedCorrectly();
+			resultProcess = constantes.getResultProcessCompletedErrors();
 		}
 		else{
-			resultProcess = constantes.getResultProcessCompletedErrors();
+			resultProcess = constantes.getResultProcessCompletedCorrectly();
 		}
 
 		return resultProcess;
