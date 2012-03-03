@@ -324,6 +324,66 @@ public class TCotizacionExample {
             return (Criteria) this;
         }
 
+        public Criteria andProdIdIsNull() {
+            addCriterion("prod_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProdIdIsNotNull() {
+            addCriterion("prod_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProdIdEqualTo(Integer value) {
+            addCriterion("prod_id =", value, "prodId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProdIdNotEqualTo(Integer value) {
+            addCriterion("prod_id <>", value, "prodId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProdIdGreaterThan(Integer value) {
+            addCriterion("prod_id >", value, "prodId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProdIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("prod_id >=", value, "prodId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProdIdLessThan(Integer value) {
+            addCriterion("prod_id <", value, "prodId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProdIdLessThanOrEqualTo(Integer value) {
+            addCriterion("prod_id <=", value, "prodId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProdIdIn(List<Integer> values) {
+            addCriterion("prod_id in", values, "prodId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProdIdNotIn(List<Integer> values) {
+            addCriterion("prod_id not in", values, "prodId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProdIdBetween(Integer value1, Integer value2) {
+            addCriterion("prod_id between", value1, value2, "prodId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProdIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("prod_id not between", value1, value2, "prodId");
+            return (Criteria) this;
+        }
+
         public Criteria andCotiCodAmbIsNull() {
             addCriterion("coti_cod_amb is null");
             return (Criteria) this;

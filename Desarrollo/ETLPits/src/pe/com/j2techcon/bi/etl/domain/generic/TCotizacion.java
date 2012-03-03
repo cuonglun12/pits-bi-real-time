@@ -9,6 +9,8 @@ public class TCotizacion {
 
     private Integer areCliId;
 
+    private Integer prodId;
+
     private Integer cotiCodAmb;
 
     private Integer cotiCodServ;
@@ -57,6 +59,14 @@ public class TCotizacion {
 
     public void setAreCliId(Integer areCliId) {
         this.areCliId = areCliId;
+    }
+
+    public Integer getProdId() {
+        return prodId;
+    }
+
+    public void setProdId(Integer prodId) {
+        this.prodId = prodId;
     }
 
     public Integer getCotiCodAmb() {
@@ -167,6 +177,7 @@ public class TCotizacion {
     	cotiId=null;
     	empCatId=null;
     	areCliId=null;
+    	prodId=null;
     	cotiCodAmb=null;
     	cotiCodServ=null;
     	cotiCodNeg=null;
@@ -185,13 +196,13 @@ public class TCotizacion {
 	@Override
 	public String toString() {
 		return "TCotizacion [cotiId=" + cotiId + ", empCatId=" + empCatId
-				+ ", areCliId=" + areCliId + ", cotiCodAmb=" + cotiCodAmb
-				+ ", cotiCodServ=" + cotiCodServ + ", cotiCodNeg=" + cotiCodNeg
-				+ ", cotiCodTipDoc=" + cotiCodTipDoc + ", cotiSerieDoc="
-				+ cotiSerieDoc + ", cotiNumDoc=" + cotiNumDoc + ", cotiCodEst="
-				+ cotiCodEst + ", cotiFecApro=" + cotiFecApro + ", cotiFecIni="
-				+ cotiFecIni + ", cotiFecFin=" + cotiFecFin + ", fecNumCam="
-				+ fecNumCam + ", codIndCam=" + codIndCam + ", procId=" + procId
-				+ "]";
+				+ ", areCliId=" + areCliId + ", prodId=" + prodId
+				+ ", cotiCodAmb=" + cotiCodAmb + ", cotiCodServ=" + cotiCodServ
+				+ ", cotiCodNeg=" + cotiCodNeg + ", cotiCodTipDoc="
+				+ cotiCodTipDoc + ", cotiSerieDoc=" + cotiSerieDoc
+				+ ", cotiNumDoc=" + cotiNumDoc + ", cotiCodEst=" + cotiCodEst
+				+ ", cotiFecApro=" + cotiFecApro + ", cotiFecIni=" + cotiFecIni
+				+ ", cotiFecFin=" + cotiFecFin + ", fecNumCam=" + fecNumCam
+				+ ", codIndCam=" + codIndCam + ", procId=" + procId + "]";
 	}
 }
