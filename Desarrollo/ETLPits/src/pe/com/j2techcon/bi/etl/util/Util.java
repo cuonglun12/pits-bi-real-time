@@ -5,18 +5,18 @@ import java.util.Calendar;
 
 public class Util {
 	
-	public static int getDateString() {
+	public static long getDateString() {
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
-		return Integer.parseInt(format.format((Calendar.getInstance()).getTime()));
+		return Long.parseLong(format.format((Calendar.getInstance()).getTime()));
 	}
 	
-	public static int getDateString(java.util.Calendar date) {
+	public static long getDateString(java.util.Calendar date) {
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
-		return Integer.parseInt(format.format(date.getTime()));
+		return Long.parseLong(format.format(date.getTime()));
 	}
 	
-	public static int getDateString(java.util.Date date) {
+	public static long getDateString(java.util.Date date) {
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
-		return Integer.parseInt(format.format(date.getTime()));
+		return Long.parseLong(format.format(date.getTime()));
 	}
 }
