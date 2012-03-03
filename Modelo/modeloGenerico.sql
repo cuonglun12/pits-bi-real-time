@@ -1,5 +1,4 @@
 /*
-
 drop index IDX_ARE_CLI_04;
 
 drop index IDX_ARE_CLI_03;
@@ -75,6 +74,8 @@ drop index IDX_CLI_01;
 drop index IDX_CLI_00;
 
 drop table T_CLIENTE;
+
+drop index IDX_COTI_10;
 
 drop index IDX_COTI_09;
 
@@ -235,7 +236,6 @@ drop index IDX_ZON_01;
 drop index IDX_ZON_00;
 
 drop table T_ZONA;
-
 */
 
 /*==============================================================*/
@@ -577,6 +577,7 @@ create table T_COTIZACION (
    COTI_ID              SERIAL               not null,
    EMP_CAT_ID           INT4                 not null default 0,
    ARE_CLI_ID           INT4                 not null default 0,
+   PROD_ID              INT4                 not null default 0,
    COTI_COD_AMB         INT4                 not null default 0,
    COTI_COD_SERV        INT4                 not null default 0,
    COTI_COD_NEG         INT4                 not null default 0,
@@ -663,6 +664,13 @@ create unique index IDX_COTI_09 on T_COTIZACION (
 COTI_COD_TIP_DOC,
 COTI_SERIE_DOC,
 COTI_NUM_DOC
+);
+
+/*==============================================================*/
+/* Index: IDX_COTI_10                                           */
+/*==============================================================*/
+create  index IDX_COTI_10 on T_COTIZACION (
+PROD_ID
 );
 
 /*==============================================================*/
@@ -1056,11 +1064,6 @@ comment on column T_PARAMETRO.PARAM_COD_TIP is
 32: Provincia
 33: Distrito
 ';
-
-comment on column T_PARAMETRO.COD_IND_CAM is
-'1: Nuevo
-1: Procesado
-1: Error';
 
 /*==============================================================*/
 /* Index: IDX_PARAM_00                                          */
