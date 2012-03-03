@@ -244,9 +244,7 @@ public class DimTipoRepartoProcess {
 					processRecordParametro();
 				}
 				offset = offset + constantes.getSizePage();
-			}
-			
-			if(lstParametro.size()<constantes.getSizePage()){
+			}else{
 				
 				tParametroExample.clear();
 				tParametroExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);

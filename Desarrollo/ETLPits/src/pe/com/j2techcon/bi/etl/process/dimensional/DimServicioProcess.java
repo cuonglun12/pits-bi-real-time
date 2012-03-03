@@ -276,9 +276,7 @@ public class DimServicioProcess {
 					processRecordServicio();
 				}
 				offset = offset + constantes.getSizePage();
-			}
-			
-			if(lstServicio.size()<constantes.getSizePage()){
+			}else{
 				
 				tServicioExample.clear();
 				tServicioExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);

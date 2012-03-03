@@ -307,9 +307,7 @@ public class DimPersonalProcess {
 					processRecordEmpleadoCategoria();
 				}
 				offset = offset + constantes.getSizePage();
-			}
-			
-			if(lstEmpleadoCategoria.size()<constantes.getSizePage()){
+			}else{
 				
 				tEmpleadoCategoriaExample.clear();
 				tEmpleadoCategoriaExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);

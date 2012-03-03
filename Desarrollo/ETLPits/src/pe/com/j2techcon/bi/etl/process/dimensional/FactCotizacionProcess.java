@@ -279,9 +279,7 @@ public class FactCotizacionProcess {
 					processRecordCotizacion();
 				}
 				offset = offset + constantes.getSizePage();
-			}
-			
-			if(lstCotizacion.size()<constantes.getSizePage()){
+			}else{
 				
 				tCotizacionExample.clear();
 				tCotizacionExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);

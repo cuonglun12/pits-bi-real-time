@@ -276,9 +276,7 @@ public class DimProductoProcess {
 					processRecordProducto();
 				}
 				offset = offset + constantes.getSizePage();
-			}
-			
-			if(lstProducto.size()<constantes.getSizePage()){
+			}else{
 				
 				tProductoExample.clear();
 				tProductoExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);

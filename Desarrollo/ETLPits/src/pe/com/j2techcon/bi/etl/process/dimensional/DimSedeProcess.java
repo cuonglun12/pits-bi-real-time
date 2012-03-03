@@ -308,9 +308,7 @@ public class DimSedeProcess {
 					processRecordSede();
 				}
 				offset = offset + constantes.getSizePage();
-			}
-			
-			if(lstSede.size()<constantes.getSizePage()){
+			}else{
 				
 				tSedeExample.clear();
 				tSedeExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);

@@ -308,9 +308,7 @@ public class DimZonaProcess {
 					processRecordZona();
 				}
 				offset = offset + constantes.getSizePage();
-			}
-			
-			if(lstZona.size()<constantes.getSizePage()){
+			}else{
 				
 				tZonaExample.clear();
 				tZonaExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
