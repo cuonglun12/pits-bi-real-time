@@ -11,7 +11,15 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 	<bean id="constantes" class="pe.com.j2techcon.bi.etl.util.Constantes">
 		
 		<property name="paramCodeTipoAreaCliente" value="${param.code.tipo.area.cliente}"></property>
+		
 		<property name="paramCodeEstadoCargoDespacho" value="${param.code.estado.cargo.despacho}"></property>
+		<property name="paramCodeEstadoCargoDespachoEntregado" value="${param.code.estado.cargo.despacho.entregado}"></property>
+		<property name="paramCodeEstadoCargoDespachoMotivado" value="${param.code.estado.cargo.despacho.motivado}"></property>
+		<property name="paramCodeEstadoCargoDespachoReenviado" value="${param.code.estado.cargo.despacho.reenviado}"></property>
+		<property name="paramCodeEstadoCargoDespachoAnulado" value="${param.code.estado.cargo.despacho.anulado}"></property>
+		<property name="paramCodeEstadoCargoDespachoFueraZona" value="${param.code.estado.cargo.despacho.fuera.zona}"></property>
+		<property name="paramCodeEstadoCargoDespachoPerdido" value="${param.code.estado.cargo.despacho.perdido}"></property>
+		
 		<property name="paramCodeEstadoCargoDespachoVerificacion" value="${param.code.estado.cargo.despacho.verificacion}"></property>
 		<property name="paramCodeMotivoCargoDespacho" value="${param.code.motivo.cargo.despacho}"></property>
 		<property name="paramCodeEstadoCargo" value="${param.code.estado.cargo}"></property>
