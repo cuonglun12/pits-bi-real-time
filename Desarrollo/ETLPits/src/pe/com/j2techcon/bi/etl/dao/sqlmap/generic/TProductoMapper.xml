@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="t_producto" >
+<mapper namespace="pe.com.j2techcon.bi.etl.dao.generic.TProductoMapper" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.generic.TProducto" >
     <id column="prod_id" property="prodId" jdbcType="INTEGER" />
     <result column="prod_cod_tip" property="prodCodTip" jdbcType="INTEGER" />
@@ -91,7 +91,6 @@
     <if test="paginationByClause != null" >
       ${paginationByClause}
     </if>
-    
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 

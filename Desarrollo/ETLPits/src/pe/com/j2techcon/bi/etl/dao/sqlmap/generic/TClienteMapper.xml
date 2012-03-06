@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="t_cliente" >
+<mapper namespace="pe.com.j2techcon.bi.etl.dao.generic.TClienteMapper" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.generic.TCliente" >
     <id column="cli_id" property="cliId" jdbcType="INTEGER" />
     <result column="cli_cod_tip" property="cliCodTip" jdbcType="INTEGER" />

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="fact_despacho" >
+<mapper namespace="pe.com.j2techcon.bi.etl.dao.dimensional.FactDespachoMapper" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.dimensional.FactDespacho" >
-    <result column="despacho_key" property="despachoKey" jdbcType="INTEGER" />
+    <id column="despacho_key" property="despachoKey" jdbcType="INTEGER" />
     <result column="despacho_key_sede" property="despachoKeySede" jdbcType="INTEGER" />
     <result column="despacho_key_zona" property="despachoKeyZona" jdbcType="INTEGER" />
     <result column="despacho_key_personal" property="despachoKeyPersonal" jdbcType="INTEGER" />
@@ -107,6 +107,16 @@
       ${paginationByClause}
     </if>
   </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from fact_despacho
+    where despacho_key = #{despachoKey,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from fact_despacho
+    where despacho_key = #{despachoKey,jdbcType=INTEGER}
+  </delete>
   <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactDespachoExample" >
     delete from fact_despacho
     <if test="_parameter != null" >
@@ -381,5 +391,99 @@
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactDespacho" >
+    update fact_despacho
+    <set >
+      <if test="despachoKeySede != null" >
+        despacho_key_sede = #{despachoKeySede,jdbcType=INTEGER},
+      </if>
+      <if test="despachoKeyZona != null" >
+        despacho_key_zona = #{despachoKeyZona,jdbcType=INTEGER},
+      </if>
+      <if test="despachoKeyPersonal != null" >
+        despacho_key_personal = #{despachoKeyPersonal,jdbcType=INTEGER},
+      </if>
+      <if test="despachoKeyTipoRuta != null" >
+        despacho_key_tipo_ruta = #{despachoKeyTipoRuta,jdbcType=INTEGER},
+      </if>
+      <if test="despachoKeyFecSal != null" >
+        despacho_key_fec_sal = #{despachoKeyFecSal,jdbcType=INTEGER},
+      </if>
+      <if test="despachoKeyFecRetp != null" >
+        despacho_key_fec_retp = #{despachoKeyFecRetp,jdbcType=INTEGER},
+      </if>
+      <if test="despachoKeyFecRetr != null" >
+        despacho_key_fec_retr = #{despachoKeyFecRetr,jdbcType=INTEGER},
+      </if>
+      <if test="despachoKeyEstado != null" >
+        despacho_key_estado = #{despachoKeyEstado,jdbcType=INTEGER},
+      </if>
+      <if test="despachoMonPasaje != null" >
+        despacho_mon_pasaje = #{despachoMonPasaje,jdbcType=NUMERIC},
+      </if>
+      <if test="despachoIndUnidad != null" >
+        despacho_ind_unidad = #{despachoIndUnidad,jdbcType=SMALLINT},
+      </if>
+      <if test="despachoCntDiasExc != null" >
+        despacho_cnt_dias_exc = #{despachoCntDiasExc,jdbcType=INTEGER},
+      </if>
+      <if test="despachoCntCargos != null" >
+        despacho_cnt_cargos = #{despachoCntCargos,jdbcType=INTEGER},
+      </if>
+      <if test="despachoCntEnt != null" >
+        despacho_cnt_ent = #{despachoCntEnt,jdbcType=INTEGER},
+      </if>
+      <if test="despachoCntMot != null" >
+        despacho_cnt_mot = #{despachoCntMot,jdbcType=INTEGER},
+      </if>
+      <if test="despachoCntRee != null" >
+        despacho_cnt_ree = #{despachoCntRee,jdbcType=INTEGER},
+      </if>
+      <if test="despachoCntAnu != null" >
+        despacho_cnt_anu = #{despachoCntAnu,jdbcType=INTEGER},
+      </if>
+      <if test="despachoCntFueZon != null" >
+        despacho_cnt_fue_zon = #{despachoCntFueZon,jdbcType=INTEGER},
+      </if>
+      <if test="despachoCntPerd != null" >
+        despacho_cnt_perd = #{despachoCntPerd,jdbcType=INTEGER},
+      </if>
+      <if test="despachoTrabEnFec != null" >
+        despacho_trab_en_fec = #{despachoTrabEnFec,jdbcType=SMALLINT},
+      </if>
+      <if test="despachoTrabFueraFec != null" >
+        despacho_trab_fuera_fec = #{despachoTrabFueraFec,jdbcType=SMALLINT},
+      </if>
+      <if test="procId != null" >
+        proc_id = #{procId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where despacho_key = #{despachoKey,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactDespacho" >
+    update fact_despacho
+    set despacho_key_sede = #{despachoKeySede,jdbcType=INTEGER},
+      despacho_key_zona = #{despachoKeyZona,jdbcType=INTEGER},
+      despacho_key_personal = #{despachoKeyPersonal,jdbcType=INTEGER},
+      despacho_key_tipo_ruta = #{despachoKeyTipoRuta,jdbcType=INTEGER},
+      despacho_key_fec_sal = #{despachoKeyFecSal,jdbcType=INTEGER},
+      despacho_key_fec_retp = #{despachoKeyFecRetp,jdbcType=INTEGER},
+      despacho_key_fec_retr = #{despachoKeyFecRetr,jdbcType=INTEGER},
+      despacho_key_estado = #{despachoKeyEstado,jdbcType=INTEGER},
+      despacho_mon_pasaje = #{despachoMonPasaje,jdbcType=NUMERIC},
+      despacho_ind_unidad = #{despachoIndUnidad,jdbcType=SMALLINT},
+      despacho_cnt_dias_exc = #{despachoCntDiasExc,jdbcType=INTEGER},
+      despacho_cnt_cargos = #{despachoCntCargos,jdbcType=INTEGER},
+      despacho_cnt_ent = #{despachoCntEnt,jdbcType=INTEGER},
+      despacho_cnt_mot = #{despachoCntMot,jdbcType=INTEGER},
+      despacho_cnt_ree = #{despachoCntRee,jdbcType=INTEGER},
+      despacho_cnt_anu = #{despachoCntAnu,jdbcType=INTEGER},
+      despacho_cnt_fue_zon = #{despachoCntFueZon,jdbcType=INTEGER},
+      despacho_cnt_perd = #{despachoCntPerd,jdbcType=INTEGER},
+      despacho_trab_en_fec = #{despachoTrabEnFec,jdbcType=SMALLINT},
+      despacho_trab_fuera_fec = #{despachoTrabFueraFec,jdbcType=SMALLINT},
+      proc_id = #{procId,jdbcType=INTEGER}
+    where despacho_key = #{despachoKey,jdbcType=INTEGER}
   </update>
 </mapper>

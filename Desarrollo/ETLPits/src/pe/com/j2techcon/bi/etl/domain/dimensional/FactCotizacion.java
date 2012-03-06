@@ -11,8 +11,6 @@ public class FactCotizacion {
 
     private Integer cotizacionKeyProducto;
 
-    private Integer cotizacionKeyFecReg;
-
     private Integer cotizacionKeyFecApro;
 
     private Integer cotizacionKeyFecIni;
@@ -21,7 +19,7 @@ public class FactCotizacion {
 
     private Integer cotizacionKeyEstado;
 
-    private Integer cotizacionCnt;
+    private Short cotizacionIndUnidad;
 
     private Integer cotizacionCntOrdTotal;
 
@@ -77,14 +75,6 @@ public class FactCotizacion {
         this.cotizacionKeyProducto = cotizacionKeyProducto;
     }
 
-    public Integer getCotizacionKeyFecReg() {
-        return cotizacionKeyFecReg;
-    }
-
-    public void setCotizacionKeyFecReg(Integer cotizacionKeyFecReg) {
-        this.cotizacionKeyFecReg = cotizacionKeyFecReg;
-    }
-
     public Integer getCotizacionKeyFecApro() {
         return cotizacionKeyFecApro;
     }
@@ -117,12 +107,12 @@ public class FactCotizacion {
         this.cotizacionKeyEstado = cotizacionKeyEstado;
     }
 
-    public Integer getCotizacionCnt() {
-        return cotizacionCnt;
+    public Short getCotizacionIndUnidad() {
+        return cotizacionIndUnidad;
     }
 
-    public void setCotizacionCnt(Integer cotizacionCnt) {
-        this.cotizacionCnt = cotizacionCnt;
+    public void setCotizacionIndUnidad(Short cotizacionIndUnidad) {
+        this.cotizacionIndUnidad = cotizacionIndUnidad;
     }
 
     public Integer getCotizacionCntOrdTotal() {
@@ -218,12 +208,11 @@ public class FactCotizacion {
     	cotizacionKeyClienteArea=null;
     	cotizacionKeyServicio=null;
     	cotizacionKeyProducto=null;
-    	cotizacionKeyFecReg=null;
     	cotizacionKeyFecApro=null;
     	cotizacionKeyFecIni=null;
     	cotizacionKeyFecFin=null;
     	cotizacionKeyEstado=null;
-    	cotizacionCnt=null;
+    	cotizacionIndUnidad=null;
     	cotizacionCntOrdTotal=null;
     	cotizacionCntOrdEnTrab=null;
     	cotizacionCntOrdCer=null;
@@ -243,12 +232,11 @@ public class FactCotizacion {
 				+ ", cotizacionKeyClienteArea=" + cotizacionKeyClienteArea
 				+ ", cotizacionKeyServicio=" + cotizacionKeyServicio
 				+ ", cotizacionKeyProducto=" + cotizacionKeyProducto
-				+ ", cotizacionKeyFecReg=" + cotizacionKeyFecReg
 				+ ", cotizacionKeyFecApro=" + cotizacionKeyFecApro
 				+ ", cotizacionKeyFecIni=" + cotizacionKeyFecIni
 				+ ", cotizacionKeyFecFin=" + cotizacionKeyFecFin
 				+ ", cotizacionKeyEstado=" + cotizacionKeyEstado
-				+ ", cotizacionCnt=" + cotizacionCnt
+				+ ", cotizacionIndUnidad=" + cotizacionIndUnidad
 				+ ", cotizacionCntOrdTotal=" + cotizacionCntOrdTotal
 				+ ", cotizacionCntOrdEnTrab=" + cotizacionCntOrdEnTrab
 				+ ", cotizacionCntOrdCer=" + cotizacionCntOrdCer

@@ -10,13 +10,21 @@ public interface FactCotizacionMapper {
 
     int deleteByExample(FactCotizacionExample example);
 
+    int deleteByPrimaryKey(Integer cotizacionKey);
+
     int insert(FactCotizacion record);
 
     int insertSelective(FactCotizacion record);
 
     List<FactCotizacion> selectByExample(FactCotizacionExample example);
 
+    FactCotizacion selectByPrimaryKey(Integer cotizacionKey);
+
     int updateByExampleSelective(@Param("record") FactCotizacion record, @Param("example") FactCotizacionExample example);
 
     int updateByExample(@Param("record") FactCotizacion record, @Param("example") FactCotizacionExample example);
+
+    int updateByPrimaryKeySelective(FactCotizacion record);
+
+    int updateByPrimaryKey(FactCotizacion record);
 }

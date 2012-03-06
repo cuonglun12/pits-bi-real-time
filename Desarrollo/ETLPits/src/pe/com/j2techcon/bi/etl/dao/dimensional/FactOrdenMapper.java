@@ -10,13 +10,21 @@ public interface FactOrdenMapper {
 
     int deleteByExample(FactOrdenExample example);
 
+    int deleteByPrimaryKey(Integer ordenKey);
+
     int insert(FactOrden record);
 
     int insertSelective(FactOrden record);
 
     List<FactOrden> selectByExample(FactOrdenExample example);
 
+    FactOrden selectByPrimaryKey(Integer ordenKey);
+
     int updateByExampleSelective(@Param("record") FactOrden record, @Param("example") FactOrdenExample example);
 
     int updateByExample(@Param("record") FactOrden record, @Param("example") FactOrdenExample example);
+
+    int updateByPrimaryKeySelective(FactOrden record);
+
+    int updateByPrimaryKey(FactOrden record);
 }

@@ -29,6 +29,11 @@ public class FactOrdenManager {
 	}
 
 
+	public int deleteByPrimaryKey(Integer ordenKey) {
+		return factOrdenMapper.deleteByPrimaryKey(ordenKey);
+	}
+
+
 	public int insert(FactOrden record) {
 		return factOrdenMapper.insert(record);
 	}
@@ -44,6 +49,11 @@ public class FactOrdenManager {
 	}
 
 
+	public FactOrden selectByPrimaryKey(Integer ordenKey) {
+		return factOrdenMapper.selectByPrimaryKey(ordenKey);
+	}
+
+
 	public int updateByExampleSelective(FactOrden record,
 			FactOrdenExample example) {
 		return factOrdenMapper.updateByExampleSelective(record, example);
@@ -52,6 +62,16 @@ public class FactOrdenManager {
 
 	public int updateByExample(FactOrden record, FactOrdenExample example) {
 		return factOrdenMapper.updateByExample(record, example);
+	}
+
+
+	public int updateByPrimaryKeySelective(FactOrden record) {
+		return factOrdenMapper.updateByPrimaryKeySelective(record);
+	}
+
+
+	public int updateByPrimaryKey(FactOrden record) {
+		return factOrdenMapper.updateByPrimaryKey(record);
 	}
 
 }

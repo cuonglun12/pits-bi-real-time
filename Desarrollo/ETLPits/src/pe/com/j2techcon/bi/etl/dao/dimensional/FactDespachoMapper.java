@@ -10,13 +10,21 @@ public interface FactDespachoMapper {
 
     int deleteByExample(FactDespachoExample example);
 
+    int deleteByPrimaryKey(Integer despachoKey);
+
     int insert(FactDespacho record);
 
     int insertSelective(FactDespacho record);
 
     List<FactDespacho> selectByExample(FactDespachoExample example);
 
+    FactDespacho selectByPrimaryKey(Integer despachoKey);
+
     int updateByExampleSelective(@Param("record") FactDespacho record, @Param("example") FactDespachoExample example);
 
     int updateByExample(@Param("record") FactDespacho record, @Param("example") FactDespachoExample example);
+
+    int updateByPrimaryKeySelective(FactDespacho record);
+
+    int updateByPrimaryKey(FactDespacho record);
 }

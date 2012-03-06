@@ -19,8 +19,6 @@ public class FactOrden {
 
     private Integer ordenKeyMoneda;
 
-    private Integer ordenKeyFecReg;
-
     private Integer ordenKeyFecIni;
 
     private Integer ordenKeyFecVen;
@@ -125,14 +123,6 @@ public class FactOrden {
 
     public void setOrdenKeyMoneda(Integer ordenKeyMoneda) {
         this.ordenKeyMoneda = ordenKeyMoneda;
-    }
-
-    public Integer getOrdenKeyFecReg() {
-        return ordenKeyFecReg;
-    }
-
-    public void setOrdenKeyFecReg(Integer ordenKeyFecReg) {
-        this.ordenKeyFecReg = ordenKeyFecReg;
     }
 
     public Integer getOrdenKeyFecIni() {
@@ -302,7 +292,7 @@ public class FactOrden {
     public void setProcId(Integer procId) {
         this.procId = procId;
     }
-    
+
     public void clear(){
     	ordenKey=null;
     	ordenKeyClienteArea=null;
@@ -312,7 +302,6 @@ public class FactOrden {
     	ordenKeyTipoDocumento=null;
     	ordenKeyTipoPago=null;
     	ordenKeyMoneda=null;
-    	ordenKeyFecReg=null;
     	ordenKeyFecIni=null;
     	ordenKeyFecVen=null;
     	ordenKeyFecCie=null;
@@ -344,15 +333,14 @@ public class FactOrden {
 				+ ", ordenKeyTipoReparto=" + ordenKeyTipoReparto
 				+ ", ordenKeyTipoDocumento=" + ordenKeyTipoDocumento
 				+ ", ordenKeyTipoPago=" + ordenKeyTipoPago
-				+ ", ordenKeyMoneda=" + ordenKeyMoneda + ", ordenKeyFecReg="
-				+ ordenKeyFecReg + ", ordenKeyFecIni=" + ordenKeyFecIni
-				+ ", ordenKeyFecVen=" + ordenKeyFecVen + ", ordenKeyFecCie="
-				+ ordenKeyFecCie + ", ordenKeyFecDev=" + ordenKeyFecDev
-				+ ", ordenKeyEstado=" + ordenKeyEstado + ", ordenAtenEnFec="
-				+ ordenAtenEnFec + ", ordenAtenFueraFec=" + ordenAtenFueraFec
-				+ ", ordenIndUnidad=" + ordenIndUnidad + ", ordenCntDiasExc="
-				+ ordenCntDiasExc + ", ordenCntCargos=" + ordenCntCargos
-				+ ", ordenCntCargosAnu=" + ordenCntCargosAnu
+				+ ", ordenKeyMoneda=" + ordenKeyMoneda + ", ordenKeyFecIni="
+				+ ordenKeyFecIni + ", ordenKeyFecVen=" + ordenKeyFecVen
+				+ ", ordenKeyFecCie=" + ordenKeyFecCie + ", ordenKeyFecDev="
+				+ ordenKeyFecDev + ", ordenKeyEstado=" + ordenKeyEstado
+				+ ", ordenAtenEnFec=" + ordenAtenEnFec + ", ordenAtenFueraFec="
+				+ ordenAtenFueraFec + ", ordenIndUnidad=" + ordenIndUnidad
+				+ ", ordenCntDiasExc=" + ordenCntDiasExc + ", ordenCntCargos="
+				+ ordenCntCargos + ", ordenCntCargosAnu=" + ordenCntCargosAnu
 				+ ", ordenCntCargosEnt=" + ordenCntCargosEnt
 				+ ", ordenCntCargosFueZon=" + ordenCntCargosFueZon
 				+ ", ordenCntCargosMot=" + ordenCntCargosMot

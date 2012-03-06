@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="t_cargo" >
+<mapper namespace="pe.com.j2techcon.bi.etl.dao.generic.TCargoMapper" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.generic.TCargo" >
     <id column="carg_id" property="cargId" jdbcType="INTEGER" />
     <result column="carg_corr" property="cargCorr" jdbcType="INTEGER" />

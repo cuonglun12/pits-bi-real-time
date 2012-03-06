@@ -357,66 +357,6 @@ public class FactCotizacionExample {
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionKeyFecRegIsNull() {
-            addCriterion("cotizacion_key_fec_reg is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCotizacionKeyFecRegIsNotNull() {
-            addCriterion("cotizacion_key_fec_reg is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCotizacionKeyFecRegEqualTo(Integer value) {
-            addCriterion("cotizacion_key_fec_reg =", value, "cotizacionKeyFecReg");
-            return (Criteria) this;
-        }
-
-        public Criteria andCotizacionKeyFecRegNotEqualTo(Integer value) {
-            addCriterion("cotizacion_key_fec_reg <>", value, "cotizacionKeyFecReg");
-            return (Criteria) this;
-        }
-
-        public Criteria andCotizacionKeyFecRegGreaterThan(Integer value) {
-            addCriterion("cotizacion_key_fec_reg >", value, "cotizacionKeyFecReg");
-            return (Criteria) this;
-        }
-
-        public Criteria andCotizacionKeyFecRegGreaterThanOrEqualTo(Integer value) {
-            addCriterion("cotizacion_key_fec_reg >=", value, "cotizacionKeyFecReg");
-            return (Criteria) this;
-        }
-
-        public Criteria andCotizacionKeyFecRegLessThan(Integer value) {
-            addCriterion("cotizacion_key_fec_reg <", value, "cotizacionKeyFecReg");
-            return (Criteria) this;
-        }
-
-        public Criteria andCotizacionKeyFecRegLessThanOrEqualTo(Integer value) {
-            addCriterion("cotizacion_key_fec_reg <=", value, "cotizacionKeyFecReg");
-            return (Criteria) this;
-        }
-
-        public Criteria andCotizacionKeyFecRegIn(List<Integer> values) {
-            addCriterion("cotizacion_key_fec_reg in", values, "cotizacionKeyFecReg");
-            return (Criteria) this;
-        }
-
-        public Criteria andCotizacionKeyFecRegNotIn(List<Integer> values) {
-            addCriterion("cotizacion_key_fec_reg not in", values, "cotizacionKeyFecReg");
-            return (Criteria) this;
-        }
-
-        public Criteria andCotizacionKeyFecRegBetween(Integer value1, Integer value2) {
-            addCriterion("cotizacion_key_fec_reg between", value1, value2, "cotizacionKeyFecReg");
-            return (Criteria) this;
-        }
-
-        public Criteria andCotizacionKeyFecRegNotBetween(Integer value1, Integer value2) {
-            addCriterion("cotizacion_key_fec_reg not between", value1, value2, "cotizacionKeyFecReg");
-            return (Criteria) this;
-        }
-
         public Criteria andCotizacionKeyFecAproIsNull() {
             addCriterion("cotizacion_key_fec_apro is null");
             return (Criteria) this;
@@ -657,63 +597,63 @@ public class FactCotizacionExample {
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionCntIsNull() {
-            addCriterion("cotizacion_cnt is null");
+        public Criteria andCotizacionIndUnidadIsNull() {
+            addCriterion("cotizacion_ind_unidad is null");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionCntIsNotNull() {
-            addCriterion("cotizacion_cnt is not null");
+        public Criteria andCotizacionIndUnidadIsNotNull() {
+            addCriterion("cotizacion_ind_unidad is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionCntEqualTo(Integer value) {
-            addCriterion("cotizacion_cnt =", value, "cotizacionCnt");
+        public Criteria andCotizacionIndUnidadEqualTo(Short value) {
+            addCriterion("cotizacion_ind_unidad =", value, "cotizacionIndUnidad");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionCntNotEqualTo(Integer value) {
-            addCriterion("cotizacion_cnt <>", value, "cotizacionCnt");
+        public Criteria andCotizacionIndUnidadNotEqualTo(Short value) {
+            addCriterion("cotizacion_ind_unidad <>", value, "cotizacionIndUnidad");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionCntGreaterThan(Integer value) {
-            addCriterion("cotizacion_cnt >", value, "cotizacionCnt");
+        public Criteria andCotizacionIndUnidadGreaterThan(Short value) {
+            addCriterion("cotizacion_ind_unidad >", value, "cotizacionIndUnidad");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionCntGreaterThanOrEqualTo(Integer value) {
-            addCriterion("cotizacion_cnt >=", value, "cotizacionCnt");
+        public Criteria andCotizacionIndUnidadGreaterThanOrEqualTo(Short value) {
+            addCriterion("cotizacion_ind_unidad >=", value, "cotizacionIndUnidad");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionCntLessThan(Integer value) {
-            addCriterion("cotizacion_cnt <", value, "cotizacionCnt");
+        public Criteria andCotizacionIndUnidadLessThan(Short value) {
+            addCriterion("cotizacion_ind_unidad <", value, "cotizacionIndUnidad");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionCntLessThanOrEqualTo(Integer value) {
-            addCriterion("cotizacion_cnt <=", value, "cotizacionCnt");
+        public Criteria andCotizacionIndUnidadLessThanOrEqualTo(Short value) {
+            addCriterion("cotizacion_ind_unidad <=", value, "cotizacionIndUnidad");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionCntIn(List<Integer> values) {
-            addCriterion("cotizacion_cnt in", values, "cotizacionCnt");
+        public Criteria andCotizacionIndUnidadIn(List<Short> values) {
+            addCriterion("cotizacion_ind_unidad in", values, "cotizacionIndUnidad");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionCntNotIn(List<Integer> values) {
-            addCriterion("cotizacion_cnt not in", values, "cotizacionCnt");
+        public Criteria andCotizacionIndUnidadNotIn(List<Short> values) {
+            addCriterion("cotizacion_ind_unidad not in", values, "cotizacionIndUnidad");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionCntBetween(Integer value1, Integer value2) {
-            addCriterion("cotizacion_cnt between", value1, value2, "cotizacionCnt");
+        public Criteria andCotizacionIndUnidadBetween(Short value1, Short value2) {
+            addCriterion("cotizacion_ind_unidad between", value1, value2, "cotizacionIndUnidad");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionCntNotBetween(Integer value1, Integer value2) {
-            addCriterion("cotizacion_cnt not between", value1, value2, "cotizacionCnt");
+        public Criteria andCotizacionIndUnidadNotBetween(Short value1, Short value2) {
+            addCriterion("cotizacion_ind_unidad not between", value1, value2, "cotizacionIndUnidad");
             return (Criteria) this;
         }
 

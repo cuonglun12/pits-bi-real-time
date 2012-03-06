@@ -1,5 +1,11 @@
 package test;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
+import com.sun.org.apache.xerces.internal.impl.dv.xs.YearDV;
+
 import pe.com.j2techcon.bi.etl.domain.control.*;
 import pe.com.j2techcon.bi.etl.domain.dimensional.*;
 import pe.com.j2techcon.bi.etl.domain.generic.*;
@@ -11,7 +17,7 @@ public class Test {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		
+		/*
 		TProceso x = new TProceso();
 		System.out.println(x.toString());
 		
@@ -110,6 +116,45 @@ public class Test {
 		
 		TZona o1 = new TZona();
 		System.out.println(o1.toString());
+		*/
+		
+//		Calendar calendar = Calendar.getInstance();
+//		calendar.set(1900,1,1,1,1,1);
+//		Date date = new GregorianCalendar(1900,1,1,1,1,1).getTime();
+//		Calendar calendar2= new GregorianCalendar();
+//		calendar2.setTime(date);
+//		
+//		System.out.println(date.getYear());
+//		
+//		System.out.println(calendar.get(Calendar.YEAR));
+//		System.out.println(calendar2.get(Calendar.YEAR));
+//		
+//		System.out.println(calendar.get(Calendar.MONTH));
+//		System.out.println(calendar2.get(Calendar.MONTH));
+//		
+//		System.out.println(calendar.get(Calendar.DAY_OF_MONTH));
+//		System.out.println(calendar2.get(Calendar.DAY_OF_MONTH));
+//		
+//		System.out.println(calendar.get(Calendar.HOUR_OF_DAY));
+//		System.out.println(calendar2.get(Calendar.HOUR_OF_DAY));
+//		
+//		System.out.println(calendar.get(Calendar.MINUTE));
+//		System.out.println(calendar2.get(Calendar.MINUTE));
+//		
+//		System.out.println(calendar.get(Calendar.SECOND));
+//		System.out.println(calendar2.get(Calendar.SECOND));
+//		
+//		System.out.println(date.getTime());
+//		System.out.println(calendar.getTimeInMillis());
+//		System.out.println(date.toString());
+//		System.out.println(calendar.getTime().toString());
+//		System.out.println(calendar.getTime().compareTo(date));
+		Calendar calendar = Calendar.getInstance();
+		Date dateCurrent = new GregorianCalendar(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).getTime();
+		Date dateCurrentMenor = new GregorianCalendar(calendar.get(Calendar.YEAR)-1,calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).getTime();
+		Date dateCurrentMayor = new GregorianCalendar(calendar.get(Calendar.YEAR)+1,calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).getTime();
+		System.out.println(dateCurrentMayor.compareTo(dateCurrent));
+		System.out.println(dateCurrentMenor.compareTo(dateCurrent));
 
 	}
 

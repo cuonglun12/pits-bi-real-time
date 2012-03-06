@@ -597,66 +597,6 @@ public class FactOrdenExample {
             return (Criteria) this;
         }
 
-        public Criteria andOrdenKeyFecRegIsNull() {
-            addCriterion("orden_key_fec_reg is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrdenKeyFecRegIsNotNull() {
-            addCriterion("orden_key_fec_reg is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrdenKeyFecRegEqualTo(Integer value) {
-            addCriterion("orden_key_fec_reg =", value, "ordenKeyFecReg");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrdenKeyFecRegNotEqualTo(Integer value) {
-            addCriterion("orden_key_fec_reg <>", value, "ordenKeyFecReg");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrdenKeyFecRegGreaterThan(Integer value) {
-            addCriterion("orden_key_fec_reg >", value, "ordenKeyFecReg");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrdenKeyFecRegGreaterThanOrEqualTo(Integer value) {
-            addCriterion("orden_key_fec_reg >=", value, "ordenKeyFecReg");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrdenKeyFecRegLessThan(Integer value) {
-            addCriterion("orden_key_fec_reg <", value, "ordenKeyFecReg");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrdenKeyFecRegLessThanOrEqualTo(Integer value) {
-            addCriterion("orden_key_fec_reg <=", value, "ordenKeyFecReg");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrdenKeyFecRegIn(List<Integer> values) {
-            addCriterion("orden_key_fec_reg in", values, "ordenKeyFecReg");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrdenKeyFecRegNotIn(List<Integer> values) {
-            addCriterion("orden_key_fec_reg not in", values, "ordenKeyFecReg");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrdenKeyFecRegBetween(Integer value1, Integer value2) {
-            addCriterion("orden_key_fec_reg between", value1, value2, "ordenKeyFecReg");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrdenKeyFecRegNotBetween(Integer value1, Integer value2) {
-            addCriterion("orden_key_fec_reg not between", value1, value2, "ordenKeyFecReg");
-            return (Criteria) this;
-        }
-
         public Criteria andOrdenKeyFecIniIsNull() {
             addCriterion("orden_key_fec_ini is null");
             return (Criteria) this;

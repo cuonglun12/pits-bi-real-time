@@ -3,7 +3,15 @@ package pe.com.j2techcon.bi.etl.util;
 public class Constantes {
 	
 	private int	paramCodeTipoAreaCliente;
+	
 	private int	paramCodeEstadoCargoDespacho;
+	private String paramCodeEstadoCargoDespachoEntregado;
+	private String paramCodeEstadoCargoDespachoMotivado;
+	private String paramCodeEstadoCargoDespachoReenviado;
+	private String paramCodeEstadoCargoDespachoAnulado;
+	private String paramCodeEstadoCargoDespachoFueraZona;
+	private String paramCodeEstadoCargoDespachoPerdido;
+	
 	private int	paramCodeEstadoCargoDespachoVerificacion;
 	private int	paramCodeMotivoCargoDespacho;
 	private int	paramCodeEstadoCargo;
@@ -72,6 +80,60 @@ public class Constantes {
 
 	public void setParamCodeEstadoCargoDespacho(int paramCodeEstadoCargoDespacho) {
 		this.paramCodeEstadoCargoDespacho = paramCodeEstadoCargoDespacho;
+	}
+
+	public String getParamCodeEstadoCargoDespachoEntregado() {
+		return paramCodeEstadoCargoDespachoEntregado;
+	}
+
+	public void setParamCodeEstadoCargoDespachoEntregado(
+			String paramCodeEstadoCargoDespachoEntregado) {
+		this.paramCodeEstadoCargoDespachoEntregado = paramCodeEstadoCargoDespachoEntregado;
+	}
+
+	public String getParamCodeEstadoCargoDespachoMotivado() {
+		return paramCodeEstadoCargoDespachoMotivado;
+	}
+
+	public void setParamCodeEstadoCargoDespachoMotivado(
+			String paramCodeEstadoCargoDespachoMotivado) {
+		this.paramCodeEstadoCargoDespachoMotivado = paramCodeEstadoCargoDespachoMotivado;
+	}
+
+	public String getParamCodeEstadoCargoDespachoReenviado() {
+		return paramCodeEstadoCargoDespachoReenviado;
+	}
+
+	public void setParamCodeEstadoCargoDespachoReenviado(
+			String paramCodeEstadoCargoDespachoReenviado) {
+		this.paramCodeEstadoCargoDespachoReenviado = paramCodeEstadoCargoDespachoReenviado;
+	}
+
+	public String getParamCodeEstadoCargoDespachoAnulado() {
+		return paramCodeEstadoCargoDespachoAnulado;
+	}
+
+	public void setParamCodeEstadoCargoDespachoAnulado(
+			String paramCodeEstadoCargoDespachoAnulado) {
+		this.paramCodeEstadoCargoDespachoAnulado = paramCodeEstadoCargoDespachoAnulado;
+	}
+
+	public String getParamCodeEstadoCargoDespachoFueraZona() {
+		return paramCodeEstadoCargoDespachoFueraZona;
+	}
+
+	public void setParamCodeEstadoCargoDespachoFueraZona(
+			String paramCodeEstadoCargoDespachoFueraZona) {
+		this.paramCodeEstadoCargoDespachoFueraZona = paramCodeEstadoCargoDespachoFueraZona;
+	}
+
+	public String getParamCodeEstadoCargoDespachoPerdido() {
+		return paramCodeEstadoCargoDespachoPerdido;
+	}
+
+	public void setParamCodeEstadoCargoDespachoPerdido(
+			String paramCodeEstadoCargoDespachoPerdido) {
+		this.paramCodeEstadoCargoDespachoPerdido = paramCodeEstadoCargoDespachoPerdido;
 	}
 
 	public int getParamCodeEstadoCargoDespachoVerificacion() {
@@ -451,6 +513,18 @@ public class Constantes {
 		return "Constantes [paramCodeTipoAreaCliente="
 				+ paramCodeTipoAreaCliente + ", paramCodeEstadoCargoDespacho="
 				+ paramCodeEstadoCargoDespacho
+				+ ", paramCodeEstadoCargoDespachoEntregado="
+				+ paramCodeEstadoCargoDespachoEntregado
+				+ ", paramCodeEstadoCargoDespachoMotivado="
+				+ paramCodeEstadoCargoDespachoMotivado
+				+ ", paramCodeEstadoCargoDespachoReenviado="
+				+ paramCodeEstadoCargoDespachoReenviado
+				+ ", paramCodeEstadoCargoDespachoAnulado="
+				+ paramCodeEstadoCargoDespachoAnulado
+				+ ", paramCodeEstadoCargoDespachoFueraZona="
+				+ paramCodeEstadoCargoDespachoFueraZona
+				+ ", paramCodeEstadoCargoDespachoPerdido="
+				+ paramCodeEstadoCargoDespachoPerdido
 				+ ", paramCodeEstadoCargoDespachoVerificacion="
 				+ paramCodeEstadoCargoDespachoVerificacion
 				+ ", paramCodeMotivoCargoDespacho="
@@ -503,6 +577,8 @@ public class Constantes {
 				+ ", resultProcessCompletedErrors="
 				+ resultProcessCompletedErrors + ", sizePage=" + sizePage + "]";
 	}
+
+	
 }
 
 

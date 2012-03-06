@@ -5,19 +5,20 @@ import java.util.List;
 
 import org.springframework.beans.factory.BeanFactory;
 
+import pe.com.j2techcon.bi.etl.logic.dimensional.DimTiempoManager;
 import pe.com.j2techcon.bi.etl.logic.dimensional.FactCotizacionManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TCotizacionManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TParametroManager;
-import pe.com.j2techcon.bi.etl.logic.generic.TUbigeoManager;
 import pe.com.j2techcon.bi.etl.util.Constantes;
+import pe.com.j2techcon.bi.etl.domain.dimensional.DimTiempo;
+import pe.com.j2techcon.bi.etl.domain.dimensional.DimTiempoExample;
 import pe.com.j2techcon.bi.etl.domain.dimensional.FactCotizacion;
 import pe.com.j2techcon.bi.etl.domain.dimensional.FactCotizacionExample;
 import pe.com.j2techcon.bi.etl.domain.generic.TCotizacion;
 import pe.com.j2techcon.bi.etl.domain.generic.TCotizacionExample;
 import pe.com.j2techcon.bi.etl.domain.generic.TParametro;
 import pe.com.j2techcon.bi.etl.domain.generic.TParametroExample;
-import pe.com.j2techcon.bi.etl.domain.generic.TUbigeo;
-import pe.com.j2techcon.bi.etl.domain.generic.TUbigeoExample;
+
 
 
 public class FactCotizacionProcess {
@@ -44,12 +45,16 @@ public class FactCotizacionProcess {
 	private TParametro tParametro;
 	private TParametroExample tParametroExample;
 	
-	private FactCotizacion dimCotizacion;
-	private FactCotizacionExample dimCotizacionExample;
+	private FactCotizacion factCotizacion;
+	private FactCotizacionExample factCotizacionExample;
+	
+	private DimTiempo dimTiempo;
+	private DimTiempoExample dimTiempoExample;
 	
 	private TCotizacionManager tCotizacionManager;
-	private TParametroManager tParametroManager; 
-	private FactCotizacionManager dimCotizacionManager;
+	private TParametroManager tParametroManager;
+	private DimTiempoManager dimTiempoManager;
+	private FactCotizacionManager factCotizacionManager;
 	
 	private Constantes constantes;
 
@@ -190,19 +195,35 @@ public class FactCotizacionProcess {
 	}
 
 	public FactCotizacion getFactCotizacion() {
-		return dimCotizacion;
+		return factCotizacion;
 	}
 
-	public void setFactCotizacion(FactCotizacion dimCotizacion) {
-		this.dimCotizacion = dimCotizacion;
+	public void setFactCotizacion(FactCotizacion factCotizacion) {
+		this.factCotizacion = factCotizacion;
 	}
 
 	public FactCotizacionExample getFactCotizacionExample() {
-		return dimCotizacionExample;
+		return factCotizacionExample;
 	}
 
-	public void setFactCotizacionExample(FactCotizacionExample dimCotizacionExample) {
-		this.dimCotizacionExample = dimCotizacionExample;
+	public void setFactCotizacionExample(FactCotizacionExample factCotizacionExample) {
+		this.factCotizacionExample = factCotizacionExample;
+	}
+
+	public DimTiempo getDimTiempo() {
+		return dimTiempo;
+	}
+
+	public void setDimTiempo(DimTiempo dimTiempo) {
+		this.dimTiempo = dimTiempo;
+	}
+
+	public DimTiempoExample getDimTiempoExample() {
+		return dimTiempoExample;
+	}
+
+	public void setDimTiempoExample(DimTiempoExample dimTiempoExample) {
+		this.dimTiempoExample = dimTiempoExample;
 	}
 
 	public TCotizacionManager gettCotizacionManager() {
@@ -221,12 +242,20 @@ public class FactCotizacionProcess {
 		this.tParametroManager = tParametroManager;
 	}
 
-	public FactCotizacionManager getFactCotizacionManager() {
-		return dimCotizacionManager;
+	public DimTiempoManager getDimTiempoManager() {
+		return dimTiempoManager;
 	}
 
-	public void setFactCotizacionManager(FactCotizacionManager dimCotizacionManager) {
-		this.dimCotizacionManager = dimCotizacionManager;
+	public void setDimTiempoManager(DimTiempoManager dimTiempoManager) {
+		this.dimTiempoManager = dimTiempoManager;
+	}
+
+	public FactCotizacionManager getFactCotizacionManager() {
+		return factCotizacionManager;
+	}
+
+	public void setFactCotizacionManager(FactCotizacionManager factCotizacionManager) {
+		this.factCotizacionManager = factCotizacionManager;
 	}
 
 	public Constantes getConstantes() {
@@ -260,7 +289,8 @@ public class FactCotizacionProcess {
 
 		tCotizacionManager = factory.getBean("tCotizacionManager", TCotizacionManager.class);
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
-		dimCotizacionManager = factory.getBean("dimCotizacionManager", FactCotizacionManager.class);
+		dimTiempoManager = factory.getBean("dimTiempoManager", DimTiempoManager.class);
+		factCotizacionManager = factory.getBean("factCotizacionManager", FactCotizacionManager.class);
 		
 		constantes = factory.getBean("constantes", Constantes.class);
 
@@ -275,7 +305,7 @@ public class FactCotizacionProcess {
 			if(lstCotizacion.size()>0){
 				for (Iterator<TCotizacion> iterator = lstCotizacion.iterator(); iterator.hasNext();) {
 					tCotizacion = iterator.next();
-					dimCotizacion.clear();
+					factCotizacion.clear();
 					processRecordCotizacion();
 				}
 				offset = offset + constantes.getSizePage();
@@ -288,7 +318,7 @@ public class FactCotizacionProcess {
 				if(lstCotizacion.size()>0){
 					for (Iterator<TCotizacion> iterator = lstCotizacion.iterator(); iterator.hasNext();) {
 						tCotizacion = iterator.next();
-						dimCotizacion.clear();
+						factCotizacion.clear();
 						processRecordCotizacion();
 					}
 				}
@@ -351,18 +381,31 @@ public class FactCotizacionProcess {
 	}
 	
 	public void completeFildCotizacion(){
-		dimCotizacion.setCotizacionKey(tCotizacion.getCotiId());
-		dimCotizacion.setCotizacionKeyClienteArea(tCotizacion.getAreCliId());
-		dimCotizacion.setCotizacionKeyServicio(tCotizacion.getCotiCodServ());
-		dimCotizacion.setCotizacionKeyProducto(tCotizacion.getProdId());
+		factCotizacion.setCotizacionKey(tCotizacion.getCotiId());
+		factCotizacion.setCotizacionKeyClienteArea(tCotizacion.getAreCliId());
+		factCotizacion.setCotizacionKeyServicio(tCotizacion.getCotiCodServ());
+		factCotizacion.setCotizacionKeyProducto(tCotizacion.getProdId());
 		
+		dimTiempoExample.createCriteria().andTiempoFechaEqualTo(tCotizacion.getCotiFecApro());
+		dimTiempo = (dimTiempoManager.selectByExample(dimTiempoExample)).get(0);
+		factCotizacion.setCotizacionKeyFecApro(dimTiempo.getTiempoKey());
 		
-		dimCotizacion.setProcId(process);
+		dimTiempoExample.createCriteria().andTiempoFechaEqualTo(tCotizacion.getCotiFecIni());
+		dimTiempo = (dimTiempoManager.selectByExample(dimTiempoExample)).get(0);
+		factCotizacion.setCotizacionKeyFecIni(dimTiempo.getTiempoKey());
+		
+		dimTiempoExample.createCriteria().andTiempoFechaEqualTo(tCotizacion.getCotiFecFin());
+		dimTiempo = (dimTiempoManager.selectByExample(dimTiempoExample)).get(0);
+		factCotizacion.setCotizacionKeyFecFin(dimTiempo.getTiempoKey());
+
+		factCotizacion.setCotizacionKeyEstado(tCotizacion.getCotiCodEst());
+		
+		factCotizacion.setProcId(process);
 	}
 	
 	public int insertRecordDimensionalCotizacion(){
 		try{
-			resultTransaction = dimCotizacionManager.insertSelective(dimCotizacion);
+			resultTransaction = factCotizacionManager.insertSelective(factCotizacion);
 		}catch(Exception e){
 			resultTransaction = constantes.getResultTransactionNoResult();
 		}
@@ -371,7 +414,7 @@ public class FactCotizacionProcess {
 	
 	public int updateRecordDimensionalCotizacion(){
 		try{
-			resultTransaction = dimCotizacionManager.updateByPrimaryKeySelective(dimCotizacion);
+			resultTransaction = factCotizacionManager.updateByPrimaryKeySelective(factCotizacion);
 		}catch(Exception e){
 			resultTransaction = constantes.getResultTransactionNoResult();
 		}
@@ -380,7 +423,7 @@ public class FactCotizacionProcess {
 	
 	public int deleteRecordDimensionalCotizacion(){
 		try{
-			resultTransaction = dimCotizacionManager.deleteByPrimaryKey(dimCotizacion.getCotizacionKey());
+			resultTransaction = factCotizacionManager.deleteByPrimaryKey(factCotizacion.getCotizacionKey());
 		}catch(Exception e){
 			resultTransaction = constantes.getResultTransactionNoResult();
 		}
@@ -389,9 +432,9 @@ public class FactCotizacionProcess {
 	
 	public void updateRecordGenericCotizacion(String statusRecord){
 		try{
-			int idCotizacion = tCotizacion.getZonId();
+			int idCotizacion = tCotizacion.getCotiId();
 			tCotizacion.clear();
-			tCotizacion.setZonId(idCotizacion);
+			tCotizacion.setCotiId(idCotizacion);
 			tCotizacion.setCodIndCam(statusRecord);
 			tCotizacion.setProcId(process);
 			tCotizacionManager.updateByPrimaryKeySelective(tCotizacion);

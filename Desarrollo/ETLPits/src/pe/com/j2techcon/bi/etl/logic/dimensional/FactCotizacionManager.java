@@ -9,10 +9,11 @@ import pe.com.j2techcon.bi.etl.domain.dimensional.FactCotizacionExample;
 public class FactCotizacionManager {
 	
 	private FactCotizacionMapper factCotizacionMapper;
-
+	
 	public FactCotizacionMapper getFactCotizacionMapper() {
 		return factCotizacionMapper;
 	}
+
 
 	public void setFactCotizacionMapper(FactCotizacionMapper factCotizacionMapper) {
 		this.factCotizacionMapper = factCotizacionMapper;
@@ -23,36 +24,56 @@ public class FactCotizacionManager {
 		return factCotizacionMapper.countByExample(example);
 	}
 
-
+	
 	public int deleteByExample(FactCotizacionExample example) {
 		return factCotizacionMapper.deleteByExample(example);
 	}
 
+	
+	public int deleteByPrimaryKey(Integer cotizacionKey) {
+		return factCotizacionMapper.deleteByPrimaryKey(cotizacionKey);
+	}
 
+	
 	public int insert(FactCotizacion record) {
 		return factCotizacionMapper.insert(record);
 	}
 
-
+	
 	public int insertSelective(FactCotizacion record) {
 		return factCotizacionMapper.insertSelective(record);
 	}
 
-
+	
 	public List<FactCotizacion> selectByExample(FactCotizacionExample example) {
 		return factCotizacionMapper.selectByExample(example);
 	}
 
+	
+	public FactCotizacion selectByPrimaryKey(Integer cotizacionKey) {
+		return factCotizacionMapper.selectByPrimaryKey(cotizacionKey);
+	}
 
+	
 	public int updateByExampleSelective(FactCotizacion record,
 			FactCotizacionExample example) {
 		return factCotizacionMapper.updateByExampleSelective(record, example);
 	}
 
-
+	
 	public int updateByExample(FactCotizacion record,
 			FactCotizacionExample example) {
 		return factCotizacionMapper.updateByExample(record, example);
+	}
+
+	
+	public int updateByPrimaryKeySelective(FactCotizacion record) {
+		return factCotizacionMapper.updateByPrimaryKeySelective(record);
+	}
+
+	
+	public int updateByPrimaryKey(FactCotizacion record) {
+		return factCotizacionMapper.updateByPrimaryKey(record);
 	}
 
 }

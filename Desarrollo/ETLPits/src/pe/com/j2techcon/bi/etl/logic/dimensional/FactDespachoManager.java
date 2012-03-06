@@ -29,6 +29,11 @@ public class FactDespachoManager {
 	}
 
 
+	public int deleteByPrimaryKey(Integer despachoKey) {
+		return factDespachoMapper.deleteByPrimaryKey(despachoKey);
+	}
+
+
 	public int insert(FactDespacho record) {
 		return factDespachoMapper.insert(record);
 	}
@@ -44,6 +49,11 @@ public class FactDespachoManager {
 	}
 
 
+	public FactDespacho selectByPrimaryKey(Integer despachoKey) {
+		return factDespachoMapper.selectByPrimaryKey(despachoKey);
+	}
+
+
 	public int updateByExampleSelective(FactDespacho record,
 			FactDespachoExample example) {
 		return factDespachoMapper.updateByExampleSelective(record, example);
@@ -52,6 +62,16 @@ public class FactDespachoManager {
 
 	public int updateByExample(FactDespacho record, FactDespachoExample example) {
 		return factDespachoMapper.updateByExample(record, example);
+	}
+
+
+	public int updateByPrimaryKeySelective(FactDespacho record) {
+		return factDespachoMapper.updateByPrimaryKeySelective(record);
+	}
+
+
+	public int updateByPrimaryKey(FactDespacho record) {
+		return factDespachoMapper.updateByPrimaryKey(record);
 	}
 
 }

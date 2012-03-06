@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="dim_producto" >
+<mapper namespace="pe.com.j2techcon.bi.etl.dao.dimensional.DimProductoMapper" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.dimensional.DimProducto" >
     <id column="producto_key" property="productoKey" jdbcType="INTEGER" />
     <result column="producto_cod" property="productoCod" jdbcType="VARCHAR" />
