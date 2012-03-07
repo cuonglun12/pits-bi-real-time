@@ -323,7 +323,19 @@ public class DimZonaProcess {
 				}
 				
 				lstZona.clear();
+				
+				tZona.clear();
 				tZonaExample.clear();
+				
+				tParametro.clear();
+				tParametroExample.clear();
+				
+				dimZona.clear();
+				dimZonaExample.clear();
+				
+				tUbigeo.clear();
+				tUbigeoExample.clear();
+				
 				offset = 0;
 				break;
 			}
@@ -335,6 +347,8 @@ public class DimZonaProcess {
 		else{
 			resultProcess = constantes.getResultProcessCompletedCorrectly();
 		}
+		
+		recordTotal = recordProcessed + recordRejected;
 
 		return resultProcess;
 	}

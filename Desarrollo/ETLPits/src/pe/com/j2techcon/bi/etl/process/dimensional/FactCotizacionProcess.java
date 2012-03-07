@@ -8,6 +8,7 @@ import org.springframework.beans.factory.BeanFactory;
 import pe.com.j2techcon.bi.etl.logic.dimensional.DimTiempoManager;
 import pe.com.j2techcon.bi.etl.logic.dimensional.FactCotizacionManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TCotizacionManager;
+import pe.com.j2techcon.bi.etl.logic.generic.TOrdenManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TParametroManager;
 import pe.com.j2techcon.bi.etl.util.Constantes;
 import pe.com.j2techcon.bi.etl.domain.dimensional.DimTiempo;
@@ -16,6 +17,8 @@ import pe.com.j2techcon.bi.etl.domain.dimensional.FactCotizacion;
 import pe.com.j2techcon.bi.etl.domain.dimensional.FactCotizacionExample;
 import pe.com.j2techcon.bi.etl.domain.generic.TCotizacion;
 import pe.com.j2techcon.bi.etl.domain.generic.TCotizacionExample;
+import pe.com.j2techcon.bi.etl.domain.generic.TOrden;
+import pe.com.j2techcon.bi.etl.domain.generic.TOrdenExample;
 import pe.com.j2techcon.bi.etl.domain.generic.TParametro;
 import pe.com.j2techcon.bi.etl.domain.generic.TParametroExample;
 
@@ -35,9 +38,13 @@ public class FactCotizacionProcess {
 	private int recordRejected;
 	private int resultProcess;
 	private int resultTransaction;
+	private int recordTotalOrden;
 	
 	private String stateRecordDimensional;
 	private String stateRecordGeneric;
+	
+	private TOrden tOrden;
+	private TOrdenExample tOrdenExample;
 	
 	private TCotizacion tCotizacion;
 	private TCotizacionExample tCotizacionExample;
@@ -51,6 +58,7 @@ public class FactCotizacionProcess {
 	private DimTiempo dimTiempo;
 	private DimTiempoExample dimTiempoExample;
 	
+	private TOrdenManager tOrdenManager;
 	private TCotizacionManager tCotizacionManager;
 	private TParametroManager tParametroManager;
 	private DimTiempoManager dimTiempoManager;
@@ -60,6 +68,22 @@ public class FactCotizacionProcess {
 
 	public BeanFactory getFactory() {
 		return factory;
+	}
+
+	public TOrden gettOrden() {
+		return tOrden;
+	}
+
+	public void settOrden(TOrden tOrden) {
+		this.tOrden = tOrden;
+	}
+
+	public TOrdenExample gettOrdenExample() {
+		return tOrdenExample;
+	}
+
+	public void settOrdenExample(TOrdenExample tOrdenExample) {
+		this.tOrdenExample = tOrdenExample;
 	}
 
 	public void setFactory(BeanFactory factory) {
@@ -146,6 +170,14 @@ public class FactCotizacionProcess {
 		this.resultTransaction = resultTransaction;
 	}
 
+	public int getRecordTotalOrden() {
+		return recordTotalOrden;
+	}
+
+	public void setRecordTotalOrden(int recordTotalOrden) {
+		this.recordTotalOrden = recordTotalOrden;
+	}
+
 	public String getStateRecordDimensional() {
 		return stateRecordDimensional;
 	}
@@ -226,6 +258,14 @@ public class FactCotizacionProcess {
 		this.dimTiempoExample = dimTiempoExample;
 	}
 
+	public TOrdenManager gettOrdenManager() {
+		return tOrdenManager;
+	}
+
+	public void settOrdenManager(TOrdenManager tOrdenManager) {
+		this.tOrdenManager = tOrdenManager;
+	}
+
 	public TCotizacionManager gettCotizacionManager() {
 		return tCotizacionManager;
 	}
@@ -287,6 +327,7 @@ public class FactCotizacionProcess {
 
 	public int startProcess(){
 
+		tOrdenManager = factory.getBean("tOrdenManager", TOrdenManager.class);
 		tCotizacionManager = factory.getBean("tCotizacionManager", TCotizacionManager.class);
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
 		dimTiempoManager = factory.getBean("dimTiempoManager", DimTiempoManager.class);
@@ -324,7 +365,22 @@ public class FactCotizacionProcess {
 				}
 				
 				lstCotizacion.clear();
+				
+				tOrden.clear();
+				tOrdenExample.clear();
+				
+				tCotizacion.clear();
 				tCotizacionExample.clear();
+				
+				tParametro.clear();
+				tParametroExample.clear();
+				
+				factCotizacion.clear();
+				factCotizacionExample.clear();
+				
+				dimTiempo.clear();
+				dimTiempoExample.clear();
+				
 				offset = 0;
 				break;
 			}
@@ -336,6 +392,8 @@ public class FactCotizacionProcess {
 		else{
 			resultProcess = constantes.getResultProcessCompletedErrors();
 		}
+		
+		recordTotal = recordProcessed + recordRejected;
 
 		return resultProcess;
 	}
@@ -386,19 +444,31 @@ public class FactCotizacionProcess {
 		factCotizacion.setCotizacionKeyServicio(tCotizacion.getCotiCodServ());
 		factCotizacion.setCotizacionKeyProducto(tCotizacion.getProdId());
 		
+		dimTiempoExample.clear();
 		dimTiempoExample.createCriteria().andTiempoFechaEqualTo(tCotizacion.getCotiFecApro());
 		dimTiempo = (dimTiempoManager.selectByExample(dimTiempoExample)).get(0);
 		factCotizacion.setCotizacionKeyFecApro(dimTiempo.getTiempoKey());
 		
+		dimTiempoExample.clear();
 		dimTiempoExample.createCriteria().andTiempoFechaEqualTo(tCotizacion.getCotiFecIni());
 		dimTiempo = (dimTiempoManager.selectByExample(dimTiempoExample)).get(0);
 		factCotizacion.setCotizacionKeyFecIni(dimTiempo.getTiempoKey());
 		
+		dimTiempoExample.clear();
 		dimTiempoExample.createCriteria().andTiempoFechaEqualTo(tCotizacion.getCotiFecFin());
 		dimTiempo = (dimTiempoManager.selectByExample(dimTiempoExample)).get(0);
 		factCotizacion.setCotizacionKeyFecFin(dimTiempo.getTiempoKey());
 
 		factCotizacion.setCotizacionKeyEstado(tCotizacion.getCotiCodEst());
+		
+		tOrdenExample.clear();
+		tOrdenExample.createCriteria().andCotiIdEqualTo(factCotizacion.getCotizacionKey());
+		tOrdenExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
+		recordTotal = tOrdenManager.countByExample(tOrdenExample);
+		
+		if(recordTotal>0){
+			
+		}
 		
 		factCotizacion.setProcId(process);
 	}

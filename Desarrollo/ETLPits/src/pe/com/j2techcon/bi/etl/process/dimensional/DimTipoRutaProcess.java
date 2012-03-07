@@ -260,7 +260,13 @@ public class DimTipoRutaProcess {
 				}
 				
 				lstParametro.clear();
+				
+				tParametro.clear();
 				tParametroExample.clear();
+				
+				dimTipoRuta.clear();
+				dimTipoRutaExample.clear();
+				
 				offset = 0;
 				break;
 			}
@@ -272,6 +278,8 @@ public class DimTipoRutaProcess {
 		else{
 			resultProcess = constantes.getResultProcessCompletedCorrectly();
 		}
+		
+		recordTotal = recordProcessed + recordRejected;
 
 		return resultProcess;
 	}

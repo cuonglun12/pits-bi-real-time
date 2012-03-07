@@ -291,7 +291,16 @@ public class DimServicioProcess {
 				}
 				
 				lstServicio.clear();
+				
+				tServicio.clear();
 				tServicioExample.clear();
+				
+				tParametro.clear();
+				tParametroExample.clear();
+				
+				dimServicio.clear();
+				dimServicioExample.clear();
+				
 				offset = 0;
 				break;
 			}
@@ -303,6 +312,8 @@ public class DimServicioProcess {
 		else{
 			resultProcess = constantes.getResultProcessCompletedCorrectly();
 		}
+		
+		recordTotal = recordProcessed + recordRejected;
 
 		return resultProcess;
 	}

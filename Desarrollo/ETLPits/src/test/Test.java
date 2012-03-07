@@ -149,12 +149,15 @@ public class Test {
 //		System.out.println(date.toString());
 //		System.out.println(calendar.getTime().toString());
 //		System.out.println(calendar.getTime().compareTo(date));
-		Calendar calendar = Calendar.getInstance();
-		Date dateCurrent = new GregorianCalendar(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).getTime();
-		Date dateCurrentMenor = new GregorianCalendar(calendar.get(Calendar.YEAR)-1,calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).getTime();
-		Date dateCurrentMayor = new GregorianCalendar(calendar.get(Calendar.YEAR)+1,calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).getTime();
-		System.out.println(dateCurrentMayor.compareTo(dateCurrent));
-		System.out.println(dateCurrentMenor.compareTo(dateCurrent));
+//		Calendar calendar = Calendar.getInstance();
+//		Date dateCurrent = new GregorianCalendar(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).getTime();
+//		Date dateCurrentMenor = new GregorianCalendar(calendar.get(Calendar.YEAR)-1,calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).getTime();
+//		Date dateCurrentMayor = new GregorianCalendar(calendar.get(Calendar.YEAR)+1,calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).getTime();
+//		System.out.println(dateCurrentMayor.compareTo(dateCurrent));
+//		System.out.println(dateCurrentMenor.compareTo(dateCurrent));
+		
+		short a = (short)123;
+		System.out.println(a);
 
 	}
 

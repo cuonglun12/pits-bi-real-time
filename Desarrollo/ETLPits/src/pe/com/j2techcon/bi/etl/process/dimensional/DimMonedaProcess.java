@@ -260,7 +260,13 @@ public class DimMonedaProcess {
 				}
 				
 				lstParametro.clear();
+				
+				tParametro.clear();
 				tParametroExample.clear();
+				
+				dimMoneda.clear();
+				dimMonedaExample.clear();
+				
 				offset = 0;
 				break;
 			}
@@ -272,6 +278,8 @@ public class DimMonedaProcess {
 		else{
 			resultProcess = constantes.getResultProcessCompletedCorrectly();
 		}
+		
+		recordTotal = recordProcessed + recordRejected;
 
 		return resultProcess;
 	}

@@ -267,7 +267,13 @@ public class DimEstadoProcess {
 				}
 				
 				lstParametro.clear();
+				
+				tParametro.clear();
 				tParametroExample.clear();
+				
+				dimEstado.clear();
+				dimEstadoExample.clear();
+				
 				offset = 0;
 				break;
 			}
@@ -279,6 +285,8 @@ public class DimEstadoProcess {
 		else{
 			resultProcess = constantes.getResultProcessCompletedCorrectly();
 		}
+		
+		recordTotal = recordProcessed + recordRejected;
 
 		return resultProcess;
 	}

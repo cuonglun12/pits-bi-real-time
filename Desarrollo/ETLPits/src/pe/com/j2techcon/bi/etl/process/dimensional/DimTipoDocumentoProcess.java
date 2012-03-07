@@ -260,7 +260,13 @@ public class DimTipoDocumentoProcess {
 				}
 				
 				lstParametro.clear();
+				
+				tParametro.clear();
 				tParametroExample.clear();
+				
+				dimTipoDocumento.clear();
+				dimTipoDocumentoExample.clear();
+				
 				offset = 0;
 				break;
 			}
@@ -272,6 +278,8 @@ public class DimTipoDocumentoProcess {
 		else{
 			resultProcess = constantes.getResultProcessCompletedCorrectly();
 		}
+		
+		recordTotal = recordProcessed + recordRejected;
 
 		return resultProcess;
 	}

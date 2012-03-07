@@ -260,7 +260,13 @@ public class DimTipoPagoProcess {
 				}
 				
 				lstParametro.clear();
+				
+				tParametro.clear();
 				tParametroExample.clear();
+				
+				dimTipoPago.clear();
+				dimTipoPagoExample.clear();
+				
 				offset = 0;
 				break;
 			}
@@ -272,6 +278,8 @@ public class DimTipoPagoProcess {
 		else{
 			resultProcess = constantes.getResultProcessCompletedCorrectly();
 		}
+		
+		recordTotal = recordProcessed + recordRejected;
 
 		return resultProcess;
 	}

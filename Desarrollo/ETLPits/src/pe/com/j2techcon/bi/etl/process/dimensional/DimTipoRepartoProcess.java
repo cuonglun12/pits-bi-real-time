@@ -260,7 +260,13 @@ public class DimTipoRepartoProcess {
 				}
 				
 				lstParametro.clear();
+				
+				tParametro.clear();
 				tParametroExample.clear();
+				
+				dimTipoReparto.clear();
+				dimTipoRepartoExample.clear();
+				
 				offset = 0;
 				break;
 			}
@@ -272,6 +278,8 @@ public class DimTipoRepartoProcess {
 		else{
 			resultProcess = constantes.getResultProcessCompletedCorrectly();
 		}
+		
+		recordTotal = recordProcessed + recordRejected;
 
 		return resultProcess;
 	}

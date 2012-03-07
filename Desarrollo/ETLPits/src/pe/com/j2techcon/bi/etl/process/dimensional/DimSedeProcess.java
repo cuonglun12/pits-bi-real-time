@@ -323,7 +323,19 @@ public class DimSedeProcess {
 				}
 				
 				lstSede.clear();
+				
+				tSede.clear();
 				tSedeExample.clear();
+				
+				tParametro.clear();
+				tParametroExample.clear();
+				
+				dimSede.clear();
+				dimSedeExample.clear();
+				
+				tUbigeo.clear();
+				tUbigeoExample.clear();
+				
 				offset = 0;
 				break;
 			}
@@ -335,6 +347,8 @@ public class DimSedeProcess {
 		else{
 			resultProcess = constantes.getResultProcessCompletedCorrectly();
 		}
+		
+		recordTotal = recordProcessed + recordRejected;
 
 		return resultProcess;
 	}

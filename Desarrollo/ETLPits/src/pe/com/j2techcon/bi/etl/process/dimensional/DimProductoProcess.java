@@ -291,7 +291,16 @@ public class DimProductoProcess {
 				}
 				
 				lstProducto.clear();
+				
+				tProducto.clear();
 				tProductoExample.clear();
+				
+				tParametro.clear();
+				tParametroExample.clear();
+				
+				dimProducto.clear();
+				dimProductoExample.clear();
+				
 				offset = 0;
 				break;
 			}
@@ -304,6 +313,8 @@ public class DimProductoProcess {
 			resultProcess = constantes.getResultProcessCompletedCorrectly();
 		}
 
+		recordTotal = recordProcessed + recordRejected;
+		
 		return resultProcess;
 	}
 	

@@ -322,7 +322,7 @@ public class DimPersonalProcess {
 				}
 				
 				lstEmpleadoCategoria.clear();
-				tEmpleadoCategoriaExample.clear();
+				tEmpleadoExample.clear();
 				offset = 0;
 				break;
 			}
@@ -360,7 +360,19 @@ public class DimPersonalProcess {
 				}
 				
 				lstEmpleado.clear();
+				
+				tEmpleado.clear();
 				tEmpleadoExample.clear();
+				
+				tEmpleadoCategoria.clear();
+				tEmpleadoCategoriaExample.clear();
+				
+				tParametro.clear();
+				tParametroExample.clear();
+				
+				dimPersonal.clear();
+				dimPersonalExample.clear();
+				
 				offset = 0;
 				break;
 			}
@@ -372,6 +384,8 @@ public class DimPersonalProcess {
 		else{
 			resultProcess = constantes.getResultProcessCompletedCorrectly();
 		}
+		
+		recordTotal = recordProcessed + recordRejected;
 
 		return resultProcess;
 	}

@@ -388,7 +388,22 @@ public class DimClienteProcess {
 				}
 				
 				lstCliente.clear();
+				
+				tCliente.clear();
 				tClienteExample.clear();
+				
+				tAreaCliente.clear();
+				tAreaClienteExample.clear();
+				
+				tUbigeo.clear();
+				tUbigeoExample.clear();
+				
+				tParametro.clear();
+				tParametroExample.clear();
+				
+				dimCliente.clear();
+				dimClienteExample.clear();
+				
 				offset = 0;
 				break;
 			}
@@ -400,6 +415,8 @@ public class DimClienteProcess {
 		else{
 			resultProcess = constantes.getResultProcessCompletedCorrectly();
 		}
+		
+		recordTotal = recordProcessed + recordRejected;
 
 		return resultProcess;
 	}
