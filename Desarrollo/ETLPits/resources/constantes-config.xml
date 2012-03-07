@@ -55,6 +55,9 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="valueStringDefault" value="${value.string.default}"></property>
 		<property name="valueNumberDefault" value="${value.number.default}"></property>
 		
+		<property name="valueNumberUnit" value="${value.number.unit}"></property>
+		<property name="valueNumberCero" value="${value.number.cero}"></property>
+
 		<property name="stateRecordNew" value="${state.record.new}"></property>
 		<property name="stateRecordProcessed" value="${state.record.processed}"></property>
 		<property name="stateRecordInconsistent" value="${state.record.inconsistent}"></property>
