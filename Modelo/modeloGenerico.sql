@@ -144,6 +144,20 @@ drop index IDX_EMP_CAT_00;
 
 drop table T_EMPLEADO_CATEGORIA;
 
+drop index IDX_LIQ_05;
+
+drop index IDX_LIQ_04;
+
+drop index IDX_LIQ_03;
+
+drop index IDX_LIQ_02;
+
+drop index IDX_LIQ_01;
+
+drop index IDX_LIQ_00;
+
+drop table T_LIQUIDACION;
+
 drop index IDX_ORD_14;
 
 drop index IDX_ORD_13;
@@ -237,9 +251,7 @@ drop index IDX_ZON_01;
 drop index IDX_ZON_00;
 
 drop table T_ZONA;
-
 */
-
 /*==============================================================*/
 /* Table: T_AREA_CLIENTE                                        */
 /*==============================================================*/
@@ -874,6 +886,71 @@ EMP_CAT_COD_TIP
 );
 
 /*==============================================================*/
+/* Table: T_LIQUIDACION                                         */
+/*==============================================================*/
+create table T_LIQUIDACION (
+   LIQ_ID               SERIAL               not null,
+   ORD_ID               INT4                 not null default 0,
+   LIQ_COD_TIP_DOC      INT4                 not null default 0,
+   LIQ_COD_EST          INT4                 not null default 0,
+   LIQ_SERIE_DOC        VARCHAR(6)           not null default '-',
+   LIQ_NUM_DOC          VARCHAR(10)          not null default '-',
+   LIQ_FEC_LIQ          DATE                 not null default '1900-01-01',
+   LIQ_CNT_ENT          INT4                 not null default 0,
+   LIQ_CNT_MOT          INT4                 not null default 0,
+   LIQ_CNT_PEN          INT4                 not null default 0,
+   LIQ_CNT_NO_TRAB      INT4                 not null default 0,
+   FEC_NUM_CAM          INT8                 not null default 19000101010101,
+   COD_IND_CAM          CHAR(1)              not null default '1',
+   PROC_ID              INT4                 not null default 0,
+   constraint PK_T_LIQUIDACION primary key (LIQ_ID)
+);
+
+/*==============================================================*/
+/* Index: IDX_LIQ_00                                            */
+/*==============================================================*/
+create  index IDX_LIQ_00 on T_LIQUIDACION (
+FEC_NUM_CAM
+);
+
+/*==============================================================*/
+/* Index: IDX_LIQ_01                                            */
+/*==============================================================*/
+create unique index IDX_LIQ_01 on T_LIQUIDACION (
+LIQ_COD_TIP_DOC,
+LIQ_SERIE_DOC,
+LIQ_NUM_DOC
+);
+
+/*==============================================================*/
+/* Index: IDX_LIQ_02                                            */
+/*==============================================================*/
+create  index IDX_LIQ_02 on T_LIQUIDACION (
+ORD_ID
+);
+
+/*==============================================================*/
+/* Index: IDX_LIQ_03                                            */
+/*==============================================================*/
+create  index IDX_LIQ_03 on T_LIQUIDACION (
+LIQ_COD_TIP_DOC
+);
+
+/*==============================================================*/
+/* Index: IDX_LIQ_04                                            */
+/*==============================================================*/
+create  index IDX_LIQ_04 on T_LIQUIDACION (
+LIQ_FEC_LIQ
+);
+
+/*==============================================================*/
+/* Index: IDX_LIQ_05                                            */
+/*==============================================================*/
+create  index IDX_LIQ_05 on T_LIQUIDACION (
+LIQ_COD_EST
+);
+
+/*==============================================================*/
 /* Table: T_ORDEN                                               */
 /*==============================================================*/
 create table T_ORDEN (
@@ -885,18 +962,19 @@ create table T_ORDEN (
    SERV_ID              INT4                 not null default 0,
    PROD_ID              INT4                 not null default 0,
    ORD_COD_TIP_PAG      INT4                 not null default 0,
-   ORD_COD_TIP_ING      INT4                 not null default 0,
    ORD_COD_TIP_MON      INT4                 not null default 0,
    ORD_COD_TIP_DOC      INT4                 not null default 0,
    ORD_SERIE_DOC        VARCHAR(6)           not null default '-',
    ORD_NUM_DOC          VARCHAR(10)          not null default '-',
    ORD_TIP_CAMBIO       NUMERIC(6,3)         not null default 1,
    ORD_CNT_CARGOS       INT4                 not null default 0,
+   ORD_IND_FAC          INT4                 not null default 0,
    ORD_FEC_INI          DATE                 not null default '1900-01-01',
    ORD_FEC_VEN          DATE                 not null default '1900-01-01',
    ORD_FEC_CIE          DATE                 not null default '1900-01-01',
    ORD_FEC_DEV          DATE                 not null default '1900-01-01',
    ORD_FEC_LIQ          DATE                 not null default '1900-01-01',
+   ORD_FEC_FAC          DATE                 not null default '1900-01-01',
    ORD_IMPORTE          NUMERIC(14,4)        not null default 0,
    ORD_DESCUENTO        NUMERIC(14,4)        not null default 0,
    ORD_VENTA            NUMERIC(14,4)        not null default 0,
@@ -962,58 +1040,58 @@ ORD_COD_TIP_PAG
 /* Index: IDX_ORD_07                                            */
 /*==============================================================*/
 create  index IDX_ORD_07 on T_ORDEN (
-ORD_COD_TIP_ING
+ORD_COD_TIP_MON
 );
 
 /*==============================================================*/
 /* Index: IDX_ORD_08                                            */
 /*==============================================================*/
 create  index IDX_ORD_08 on T_ORDEN (
-ORD_COD_TIP_MON
+ORD_FEC_INI
 );
 
 /*==============================================================*/
 /* Index: IDX_ORD_09                                            */
 /*==============================================================*/
 create  index IDX_ORD_09 on T_ORDEN (
-ORD_FEC_INI
+ORD_FEC_VEN
 );
 
 /*==============================================================*/
 /* Index: IDX_ORD_10                                            */
 /*==============================================================*/
 create  index IDX_ORD_10 on T_ORDEN (
-ORD_FEC_VEN
+ORD_FEC_CIE
 );
 
 /*==============================================================*/
 /* Index: IDX_ORD_11                                            */
 /*==============================================================*/
 create  index IDX_ORD_11 on T_ORDEN (
-ORD_FEC_CIE
+ORD_FEC_DEV
 );
 
 /*==============================================================*/
 /* Index: IDX_ORD_12                                            */
 /*==============================================================*/
 create  index IDX_ORD_12 on T_ORDEN (
-ORD_FEC_DEV
+ORD_FEC_LIQ
 );
 
 /*==============================================================*/
 /* Index: IDX_ORD_13                                            */
 /*==============================================================*/
-create  index IDX_ORD_13 on T_ORDEN (
-ORD_FEC_LIQ
+create unique index IDX_ORD_13 on T_ORDEN (
+ORD_COD_TIP_DOC,
+ORD_SERIE_DOC,
+ORD_NUM_DOC
 );
 
 /*==============================================================*/
 /* Index: IDX_ORD_14                                            */
 /*==============================================================*/
-create unique index IDX_ORD_14 on T_ORDEN (
-ORD_COD_TIP_DOC,
-ORD_SERIE_DOC,
-ORD_NUM_DOC
+create  index IDX_ORD_14 on T_ORDEN (
+ORD_FEC_FAC
 );
 
 /*==============================================================*/

@@ -4,6 +4,8 @@ drop table dim_cliente;
 
 drop table dim_estado;
 
+drop table dim_facturado;
+
 drop table dim_moneda;
 
 drop table dim_personal;
@@ -71,9 +73,6 @@ proc_id              INT4                 not null default 0,
 constraint PK_DIM_CLIENTE primary key (cliente_area_key)
 );
 
-comment on table dim_cliente is
-'Cliente de PITS';
-
 /*==============================================================*/
 /* Table: dim_estado                                            */
 /*==============================================================*/
@@ -85,6 +84,17 @@ estado_cod           VARCHAR(6)           not null default '-',
 estado_desc          VARCHAR(250)         not null default '-',
 proc_id              INT4                 not null default 0,
 constraint PK_DIM_ESTADO primary key (estado_key)
+);
+
+/*==============================================================*/
+/* Table: dim_facturado                                         */
+/*==============================================================*/
+create table dim_facturado (
+facturado_key        INT4                 not null default 0,
+facturado_cod        CHAR(1)              not null default '-',
+facturado_desc       VARCHAR(250)         not null default '-',
+proc_id              INT4                 not null default 0,
+constraint PK_DIM_FACTURADO primary key (facturado_key)
 );
 
 /*==============================================================*/
@@ -241,7 +251,7 @@ zona_desc_provincia  VARCHAR(250)         not null default '-',
 zona_cod_distrito    INT4                 not null default 0,
 zona_desc_distrito   VARCHAR(250)         not null default '-',
 zona_cod             VARCHAR(10)          not null default '-',
-zona_desc			 VARCHAR(250)         not null default '-',
+zona_desc            VARCHAR(250)         not null default '-',
 zona_cod_postal      VARCHAR(10)          not null default '-',
 proc_id              INT4                 not null default 0,
 constraint PK_DIM_ZONA primary key (zona_key)
@@ -259,7 +269,7 @@ cotizacion_key_fec_apro INT4                 not null default 0,
 cotizacion_key_fec_ini INT4                 not null default 0,
 cotizacion_key_fec_fin INT4                 not null default 0,
 cotizacion_key_estado INT4                 not null default 0,
-cotizacion_cnt       INT4                 not null default 1,
+cotizacion_ind_unidad INT2                 not null default 1,
 cotizacion_cnt_ord_total INT4                 not null default 0,
 cotizacion_cnt_ord_en_trab INT4                 not null default 0,
 cotizacion_cnt_ord_cer INT4                 not null default 0,
@@ -270,7 +280,8 @@ cotizacion_cnt_ord_can INT4                 not null default 0,
 cotizacion_mon_importe NUMERIC(15,4)        not null default 0,
 cotizacion_mon_igv   NUMERIC(15,4)        not null default 0,
 cotizacion_mon_total NUMERIC(15,4)        not null default 0,
-proc_id              INT4                 not null default 0
+proc_id              INT4                 not null default 0,
+constraint PK_FACT_COTIZACION primary key (cotizacion_key)
 );
 
 /*==============================================================*/
@@ -296,9 +307,14 @@ despacho_cnt_ree     INT4                 not null default 0,
 despacho_cnt_anu     INT4                 not null default 0,
 despacho_cnt_fue_zon INT4                 not null default 0,
 despacho_cnt_perd    INT4                 not null default 0,
+despacho_cnt_dig     INT4                 not null default 0,
+despacho_cnt_rut     INT4                 not null default 0,
+despacho_cnt_pro     INT4                 not null default 0,
+despacho_cnt_rob     INT4                 not null default 0,
 despacho_trab_en_fec INT2                 not null default 0,
 despacho_trab_fuera_fec INT2                 not null default 0,
-proc_id              INT4                 not null default 0
+proc_id              INT4                 not null default 0,
+constraint PK_FACT_DESPACHO primary key (despacho_key)
 );
 
 /*==============================================================*/
@@ -321,6 +337,10 @@ envio_ind_ree        INT2                 not null default 0,
 envio_ind_anu        INT2                 not null default 0,
 envio_ind_fue_zon    INT2                 not null default 0,
 envio_ind_perd       INT2                 not null default 0,
+envio_ind_dig        INT2                 not null default 0,
+envio_ind_rut        INT2                 not null default 0,
+envio_ind_pro        INT2                 not null default 0,
+envio_ind_rob        INT2                 not null default 0,
 proc_id              INT4                 not null default 0
 );
 
@@ -340,7 +360,9 @@ orden_key_fec_ini    INT4                 not null default 0,
 orden_key_fec_ven    INT4                 not null default 0,
 orden_key_fec_cie    INT4                 not null default 0,
 orden_key_fec_dev    INT4                 not null default 0,
+orden_key_fec_fac    INT4                 not null default 0,
 orden_key_estado     INT4                 not null default 0,
+orden_key_facturado  INT4                 not null default 0,
 orden_aten_en_fec    INT2                 not null default 0,
 orden_aten_fuera_fec INT2                 not null default 0,
 orden_ind_unidad     INT2                 not null default 1,
@@ -352,9 +374,14 @@ orden_cnt_cargos_fue_zon INT4                 not null default 0,
 orden_cnt_cargos_mot INT4                 not null default 0,
 orden_cnt_cargos_perd INT4                 not null default 0,
 orden_cnt_cargos_ree INT4                 not null default 0,
+orden_cnt_cargos_dig INT4                 not null default 0,
+orden_cnt_cargos_rut INT4                 not null default 0,
+orden_cnt_cargos_pro INT4                 not null default 0,
+orden_cnt_cargos_rob INT4                 not null default 0,
 orden_mon_importe    NUMERIC(14,4)        not null default 0,
 orden_mon_descuento  NUMERIC(14,4)        not null default 0,
 orden_mon_igv        NUMERIC(14,4)        not null default 0,
 orden_mon_total      NUMERIC(14,4)        not null default 0,
-proc_id              INT4                 not null default 0
+proc_id              INT4                 not null default 0,
+constraint PK_FACT_ORDEN primary key (orden_key)
 );
