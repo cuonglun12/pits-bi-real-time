@@ -18,6 +18,10 @@
     <result column="envio_ind_anu" property="envioIndAnu" jdbcType="SMALLINT" />
     <result column="envio_ind_fue_zon" property="envioIndFueZon" jdbcType="SMALLINT" />
     <result column="envio_ind_perd" property="envioIndPerd" jdbcType="SMALLINT" />
+    <result column="envio_ind_dig" property="envioIndDig" jdbcType="SMALLINT" />
+    <result column="envio_ind_rut" property="envioIndRut" jdbcType="SMALLINT" />
+    <result column="envio_ind_pro" property="envioIndPro" jdbcType="SMALLINT" />
+    <result column="envio_ind_rob" property="envioIndRob" jdbcType="SMALLINT" />
     <result column="proc_id" property="procId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -82,7 +86,7 @@
     envio_key_cliente_area, envio_key_servicio, envio_key_producto, envio_key_zona, envio_key_personal, 
     envio_key_fec_sal, envio_key_fec_retp, envio_key_fec_retr, envio_key_estado, envio_ind_unidad, 
     envio_ind_ent, envio_ind_mot, envio_ind_ree, envio_ind_anu, envio_ind_fue_zon, envio_ind_perd, 
-    proc_id
+    envio_ind_dig, envio_ind_rut, envio_ind_pro, envio_ind_rob, proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactEnvioExample" >
     select
@@ -113,15 +117,17 @@
       envio_key_fec_sal, envio_key_fec_retp, envio_key_fec_retr, 
       envio_key_estado, envio_ind_unidad, envio_ind_ent, 
       envio_ind_mot, envio_ind_ree, envio_ind_anu, 
-      envio_ind_fue_zon, envio_ind_perd, proc_id
-      )
+      envio_ind_fue_zon, envio_ind_perd, envio_ind_dig, 
+      envio_ind_rut, envio_ind_pro, envio_ind_rob, 
+      proc_id)
     values (#{envioKeyClienteArea,jdbcType=INTEGER}, #{envioKeyServicio,jdbcType=INTEGER}, 
       #{envioKeyProducto,jdbcType=INTEGER}, #{envioKeyZona,jdbcType=INTEGER}, #{envioKeyPersonal,jdbcType=INTEGER}, 
       #{envioKeyFecSal,jdbcType=INTEGER}, #{envioKeyFecRetp,jdbcType=INTEGER}, #{envioKeyFecRetr,jdbcType=INTEGER}, 
       #{envioKeyEstado,jdbcType=INTEGER}, #{envioIndUnidad,jdbcType=SMALLINT}, #{envioIndEnt,jdbcType=SMALLINT}, 
       #{envioIndMot,jdbcType=SMALLINT}, #{envioIndRee,jdbcType=SMALLINT}, #{envioIndAnu,jdbcType=SMALLINT}, 
-      #{envioIndFueZon,jdbcType=SMALLINT}, #{envioIndPerd,jdbcType=SMALLINT}, #{procId,jdbcType=INTEGER}
-      )
+      #{envioIndFueZon,jdbcType=SMALLINT}, #{envioIndPerd,jdbcType=SMALLINT}, #{envioIndDig,jdbcType=SMALLINT}, 
+      #{envioIndRut,jdbcType=SMALLINT}, #{envioIndPro,jdbcType=SMALLINT}, #{envioIndRob,jdbcType=SMALLINT}, 
+      #{procId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactEnvio" >
     insert into fact_envio
@@ -173,6 +179,18 @@
       </if>
       <if test="envioIndPerd != null" >
         envio_ind_perd,
+      </if>
+      <if test="envioIndDig != null" >
+        envio_ind_dig,
+      </if>
+      <if test="envioIndRut != null" >
+        envio_ind_rut,
+      </if>
+      <if test="envioIndPro != null" >
+        envio_ind_pro,
+      </if>
+      <if test="envioIndRob != null" >
+        envio_ind_rob,
       </if>
       <if test="procId != null" >
         proc_id,
@@ -226,6 +244,18 @@
       </if>
       <if test="envioIndPerd != null" >
         #{envioIndPerd,jdbcType=SMALLINT},
+      </if>
+      <if test="envioIndDig != null" >
+        #{envioIndDig,jdbcType=SMALLINT},
+      </if>
+      <if test="envioIndRut != null" >
+        #{envioIndRut,jdbcType=SMALLINT},
+      </if>
+      <if test="envioIndPro != null" >
+        #{envioIndPro,jdbcType=SMALLINT},
+      </if>
+      <if test="envioIndRob != null" >
+        #{envioIndRob,jdbcType=SMALLINT},
       </if>
       <if test="procId != null" >
         #{procId,jdbcType=INTEGER},
@@ -289,6 +319,18 @@
       <if test="record.envioIndPerd != null" >
         envio_ind_perd = #{record.envioIndPerd,jdbcType=SMALLINT},
       </if>
+      <if test="record.envioIndDig != null" >
+        envio_ind_dig = #{record.envioIndDig,jdbcType=SMALLINT},
+      </if>
+      <if test="record.envioIndRut != null" >
+        envio_ind_rut = #{record.envioIndRut,jdbcType=SMALLINT},
+      </if>
+      <if test="record.envioIndPro != null" >
+        envio_ind_pro = #{record.envioIndPro,jdbcType=SMALLINT},
+      </if>
+      <if test="record.envioIndRob != null" >
+        envio_ind_rob = #{record.envioIndRob,jdbcType=SMALLINT},
+      </if>
       <if test="record.procId != null" >
         proc_id = #{record.procId,jdbcType=INTEGER},
       </if>
@@ -315,6 +357,10 @@
       envio_ind_anu = #{record.envioIndAnu,jdbcType=SMALLINT},
       envio_ind_fue_zon = #{record.envioIndFueZon,jdbcType=SMALLINT},
       envio_ind_perd = #{record.envioIndPerd,jdbcType=SMALLINT},
+      envio_ind_dig = #{record.envioIndDig,jdbcType=SMALLINT},
+      envio_ind_rut = #{record.envioIndRut,jdbcType=SMALLINT},
+      envio_ind_pro = #{record.envioIndPro,jdbcType=SMALLINT},
+      envio_ind_rob = #{record.envioIndRob,jdbcType=SMALLINT},
       proc_id = #{record.procId,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />

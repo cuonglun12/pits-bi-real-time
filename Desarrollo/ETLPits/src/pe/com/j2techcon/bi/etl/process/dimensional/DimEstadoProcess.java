@@ -249,23 +249,7 @@ public class DimEstadoProcess {
 				}
 				offset = offset + constantes.getSizePage();
 			}else{
-				
-				tParametroExample.clear();
-				tParametroExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
-				tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCotizacion());
-				tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoOrden());
-				tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoDespacho());
-				tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
-				tParametroExample.createCriteria().andProcIdNotEqualTo(process);
-				lstParametro = tParametroManager.selectByExample(tParametroExample);
-				if(lstParametro.size()>0){
-					for (Iterator<TParametro> iterator = lstParametro.iterator(); iterator.hasNext();) {
-						tParametro = iterator.next();
-						dimEstado.clear();
-						processRecordParametro();
-					}
-				}
-				
+
 				lstParametro.clear();
 				
 				tParametro.clear();

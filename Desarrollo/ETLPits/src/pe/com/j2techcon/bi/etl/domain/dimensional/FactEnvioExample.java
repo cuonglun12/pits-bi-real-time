@@ -1076,6 +1076,246 @@ public class FactEnvioExample {
             return (Criteria) this;
         }
 
+        public Criteria andEnvioIndDigIsNull() {
+            addCriterion("envio_ind_dig is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndDigIsNotNull() {
+            addCriterion("envio_ind_dig is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndDigEqualTo(Short value) {
+            addCriterion("envio_ind_dig =", value, "envioIndDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndDigNotEqualTo(Short value) {
+            addCriterion("envio_ind_dig <>", value, "envioIndDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndDigGreaterThan(Short value) {
+            addCriterion("envio_ind_dig >", value, "envioIndDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndDigGreaterThanOrEqualTo(Short value) {
+            addCriterion("envio_ind_dig >=", value, "envioIndDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndDigLessThan(Short value) {
+            addCriterion("envio_ind_dig <", value, "envioIndDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndDigLessThanOrEqualTo(Short value) {
+            addCriterion("envio_ind_dig <=", value, "envioIndDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndDigIn(List<Short> values) {
+            addCriterion("envio_ind_dig in", values, "envioIndDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndDigNotIn(List<Short> values) {
+            addCriterion("envio_ind_dig not in", values, "envioIndDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndDigBetween(Short value1, Short value2) {
+            addCriterion("envio_ind_dig between", value1, value2, "envioIndDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndDigNotBetween(Short value1, Short value2) {
+            addCriterion("envio_ind_dig not between", value1, value2, "envioIndDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndRutIsNull() {
+            addCriterion("envio_ind_rut is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndRutIsNotNull() {
+            addCriterion("envio_ind_rut is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndRutEqualTo(Short value) {
+            addCriterion("envio_ind_rut =", value, "envioIndRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndRutNotEqualTo(Short value) {
+            addCriterion("envio_ind_rut <>", value, "envioIndRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndRutGreaterThan(Short value) {
+            addCriterion("envio_ind_rut >", value, "envioIndRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndRutGreaterThanOrEqualTo(Short value) {
+            addCriterion("envio_ind_rut >=", value, "envioIndRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndRutLessThan(Short value) {
+            addCriterion("envio_ind_rut <", value, "envioIndRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndRutLessThanOrEqualTo(Short value) {
+            addCriterion("envio_ind_rut <=", value, "envioIndRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndRutIn(List<Short> values) {
+            addCriterion("envio_ind_rut in", values, "envioIndRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndRutNotIn(List<Short> values) {
+            addCriterion("envio_ind_rut not in", values, "envioIndRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndRutBetween(Short value1, Short value2) {
+            addCriterion("envio_ind_rut between", value1, value2, "envioIndRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndRutNotBetween(Short value1, Short value2) {
+            addCriterion("envio_ind_rut not between", value1, value2, "envioIndRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndProIsNull() {
+            addCriterion("envio_ind_pro is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndProIsNotNull() {
+            addCriterion("envio_ind_pro is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndProEqualTo(Short value) {
+            addCriterion("envio_ind_pro =", value, "envioIndPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndProNotEqualTo(Short value) {
+            addCriterion("envio_ind_pro <>", value, "envioIndPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndProGreaterThan(Short value) {
+            addCriterion("envio_ind_pro >", value, "envioIndPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndProGreaterThanOrEqualTo(Short value) {
+            addCriterion("envio_ind_pro >=", value, "envioIndPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndProLessThan(Short value) {
+            addCriterion("envio_ind_pro <", value, "envioIndPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndProLessThanOrEqualTo(Short value) {
+            addCriterion("envio_ind_pro <=", value, "envioIndPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndProIn(List<Short> values) {
+            addCriterion("envio_ind_pro in", values, "envioIndPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndProNotIn(List<Short> values) {
+            addCriterion("envio_ind_pro not in", values, "envioIndPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndProBetween(Short value1, Short value2) {
+            addCriterion("envio_ind_pro between", value1, value2, "envioIndPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndProNotBetween(Short value1, Short value2) {
+            addCriterion("envio_ind_pro not between", value1, value2, "envioIndPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndRobIsNull() {
+            addCriterion("envio_ind_rob is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndRobIsNotNull() {
+            addCriterion("envio_ind_rob is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndRobEqualTo(Short value) {
+            addCriterion("envio_ind_rob =", value, "envioIndRob");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndRobNotEqualTo(Short value) {
+            addCriterion("envio_ind_rob <>", value, "envioIndRob");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndRobGreaterThan(Short value) {
+            addCriterion("envio_ind_rob >", value, "envioIndRob");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndRobGreaterThanOrEqualTo(Short value) {
+            addCriterion("envio_ind_rob >=", value, "envioIndRob");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndRobLessThan(Short value) {
+            addCriterion("envio_ind_rob <", value, "envioIndRob");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndRobLessThanOrEqualTo(Short value) {
+            addCriterion("envio_ind_rob <=", value, "envioIndRob");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndRobIn(List<Short> values) {
+            addCriterion("envio_ind_rob in", values, "envioIndRob");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndRobNotIn(List<Short> values) {
+            addCriterion("envio_ind_rob not in", values, "envioIndRob");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndRobBetween(Short value1, Short value2) {
+            addCriterion("envio_ind_rob between", value1, value2, "envioIndRob");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioIndRobNotBetween(Short value1, Short value2) {
+            addCriterion("envio_ind_rob not between", value1, value2, "envioIndRob");
+            return (Criteria) this;
+        }
+
         public Criteria andProcIdIsNull() {
             addCriterion("proc_id is null");
             return (Criteria) this;

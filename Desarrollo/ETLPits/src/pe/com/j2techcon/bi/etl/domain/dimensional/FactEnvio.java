@@ -33,6 +33,14 @@ public class FactEnvio {
 
     private Short envioIndPerd;
 
+    private Short envioIndDig;
+
+    private Short envioIndRut;
+
+    private Short envioIndPro;
+
+    private Short envioIndRob;
+
     private Integer procId;
 
     public Integer getEnvioKeyClienteArea() {
@@ -163,6 +171,38 @@ public class FactEnvio {
         this.envioIndPerd = envioIndPerd;
     }
 
+    public Short getEnvioIndDig() {
+        return envioIndDig;
+    }
+
+    public void setEnvioIndDig(Short envioIndDig) {
+        this.envioIndDig = envioIndDig;
+    }
+
+    public Short getEnvioIndRut() {
+        return envioIndRut;
+    }
+
+    public void setEnvioIndRut(Short envioIndRut) {
+        this.envioIndRut = envioIndRut;
+    }
+
+    public Short getEnvioIndPro() {
+        return envioIndPro;
+    }
+
+    public void setEnvioIndPro(Short envioIndPro) {
+        this.envioIndPro = envioIndPro;
+    }
+
+    public Short getEnvioIndRob() {
+        return envioIndRob;
+    }
+
+    public void setEnvioIndRob(Short envioIndRob) {
+        this.envioIndRob = envioIndRob;
+    }
+
     public Integer getProcId() {
         return procId;
     }
@@ -188,6 +228,10 @@ public class FactEnvio {
     	envioIndAnu=null;
     	envioIndFueZon=null;
     	envioIndPerd=null;
+    	envioIndDig=null;
+    	envioIndRut=null;
+    	envioIndPro=null;
+    	envioIndRob=null;
     	procId=null;
     }
 
@@ -204,6 +248,9 @@ public class FactEnvio {
 				+ ", envioIndMot=" + envioIndMot + ", envioIndRee="
 				+ envioIndRee + ", envioIndAnu=" + envioIndAnu
 				+ ", envioIndFueZon=" + envioIndFueZon + ", envioIndPerd="
-				+ envioIndPerd + ", procId=" + procId + "]";
+				+ envioIndPerd + ", envioIndDig=" + envioIndDig
+				+ ", envioIndRut=" + envioIndRut + ", envioIndPro="
+				+ envioIndPro + ", envioIndRob=" + envioIndRob + ", procId="
+				+ procId + "]";
 	}
 }

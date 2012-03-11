@@ -10,18 +10,19 @@
     <result column="serv_id" property="servId" jdbcType="INTEGER" />
     <result column="prod_id" property="prodId" jdbcType="INTEGER" />
     <result column="ord_cod_tip_pag" property="ordCodTipPag" jdbcType="INTEGER" />
-    <result column="ord_cod_tip_ing" property="ordCodTipIng" jdbcType="INTEGER" />
     <result column="ord_cod_tip_mon" property="ordCodTipMon" jdbcType="INTEGER" />
     <result column="ord_cod_tip_doc" property="ordCodTipDoc" jdbcType="INTEGER" />
     <result column="ord_serie_doc" property="ordSerieDoc" jdbcType="VARCHAR" />
     <result column="ord_num_doc" property="ordNumDoc" jdbcType="VARCHAR" />
     <result column="ord_tip_cambio" property="ordTipCambio" jdbcType="NUMERIC" />
     <result column="ord_cnt_cargos" property="ordCntCargos" jdbcType="INTEGER" />
+    <result column="ord_ind_fac" property="ordIndFac" jdbcType="INTEGER" />
     <result column="ord_fec_ini" property="ordFecIni" jdbcType="DATE" />
     <result column="ord_fec_ven" property="ordFecVen" jdbcType="DATE" />
     <result column="ord_fec_cie" property="ordFecCie" jdbcType="DATE" />
     <result column="ord_fec_dev" property="ordFecDev" jdbcType="DATE" />
     <result column="ord_fec_liq" property="ordFecLiq" jdbcType="DATE" />
+    <result column="ord_fec_fac" property="ordFecFac" jdbcType="DATE" />
     <result column="ord_importe" property="ordImporte" jdbcType="NUMERIC" />
     <result column="ord_descuento" property="ordDescuento" jdbcType="NUMERIC" />
     <result column="ord_venta" property="ordVenta" jdbcType="NUMERIC" />
@@ -92,8 +93,8 @@
   </sql>
   <sql id="Base_Column_List" >
     ord_id, coti_id, cod_are_cli, emp_cat_id, ord_cod_tip_rep, serv_id, prod_id, ord_cod_tip_pag, 
-    ord_cod_tip_ing, ord_cod_tip_mon, ord_cod_tip_doc, ord_serie_doc, ord_num_doc, ord_tip_cambio, 
-    ord_cnt_cargos, ord_fec_ini, ord_fec_ven, ord_fec_cie, ord_fec_dev, ord_fec_liq, 
+    ord_cod_tip_mon, ord_cod_tip_doc, ord_serie_doc, ord_num_doc, ord_tip_cambio, ord_cnt_cargos, 
+    ord_ind_fac, ord_fec_ini, ord_fec_ven, ord_fec_cie, ord_fec_dev, ord_fec_liq, ord_fec_fac, 
     ord_importe, ord_descuento, ord_venta, ord_igv, ord_total, ord_cod_est, fec_num_cam, 
     cod_ind_cam, proc_id
   </sql>
@@ -106,6 +107,9 @@
     from t_orden
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
+    </if>    
+    <if test="whereBetweenFields != null" >
+      ${whereBetweenFields}
     </if>
     <if test="orderByClause != null" >
       order by ${orderByClause}
@@ -133,24 +137,26 @@
   <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TOrden" >
     insert into t_orden (ord_id, coti_id, cod_are_cli, 
       emp_cat_id, ord_cod_tip_rep, serv_id, 
-      prod_id, ord_cod_tip_pag, ord_cod_tip_ing, 
-      ord_cod_tip_mon, ord_cod_tip_doc, ord_serie_doc, 
-      ord_num_doc, ord_tip_cambio, ord_cnt_cargos, 
+      prod_id, ord_cod_tip_pag, ord_cod_tip_mon, 
+      ord_cod_tip_doc, ord_serie_doc, ord_num_doc, 
+      ord_tip_cambio, ord_cnt_cargos, ord_ind_fac, 
       ord_fec_ini, ord_fec_ven, ord_fec_cie, 
-      ord_fec_dev, ord_fec_liq, ord_importe, 
-      ord_descuento, ord_venta, ord_igv, 
-      ord_total, ord_cod_est, fec_num_cam, 
-      cod_ind_cam, proc_id)
+      ord_fec_dev, ord_fec_liq, ord_fec_fac, 
+      ord_importe, ord_descuento, ord_venta, 
+      ord_igv, ord_total, ord_cod_est, 
+      fec_num_cam, cod_ind_cam, proc_id
+      )
     values (#{ordId,jdbcType=INTEGER}, #{cotiId,jdbcType=INTEGER}, #{codAreCli,jdbcType=INTEGER}, 
       #{empCatId,jdbcType=INTEGER}, #{ordCodTipRep,jdbcType=INTEGER}, #{servId,jdbcType=INTEGER}, 
-      #{prodId,jdbcType=INTEGER}, #{ordCodTipPag,jdbcType=INTEGER}, #{ordCodTipIng,jdbcType=INTEGER}, 
-      #{ordCodTipMon,jdbcType=INTEGER}, #{ordCodTipDoc,jdbcType=INTEGER}, #{ordSerieDoc,jdbcType=VARCHAR}, 
-      #{ordNumDoc,jdbcType=VARCHAR}, #{ordTipCambio,jdbcType=NUMERIC}, #{ordCntCargos,jdbcType=INTEGER}, 
+      #{prodId,jdbcType=INTEGER}, #{ordCodTipPag,jdbcType=INTEGER}, #{ordCodTipMon,jdbcType=INTEGER}, 
+      #{ordCodTipDoc,jdbcType=INTEGER}, #{ordSerieDoc,jdbcType=VARCHAR}, #{ordNumDoc,jdbcType=VARCHAR}, 
+      #{ordTipCambio,jdbcType=NUMERIC}, #{ordCntCargos,jdbcType=INTEGER}, #{ordIndFac,jdbcType=INTEGER}, 
       #{ordFecIni,jdbcType=DATE}, #{ordFecVen,jdbcType=DATE}, #{ordFecCie,jdbcType=DATE}, 
-      #{ordFecDev,jdbcType=DATE}, #{ordFecLiq,jdbcType=DATE}, #{ordImporte,jdbcType=NUMERIC}, 
-      #{ordDescuento,jdbcType=NUMERIC}, #{ordVenta,jdbcType=NUMERIC}, #{ordIgv,jdbcType=NUMERIC}, 
-      #{ordTotal,jdbcType=NUMERIC}, #{ordCodEst,jdbcType=INTEGER}, #{fecNumCam,jdbcType=BIGINT}, 
-      #{codIndCam,jdbcType=CHAR}, #{procId,jdbcType=INTEGER})
+      #{ordFecDev,jdbcType=DATE}, #{ordFecLiq,jdbcType=DATE}, #{ordFecFac,jdbcType=DATE}, 
+      #{ordImporte,jdbcType=NUMERIC}, #{ordDescuento,jdbcType=NUMERIC}, #{ordVenta,jdbcType=NUMERIC}, 
+      #{ordIgv,jdbcType=NUMERIC}, #{ordTotal,jdbcType=NUMERIC}, #{ordCodEst,jdbcType=INTEGER}, 
+      #{fecNumCam,jdbcType=BIGINT}, #{codIndCam,jdbcType=CHAR}, #{procId,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TOrden" >
     insert into t_orden
@@ -179,9 +185,6 @@
       <if test="ordCodTipPag != null" >
         ord_cod_tip_pag,
       </if>
-      <if test="ordCodTipIng != null" >
-        ord_cod_tip_ing,
-      </if>
       <if test="ordCodTipMon != null" >
         ord_cod_tip_mon,
       </if>
@@ -200,6 +203,9 @@
       <if test="ordCntCargos != null" >
         ord_cnt_cargos,
       </if>
+      <if test="ordIndFac != null" >
+        ord_ind_fac,
+      </if>
       <if test="ordFecIni != null" >
         ord_fec_ini,
       </if>
@@ -214,6 +220,9 @@
       </if>
       <if test="ordFecLiq != null" >
         ord_fec_liq,
+      </if>
+      <if test="ordFecFac != null" >
+        ord_fec_fac,
       </if>
       <if test="ordImporte != null" >
         ord_importe,
@@ -268,9 +277,6 @@
       <if test="ordCodTipPag != null" >
         #{ordCodTipPag,jdbcType=INTEGER},
       </if>
-      <if test="ordCodTipIng != null" >
-        #{ordCodTipIng,jdbcType=INTEGER},
-      </if>
       <if test="ordCodTipMon != null" >
         #{ordCodTipMon,jdbcType=INTEGER},
       </if>
@@ -289,6 +295,9 @@
       <if test="ordCntCargos != null" >
         #{ordCntCargos,jdbcType=INTEGER},
       </if>
+      <if test="ordIndFac != null" >
+        #{ordIndFac,jdbcType=INTEGER},
+      </if>
       <if test="ordFecIni != null" >
         #{ordFecIni,jdbcType=DATE},
       </if>
@@ -303,6 +312,9 @@
       </if>
       <if test="ordFecLiq != null" >
         #{ordFecLiq,jdbcType=DATE},
+      </if>
+      <if test="ordFecFac != null" >
+        #{ordFecFac,jdbcType=DATE},
       </if>
       <if test="ordImporte != null" >
         #{ordImporte,jdbcType=NUMERIC},
@@ -366,9 +378,6 @@
       <if test="record.ordCodTipPag != null" >
         ord_cod_tip_pag = #{record.ordCodTipPag,jdbcType=INTEGER},
       </if>
-      <if test="record.ordCodTipIng != null" >
-        ord_cod_tip_ing = #{record.ordCodTipIng,jdbcType=INTEGER},
-      </if>
       <if test="record.ordCodTipMon != null" >
         ord_cod_tip_mon = #{record.ordCodTipMon,jdbcType=INTEGER},
       </if>
@@ -387,6 +396,9 @@
       <if test="record.ordCntCargos != null" >
         ord_cnt_cargos = #{record.ordCntCargos,jdbcType=INTEGER},
       </if>
+      <if test="record.ordIndFac != null" >
+        ord_ind_fac = #{record.ordIndFac,jdbcType=INTEGER},
+      </if>
       <if test="record.ordFecIni != null" >
         ord_fec_ini = #{record.ordFecIni,jdbcType=DATE},
       </if>
@@ -401,6 +413,9 @@
       </if>
       <if test="record.ordFecLiq != null" >
         ord_fec_liq = #{record.ordFecLiq,jdbcType=DATE},
+      </if>
+      <if test="record.ordFecFac != null" >
+        ord_fec_fac = #{record.ordFecFac,jdbcType=DATE},
       </if>
       <if test="record.ordImporte != null" >
         ord_importe = #{record.ordImporte,jdbcType=NUMERIC},
@@ -444,18 +459,19 @@
       serv_id = #{record.servId,jdbcType=INTEGER},
       prod_id = #{record.prodId,jdbcType=INTEGER},
       ord_cod_tip_pag = #{record.ordCodTipPag,jdbcType=INTEGER},
-      ord_cod_tip_ing = #{record.ordCodTipIng,jdbcType=INTEGER},
       ord_cod_tip_mon = #{record.ordCodTipMon,jdbcType=INTEGER},
       ord_cod_tip_doc = #{record.ordCodTipDoc,jdbcType=INTEGER},
       ord_serie_doc = #{record.ordSerieDoc,jdbcType=VARCHAR},
       ord_num_doc = #{record.ordNumDoc,jdbcType=VARCHAR},
       ord_tip_cambio = #{record.ordTipCambio,jdbcType=NUMERIC},
       ord_cnt_cargos = #{record.ordCntCargos,jdbcType=INTEGER},
+      ord_ind_fac = #{record.ordIndFac,jdbcType=INTEGER},
       ord_fec_ini = #{record.ordFecIni,jdbcType=DATE},
       ord_fec_ven = #{record.ordFecVen,jdbcType=DATE},
       ord_fec_cie = #{record.ordFecCie,jdbcType=DATE},
       ord_fec_dev = #{record.ordFecDev,jdbcType=DATE},
       ord_fec_liq = #{record.ordFecLiq,jdbcType=DATE},
+      ord_fec_fac = #{record.ordFecFac,jdbcType=DATE},
       ord_importe = #{record.ordImporte,jdbcType=NUMERIC},
       ord_descuento = #{record.ordDescuento,jdbcType=NUMERIC},
       ord_venta = #{record.ordVenta,jdbcType=NUMERIC},
@@ -493,9 +509,6 @@
       <if test="ordCodTipPag != null" >
         ord_cod_tip_pag = #{ordCodTipPag,jdbcType=INTEGER},
       </if>
-      <if test="ordCodTipIng != null" >
-        ord_cod_tip_ing = #{ordCodTipIng,jdbcType=INTEGER},
-      </if>
       <if test="ordCodTipMon != null" >
         ord_cod_tip_mon = #{ordCodTipMon,jdbcType=INTEGER},
       </if>
@@ -514,6 +527,9 @@
       <if test="ordCntCargos != null" >
         ord_cnt_cargos = #{ordCntCargos,jdbcType=INTEGER},
       </if>
+      <if test="ordIndFac != null" >
+        ord_ind_fac = #{ordIndFac,jdbcType=INTEGER},
+      </if>
       <if test="ordFecIni != null" >
         ord_fec_ini = #{ordFecIni,jdbcType=DATE},
       </if>
@@ -528,6 +544,9 @@
       </if>
       <if test="ordFecLiq != null" >
         ord_fec_liq = #{ordFecLiq,jdbcType=DATE},
+      </if>
+      <if test="ordFecFac != null" >
+        ord_fec_fac = #{ordFecFac,jdbcType=DATE},
       </if>
       <if test="ordImporte != null" >
         ord_importe = #{ordImporte,jdbcType=NUMERIC},
@@ -568,18 +587,19 @@
       serv_id = #{servId,jdbcType=INTEGER},
       prod_id = #{prodId,jdbcType=INTEGER},
       ord_cod_tip_pag = #{ordCodTipPag,jdbcType=INTEGER},
-      ord_cod_tip_ing = #{ordCodTipIng,jdbcType=INTEGER},
       ord_cod_tip_mon = #{ordCodTipMon,jdbcType=INTEGER},
       ord_cod_tip_doc = #{ordCodTipDoc,jdbcType=INTEGER},
       ord_serie_doc = #{ordSerieDoc,jdbcType=VARCHAR},
       ord_num_doc = #{ordNumDoc,jdbcType=VARCHAR},
       ord_tip_cambio = #{ordTipCambio,jdbcType=NUMERIC},
       ord_cnt_cargos = #{ordCntCargos,jdbcType=INTEGER},
+      ord_ind_fac = #{ordIndFac,jdbcType=INTEGER},
       ord_fec_ini = #{ordFecIni,jdbcType=DATE},
       ord_fec_ven = #{ordFecVen,jdbcType=DATE},
       ord_fec_cie = #{ordFecCie,jdbcType=DATE},
       ord_fec_dev = #{ordFecDev,jdbcType=DATE},
       ord_fec_liq = #{ordFecLiq,jdbcType=DATE},
+      ord_fec_fac = #{ordFecFac,jdbcType=DATE},
       ord_importe = #{ordImporte,jdbcType=NUMERIC},
       ord_descuento = #{ordDescuento,jdbcType=NUMERIC},
       ord_venta = #{ordVenta,jdbcType=NUMERIC},

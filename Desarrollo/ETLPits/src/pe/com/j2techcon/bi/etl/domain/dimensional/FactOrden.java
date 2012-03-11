@@ -27,7 +27,11 @@ public class FactOrden {
 
     private Integer ordenKeyFecDev;
 
+    private Integer ordenKeyFecFac;
+
     private Integer ordenKeyEstado;
+
+    private Integer ordenKeyFacturado;
 
     private Short ordenAtenEnFec;
 
@@ -50,6 +54,14 @@ public class FactOrden {
     private Integer ordenCntCargosPerd;
 
     private Integer ordenCntCargosRee;
+
+    private Integer ordenCntCargosDig;
+
+    private Integer ordenCntCargosRut;
+
+    private Integer ordenCntCargosPro;
+
+    private Integer ordenCntCargosRob;
 
     private BigDecimal ordenMonImporte;
 
@@ -157,12 +169,28 @@ public class FactOrden {
         this.ordenKeyFecDev = ordenKeyFecDev;
     }
 
+    public Integer getOrdenKeyFecFac() {
+        return ordenKeyFecFac;
+    }
+
+    public void setOrdenKeyFecFac(Integer ordenKeyFecFac) {
+        this.ordenKeyFecFac = ordenKeyFecFac;
+    }
+
     public Integer getOrdenKeyEstado() {
         return ordenKeyEstado;
     }
 
     public void setOrdenKeyEstado(Integer ordenKeyEstado) {
         this.ordenKeyEstado = ordenKeyEstado;
+    }
+
+    public Integer getOrdenKeyFacturado() {
+        return ordenKeyFacturado;
+    }
+
+    public void setOrdenKeyFacturado(Integer ordenKeyFacturado) {
+        this.ordenKeyFacturado = ordenKeyFacturado;
     }
 
     public Short getOrdenAtenEnFec() {
@@ -253,6 +281,38 @@ public class FactOrden {
         this.ordenCntCargosRee = ordenCntCargosRee;
     }
 
+    public Integer getOrdenCntCargosDig() {
+        return ordenCntCargosDig;
+    }
+
+    public void setOrdenCntCargosDig(Integer ordenCntCargosDig) {
+        this.ordenCntCargosDig = ordenCntCargosDig;
+    }
+
+    public Integer getOrdenCntCargosRut() {
+        return ordenCntCargosRut;
+    }
+
+    public void setOrdenCntCargosRut(Integer ordenCntCargosRut) {
+        this.ordenCntCargosRut = ordenCntCargosRut;
+    }
+
+    public Integer getOrdenCntCargosPro() {
+        return ordenCntCargosPro;
+    }
+
+    public void setOrdenCntCargosPro(Integer ordenCntCargosPro) {
+        this.ordenCntCargosPro = ordenCntCargosPro;
+    }
+
+    public Integer getOrdenCntCargosRob() {
+        return ordenCntCargosRob;
+    }
+
+    public void setOrdenCntCargosRob(Integer ordenCntCargosRob) {
+        this.ordenCntCargosRob = ordenCntCargosRob;
+    }
+
     public BigDecimal getOrdenMonImporte() {
         return ordenMonImporte;
     }
@@ -292,7 +352,7 @@ public class FactOrden {
     public void setProcId(Integer procId) {
         this.procId = procId;
     }
-
+    
     public void clear(){
     	ordenKey=null;
     	ordenKeyClienteArea=null;
@@ -306,7 +366,9 @@ public class FactOrden {
     	ordenKeyFecVen=null;
     	ordenKeyFecCie=null;
     	ordenKeyFecDev=null;
+    	ordenKeyFecFac=null;
     	ordenKeyEstado=null;
+    	ordenKeyFacturado=null;
     	ordenAtenEnFec=null;
     	ordenAtenFueraFec=null;
     	ordenIndUnidad=null;
@@ -318,6 +380,10 @@ public class FactOrden {
     	ordenCntCargosMot=null;
     	ordenCntCargosPerd=null;
     	ordenCntCargosRee=null;
+    	ordenCntCargosDig=null;
+    	ordenCntCargosRut=null;
+    	ordenCntCargosPro=null;
+    	ordenCntCargosRob=null;
     	ordenMonImporte=null;
     	ordenMonDescuento=null;
     	ordenMonIgv=null;
@@ -336,16 +402,22 @@ public class FactOrden {
 				+ ", ordenKeyMoneda=" + ordenKeyMoneda + ", ordenKeyFecIni="
 				+ ordenKeyFecIni + ", ordenKeyFecVen=" + ordenKeyFecVen
 				+ ", ordenKeyFecCie=" + ordenKeyFecCie + ", ordenKeyFecDev="
-				+ ordenKeyFecDev + ", ordenKeyEstado=" + ordenKeyEstado
-				+ ", ordenAtenEnFec=" + ordenAtenEnFec + ", ordenAtenFueraFec="
-				+ ordenAtenFueraFec + ", ordenIndUnidad=" + ordenIndUnidad
-				+ ", ordenCntDiasExc=" + ordenCntDiasExc + ", ordenCntCargos="
-				+ ordenCntCargos + ", ordenCntCargosAnu=" + ordenCntCargosAnu
+				+ ordenKeyFecDev + ", ordenKeyFecFac=" + ordenKeyFecFac
+				+ ", ordenKeyEstado=" + ordenKeyEstado + ", ordenKeyFacturado="
+				+ ordenKeyFacturado + ", ordenAtenEnFec=" + ordenAtenEnFec
+				+ ", ordenAtenFueraFec=" + ordenAtenFueraFec
+				+ ", ordenIndUnidad=" + ordenIndUnidad + ", ordenCntDiasExc="
+				+ ordenCntDiasExc + ", ordenCntCargos=" + ordenCntCargos
+				+ ", ordenCntCargosAnu=" + ordenCntCargosAnu
 				+ ", ordenCntCargosEnt=" + ordenCntCargosEnt
 				+ ", ordenCntCargosFueZon=" + ordenCntCargosFueZon
 				+ ", ordenCntCargosMot=" + ordenCntCargosMot
 				+ ", ordenCntCargosPerd=" + ordenCntCargosPerd
 				+ ", ordenCntCargosRee=" + ordenCntCargosRee
+				+ ", ordenCntCargosDig=" + ordenCntCargosDig
+				+ ", ordenCntCargosRut=" + ordenCntCargosRut
+				+ ", ordenCntCargosPro=" + ordenCntCargosPro
+				+ ", ordenCntCargosRob=" + ordenCntCargosRob
 				+ ", ordenMonImporte=" + ordenMonImporte
 				+ ", ordenMonDescuento=" + ordenMonDescuento + ", ordenMonIgv="
 				+ ordenMonIgv + ", ordenMonTotal=" + ordenMonTotal

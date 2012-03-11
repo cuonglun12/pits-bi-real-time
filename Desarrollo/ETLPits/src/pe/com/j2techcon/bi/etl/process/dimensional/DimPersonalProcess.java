@@ -309,18 +309,6 @@ public class DimPersonalProcess {
 				offset = offset + constantes.getSizePage();
 			}else{
 				
-				tEmpleadoCategoriaExample.clear();
-				tEmpleadoCategoriaExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
-				tEmpleadoCategoriaExample.createCriteria().andProcIdNotEqualTo(process);
-				lstEmpleadoCategoria = tEmpleadoCategoriaManager.selectByExample(tEmpleadoCategoriaExample);
-				if(lstEmpleadoCategoria.size()>0){
-					for (Iterator<TEmpleadoCategoria> iterator = lstEmpleadoCategoria.iterator(); iterator.hasNext();) {
-						tEmpleadoCategoria = iterator.next();
-						dimPersonal.clear();
-						processRecordEmpleadoCategoria();
-					}
-				}
-				
 				lstEmpleadoCategoria.clear();
 				tEmpleadoExample.clear();
 				offset = 0;
@@ -343,21 +331,7 @@ public class DimPersonalProcess {
 				}
 				offset = offset + constantes.getSizePage();
 			}
-			
-			if(lstEmpleado.size()<constantes.getSizePage()){
-				
-				tEmpleadoExample.clear();
-				tEmpleadoExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
-				tEmpleadoExample.createCriteria().andProcIdNotEqualTo(process);
-				lstEmpleado = tEmpleadoManager.selectByExample(tEmpleadoExample);
-				if(lstEmpleado.size()>0){
-					for (Iterator<TEmpleado> iterator = lstEmpleado.iterator(); iterator.hasNext();) {
-						tEmpleado = iterator.next();
-						dimPersonal.clear();
-						dimPersonalExample.clear();
-						processRecordPersonal();
-					}
-				}
+			else {
 				
 				lstEmpleado.clear();
 				

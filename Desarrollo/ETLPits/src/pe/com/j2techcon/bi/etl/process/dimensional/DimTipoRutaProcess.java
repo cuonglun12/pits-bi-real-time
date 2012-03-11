@@ -246,19 +246,6 @@ public class DimTipoRutaProcess {
 				offset = offset + constantes.getSizePage();
 			}else{
 				
-				tParametroExample.clear();
-				tParametroExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
-				tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeTipoRuta());
-				tParametroExample.createCriteria().andProcIdNotEqualTo(process);
-				lstParametro = tParametroManager.selectByExample(tParametroExample);
-				if(lstParametro.size()>0){
-					for (Iterator<TParametro> iterator = lstParametro.iterator(); iterator.hasNext();) {
-						tParametro = iterator.next();
-						dimTipoRuta.clear();
-						processRecordParametro();
-					}
-				}
-				
 				lstParametro.clear();
 				
 				tParametro.clear();

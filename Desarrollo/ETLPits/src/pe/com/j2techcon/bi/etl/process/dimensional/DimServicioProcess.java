@@ -277,19 +277,6 @@ public class DimServicioProcess {
 				}
 				offset = offset + constantes.getSizePage();
 			}else{
-				
-				tServicioExample.clear();
-				tServicioExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
-				tServicioExample.createCriteria().andProcIdNotEqualTo(process);
-				lstServicio = tServicioManager.selectByExample(tServicioExample);
-				if(lstServicio.size()>0){
-					for (Iterator<TServicio> iterator = lstServicio.iterator(); iterator.hasNext();) {
-						tServicio = iterator.next();
-						dimServicio.clear();
-						processRecordServicio();
-					}
-				}
-				
 				lstServicio.clear();
 				
 				tServicio.clear();

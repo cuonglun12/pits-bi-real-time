@@ -17,7 +17,7 @@ public class Test {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		/*
+		
 		TProceso x = new TProceso();
 		System.out.println(x.toString());
 		
@@ -47,6 +47,9 @@ public class Test {
 		
 		DimTipoDocumento i = new DimTipoDocumento();
 		System.out.println(i.toString());
+		
+		DimFacturado i0 = new DimFacturado();
+		System.out.println(i0.toString());
 		
 		DimTipoPago j = new DimTipoPago();
 		System.out.println(j.toString());
@@ -116,7 +119,7 @@ public class Test {
 		
 		TZona o1 = new TZona();
 		System.out.println(o1.toString());
-		*/
+		
 		
 //		Calendar calendar = Calendar.getInstance();
 //		calendar.set(1900,1,1,1,1,1);
@@ -156,8 +159,8 @@ public class Test {
 //		System.out.println(dateCurrentMayor.compareTo(dateCurrent));
 //		System.out.println(dateCurrentMenor.compareTo(dateCurrent));
 		
-		short a = (short)123;
-		System.out.println(a);
+		//short a = (short)123;
+		//System.out.println(a);
 
 	}
 

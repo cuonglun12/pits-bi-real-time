@@ -17,6 +17,14 @@ public class Util {
 		return Long.parseLong(format.format(date.getTime()));
 	}
 	
+	public static Date getDateDefault() {
+		return new GregorianCalendar(1900,0,1).getTime();
+	}
+	
+	public static Date getDateTimeDefault() {
+		return new GregorianCalendar(1900,0,1,1,1,1).getTime();
+	}
+	
 	public static long getDateString(java.util.Date date) {
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
 		return Long.parseLong(format.format(date.getTime()));

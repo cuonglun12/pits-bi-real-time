@@ -21,6 +21,10 @@
     <result column="despacho_cnt_anu" property="despachoCntAnu" jdbcType="INTEGER" />
     <result column="despacho_cnt_fue_zon" property="despachoCntFueZon" jdbcType="INTEGER" />
     <result column="despacho_cnt_perd" property="despachoCntPerd" jdbcType="INTEGER" />
+    <result column="despacho_cnt_dig" property="despachoCntDig" jdbcType="INTEGER" />
+    <result column="despacho_cnt_rut" property="despachoCntRut" jdbcType="INTEGER" />
+    <result column="despacho_cnt_pro" property="despachoCntPro" jdbcType="INTEGER" />
+    <result column="despacho_cnt_rob" property="despachoCntRob" jdbcType="INTEGER" />
     <result column="despacho_trab_en_fec" property="despachoTrabEnFec" jdbcType="SMALLINT" />
     <result column="despacho_trab_fuera_fec" property="despachoTrabFueraFec" jdbcType="SMALLINT" />
     <result column="proc_id" property="procId" jdbcType="INTEGER" />
@@ -88,7 +92,8 @@
     despacho_key_fec_sal, despacho_key_fec_retp, despacho_key_fec_retr, despacho_key_estado, 
     despacho_mon_pasaje, despacho_ind_unidad, despacho_cnt_dias_exc, despacho_cnt_cargos, 
     despacho_cnt_ent, despacho_cnt_mot, despacho_cnt_ree, despacho_cnt_anu, despacho_cnt_fue_zon, 
-    despacho_cnt_perd, despacho_trab_en_fec, despacho_trab_fuera_fec, proc_id
+    despacho_cnt_perd, despacho_cnt_dig, despacho_cnt_rut, despacho_cnt_pro, despacho_cnt_rob, 
+    despacho_trab_en_fec, despacho_trab_fuera_fec, proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactDespachoExample" >
     select
@@ -132,7 +137,8 @@
       despacho_cnt_dias_exc, despacho_cnt_cargos, 
       despacho_cnt_ent, despacho_cnt_mot, despacho_cnt_ree, 
       despacho_cnt_anu, despacho_cnt_fue_zon, despacho_cnt_perd, 
-      despacho_trab_en_fec, despacho_trab_fuera_fec, 
+      despacho_cnt_dig, despacho_cnt_rut, despacho_cnt_pro, 
+      despacho_cnt_rob, despacho_trab_en_fec, despacho_trab_fuera_fec, 
       proc_id)
     values (#{despachoKey,jdbcType=INTEGER}, #{despachoKeySede,jdbcType=INTEGER}, #{despachoKeyZona,jdbcType=INTEGER}, 
       #{despachoKeyPersonal,jdbcType=INTEGER}, #{despachoKeyTipoRuta,jdbcType=INTEGER}, 
@@ -142,7 +148,8 @@
       #{despachoCntDiasExc,jdbcType=INTEGER}, #{despachoCntCargos,jdbcType=INTEGER}, 
       #{despachoCntEnt,jdbcType=INTEGER}, #{despachoCntMot,jdbcType=INTEGER}, #{despachoCntRee,jdbcType=INTEGER}, 
       #{despachoCntAnu,jdbcType=INTEGER}, #{despachoCntFueZon,jdbcType=INTEGER}, #{despachoCntPerd,jdbcType=INTEGER}, 
-      #{despachoTrabEnFec,jdbcType=SMALLINT}, #{despachoTrabFueraFec,jdbcType=SMALLINT}, 
+      #{despachoCntDig,jdbcType=INTEGER}, #{despachoCntRut,jdbcType=INTEGER}, #{despachoCntPro,jdbcType=INTEGER}, 
+      #{despachoCntRob,jdbcType=INTEGER}, #{despachoTrabEnFec,jdbcType=SMALLINT}, #{despachoTrabFueraFec,jdbcType=SMALLINT}, 
       #{procId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactDespacho" >
@@ -204,6 +211,18 @@
       </if>
       <if test="despachoCntPerd != null" >
         despacho_cnt_perd,
+      </if>
+      <if test="despachoCntDig != null" >
+        despacho_cnt_dig,
+      </if>
+      <if test="despachoCntRut != null" >
+        despacho_cnt_rut,
+      </if>
+      <if test="despachoCntPro != null" >
+        despacho_cnt_pro,
+      </if>
+      <if test="despachoCntRob != null" >
+        despacho_cnt_rob,
       </if>
       <if test="despachoTrabEnFec != null" >
         despacho_trab_en_fec,
@@ -272,6 +291,18 @@
       </if>
       <if test="despachoCntPerd != null" >
         #{despachoCntPerd,jdbcType=INTEGER},
+      </if>
+      <if test="despachoCntDig != null" >
+        #{despachoCntDig,jdbcType=INTEGER},
+      </if>
+      <if test="despachoCntRut != null" >
+        #{despachoCntRut,jdbcType=INTEGER},
+      </if>
+      <if test="despachoCntPro != null" >
+        #{despachoCntPro,jdbcType=INTEGER},
+      </if>
+      <if test="despachoCntRob != null" >
+        #{despachoCntRob,jdbcType=INTEGER},
       </if>
       <if test="despachoTrabEnFec != null" >
         #{despachoTrabEnFec,jdbcType=SMALLINT},
@@ -350,6 +381,18 @@
       <if test="record.despachoCntPerd != null" >
         despacho_cnt_perd = #{record.despachoCntPerd,jdbcType=INTEGER},
       </if>
+      <if test="record.despachoCntDig != null" >
+        despacho_cnt_dig = #{record.despachoCntDig,jdbcType=INTEGER},
+      </if>
+      <if test="record.despachoCntRut != null" >
+        despacho_cnt_rut = #{record.despachoCntRut,jdbcType=INTEGER},
+      </if>
+      <if test="record.despachoCntPro != null" >
+        despacho_cnt_pro = #{record.despachoCntPro,jdbcType=INTEGER},
+      </if>
+      <if test="record.despachoCntRob != null" >
+        despacho_cnt_rob = #{record.despachoCntRob,jdbcType=INTEGER},
+      </if>
       <if test="record.despachoTrabEnFec != null" >
         despacho_trab_en_fec = #{record.despachoTrabEnFec,jdbcType=SMALLINT},
       </if>
@@ -385,6 +428,10 @@
       despacho_cnt_anu = #{record.despachoCntAnu,jdbcType=INTEGER},
       despacho_cnt_fue_zon = #{record.despachoCntFueZon,jdbcType=INTEGER},
       despacho_cnt_perd = #{record.despachoCntPerd,jdbcType=INTEGER},
+      despacho_cnt_dig = #{record.despachoCntDig,jdbcType=INTEGER},
+      despacho_cnt_rut = #{record.despachoCntRut,jdbcType=INTEGER},
+      despacho_cnt_pro = #{record.despachoCntPro,jdbcType=INTEGER},
+      despacho_cnt_rob = #{record.despachoCntRob,jdbcType=INTEGER},
       despacho_trab_en_fec = #{record.despachoTrabEnFec,jdbcType=SMALLINT},
       despacho_trab_fuera_fec = #{record.despachoTrabFueraFec,jdbcType=SMALLINT},
       proc_id = #{record.procId,jdbcType=INTEGER}
@@ -449,6 +496,18 @@
       <if test="despachoCntPerd != null" >
         despacho_cnt_perd = #{despachoCntPerd,jdbcType=INTEGER},
       </if>
+      <if test="despachoCntDig != null" >
+        despacho_cnt_dig = #{despachoCntDig,jdbcType=INTEGER},
+      </if>
+      <if test="despachoCntRut != null" >
+        despacho_cnt_rut = #{despachoCntRut,jdbcType=INTEGER},
+      </if>
+      <if test="despachoCntPro != null" >
+        despacho_cnt_pro = #{despachoCntPro,jdbcType=INTEGER},
+      </if>
+      <if test="despachoCntRob != null" >
+        despacho_cnt_rob = #{despachoCntRob,jdbcType=INTEGER},
+      </if>
       <if test="despachoTrabEnFec != null" >
         despacho_trab_en_fec = #{despachoTrabEnFec,jdbcType=SMALLINT},
       </if>
@@ -481,6 +540,10 @@
       despacho_cnt_anu = #{despachoCntAnu,jdbcType=INTEGER},
       despacho_cnt_fue_zon = #{despachoCntFueZon,jdbcType=INTEGER},
       despacho_cnt_perd = #{despachoCntPerd,jdbcType=INTEGER},
+      despacho_cnt_dig = #{despachoCntDig,jdbcType=INTEGER},
+      despacho_cnt_rut = #{despachoCntRut,jdbcType=INTEGER},
+      despacho_cnt_pro = #{despachoCntPro,jdbcType=INTEGER},
+      despacho_cnt_rob = #{despachoCntRob,jdbcType=INTEGER},
       despacho_trab_en_fec = #{despachoTrabEnFec,jdbcType=SMALLINT},
       despacho_trab_fuera_fec = #{despachoTrabFueraFec,jdbcType=SMALLINT},
       proc_id = #{procId,jdbcType=INTEGER}

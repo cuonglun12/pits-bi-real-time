@@ -837,6 +837,66 @@ public class FactOrdenExample {
             return (Criteria) this;
         }
 
+        public Criteria andOrdenKeyFecFacIsNull() {
+            addCriterion("orden_key_fec_fac is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyFecFacIsNotNull() {
+            addCriterion("orden_key_fec_fac is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyFecFacEqualTo(Integer value) {
+            addCriterion("orden_key_fec_fac =", value, "ordenKeyFecFac");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyFecFacNotEqualTo(Integer value) {
+            addCriterion("orden_key_fec_fac <>", value, "ordenKeyFecFac");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyFecFacGreaterThan(Integer value) {
+            addCriterion("orden_key_fec_fac >", value, "ordenKeyFecFac");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyFecFacGreaterThanOrEqualTo(Integer value) {
+            addCriterion("orden_key_fec_fac >=", value, "ordenKeyFecFac");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyFecFacLessThan(Integer value) {
+            addCriterion("orden_key_fec_fac <", value, "ordenKeyFecFac");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyFecFacLessThanOrEqualTo(Integer value) {
+            addCriterion("orden_key_fec_fac <=", value, "ordenKeyFecFac");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyFecFacIn(List<Integer> values) {
+            addCriterion("orden_key_fec_fac in", values, "ordenKeyFecFac");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyFecFacNotIn(List<Integer> values) {
+            addCriterion("orden_key_fec_fac not in", values, "ordenKeyFecFac");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyFecFacBetween(Integer value1, Integer value2) {
+            addCriterion("orden_key_fec_fac between", value1, value2, "ordenKeyFecFac");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyFecFacNotBetween(Integer value1, Integer value2) {
+            addCriterion("orden_key_fec_fac not between", value1, value2, "ordenKeyFecFac");
+            return (Criteria) this;
+        }
+
         public Criteria andOrdenKeyEstadoIsNull() {
             addCriterion("orden_key_estado is null");
             return (Criteria) this;
@@ -894,6 +954,66 @@ public class FactOrdenExample {
 
         public Criteria andOrdenKeyEstadoNotBetween(Integer value1, Integer value2) {
             addCriterion("orden_key_estado not between", value1, value2, "ordenKeyEstado");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyFacturadoIsNull() {
+            addCriterion("orden_key_facturado is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyFacturadoIsNotNull() {
+            addCriterion("orden_key_facturado is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyFacturadoEqualTo(Integer value) {
+            addCriterion("orden_key_facturado =", value, "ordenKeyFacturado");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyFacturadoNotEqualTo(Integer value) {
+            addCriterion("orden_key_facturado <>", value, "ordenKeyFacturado");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyFacturadoGreaterThan(Integer value) {
+            addCriterion("orden_key_facturado >", value, "ordenKeyFacturado");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyFacturadoGreaterThanOrEqualTo(Integer value) {
+            addCriterion("orden_key_facturado >=", value, "ordenKeyFacturado");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyFacturadoLessThan(Integer value) {
+            addCriterion("orden_key_facturado <", value, "ordenKeyFacturado");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyFacturadoLessThanOrEqualTo(Integer value) {
+            addCriterion("orden_key_facturado <=", value, "ordenKeyFacturado");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyFacturadoIn(List<Integer> values) {
+            addCriterion("orden_key_facturado in", values, "ordenKeyFacturado");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyFacturadoNotIn(List<Integer> values) {
+            addCriterion("orden_key_facturado not in", values, "ordenKeyFacturado");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyFacturadoBetween(Integer value1, Integer value2) {
+            addCriterion("orden_key_facturado between", value1, value2, "ordenKeyFacturado");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyFacturadoNotBetween(Integer value1, Integer value2) {
+            addCriterion("orden_key_facturado not between", value1, value2, "ordenKeyFacturado");
             return (Criteria) this;
         }
 
@@ -1554,6 +1674,246 @@ public class FactOrdenExample {
 
         public Criteria andOrdenCntCargosReeNotBetween(Integer value1, Integer value2) {
             addCriterion("orden_cnt_cargos_ree not between", value1, value2, "ordenCntCargosRee");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosDigIsNull() {
+            addCriterion("orden_cnt_cargos_dig is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosDigIsNotNull() {
+            addCriterion("orden_cnt_cargos_dig is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosDigEqualTo(Integer value) {
+            addCriterion("orden_cnt_cargos_dig =", value, "ordenCntCargosDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosDigNotEqualTo(Integer value) {
+            addCriterion("orden_cnt_cargos_dig <>", value, "ordenCntCargosDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosDigGreaterThan(Integer value) {
+            addCriterion("orden_cnt_cargos_dig >", value, "ordenCntCargosDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosDigGreaterThanOrEqualTo(Integer value) {
+            addCriterion("orden_cnt_cargos_dig >=", value, "ordenCntCargosDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosDigLessThan(Integer value) {
+            addCriterion("orden_cnt_cargos_dig <", value, "ordenCntCargosDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosDigLessThanOrEqualTo(Integer value) {
+            addCriterion("orden_cnt_cargos_dig <=", value, "ordenCntCargosDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosDigIn(List<Integer> values) {
+            addCriterion("orden_cnt_cargos_dig in", values, "ordenCntCargosDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosDigNotIn(List<Integer> values) {
+            addCriterion("orden_cnt_cargos_dig not in", values, "ordenCntCargosDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosDigBetween(Integer value1, Integer value2) {
+            addCriterion("orden_cnt_cargos_dig between", value1, value2, "ordenCntCargosDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosDigNotBetween(Integer value1, Integer value2) {
+            addCriterion("orden_cnt_cargos_dig not between", value1, value2, "ordenCntCargosDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosRutIsNull() {
+            addCriterion("orden_cnt_cargos_rut is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosRutIsNotNull() {
+            addCriterion("orden_cnt_cargos_rut is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosRutEqualTo(Integer value) {
+            addCriterion("orden_cnt_cargos_rut =", value, "ordenCntCargosRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosRutNotEqualTo(Integer value) {
+            addCriterion("orden_cnt_cargos_rut <>", value, "ordenCntCargosRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosRutGreaterThan(Integer value) {
+            addCriterion("orden_cnt_cargos_rut >", value, "ordenCntCargosRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosRutGreaterThanOrEqualTo(Integer value) {
+            addCriterion("orden_cnt_cargos_rut >=", value, "ordenCntCargosRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosRutLessThan(Integer value) {
+            addCriterion("orden_cnt_cargos_rut <", value, "ordenCntCargosRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosRutLessThanOrEqualTo(Integer value) {
+            addCriterion("orden_cnt_cargos_rut <=", value, "ordenCntCargosRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosRutIn(List<Integer> values) {
+            addCriterion("orden_cnt_cargos_rut in", values, "ordenCntCargosRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosRutNotIn(List<Integer> values) {
+            addCriterion("orden_cnt_cargos_rut not in", values, "ordenCntCargosRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosRutBetween(Integer value1, Integer value2) {
+            addCriterion("orden_cnt_cargos_rut between", value1, value2, "ordenCntCargosRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosRutNotBetween(Integer value1, Integer value2) {
+            addCriterion("orden_cnt_cargos_rut not between", value1, value2, "ordenCntCargosRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosProIsNull() {
+            addCriterion("orden_cnt_cargos_pro is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosProIsNotNull() {
+            addCriterion("orden_cnt_cargos_pro is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosProEqualTo(Integer value) {
+            addCriterion("orden_cnt_cargos_pro =", value, "ordenCntCargosPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosProNotEqualTo(Integer value) {
+            addCriterion("orden_cnt_cargos_pro <>", value, "ordenCntCargosPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosProGreaterThan(Integer value) {
+            addCriterion("orden_cnt_cargos_pro >", value, "ordenCntCargosPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosProGreaterThanOrEqualTo(Integer value) {
+            addCriterion("orden_cnt_cargos_pro >=", value, "ordenCntCargosPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosProLessThan(Integer value) {
+            addCriterion("orden_cnt_cargos_pro <", value, "ordenCntCargosPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosProLessThanOrEqualTo(Integer value) {
+            addCriterion("orden_cnt_cargos_pro <=", value, "ordenCntCargosPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosProIn(List<Integer> values) {
+            addCriterion("orden_cnt_cargos_pro in", values, "ordenCntCargosPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosProNotIn(List<Integer> values) {
+            addCriterion("orden_cnt_cargos_pro not in", values, "ordenCntCargosPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosProBetween(Integer value1, Integer value2) {
+            addCriterion("orden_cnt_cargos_pro between", value1, value2, "ordenCntCargosPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosProNotBetween(Integer value1, Integer value2) {
+            addCriterion("orden_cnt_cargos_pro not between", value1, value2, "ordenCntCargosPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosRobIsNull() {
+            addCriterion("orden_cnt_cargos_rob is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosRobIsNotNull() {
+            addCriterion("orden_cnt_cargos_rob is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosRobEqualTo(Integer value) {
+            addCriterion("orden_cnt_cargos_rob =", value, "ordenCntCargosRob");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosRobNotEqualTo(Integer value) {
+            addCriterion("orden_cnt_cargos_rob <>", value, "ordenCntCargosRob");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosRobGreaterThan(Integer value) {
+            addCriterion("orden_cnt_cargos_rob >", value, "ordenCntCargosRob");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosRobGreaterThanOrEqualTo(Integer value) {
+            addCriterion("orden_cnt_cargos_rob >=", value, "ordenCntCargosRob");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosRobLessThan(Integer value) {
+            addCriterion("orden_cnt_cargos_rob <", value, "ordenCntCargosRob");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosRobLessThanOrEqualTo(Integer value) {
+            addCriterion("orden_cnt_cargos_rob <=", value, "ordenCntCargosRob");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosRobIn(List<Integer> values) {
+            addCriterion("orden_cnt_cargos_rob in", values, "ordenCntCargosRob");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosRobNotIn(List<Integer> values) {
+            addCriterion("orden_cnt_cargos_rob not in", values, "ordenCntCargosRob");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosRobBetween(Integer value1, Integer value2) {
+            addCriterion("orden_cnt_cargos_rob between", value1, value2, "ordenCntCargosRob");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenCntCargosRobNotBetween(Integer value1, Integer value2) {
+            addCriterion("orden_cnt_cargos_rob not between", value1, value2, "ordenCntCargosRob");
             return (Criteria) this;
         }
 

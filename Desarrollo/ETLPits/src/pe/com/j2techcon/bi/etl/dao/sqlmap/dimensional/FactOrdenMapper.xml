@@ -14,7 +14,9 @@
     <result column="orden_key_fec_ven" property="ordenKeyFecVen" jdbcType="INTEGER" />
     <result column="orden_key_fec_cie" property="ordenKeyFecCie" jdbcType="INTEGER" />
     <result column="orden_key_fec_dev" property="ordenKeyFecDev" jdbcType="INTEGER" />
+    <result column="orden_key_fec_fac" property="ordenKeyFecFac" jdbcType="INTEGER" />
     <result column="orden_key_estado" property="ordenKeyEstado" jdbcType="INTEGER" />
+    <result column="orden_key_facturado" property="ordenKeyFacturado" jdbcType="INTEGER" />
     <result column="orden_aten_en_fec" property="ordenAtenEnFec" jdbcType="SMALLINT" />
     <result column="orden_aten_fuera_fec" property="ordenAtenFueraFec" jdbcType="SMALLINT" />
     <result column="orden_ind_unidad" property="ordenIndUnidad" jdbcType="SMALLINT" />
@@ -26,6 +28,10 @@
     <result column="orden_cnt_cargos_mot" property="ordenCntCargosMot" jdbcType="INTEGER" />
     <result column="orden_cnt_cargos_perd" property="ordenCntCargosPerd" jdbcType="INTEGER" />
     <result column="orden_cnt_cargos_ree" property="ordenCntCargosRee" jdbcType="INTEGER" />
+    <result column="orden_cnt_cargos_dig" property="ordenCntCargosDig" jdbcType="INTEGER" />
+    <result column="orden_cnt_cargos_rut" property="ordenCntCargosRut" jdbcType="INTEGER" />
+    <result column="orden_cnt_cargos_pro" property="ordenCntCargosPro" jdbcType="INTEGER" />
+    <result column="orden_cnt_cargos_rob" property="ordenCntCargosRob" jdbcType="INTEGER" />
     <result column="orden_mon_importe" property="ordenMonImporte" jdbcType="NUMERIC" />
     <result column="orden_mon_descuento" property="ordenMonDescuento" jdbcType="NUMERIC" />
     <result column="orden_mon_igv" property="ordenMonIgv" jdbcType="NUMERIC" />
@@ -93,11 +99,12 @@
   <sql id="Base_Column_List" >
     orden_key, orden_key_cliente_area, orden_key_servicio, orden_key_producto, orden_key_tipo_reparto, 
     orden_key_tipo_documento, orden_key_tipo_pago, orden_key_moneda, orden_key_fec_ini, 
-    orden_key_fec_ven, orden_key_fec_cie, orden_key_fec_dev, orden_key_estado, orden_aten_en_fec, 
-    orden_aten_fuera_fec, orden_ind_unidad, orden_cnt_dias_exc, orden_cnt_cargos, orden_cnt_cargos_anu, 
-    orden_cnt_cargos_ent, orden_cnt_cargos_fue_zon, orden_cnt_cargos_mot, orden_cnt_cargos_perd, 
-    orden_cnt_cargos_ree, orden_mon_importe, orden_mon_descuento, orden_mon_igv, orden_mon_total, 
-    proc_id
+    orden_key_fec_ven, orden_key_fec_cie, orden_key_fec_dev, orden_key_fec_fac, orden_key_estado, 
+    orden_key_facturado, orden_aten_en_fec, orden_aten_fuera_fec, orden_ind_unidad, orden_cnt_dias_exc, 
+    orden_cnt_cargos, orden_cnt_cargos_anu, orden_cnt_cargos_ent, orden_cnt_cargos_fue_zon, 
+    orden_cnt_cargos_mot, orden_cnt_cargos_perd, orden_cnt_cargos_ree, orden_cnt_cargos_dig, 
+    orden_cnt_cargos_rut, orden_cnt_cargos_pro, orden_cnt_cargos_rob, orden_mon_importe, 
+    orden_mon_descuento, orden_mon_igv, orden_mon_total, proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactOrdenExample" >
     select
@@ -137,24 +144,28 @@
       orden_key_producto, orden_key_tipo_reparto, 
       orden_key_tipo_documento, orden_key_tipo_pago, 
       orden_key_moneda, orden_key_fec_ini, orden_key_fec_ven, 
-      orden_key_fec_cie, orden_key_fec_dev, orden_key_estado, 
-      orden_aten_en_fec, orden_aten_fuera_fec, orden_ind_unidad, 
-      orden_cnt_dias_exc, orden_cnt_cargos, orden_cnt_cargos_anu, 
-      orden_cnt_cargos_ent, orden_cnt_cargos_fue_zon, 
-      orden_cnt_cargos_mot, orden_cnt_cargos_perd, 
-      orden_cnt_cargos_ree, orden_mon_importe, orden_mon_descuento, 
+      orden_key_fec_cie, orden_key_fec_dev, orden_key_fec_fac, 
+      orden_key_estado, orden_key_facturado, orden_aten_en_fec, 
+      orden_aten_fuera_fec, orden_ind_unidad, orden_cnt_dias_exc, 
+      orden_cnt_cargos, orden_cnt_cargos_anu, orden_cnt_cargos_ent, 
+      orden_cnt_cargos_fue_zon, orden_cnt_cargos_mot, 
+      orden_cnt_cargos_perd, orden_cnt_cargos_ree, 
+      orden_cnt_cargos_dig, orden_cnt_cargos_rut, orden_cnt_cargos_pro, 
+      orden_cnt_cargos_rob, orden_mon_importe, orden_mon_descuento, 
       orden_mon_igv, orden_mon_total, proc_id
       )
     values (#{ordenKey,jdbcType=INTEGER}, #{ordenKeyClienteArea,jdbcType=INTEGER}, #{ordenKeyServicio,jdbcType=INTEGER}, 
       #{ordenKeyProducto,jdbcType=INTEGER}, #{ordenKeyTipoReparto,jdbcType=INTEGER}, 
       #{ordenKeyTipoDocumento,jdbcType=INTEGER}, #{ordenKeyTipoPago,jdbcType=INTEGER}, 
       #{ordenKeyMoneda,jdbcType=INTEGER}, #{ordenKeyFecIni,jdbcType=INTEGER}, #{ordenKeyFecVen,jdbcType=INTEGER}, 
-      #{ordenKeyFecCie,jdbcType=INTEGER}, #{ordenKeyFecDev,jdbcType=INTEGER}, #{ordenKeyEstado,jdbcType=INTEGER}, 
-      #{ordenAtenEnFec,jdbcType=SMALLINT}, #{ordenAtenFueraFec,jdbcType=SMALLINT}, #{ordenIndUnidad,jdbcType=SMALLINT}, 
-      #{ordenCntDiasExc,jdbcType=INTEGER}, #{ordenCntCargos,jdbcType=INTEGER}, #{ordenCntCargosAnu,jdbcType=INTEGER}, 
-      #{ordenCntCargosEnt,jdbcType=INTEGER}, #{ordenCntCargosFueZon,jdbcType=INTEGER}, 
-      #{ordenCntCargosMot,jdbcType=INTEGER}, #{ordenCntCargosPerd,jdbcType=INTEGER}, 
-      #{ordenCntCargosRee,jdbcType=INTEGER}, #{ordenMonImporte,jdbcType=NUMERIC}, #{ordenMonDescuento,jdbcType=NUMERIC}, 
+      #{ordenKeyFecCie,jdbcType=INTEGER}, #{ordenKeyFecDev,jdbcType=INTEGER}, #{ordenKeyFecFac,jdbcType=INTEGER}, 
+      #{ordenKeyEstado,jdbcType=INTEGER}, #{ordenKeyFacturado,jdbcType=INTEGER}, #{ordenAtenEnFec,jdbcType=SMALLINT}, 
+      #{ordenAtenFueraFec,jdbcType=SMALLINT}, #{ordenIndUnidad,jdbcType=SMALLINT}, #{ordenCntDiasExc,jdbcType=INTEGER}, 
+      #{ordenCntCargos,jdbcType=INTEGER}, #{ordenCntCargosAnu,jdbcType=INTEGER}, #{ordenCntCargosEnt,jdbcType=INTEGER}, 
+      #{ordenCntCargosFueZon,jdbcType=INTEGER}, #{ordenCntCargosMot,jdbcType=INTEGER}, 
+      #{ordenCntCargosPerd,jdbcType=INTEGER}, #{ordenCntCargosRee,jdbcType=INTEGER}, 
+      #{ordenCntCargosDig,jdbcType=INTEGER}, #{ordenCntCargosRut,jdbcType=INTEGER}, #{ordenCntCargosPro,jdbcType=INTEGER}, 
+      #{ordenCntCargosRob,jdbcType=INTEGER}, #{ordenMonImporte,jdbcType=NUMERIC}, #{ordenMonDescuento,jdbcType=NUMERIC}, 
       #{ordenMonIgv,jdbcType=NUMERIC}, #{ordenMonTotal,jdbcType=NUMERIC}, #{procId,jdbcType=INTEGER}
       )
   </insert>
@@ -197,8 +208,14 @@
       <if test="ordenKeyFecDev != null" >
         orden_key_fec_dev,
       </if>
+      <if test="ordenKeyFecFac != null" >
+        orden_key_fec_fac,
+      </if>
       <if test="ordenKeyEstado != null" >
         orden_key_estado,
+      </if>
+      <if test="ordenKeyFacturado != null" >
+        orden_key_facturado,
       </if>
       <if test="ordenAtenEnFec != null" >
         orden_aten_en_fec,
@@ -232,6 +249,18 @@
       </if>
       <if test="ordenCntCargosRee != null" >
         orden_cnt_cargos_ree,
+      </if>
+      <if test="ordenCntCargosDig != null" >
+        orden_cnt_cargos_dig,
+      </if>
+      <if test="ordenCntCargosRut != null" >
+        orden_cnt_cargos_rut,
+      </if>
+      <if test="ordenCntCargosPro != null" >
+        orden_cnt_cargos_pro,
+      </if>
+      <if test="ordenCntCargosRob != null" >
+        orden_cnt_cargos_rob,
       </if>
       <if test="ordenMonImporte != null" >
         orden_mon_importe,
@@ -286,8 +315,14 @@
       <if test="ordenKeyFecDev != null" >
         #{ordenKeyFecDev,jdbcType=INTEGER},
       </if>
+      <if test="ordenKeyFecFac != null" >
+        #{ordenKeyFecFac,jdbcType=INTEGER},
+      </if>
       <if test="ordenKeyEstado != null" >
         #{ordenKeyEstado,jdbcType=INTEGER},
+      </if>
+      <if test="ordenKeyFacturado != null" >
+        #{ordenKeyFacturado,jdbcType=INTEGER},
       </if>
       <if test="ordenAtenEnFec != null" >
         #{ordenAtenEnFec,jdbcType=SMALLINT},
@@ -321,6 +356,18 @@
       </if>
       <if test="ordenCntCargosRee != null" >
         #{ordenCntCargosRee,jdbcType=INTEGER},
+      </if>
+      <if test="ordenCntCargosDig != null" >
+        #{ordenCntCargosDig,jdbcType=INTEGER},
+      </if>
+      <if test="ordenCntCargosRut != null" >
+        #{ordenCntCargosRut,jdbcType=INTEGER},
+      </if>
+      <if test="ordenCntCargosPro != null" >
+        #{ordenCntCargosPro,jdbcType=INTEGER},
+      </if>
+      <if test="ordenCntCargosRob != null" >
+        #{ordenCntCargosRob,jdbcType=INTEGER},
       </if>
       <if test="ordenMonImporte != null" >
         #{ordenMonImporte,jdbcType=NUMERIC},
@@ -384,8 +431,14 @@
       <if test="record.ordenKeyFecDev != null" >
         orden_key_fec_dev = #{record.ordenKeyFecDev,jdbcType=INTEGER},
       </if>
+      <if test="record.ordenKeyFecFac != null" >
+        orden_key_fec_fac = #{record.ordenKeyFecFac,jdbcType=INTEGER},
+      </if>
       <if test="record.ordenKeyEstado != null" >
         orden_key_estado = #{record.ordenKeyEstado,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordenKeyFacturado != null" >
+        orden_key_facturado = #{record.ordenKeyFacturado,jdbcType=INTEGER},
       </if>
       <if test="record.ordenAtenEnFec != null" >
         orden_aten_en_fec = #{record.ordenAtenEnFec,jdbcType=SMALLINT},
@@ -419,6 +472,18 @@
       </if>
       <if test="record.ordenCntCargosRee != null" >
         orden_cnt_cargos_ree = #{record.ordenCntCargosRee,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordenCntCargosDig != null" >
+        orden_cnt_cargos_dig = #{record.ordenCntCargosDig,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordenCntCargosRut != null" >
+        orden_cnt_cargos_rut = #{record.ordenCntCargosRut,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordenCntCargosPro != null" >
+        orden_cnt_cargos_pro = #{record.ordenCntCargosPro,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordenCntCargosRob != null" >
+        orden_cnt_cargos_rob = #{record.ordenCntCargosRob,jdbcType=INTEGER},
       </if>
       <if test="record.ordenMonImporte != null" >
         orden_mon_importe = #{record.ordenMonImporte,jdbcType=NUMERIC},
@@ -454,7 +519,9 @@
       orden_key_fec_ven = #{record.ordenKeyFecVen,jdbcType=INTEGER},
       orden_key_fec_cie = #{record.ordenKeyFecCie,jdbcType=INTEGER},
       orden_key_fec_dev = #{record.ordenKeyFecDev,jdbcType=INTEGER},
+      orden_key_fec_fac = #{record.ordenKeyFecFac,jdbcType=INTEGER},
       orden_key_estado = #{record.ordenKeyEstado,jdbcType=INTEGER},
+      orden_key_facturado = #{record.ordenKeyFacturado,jdbcType=INTEGER},
       orden_aten_en_fec = #{record.ordenAtenEnFec,jdbcType=SMALLINT},
       orden_aten_fuera_fec = #{record.ordenAtenFueraFec,jdbcType=SMALLINT},
       orden_ind_unidad = #{record.ordenIndUnidad,jdbcType=SMALLINT},
@@ -466,6 +533,10 @@
       orden_cnt_cargos_mot = #{record.ordenCntCargosMot,jdbcType=INTEGER},
       orden_cnt_cargos_perd = #{record.ordenCntCargosPerd,jdbcType=INTEGER},
       orden_cnt_cargos_ree = #{record.ordenCntCargosRee,jdbcType=INTEGER},
+      orden_cnt_cargos_dig = #{record.ordenCntCargosDig,jdbcType=INTEGER},
+      orden_cnt_cargos_rut = #{record.ordenCntCargosRut,jdbcType=INTEGER},
+      orden_cnt_cargos_pro = #{record.ordenCntCargosPro,jdbcType=INTEGER},
+      orden_cnt_cargos_rob = #{record.ordenCntCargosRob,jdbcType=INTEGER},
       orden_mon_importe = #{record.ordenMonImporte,jdbcType=NUMERIC},
       orden_mon_descuento = #{record.ordenMonDescuento,jdbcType=NUMERIC},
       orden_mon_igv = #{record.ordenMonIgv,jdbcType=NUMERIC},
@@ -511,8 +582,14 @@
       <if test="ordenKeyFecDev != null" >
         orden_key_fec_dev = #{ordenKeyFecDev,jdbcType=INTEGER},
       </if>
+      <if test="ordenKeyFecFac != null" >
+        orden_key_fec_fac = #{ordenKeyFecFac,jdbcType=INTEGER},
+      </if>
       <if test="ordenKeyEstado != null" >
         orden_key_estado = #{ordenKeyEstado,jdbcType=INTEGER},
+      </if>
+      <if test="ordenKeyFacturado != null" >
+        orden_key_facturado = #{ordenKeyFacturado,jdbcType=INTEGER},
       </if>
       <if test="ordenAtenEnFec != null" >
         orden_aten_en_fec = #{ordenAtenEnFec,jdbcType=SMALLINT},
@@ -547,6 +624,18 @@
       <if test="ordenCntCargosRee != null" >
         orden_cnt_cargos_ree = #{ordenCntCargosRee,jdbcType=INTEGER},
       </if>
+      <if test="ordenCntCargosDig != null" >
+        orden_cnt_cargos_dig = #{ordenCntCargosDig,jdbcType=INTEGER},
+      </if>
+      <if test="ordenCntCargosRut != null" >
+        orden_cnt_cargos_rut = #{ordenCntCargosRut,jdbcType=INTEGER},
+      </if>
+      <if test="ordenCntCargosPro != null" >
+        orden_cnt_cargos_pro = #{ordenCntCargosPro,jdbcType=INTEGER},
+      </if>
+      <if test="ordenCntCargosRob != null" >
+        orden_cnt_cargos_rob = #{ordenCntCargosRob,jdbcType=INTEGER},
+      </if>
       <if test="ordenMonImporte != null" >
         orden_mon_importe = #{ordenMonImporte,jdbcType=NUMERIC},
       </if>
@@ -578,7 +667,9 @@
       orden_key_fec_ven = #{ordenKeyFecVen,jdbcType=INTEGER},
       orden_key_fec_cie = #{ordenKeyFecCie,jdbcType=INTEGER},
       orden_key_fec_dev = #{ordenKeyFecDev,jdbcType=INTEGER},
+      orden_key_fec_fac = #{ordenKeyFecFac,jdbcType=INTEGER},
       orden_key_estado = #{ordenKeyEstado,jdbcType=INTEGER},
+      orden_key_facturado = #{ordenKeyFacturado,jdbcType=INTEGER},
       orden_aten_en_fec = #{ordenAtenEnFec,jdbcType=SMALLINT},
       orden_aten_fuera_fec = #{ordenAtenFueraFec,jdbcType=SMALLINT},
       orden_ind_unidad = #{ordenIndUnidad,jdbcType=SMALLINT},
@@ -590,6 +681,10 @@
       orden_cnt_cargos_mot = #{ordenCntCargosMot,jdbcType=INTEGER},
       orden_cnt_cargos_perd = #{ordenCntCargosPerd,jdbcType=INTEGER},
       orden_cnt_cargos_ree = #{ordenCntCargosRee,jdbcType=INTEGER},
+      orden_cnt_cargos_dig = #{ordenCntCargosDig,jdbcType=INTEGER},
+      orden_cnt_cargos_rut = #{ordenCntCargosRut,jdbcType=INTEGER},
+      orden_cnt_cargos_pro = #{ordenCntCargosPro,jdbcType=INTEGER},
+      orden_cnt_cargos_rob = #{ordenCntCargosRob,jdbcType=INTEGER},
       orden_mon_importe = #{ordenMonImporte,jdbcType=NUMERIC},
       orden_mon_descuento = #{ordenMonDescuento,jdbcType=NUMERIC},
       orden_mon_igv = #{ordenMonIgv,jdbcType=NUMERIC},

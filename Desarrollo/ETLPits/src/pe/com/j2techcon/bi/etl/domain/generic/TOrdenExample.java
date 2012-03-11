@@ -8,6 +8,8 @@ import java.util.List;
 
 public class TOrdenExample {
 	
+	protected String whereBetweenFields;
+	
 	protected String paginationByClause;
 	
     protected String orderByClause;
@@ -20,7 +22,15 @@ public class TOrdenExample {
         oredCriteria = new ArrayList<Criteria>();
     }
 
-    public String getPaginationByClause() {
+    public String getWhereBetweenFields() {
+		return whereBetweenFields;
+	}
+
+	public void setWhereBetweenFields(String whereBetweenFields) {
+		this.whereBetweenFields = whereBetweenFields;
+	}
+
+	public String getPaginationByClause() {
 		return paginationByClause;
 	}
 
@@ -73,6 +83,7 @@ public class TOrdenExample {
 
     public void clear() {
         oredCriteria.clear();
+        whereBetweenFields = null;
         paginationByClause = null;
         orderByClause = null;
         distinct = false;
@@ -625,66 +636,6 @@ public class TOrdenExample {
             return (Criteria) this;
         }
 
-        public Criteria andOrdCodTipIngIsNull() {
-            addCriterion("ord_cod_tip_ing is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrdCodTipIngIsNotNull() {
-            addCriterion("ord_cod_tip_ing is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrdCodTipIngEqualTo(Integer value) {
-            addCriterion("ord_cod_tip_ing =", value, "ordCodTipIng");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrdCodTipIngNotEqualTo(Integer value) {
-            addCriterion("ord_cod_tip_ing <>", value, "ordCodTipIng");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrdCodTipIngGreaterThan(Integer value) {
-            addCriterion("ord_cod_tip_ing >", value, "ordCodTipIng");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrdCodTipIngGreaterThanOrEqualTo(Integer value) {
-            addCriterion("ord_cod_tip_ing >=", value, "ordCodTipIng");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrdCodTipIngLessThan(Integer value) {
-            addCriterion("ord_cod_tip_ing <", value, "ordCodTipIng");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrdCodTipIngLessThanOrEqualTo(Integer value) {
-            addCriterion("ord_cod_tip_ing <=", value, "ordCodTipIng");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrdCodTipIngIn(List<Integer> values) {
-            addCriterion("ord_cod_tip_ing in", values, "ordCodTipIng");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrdCodTipIngNotIn(List<Integer> values) {
-            addCriterion("ord_cod_tip_ing not in", values, "ordCodTipIng");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrdCodTipIngBetween(Integer value1, Integer value2) {
-            addCriterion("ord_cod_tip_ing between", value1, value2, "ordCodTipIng");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrdCodTipIngNotBetween(Integer value1, Integer value2) {
-            addCriterion("ord_cod_tip_ing not between", value1, value2, "ordCodTipIng");
-            return (Criteria) this;
-        }
-
         public Criteria andOrdCodTipMonIsNull() {
             addCriterion("ord_cod_tip_mon is null");
             return (Criteria) this;
@@ -1065,6 +1016,66 @@ public class TOrdenExample {
             return (Criteria) this;
         }
 
+        public Criteria andOrdIndFacIsNull() {
+            addCriterion("ord_ind_fac is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdIndFacIsNotNull() {
+            addCriterion("ord_ind_fac is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdIndFacEqualTo(Integer value) {
+            addCriterion("ord_ind_fac =", value, "ordIndFac");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdIndFacNotEqualTo(Integer value) {
+            addCriterion("ord_ind_fac <>", value, "ordIndFac");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdIndFacGreaterThan(Integer value) {
+            addCriterion("ord_ind_fac >", value, "ordIndFac");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdIndFacGreaterThanOrEqualTo(Integer value) {
+            addCriterion("ord_ind_fac >=", value, "ordIndFac");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdIndFacLessThan(Integer value) {
+            addCriterion("ord_ind_fac <", value, "ordIndFac");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdIndFacLessThanOrEqualTo(Integer value) {
+            addCriterion("ord_ind_fac <=", value, "ordIndFac");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdIndFacIn(List<Integer> values) {
+            addCriterion("ord_ind_fac in", values, "ordIndFac");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdIndFacNotIn(List<Integer> values) {
+            addCriterion("ord_ind_fac not in", values, "ordIndFac");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdIndFacBetween(Integer value1, Integer value2) {
+            addCriterion("ord_ind_fac between", value1, value2, "ordIndFac");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdIndFacNotBetween(Integer value1, Integer value2) {
+            addCriterion("ord_ind_fac not between", value1, value2, "ordIndFac");
+            return (Criteria) this;
+        }
+
         public Criteria andOrdFecIniIsNull() {
             addCriterion("ord_fec_ini is null");
             return (Criteria) this;
@@ -1362,6 +1373,66 @@ public class TOrdenExample {
 
         public Criteria andOrdFecLiqNotBetween(Date value1, Date value2) {
             addCriterionForJDBCDate("ord_fec_liq not between", value1, value2, "ordFecLiq");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdFecFacIsNull() {
+            addCriterion("ord_fec_fac is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdFecFacIsNotNull() {
+            addCriterion("ord_fec_fac is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdFecFacEqualTo(Date value) {
+            addCriterionForJDBCDate("ord_fec_fac =", value, "ordFecFac");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdFecFacNotEqualTo(Date value) {
+            addCriterionForJDBCDate("ord_fec_fac <>", value, "ordFecFac");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdFecFacGreaterThan(Date value) {
+            addCriterionForJDBCDate("ord_fec_fac >", value, "ordFecFac");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdFecFacGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("ord_fec_fac >=", value, "ordFecFac");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdFecFacLessThan(Date value) {
+            addCriterionForJDBCDate("ord_fec_fac <", value, "ordFecFac");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdFecFacLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("ord_fec_fac <=", value, "ordFecFac");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdFecFacIn(List<Date> values) {
+            addCriterionForJDBCDate("ord_fec_fac in", values, "ordFecFac");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdFecFacNotIn(List<Date> values) {
+            addCriterionForJDBCDate("ord_fec_fac not in", values, "ordFecFac");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdFecFacBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("ord_fec_fac between", value1, value2, "ordFecFac");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdFecFacNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("ord_fec_fac not between", value1, value2, "ordFecFac");
             return (Criteria) this;
         }
 

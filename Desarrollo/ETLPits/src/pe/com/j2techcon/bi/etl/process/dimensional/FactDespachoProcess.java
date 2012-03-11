@@ -353,18 +353,6 @@ public class FactDespachoProcess {
 				offset = offset + constantes.getSizePage();
 			}else{
 				
-				tDespachoExample.clear();
-				tDespachoExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
-				tDespachoExample.createCriteria().andProcIdNotEqualTo(process);
-				lstDespacho = tDespachoManager.selectByExample(tDespachoExample);
-				if(lstDespacho.size()>0){
-					for (Iterator<TDespacho> iterator = lstDespacho.iterator(); iterator.hasNext();) {
-						tDespacho = iterator.next();
-						factDespacho.clear();
-						processRecordCotizacion();
-					}
-				}
-				
 				lstDespacho.clear();
 				
 				tDespacho.clear();

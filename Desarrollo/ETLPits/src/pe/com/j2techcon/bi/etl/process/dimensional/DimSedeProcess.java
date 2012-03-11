@@ -310,18 +310,6 @@ public class DimSedeProcess {
 				offset = offset + constantes.getSizePage();
 			}else{
 				
-				tSedeExample.clear();
-				tSedeExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
-				tSedeExample.createCriteria().andProcIdNotEqualTo(process);
-				lstSede = tSedeManager.selectByExample(tSedeExample);
-				if(lstSede.size()>0){
-					for (Iterator<TSede> iterator = lstSede.iterator(); iterator.hasNext();) {
-						tSede = iterator.next();
-						dimSede.clear();
-						processRecordSede();
-					}
-				}
-				
 				lstSede.clear();
 				
 				tSede.clear();

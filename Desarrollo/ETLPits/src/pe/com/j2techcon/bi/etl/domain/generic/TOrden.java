@@ -20,8 +20,6 @@ public class TOrden {
 
     private Integer ordCodTipPag;
 
-    private Integer ordCodTipIng;
-
     private Integer ordCodTipMon;
 
     private Integer ordCodTipDoc;
@@ -34,6 +32,8 @@ public class TOrden {
 
     private Integer ordCntCargos;
 
+    private Integer ordIndFac;
+
     private Date ordFecIni;
 
     private Date ordFecVen;
@@ -43,6 +43,8 @@ public class TOrden {
     private Date ordFecDev;
 
     private Date ordFecLiq;
+
+    private Date ordFecFac;
 
     private BigDecimal ordImporte;
 
@@ -126,14 +128,6 @@ public class TOrden {
         this.ordCodTipPag = ordCodTipPag;
     }
 
-    public Integer getOrdCodTipIng() {
-        return ordCodTipIng;
-    }
-
-    public void setOrdCodTipIng(Integer ordCodTipIng) {
-        this.ordCodTipIng = ordCodTipIng;
-    }
-
     public Integer getOrdCodTipMon() {
         return ordCodTipMon;
     }
@@ -182,6 +176,14 @@ public class TOrden {
         this.ordCntCargos = ordCntCargos;
     }
 
+    public Integer getOrdIndFac() {
+        return ordIndFac;
+    }
+
+    public void setOrdIndFac(Integer ordIndFac) {
+        this.ordIndFac = ordIndFac;
+    }
+
     public Date getOrdFecIni() {
         return ordFecIni;
     }
@@ -220,6 +222,14 @@ public class TOrden {
 
     public void setOrdFecLiq(Date ordFecLiq) {
         this.ordFecLiq = ordFecLiq;
+    }
+
+    public Date getOrdFecFac() {
+        return ordFecFac;
+    }
+
+    public void setOrdFecFac(Date ordFecFac) {
+        this.ordFecFac = ordFecFac;
     }
 
     public BigDecimal getOrdImporte() {
@@ -294,53 +304,23 @@ public class TOrden {
         this.procId = procId;
     }
     
-    public void clear(){
-    	ordId=null;
-    	cotiId=null;
-    	codAreCli=null;
-    	empCatId=null;
-    	ordCodTipRep=null;
-    	servId=null;
-    	prodId=null;
-    	ordCodTipPag=null;
-    	ordCodTipIng=null;
-    	ordCodTipMon=null;
-    	ordCodTipDoc=null;
-    	ordSerieDoc=null;
-    	ordNumDoc=null;
-    	ordTipCambio=null;
-    	ordCntCargos=null;
-    	ordFecIni=null;
-    	ordFecVen=null;
-    	ordFecCie=null;
-    	ordFecDev=null;
-    	ordFecLiq=null;
-    	ordImporte=null;
-    	ordDescuento=null;
-    	ordVenta=null;
-    	ordIgv=null;
-    	ordTotal=null;
-    	ordCodEst=null;
-    	fecNumCam=null;
-    	codIndCam=null;
-    	procId=null;
-    }
+    public void clear(){}
 
 	@Override
 	public String toString() {
 		return "TOrden [ordId=" + ordId + ", cotiId=" + cotiId + ", codAreCli="
 				+ codAreCli + ", empCatId=" + empCatId + ", ordCodTipRep="
 				+ ordCodTipRep + ", servId=" + servId + ", prodId=" + prodId
-				+ ", ordCodTipPag=" + ordCodTipPag + ", ordCodTipIng="
-				+ ordCodTipIng + ", ordCodTipMon=" + ordCodTipMon
-				+ ", ordCodTipDoc=" + ordCodTipDoc + ", ordSerieDoc="
-				+ ordSerieDoc + ", ordNumDoc=" + ordNumDoc + ", ordTipCambio="
-				+ ordTipCambio + ", ordCntCargos=" + ordCntCargos
-				+ ", ordFecIni=" + ordFecIni + ", ordFecVen=" + ordFecVen
-				+ ", ordFecCie=" + ordFecCie + ", ordFecDev=" + ordFecDev
-				+ ", ordFecLiq=" + ordFecLiq + ", ordImporte=" + ordImporte
-				+ ", ordDescuento=" + ordDescuento + ", ordVenta=" + ordVenta
-				+ ", ordIgv=" + ordIgv + ", ordTotal=" + ordTotal
+				+ ", ordCodTipPag=" + ordCodTipPag + ", ordCodTipMon="
+				+ ordCodTipMon + ", ordCodTipDoc=" + ordCodTipDoc
+				+ ", ordSerieDoc=" + ordSerieDoc + ", ordNumDoc=" + ordNumDoc
+				+ ", ordTipCambio=" + ordTipCambio + ", ordCntCargos="
+				+ ordCntCargos + ", ordIndFac=" + ordIndFac + ", ordFecIni="
+				+ ordFecIni + ", ordFecVen=" + ordFecVen + ", ordFecCie="
+				+ ordFecCie + ", ordFecDev=" + ordFecDev + ", ordFecLiq="
+				+ ordFecLiq + ", ordFecFac=" + ordFecFac + ", ordImporte="
+				+ ordImporte + ", ordDescuento=" + ordDescuento + ", ordVenta="
+				+ ordVenta + ", ordIgv=" + ordIgv + ", ordTotal=" + ordTotal
 				+ ", ordCodEst=" + ordCodEst + ", fecNumCam=" + fecNumCam
 				+ ", codIndCam=" + codIndCam + ", procId=" + procId + "]";
 	}

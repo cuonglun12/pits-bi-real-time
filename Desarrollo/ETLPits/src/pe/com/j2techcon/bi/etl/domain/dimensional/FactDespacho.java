@@ -41,6 +41,14 @@ public class FactDespacho {
 
     private Integer despachoCntPerd;
 
+    private Integer despachoCntDig;
+
+    private Integer despachoCntRut;
+
+    private Integer despachoCntPro;
+
+    private Integer despachoCntRob;
+
     private Short despachoTrabEnFec;
 
     private Short despachoTrabFueraFec;
@@ -199,6 +207,38 @@ public class FactDespacho {
         this.despachoCntPerd = despachoCntPerd;
     }
 
+    public Integer getDespachoCntDig() {
+        return despachoCntDig;
+    }
+
+    public void setDespachoCntDig(Integer despachoCntDig) {
+        this.despachoCntDig = despachoCntDig;
+    }
+
+    public Integer getDespachoCntRut() {
+        return despachoCntRut;
+    }
+
+    public void setDespachoCntRut(Integer despachoCntRut) {
+        this.despachoCntRut = despachoCntRut;
+    }
+
+    public Integer getDespachoCntPro() {
+        return despachoCntPro;
+    }
+
+    public void setDespachoCntPro(Integer despachoCntPro) {
+        this.despachoCntPro = despachoCntPro;
+    }
+
+    public Integer getDespachoCntRob() {
+        return despachoCntRob;
+    }
+
+    public void setDespachoCntRob(Integer despachoCntRob) {
+        this.despachoCntRob = despachoCntRob;
+    }
+
     public Short getDespachoTrabEnFec() {
         return despachoTrabEnFec;
     }
@@ -243,6 +283,10 @@ public class FactDespacho {
     	despachoCntAnu=null;
     	despachoCntFueZon=null;
     	despachoCntPerd=null;
+    	despachoCntDig=null;
+    	despachoCntRut=null;
+    	despachoCntPro=null;
+    	despachoCntRob=null;
     	despachoTrabEnFec=null;
     	despachoTrabFueraFec=null;
     	procId=null;
@@ -266,9 +310,13 @@ public class FactDespacho {
 				+ ", despachoCntMot=" + despachoCntMot + ", despachoCntRee="
 				+ despachoCntRee + ", despachoCntAnu=" + despachoCntAnu
 				+ ", despachoCntFueZon=" + despachoCntFueZon
-				+ ", despachoCntPerd=" + despachoCntPerd
-				+ ", despachoTrabEnFec=" + despachoTrabEnFec
+				+ ", despachoCntPerd=" + despachoCntPerd + ", despachoCntDig="
+				+ despachoCntDig + ", despachoCntRut=" + despachoCntRut
+				+ ", despachoCntPro=" + despachoCntPro + ", despachoCntRob="
+				+ despachoCntRob + ", despachoTrabEnFec=" + despachoTrabEnFec
 				+ ", despachoTrabFueraFec=" + despachoTrabFueraFec
 				+ ", procId=" + procId + "]";
 	}
+    
+    
 }

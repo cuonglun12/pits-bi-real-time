@@ -278,18 +278,6 @@ public class DimProductoProcess {
 				offset = offset + constantes.getSizePage();
 			}else{
 				
-				tProductoExample.clear();
-				tProductoExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
-				tProductoExample.createCriteria().andProcIdNotEqualTo(process);
-				lstProducto = tProductoManager.selectByExample(tProductoExample);
-				if(lstProducto.size()>0){
-					for (Iterator<TProducto> iterator = lstProducto.iterator(); iterator.hasNext();) {
-						tProducto = iterator.next();
-						dimProducto.clear();
-						processRecordProducto();
-					}
-				}
-				
 				lstProducto.clear();
 				
 				tProducto.clear();

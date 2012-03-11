@@ -1257,6 +1257,246 @@ public class FactDespachoExample {
             return (Criteria) this;
         }
 
+        public Criteria andDespachoCntDigIsNull() {
+            addCriterion("despacho_cnt_dig is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntDigIsNotNull() {
+            addCriterion("despacho_cnt_dig is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntDigEqualTo(Integer value) {
+            addCriterion("despacho_cnt_dig =", value, "despachoCntDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntDigNotEqualTo(Integer value) {
+            addCriterion("despacho_cnt_dig <>", value, "despachoCntDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntDigGreaterThan(Integer value) {
+            addCriterion("despacho_cnt_dig >", value, "despachoCntDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntDigGreaterThanOrEqualTo(Integer value) {
+            addCriterion("despacho_cnt_dig >=", value, "despachoCntDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntDigLessThan(Integer value) {
+            addCriterion("despacho_cnt_dig <", value, "despachoCntDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntDigLessThanOrEqualTo(Integer value) {
+            addCriterion("despacho_cnt_dig <=", value, "despachoCntDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntDigIn(List<Integer> values) {
+            addCriterion("despacho_cnt_dig in", values, "despachoCntDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntDigNotIn(List<Integer> values) {
+            addCriterion("despacho_cnt_dig not in", values, "despachoCntDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntDigBetween(Integer value1, Integer value2) {
+            addCriterion("despacho_cnt_dig between", value1, value2, "despachoCntDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntDigNotBetween(Integer value1, Integer value2) {
+            addCriterion("despacho_cnt_dig not between", value1, value2, "despachoCntDig");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntRutIsNull() {
+            addCriterion("despacho_cnt_rut is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntRutIsNotNull() {
+            addCriterion("despacho_cnt_rut is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntRutEqualTo(Integer value) {
+            addCriterion("despacho_cnt_rut =", value, "despachoCntRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntRutNotEqualTo(Integer value) {
+            addCriterion("despacho_cnt_rut <>", value, "despachoCntRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntRutGreaterThan(Integer value) {
+            addCriterion("despacho_cnt_rut >", value, "despachoCntRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntRutGreaterThanOrEqualTo(Integer value) {
+            addCriterion("despacho_cnt_rut >=", value, "despachoCntRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntRutLessThan(Integer value) {
+            addCriterion("despacho_cnt_rut <", value, "despachoCntRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntRutLessThanOrEqualTo(Integer value) {
+            addCriterion("despacho_cnt_rut <=", value, "despachoCntRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntRutIn(List<Integer> values) {
+            addCriterion("despacho_cnt_rut in", values, "despachoCntRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntRutNotIn(List<Integer> values) {
+            addCriterion("despacho_cnt_rut not in", values, "despachoCntRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntRutBetween(Integer value1, Integer value2) {
+            addCriterion("despacho_cnt_rut between", value1, value2, "despachoCntRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntRutNotBetween(Integer value1, Integer value2) {
+            addCriterion("despacho_cnt_rut not between", value1, value2, "despachoCntRut");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntProIsNull() {
+            addCriterion("despacho_cnt_pro is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntProIsNotNull() {
+            addCriterion("despacho_cnt_pro is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntProEqualTo(Integer value) {
+            addCriterion("despacho_cnt_pro =", value, "despachoCntPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntProNotEqualTo(Integer value) {
+            addCriterion("despacho_cnt_pro <>", value, "despachoCntPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntProGreaterThan(Integer value) {
+            addCriterion("despacho_cnt_pro >", value, "despachoCntPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntProGreaterThanOrEqualTo(Integer value) {
+            addCriterion("despacho_cnt_pro >=", value, "despachoCntPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntProLessThan(Integer value) {
+            addCriterion("despacho_cnt_pro <", value, "despachoCntPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntProLessThanOrEqualTo(Integer value) {
+            addCriterion("despacho_cnt_pro <=", value, "despachoCntPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntProIn(List<Integer> values) {
+            addCriterion("despacho_cnt_pro in", values, "despachoCntPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntProNotIn(List<Integer> values) {
+            addCriterion("despacho_cnt_pro not in", values, "despachoCntPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntProBetween(Integer value1, Integer value2) {
+            addCriterion("despacho_cnt_pro between", value1, value2, "despachoCntPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntProNotBetween(Integer value1, Integer value2) {
+            addCriterion("despacho_cnt_pro not between", value1, value2, "despachoCntPro");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntRobIsNull() {
+            addCriterion("despacho_cnt_rob is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntRobIsNotNull() {
+            addCriterion("despacho_cnt_rob is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntRobEqualTo(Integer value) {
+            addCriterion("despacho_cnt_rob =", value, "despachoCntRob");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntRobNotEqualTo(Integer value) {
+            addCriterion("despacho_cnt_rob <>", value, "despachoCntRob");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntRobGreaterThan(Integer value) {
+            addCriterion("despacho_cnt_rob >", value, "despachoCntRob");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntRobGreaterThanOrEqualTo(Integer value) {
+            addCriterion("despacho_cnt_rob >=", value, "despachoCntRob");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntRobLessThan(Integer value) {
+            addCriterion("despacho_cnt_rob <", value, "despachoCntRob");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntRobLessThanOrEqualTo(Integer value) {
+            addCriterion("despacho_cnt_rob <=", value, "despachoCntRob");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntRobIn(List<Integer> values) {
+            addCriterion("despacho_cnt_rob in", values, "despachoCntRob");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntRobNotIn(List<Integer> values) {
+            addCriterion("despacho_cnt_rob not in", values, "despachoCntRob");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntRobBetween(Integer value1, Integer value2) {
+            addCriterion("despacho_cnt_rob between", value1, value2, "despachoCntRob");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespachoCntRobNotBetween(Integer value1, Integer value2) {
+            addCriterion("despacho_cnt_rob not between", value1, value2, "despachoCntRob");
+            return (Criteria) this;
+        }
+
         public Criteria andDespachoTrabEnFecIsNull() {
             addCriterion("despacho_trab_en_fec is null");
             return (Criteria) this;

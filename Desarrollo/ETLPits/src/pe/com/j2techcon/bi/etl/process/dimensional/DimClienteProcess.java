@@ -340,20 +340,23 @@ public class DimClienteProcess {
 				}
 				offset = offset + constantes.getSizePage();
 			}else{
-				tAreaClienteExample.clear();
-				tAreaClienteExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
-				tAreaClienteExample.createCriteria().andProcIdNotEqualTo(process);
-				lstAreaCliente = tAreaClienteManager.selectByExample(tAreaClienteExample);
-				if(lstAreaCliente.size()>0){
-					for (Iterator<TAreaCliente> iterator = lstAreaCliente.iterator(); iterator.hasNext();) {
-						tAreaCliente = iterator.next();
-						dimCliente.clear();
-						processRecordAreaCliente();
-					}
-				}
-				
 				lstAreaCliente.clear();
+				
+				tCliente.clear();
+				tClienteExample.clear();
+				
+				tAreaCliente.clear();
 				tAreaClienteExample.clear();
+				
+				tUbigeo.clear();
+				tUbigeoExample.clear();
+				
+				tParametro.clear();
+				tParametroExample.clear();
+				
+				dimCliente.clear();
+				dimClienteExample.clear();
+				
 				offset = 0;
 				break;
 			}
@@ -374,19 +377,6 @@ public class DimClienteProcess {
 				}
 				offset = offset + constantes.getSizePage();
 			}else{
-				tClienteExample.clear();
-				tClienteExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
-				tClienteExample.createCriteria().andProcIdNotEqualTo(process);
-				lstCliente = tClienteManager.selectByExample(tClienteExample);
-				if(lstCliente.size()>0){
-					for (Iterator<TCliente> iterator = lstCliente.iterator(); iterator.hasNext();) {
-						tCliente = iterator.next();
-						dimCliente.clear();
-						dimClienteExample.clear();
-						processRecordCliente();
-					}
-				}
-				
 				lstCliente.clear();
 				
 				tCliente.clear();

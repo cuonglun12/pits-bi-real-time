@@ -5,6 +5,10 @@ public class Constantes {
 	private int	paramCodeTipoAreaCliente;
 	
 	private int	paramCodeEstadoCargoDespacho;
+	private String paramCodeEstadoCargoDespachoDigitado;
+	private String paramCodeEstadoCargoDespachoRuta;
+	private String paramCodeEstadoCargoDespachoProvincia;
+	private String paramCodeEstadoCargoDespachoRobo;
 	private String paramCodeEstadoCargoDespachoEntregado;
 	private String paramCodeEstadoCargoDespachoMotivado;
 	private String paramCodeEstadoCargoDespachoReenviado;
@@ -32,7 +36,15 @@ public class Constantes {
 	private int	paramCodeTipoDespacho;
 	private int	paramCodeTipoRuta;
 	private int	paramCodeCategoriaEmpleado;
+	
 	private int	paramCodeEstadoOrden;
+	private String paramCodeEstadoOrdenGenerado;
+	private String paramCodeEstadoOrdenPendiente;
+	private String paramCodeEstadoOrdenCerrado;
+	private String paramCodeEstadoOrdenAnulado;
+	private String paramCodeEstadoOrdenFacturado;
+
+	
 	private int	paramCodeTipoIngreso;
 	private int	paramCodeTipoMoneda;
 	private int	paramCodeTipoPago;
@@ -79,6 +91,42 @@ public class Constantes {
 
 	public int getParamCodeEstadoCargoDespacho() {
 		return paramCodeEstadoCargoDespacho;
+	}
+
+	public String getParamCodeEstadoCargoDespachoDigitado() {
+		return paramCodeEstadoCargoDespachoDigitado;
+	}
+
+	public void setParamCodeEstadoCargoDespachoDigitado(
+			String paramCodeEstadoCargoDespachoDigitado) {
+		this.paramCodeEstadoCargoDespachoDigitado = paramCodeEstadoCargoDespachoDigitado;
+	}
+
+	public String getParamCodeEstadoCargoDespachoRuta() {
+		return paramCodeEstadoCargoDespachoRuta;
+	}
+
+	public void setParamCodeEstadoCargoDespachoRuta(
+			String paramCodeEstadoCargoDespachoRuta) {
+		this.paramCodeEstadoCargoDespachoRuta = paramCodeEstadoCargoDespachoRuta;
+	}
+
+	public String getParamCodeEstadoCargoDespachoProvincia() {
+		return paramCodeEstadoCargoDespachoProvincia;
+	}
+
+	public void setParamCodeEstadoCargoDespachoProvincia(
+			String paramCodeEstadoCargoDespachoProvincia) {
+		this.paramCodeEstadoCargoDespachoProvincia = paramCodeEstadoCargoDespachoProvincia;
+	}
+
+	public String getParamCodeEstadoCargoDespachoRobo() {
+		return paramCodeEstadoCargoDespachoRobo;
+	}
+
+	public void setParamCodeEstadoCargoDespachoRobo(
+			String paramCodeEstadoCargoDespachoRobo) {
+		this.paramCodeEstadoCargoDespachoRobo = paramCodeEstadoCargoDespachoRobo;
 	}
 
 	public void setParamCodeEstadoCargoDespacho(int paramCodeEstadoCargoDespacho) {
@@ -307,6 +355,48 @@ public class Constantes {
 
 	public void setParamCodeEstadoOrden(int paramCodeEstadoOrden) {
 		this.paramCodeEstadoOrden = paramCodeEstadoOrden;
+	}
+
+	public String getParamCodeEstadoOrdenGenerado() {
+		return paramCodeEstadoOrdenGenerado;
+	}
+
+	public void setParamCodeEstadoOrdenGenerado(String paramCodeEstadoOrdenGenerado) {
+		this.paramCodeEstadoOrdenGenerado = paramCodeEstadoOrdenGenerado;
+	}
+
+	public String getParamCodeEstadoOrdenPendiente() {
+		return paramCodeEstadoOrdenPendiente;
+	}
+
+	public void setParamCodeEstadoOrdenPendiente(
+			String paramCodeEstadoOrdenPendiente) {
+		this.paramCodeEstadoOrdenPendiente = paramCodeEstadoOrdenPendiente;
+	}
+
+	public String getParamCodeEstadoOrdenCerrado() {
+		return paramCodeEstadoOrdenCerrado;
+	}
+
+	public void setParamCodeEstadoOrdenCerrado(String paramCodeEstadoOrdenCerrado) {
+		this.paramCodeEstadoOrdenCerrado = paramCodeEstadoOrdenCerrado;
+	}
+
+	public String getParamCodeEstadoOrdenAnulado() {
+		return paramCodeEstadoOrdenAnulado;
+	}
+
+	public void setParamCodeEstadoOrdenAnulado(String paramCodeEstadoOrdenAnulado) {
+		this.paramCodeEstadoOrdenAnulado = paramCodeEstadoOrdenAnulado;
+	}
+
+	public String getParamCodeEstadoOrdenFacturado() {
+		return paramCodeEstadoOrdenFacturado;
+	}
+
+	public void setParamCodeEstadoOrdenFacturado(
+			String paramCodeEstadoOrdenFacturado) {
+		this.paramCodeEstadoOrdenFacturado = paramCodeEstadoOrdenFacturado;
 	}
 
 	public int getParamCodeTipoIngreso() {
@@ -568,23 +658,33 @@ public class Constantes {
 				+ ", paramCodeTipoRuta=" + paramCodeTipoRuta
 				+ ", paramCodeCategoriaEmpleado=" + paramCodeCategoriaEmpleado
 				+ ", paramCodeEstadoOrden=" + paramCodeEstadoOrden
-				+ ", paramCodeTipoIngreso=" + paramCodeTipoIngreso
-				+ ", paramCodeTipoMoneda=" + paramCodeTipoMoneda
-				+ ", paramCodeTipoPago=" + paramCodeTipoPago
-				+ ", paramCodeTipoReparto=" + paramCodeTipoReparto
-				+ ", paramCodeTipoProducto=" + paramCodeTipoProducto
-				+ ", paramCodeTipoSede=" + paramCodeTipoSede
-				+ ", paramCodeUbigeoPais=" + paramCodeUbigeoPais
-				+ ", paramCodeUbigeoDepartamento="
+				+ ", paramCodeEstadoOrdenGenerado="
+				+ paramCodeEstadoOrdenGenerado
+				+ ", paramCodeEstadoOrdenPendiente="
+				+ paramCodeEstadoOrdenPendiente
+				+ ", paramCodeEstadoOrdenCerrado="
+				+ paramCodeEstadoOrdenCerrado
+				+ ", paramCodeEstadoOrdenAnulado="
+				+ paramCodeEstadoOrdenAnulado
+				+ ", paramCodeEstadoOrdenFacturado="
+				+ paramCodeEstadoOrdenFacturado + ", paramCodeTipoIngreso="
+				+ paramCodeTipoIngreso + ", paramCodeTipoMoneda="
+				+ paramCodeTipoMoneda + ", paramCodeTipoPago="
+				+ paramCodeTipoPago + ", paramCodeTipoReparto="
+				+ paramCodeTipoReparto + ", paramCodeTipoProducto="
+				+ paramCodeTipoProducto + ", paramCodeTipoSede="
+				+ paramCodeTipoSede + ", paramCodeUbigeoPais="
+				+ paramCodeUbigeoPais + ", paramCodeUbigeoDepartamento="
 				+ paramCodeUbigeoDepartamento + ", paramCodeUbigeoProvincia="
 				+ paramCodeUbigeoProvincia + ", paramCodeUbigeoDistrito="
 				+ paramCodeUbigeoDistrito + ", valueStringDefault="
 				+ valueStringDefault + ", valueNumberDefault="
-				+ valueNumberDefault + ", stateRecordNew=" + stateRecordNew
-				+ ", stateRecordProcessed=" + stateRecordProcessed
-				+ ", stateRecordInconsistent=" + stateRecordInconsistent
-				+ ", stateProcessStarted=" + stateProcessStarted
-				+ ", stateProcessCompletedCorrectly="
+				+ valueNumberDefault + ", valueNumberUnit=" + valueNumberUnit
+				+ ", valueNumberCero=" + valueNumberCero + ", stateRecordNew="
+				+ stateRecordNew + ", stateRecordProcessed="
+				+ stateRecordProcessed + ", stateRecordInconsistent="
+				+ stateRecordInconsistent + ", stateProcessStarted="
+				+ stateProcessStarted + ", stateProcessCompletedCorrectly="
 				+ stateProcessCompletedCorrectly
 				+ ", stateProcessCompletedErrors="
 				+ stateProcessCompletedErrors + ", typeProcessSimple="
@@ -596,7 +696,6 @@ public class Constantes {
 				+ ", resultProcessCompletedErrors="
 				+ resultProcessCompletedErrors + ", sizePage=" + sizePage + "]";
 	}
-
 	
 }
 
