@@ -24,6 +24,8 @@
 		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimClienteExample" alias="DimClienteExample"/>
 		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimEstado" alias="DimEstado"/>
 		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimEstadoExample" alias="DimEstadoExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimFacturado" alias="DimFacturado"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimFacturadoExample" alias="DimFacturadoExample"/>
 		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimMoneda" alias="DimMoneda"/>
 		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimMonedaExample" alias="DimMonedaExample"/>
 		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimPersonal" alias="DimPersonal"/>
@@ -58,6 +60,7 @@
     <mappers>
         <mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/DimClienteMapper.xml" />
 		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/DimEstadoMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/DimFacturadoMapper.xml" />
 		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/DimMonedaMapper.xml" />
 		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/DimPersonalMapper.xml" />
 		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/DimProductoMapper.xml" />

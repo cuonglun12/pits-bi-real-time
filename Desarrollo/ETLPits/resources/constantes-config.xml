@@ -13,6 +13,10 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="paramCodeTipoAreaCliente" value="${param.code.tipo.area.cliente}"></property>
 		
 		<property name="paramCodeEstadoCargoDespacho" value="${param.code.estado.cargo.despacho}"></property>
+		<property name="paramCodeEstadoCargoDespachoDigitado" value="${param.code.estado.cargo.despacho.digitado}"></property>
+		<property name="paramCodeEstadoCargoDespachoRuta" value="${param.code.estado.cargo.despacho.ruta}"></property>
+		<property name="paramCodeEstadoCargoDespachoProvincia" value="${param.code.estado.cargo.despacho.provincia}"></property>
+		<property name="paramCodeEstadoCargoDespachoRobo" value="${param.code.estado.cargo.despacho.robo}"></property>
 		<property name="paramCodeEstadoCargoDespachoEntregado" value="${param.code.estado.cargo.despacho.entregado}"></property>
 		<property name="paramCodeEstadoCargoDespachoMotivado" value="${param.code.estado.cargo.despacho.motivado}"></property>
 		<property name="paramCodeEstadoCargoDespachoReenviado" value="${param.code.estado.cargo.despacho.reenviado}"></property>
@@ -40,7 +44,14 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="paramCodeTipoDespacho" value="${param.code.tipo.despacho}"></property>
 		<property name="paramCodeTipoRuta" value="${param.code.tipo.ruta}"></property>
 		<property name="paramCodeCategoriaEmpleado" value="${param.code.categoria.empleado}"></property>
+		
 		<property name="paramCodeEstadoOrden" value="${param.code.estado.orden}"></property>
+		<property name="paramCodeEstadoOrdenGenerado" value="${param.code.estado.orden.generado}"></property>
+		<property name="paramCodeEstadoOrdenPendiente" value="${param.code.estado.orden.pendiente}"></property>
+		<property name="paramCodeEstadoOrdenCerrado" value="${param.code.estado.orden.cerrado}"></property>
+		<property name="paramCodeEstadoOrdenAnulado" value="${param.code.estado.orden.anulado}"></property>
+		<property name="paramCodeEstadoOrdenFacturado" value="${param.code.estado.orden.facturado}"></property>
+
 		<property name="paramCodeTipoIngreso" value="${param.code.tipo.ingreso}"></property>
 		<property name="paramCodeTipoMoneda" value="${param.code.tipo.moneda}"></property>
 		<property name="paramCodeTipoPago" value="${param.code.tipo.pago}"></property>

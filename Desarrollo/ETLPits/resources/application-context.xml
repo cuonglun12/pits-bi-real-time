@@ -56,6 +56,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 						
 	<bean id="dimClienteMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.DimClienteMapper" /></bean>		
 	<bean id="dimEstadoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.DimEstadoMapper" /></bean>		
+	<bean id="dimFacturadoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.DimFacturadoMapper" /></bean>
 	<bean id="dimMonedaMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.DimMonedaMapper" /></bean>		
 	<bean id="dimPersonalMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.DimPersonalMapper" /></bean>		
 	<bean id="dimProductoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.DimProductoMapper" /></bean>		
@@ -93,6 +94,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 									
 	<bean id="dimClienteManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.DimClienteManager"><property name="dimClienteMapper" ref="dimClienteMapper" /></bean>
 	<bean id="dimEstadoManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.DimEstadoManager"><property name="dimEstadoMapper" ref="dimEstadoMapper" /></bean>
+	<bean id="dimFacturadoManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.DimFacturadoManager"><property name="dimFacturadoMapper" ref="dimFacturadoMapper" /></bean>
 	<bean id="dimMonedaManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.DimMonedaManager"><property name="dimMonedaMapper" ref="dimMonedaMapper" /></bean>
 	<bean id="dimPersonalManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.DimPersonalManager"><property name="dimPersonalMapper" ref="dimPersonalMapper" /></bean>
 	<bean id="dimProductoManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.DimProductoManager"><property name="dimProductoMapper" ref="dimProductoMapper" /></bean>
@@ -132,6 +134,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		
 		<aop:advisor pointcut="execution(* *..DimClienteManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
 		<aop:advisor pointcut="execution(* *..DimEstadoManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
+		<aop:advisor pointcut="execution(* *..DimFacturadoManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
 		<aop:advisor pointcut="execution(* *..DimMonedaManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
 		<aop:advisor pointcut="execution(* *..DimPersonalManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
 		<aop:advisor pointcut="execution(* *..DimProductoManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
