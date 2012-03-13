@@ -50,7 +50,6 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="paramCodeEstadoOrdenPendiente" value="${param.code.estado.orden.pendiente}"></property>
 		<property name="paramCodeEstadoOrdenCerrado" value="${param.code.estado.orden.cerrado}"></property>
 		<property name="paramCodeEstadoOrdenAnulado" value="${param.code.estado.orden.anulado}"></property>
-		<property name="paramCodeEstadoOrdenFacturado" value="${param.code.estado.orden.facturado}"></property>
 
 		<property name="paramCodeTipoIngreso" value="${param.code.tipo.ingreso}"></property>
 		<property name="paramCodeTipoMoneda" value="${param.code.tipo.moneda}"></property>
@@ -62,6 +61,10 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="paramCodeUbigeoDepartamento" value="${param.code.ubigeo.departamento}"></property>
 		<property name="paramCodeUbigeoProvincia" value="${param.code.ubigeo.provincia}"></property>
 		<property name="paramCodeUbigeoDistrito" value="${param.code.ubigeo.distrito}"></property>
+
+		<property name="paramCodeEstadoFacturado" value="${param.code.estado.facturado}"></property>
+		<property name="paramCodeEstadoFacturadoSi" value="${param.code.estado.facturado.si}"></property>
+		<property name="paramCodeEstadoFacturadoNo" value="${param.code.estado.facturado.no}"></property>
 
 		<property name="valueStringDefault" value="${value.string.default}"></property>
 		<property name="valueNumberDefault" value="${value.number.default}"></property>
