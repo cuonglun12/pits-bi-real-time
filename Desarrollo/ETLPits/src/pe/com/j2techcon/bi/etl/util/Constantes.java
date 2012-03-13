@@ -56,6 +56,10 @@ public class Constantes {
 	private int	paramCodeUbigeoProvincia;
 	private int	paramCodeUbigeoDistrito;
 
+	private int	paramCodeEstadoFacturado;
+	private String paramCodeEstadoFacturadoSi;
+	private String paramCodeEstadoFacturadoNo;
+
 	private String valueStringDefault;
 	private int valueNumberDefault;
 	
@@ -479,6 +483,30 @@ public class Constantes {
 		this.paramCodeUbigeoDistrito = paramCodeUbigeoDistrito;
 	}
 
+	public int getParamCodeEstadoFacturado() {
+		return paramCodeEstadoFacturado;
+	}
+
+	public void setParamCodeEstadoFacturado(int paramCodeEstadoFacturado) {
+		this.paramCodeEstadoFacturado = paramCodeEstadoFacturado;
+	}
+
+	public String getParamCodeEstadoFacturadoSi() {
+		return paramCodeEstadoFacturadoSi;
+	}
+
+	public void setParamCodeEstadoFacturadoSi(String paramCodeEstadoFacturadoSi) {
+		this.paramCodeEstadoFacturadoSi = paramCodeEstadoFacturadoSi;
+	}
+
+	public String getParamCodeEstadoFacturadoNo() {
+		return paramCodeEstadoFacturadoNo;
+	}
+
+	public void setParamCodeEstadoFacturadoNo(String paramCodeEstadoFacturadoNo) {
+		this.paramCodeEstadoFacturadoNo = paramCodeEstadoFacturadoNo;
+	}
+
 	public String getValueStringDefault() {
 		return valueStringDefault;
 	}
@@ -622,6 +650,14 @@ public class Constantes {
 		return "Constantes [paramCodeTipoAreaCliente="
 				+ paramCodeTipoAreaCliente + ", paramCodeEstadoCargoDespacho="
 				+ paramCodeEstadoCargoDespacho
+				+ ", paramCodeEstadoCargoDespachoDigitado="
+				+ paramCodeEstadoCargoDespachoDigitado
+				+ ", paramCodeEstadoCargoDespachoRuta="
+				+ paramCodeEstadoCargoDespachoRuta
+				+ ", paramCodeEstadoCargoDespachoProvincia="
+				+ paramCodeEstadoCargoDespachoProvincia
+				+ ", paramCodeEstadoCargoDespachoRobo="
+				+ paramCodeEstadoCargoDespachoRobo
 				+ ", paramCodeEstadoCargoDespachoEntregado="
 				+ paramCodeEstadoCargoDespachoEntregado
 				+ ", paramCodeEstadoCargoDespachoMotivado="
@@ -677,7 +713,10 @@ public class Constantes {
 				+ paramCodeUbigeoPais + ", paramCodeUbigeoDepartamento="
 				+ paramCodeUbigeoDepartamento + ", paramCodeUbigeoProvincia="
 				+ paramCodeUbigeoProvincia + ", paramCodeUbigeoDistrito="
-				+ paramCodeUbigeoDistrito + ", valueStringDefault="
+				+ paramCodeUbigeoDistrito + ", paramCodeEstadoFacturado="
+				+ paramCodeEstadoFacturado + ", paramCodeEstadoFacturadoSi="
+				+ paramCodeEstadoFacturadoSi + ", paramCodeEstadoFacturadoNo="
+				+ paramCodeEstadoFacturadoNo + ", valueStringDefault="
 				+ valueStringDefault + ", valueNumberDefault="
 				+ valueNumberDefault + ", valueNumberUnit=" + valueNumberUnit
 				+ ", valueNumberCero=" + valueNumberCero + ", stateRecordNew="
@@ -696,7 +735,6 @@ public class Constantes {
 				+ ", resultProcessCompletedErrors="
 				+ resultProcessCompletedErrors + ", sizePage=" + sizePage + "]";
 	}
-	
 }
 
 

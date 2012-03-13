@@ -413,10 +413,10 @@ public class FactCotizacionProcess {
 		}
 		
 		if(recordRejected > 0) {
-			resultProcess = constantes.getResultProcessCompletedCorrectly();
+			resultProcess = constantes.getResultProcessCompletedErrors();
 		}
 		else{
-			resultProcess = constantes.getResultProcessCompletedErrors();
+			resultProcess = constantes.getResultProcessCompletedCorrectly();
 		}
 		
 		recordTotal = recordProcessed + recordRejected;
@@ -529,6 +529,7 @@ public class FactCotizacionProcess {
 			
 			tOrdenExample.clear();
 			tOrdenExample.createCriteria().andCotiIdEqualTo(factCotizacion.getCotizacionKey());
+			tOrdenExample.createCriteria().andOrdCodEstEqualTo(tParametro.getParamId());
 			tOrdenExample.setWhereBetweenFields(" and ord_fec_cie > ord_fec_ven");
 			factCotizacion.setCotizacionCntOrdCftiempo(tOrdenManager.countByExample(tOrdenExample));
 			
@@ -546,8 +547,8 @@ public class FactCotizacionProcess {
 			tOrdenExample.clear();
 			tOrdenExample.createCriteria().andCotiIdEqualTo(factCotizacion.getCotizacionKey());
 			tParametroExample.clear();
-			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoOrden());
-			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoOrdenFacturado());
+			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoFacturado());
+			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoFacturadoSi());
 			tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
 			tOrdenExample.createCriteria().andOrdCodEstEqualTo(tParametro.getParamId());
 			factCotizacion.setCotizacionCntOrdFac(tOrdenManager.countByExample(tOrdenExample));
