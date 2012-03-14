@@ -426,7 +426,7 @@ public class FactCotizacionProcess {
 	
 	public void processRecordCotizacion(){
 		
-		if(!factCotizacion.getProcId().equals(process)){
+		if(!tCotizacion.getProcId().equals(process)){
 		
 			completeFildCotizacion();
 			

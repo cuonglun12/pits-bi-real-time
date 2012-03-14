@@ -7,8 +7,8 @@ import org.springframework.beans.factory.BeanFactory;
 
 import pe.com.j2techcon.bi.etl.logic.dimensional.DimTiempoManager;
 import pe.com.j2techcon.bi.etl.logic.dimensional.FactDespachoManager;
-import pe.com.j2techcon.bi.etl.logic.generic.TCargoDespachoManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TDespachoManager;
+import pe.com.j2techcon.bi.etl.logic.generic.TCargoDespachoManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TParametroManager;
 import pe.com.j2techcon.bi.etl.util.Constantes;
 import pe.com.j2techcon.bi.etl.util.Util;
@@ -17,9 +17,9 @@ import pe.com.j2techcon.bi.etl.domain.dimensional.DimTiempoExample;
 import pe.com.j2techcon.bi.etl.domain.dimensional.FactDespacho;
 import pe.com.j2techcon.bi.etl.domain.dimensional.FactDespachoExample;
 import pe.com.j2techcon.bi.etl.domain.generic.TCargoDespacho;
-import pe.com.j2techcon.bi.etl.domain.generic.TCargoDespachoExample;
 import pe.com.j2techcon.bi.etl.domain.generic.TDespacho;
 import pe.com.j2techcon.bi.etl.domain.generic.TDespachoExample;
+import pe.com.j2techcon.bi.etl.domain.generic.TCargoDespachoExample;
 import pe.com.j2techcon.bi.etl.domain.generic.TParametro;
 import pe.com.j2techcon.bi.etl.domain.generic.TParametroExample;
 
@@ -39,7 +39,7 @@ public class FactDespachoProcess {
 	private int recordRejected;
 	private int resultProcess;
 	private int resultTransaction;
-	private int recordTotalCargo;
+	private int recordTotalOrden;
 	
 	private String stateRecordDimensional;
 	private String stateRecordGeneric;
@@ -69,6 +69,22 @@ public class FactDespachoProcess {
 
 	public BeanFactory getFactory() {
 		return factory;
+	}
+
+	public TCargoDespacho gettCargoDespacho() {
+		return tCargoDespacho;
+	}
+
+	public void settCargoDespacho(TCargoDespacho tCargoDespacho) {
+		this.tCargoDespacho = tCargoDespacho;
+	}
+
+	public TCargoDespachoExample gettCargoDespachoExample() {
+		return tCargoDespachoExample;
+	}
+
+	public void settCargoDespachoExample(TCargoDespachoExample tCargoDespachoExample) {
+		this.tCargoDespachoExample = tCargoDespachoExample;
 	}
 
 	public void setFactory(BeanFactory factory) {
@@ -155,12 +171,12 @@ public class FactDespachoProcess {
 		this.resultTransaction = resultTransaction;
 	}
 
-	public int getRecordTotalCargo() {
-		return recordTotalCargo;
+	public int getRecordTotalOrden() {
+		return recordTotalOrden;
 	}
 
-	public void setRecordTotalCargo(int recordTotalCargo) {
-		this.recordTotalCargo = recordTotalCargo;
+	public void setRecordTotalOrden(int recordTotalOrden) {
+		this.recordTotalOrden = recordTotalOrden;
 	}
 
 	public String getStateRecordDimensional() {
@@ -177,22 +193,6 @@ public class FactDespachoProcess {
 
 	public void setStateRecordGeneric(String stateRecordGeneric) {
 		this.stateRecordGeneric = stateRecordGeneric;
-	}
-
-	public TCargoDespacho gettCargoDespacho() {
-		return tCargoDespacho;
-	}
-
-	public void settCargoDespacho(TCargoDespacho tCargoDespacho) {
-		this.tCargoDespacho = tCargoDespacho;
-	}
-
-	public TCargoDespachoExample gettCargoDespachoExample() {
-		return tCargoDespachoExample;
-	}
-
-	public void settCargoDespachoExample(TCargoDespachoExample tCargoDespachoExample) {
-		this.tCargoDespachoExample = tCargoDespachoExample;
 	}
 
 	public TDespacho gettDespacho() {
@@ -339,36 +339,73 @@ public class FactDespachoProcess {
 		int offset = 0;
 		
 		while(true) {
+			tCargoDespachoExample.clear();
+			tCargoDespachoExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
+			tCargoDespachoExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
+			List<TCargoDespacho> lstCargoDespacho = tCargoDespachoManager.selectByExample(tCargoDespachoExample);
+			if(lstCargoDespacho.size()>0){
+				for (Iterator<TCargoDespacho> iterator = lstCargoDespacho.iterator(); iterator.hasNext();) {
+					tCargoDespacho = iterator.next();
+					tDespacho = tDespachoManager.selectByPrimaryKey(tCargoDespacho.getCarDespId());
+					factDespacho.clear();
+					processRecordDespacho();
+				}
+				offset = offset + constantes.getSizePage();
+			}else{
+				lstCargoDespacho.clear();
+				
+				tCargoDespacho.clear();
+				tCargoDespachoExample.clear();
+				
+				tDespacho.clear();
+				tDespachoExample.clear();
+				
+				tParametro.clear();
+				tParametroExample.clear();
+				
+				factDespacho.clear();
+				factDespachoExample.clear();
+				
+				dimTiempo.clear();
+				dimTiempoExample.clear();
+				
+				offset = 0;
+				break;
+			}
 			
+		}
+		
+		while(true){
 			tDespachoExample.clear();
 			tDespachoExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
+			tDespachoExample.createCriteria().andProcIdNotEqualTo(process);
 			tDespachoExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
 			List<TDespacho> lstDespacho = tDespachoManager.selectByExample(tDespachoExample);
 			if(lstDespacho.size()>0){
 				for (Iterator<TDespacho> iterator = lstDespacho.iterator(); iterator.hasNext();) {
 					tDespacho = iterator.next();
 					factDespacho.clear();
-					processRecordCotizacion();
+					processRecordDespacho();
 				}
 				offset = offset + constantes.getSizePage();
 			}else{
 				
 				lstDespacho.clear();
 				
-				tDespacho.clear();
-				tDespachoExample.clear();
-				
 				tCargoDespacho.clear();
 				tCargoDespachoExample.clear();
+				
+				tDespacho.clear();
+				tDespachoExample.clear();
 				
 				tParametro.clear();
 				tParametroExample.clear();
 				
-				dimTiempo.clear();
-				dimTiempoExample.clear();
-				
 				factDespacho.clear();
 				factDespachoExample.clear();
+				
+				dimTiempo.clear();
+				dimTiempoExample.clear();
 				
 				offset = 0;
 				break;
@@ -387,50 +424,57 @@ public class FactDespachoProcess {
 		return resultProcess;
 	}
 	
-	public void processRecordCotizacion(){
+	public void processRecordDespacho(){
 		
-		completeFildCotizacion();
+		if(!tDespacho.getProcId().equals(process)){
 		
-		if(typeProcess.equals(constantes.getTypeProcessSimple())){
-			if(tDespacho.getCodIndCam().equals(constantes.getStateRecordNew())){
-				if(insertRecordDimensionalCotizacion()> constantes.getResultTransactionNoResult()){
-					stateRecordGeneric = constantes.getStateRecordProcessed();
-					recordProcessed = recordProcessed + 1; 
-				} else{
-					stateRecordGeneric = constantes.getStateRecordInconsistent();
-					recordRejected = recordRejected + 1;
-				}
-			}else{
-				if(updateRecordDimensionalCotizacion() > constantes.getResultTransactionNoResult()){
-					stateRecordGeneric = constantes.getStateRecordProcessed();
-					recordProcessed = recordProcessed + 1; 
-				} else{
-					stateRecordGeneric = constantes.getStateRecordInconsistent();
-					recordRejected = recordRejected + 1;
-				}
-			}
-		}else{
-			if(updateRecordDimensionalCotizacion() > constantes.getResultTransactionNoResult()){
-				stateRecordGeneric = constantes.getStateRecordProcessed();
-				recordProcessed = recordProcessed + 1; 
-			}else{
-				if(insertRecordDimensionalCotizacion() > constantes.getResultTransactionNoResult()){
-					stateRecordGeneric = constantes.getStateRecordProcessed();
-					recordProcessed = recordProcessed + 1;
+			completeFildDespacho();
+			
+			if(typeProcess.equals(constantes.getTypeProcessSimple())){
+				if(tDespacho.getCodIndCam().equals(constantes.getStateRecordNew())){
+					if(insertRecordDimensionalDespacho()> constantes.getResultTransactionNoResult()){
+						stateRecordGeneric = constantes.getStateRecordProcessed();
+						recordProcessed = recordProcessed + 1; 
+					} else{
+						stateRecordGeneric = constantes.getStateRecordInconsistent();
+						recordRejected = recordRejected + 1;
+					}
 				}else{
-					stateRecordGeneric = constantes.getStateRecordInconsistent();
-					recordRejected = recordRejected + 1;
+					if(updateRecordDimensionalDespacho() > constantes.getResultTransactionNoResult()){
+						stateRecordGeneric = constantes.getStateRecordProcessed();
+						recordProcessed = recordProcessed + 1; 
+					} else{
+						stateRecordGeneric = constantes.getStateRecordInconsistent();
+						recordRejected = recordRejected + 1;
+					}
+				}
+			}else{
+				if(updateRecordDimensionalDespacho() > constantes.getResultTransactionNoResult()){
+					stateRecordGeneric = constantes.getStateRecordProcessed();
+					recordProcessed = recordProcessed + 1; 
+				}else{
+					if(insertRecordDimensionalDespacho() > constantes.getResultTransactionNoResult()){
+						stateRecordGeneric = constantes.getStateRecordProcessed();
+						recordProcessed = recordProcessed + 1;
+					}else{
+						stateRecordGeneric = constantes.getStateRecordInconsistent();
+						recordRejected = recordRejected + 1;
+					}
 				}
 			}
+			
+			updateRecordGenericDespacho(stateRecordGeneric);
+			
+		}else{
+			recordProcessed = recordProcessed + 1;
 		}
-		
-		updateRecordGenericCotizacion(stateRecordGeneric);
 	}
 	
-	public void completeFildCotizacion(){
+	public void completeFildDespacho(){
 		factDespacho.setDespachoKey(tDespacho.getDespId());
 		factDespacho.setDespachoKeySede(tDespacho.getSedId());
-		factDespacho.setDespachoKeyZona(tDespacho.getEmpCatId());
+		factDespacho.setDespachoKeyZona(tDespacho.getZonId());
+		factDespacho.setDespachoKeyPersonal(tDespacho.getEmpCatId());
 		factDespacho.setDespachoKeyTipoRuta(tDespacho.getDespCodTipRut());
 		
 		dimTiempoExample.clear();
@@ -447,89 +491,146 @@ public class FactDespachoProcess {
 		dimTiempoExample.createCriteria().andTiempoFechaEqualTo(tDespacho.getDespFecRetRea());
 		dimTiempo = (dimTiempoManager.selectByExample(dimTiempoExample)).get(0);
 		factDespacho.setDespachoKeyFecRetr(dimTiempo.getTiempoKey());
-
+		
 		factDespacho.setDespachoKeyEstado(tDespacho.getDespCodEst());
 		factDespacho.setDespachoMonPasaje(tDespacho.getDespMonPasaje());
 		
-		if(Util.isEqualsWithDefaultDate(tDespacho.getDespFecRetRea()) && Util.isGreaterThanCurrentDate(tDespacho.getDespFecRetPro())){
-			factDespacho.setDespachoCntDiasExc(Util.getDaysAfterDate(tDespacho.getDespFecRetPro()));
-			factDespacho.setDespachoTrabEnFec((short)constantes.getValueNumberCero());
-			factDespacho.setDespachoTrabFueraFec((short)constantes.getValueNumberUnit());
-		}else{
-			factDespacho.setDespachoTrabEnFec((short)constantes.getValueNumberUnit());
-			factDespacho.setDespachoTrabFueraFec((short)constantes.getValueNumberCero());
+		tParametroExample.clear();
+		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoDespacho());
+		tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoDespachoAnulado());
+		tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
+		
+		if(tDespacho.getDespCodEst() != tParametro.getParamId()){
+			if(Util.isEqualsWithDefaultDate(tDespacho.getDespFecRetRea())){
+				if(Util.isGreaterThanCurrentDate(tDespacho.getDespFecRetPro())){
+					factDespacho.setDespachoCntDiasExc(Util.getDaysAfterDate(tDespacho.getDespFecRetPro()));
+					factDespacho.setDespachoTrabEnFec((short)constantes.getValueNumberCero());
+					factDespacho.setDespachoTrabFueraFec((short)constantes.getValueNumberUnit());
+				}else{
+					factDespacho.setDespachoCntDiasExc(constantes.getValueNumberCero());
+					factDespacho.setDespachoTrabEnFec((short)constantes.getValueNumberUnit());
+					factDespacho.setDespachoTrabFueraFec((short)constantes.getValueNumberCero());
+				}
+			}else{
+				if(Util.isGreaterThanAnotherDate(tDespacho.getDespFecRetRea(), tDespacho.getDespFecRetPro())){
+					factDespacho.setDespachoCntDiasExc(Util.getDaysBetweenDates(tDespacho.getDespFecRetRea(), tDespacho.getDespFecRetPro()));
+					factDespacho.setDespachoTrabEnFec((short)constantes.getValueNumberCero());
+					factDespacho.setDespachoTrabFueraFec((short)constantes.getValueNumberUnit());
+				}else{
+					factDespacho.setDespachoCntDiasExc(constantes.getValueNumberCero());
+					factDespacho.setDespachoTrabEnFec((short)constantes.getValueNumberUnit());
+					factDespacho.setDespachoTrabFueraFec((short)constantes.getValueNumberCero());
+				}
+			}
 		}
-		
+
 		tCargoDespachoExample.clear();
-		tCargoDespachoExample.createCriteria().andDespIdEqualTo(tDespacho.getDespId());
+		tCargoDespachoExample.createCriteria().andDespIdEqualTo(factDespacho.getDespachoKey());
 		tCargoDespachoExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
-		recordTotalCargo = tCargoDespachoManager.countByExample(tCargoDespachoExample);
+		recordTotal = tCargoDespachoManager.countByExample(tCargoDespachoExample);
 		
-		if(recordTotalCargo>0){
+		if(recordTotal>0){
 			
 			tCargoDespachoExample.clear();
-			tCargoDespachoExample.createCriteria().andDespIdEqualTo(tDespacho.getDespId());
+			tCargoDespachoExample.createCriteria().andDespIdEqualTo(factDespacho.getDespachoKey());
 			factDespacho.setDespachoCntCargos(tCargoDespachoManager.countByExample(tCargoDespachoExample));
 			
+			tCargoDespachoExample.clear();
+			tCargoDespachoExample.createCriteria().andDespIdEqualTo(factDespacho.getDespachoKey());
 			tParametroExample.clear();
 			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
 			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoEntregado());
 			tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
-			tCargoDespachoExample.clear();
-			tCargoDespachoExample.createCriteria().andDespIdEqualTo(tDespacho.getDespId());
 			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
 			factDespacho.setDespachoCntEnt(tCargoDespachoManager.countByExample(tCargoDespachoExample));
 			
+			tCargoDespachoExample.clear();
+			tCargoDespachoExample.createCriteria().andDespIdEqualTo(factDespacho.getDespachoKey());
 			tParametroExample.clear();
 			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
 			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoMotivado());
 			tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
-			tCargoDespachoExample.clear();
-			tCargoDespachoExample.createCriteria().andDespIdEqualTo(tDespacho.getDespId());
 			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
 			factDespacho.setDespachoCntMot(tCargoDespachoManager.countByExample(tCargoDespachoExample));
 			
+			tCargoDespachoExample.clear();
+			tCargoDespachoExample.createCriteria().andDespIdEqualTo(factDespacho.getDespachoKey());
 			tParametroExample.clear();
 			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
 			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoReenviado());
 			tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
-			tCargoDespachoExample.clear();
-			tCargoDespachoExample.createCriteria().andDespIdEqualTo(tDespacho.getDespId());
 			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
 			factDespacho.setDespachoCntRee(tCargoDespachoManager.countByExample(tCargoDespachoExample));
 			
+			tCargoDespachoExample.clear();
+			tCargoDespachoExample.createCriteria().andDespIdEqualTo(factDespacho.getDespachoKey());
 			tParametroExample.clear();
 			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
 			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoAnulado());
 			tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
-			tCargoDespachoExample.clear();
-			tCargoDespachoExample.createCriteria().andDespIdEqualTo(tDespacho.getDespId());
 			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
 			factDespacho.setDespachoCntAnu(tCargoDespachoManager.countByExample(tCargoDespachoExample));
 			
+			tCargoDespachoExample.clear();
+			tCargoDespachoExample.createCriteria().andDespIdEqualTo(factDespacho.getDespachoKey());
 			tParametroExample.clear();
 			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
 			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoFueraZona());
 			tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
-			tCargoDespachoExample.clear();
-			tCargoDespachoExample.createCriteria().andDespIdEqualTo(tDespacho.getDespId());
 			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
 			factDespacho.setDespachoCntFueZon(tCargoDespachoManager.countByExample(tCargoDespachoExample));
 			
+			tCargoDespachoExample.clear();
+			tCargoDespachoExample.createCriteria().andDespIdEqualTo(factDespacho.getDespachoKey());
 			tParametroExample.clear();
 			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
 			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoPerdido());
 			tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
-			tCargoDespachoExample.clear();
-			tCargoDespachoExample.createCriteria().andDespIdEqualTo(tDespacho.getDespId());
 			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
 			factDespacho.setDespachoCntPerd(tCargoDespachoManager.countByExample(tCargoDespachoExample));
+			
+			tCargoDespachoExample.clear();
+			tCargoDespachoExample.createCriteria().andDespIdEqualTo(factDespacho.getDespachoKey());
+			tParametroExample.clear();
+			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
+			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoDigitado());
+			tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
+			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
+			factDespacho.setDespachoCntDig(tCargoDespachoManager.countByExample(tCargoDespachoExample));
+			
+			tCargoDespachoExample.clear();
+			tCargoDespachoExample.createCriteria().andDespIdEqualTo(factDespacho.getDespachoKey());
+			tParametroExample.clear();
+			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
+			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoRuta());
+			tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
+			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
+			factDespacho.setDespachoCntRut(tCargoDespachoManager.countByExample(tCargoDespachoExample));
+			
+			tCargoDespachoExample.clear();
+			tCargoDespachoExample.createCriteria().andDespIdEqualTo(factDespacho.getDespachoKey());
+			tParametroExample.clear();
+			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
+			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoProvincia());
+			tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
+			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
+			factDespacho.setDespachoCntPro(tCargoDespachoManager.countByExample(tCargoDespachoExample));
+			
+			tCargoDespachoExample.clear();
+			tCargoDespachoExample.createCriteria().andDespIdEqualTo(factDespacho.getDespachoKey());
+			tParametroExample.clear();
+			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
+			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoRobo());
+			tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
+			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
+			factDespacho.setDespachoCntRob(tCargoDespachoManager.countByExample(tCargoDespachoExample));
+			
 		}
 		
 		factDespacho.setProcId(process);
 	}
 	
-	public int insertRecordDimensionalCotizacion(){
+	public int insertRecordDimensionalDespacho(){
 		try{
 			resultTransaction = factDespachoManager.insertSelective(factDespacho);
 		}catch(Exception e){
@@ -538,7 +639,7 @@ public class FactDespachoProcess {
 		return resultTransaction;
 	}
 	
-	public int updateRecordDimensionalCotizacion(){
+	public int updateRecordDimensionalDespacho(){
 		try{
 			resultTransaction = factDespachoManager.updateByPrimaryKeySelective(factDespacho);
 		}catch(Exception e){
@@ -547,7 +648,7 @@ public class FactDespachoProcess {
 		return resultTransaction;
 	}
 	
-	public int deleteRecordDimensionalCotizacion(){
+	public int deleteRecordDimensionalDespacho(){
 		try{
 			resultTransaction = factDespachoManager.deleteByPrimaryKey(factDespacho.getDespachoKey());
 		}catch(Exception e){
@@ -556,7 +657,7 @@ public class FactDespachoProcess {
 		return resultTransaction; 
 	}
 	
-	public void updateRecordGenericCotizacion(String statusRecord){
+	public void updateRecordGenericDespacho(String statusRecord){
 		try{
 			int idDespacho = tDespacho.getDespId();
 			tDespacho.clear();
