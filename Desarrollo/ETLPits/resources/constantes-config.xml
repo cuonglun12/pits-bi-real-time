@@ -39,7 +39,15 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="paramCodeTipoNegocio" value="${param.code.tipo.negocio}"></property>
 		<property name="paramCodeTipoServicio" value="${param.code.tipo.servicio}"></property>
 		<property name="paramCodeTipoDocumento" value="${param.code.tipo.documento}"></property>
+		
 		<property name="paramCodeEstadoDespacho" value="${param.code.estado.despacho}"></property>
+		<property name="paramCodeEstadoDespachoDespacho" value="${param.code.estado.despacho.despacho}"></property>
+		<property name="paramCodeEstadoDespachoRuta" value="${param.code.estado.despacho.ruta}"></property>
+		<property name="paramCodeEstadoDespachoCerrado" value="${param.code.estado.despacho.cerrado}"></property>
+		<property name="paramCodeEstadoDespachoGenerado" value="${param.code.estado.despacho.generado}"></property>
+		<property name="paramCodeEstadoDespachoPagado" value="${param.code.estado.despacho.pagado}"></property>
+		<property name="paramCodeEstadoDespachoAnulado" value="${param.code.estado.despacho.anulado}"></property>
+		
 		<property name="paramCodeEstadoDespachoVerificacion" value="${param.code.estado.despacho.verificacion}"></property>
 		<property name="paramCodeTipoDespacho" value="${param.code.tipo.despacho}"></property>
 		<property name="paramCodeTipoRuta" value="${param.code.tipo.ruta}"></property>
