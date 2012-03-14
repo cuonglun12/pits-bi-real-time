@@ -31,7 +31,15 @@ public class Constantes {
 	private int	paramCodeTipoNegocio;
 	private int	paramCodeTipoServicio;
 	private int	paramCodeTipoDocumento;
+	
 	private int	paramCodeEstadoDespacho;
+	private String paramCodeEstadoDespachoDespacho;
+	private String paramCodeEstadoDespachoRuta;
+	private String paramCodeEstadoDespachoCerrado;
+	private String paramCodeEstadoDespachoGenerado;
+	private String paramCodeEstadoDespachoPagado;
+	private String paramCodeEstadoDespachoAnulado;
+	
 	private int	paramCodeEstadoDespachoVerificacion;
 	private int	paramCodeTipoDespacho;
 	private int	paramCodeTipoRuta;
@@ -318,6 +326,59 @@ public class Constantes {
 
 	public void setParamCodeEstadoDespacho(int paramCodeEstadoDespacho) {
 		this.paramCodeEstadoDespacho = paramCodeEstadoDespacho;
+	}
+
+	public String getParamCodeEstadoDespachoDespacho() {
+		return paramCodeEstadoDespachoDespacho;
+	}
+
+	public void setParamCodeEstadoDespachoDespacho(
+			String paramCodeEstadoDespachoDespacho) {
+		this.paramCodeEstadoDespachoDespacho = paramCodeEstadoDespachoDespacho;
+	}
+
+	public String getParamCodeEstadoDespachoRuta() {
+		return paramCodeEstadoDespachoRuta;
+	}
+
+	public void setParamCodeEstadoDespachoRuta(String paramCodeEstadoDespachoRuta) {
+		this.paramCodeEstadoDespachoRuta = paramCodeEstadoDespachoRuta;
+	}
+
+	public String getParamCodeEstadoDespachoCerrado() {
+		return paramCodeEstadoDespachoCerrado;
+	}
+
+	public void setParamCodeEstadoDespachoCerrado(
+			String paramCodeEstadoDespachoCerrado) {
+		this.paramCodeEstadoDespachoCerrado = paramCodeEstadoDespachoCerrado;
+	}
+
+	public String getParamCodeEstadoDespachoGenerado() {
+		return paramCodeEstadoDespachoGenerado;
+	}
+
+	public void setParamCodeEstadoDespachoGenerado(
+			String paramCodeEstadoDespachoGenerado) {
+		this.paramCodeEstadoDespachoGenerado = paramCodeEstadoDespachoGenerado;
+	}
+
+	public String getParamCodeEstadoDespachoPagado() {
+		return paramCodeEstadoDespachoPagado;
+	}
+
+	public void setParamCodeEstadoDespachoPagado(
+			String paramCodeEstadoDespachoPagado) {
+		this.paramCodeEstadoDespachoPagado = paramCodeEstadoDespachoPagado;
+	}
+
+	public String getParamCodeEstadoDespachoAnulado() {
+		return paramCodeEstadoDespachoAnulado;
+	}
+
+	public void setParamCodeEstadoDespachoAnulado(
+			String paramCodeEstadoDespachoAnulado) {
+		this.paramCodeEstadoDespachoAnulado = paramCodeEstadoDespachoAnulado;
 	}
 
 	public int getParamCodeEstadoDespachoVerificacion() {
@@ -688,6 +749,18 @@ public class Constantes {
 				+ paramCodeTipoServicio + ", paramCodeTipoDocumento="
 				+ paramCodeTipoDocumento + ", paramCodeEstadoDespacho="
 				+ paramCodeEstadoDespacho
+				+ ", paramCodeEstadoDespachoDespacho="
+				+ paramCodeEstadoDespachoDespacho
+				+ ", paramCodeEstadoDespachoRuta="
+				+ paramCodeEstadoDespachoRuta
+				+ ", paramCodeEstadoDespachoCerrado="
+				+ paramCodeEstadoDespachoCerrado
+				+ ", paramCodeEstadoDespachoGenerado="
+				+ paramCodeEstadoDespachoGenerado
+				+ ", paramCodeEstadoDespachoPagado="
+				+ paramCodeEstadoDespachoPagado
+				+ ", paramCodeEstadoDespachoAnulado="
+				+ paramCodeEstadoDespachoAnulado
 				+ ", paramCodeEstadoDespachoVerificacion="
 				+ paramCodeEstadoDespachoVerificacion
 				+ ", paramCodeTipoDespacho=" + paramCodeTipoDespacho

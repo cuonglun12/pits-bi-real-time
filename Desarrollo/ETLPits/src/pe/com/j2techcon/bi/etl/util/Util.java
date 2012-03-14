@@ -111,4 +111,21 @@ public class Util {
 		Date dateTimeCurrent = new GregorianCalendar(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH),calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),calendar.get(Calendar.SECOND)).getTime();
 		return (date.compareTo(dateTimeCurrent)<0);
 	}
+
+	public static boolean isGreaterThanAnotherDate(java.util.Date date, java.util.Date anotherDate){
+		return (date.compareTo(anotherDate)>0);
+	}
+	
+	public static boolean isLessThanAnotherDate(java.util.Date date, java.util.Date anotherDate){
+		return (date.compareTo(anotherDate)<0);
+	}
+	
+	public static boolean isGreaterThanAnotherDateTime(java.util.Date dateTime, java.util.Date anotherDateTime){
+		return (dateTime.compareTo(anotherDateTime)>0);
+	}
+	
+	public static boolean isLessThanAnotherDateTime(java.util.Date dateTime, java.util.Date anotherDateTime){
+		return (dateTime.compareTo(anotherDateTime)<0);
+	}
+	
 }
