@@ -26,7 +26,28 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		
 		<property name="paramCodeEstadoCargoDespachoVerificacion" value="${param.code.estado.cargo.despacho.verificacion}"></property>
 		<property name="paramCodeMotivoCargoDespacho" value="${param.code.motivo.cargo.despacho}"></property>
+		
 		<property name="paramCodeEstadoCargo" value="${param.code.estado.cargo}"></property>
+		
+		<property name="paramCodeEstadoCargoOrdenDigitado" value="${param.code.estado.cargo.orden.digitado}"></property>
+		<property name="paramCodeEstadoCargoOrdenClasificado" value="${param.code.estado.cargo.orden.clasificado}"></property>
+		<property name="paramCodeEstadoCargoOrdenRuta" value="${param.code.estado.cargo.orden.ruta}"></property>
+		<property name="paramCodeEstadoCargoOrdenEntregado" value="${param.code.estado.cargo.orden.entregado}"></property>
+		<property name="paramCodeEstadoCargoOrdenMotivado" value="${param.code.estado.cargo.orden.motivado}"></property>
+		<property name="paramCodeEstadoCargoOrdenReenviado" value="${param.code.estado.cargo.orden.reenviado}"></property>
+		<property name="paramCodeEstadoCargoOrdenFueraZona" value="${param.code.estado.cargo.orden.fuera.zona}"></property>
+		<property name="paramCodeEstadoCargoOrdenPerdido" value="${param.code.estado.cargo.orden.perdido}"></property>
+		<property name="paramCodeEstadoCargoOrdenAnulado" value="${param.code.estado.cargo.orden.anulado}"></property>
+		<property name="paramCodeEstadoCargoOrdenNoDistribuido" value="${param.code.estado.cargo.orden.no.distribuido}"></property>
+		<property name="paramCodeEstadoCargoOrdenRetenido" value="${param.code.estado.cargo.orden.retenido}"></property>
+		<property name="paramCodeEstadoCargoOrdenSinFisico" value="${param.code.estado.cargo.orden.sin.fisico}"></property>
+		<property name="paramCodeEstadoCargoOrdenProvincia" value="${param.code.estado.cargo.orden.provincia}"></property>
+		<property name="paramCodeEstadoCargoOrdenSupervision" value="${param.code.estado.cargo.orden.supervision}"></property>
+		<property name="paramCodeEstadoCargoOrdenRobo" value="${param.code.estado.cargo.orden.robo}"></property>
+		<property name="paramCodeEstadoCargoOrdenSiLlego" value="${param.code.estado.cargo.orden.si.llego}"></property>
+		<property name="paramCodeEstadoCargoOrdenRecepcionado" value="${param.code.estado.cargo.orden.recepcionado}"></property>
+		
+		
 		<property name="paramCodeMotivoCargo" value="${param.code.motivo.cargo}"></property>
 		<property name="paramCodeTipoIngresoCargo" value="${param.code.tipo.ingreso.cargo}"></property>
 		<property name="paramCodeCategoriaCliente" value="${param.code.categoria.cliente}"></property>
