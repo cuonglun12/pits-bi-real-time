@@ -23,8 +23,6 @@ import pe.com.j2techcon.bi.etl.domain.generic.TOrdenExample;
 import pe.com.j2techcon.bi.etl.domain.generic.TParametro;
 import pe.com.j2techcon.bi.etl.domain.generic.TParametroExample;
 
-
-
 public class FactCotizacionProcess {
 	
 	private BeanFactory factory;

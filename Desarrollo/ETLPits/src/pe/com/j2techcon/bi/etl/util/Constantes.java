@@ -18,7 +18,26 @@ public class Constantes {
 	
 	private int	paramCodeEstadoCargoDespachoVerificacion;
 	private int	paramCodeMotivoCargoDespacho;
+	
 	private int	paramCodeEstadoCargo;
+	private String paramCodeEstadoCargoOrdenDigitado;
+	private String paramCodeEstadoCargoOrdenClasificado;
+	private String paramCodeEstadoCargoOrdenRuta;
+	private String paramCodeEstadoCargoOrdenEntregado;
+	private String paramCodeEstadoCargoOrdenMotivado;
+	private String paramCodeEstadoCargoOrdenReenviado;
+	private String paramCodeEstadoCargoOrdenFueraZona;
+	private String paramCodeEstadoCargoOrdenPerdido;
+	private String paramCodeEstadoCargoOrdenAnulado;
+	private String paramCodeEstadoCargoOrdenNoDistribuido;
+	private String paramCodeEstadoCargoOrdenRetenido;
+	private String paramCodeEstadoCargoOrdenSinFisico;
+	private String paramCodeEstadoCargoOrdenProvincia;
+	private String paramCodeEstadoCargoOrdenSupervision;
+	private String paramCodeEstadoCargoOrdenRobo;
+	private String paramCodeEstadoCargoOrdenSiLlego;
+	private String paramCodeEstadoCargoOrdenRecepcionado;
+	
 	private int	paramCodeMotivoCargo;
 	private int	paramCodeTipoIngresoCargo;
 	private int	paramCodeCategoriaCliente;
@@ -222,6 +241,159 @@ public class Constantes {
 
 	public void setParamCodeEstadoCargo(int paramCodeEstadoCargo) {
 		this.paramCodeEstadoCargo = paramCodeEstadoCargo;
+	}
+
+	public String getParamCodeEstadoCargoOrdenDigitado() {
+		return paramCodeEstadoCargoOrdenDigitado;
+	}
+
+	public void setParamCodeEstadoCargoOrdenDigitado(
+			String paramCodeEstadoCargoOrdenDigitado) {
+		this.paramCodeEstadoCargoOrdenDigitado = paramCodeEstadoCargoOrdenDigitado;
+	}
+
+	public String getParamCodeEstadoCargoOrdenClasificado() {
+		return paramCodeEstadoCargoOrdenClasificado;
+	}
+
+	public void setParamCodeEstadoCargoOrdenClasificado(
+			String paramCodeEstadoCargoOrdenClasificado) {
+		this.paramCodeEstadoCargoOrdenClasificado = paramCodeEstadoCargoOrdenClasificado;
+	}
+
+	public String getParamCodeEstadoCargoOrdenRuta() {
+		return paramCodeEstadoCargoOrdenRuta;
+	}
+
+	public void setParamCodeEstadoCargoOrdenRuta(
+			String paramCodeEstadoCargoOrdenRuta) {
+		this.paramCodeEstadoCargoOrdenRuta = paramCodeEstadoCargoOrdenRuta;
+	}
+
+	public String getParamCodeEstadoCargoOrdenEntregado() {
+		return paramCodeEstadoCargoOrdenEntregado;
+	}
+
+	public void setParamCodeEstadoCargoOrdenEntregado(
+			String paramCodeEstadoCargoOrdenEntregado) {
+		this.paramCodeEstadoCargoOrdenEntregado = paramCodeEstadoCargoOrdenEntregado;
+	}
+
+	public String getParamCodeEstadoCargoOrdenMotivado() {
+		return paramCodeEstadoCargoOrdenMotivado;
+	}
+
+	public void setParamCodeEstadoCargoOrdenMotivado(
+			String paramCodeEstadoCargoOrdenMotivado) {
+		this.paramCodeEstadoCargoOrdenMotivado = paramCodeEstadoCargoOrdenMotivado;
+	}
+
+	public String getParamCodeEstadoCargoOrdenReenviado() {
+		return paramCodeEstadoCargoOrdenReenviado;
+	}
+
+	public void setParamCodeEstadoCargoOrdenReenviado(
+			String paramCodeEstadoCargoOrdenReenviado) {
+		this.paramCodeEstadoCargoOrdenReenviado = paramCodeEstadoCargoOrdenReenviado;
+	}
+
+	public String getParamCodeEstadoCargoOrdenFueraZona() {
+		return paramCodeEstadoCargoOrdenFueraZona;
+	}
+
+	public void setParamCodeEstadoCargoOrdenFueraZona(
+			String paramCodeEstadoCargoOrdenFueraZona) {
+		this.paramCodeEstadoCargoOrdenFueraZona = paramCodeEstadoCargoOrdenFueraZona;
+	}
+
+	public String getParamCodeEstadoCargoOrdenPerdido() {
+		return paramCodeEstadoCargoOrdenPerdido;
+	}
+
+	public void setParamCodeEstadoCargoOrdenPerdido(
+			String paramCodeEstadoCargoOrdenPerdido) {
+		this.paramCodeEstadoCargoOrdenPerdido = paramCodeEstadoCargoOrdenPerdido;
+	}
+
+	public String getParamCodeEstadoCargoOrdenAnulado() {
+		return paramCodeEstadoCargoOrdenAnulado;
+	}
+
+	public void setParamCodeEstadoCargoOrdenAnulado(
+			String paramCodeEstadoCargoOrdenAnulado) {
+		this.paramCodeEstadoCargoOrdenAnulado = paramCodeEstadoCargoOrdenAnulado;
+	}
+
+	public String getParamCodeEstadoCargoOrdenNoDistribuido() {
+		return paramCodeEstadoCargoOrdenNoDistribuido;
+	}
+
+	public void setParamCodeEstadoCargoOrdenNoDistribuido(
+			String paramCodeEstadoCargoOrdenNoDistribuido) {
+		this.paramCodeEstadoCargoOrdenNoDistribuido = paramCodeEstadoCargoOrdenNoDistribuido;
+	}
+
+	public String getParamCodeEstadoCargoOrdenRetenido() {
+		return paramCodeEstadoCargoOrdenRetenido;
+	}
+
+	public void setParamCodeEstadoCargoOrdenRetenido(
+			String paramCodeEstadoCargoOrdenRetenido) {
+		this.paramCodeEstadoCargoOrdenRetenido = paramCodeEstadoCargoOrdenRetenido;
+	}
+
+	public String getParamCodeEstadoCargoOrdenSinFisico() {
+		return paramCodeEstadoCargoOrdenSinFisico;
+	}
+
+	public void setParamCodeEstadoCargoOrdenSinFisico(
+			String paramCodeEstadoCargoOrdenSinFisico) {
+		this.paramCodeEstadoCargoOrdenSinFisico = paramCodeEstadoCargoOrdenSinFisico;
+	}
+
+	public String getParamCodeEstadoCargoOrdenProvincia() {
+		return paramCodeEstadoCargoOrdenProvincia;
+	}
+
+	public void setParamCodeEstadoCargoOrdenProvincia(
+			String paramCodeEstadoCargoOrdenProvincia) {
+		this.paramCodeEstadoCargoOrdenProvincia = paramCodeEstadoCargoOrdenProvincia;
+	}
+
+	public String getParamCodeEstadoCargoOrdenSupervision() {
+		return paramCodeEstadoCargoOrdenSupervision;
+	}
+
+	public void setParamCodeEstadoCargoOrdenSupervision(
+			String paramCodeEstadoCargoOrdenSupervision) {
+		this.paramCodeEstadoCargoOrdenSupervision = paramCodeEstadoCargoOrdenSupervision;
+	}
+
+	public String getParamCodeEstadoCargoOrdenRobo() {
+		return paramCodeEstadoCargoOrdenRobo;
+	}
+
+	public void setParamCodeEstadoCargoOrdenRobo(
+			String paramCodeEstadoCargoOrdenRobo) {
+		this.paramCodeEstadoCargoOrdenRobo = paramCodeEstadoCargoOrdenRobo;
+	}
+
+	public String getParamCodeEstadoCargoOrdenSiLlego() {
+		return paramCodeEstadoCargoOrdenSiLlego;
+	}
+
+	public void setParamCodeEstadoCargoOrdenSiLlego(
+			String paramCodeEstadoCargoOrdenSiLlego) {
+		this.paramCodeEstadoCargoOrdenSiLlego = paramCodeEstadoCargoOrdenSiLlego;
+	}
+
+	public String getParamCodeEstadoCargoOrdenRecepcionado() {
+		return paramCodeEstadoCargoOrdenRecepcionado;
+	}
+
+	public void setParamCodeEstadoCargoOrdenRecepcionado(
+			String paramCodeEstadoCargoOrdenRecepcionado) {
+		this.paramCodeEstadoCargoOrdenRecepcionado = paramCodeEstadoCargoOrdenRecepcionado;
 	}
 
 	public int getParamCodeMotivoCargo() {
@@ -735,12 +907,46 @@ public class Constantes {
 				+ paramCodeEstadoCargoDespachoVerificacion
 				+ ", paramCodeMotivoCargoDespacho="
 				+ paramCodeMotivoCargoDespacho + ", paramCodeEstadoCargo="
-				+ paramCodeEstadoCargo + ", paramCodeMotivoCargo="
-				+ paramCodeMotivoCargo + ", paramCodeTipoIngresoCargo="
-				+ paramCodeTipoIngresoCargo + ", paramCodeCategoriaCliente="
-				+ paramCodeCategoriaCliente + ", paramCodeTipoCliente="
-				+ paramCodeTipoCliente + ", paramCodeTipoCredito="
-				+ paramCodeTipoCredito + ", paramCodeTipoDocumentoTrabajo="
+				+ paramCodeEstadoCargo + ", paramCodeEstadoCargoOrdenDigitado="
+				+ paramCodeEstadoCargoOrdenDigitado
+				+ ", paramCodeEstadoCargoOrdenClasificado="
+				+ paramCodeEstadoCargoOrdenClasificado
+				+ ", paramCodeEstadoCargoOrdenRuta="
+				+ paramCodeEstadoCargoOrdenRuta
+				+ ", paramCodeEstadoCargoOrdenEntregado="
+				+ paramCodeEstadoCargoOrdenEntregado
+				+ ", paramCodeEstadoCargoOrdenMotivado="
+				+ paramCodeEstadoCargoOrdenMotivado
+				+ ", paramCodeEstadoCargoOrdenReenviado="
+				+ paramCodeEstadoCargoOrdenReenviado
+				+ ", paramCodeEstadoCargoOrdenFueraZona="
+				+ paramCodeEstadoCargoOrdenFueraZona
+				+ ", paramCodeEstadoCargoOrdenPerdido="
+				+ paramCodeEstadoCargoOrdenPerdido
+				+ ", paramCodeEstadoCargoOrdenAnulado="
+				+ paramCodeEstadoCargoOrdenAnulado
+				+ ", paramCodeEstadoCargoOrdenNoDistribuido="
+				+ paramCodeEstadoCargoOrdenNoDistribuido
+				+ ", paramCodeEstadoCargoOrdenRetenido="
+				+ paramCodeEstadoCargoOrdenRetenido
+				+ ", paramCodeEstadoCargoOrdenSinFisico="
+				+ paramCodeEstadoCargoOrdenSinFisico
+				+ ", paramCodeEstadoCargoOrdenProvincia="
+				+ paramCodeEstadoCargoOrdenProvincia
+				+ ", paramCodeEstadoCargoOrdenSupervision="
+				+ paramCodeEstadoCargoOrdenSupervision
+				+ ", paramCodeEstadoCargoOrdenRobo="
+				+ paramCodeEstadoCargoOrdenRobo
+				+ ", paramCodeEstadoCargoOrdenSiLlego="
+				+ paramCodeEstadoCargoOrdenSiLlego
+				+ ", paramCodeEstadoCargoOrdenRecepcionado="
+				+ paramCodeEstadoCargoOrdenRecepcionado
+				+ ", paramCodeMotivoCargo=" + paramCodeMotivoCargo
+				+ ", paramCodeTipoIngresoCargo=" + paramCodeTipoIngresoCargo
+				+ ", paramCodeCategoriaCliente=" + paramCodeCategoriaCliente
+				+ ", paramCodeTipoCliente=" + paramCodeTipoCliente
+				+ ", paramCodeTipoCredito=" + paramCodeTipoCredito
+				+ ", paramCodeTipoDocumentoTrabajo="
 				+ paramCodeTipoDocumentoTrabajo + ", paramCodeTipoFacturacion="
 				+ paramCodeTipoFacturacion + ", paramCodeTipoCambio="
 				+ paramCodeTipoCambio + ", paramCodeEstadoCotizacion="

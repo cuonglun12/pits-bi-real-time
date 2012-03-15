@@ -23,8 +23,6 @@ import pe.com.j2techcon.bi.etl.domain.generic.TCargoDespachoExample;
 import pe.com.j2techcon.bi.etl.domain.generic.TParametro;
 import pe.com.j2techcon.bi.etl.domain.generic.TParametroExample;
 
-
-
 public class FactDespachoProcess {
 	
 	private BeanFactory factory;
@@ -522,6 +520,10 @@ public class FactDespachoProcess {
 					factDespacho.setDespachoTrabFueraFec((short)constantes.getValueNumberCero());
 				}
 			}
+		}else{
+			factDespacho.setDespachoCntDiasExc(constantes.getValueNumberCero());
+			factDespacho.setDespachoTrabEnFec((short)constantes.getValueNumberCero());
+			factDespacho.setDespachoTrabFueraFec((short)constantes.getValueNumberCero());
 		}
 
 		tCargoDespachoExample.clear();
