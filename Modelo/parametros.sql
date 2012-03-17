@@ -4973,4 +4973,8 @@ INSERT INTO public.t_parametro(param_id, param_cod_tip, param_cod, param_des, pa
   VALUES(2442, 34, '0', 'NO FACTURADO', 0, 19000101010101, '1', 0);
 INSERT INTO public.t_parametro(param_id, param_cod_tip, param_cod, param_des, param_ref, fec_num_cam, cod_ind_cam, proc_id)
   VALUES(2443, 34, '-', 'NO DEFINIDO', 0, 19000101010101, '1', 0);
+INSERT INTO public.t_parametro(param_id, param_cod_tip, param_cod, param_des, param_ref, fec_num_cam, cod_ind_cam, proc_id)
+  VALUES(2444, 35, '01', 'LOCAL', 0, 19000101010101, '1', 0);
+INSERT INTO public.t_parametro(param_id, param_cod_tip, param_cod, param_des, param_ref, fec_num_cam, cod_ind_cam, proc_id)
+  VALUES(2445, 35, '-', 'NO DEFINIDO', 0, 19000101010101, '1', 0);
 
