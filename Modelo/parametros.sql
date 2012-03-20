@@ -59,6 +59,10 @@ comment on column T_PARAMETRO.PARAM_COD_TIP is
 31: Departamento
 32: Provincia
 33: Distrito
+34: Estado de facturacion
+35: Tipo de ambito
+36: Estado de liquidacion
+
 ';
 
 /*==============================================================*/
@@ -4977,4 +4981,12 @@ INSERT INTO public.t_parametro(param_id, param_cod_tip, param_cod, param_des, pa
   VALUES(2444, 35, '01', 'LOCAL', 0, 19000101010101, '1', 0);
 INSERT INTO public.t_parametro(param_id, param_cod_tip, param_cod, param_des, param_ref, fec_num_cam, cod_ind_cam, proc_id)
   VALUES(2445, 35, '-', 'NO DEFINIDO', 0, 19000101010101, '1', 0);
+INSERT INTO public.t_parametro(param_id, param_cod_tip, param_cod, param_des, param_ref, fec_num_cam, cod_ind_cam, proc_id)
+  VALUES(2446, 36, '0', 'PENDIENTE', 0, 19000101010101, '1', 0);
+INSERT INTO public.t_parametro(param_id, param_cod_tip, param_cod, param_des, param_ref, fec_num_cam, cod_ind_cam, proc_id)
+  VALUES(2447, 36, '1', 'PARCIAL', 0, 19000101010101, '1', 0);
+INSERT INTO public.t_parametro(param_id, param_cod_tip, param_cod, param_des, param_ref, fec_num_cam, cod_ind_cam, proc_id)
+  VALUES(2448, 36, '2', 'TOTAL', 0, 19000101010101, '1', 0);
+INSERT INTO public.t_parametro(param_id, param_cod_tip, param_cod, param_des, param_ref, fec_num_cam, cod_ind_cam, proc_id)
+  VALUES(2449, 36, '-', 'NO DEFINIDO', 0, 19000101010101, '1', 0);
 
