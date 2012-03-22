@@ -4,19 +4,24 @@ public class Constantes {
 	
 	private int	paramCodeTipoAreaCliente;
 	
-	private int	paramCodeEstadoCargoDespacho;
+	private int paramCodeEstadoCargoDespacho;
 	private String paramCodeEstadoCargoDespachoDigitado;
 	private String paramCodeEstadoCargoDespachoRuta;
-	private String paramCodeEstadoCargoDespachoProvincia;
-	private String paramCodeEstadoCargoDespachoRobo;
 	private String paramCodeEstadoCargoDespachoEntregado;
 	private String paramCodeEstadoCargoDespachoMotivado;
 	private String paramCodeEstadoCargoDespachoReenviado;
-	private String paramCodeEstadoCargoDespachoAnulado;
 	private String paramCodeEstadoCargoDespachoFueraZona;
 	private String paramCodeEstadoCargoDespachoPerdido;
+	private String paramCodeEstadoCargoDespachoAnulado;
+	private String paramCodeEstadoCargoDespachoNoDistribuido;
+	private String paramCodeEstadoCargoDespachoRetenido;
+	private String paramCodeEstadoCargoDespachoSinFisico;
+	private String paramCodeEstadoCargoDespachoProvincia;
+	private String paramCodeEstadoCargoDespachoSupervision;
+	private String paramCodeEstadoCargoDespachoRobo;
 	
 	private int	paramCodeEstadoCargoDespachoVerificacion;
+	
 	private int	paramCodeMotivoCargoDespacho;
 	
 	private int	paramCodeEstadoCargo;
@@ -39,17 +44,31 @@ public class Constantes {
 	private String paramCodeEstadoCargoOrdenRecepcionado;
 	
 	private int	paramCodeMotivoCargo;
+	
 	private int	paramCodeTipoIngresoCargo;
+	
 	private int	paramCodeCategoriaCliente;
+	
 	private int	paramCodeTipoCliente;
+	
 	private int	paramCodeTipoCredito;
+	
 	private int	paramCodeTipoDocumentoTrabajo;
+	
 	private int	paramCodeTipoFacturacion;
+	
 	private int	paramCodeTipoCambio;
+	
 	private int	paramCodeEstadoCotizacion;
+	
 	private int	paramCodeTipoNegocio;
+	private String paramCodeTipoNegocioMensajeria;
+	
 	private int	paramCodeTipoServicio;
+	
 	private int	paramCodeTipoDocumento;
+	private String paramCodeTipoDocumentoRuc;
+	private String paramCodeTipoDocumentoDni;
 	
 	private int	paramCodeEstadoDespacho;
 	private String paramCodeEstadoDespachoDespacho;
@@ -60,8 +79,11 @@ public class Constantes {
 	private String paramCodeEstadoDespachoAnulado;
 	
 	private int	paramCodeEstadoDespachoVerificacion;
+	
 	private int	paramCodeTipoDespacho;
+	
 	private int	paramCodeTipoRuta;
+	
 	private int	paramCodeCategoriaEmpleado;
 	
 	private int	paramCodeEstadoOrden;
@@ -69,23 +91,42 @@ public class Constantes {
 	private String paramCodeEstadoOrdenPendiente;
 	private String paramCodeEstadoOrdenCerrado;
 	private String paramCodeEstadoOrdenAnulado;
-	private String paramCodeEstadoOrdenFacturado;
-
 	
 	private int	paramCodeTipoIngreso;
+	
 	private int	paramCodeTipoMoneda;
+	private String paramCodeTipoMonedaNuevoSol;
+	private String paramCodeTipoMonedaDolar;
+	
 	private int	paramCodeTipoPago;
+	
 	private int	paramCodeTipoReparto;
+	
 	private int	paramCodeTipoProducto;
+	
 	private int	paramCodeTipoSede;
+	
 	private int	paramCodeUbigeoPais;
+	
 	private int	paramCodeUbigeoDepartamento;
+	
 	private int	paramCodeUbigeoProvincia;
+	
 	private int	paramCodeUbigeoDistrito;
 
-	private int	paramCodeEstadoFacturado;
+	private int paramCodeEstadoFacturado;
 	private String paramCodeEstadoFacturadoSi;
 	private String paramCodeEstadoFacturadoNo;
+	
+	private int paramCodeTipoAmbito;
+	private String paramCodeTipoAmbitoLocal;
+	
+	private int paramCodeEstadoLiquidacion;
+	private String paramCodeEstadoLiquidacionPendiente;
+	private String paramCodeEstadoLiquidacionParcial;
+	private String paramCodeEstadoLiquidacionTotal;
+	
+	private String paramCodeNoDefinido;
 
 	private String valueStringDefault;
 	private int valueNumberDefault;
@@ -124,6 +165,10 @@ public class Constantes {
 		return paramCodeEstadoCargoDespacho;
 	}
 
+	public void setParamCodeEstadoCargoDespacho(int paramCodeEstadoCargoDespacho) {
+		this.paramCodeEstadoCargoDespacho = paramCodeEstadoCargoDespacho;
+	}
+
 	public String getParamCodeEstadoCargoDespachoDigitado() {
 		return paramCodeEstadoCargoDespachoDigitado;
 	}
@@ -140,28 +185,6 @@ public class Constantes {
 	public void setParamCodeEstadoCargoDespachoRuta(
 			String paramCodeEstadoCargoDespachoRuta) {
 		this.paramCodeEstadoCargoDespachoRuta = paramCodeEstadoCargoDespachoRuta;
-	}
-
-	public String getParamCodeEstadoCargoDespachoProvincia() {
-		return paramCodeEstadoCargoDespachoProvincia;
-	}
-
-	public void setParamCodeEstadoCargoDespachoProvincia(
-			String paramCodeEstadoCargoDespachoProvincia) {
-		this.paramCodeEstadoCargoDespachoProvincia = paramCodeEstadoCargoDespachoProvincia;
-	}
-
-	public String getParamCodeEstadoCargoDespachoRobo() {
-		return paramCodeEstadoCargoDespachoRobo;
-	}
-
-	public void setParamCodeEstadoCargoDespachoRobo(
-			String paramCodeEstadoCargoDespachoRobo) {
-		this.paramCodeEstadoCargoDespachoRobo = paramCodeEstadoCargoDespachoRobo;
-	}
-
-	public void setParamCodeEstadoCargoDespacho(int paramCodeEstadoCargoDespacho) {
-		this.paramCodeEstadoCargoDespacho = paramCodeEstadoCargoDespacho;
 	}
 
 	public String getParamCodeEstadoCargoDespachoEntregado() {
@@ -191,15 +214,6 @@ public class Constantes {
 		this.paramCodeEstadoCargoDespachoReenviado = paramCodeEstadoCargoDespachoReenviado;
 	}
 
-	public String getParamCodeEstadoCargoDespachoAnulado() {
-		return paramCodeEstadoCargoDespachoAnulado;
-	}
-
-	public void setParamCodeEstadoCargoDespachoAnulado(
-			String paramCodeEstadoCargoDespachoAnulado) {
-		this.paramCodeEstadoCargoDespachoAnulado = paramCodeEstadoCargoDespachoAnulado;
-	}
-
 	public String getParamCodeEstadoCargoDespachoFueraZona() {
 		return paramCodeEstadoCargoDespachoFueraZona;
 	}
@@ -216,6 +230,69 @@ public class Constantes {
 	public void setParamCodeEstadoCargoDespachoPerdido(
 			String paramCodeEstadoCargoDespachoPerdido) {
 		this.paramCodeEstadoCargoDespachoPerdido = paramCodeEstadoCargoDespachoPerdido;
+	}
+
+	public String getParamCodeEstadoCargoDespachoAnulado() {
+		return paramCodeEstadoCargoDespachoAnulado;
+	}
+
+	public void setParamCodeEstadoCargoDespachoAnulado(
+			String paramCodeEstadoCargoDespachoAnulado) {
+		this.paramCodeEstadoCargoDespachoAnulado = paramCodeEstadoCargoDespachoAnulado;
+	}
+
+	public String getParamCodeEstadoCargoDespachoNoDistribuido() {
+		return paramCodeEstadoCargoDespachoNoDistribuido;
+	}
+
+	public void setParamCodeEstadoCargoDespachoNoDistribuido(
+			String paramCodeEstadoCargoDespachoNoDistribuido) {
+		this.paramCodeEstadoCargoDespachoNoDistribuido = paramCodeEstadoCargoDespachoNoDistribuido;
+	}
+
+	public String getParamCodeEstadoCargoDespachoRetenido() {
+		return paramCodeEstadoCargoDespachoRetenido;
+	}
+
+	public void setParamCodeEstadoCargoDespachoRetenido(
+			String paramCodeEstadoCargoDespachoRetenido) {
+		this.paramCodeEstadoCargoDespachoRetenido = paramCodeEstadoCargoDespachoRetenido;
+	}
+
+	public String getParamCodeEstadoCargoDespachoSinFisico() {
+		return paramCodeEstadoCargoDespachoSinFisico;
+	}
+
+	public void setParamCodeEstadoCargoDespachoSinFisico(
+			String paramCodeEstadoCargoDespachoSinFisico) {
+		this.paramCodeEstadoCargoDespachoSinFisico = paramCodeEstadoCargoDespachoSinFisico;
+	}
+
+	public String getParamCodeEstadoCargoDespachoProvincia() {
+		return paramCodeEstadoCargoDespachoProvincia;
+	}
+
+	public void setParamCodeEstadoCargoDespachoProvincia(
+			String paramCodeEstadoCargoDespachoProvincia) {
+		this.paramCodeEstadoCargoDespachoProvincia = paramCodeEstadoCargoDespachoProvincia;
+	}
+
+	public String getParamCodeEstadoCargoDespachoSupervision() {
+		return paramCodeEstadoCargoDespachoSupervision;
+	}
+
+	public void setParamCodeEstadoCargoDespachoSupervision(
+			String paramCodeEstadoCargoDespachoSupervision) {
+		this.paramCodeEstadoCargoDespachoSupervision = paramCodeEstadoCargoDespachoSupervision;
+	}
+
+	public String getParamCodeEstadoCargoDespachoRobo() {
+		return paramCodeEstadoCargoDespachoRobo;
+	}
+
+	public void setParamCodeEstadoCargoDespachoRobo(
+			String paramCodeEstadoCargoDespachoRobo) {
+		this.paramCodeEstadoCargoDespachoRobo = paramCodeEstadoCargoDespachoRobo;
 	}
 
 	public int getParamCodeEstadoCargoDespachoVerificacion() {
@@ -476,6 +553,15 @@ public class Constantes {
 		this.paramCodeTipoNegocio = paramCodeTipoNegocio;
 	}
 
+	public String getParamCodeTipoNegocioMensajeria() {
+		return paramCodeTipoNegocioMensajeria;
+	}
+
+	public void setParamCodeTipoNegocioMensajeria(
+			String paramCodeTipoNegocioMensajeria) {
+		this.paramCodeTipoNegocioMensajeria = paramCodeTipoNegocioMensajeria;
+	}
+
 	public int getParamCodeTipoServicio() {
 		return paramCodeTipoServicio;
 	}
@@ -490,6 +576,22 @@ public class Constantes {
 
 	public void setParamCodeTipoDocumento(int paramCodeTipoDocumento) {
 		this.paramCodeTipoDocumento = paramCodeTipoDocumento;
+	}
+
+	public String getParamCodeTipoDocumentoRuc() {
+		return paramCodeTipoDocumentoRuc;
+	}
+
+	public void setParamCodeTipoDocumentoRuc(String paramCodeTipoDocumentoRuc) {
+		this.paramCodeTipoDocumentoRuc = paramCodeTipoDocumentoRuc;
+	}
+
+	public String getParamCodeTipoDocumentoDni() {
+		return paramCodeTipoDocumentoDni;
+	}
+
+	public void setParamCodeTipoDocumentoDni(String paramCodeTipoDocumentoDni) {
+		this.paramCodeTipoDocumentoDni = paramCodeTipoDocumentoDni;
 	}
 
 	public int getParamCodeEstadoDespacho() {
@@ -627,15 +729,6 @@ public class Constantes {
 		this.paramCodeEstadoOrdenAnulado = paramCodeEstadoOrdenAnulado;
 	}
 
-	public String getParamCodeEstadoOrdenFacturado() {
-		return paramCodeEstadoOrdenFacturado;
-	}
-
-	public void setParamCodeEstadoOrdenFacturado(
-			String paramCodeEstadoOrdenFacturado) {
-		this.paramCodeEstadoOrdenFacturado = paramCodeEstadoOrdenFacturado;
-	}
-
 	public int getParamCodeTipoIngreso() {
 		return paramCodeTipoIngreso;
 	}
@@ -650,6 +743,22 @@ public class Constantes {
 
 	public void setParamCodeTipoMoneda(int paramCodeTipoMoneda) {
 		this.paramCodeTipoMoneda = paramCodeTipoMoneda;
+	}
+
+	public String getParamCodeTipoMonedaNuevoSol() {
+		return paramCodeTipoMonedaNuevoSol;
+	}
+
+	public void setParamCodeTipoMonedaNuevoSol(String paramCodeTipoMonedaNuevoSol) {
+		this.paramCodeTipoMonedaNuevoSol = paramCodeTipoMonedaNuevoSol;
+	}
+
+	public String getParamCodeTipoMonedaDolar() {
+		return paramCodeTipoMonedaDolar;
+	}
+
+	public void setParamCodeTipoMonedaDolar(String paramCodeTipoMonedaDolar) {
+		this.paramCodeTipoMonedaDolar = paramCodeTipoMonedaDolar;
 	}
 
 	public int getParamCodeTipoPago() {
@@ -738,6 +847,65 @@ public class Constantes {
 
 	public void setParamCodeEstadoFacturadoNo(String paramCodeEstadoFacturadoNo) {
 		this.paramCodeEstadoFacturadoNo = paramCodeEstadoFacturadoNo;
+	}
+
+	public int getParamCodeTipoAmbito() {
+		return paramCodeTipoAmbito;
+	}
+
+	public void setParamCodeTipoAmbito(int paramCodeTipoAmbito) {
+		this.paramCodeTipoAmbito = paramCodeTipoAmbito;
+	}
+
+	public String getParamCodeTipoAmbitoLocal() {
+		return paramCodeTipoAmbitoLocal;
+	}
+
+	public void setParamCodeTipoAmbitoLocal(String paramCodeTipoAmbitoLocal) {
+		this.paramCodeTipoAmbitoLocal = paramCodeTipoAmbitoLocal;
+	}
+
+	public int getParamCodeEstadoLiquidacion() {
+		return paramCodeEstadoLiquidacion;
+	}
+
+	public void setParamCodeEstadoLiquidacion(int paramCodeEstadoLiquidacion) {
+		this.paramCodeEstadoLiquidacion = paramCodeEstadoLiquidacion;
+	}
+
+	public String getParamCodeEstadoLiquidacionPendiente() {
+		return paramCodeEstadoLiquidacionPendiente;
+	}
+
+	public void setParamCodeEstadoLiquidacionPendiente(
+			String paramCodeEstadoLiquidacionPendiente) {
+		this.paramCodeEstadoLiquidacionPendiente = paramCodeEstadoLiquidacionPendiente;
+	}
+
+	public String getParamCodeEstadoLiquidacionParcial() {
+		return paramCodeEstadoLiquidacionParcial;
+	}
+
+	public void setParamCodeEstadoLiquidacionParcial(
+			String paramCodeEstadoLiquidacionParcial) {
+		this.paramCodeEstadoLiquidacionParcial = paramCodeEstadoLiquidacionParcial;
+	}
+
+	public String getParamCodeEstadoLiquidacionTotal() {
+		return paramCodeEstadoLiquidacionTotal;
+	}
+
+	public void setParamCodeEstadoLiquidacionTotal(
+			String paramCodeEstadoLiquidacionTotal) {
+		this.paramCodeEstadoLiquidacionTotal = paramCodeEstadoLiquidacionTotal;
+	}
+
+	public String getParamCodeNoDefinido() {
+		return paramCodeNoDefinido;
+	}
+
+	public void setParamCodeNoDefinido(String paramCodeNoDefinido) {
+		this.paramCodeNoDefinido = paramCodeNoDefinido;
 	}
 
 	public String getValueStringDefault() {
@@ -887,22 +1055,30 @@ public class Constantes {
 				+ paramCodeEstadoCargoDespachoDigitado
 				+ ", paramCodeEstadoCargoDespachoRuta="
 				+ paramCodeEstadoCargoDespachoRuta
-				+ ", paramCodeEstadoCargoDespachoProvincia="
-				+ paramCodeEstadoCargoDespachoProvincia
-				+ ", paramCodeEstadoCargoDespachoRobo="
-				+ paramCodeEstadoCargoDespachoRobo
 				+ ", paramCodeEstadoCargoDespachoEntregado="
 				+ paramCodeEstadoCargoDespachoEntregado
 				+ ", paramCodeEstadoCargoDespachoMotivado="
 				+ paramCodeEstadoCargoDespachoMotivado
 				+ ", paramCodeEstadoCargoDespachoReenviado="
 				+ paramCodeEstadoCargoDespachoReenviado
-				+ ", paramCodeEstadoCargoDespachoAnulado="
-				+ paramCodeEstadoCargoDespachoAnulado
 				+ ", paramCodeEstadoCargoDespachoFueraZona="
 				+ paramCodeEstadoCargoDespachoFueraZona
 				+ ", paramCodeEstadoCargoDespachoPerdido="
 				+ paramCodeEstadoCargoDespachoPerdido
+				+ ", paramCodeEstadoCargoDespachoAnulado="
+				+ paramCodeEstadoCargoDespachoAnulado
+				+ ", paramCodeEstadoCargoDespachoNoDistribuido="
+				+ paramCodeEstadoCargoDespachoNoDistribuido
+				+ ", paramCodeEstadoCargoDespachoRetenido="
+				+ paramCodeEstadoCargoDespachoRetenido
+				+ ", paramCodeEstadoCargoDespachoSinFisico="
+				+ paramCodeEstadoCargoDespachoSinFisico
+				+ ", paramCodeEstadoCargoDespachoProvincia="
+				+ paramCodeEstadoCargoDespachoProvincia
+				+ ", paramCodeEstadoCargoDespachoSupervision="
+				+ paramCodeEstadoCargoDespachoSupervision
+				+ ", paramCodeEstadoCargoDespachoRobo="
+				+ paramCodeEstadoCargoDespachoRobo
 				+ ", paramCodeEstadoCargoDespachoVerificacion="
 				+ paramCodeEstadoCargoDespachoVerificacion
 				+ ", paramCodeMotivoCargoDespacho="
@@ -951,9 +1127,12 @@ public class Constantes {
 				+ paramCodeTipoFacturacion + ", paramCodeTipoCambio="
 				+ paramCodeTipoCambio + ", paramCodeEstadoCotizacion="
 				+ paramCodeEstadoCotizacion + ", paramCodeTipoNegocio="
-				+ paramCodeTipoNegocio + ", paramCodeTipoServicio="
+				+ paramCodeTipoNegocio + ", paramCodeTipoNegocioMensajeria="
+				+ paramCodeTipoNegocioMensajeria + ", paramCodeTipoServicio="
 				+ paramCodeTipoServicio + ", paramCodeTipoDocumento="
-				+ paramCodeTipoDocumento + ", paramCodeEstadoDespacho="
+				+ paramCodeTipoDocumento + ", paramCodeTipoDocumentoRuc="
+				+ paramCodeTipoDocumentoRuc + ", paramCodeTipoDocumentoDni="
+				+ paramCodeTipoDocumentoDni + ", paramCodeEstadoDespacho="
 				+ paramCodeEstadoDespacho
 				+ ", paramCodeEstadoDespachoDespacho="
 				+ paramCodeEstadoDespachoDespacho
@@ -980,11 +1159,11 @@ public class Constantes {
 				+ ", paramCodeEstadoOrdenCerrado="
 				+ paramCodeEstadoOrdenCerrado
 				+ ", paramCodeEstadoOrdenAnulado="
-				+ paramCodeEstadoOrdenAnulado
-				+ ", paramCodeEstadoOrdenFacturado="
-				+ paramCodeEstadoOrdenFacturado + ", paramCodeTipoIngreso="
+				+ paramCodeEstadoOrdenAnulado + ", paramCodeTipoIngreso="
 				+ paramCodeTipoIngreso + ", paramCodeTipoMoneda="
-				+ paramCodeTipoMoneda + ", paramCodeTipoPago="
+				+ paramCodeTipoMoneda + ", paramCodeTipoMonedaNuevoSol="
+				+ paramCodeTipoMonedaNuevoSol + ", paramCodeTipoMonedaDolar="
+				+ paramCodeTipoMonedaDolar + ", paramCodeTipoPago="
 				+ paramCodeTipoPago + ", paramCodeTipoReparto="
 				+ paramCodeTipoReparto + ", paramCodeTipoProducto="
 				+ paramCodeTipoProducto + ", paramCodeTipoSede="
@@ -995,7 +1174,17 @@ public class Constantes {
 				+ paramCodeUbigeoDistrito + ", paramCodeEstadoFacturado="
 				+ paramCodeEstadoFacturado + ", paramCodeEstadoFacturadoSi="
 				+ paramCodeEstadoFacturadoSi + ", paramCodeEstadoFacturadoNo="
-				+ paramCodeEstadoFacturadoNo + ", valueStringDefault="
+				+ paramCodeEstadoFacturadoNo + ", paramCodeTipoAmbito="
+				+ paramCodeTipoAmbito + ", paramCodeTipoAmbitoLocal="
+				+ paramCodeTipoAmbitoLocal + ", paramCodeEstadoLiquidacion="
+				+ paramCodeEstadoLiquidacion
+				+ ", paramCodeEstadoLiquidacionPendiente="
+				+ paramCodeEstadoLiquidacionPendiente
+				+ ", paramCodeEstadoLiquidacionParcial="
+				+ paramCodeEstadoLiquidacionParcial
+				+ ", paramCodeEstadoLiquidacionTotal="
+				+ paramCodeEstadoLiquidacionTotal + ", paramCodeNoDefinido="
+				+ paramCodeNoDefinido + ", valueStringDefault="
 				+ valueStringDefault + ", valueNumberDefault="
 				+ valueNumberDefault + ", valueNumberUnit=" + valueNumberUnit
 				+ ", valueNumberCero=" + valueNumberCero + ", stateRecordNew="
