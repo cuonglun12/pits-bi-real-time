@@ -15,20 +15,24 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="paramCodeEstadoCargoDespacho" value="${param.code.estado.cargo.despacho}"></property>
 		<property name="paramCodeEstadoCargoDespachoDigitado" value="${param.code.estado.cargo.despacho.digitado}"></property>
 		<property name="paramCodeEstadoCargoDespachoRuta" value="${param.code.estado.cargo.despacho.ruta}"></property>
-		<property name="paramCodeEstadoCargoDespachoProvincia" value="${param.code.estado.cargo.despacho.provincia}"></property>
-		<property name="paramCodeEstadoCargoDespachoRobo" value="${param.code.estado.cargo.despacho.robo}"></property>
 		<property name="paramCodeEstadoCargoDespachoEntregado" value="${param.code.estado.cargo.despacho.entregado}"></property>
 		<property name="paramCodeEstadoCargoDespachoMotivado" value="${param.code.estado.cargo.despacho.motivado}"></property>
 		<property name="paramCodeEstadoCargoDespachoReenviado" value="${param.code.estado.cargo.despacho.reenviado}"></property>
-		<property name="paramCodeEstadoCargoDespachoAnulado" value="${param.code.estado.cargo.despacho.anulado}"></property>
 		<property name="paramCodeEstadoCargoDespachoFueraZona" value="${param.code.estado.cargo.despacho.fuera.zona}"></property>
 		<property name="paramCodeEstadoCargoDespachoPerdido" value="${param.code.estado.cargo.despacho.perdido}"></property>
+		<property name="paramCodeEstadoCargoDespachoAnulado" value="${param.code.estado.cargo.despacho.anulado}"></property>
+		<property name="paramCodeEstadoCargoDespachoNoDistribuido" value="${param.code.estado.cargo.despacho.no.distribuido}"></property>
+		<property name="paramCodeEstadoCargoDespachoRetenido" value="${param.code.estado.cargo.despacho.retenido}"></property>
+		<property name="paramCodeEstadoCargoDespachoSinFisico" value="${param.code.estado.cargo.despacho.sin.fisico}"></property>
+		<property name="paramCodeEstadoCargoDespachoProvincia" value="${param.code.estado.cargo.despacho.provincia}"></property>
+		<property name="paramCodeEstadoCargoDespachoSupervision" value="${param.code.estado.cargo.despacho.supervision}"></property>
+		<property name="paramCodeEstadoCargoDespachoRobo" value="${param.code.estado.cargo.despacho.robo}"></property>
 		
 		<property name="paramCodeEstadoCargoDespachoVerificacion" value="${param.code.estado.cargo.despacho.verificacion}"></property>
+		
 		<property name="paramCodeMotivoCargoDespacho" value="${param.code.motivo.cargo.despacho}"></property>
 		
 		<property name="paramCodeEstadoCargo" value="${param.code.estado.cargo}"></property>
-		
 		<property name="paramCodeEstadoCargoOrdenDigitado" value="${param.code.estado.cargo.orden.digitado}"></property>
 		<property name="paramCodeEstadoCargoOrdenClasificado" value="${param.code.estado.cargo.orden.clasificado}"></property>
 		<property name="paramCodeEstadoCargoOrdenRuta" value="${param.code.estado.cargo.orden.ruta}"></property>
@@ -46,20 +50,33 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="paramCodeEstadoCargoOrdenRobo" value="${param.code.estado.cargo.orden.robo}"></property>
 		<property name="paramCodeEstadoCargoOrdenSiLlego" value="${param.code.estado.cargo.orden.si.llego}"></property>
 		<property name="paramCodeEstadoCargoOrdenRecepcionado" value="${param.code.estado.cargo.orden.recepcionado}"></property>
-		
-		
+
 		<property name="paramCodeMotivoCargo" value="${param.code.motivo.cargo}"></property>
+		
 		<property name="paramCodeTipoIngresoCargo" value="${param.code.tipo.ingreso.cargo}"></property>
+		
 		<property name="paramCodeCategoriaCliente" value="${param.code.categoria.cliente}"></property>
+		
 		<property name="paramCodeTipoCliente" value="${param.code.tipo.cliente}"></property>
+		
 		<property name="paramCodeTipoCredito" value="${param.code.tipo.credito}"></property>
+		
 		<property name="paramCodeTipoDocumentoTrabajo" value="${param.code.tipo.documento.trabajo}"></property>
+		
 		<property name="paramCodeTipoFacturacion" value="${param.code.tipo.facturacion}"></property>
+		
 		<property name="paramCodeTipoCambio" value="${param.code.tipo.cambio}"></property>
+		
 		<property name="paramCodeEstadoCotizacion" value="${param.code.estado.cotizacion}"></property>
+		
 		<property name="paramCodeTipoNegocio" value="${param.code.tipo.negocio}"></property>
+		<property name="paramCodeTipoNegocioMensajeria" value="${param.code.tipo.negocio.mensajeria}"></property>
+		
 		<property name="paramCodeTipoServicio" value="${param.code.tipo.servicio}"></property>
+		
 		<property name="paramCodeTipoDocumento" value="${param.code.tipo.documento}"></property>
+		<property name="paramCodeTipoDocumentoRuc" value="${param.code.tipo.documento.ruc}"></property>
+		<property name="paramCodeTipoDocumentoDni" value="${param.code.tipo.documento.dni}"></property>
 		
 		<property name="paramCodeEstadoDespacho" value="${param.code.estado.despacho}"></property>
 		<property name="paramCodeEstadoDespachoDespacho" value="${param.code.estado.despacho.despacho}"></property>
@@ -70,8 +87,11 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="paramCodeEstadoDespachoAnulado" value="${param.code.estado.despacho.anulado}"></property>
 		
 		<property name="paramCodeEstadoDespachoVerificacion" value="${param.code.estado.despacho.verificacion}"></property>
+		
 		<property name="paramCodeTipoDespacho" value="${param.code.tipo.despacho}"></property>
+		
 		<property name="paramCodeTipoRuta" value="${param.code.tipo.ruta}"></property>
+		
 		<property name="paramCodeCategoriaEmpleado" value="${param.code.categoria.empleado}"></property>
 		
 		<property name="paramCodeEstadoOrden" value="${param.code.estado.orden}"></property>
@@ -81,19 +101,40 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="paramCodeEstadoOrdenAnulado" value="${param.code.estado.orden.anulado}"></property>
 
 		<property name="paramCodeTipoIngreso" value="${param.code.tipo.ingreso}"></property>
+		
 		<property name="paramCodeTipoMoneda" value="${param.code.tipo.moneda}"></property>
+		<property name="paramCodeTipoMonedaNuevoSol" value="${param.code.tipo.moneda.nuevo.sol}"></property>
+		<property name="paramCodeTipoMonedaDolar" value="${param.code.tipo.moneda.dolar}"></property>
+		
 		<property name="paramCodeTipoPago" value="${param.code.tipo.pago}"></property>
+		
 		<property name="paramCodeTipoReparto" value="${param.code.tipo.reparto}"></property>
+		
 		<property name="paramCodeTipoProducto" value="${param.code.tipo.producto}"></property>
+		
 		<property name="paramCodeTipoSede" value="${param.code.tipo.sede}"></property>
+		
 		<property name="paramCodeUbigeoPais" value="${param.code.ubigeo.pais}"></property>
+		
 		<property name="paramCodeUbigeoDepartamento" value="${param.code.ubigeo.departamento}"></property>
+		
 		<property name="paramCodeUbigeoProvincia" value="${param.code.ubigeo.provincia}"></property>
+		
 		<property name="paramCodeUbigeoDistrito" value="${param.code.ubigeo.distrito}"></property>
 
 		<property name="paramCodeEstadoFacturado" value="${param.code.estado.facturado}"></property>
 		<property name="paramCodeEstadoFacturadoSi" value="${param.code.estado.facturado.si}"></property>
 		<property name="paramCodeEstadoFacturadoNo" value="${param.code.estado.facturado.no}"></property>
+		
+		<property name="paramCodeTipoAmbito" value="${param.code.tipo.ambito}"></property>
+		<property name="paramCodeTipoAmbitoLocal" value="${param.code.tipo.ambito.local}"></property>
+		
+		<property name="paramCodeEstadoLiquidacion" value="${param.code.estado.liquidacion}"></property>
+		<property name="paramCodeEstadoLiquidacionPendiente" value="${param.code.estado.liquidacion.pendiente}"></property>
+		<property name="paramCodeEstadoLiquidacionParcial" value="${param.code.estado.liquidacion.parcial}"></property>
+		<property name="paramCodeEstadoLiquidacionTotal" value="${param.code.estado.liquidacion.total}"></property>
+		
+		<property name="paramCodeNoDefinido" value="${param.code.no.definido}"></property>
 
 		<property name="valueStringDefault" value="${value.string.default}"></property>
 		<property name="valueNumberDefault" value="${value.number.default}"></property>
