@@ -10,13 +10,21 @@ public interface FactEnvioMapper {
 
     int deleteByExample(FactEnvioExample example);
 
+    int deleteByPrimaryKey(Integer envioKey);
+
     int insert(FactEnvio record);
 
     int insertSelective(FactEnvio record);
 
     List<FactEnvio> selectByExample(FactEnvioExample example);
 
+    FactEnvio selectByPrimaryKey(Integer envioKey);
+
     int updateByExampleSelective(@Param("record") FactEnvio record, @Param("example") FactEnvioExample example);
 
     int updateByExample(@Param("record") FactEnvio record, @Param("example") FactEnvioExample example);
+
+    int updateByPrimaryKeySelective(FactEnvio record);
+
+    int updateByPrimaryKey(FactEnvio record);
 }

@@ -489,11 +489,6 @@ public class FactOrdenProcess {
 		factOrden.setOrdenKeyFecVen(dimTiempo.getTiempoKey());
 		
 		dimTiempoExample.clear();
-		dimTiempoExample.createCriteria().andTiempoFechaEqualTo(tOrden.getOrdFecCie());
-		dimTiempo = (dimTiempoManager.selectByExample(dimTiempoExample)).get(0);
-		factOrden.setOrdenKeyFecCie(dimTiempo.getTiempoKey());
-		
-		dimTiempoExample.clear();
 		dimTiempoExample.createCriteria().andTiempoFechaEqualTo(tOrden.getOrdFecDev());
 		dimTiempo = (dimTiempoManager.selectByExample(dimTiempoExample)).get(0);
 		factOrden.setOrdenKeyFecDev(dimTiempo.getTiempoKey());

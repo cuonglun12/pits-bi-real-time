@@ -1,6 +1,8 @@
 package pe.com.j2techcon.bi.etl.domain.dimensional;
 
 public class FactEnvio {
+    private Integer envioKey;
+
     private Integer envioKeyClienteArea;
 
     private Integer envioKeyServicio;
@@ -42,6 +44,14 @@ public class FactEnvio {
     private Short envioIndRob;
 
     private Integer procId;
+
+    public Integer getEnvioKey() {
+        return envioKey;
+    }
+
+    public void setEnvioKey(Integer envioKey) {
+        this.envioKey = envioKey;
+    }
 
     public Integer getEnvioKeyClienteArea() {
         return envioKeyClienteArea;
@@ -212,6 +222,7 @@ public class FactEnvio {
     }
     
     public void clear(){
+    	envioKey=null;
     	envioKeyClienteArea=null;
     	envioKeyServicio=null;
     	envioKeyProducto=null;
@@ -237,20 +248,20 @@ public class FactEnvio {
 
 	@Override
 	public String toString() {
-		return "FactEnvio [envioKeyClienteArea=" + envioKeyClienteArea
-				+ ", envioKeyServicio=" + envioKeyServicio
-				+ ", envioKeyProducto=" + envioKeyProducto + ", envioKeyZona="
-				+ envioKeyZona + ", envioKeyPersonal=" + envioKeyPersonal
-				+ ", envioKeyFecSal=" + envioKeyFecSal + ", envioKeyFecRetp="
-				+ envioKeyFecRetp + ", envioKeyFecRetr=" + envioKeyFecRetr
-				+ ", envioKeyEstado=" + envioKeyEstado + ", envioIndUnidad="
-				+ envioIndUnidad + ", envioIndEnt=" + envioIndEnt
-				+ ", envioIndMot=" + envioIndMot + ", envioIndRee="
-				+ envioIndRee + ", envioIndAnu=" + envioIndAnu
-				+ ", envioIndFueZon=" + envioIndFueZon + ", envioIndPerd="
-				+ envioIndPerd + ", envioIndDig=" + envioIndDig
-				+ ", envioIndRut=" + envioIndRut + ", envioIndPro="
-				+ envioIndPro + ", envioIndRob=" + envioIndRob + ", procId="
-				+ procId + "]";
+		return "FactEnvio [envioKey=" + envioKey + ", envioKeyClienteArea="
+				+ envioKeyClienteArea + ", envioKeyServicio="
+				+ envioKeyServicio + ", envioKeyProducto=" + envioKeyProducto
+				+ ", envioKeyZona=" + envioKeyZona + ", envioKeyPersonal="
+				+ envioKeyPersonal + ", envioKeyFecSal=" + envioKeyFecSal
+				+ ", envioKeyFecRetp=" + envioKeyFecRetp + ", envioKeyFecRetr="
+				+ envioKeyFecRetr + ", envioKeyEstado=" + envioKeyEstado
+				+ ", envioIndUnidad=" + envioIndUnidad + ", envioIndEnt="
+				+ envioIndEnt + ", envioIndMot=" + envioIndMot
+				+ ", envioIndRee=" + envioIndRee + ", envioIndAnu="
+				+ envioIndAnu + ", envioIndFueZon=" + envioIndFueZon
+				+ ", envioIndPerd=" + envioIndPerd + ", envioIndDig="
+				+ envioIndDig + ", envioIndRut=" + envioIndRut
+				+ ", envioIndPro=" + envioIndPro + ", envioIndRob="
+				+ envioIndRob + ", procId=" + procId + "]";
 	}
 }

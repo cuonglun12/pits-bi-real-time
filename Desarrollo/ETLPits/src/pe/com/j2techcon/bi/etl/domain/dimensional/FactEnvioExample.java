@@ -116,6 +116,66 @@ public class FactEnvioExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
+        public Criteria andEnvioKeyIsNull() {
+            addCriterion("envio_key is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioKeyIsNotNull() {
+            addCriterion("envio_key is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioKeyEqualTo(Integer value) {
+            addCriterion("envio_key =", value, "envioKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioKeyNotEqualTo(Integer value) {
+            addCriterion("envio_key <>", value, "envioKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioKeyGreaterThan(Integer value) {
+            addCriterion("envio_key >", value, "envioKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioKeyGreaterThanOrEqualTo(Integer value) {
+            addCriterion("envio_key >=", value, "envioKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioKeyLessThan(Integer value) {
+            addCriterion("envio_key <", value, "envioKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioKeyLessThanOrEqualTo(Integer value) {
+            addCriterion("envio_key <=", value, "envioKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioKeyIn(List<Integer> values) {
+            addCriterion("envio_key in", values, "envioKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioKeyNotIn(List<Integer> values) {
+            addCriterion("envio_key not in", values, "envioKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioKeyBetween(Integer value1, Integer value2) {
+            addCriterion("envio_key between", value1, value2, "envioKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvioKeyNotBetween(Integer value1, Integer value2) {
+            addCriterion("envio_key not between", value1, value2, "envioKey");
+            return (Criteria) this;
+        }
+
         public Criteria andEnvioKeyClienteAreaIsNull() {
             addCriterion("envio_key_cliente_area is null");
             return (Criteria) this;

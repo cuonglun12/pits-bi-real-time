@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="pe.com.j2techcon.bi.etl.dao.dimensional.FactEnvioMapper" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.dimensional.FactEnvio" >
+    <id column="envio_key" property="envioKey" jdbcType="INTEGER" />
     <result column="envio_key_cliente_area" property="envioKeyClienteArea" jdbcType="INTEGER" />
     <result column="envio_key_servicio" property="envioKeyServicio" jdbcType="INTEGER" />
     <result column="envio_key_producto" property="envioKeyProducto" jdbcType="INTEGER" />
@@ -83,10 +84,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    envio_key_cliente_area, envio_key_servicio, envio_key_producto, envio_key_zona, envio_key_personal, 
-    envio_key_fec_sal, envio_key_fec_retp, envio_key_fec_retr, envio_key_estado, envio_ind_unidad, 
-    envio_ind_ent, envio_ind_mot, envio_ind_ree, envio_ind_anu, envio_ind_fue_zon, envio_ind_perd, 
-    envio_ind_dig, envio_ind_rut, envio_ind_pro, envio_ind_rob, proc_id
+    envio_key, envio_key_cliente_area, envio_key_servicio, envio_key_producto, envio_key_zona, 
+    envio_key_personal, envio_key_fec_sal, envio_key_fec_retp, envio_key_fec_retr, envio_key_estado, 
+    envio_ind_unidad, envio_ind_ent, envio_ind_mot, envio_ind_ree, envio_ind_anu, envio_ind_fue_zon, 
+    envio_ind_perd, envio_ind_dig, envio_ind_rut, envio_ind_pro, envio_ind_rob, proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactEnvioExample" >
     select
@@ -105,6 +106,16 @@
       ${paginationByClause}
     </if>
   </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from fact_envio
+    where envio_key = #{envioKey,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from fact_envio
+    where envio_key = #{envioKey,jdbcType=INTEGER}
+  </delete>
   <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactEnvioExample" >
     delete from fact_envio
     <if test="_parameter != null" >
@@ -112,7 +123,7 @@
     </if>
   </delete>
   <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactEnvio" >
-    insert into fact_envio (envio_key_cliente_area, envio_key_servicio, 
+    insert into fact_envio (envio_key, envio_key_cliente_area, envio_key_servicio, 
       envio_key_producto, envio_key_zona, envio_key_personal, 
       envio_key_fec_sal, envio_key_fec_retp, envio_key_fec_retr, 
       envio_key_estado, envio_ind_unidad, envio_ind_ent, 
@@ -120,7 +131,7 @@
       envio_ind_fue_zon, envio_ind_perd, envio_ind_dig, 
       envio_ind_rut, envio_ind_pro, envio_ind_rob, 
       proc_id)
-    values (#{envioKeyClienteArea,jdbcType=INTEGER}, #{envioKeyServicio,jdbcType=INTEGER}, 
+    values (#{envioKey,jdbcType=INTEGER}, #{envioKeyClienteArea,jdbcType=INTEGER}, #{envioKeyServicio,jdbcType=INTEGER}, 
       #{envioKeyProducto,jdbcType=INTEGER}, #{envioKeyZona,jdbcType=INTEGER}, #{envioKeyPersonal,jdbcType=INTEGER}, 
       #{envioKeyFecSal,jdbcType=INTEGER}, #{envioKeyFecRetp,jdbcType=INTEGER}, #{envioKeyFecRetr,jdbcType=INTEGER}, 
       #{envioKeyEstado,jdbcType=INTEGER}, #{envioIndUnidad,jdbcType=SMALLINT}, #{envioIndEnt,jdbcType=SMALLINT}, 
@@ -132,6 +143,9 @@
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactEnvio" >
     insert into fact_envio
     <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="envioKey != null" >
+        envio_key,
+      </if>
       <if test="envioKeyClienteArea != null" >
         envio_key_cliente_area,
       </if>
@@ -197,6 +211,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="envioKey != null" >
+        #{envioKey,jdbcType=INTEGER},
+      </if>
       <if test="envioKeyClienteArea != null" >
         #{envioKeyClienteArea,jdbcType=INTEGER},
       </if>
@@ -271,6 +288,9 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update fact_envio
     <set >
+      <if test="record.envioKey != null" >
+        envio_key = #{record.envioKey,jdbcType=INTEGER},
+      </if>
       <if test="record.envioKeyClienteArea != null" >
         envio_key_cliente_area = #{record.envioKeyClienteArea,jdbcType=INTEGER},
       </if>
@@ -341,7 +361,8 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update fact_envio
-    set envio_key_cliente_area = #{record.envioKeyClienteArea,jdbcType=INTEGER},
+    set envio_key = #{record.envioKey,jdbcType=INTEGER},
+      envio_key_cliente_area = #{record.envioKeyClienteArea,jdbcType=INTEGER},
       envio_key_servicio = #{record.envioKeyServicio,jdbcType=INTEGER},
       envio_key_producto = #{record.envioKeyProducto,jdbcType=INTEGER},
       envio_key_zona = #{record.envioKeyZona,jdbcType=INTEGER},
@@ -365,5 +386,99 @@
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactEnvio" >
+    update fact_envio
+    <set >
+      <if test="envioKeyClienteArea != null" >
+        envio_key_cliente_area = #{envioKeyClienteArea,jdbcType=INTEGER},
+      </if>
+      <if test="envioKeyServicio != null" >
+        envio_key_servicio = #{envioKeyServicio,jdbcType=INTEGER},
+      </if>
+      <if test="envioKeyProducto != null" >
+        envio_key_producto = #{envioKeyProducto,jdbcType=INTEGER},
+      </if>
+      <if test="envioKeyZona != null" >
+        envio_key_zona = #{envioKeyZona,jdbcType=INTEGER},
+      </if>
+      <if test="envioKeyPersonal != null" >
+        envio_key_personal = #{envioKeyPersonal,jdbcType=INTEGER},
+      </if>
+      <if test="envioKeyFecSal != null" >
+        envio_key_fec_sal = #{envioKeyFecSal,jdbcType=INTEGER},
+      </if>
+      <if test="envioKeyFecRetp != null" >
+        envio_key_fec_retp = #{envioKeyFecRetp,jdbcType=INTEGER},
+      </if>
+      <if test="envioKeyFecRetr != null" >
+        envio_key_fec_retr = #{envioKeyFecRetr,jdbcType=INTEGER},
+      </if>
+      <if test="envioKeyEstado != null" >
+        envio_key_estado = #{envioKeyEstado,jdbcType=INTEGER},
+      </if>
+      <if test="envioIndUnidad != null" >
+        envio_ind_unidad = #{envioIndUnidad,jdbcType=SMALLINT},
+      </if>
+      <if test="envioIndEnt != null" >
+        envio_ind_ent = #{envioIndEnt,jdbcType=SMALLINT},
+      </if>
+      <if test="envioIndMot != null" >
+        envio_ind_mot = #{envioIndMot,jdbcType=SMALLINT},
+      </if>
+      <if test="envioIndRee != null" >
+        envio_ind_ree = #{envioIndRee,jdbcType=SMALLINT},
+      </if>
+      <if test="envioIndAnu != null" >
+        envio_ind_anu = #{envioIndAnu,jdbcType=SMALLINT},
+      </if>
+      <if test="envioIndFueZon != null" >
+        envio_ind_fue_zon = #{envioIndFueZon,jdbcType=SMALLINT},
+      </if>
+      <if test="envioIndPerd != null" >
+        envio_ind_perd = #{envioIndPerd,jdbcType=SMALLINT},
+      </if>
+      <if test="envioIndDig != null" >
+        envio_ind_dig = #{envioIndDig,jdbcType=SMALLINT},
+      </if>
+      <if test="envioIndRut != null" >
+        envio_ind_rut = #{envioIndRut,jdbcType=SMALLINT},
+      </if>
+      <if test="envioIndPro != null" >
+        envio_ind_pro = #{envioIndPro,jdbcType=SMALLINT},
+      </if>
+      <if test="envioIndRob != null" >
+        envio_ind_rob = #{envioIndRob,jdbcType=SMALLINT},
+      </if>
+      <if test="procId != null" >
+        proc_id = #{procId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where envio_key = #{envioKey,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactEnvio" >
+    update fact_envio
+    set envio_key_cliente_area = #{envioKeyClienteArea,jdbcType=INTEGER},
+      envio_key_servicio = #{envioKeyServicio,jdbcType=INTEGER},
+      envio_key_producto = #{envioKeyProducto,jdbcType=INTEGER},
+      envio_key_zona = #{envioKeyZona,jdbcType=INTEGER},
+      envio_key_personal = #{envioKeyPersonal,jdbcType=INTEGER},
+      envio_key_fec_sal = #{envioKeyFecSal,jdbcType=INTEGER},
+      envio_key_fec_retp = #{envioKeyFecRetp,jdbcType=INTEGER},
+      envio_key_fec_retr = #{envioKeyFecRetr,jdbcType=INTEGER},
+      envio_key_estado = #{envioKeyEstado,jdbcType=INTEGER},
+      envio_ind_unidad = #{envioIndUnidad,jdbcType=SMALLINT},
+      envio_ind_ent = #{envioIndEnt,jdbcType=SMALLINT},
+      envio_ind_mot = #{envioIndMot,jdbcType=SMALLINT},
+      envio_ind_ree = #{envioIndRee,jdbcType=SMALLINT},
+      envio_ind_anu = #{envioIndAnu,jdbcType=SMALLINT},
+      envio_ind_fue_zon = #{envioIndFueZon,jdbcType=SMALLINT},
+      envio_ind_perd = #{envioIndPerd,jdbcType=SMALLINT},
+      envio_ind_dig = #{envioIndDig,jdbcType=SMALLINT},
+      envio_ind_rut = #{envioIndRut,jdbcType=SMALLINT},
+      envio_ind_pro = #{envioIndPro,jdbcType=SMALLINT},
+      envio_ind_rob = #{envioIndRob,jdbcType=SMALLINT},
+      proc_id = #{procId,jdbcType=INTEGER}
+    where envio_key = #{envioKey,jdbcType=INTEGER}
   </update>
 </mapper>
