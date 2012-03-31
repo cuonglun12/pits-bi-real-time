@@ -321,6 +321,7 @@ constraint PK_FACT_DESPACHO primary key (despacho_key)
 /* Table: fact_envio                                            */
 /*==============================================================*/
 create table fact_envio (
+envio_key            INT4                 not null default 0,
 envio_key_cliente_area INT4                 not null default 0,
 envio_key_servicio   INT4                 not null default 0,
 envio_key_producto   INT4                 not null default 0,
@@ -341,7 +342,8 @@ envio_ind_dig        INT2                 not null default 0,
 envio_ind_rut        INT2                 not null default 0,
 envio_ind_pro        INT2                 not null default 0,
 envio_ind_rob        INT2                 not null default 0,
-proc_id              INT4                 not null default 0
+proc_id              INT4                 not null default 0,
+constraint PK_FACT_ENVIO primary key (envio_key)
 );
 
 /*==============================================================*/
