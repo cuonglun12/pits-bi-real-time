@@ -46,6 +46,8 @@
 		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoRepartoExample" alias="DimTipoRepartoExample"/>
 		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoRuta" alias="DimTipoRuta"/>
 		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoRutaExample" alias="DimTipoRutaExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimUbigeo" alias="DimUbigeo"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimUbigeoExample" alias="DimUbigeoExample"/>
 		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimZona" alias="DimZona"/>
 		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.DimZonaExample" alias="DimZonaExample"/>
 		<typeAlias type="pe.com.j2techcon.bi.etl.domain.dimensional.FactCotizacion" alias="FactCotizacion"/>
@@ -71,6 +73,7 @@
 		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/DimTipoPagoMapper.xml" />
 		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/DimTipoRepartoMapper.xml" />
 		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/DimTipoRutaMapper.xml" />
+		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/DimUbigeoMapper.xml" />
 		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/DimZonaMapper.xml" />
 		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/FactCotizacionMapper.xml" />
 		<mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/dimensional/FactDespachoMapper.xml" />

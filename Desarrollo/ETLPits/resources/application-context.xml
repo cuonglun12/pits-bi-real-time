@@ -53,6 +53,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 	<!--      -->
 	
 	<bean id="tProcesoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryControl" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.control.TProcesoMapper" /></bean>		
+	<bean id="tProcesoDetalleMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryControl" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.control.TProcesoDetalleMapper" /></bean>
 						
 	<bean id="dimClienteMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.DimClienteMapper" /></bean>		
 	<bean id="dimEstadoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.DimEstadoMapper" /></bean>		
@@ -66,7 +67,8 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 	<bean id="dimTipoDocumentoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.DimTipoDocumentoMapper" /></bean>		
 	<bean id="dimTipoPagoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.DimTipoPagoMapper" /></bean>		
 	<bean id="dimTipoRepartoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.DimTipoRepartoMapper" /></bean>		
-	<bean id="dimTipoRutaMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.DimTipoRutaMapper" /></bean>		
+	<bean id="dimTipoRutaMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.DimTipoRutaMapper" /></bean>
+	<bean id="dimUbigeoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.DimUbigeoMapper" /></bean>		
 	<bean id="dimZonaMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.DimZonaMapper" /></bean>		
 	<bean id="factCotizacionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.FactCotizacionMapper" /></bean>		
 	<bean id="factDespachoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryDimensional" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.dimensional.FactDespachoMapper" /></bean>		
@@ -91,6 +93,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 
 	<!--      -->
 	<bean id="tProcesoManager" class="pe.com.j2techcon.bi.etl.logic.control.TProcesoManager"><property name="tProcesoMapper" ref="tProcesoMapper" /></bean>
+	<bean id="tProcesoDetalleManager" class="pe.com.j2techcon.bi.etl.logic.control.TProcesoDetalleManager"><property name="tProcesoDetalleMapper" ref="tProcesoDetalleMapper" /></bean>
 									
 	<bean id="dimClienteManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.DimClienteManager"><property name="dimClienteMapper" ref="dimClienteMapper" /></bean>
 	<bean id="dimEstadoManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.DimEstadoManager"><property name="dimEstadoMapper" ref="dimEstadoMapper" /></bean>
@@ -105,6 +108,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 	<bean id="dimTipoPagoManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.DimTipoPagoManager"><property name="dimTipoPagoMapper" ref="dimTipoPagoMapper" /></bean>
 	<bean id="dimTipoRepartoManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.DimTipoRepartoManager"><property name="dimTipoRepartoMapper" ref="dimTipoRepartoMapper" /></bean>
 	<bean id="dimTipoRutaManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.DimTipoRutaManager"><property name="dimTipoRutaMapper" ref="dimTipoRutaMapper" /></bean>
+	<bean id="dimUbigeoManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.DimUbigeoManager"><property name="dimUbigeoMapper" ref="dimUbigeoMapper" /></bean>
 	<bean id="dimZonaManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.DimZonaManager"><property name="dimZonaMapper" ref="dimZonaMapper" /></bean>
 	<bean id="factCotizacionManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.FactCotizacionManager"><property name="factCotizacionMapper" ref="factCotizacionMapper" /></bean>
 	<bean id="factDespachoManager" class="pe.com.j2techcon.bi.etl.logic.dimensional.FactDespachoManager"><property name="factDespachoMapper" ref="factDespachoMapper" /></bean>
@@ -131,6 +135,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 
 	<aop:config>
 		<aop:advisor pointcut="execution(* *..TProcesoManager.*(..))" advice-ref="simpleTxAdviceControl" />
+		<aop:advisor pointcut="execution(* *..TProcesoDetalleManager.*(..))" advice-ref="simpleTxAdviceControl" />
 		
 		<aop:advisor pointcut="execution(* *..DimClienteManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
 		<aop:advisor pointcut="execution(* *..DimEstadoManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
@@ -145,6 +150,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<aop:advisor pointcut="execution(* *..DimTipoPagoManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
 		<aop:advisor pointcut="execution(* *..DimTipoRepartoManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
 		<aop:advisor pointcut="execution(* *..DimTipoRutaManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
+		<aop:advisor pointcut="execution(* *..DimUbigeoManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
 		<aop:advisor pointcut="execution(* *..DimZonaManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
 		<aop:advisor pointcut="execution(* *..FactCotizacionManager.*(..))" advice-ref="simpleTxAdviceDimensional" />
 		<aop:advisor pointcut="execution(* *..FactDespachoManager.*(..))" advice-ref="simpleTxAdviceDimensional" />

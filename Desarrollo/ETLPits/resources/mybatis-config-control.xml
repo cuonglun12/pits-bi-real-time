@@ -22,8 +22,11 @@
 	<typeAliases>
 		<typeAlias type="pe.com.j2techcon.bi.etl.domain.control.TProceso" alias="TProceso"/>
 		<typeAlias type="pe.com.j2techcon.bi.etl.domain.control.TProcesoExample" alias="TProcesoExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.control.TProcesoDetalle" alias="TProcesoDetalle"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.control.TProcesoDetalleExample" alias="TProcesoDetalleExample"/>
 	</typeAliases>
     <mappers>
         <mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/control/TProcesoMapper.xml" />
+        <mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/control/TProcesoDetalleMapper.xml" />
     </mappers>
 </configuration>

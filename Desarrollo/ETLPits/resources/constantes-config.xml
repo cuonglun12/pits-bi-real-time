@@ -149,9 +149,13 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="stateProcessStarted" value="${state.process.started}"></property>
 		<property name="stateProcessCompletedCorrectly" value="${state.process.completed.correctly}"></property>
 		<property name="stateProcessCompletedErrors" value="${state.process.completed.errors}"></property>
+		<property name="stateProcessCanceled" value="${state.process.canceled}"></property>
 		
 		<property name="typeProcessSimple" value="${type.process.simple}"></property>
 		<property name="typeProcessReProcess" value="${type.process.reprocess}"></property>
+		
+		<property name="loadProcessToGeneric" value="${load.process.to.generic}"></property>
+		<property name="loadProcessToDimensional" value="${load.process.to.dimensional}"></property>
 		
 		<property name="resultTransactionNoResult" value="${result.transaction.noresult}"></property>
 		
@@ -160,6 +164,47 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="resultProcessCompletedErrors" value="${result.process.completed.errors}"></property>
 
 		<property name="sizePage" value="${size.page}"></property>
+		
+		<property name="maxHoursProcess" value="${max.hours.process}"></property>
+		<property name="maxHoursFirstProcess" value="${max.hours.first.process}"></property>
+		
+		<property name="idTableGenericTAreaCliente" value="${id.table.generic.t_area_cliente}"></property>
+		<property name="idTableGenericTCargo" value="${id.table.generic.t_cargo}"></property>
+		<property name="idTableGenericTCargoDespacho" value="${id.table.generic.t_cargo_despacho}"></property>
+		<property name="idTableGenericTCliente" value="${id.table.generic.t_cliente}"></property>
+		<property name="idTableGenericTCotizacion" value="${id.table.generic.t_cotizacion}"></property>
+		<property name="idTableGenericTDespacho" value="${id.table.generic.t_despacho}"></property>
+		<property name="idTableGenericTEmpleado" value="${id.table.generic.t_empleado}"></property>
+		<property name="idTableGenericTEmpleadoCategoria" value="${id.table.generic.t_empleado_categoria}"></property>
+		<property name="idTableGenericTLiquidacion" value="${id.table.generic.t_liquidacion}"></property>
+		<property name="idTableGenericTOrden" value="${id.table.generic.t_orden}"></property>
+		<property name="idTableGenericTParametro" value="${id.table.generic.t_parametro}"></property>
+		<property name="idTableGenericTProducto" value="${id.table.generic.t_producto}"></property>
+		<property name="idTableGenericTSede" value="${id.table.generic.t_sede}"></property>
+		<property name="idTableGenericTServicio" value="${id.table.generic.t_servicio}"></property>
+		<property name="idTableGenericTUbigeo" value="${id.table.generic.t_ubigeo}"></property>
+		<property name="idTableGenericTZona" value="${id.table.generic.t_zona}"></property>
+		
+		<property name="idTableDimensionalDimCliente" value="${id.table.dimensional.dim_cliente}"></property>
+		<property name="idTableDimensionalDimEstado" value="${id.table.dimensional.dim_estado}"></property>
+		<property name="idTableDimensionalDimFacturado" value="${id.table.dimensional.dim_facturado}"></property>
+		<property name="idTableDimensionalDimMoneda" value="${id.table.dimensional.dim_moneda}"></property>
+		<property name="idTableDimensionalDimPersonal" value="${id.table.dimensional.dim_personal}"></property>
+		<property name="idTableDimensionalDimProducto" value="${id.table.dimensional.dim_producto}"></property>
+		<property name="idTableDimensionalDimSede" value="${id.table.dimensional.dim_sede}"></property>
+		<property name="idTableDimensionalDimServicio" value="${id.table.dimensional.dim_servicio}"></property>
+		<property name="idTableDimensionalDimTiempo" value="${id.table.dimensional.dim_tiempo}"></property>
+		<property name="idTableDimensionalDimTipoDocumento" value="${id.table.dimensional.dim_tipo_documento}"></property>
+		<property name="idTableDimensionalDimTipoPago" value="${id.table.dimensional.dim_tipo_pago}"></property>
+		<property name="idTableDimensionalDimTipoReparto" value="${id.table.dimensional.dim_tipo_reparto}"></property>
+		<property name="idTableDimensionalDimTipoRuta" value="${id.table.dimensional.dim_tipo_ruta}"></property>
+		<property name="idTableDimensionalDimUbigeo" value="${id.table.dimensional.dim_ubigeo}"></property>
+		<property name="idTableDimensionalDimZona" value="${id.table.dimensional.dim_zona}"></property>
+		<property name="idTableDimensionalFactCotizacion" value="${id.table.dimensional.fact_cotizacion}"></property>
+		<property name="idTableDimensionalFactCespacho" value="${id.table.dimensional.fact_despacho}"></property>
+		<property name="idTableDimensionalFactEnvio" value="${id.table.dimensional.fact_envio}"></property>
+		<property name="idTableDimensionalFactOrden" value="${id.table.dimensional.fact_orden}"></property>		
+		
 	</bean>
 
 
