@@ -298,7 +298,10 @@ public class DimSedeProcess {
 		while(true) {
 			
 			tSedeExample.clear();
-			tSedeExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
+
+			tSedeExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom);
+			tSedeExample.createCriteria().andFecNumCamLessThan(dateTimeUntil);	
+			
 			tSedeExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
 			List<TSede> lstSede = tSedeManager.selectByExample(tSedeExample);
 			if(lstSede.size()>0){

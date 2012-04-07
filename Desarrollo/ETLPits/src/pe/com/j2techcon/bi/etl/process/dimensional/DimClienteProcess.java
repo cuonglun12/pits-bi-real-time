@@ -329,7 +329,10 @@ public class DimClienteProcess {
 		while(true) {
 			
 			tAreaClienteExample.clear();
-			tAreaClienteExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
+			
+			tAreaClienteExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom);
+			tAreaClienteExample.createCriteria().andFecNumCamLessThan(dateTimeUntil);
+			
 			tAreaClienteExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
 			List<TAreaCliente> lstAreaCliente = tAreaClienteManager.selectByExample(tAreaClienteExample);
 			if(lstAreaCliente.size()>0){
@@ -365,7 +368,11 @@ public class DimClienteProcess {
 		while(true) {
 			
 			tClienteExample.clear();
-			tClienteExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
+			
+			tClienteExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom);
+			tClienteExample.createCriteria().andFecNumCamLessThan(dateTimeUntil);
+			
+			
 			tClienteExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
 			List<TCliente> lstCliente = tClienteManager.selectByExample(tClienteExample);
 			if(lstCliente.size()>0){

@@ -370,7 +370,10 @@ public class FactCotizacionProcess {
 		
 		while(true) {
 			tOrdenExample.clear();
-			tOrdenExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
+
+			tOrdenExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom);
+			tOrdenExample.createCriteria().andFecNumCamLessThan(dateTimeUntil);	
+			
 			tOrdenExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
 			List<TOrden> lstOrden = tOrdenManager.selectByExample(tOrdenExample);
 			if(lstOrden.size()>0){
@@ -410,7 +413,10 @@ public class FactCotizacionProcess {
 		
 		while(true){
 			tCotizacionExample.clear();
-			tCotizacionExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
+			
+			tCotizacionExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom);
+			tCotizacionExample.createCriteria().andFecNumCamLessThan(dateTimeUntil);	
+			
 			tCotizacionExample.createCriteria().andProcIdNotEqualTo(process);
 			tCotizacionExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
 			List<TCotizacion> lstCotizacion = tCotizacionManager.selectByExample(tCotizacionExample);

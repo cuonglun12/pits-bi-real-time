@@ -265,7 +265,10 @@ public class DimUbigeoProcess {
 		while(true) {
 			
 			tUbigeoExample.clear();
-			tUbigeoExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
+
+			tUbigeoExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom);
+			tUbigeoExample.createCriteria().andFecNumCamLessThan(dateTimeUntil);	
+			
 			tUbigeoExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
 			List<TUbigeo> lstUbigeo = tUbigeoManager.selectByExample(tUbigeoExample);
 			if(lstUbigeo.size()>0){

@@ -41,6 +41,8 @@ public class DimEstadoProcess {
 	private DimEstadoManager dimEstadoManager;
 	
 	private Constantes constantes;
+	
+	List<Integer> statesProceso;
 
 	public BeanFactory getFactory() {
 		return factory;
@@ -202,6 +204,15 @@ public class DimEstadoProcess {
 		this.constantes = constantes;
 	}
 
+
+	public List<Integer> getStatesProceso() {
+		return statesProceso;
+	}
+
+	public void setStatesProceso(List<Integer> statesProceso) {
+		this.statesProceso = statesProceso;
+	}
+
 	public DimEstadoProcess(BeanFactory factory, int sizePage,
 			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
 		this.factory = factory;
@@ -233,11 +244,17 @@ public class DimEstadoProcess {
 		while(true) {
 			
 			tParametroExample.clear();
-			tParametroExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
-			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCotizacion());
-			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoOrden());
-			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoDespacho());
-			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
+			
+			tParametroExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom);
+			tParametroExample.createCriteria().andFecNumCamLessThan(dateTimeUntil);
+			
+			statesProceso.clear(); 
+			statesProceso.add(constantes.getParamCodeEstadoCotizacion());
+			statesProceso.add(constantes.getParamCodeEstadoOrden());
+			statesProceso.add(constantes.getParamCodeEstadoDespacho());
+			statesProceso.add(constantes.getParamCodeEstadoCargoDespacho());
+			
+			tParametroExample.createCriteria().andParamCodTipIn(statesProceso);
 			
 			tParametroExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
 			List<TParametro> lstParametro = tParametroManager.selectByExample(tParametroExample);

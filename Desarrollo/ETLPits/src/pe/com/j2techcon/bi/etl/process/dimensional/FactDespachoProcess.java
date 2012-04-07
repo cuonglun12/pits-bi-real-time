@@ -338,7 +338,10 @@ public class FactDespachoProcess {
 		
 		while(true) {
 			tCargoDespachoExample.clear();
-			tCargoDespachoExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
+
+			tCargoDespachoExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom);
+			tCargoDespachoExample.createCriteria().andFecNumCamLessThan(dateTimeUntil);	
+			
 			tCargoDespachoExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
 			List<TCargoDespacho> lstCargoDespacho = tCargoDespachoManager.selectByExample(tCargoDespachoExample);
 			if(lstCargoDespacho.size()>0){
@@ -375,7 +378,10 @@ public class FactDespachoProcess {
 		
 		while(true){
 			tDespachoExample.clear();
-			tDespachoExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
+
+			tDespachoExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom);
+			tDespachoExample.createCriteria().andFecNumCamLessThan(dateTimeUntil);	
+			
 			tDespachoExample.createCriteria().andProcIdNotEqualTo(process);
 			tDespachoExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
 			List<TDespacho> lstDespacho = tDespachoManager.selectByExample(tDespachoExample);

@@ -266,7 +266,10 @@ public class DimServicioProcess {
 		while(true) {
 			
 			tServicioExample.clear();
-			tServicioExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
+
+			tServicioExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom);
+			tServicioExample.createCriteria().andFecNumCamLessThan(dateTimeUntil);				
+			
 			tServicioExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
 			List<TServicio> lstServicio = tServicioManager.selectByExample(tServicioExample);
 			if(lstServicio.size()>0){

@@ -233,7 +233,10 @@ public class DimTipoDocumentoProcess {
 		while(true) {
 			
 			tParametroExample.clear();
-			tParametroExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
+
+			tParametroExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom);
+			tParametroExample.createCriteria().andFecNumCamLessThan(dateTimeUntil);	
+			
 			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeTipoDocumentoTrabajo());
 			tParametroExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
 			List<TParametro> lstParametro = tParametroManager.selectByExample(tParametroExample);

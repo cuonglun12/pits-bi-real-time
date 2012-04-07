@@ -370,7 +370,10 @@ public class FactOrdenProcess {
 		
 		while(true) {
 			tCargoExample.clear();
-			tCargoExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
+
+			tCargoExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom);
+			tCargoExample.createCriteria().andFecNumCamLessThan(dateTimeUntil);
+			
 			tCargoExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
 			List<TCargo> lstCargo = tCargoManager.selectByExample(tCargoExample);
 			if(lstCargo.size()>0){
@@ -407,7 +410,10 @@ public class FactOrdenProcess {
 		
 		while(true){
 			tOrdenExample.clear();
-			tOrdenExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
+
+			tOrdenExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom);
+			tOrdenExample.createCriteria().andFecNumCamLessThan(dateTimeUntil);
+			
 			tOrdenExample.createCriteria().andProcIdNotEqualTo(process);
 			tOrdenExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
 			List<TOrden> lstOrden = tOrdenManager.selectByExample(tOrdenExample);

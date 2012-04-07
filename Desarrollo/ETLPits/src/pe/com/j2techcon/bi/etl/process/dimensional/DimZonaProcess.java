@@ -298,7 +298,10 @@ public class DimZonaProcess {
 		while(true) {
 			
 			tZonaExample.clear();
-			tZonaExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
+
+			tZonaExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom);
+			tZonaExample.createCriteria().andFecNumCamLessThan(dateTimeUntil);	
+			
 			tZonaExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
 			List<TZona> lstZona = tZonaManager.selectByExample(tZonaExample);
 			if(lstZona.size()>0){

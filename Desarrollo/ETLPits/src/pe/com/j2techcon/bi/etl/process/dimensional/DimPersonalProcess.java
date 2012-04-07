@@ -297,7 +297,10 @@ public class DimPersonalProcess {
 		while(true) {
 			
 			tEmpleadoCategoriaExample.clear();
-			tEmpleadoCategoriaExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
+			
+			tEmpleadoCategoriaExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom);
+			tEmpleadoCategoriaExample.createCriteria().andFecNumCamLessThan(dateTimeUntil);
+			
 			tEmpleadoCategoriaExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
 			List<TEmpleadoCategoria> lstEmpleadoCategoria = tEmpleadoCategoriaManager.selectByExample(tEmpleadoCategoriaExample);
 			if(lstEmpleadoCategoria.size()>0){
@@ -319,7 +322,10 @@ public class DimPersonalProcess {
 		while(true) {
 			
 			tEmpleadoExample.clear();
-			tEmpleadoExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
+
+			tEmpleadoExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom);
+			tEmpleadoExample.createCriteria().andFecNumCamLessThan(dateTimeUntil);
+			
 			tEmpleadoExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
 			List<TEmpleado> lstEmpleado = tEmpleadoManager.selectByExample(tEmpleadoExample);
 			if(lstEmpleado.size()>0){

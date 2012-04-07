@@ -433,7 +433,10 @@ public class FactEnvioProcess {
 		
 		while(true) {
 			tCargoDespachoExample.clear();
-			tCargoDespachoExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
+
+			tCargoDespachoExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom);
+			tCargoDespachoExample.createCriteria().andFecNumCamLessThan(dateTimeUntil);	
+			
 			tCargoDespachoExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
 			List<TCargoDespacho> lstCargoDespacho = tCargoDespachoManager.selectByExample(tCargoDespachoExample);
 			if(lstCargoDespacho.size()>0){

@@ -266,7 +266,10 @@ public class DimProductoProcess {
 		while(true) {
 			
 			tProductoExample.clear();
-			tProductoExample.createCriteria().andFecNumCamBetween(dateTimeFrom, dateTimeUntil);
+
+			tProductoExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom);
+			tProductoExample.createCriteria().andFecNumCamLessThan(dateTimeUntil);			
+			
 			tProductoExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
 			List<TProducto> lstProducto = tProductoManager.selectByExample(tProductoExample);
 			if(lstProducto.size()>0){
