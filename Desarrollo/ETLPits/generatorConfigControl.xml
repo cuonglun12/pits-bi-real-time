@@ -33,6 +33,7 @@
 		</javaClientGenerator>
 		
 		<table tableName="t_proceso" modelType="flat" />
+		<table tableName="t_proceso_detalle" modelType="flat" />
 
 	</context>
 </generatorConfiguration>
