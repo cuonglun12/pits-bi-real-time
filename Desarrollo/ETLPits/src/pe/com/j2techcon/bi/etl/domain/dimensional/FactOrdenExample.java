@@ -17,7 +17,7 @@ public class FactOrdenExample {
     public FactOrdenExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
-
+    
     public String getPaginationByClause() {
 		return paginationByClause;
 	}
@@ -26,7 +26,7 @@ public class FactOrdenExample {
 		this.paginationByClause = paginationByClause;
 	}
 
-	public void setOrderByClause(String orderByClause) {
+    public void setOrderByClause(String orderByClause) {
         this.orderByClause = orderByClause;
     }
 
@@ -234,6 +234,66 @@ public class FactOrdenExample {
 
         public Criteria andOrdenKeyClienteAreaNotBetween(Integer value1, Integer value2) {
             addCriterion("orden_key_cliente_area not between", value1, value2, "ordenKeyClienteArea");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyUbigeoClienteIsNull() {
+            addCriterion("orden_key_ubigeo_cliente is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyUbigeoClienteIsNotNull() {
+            addCriterion("orden_key_ubigeo_cliente is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyUbigeoClienteEqualTo(Integer value) {
+            addCriterion("orden_key_ubigeo_cliente =", value, "ordenKeyUbigeoCliente");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyUbigeoClienteNotEqualTo(Integer value) {
+            addCriterion("orden_key_ubigeo_cliente <>", value, "ordenKeyUbigeoCliente");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyUbigeoClienteGreaterThan(Integer value) {
+            addCriterion("orden_key_ubigeo_cliente >", value, "ordenKeyUbigeoCliente");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyUbigeoClienteGreaterThanOrEqualTo(Integer value) {
+            addCriterion("orden_key_ubigeo_cliente >=", value, "ordenKeyUbigeoCliente");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyUbigeoClienteLessThan(Integer value) {
+            addCriterion("orden_key_ubigeo_cliente <", value, "ordenKeyUbigeoCliente");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyUbigeoClienteLessThanOrEqualTo(Integer value) {
+            addCriterion("orden_key_ubigeo_cliente <=", value, "ordenKeyUbigeoCliente");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyUbigeoClienteIn(List<Integer> values) {
+            addCriterion("orden_key_ubigeo_cliente in", values, "ordenKeyUbigeoCliente");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyUbigeoClienteNotIn(List<Integer> values) {
+            addCriterion("orden_key_ubigeo_cliente not in", values, "ordenKeyUbigeoCliente");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyUbigeoClienteBetween(Integer value1, Integer value2) {
+            addCriterion("orden_key_ubigeo_cliente between", value1, value2, "ordenKeyUbigeoCliente");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdenKeyUbigeoClienteNotBetween(Integer value1, Integer value2) {
+            addCriterion("orden_key_ubigeo_cliente not between", value1, value2, "ordenKeyUbigeoCliente");
             return (Criteria) this;
         }
 

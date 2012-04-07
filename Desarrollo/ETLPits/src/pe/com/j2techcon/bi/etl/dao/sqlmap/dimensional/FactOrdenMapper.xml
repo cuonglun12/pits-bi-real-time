@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.dimensional.FactOrden" >
     <id column="orden_key" property="ordenKey" jdbcType="INTEGER" />
     <result column="orden_key_cliente_area" property="ordenKeyClienteArea" jdbcType="INTEGER" />
+    <result column="orden_key_ubigeo_cliente" property="ordenKeyUbigeoCliente" jdbcType="INTEGER" />
     <result column="orden_key_servicio" property="ordenKeyServicio" jdbcType="INTEGER" />
     <result column="orden_key_producto" property="ordenKeyProducto" jdbcType="INTEGER" />
     <result column="orden_key_tipo_reparto" property="ordenKeyTipoReparto" jdbcType="INTEGER" />
@@ -97,14 +98,14 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    orden_key, orden_key_cliente_area, orden_key_servicio, orden_key_producto, orden_key_tipo_reparto, 
-    orden_key_tipo_documento, orden_key_tipo_pago, orden_key_moneda, orden_key_fec_ini, 
-    orden_key_fec_ven, orden_key_fec_cie, orden_key_fec_dev, orden_key_fec_fac, orden_key_estado, 
-    orden_key_facturado, orden_aten_en_fec, orden_aten_fuera_fec, orden_ind_unidad, orden_cnt_dias_exc, 
-    orden_cnt_cargos, orden_cnt_cargos_anu, orden_cnt_cargos_ent, orden_cnt_cargos_fue_zon, 
-    orden_cnt_cargos_mot, orden_cnt_cargos_perd, orden_cnt_cargos_ree, orden_cnt_cargos_dig, 
-    orden_cnt_cargos_rut, orden_cnt_cargos_pro, orden_cnt_cargos_rob, orden_mon_importe, 
-    orden_mon_descuento, orden_mon_igv, orden_mon_total, proc_id
+    orden_key, orden_key_cliente_area, orden_key_ubigeo_cliente, orden_key_servicio, 
+    orden_key_producto, orden_key_tipo_reparto, orden_key_tipo_documento, orden_key_tipo_pago, 
+    orden_key_moneda, orden_key_fec_ini, orden_key_fec_ven, orden_key_fec_cie, orden_key_fec_dev, 
+    orden_key_fec_fac, orden_key_estado, orden_key_facturado, orden_aten_en_fec, orden_aten_fuera_fec, 
+    orden_ind_unidad, orden_cnt_dias_exc, orden_cnt_cargos, orden_cnt_cargos_anu, orden_cnt_cargos_ent, 
+    orden_cnt_cargos_fue_zon, orden_cnt_cargos_mot, orden_cnt_cargos_perd, orden_cnt_cargos_ree, 
+    orden_cnt_cargos_dig, orden_cnt_cargos_rut, orden_cnt_cargos_pro, orden_cnt_cargos_rob, 
+    orden_mon_importe, orden_mon_descuento, orden_mon_igv, orden_mon_total, proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactOrdenExample" >
     select
@@ -140,8 +141,8 @@
     </if>
   </delete>
   <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactOrden" >
-    insert into fact_orden (orden_key, orden_key_cliente_area, orden_key_servicio, 
-      orden_key_producto, orden_key_tipo_reparto, 
+    insert into fact_orden (orden_key, orden_key_cliente_area, orden_key_ubigeo_cliente, 
+      orden_key_servicio, orden_key_producto, orden_key_tipo_reparto, 
       orden_key_tipo_documento, orden_key_tipo_pago, 
       orden_key_moneda, orden_key_fec_ini, orden_key_fec_ven, 
       orden_key_fec_cie, orden_key_fec_dev, orden_key_fec_fac, 
@@ -154,8 +155,8 @@
       orden_cnt_cargos_rob, orden_mon_importe, orden_mon_descuento, 
       orden_mon_igv, orden_mon_total, proc_id
       )
-    values (#{ordenKey,jdbcType=INTEGER}, #{ordenKeyClienteArea,jdbcType=INTEGER}, #{ordenKeyServicio,jdbcType=INTEGER}, 
-      #{ordenKeyProducto,jdbcType=INTEGER}, #{ordenKeyTipoReparto,jdbcType=INTEGER}, 
+    values (#{ordenKey,jdbcType=INTEGER}, #{ordenKeyClienteArea,jdbcType=INTEGER}, #{ordenKeyUbigeoCliente,jdbcType=INTEGER}, 
+      #{ordenKeyServicio,jdbcType=INTEGER}, #{ordenKeyProducto,jdbcType=INTEGER}, #{ordenKeyTipoReparto,jdbcType=INTEGER}, 
       #{ordenKeyTipoDocumento,jdbcType=INTEGER}, #{ordenKeyTipoPago,jdbcType=INTEGER}, 
       #{ordenKeyMoneda,jdbcType=INTEGER}, #{ordenKeyFecIni,jdbcType=INTEGER}, #{ordenKeyFecVen,jdbcType=INTEGER}, 
       #{ordenKeyFecCie,jdbcType=INTEGER}, #{ordenKeyFecDev,jdbcType=INTEGER}, #{ordenKeyFecFac,jdbcType=INTEGER}, 
@@ -177,6 +178,9 @@
       </if>
       <if test="ordenKeyClienteArea != null" >
         orden_key_cliente_area,
+      </if>
+      <if test="ordenKeyUbigeoCliente != null" >
+        orden_key_ubigeo_cliente,
       </if>
       <if test="ordenKeyServicio != null" >
         orden_key_servicio,
@@ -284,6 +288,9 @@
       </if>
       <if test="ordenKeyClienteArea != null" >
         #{ordenKeyClienteArea,jdbcType=INTEGER},
+      </if>
+      <if test="ordenKeyUbigeoCliente != null" >
+        #{ordenKeyUbigeoCliente,jdbcType=INTEGER},
       </if>
       <if test="ordenKeyServicio != null" >
         #{ordenKeyServicio,jdbcType=INTEGER},
@@ -401,6 +408,9 @@
       <if test="record.ordenKeyClienteArea != null" >
         orden_key_cliente_area = #{record.ordenKeyClienteArea,jdbcType=INTEGER},
       </if>
+      <if test="record.ordenKeyUbigeoCliente != null" >
+        orden_key_ubigeo_cliente = #{record.ordenKeyUbigeoCliente,jdbcType=INTEGER},
+      </if>
       <if test="record.ordenKeyServicio != null" >
         orden_key_servicio = #{record.ordenKeyServicio,jdbcType=INTEGER},
       </if>
@@ -509,6 +519,7 @@
     update fact_orden
     set orden_key = #{record.ordenKey,jdbcType=INTEGER},
       orden_key_cliente_area = #{record.ordenKeyClienteArea,jdbcType=INTEGER},
+      orden_key_ubigeo_cliente = #{record.ordenKeyUbigeoCliente,jdbcType=INTEGER},
       orden_key_servicio = #{record.ordenKeyServicio,jdbcType=INTEGER},
       orden_key_producto = #{record.ordenKeyProducto,jdbcType=INTEGER},
       orden_key_tipo_reparto = #{record.ordenKeyTipoReparto,jdbcType=INTEGER},
@@ -551,6 +562,9 @@
     <set >
       <if test="ordenKeyClienteArea != null" >
         orden_key_cliente_area = #{ordenKeyClienteArea,jdbcType=INTEGER},
+      </if>
+      <if test="ordenKeyUbigeoCliente != null" >
+        orden_key_ubigeo_cliente = #{ordenKeyUbigeoCliente,jdbcType=INTEGER},
       </if>
       <if test="ordenKeyServicio != null" >
         orden_key_servicio = #{ordenKeyServicio,jdbcType=INTEGER},
@@ -657,6 +671,7 @@
   <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactOrden" >
     update fact_orden
     set orden_key_cliente_area = #{ordenKeyClienteArea,jdbcType=INTEGER},
+      orden_key_ubigeo_cliente = #{ordenKeyUbigeoCliente,jdbcType=INTEGER},
       orden_key_servicio = #{ordenKeyServicio,jdbcType=INTEGER},
       orden_key_producto = #{ordenKeyProducto,jdbcType=INTEGER},
       orden_key_tipo_reparto = #{ordenKeyTipoReparto,jdbcType=INTEGER},

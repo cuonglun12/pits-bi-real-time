@@ -7,6 +7,7 @@ import org.springframework.beans.factory.BeanFactory;
 
 import pe.com.j2techcon.bi.etl.logic.dimensional.DimTiempoManager;
 import pe.com.j2techcon.bi.etl.logic.dimensional.FactOrdenManager;
+import pe.com.j2techcon.bi.etl.logic.generic.TAreaClienteManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TOrdenManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TCargoManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TParametroManager;
@@ -16,6 +17,8 @@ import pe.com.j2techcon.bi.etl.domain.dimensional.DimTiempo;
 import pe.com.j2techcon.bi.etl.domain.dimensional.DimTiempoExample;
 import pe.com.j2techcon.bi.etl.domain.dimensional.FactOrden;
 import pe.com.j2techcon.bi.etl.domain.dimensional.FactOrdenExample;
+import pe.com.j2techcon.bi.etl.domain.generic.TAreaCliente;
+import pe.com.j2techcon.bi.etl.domain.generic.TAreaClienteExample;
 import pe.com.j2techcon.bi.etl.domain.generic.TCargo;
 import pe.com.j2techcon.bi.etl.domain.generic.TOrden;
 import pe.com.j2techcon.bi.etl.domain.generic.TOrdenExample;
@@ -42,6 +45,9 @@ public class FactOrdenProcess {
 	private String stateRecordDimensional;
 	private String stateRecordGeneric;
 	
+	private TAreaCliente tAreaCliente;
+	private TAreaClienteExample tAreaClienteExample;
+	
 	private TCargo tCargo;
 	private TCargoExample tCargoExample;
 	
@@ -57,6 +63,7 @@ public class FactOrdenProcess {
 	private DimTiempo dimTiempo;
 	private DimTiempoExample dimTiempoExample;
 	
+	private TAreaClienteManager tAreaClienteManager;
 	private TCargoManager tCargoManager;
 	private TOrdenManager tOrdenManager;
 	private TParametroManager tParametroManager;
@@ -67,22 +74,6 @@ public class FactOrdenProcess {
 
 	public BeanFactory getFactory() {
 		return factory;
-	}
-
-	public TCargo gettCargo() {
-		return tCargo;
-	}
-
-	public void settCargo(TCargo tCargo) {
-		this.tCargo = tCargo;
-	}
-
-	public TCargoExample gettCargoExample() {
-		return tCargoExample;
-	}
-
-	public void settCargoExample(TCargoExample tCargoExample) {
-		this.tCargoExample = tCargoExample;
 	}
 
 	public void setFactory(BeanFactory factory) {
@@ -193,6 +184,38 @@ public class FactOrdenProcess {
 		this.stateRecordGeneric = stateRecordGeneric;
 	}
 
+	public TAreaCliente gettAreaCliente() {
+		return tAreaCliente;
+	}
+
+	public void settAreaCliente(TAreaCliente tAreaCliente) {
+		this.tAreaCliente = tAreaCliente;
+	}
+
+	public TAreaClienteExample gettAreaClienteExample() {
+		return tAreaClienteExample;
+	}
+
+	public void settAreaClienteExample(TAreaClienteExample tAreaClienteExample) {
+		this.tAreaClienteExample = tAreaClienteExample;
+	}
+
+	public TCargo gettCargo() {
+		return tCargo;
+	}
+
+	public void settCargo(TCargo tCargo) {
+		this.tCargo = tCargo;
+	}
+
+	public TCargoExample gettCargoExample() {
+		return tCargoExample;
+	}
+
+	public void settCargoExample(TCargoExample tCargoExample) {
+		this.tCargoExample = tCargoExample;
+	}
+
 	public TOrden gettOrden() {
 		return tOrden;
 	}
@@ -255,6 +278,14 @@ public class FactOrdenProcess {
 
 	public void setDimTiempoExample(DimTiempoExample dimTiempoExample) {
 		this.dimTiempoExample = dimTiempoExample;
+	}
+
+	public TAreaClienteManager gettAreaClienteManager() {
+		return tAreaClienteManager;
+	}
+
+	public void settAreaClienteManager(TAreaClienteManager tAreaClienteManager) {
+		this.tAreaClienteManager = tAreaClienteManager;
 	}
 
 	public TCargoManager gettCargoManager() {
@@ -326,6 +357,7 @@ public class FactOrdenProcess {
 
 	public int startProcess(){
 
+		tAreaClienteManager = factory.getBean("tAreaClienteManager", TAreaClienteManager.class);
 		tCargoManager = factory.getBean("tCargoManager", TCargoManager.class);
 		tOrdenManager = factory.getBean("tOrdenManager", TOrdenManager.class);
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
@@ -471,6 +503,7 @@ public class FactOrdenProcess {
 	public void completeFildOrden(){
 		factOrden.setOrdenKey(tOrden.getOrdId());
 		factOrden.setOrdenKeyClienteArea(tOrden.getCodAreCli());
+		factOrden.setOrdenKeyUbigeoCliente(tAreaClienteManager.selectByPrimaryKey(tOrden.getCodAreCli()).getUbiId());
 		factOrden.setOrdenKeyServicio(tOrden.getServId());
 		factOrden.setOrdenKeyProducto(tOrden.getProdId());
 		factOrden.setOrdenKeyTipoReparto(tOrden.getOrdCodTipRep());

@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pe.com.j2techcon.bi.etl.dao.control.TProcesoDetalleMapper" >
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.control.TProcesoDetalle" >
+    <id column="pro_det_id" property="proDetId" jdbcType="INTEGER" />
+    <result column="proc_id" property="procId" jdbcType="INTEGER" />
+    <result column="proc_tip" property="procTip" jdbcType="CHAR" />
+    <result column="proc_det_id_table" property="procDetIdTable" jdbcType="INTEGER" />
+    <result column="proc_det_fec_desde" property="procDetFecDesde" jdbcType="TIMESTAMP" />
+    <result column="proc_det_fec_hasta" property="procDetFecHasta" jdbcType="TIMESTAMP" />
+    <result column="proc_det_num_reg_tot" property="procDetNumRegTot" jdbcType="INTEGER" />
+    <result column="proc_det_num_reg_pro" property="procDetNumRegPro" jdbcType="INTEGER" />
+    <result column="proc_det_num_reg_rec" property="procDetNumRegRec" jdbcType="INTEGER" />
+    <result column="proc_det_fec_ini" property="procDetFecIni" jdbcType="TIMESTAMP" />
+    <result column="proc_det_fec_fin" property="procDetFecFin" jdbcType="TIMESTAMP" />
+    <result column="proc_det_fec_act" property="procDetFecAct" jdbcType="TIMESTAMP" />
+    <result column="proc_det_est" property="procDetEst" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pro_det_id, proc_id, proc_tip, proc_det_id_table, proc_det_fec_desde, proc_det_fec_hasta, 
+    proc_det_num_reg_tot, proc_det_num_reg_pro, proc_det_num_reg_rec, proc_det_fec_ini, 
+    proc_det_fec_fin, proc_det_fec_act, proc_det_est
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.control.TProcesoDetalleExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_proceso_detalle
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_proceso_detalle
+    where pro_det_id = #{proDetId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_proceso_detalle
+    where pro_det_id = #{proDetId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.control.TProcesoDetalleExample" >
+    delete from t_proceso_detalle
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.control.TProcesoDetalle" >
+    insert into t_proceso_detalle (pro_det_id, proc_id, proc_tip, 
+      proc_det_id_table, proc_det_fec_desde, proc_det_fec_hasta, 
+      proc_det_num_reg_tot, proc_det_num_reg_pro, proc_det_num_reg_rec, 
+      proc_det_fec_ini, proc_det_fec_fin, proc_det_fec_act, 
+      proc_det_est)
+    values (#{proDetId,jdbcType=INTEGER}, #{procId,jdbcType=INTEGER}, #{procTip,jdbcType=CHAR}, 
+      #{procDetIdTable,jdbcType=INTEGER}, #{procDetFecDesde,jdbcType=TIMESTAMP}, #{procDetFecHasta,jdbcType=TIMESTAMP}, 
+      #{procDetNumRegTot,jdbcType=INTEGER}, #{procDetNumRegPro,jdbcType=INTEGER}, #{procDetNumRegRec,jdbcType=INTEGER}, 
+      #{procDetFecIni,jdbcType=TIMESTAMP}, #{procDetFecFin,jdbcType=TIMESTAMP}, #{procDetFecAct,jdbcType=TIMESTAMP}, 
+      #{procDetEst,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.control.TProcesoDetalle" >
+    insert into t_proceso_detalle
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="proDetId != null" >
+        pro_det_id,
+      </if>
+      <if test="procId != null" >
+        proc_id,
+      </if>
+      <if test="procTip != null" >
+        proc_tip,
+      </if>
+      <if test="procDetIdTable != null" >
+        proc_det_id_table,
+      </if>
+      <if test="procDetFecDesde != null" >
+        proc_det_fec_desde,
+      </if>
+      <if test="procDetFecHasta != null" >
+        proc_det_fec_hasta,
+      </if>
+      <if test="procDetNumRegTot != null" >
+        proc_det_num_reg_tot,
+      </if>
+      <if test="procDetNumRegPro != null" >
+        proc_det_num_reg_pro,
+      </if>
+      <if test="procDetNumRegRec != null" >
+        proc_det_num_reg_rec,
+      </if>
+      <if test="procDetFecIni != null" >
+        proc_det_fec_ini,
+      </if>
+      <if test="procDetFecFin != null" >
+        proc_det_fec_fin,
+      </if>
+      <if test="procDetFecAct != null" >
+        proc_det_fec_act,
+      </if>
+      <if test="procDetEst != null" >
+        proc_det_est,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="proDetId != null" >
+        #{proDetId,jdbcType=INTEGER},
+      </if>
+      <if test="procId != null" >
+        #{procId,jdbcType=INTEGER},
+      </if>
+      <if test="procTip != null" >
+        #{procTip,jdbcType=CHAR},
+      </if>
+      <if test="procDetIdTable != null" >
+        #{procDetIdTable,jdbcType=INTEGER},
+      </if>
+      <if test="procDetFecDesde != null" >
+        #{procDetFecDesde,jdbcType=TIMESTAMP},
+      </if>
+      <if test="procDetFecHasta != null" >
+        #{procDetFecHasta,jdbcType=TIMESTAMP},
+      </if>
+      <if test="procDetNumRegTot != null" >
+        #{procDetNumRegTot,jdbcType=INTEGER},
+      </if>
+      <if test="procDetNumRegPro != null" >
+        #{procDetNumRegPro,jdbcType=INTEGER},
+      </if>
+      <if test="procDetNumRegRec != null" >
+        #{procDetNumRegRec,jdbcType=INTEGER},
+      </if>
+      <if test="procDetFecIni != null" >
+        #{procDetFecIni,jdbcType=TIMESTAMP},
+      </if>
+      <if test="procDetFecFin != null" >
+        #{procDetFecFin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="procDetFecAct != null" >
+        #{procDetFecAct,jdbcType=TIMESTAMP},
+      </if>
+      <if test="procDetEst != null" >
+        #{procDetEst,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.control.TProcesoDetalleExample" resultType="java.lang.Integer" >
+    select count(*) from t_proceso_detalle
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_proceso_detalle
+    <set >
+      <if test="record.proDetId != null" >
+        pro_det_id = #{record.proDetId,jdbcType=INTEGER},
+      </if>
+      <if test="record.procId != null" >
+        proc_id = #{record.procId,jdbcType=INTEGER},
+      </if>
+      <if test="record.procTip != null" >
+        proc_tip = #{record.procTip,jdbcType=CHAR},
+      </if>
+      <if test="record.procDetIdTable != null" >
+        proc_det_id_table = #{record.procDetIdTable,jdbcType=INTEGER},
+      </if>
+      <if test="record.procDetFecDesde != null" >
+        proc_det_fec_desde = #{record.procDetFecDesde,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.procDetFecHasta != null" >
+        proc_det_fec_hasta = #{record.procDetFecHasta,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.procDetNumRegTot != null" >
+        proc_det_num_reg_tot = #{record.procDetNumRegTot,jdbcType=INTEGER},
+      </if>
+      <if test="record.procDetNumRegPro != null" >
+        proc_det_num_reg_pro = #{record.procDetNumRegPro,jdbcType=INTEGER},
+      </if>
+      <if test="record.procDetNumRegRec != null" >
+        proc_det_num_reg_rec = #{record.procDetNumRegRec,jdbcType=INTEGER},
+      </if>
+      <if test="record.procDetFecIni != null" >
+        proc_det_fec_ini = #{record.procDetFecIni,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.procDetFecFin != null" >
+        proc_det_fec_fin = #{record.procDetFecFin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.procDetFecAct != null" >
+        proc_det_fec_act = #{record.procDetFecAct,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.procDetEst != null" >
+        proc_det_est = #{record.procDetEst,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_proceso_detalle
+    set pro_det_id = #{record.proDetId,jdbcType=INTEGER},
+      proc_id = #{record.procId,jdbcType=INTEGER},
+      proc_tip = #{record.procTip,jdbcType=CHAR},
+      proc_det_id_table = #{record.procDetIdTable,jdbcType=INTEGER},
+      proc_det_fec_desde = #{record.procDetFecDesde,jdbcType=TIMESTAMP},
+      proc_det_fec_hasta = #{record.procDetFecHasta,jdbcType=TIMESTAMP},
+      proc_det_num_reg_tot = #{record.procDetNumRegTot,jdbcType=INTEGER},
+      proc_det_num_reg_pro = #{record.procDetNumRegPro,jdbcType=INTEGER},
+      proc_det_num_reg_rec = #{record.procDetNumRegRec,jdbcType=INTEGER},
+      proc_det_fec_ini = #{record.procDetFecIni,jdbcType=TIMESTAMP},
+      proc_det_fec_fin = #{record.procDetFecFin,jdbcType=TIMESTAMP},
+      proc_det_fec_act = #{record.procDetFecAct,jdbcType=TIMESTAMP},
+      proc_det_est = #{record.procDetEst,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.control.TProcesoDetalle" >
+    update t_proceso_detalle
+    <set >
+      <if test="procId != null" >
+        proc_id = #{procId,jdbcType=INTEGER},
+      </if>
+      <if test="procTip != null" >
+        proc_tip = #{procTip,jdbcType=CHAR},
+      </if>
+      <if test="procDetIdTable != null" >
+        proc_det_id_table = #{procDetIdTable,jdbcType=INTEGER},
+      </if>
+      <if test="procDetFecDesde != null" >
+        proc_det_fec_desde = #{procDetFecDesde,jdbcType=TIMESTAMP},
+      </if>
+      <if test="procDetFecHasta != null" >
+        proc_det_fec_hasta = #{procDetFecHasta,jdbcType=TIMESTAMP},
+      </if>
+      <if test="procDetNumRegTot != null" >
+        proc_det_num_reg_tot = #{procDetNumRegTot,jdbcType=INTEGER},
+      </if>
+      <if test="procDetNumRegPro != null" >
+        proc_det_num_reg_pro = #{procDetNumRegPro,jdbcType=INTEGER},
+      </if>
+      <if test="procDetNumRegRec != null" >
+        proc_det_num_reg_rec = #{procDetNumRegRec,jdbcType=INTEGER},
+      </if>
+      <if test="procDetFecIni != null" >
+        proc_det_fec_ini = #{procDetFecIni,jdbcType=TIMESTAMP},
+      </if>
+      <if test="procDetFecFin != null" >
+        proc_det_fec_fin = #{procDetFecFin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="procDetFecAct != null" >
+        proc_det_fec_act = #{procDetFecAct,jdbcType=TIMESTAMP},
+      </if>
+      <if test="procDetEst != null" >
+        proc_det_est = #{procDetEst,jdbcType=CHAR},
+      </if>
+    </set>
+    where pro_det_id = #{proDetId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.control.TProcesoDetalle" >
+    update t_proceso_detalle
+    set proc_id = #{procId,jdbcType=INTEGER},
+      proc_tip = #{procTip,jdbcType=CHAR},
+      proc_det_id_table = #{procDetIdTable,jdbcType=INTEGER},
+      proc_det_fec_desde = #{procDetFecDesde,jdbcType=TIMESTAMP},
+      proc_det_fec_hasta = #{procDetFecHasta,jdbcType=TIMESTAMP},
+      proc_det_num_reg_tot = #{procDetNumRegTot,jdbcType=INTEGER},
+      proc_det_num_reg_pro = #{procDetNumRegPro,jdbcType=INTEGER},
+      proc_det_num_reg_rec = #{procDetNumRegRec,jdbcType=INTEGER},
+      proc_det_fec_ini = #{procDetFecIni,jdbcType=TIMESTAMP},
+      proc_det_fec_fin = #{procDetFecFin,jdbcType=TIMESTAMP},
+      proc_det_fec_act = #{procDetFecAct,jdbcType=TIMESTAMP},
+      proc_det_est = #{procDetEst,jdbcType=CHAR}
+    where pro_det_id = #{proDetId,jdbcType=INTEGER}
+  </update>
+</mapper>

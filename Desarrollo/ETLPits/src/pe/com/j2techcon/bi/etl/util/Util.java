@@ -42,6 +42,13 @@ public class Util {
 		return (int)((dateCurrent.getTime() - date.getTime() + ONE_HOUR) / (ONE_HOUR * 24));
 	}
 	
+	public static int getHoursAfterDate(java.util.Date date) {
+		long ONE_HOUR = 60 * 60 * 1000L;
+		Calendar calendar = Calendar.getInstance();
+		Date dateCurrent = new GregorianCalendar(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).getTime();
+		return (int)((dateCurrent.getTime() - date.getTime() + ONE_HOUR) / (ONE_HOUR));
+	}
+	
 	public static boolean areEqualsTwoDates(java.util.Date firstDate, java.util.Date secondDate){
 		return (firstDate.compareTo(secondDate)==0);
 	}

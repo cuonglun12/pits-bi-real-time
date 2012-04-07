@@ -17,7 +17,7 @@ public class FactCotizacionExample {
     public FactCotizacionExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
-
+    
     public String getPaginationByClause() {
 		return paginationByClause;
 	}
@@ -26,7 +26,7 @@ public class FactCotizacionExample {
 		this.paginationByClause = paginationByClause;
 	}
 
-	public void setOrderByClause(String orderByClause) {
+    public void setOrderByClause(String orderByClause) {
         this.orderByClause = orderByClause;
     }
 
@@ -234,6 +234,66 @@ public class FactCotizacionExample {
 
         public Criteria andCotizacionKeyClienteAreaNotBetween(Integer value1, Integer value2) {
             addCriterion("cotizacion_key_cliente_area not between", value1, value2, "cotizacionKeyClienteArea");
+            return (Criteria) this;
+        }
+
+        public Criteria andCotizacionKeyUbigeoClienteIsNull() {
+            addCriterion("cotizacion_key_ubigeo_cliente is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCotizacionKeyUbigeoClienteIsNotNull() {
+            addCriterion("cotizacion_key_ubigeo_cliente is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCotizacionKeyUbigeoClienteEqualTo(Integer value) {
+            addCriterion("cotizacion_key_ubigeo_cliente =", value, "cotizacionKeyUbigeoCliente");
+            return (Criteria) this;
+        }
+
+        public Criteria andCotizacionKeyUbigeoClienteNotEqualTo(Integer value) {
+            addCriterion("cotizacion_key_ubigeo_cliente <>", value, "cotizacionKeyUbigeoCliente");
+            return (Criteria) this;
+        }
+
+        public Criteria andCotizacionKeyUbigeoClienteGreaterThan(Integer value) {
+            addCriterion("cotizacion_key_ubigeo_cliente >", value, "cotizacionKeyUbigeoCliente");
+            return (Criteria) this;
+        }
+
+        public Criteria andCotizacionKeyUbigeoClienteGreaterThanOrEqualTo(Integer value) {
+            addCriterion("cotizacion_key_ubigeo_cliente >=", value, "cotizacionKeyUbigeoCliente");
+            return (Criteria) this;
+        }
+
+        public Criteria andCotizacionKeyUbigeoClienteLessThan(Integer value) {
+            addCriterion("cotizacion_key_ubigeo_cliente <", value, "cotizacionKeyUbigeoCliente");
+            return (Criteria) this;
+        }
+
+        public Criteria andCotizacionKeyUbigeoClienteLessThanOrEqualTo(Integer value) {
+            addCriterion("cotizacion_key_ubigeo_cliente <=", value, "cotizacionKeyUbigeoCliente");
+            return (Criteria) this;
+        }
+
+        public Criteria andCotizacionKeyUbigeoClienteIn(List<Integer> values) {
+            addCriterion("cotizacion_key_ubigeo_cliente in", values, "cotizacionKeyUbigeoCliente");
+            return (Criteria) this;
+        }
+
+        public Criteria andCotizacionKeyUbigeoClienteNotIn(List<Integer> values) {
+            addCriterion("cotizacion_key_ubigeo_cliente not in", values, "cotizacionKeyUbigeoCliente");
+            return (Criteria) this;
+        }
+
+        public Criteria andCotizacionKeyUbigeoClienteBetween(Integer value1, Integer value2) {
+            addCriterion("cotizacion_key_ubigeo_cliente between", value1, value2, "cotizacionKeyUbigeoCliente");
+            return (Criteria) this;
+        }
+
+        public Criteria andCotizacionKeyUbigeoClienteNotBetween(Integer value1, Integer value2) {
+            addCriterion("cotizacion_key_ubigeo_cliente not between", value1, value2, "cotizacionKeyUbigeoCliente");
             return (Criteria) this;
         }
 

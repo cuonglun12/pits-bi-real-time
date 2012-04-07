@@ -7,6 +7,8 @@ public class FactOrden {
 
     private Integer ordenKeyClienteArea;
 
+    private Integer ordenKeyUbigeoCliente;
+
     private Integer ordenKeyServicio;
 
     private Integer ordenKeyProducto;
@@ -87,6 +89,14 @@ public class FactOrden {
 
     public void setOrdenKeyClienteArea(Integer ordenKeyClienteArea) {
         this.ordenKeyClienteArea = ordenKeyClienteArea;
+    }
+
+    public Integer getOrdenKeyUbigeoCliente() {
+        return ordenKeyUbigeoCliente;
+    }
+
+    public void setOrdenKeyUbigeoCliente(Integer ordenKeyUbigeoCliente) {
+        this.ordenKeyUbigeoCliente = ordenKeyUbigeoCliente;
     }
 
     public Integer getOrdenKeyServicio() {
@@ -356,6 +366,7 @@ public class FactOrden {
     public void clear(){
     	ordenKey=null;
     	ordenKeyClienteArea=null;
+    	ordenKeyUbigeoCliente=null;
     	ordenKeyServicio=null;
     	ordenKeyProducto=null;
     	ordenKeyTipoReparto=null;
@@ -394,7 +405,8 @@ public class FactOrden {
 	@Override
 	public String toString() {
 		return "FactOrden [ordenKey=" + ordenKey + ", ordenKeyClienteArea="
-				+ ordenKeyClienteArea + ", ordenKeyServicio="
+				+ ordenKeyClienteArea + ", ordenKeyUbigeoCliente="
+				+ ordenKeyUbigeoCliente + ", ordenKeyServicio="
 				+ ordenKeyServicio + ", ordenKeyProducto=" + ordenKeyProducto
 				+ ", ordenKeyTipoReparto=" + ordenKeyTipoReparto
 				+ ", ordenKeyTipoDocumento=" + ordenKeyTipoDocumento

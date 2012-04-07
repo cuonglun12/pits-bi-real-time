@@ -5,6 +5,8 @@ public class FactEnvio {
 
     private Integer envioKeyClienteArea;
 
+    private Integer envioKeyUbigeoCliente;
+
     private Integer envioKeyServicio;
 
     private Integer envioKeyProducto;
@@ -59,6 +61,14 @@ public class FactEnvio {
 
     public void setEnvioKeyClienteArea(Integer envioKeyClienteArea) {
         this.envioKeyClienteArea = envioKeyClienteArea;
+    }
+
+    public Integer getEnvioKeyUbigeoCliente() {
+        return envioKeyUbigeoCliente;
+    }
+
+    public void setEnvioKeyUbigeoCliente(Integer envioKeyUbigeoCliente) {
+        this.envioKeyUbigeoCliente = envioKeyUbigeoCliente;
     }
 
     public Integer getEnvioKeyServicio() {
@@ -224,6 +234,7 @@ public class FactEnvio {
     public void clear(){
     	envioKey=null;
     	envioKeyClienteArea=null;
+    	envioKeyUbigeoCliente=null;
     	envioKeyServicio=null;
     	envioKeyProducto=null;
     	envioKeyZona=null;
@@ -249,7 +260,8 @@ public class FactEnvio {
 	@Override
 	public String toString() {
 		return "FactEnvio [envioKey=" + envioKey + ", envioKeyClienteArea="
-				+ envioKeyClienteArea + ", envioKeyServicio="
+				+ envioKeyClienteArea + ", envioKeyUbigeoCliente="
+				+ envioKeyUbigeoCliente + ", envioKeyServicio="
 				+ envioKeyServicio + ", envioKeyProducto=" + envioKeyProducto
 				+ ", envioKeyZona=" + envioKeyZona + ", envioKeyPersonal="
 				+ envioKeyPersonal + ", envioKeyFecSal=" + envioKeyFecSal

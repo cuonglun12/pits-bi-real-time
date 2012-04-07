@@ -7,6 +7,8 @@ public class FactCotizacion {
 
     private Integer cotizacionKeyClienteArea;
 
+    private Integer cotizacionKeyUbigeoCliente;
+
     private Integer cotizacionKeyServicio;
 
     private Integer cotizacionKeyProducto;
@@ -57,6 +59,14 @@ public class FactCotizacion {
 
     public void setCotizacionKeyClienteArea(Integer cotizacionKeyClienteArea) {
         this.cotizacionKeyClienteArea = cotizacionKeyClienteArea;
+    }
+
+    public Integer getCotizacionKeyUbigeoCliente() {
+        return cotizacionKeyUbigeoCliente;
+    }
+
+    public void setCotizacionKeyUbigeoCliente(Integer cotizacionKeyUbigeoCliente) {
+        this.cotizacionKeyUbigeoCliente = cotizacionKeyUbigeoCliente;
     }
 
     public Integer getCotizacionKeyServicio() {
@@ -206,6 +216,7 @@ public class FactCotizacion {
     public void clear(){
     	cotizacionKey=null;
     	cotizacionKeyClienteArea=null;
+    	cotizacionKeyUbigeoCliente=null;
     	cotizacionKeyServicio=null;
     	cotizacionKeyProducto=null;
     	cotizacionKeyFecApro=null;
@@ -230,6 +241,7 @@ public class FactCotizacion {
 	public String toString() {
 		return "FactCotizacion [cotizacionKey=" + cotizacionKey
 				+ ", cotizacionKeyClienteArea=" + cotizacionKeyClienteArea
+				+ ", cotizacionKeyUbigeoCliente=" + cotizacionKeyUbigeoCliente
 				+ ", cotizacionKeyServicio=" + cotizacionKeyServicio
 				+ ", cotizacionKeyProducto=" + cotizacionKeyProducto
 				+ ", cotizacionKeyFecApro=" + cotizacionKeyFecApro

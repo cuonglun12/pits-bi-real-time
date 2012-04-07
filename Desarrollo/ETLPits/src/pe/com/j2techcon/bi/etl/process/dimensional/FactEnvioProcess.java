@@ -7,6 +7,7 @@ import org.springframework.beans.factory.BeanFactory;
 
 import pe.com.j2techcon.bi.etl.logic.dimensional.DimTiempoManager;
 import pe.com.j2techcon.bi.etl.logic.dimensional.FactEnvioManager;
+import pe.com.j2techcon.bi.etl.logic.generic.TAreaClienteManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TCargoDespachoManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TCargoManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TDespachoManager;
@@ -17,6 +18,8 @@ import pe.com.j2techcon.bi.etl.domain.dimensional.DimTiempo;
 import pe.com.j2techcon.bi.etl.domain.dimensional.DimTiempoExample;
 import pe.com.j2techcon.bi.etl.domain.dimensional.FactEnvio;
 import pe.com.j2techcon.bi.etl.domain.dimensional.FactEnvioExample;
+import pe.com.j2techcon.bi.etl.domain.generic.TAreaCliente;
+import pe.com.j2techcon.bi.etl.domain.generic.TAreaClienteExample;
 import pe.com.j2techcon.bi.etl.domain.generic.TCargo;
 import pe.com.j2techcon.bi.etl.domain.generic.TCargoDespacho;
 import pe.com.j2techcon.bi.etl.domain.generic.TCargoDespachoExample;
@@ -47,6 +50,9 @@ public class FactEnvioProcess {
 	private String stateRecordDimensional;
 	private String stateRecordGeneric;
 	
+	private TAreaCliente tAreaCliente;
+	private TAreaClienteExample tAreaClienteExample;
+	
 	private TCargoDespacho tCargoDespacho;
 	private TCargoDespachoExample tCargoDespachoExample;
 	
@@ -68,6 +74,7 @@ public class FactEnvioProcess {
 	private DimTiempo dimTiempo;
 	private DimTiempoExample dimTiempoExample;
 	
+	private TAreaClienteManager tAreaClienteManager;
 	private TDespachoManager tDespachoManager;
 	private TCargoDespachoManager tCargoDespachoManager;
 	private TCargoManager tCargoManager;
@@ -190,6 +197,22 @@ public class FactEnvioProcess {
 		this.stateRecordGeneric = stateRecordGeneric;
 	}
 
+	public TAreaCliente gettAreaCliente() {
+		return tAreaCliente;
+	}
+
+	public void settAreaCliente(TAreaCliente tAreaCliente) {
+		this.tAreaCliente = tAreaCliente;
+	}
+
+	public TAreaClienteExample gettAreaClienteExample() {
+		return tAreaClienteExample;
+	}
+
+	public void settAreaClienteExample(TAreaClienteExample tAreaClienteExample) {
+		this.tAreaClienteExample = tAreaClienteExample;
+	}
+
 	public TCargoDespacho gettCargoDespacho() {
 		return tCargoDespacho;
 	}
@@ -206,22 +229,6 @@ public class FactEnvioProcess {
 		this.tCargoDespachoExample = tCargoDespachoExample;
 	}
 
-	public TCargo gettCargo() {
-		return tCargo;
-	}
-
-	public void settCargo(TCargo tCargo) {
-		this.tCargo = tCargo;
-	}
-
-	public TCargoExample gettCargoExample() {
-		return tCargoExample;
-	}
-
-	public void settCargoExample(TCargoExample tCargoExample) {
-		this.tCargoExample = tCargoExample;
-	}
-
 	public TDespacho gettDespacho() {
 		return tDespacho;
 	}
@@ -236,6 +243,22 @@ public class FactEnvioProcess {
 
 	public void settDespachoExample(TDespachoExample tDespachoExample) {
 		this.tDespachoExample = tDespachoExample;
+	}
+
+	public TCargo gettCargo() {
+		return tCargo;
+	}
+
+	public void settCargo(TCargo tCargo) {
+		this.tCargo = tCargo;
+	}
+
+	public TCargoExample gettCargoExample() {
+		return tCargoExample;
+	}
+
+	public void settCargoExample(TCargoExample tCargoExample) {
+		this.tCargoExample = tCargoExample;
 	}
 
 	public TOrden gettOrden() {
@@ -300,6 +323,14 @@ public class FactEnvioProcess {
 
 	public void setDimTiempoExample(DimTiempoExample dimTiempoExample) {
 		this.dimTiempoExample = dimTiempoExample;
+	}
+
+	public TAreaClienteManager gettAreaClienteManager() {
+		return tAreaClienteManager;
+	}
+
+	public void settAreaClienteManager(TAreaClienteManager tAreaClienteManager) {
+		this.tAreaClienteManager = tAreaClienteManager;
 	}
 
 	public TDespachoManager gettDespachoManager() {
@@ -387,6 +418,7 @@ public class FactEnvioProcess {
 
 	public int startProcess(){
 
+		tAreaClienteManager = factory.getBean("tAreaClienteManager", TAreaClienteManager.class);
 		tDespachoManager = factory.getBean("tDespachoManager", TDespachoManager.class);
 		tCargoDespachoManager = factory.getBean("tCargoDespachoManager", TCargoDespachoManager.class);
 		tCargoManager = factory.getBean("tCargoManager", TCargoManager.class);
@@ -413,6 +445,9 @@ public class FactEnvioProcess {
 				offset = offset + constantes.getSizePage();
 			}else{
 				lstCargoDespacho.clear();
+				
+				tAreaCliente.clear();
+				tAreaClienteExample.clear();
 				
 				tCargo.clear();
 				tCargoExample.clear();
@@ -504,6 +539,7 @@ public class FactEnvioProcess {
 		
 		
 		factEnvio.setEnvioKeyClienteArea(tOrden.getCodAreCli());
+		factEnvio.setEnvioKeyUbigeoCliente(tAreaClienteManager.selectByPrimaryKey(tOrden.getCodAreCli()).getUbiId());
 		factEnvio.setEnvioKeyServicio(tOrden.getServId());
 		factEnvio.setEnvioKeyProducto(tOrden.getProdId());
 		factEnvio.setEnvioKeyZona(tCargoDespacho.getZonId());

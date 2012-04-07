@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.dimensional.FactCotizacion" >
     <id column="cotizacion_key" property="cotizacionKey" jdbcType="INTEGER" />
     <result column="cotizacion_key_cliente_area" property="cotizacionKeyClienteArea" jdbcType="INTEGER" />
+    <result column="cotizacion_key_ubigeo_cliente" property="cotizacionKeyUbigeoCliente" jdbcType="INTEGER" />
     <result column="cotizacion_key_servicio" property="cotizacionKeyServicio" jdbcType="INTEGER" />
     <result column="cotizacion_key_producto" property="cotizacionKeyProducto" jdbcType="INTEGER" />
     <result column="cotizacion_key_fec_apro" property="cotizacionKeyFecApro" jdbcType="INTEGER" />
@@ -82,12 +83,12 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    cotizacion_key, cotizacion_key_cliente_area, cotizacion_key_servicio, cotizacion_key_producto, 
-    cotizacion_key_fec_apro, cotizacion_key_fec_ini, cotizacion_key_fec_fin, cotizacion_key_estado, 
-    cotizacion_ind_unidad, cotizacion_cnt_ord_total, cotizacion_cnt_ord_en_trab, cotizacion_cnt_ord_cer, 
-    cotizacion_cnt_ord_catiempo, cotizacion_cnt_ord_cftiempo, cotizacion_cnt_ord_fac, 
-    cotizacion_cnt_ord_can, cotizacion_mon_importe, cotizacion_mon_igv, cotizacion_mon_total, 
-    proc_id
+    cotizacion_key, cotizacion_key_cliente_area, cotizacion_key_ubigeo_cliente, cotizacion_key_servicio, 
+    cotizacion_key_producto, cotizacion_key_fec_apro, cotizacion_key_fec_ini, cotizacion_key_fec_fin, 
+    cotizacion_key_estado, cotizacion_ind_unidad, cotizacion_cnt_ord_total, cotizacion_cnt_ord_en_trab, 
+    cotizacion_cnt_ord_cer, cotizacion_cnt_ord_catiempo, cotizacion_cnt_ord_cftiempo, 
+    cotizacion_cnt_ord_fac, cotizacion_cnt_ord_can, cotizacion_mon_importe, cotizacion_mon_igv, 
+    cotizacion_mon_total, proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactCotizacionExample" >
     select
@@ -124,25 +125,27 @@
   </delete>
   <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactCotizacion" >
     insert into fact_cotizacion (cotizacion_key, cotizacion_key_cliente_area, 
-      cotizacion_key_servicio, cotizacion_key_producto, 
-      cotizacion_key_fec_apro, cotizacion_key_fec_ini, 
-      cotizacion_key_fec_fin, cotizacion_key_estado, 
-      cotizacion_ind_unidad, cotizacion_cnt_ord_total, 
-      cotizacion_cnt_ord_en_trab, cotizacion_cnt_ord_cer, 
-      cotizacion_cnt_ord_catiempo, cotizacion_cnt_ord_cftiempo, 
-      cotizacion_cnt_ord_fac, cotizacion_cnt_ord_can, 
-      cotizacion_mon_importe, cotizacion_mon_igv, 
-      cotizacion_mon_total, proc_id)
+      cotizacion_key_ubigeo_cliente, cotizacion_key_servicio, 
+      cotizacion_key_producto, cotizacion_key_fec_apro, 
+      cotizacion_key_fec_ini, cotizacion_key_fec_fin, 
+      cotizacion_key_estado, cotizacion_ind_unidad, 
+      cotizacion_cnt_ord_total, cotizacion_cnt_ord_en_trab, 
+      cotizacion_cnt_ord_cer, cotizacion_cnt_ord_catiempo, 
+      cotizacion_cnt_ord_cftiempo, cotizacion_cnt_ord_fac, 
+      cotizacion_cnt_ord_can, cotizacion_mon_importe, 
+      cotizacion_mon_igv, cotizacion_mon_total, proc_id
+      )
     values (#{cotizacionKey,jdbcType=INTEGER}, #{cotizacionKeyClienteArea,jdbcType=INTEGER}, 
-      #{cotizacionKeyServicio,jdbcType=INTEGER}, #{cotizacionKeyProducto,jdbcType=INTEGER}, 
-      #{cotizacionKeyFecApro,jdbcType=INTEGER}, #{cotizacionKeyFecIni,jdbcType=INTEGER}, 
-      #{cotizacionKeyFecFin,jdbcType=INTEGER}, #{cotizacionKeyEstado,jdbcType=INTEGER}, 
-      #{cotizacionIndUnidad,jdbcType=SMALLINT}, #{cotizacionCntOrdTotal,jdbcType=INTEGER}, 
-      #{cotizacionCntOrdEnTrab,jdbcType=INTEGER}, #{cotizacionCntOrdCer,jdbcType=INTEGER}, 
-      #{cotizacionCntOrdCatiempo,jdbcType=INTEGER}, #{cotizacionCntOrdCftiempo,jdbcType=INTEGER}, 
-      #{cotizacionCntOrdFac,jdbcType=INTEGER}, #{cotizacionCntOrdCan,jdbcType=INTEGER}, 
-      #{cotizacionMonImporte,jdbcType=NUMERIC}, #{cotizacionMonIgv,jdbcType=NUMERIC}, 
-      #{cotizacionMonTotal,jdbcType=NUMERIC}, #{procId,jdbcType=INTEGER})
+      #{cotizacionKeyUbigeoCliente,jdbcType=INTEGER}, #{cotizacionKeyServicio,jdbcType=INTEGER}, 
+      #{cotizacionKeyProducto,jdbcType=INTEGER}, #{cotizacionKeyFecApro,jdbcType=INTEGER}, 
+      #{cotizacionKeyFecIni,jdbcType=INTEGER}, #{cotizacionKeyFecFin,jdbcType=INTEGER}, 
+      #{cotizacionKeyEstado,jdbcType=INTEGER}, #{cotizacionIndUnidad,jdbcType=SMALLINT}, 
+      #{cotizacionCntOrdTotal,jdbcType=INTEGER}, #{cotizacionCntOrdEnTrab,jdbcType=INTEGER}, 
+      #{cotizacionCntOrdCer,jdbcType=INTEGER}, #{cotizacionCntOrdCatiempo,jdbcType=INTEGER}, 
+      #{cotizacionCntOrdCftiempo,jdbcType=INTEGER}, #{cotizacionCntOrdFac,jdbcType=INTEGER}, 
+      #{cotizacionCntOrdCan,jdbcType=INTEGER}, #{cotizacionMonImporte,jdbcType=NUMERIC}, 
+      #{cotizacionMonIgv,jdbcType=NUMERIC}, #{cotizacionMonTotal,jdbcType=NUMERIC}, #{procId,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactCotizacion" >
     insert into fact_cotizacion
@@ -152,6 +155,9 @@
       </if>
       <if test="cotizacionKeyClienteArea != null" >
         cotizacion_key_cliente_area,
+      </if>
+      <if test="cotizacionKeyUbigeoCliente != null" >
+        cotizacion_key_ubigeo_cliente,
       </if>
       <if test="cotizacionKeyServicio != null" >
         cotizacion_key_servicio,
@@ -214,6 +220,9 @@
       </if>
       <if test="cotizacionKeyClienteArea != null" >
         #{cotizacionKeyClienteArea,jdbcType=INTEGER},
+      </if>
+      <if test="cotizacionKeyUbigeoCliente != null" >
+        #{cotizacionKeyUbigeoCliente,jdbcType=INTEGER},
       </if>
       <if test="cotizacionKeyServicio != null" >
         #{cotizacionKeyServicio,jdbcType=INTEGER},
@@ -286,6 +295,9 @@
       <if test="record.cotizacionKeyClienteArea != null" >
         cotizacion_key_cliente_area = #{record.cotizacionKeyClienteArea,jdbcType=INTEGER},
       </if>
+      <if test="record.cotizacionKeyUbigeoCliente != null" >
+        cotizacion_key_ubigeo_cliente = #{record.cotizacionKeyUbigeoCliente,jdbcType=INTEGER},
+      </if>
       <if test="record.cotizacionKeyServicio != null" >
         cotizacion_key_servicio = #{record.cotizacionKeyServicio,jdbcType=INTEGER},
       </if>
@@ -349,6 +361,7 @@
     update fact_cotizacion
     set cotizacion_key = #{record.cotizacionKey,jdbcType=INTEGER},
       cotizacion_key_cliente_area = #{record.cotizacionKeyClienteArea,jdbcType=INTEGER},
+      cotizacion_key_ubigeo_cliente = #{record.cotizacionKeyUbigeoCliente,jdbcType=INTEGER},
       cotizacion_key_servicio = #{record.cotizacionKeyServicio,jdbcType=INTEGER},
       cotizacion_key_producto = #{record.cotizacionKeyProducto,jdbcType=INTEGER},
       cotizacion_key_fec_apro = #{record.cotizacionKeyFecApro,jdbcType=INTEGER},
@@ -376,6 +389,9 @@
     <set >
       <if test="cotizacionKeyClienteArea != null" >
         cotizacion_key_cliente_area = #{cotizacionKeyClienteArea,jdbcType=INTEGER},
+      </if>
+      <if test="cotizacionKeyUbigeoCliente != null" >
+        cotizacion_key_ubigeo_cliente = #{cotizacionKeyUbigeoCliente,jdbcType=INTEGER},
       </if>
       <if test="cotizacionKeyServicio != null" >
         cotizacion_key_servicio = #{cotizacionKeyServicio,jdbcType=INTEGER},
@@ -437,6 +453,7 @@
   <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactCotizacion" >
     update fact_cotizacion
     set cotizacion_key_cliente_area = #{cotizacionKeyClienteArea,jdbcType=INTEGER},
+      cotizacion_key_ubigeo_cliente = #{cotizacionKeyUbigeoCliente,jdbcType=INTEGER},
       cotizacion_key_servicio = #{cotizacionKeyServicio,jdbcType=INTEGER},
       cotizacion_key_producto = #{cotizacionKeyProducto,jdbcType=INTEGER},
       cotizacion_key_fec_apro = #{cotizacionKeyFecApro,jdbcType=INTEGER},
