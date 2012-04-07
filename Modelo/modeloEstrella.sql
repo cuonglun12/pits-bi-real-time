@@ -2,6 +2,8 @@
 
 drop table dim_cliente;
 
+drop table dim_ubigeo;
+
 drop table dim_estado;
 
 drop table dim_facturado;
@@ -61,16 +63,24 @@ cliente_num_tip_doc  CHAR(15)             not null default '-',
 cliente_desc         VARCHAR(250)         not null default '-',
 cliente_area_cod     VARCHAR(30)          not null default '-',
 cliente_area_desc    VARCHAR(250)         not null default '-',
-cliente_area_cod_pais INT4                 not null default 386,
-cliente_area_des_pais VARCHAR(250)         not null default 'NO DEFINIDO',
-cliente_area_cod_departamento INT4                 not null default 412,
-cliente_area_desc_departamento VARCHAR(250)         not null default 'NO DEFINIDO',
-cliente_area_cod_provincia INT4                 not null default 607,
-cliente_area_desc_provincia VARCHAR(250)         not null default 'NO DEFINIDO',
-cliente_area_cod_distrito INT4                 not null default 2440,
-cliente_area_desc_distrito VARCHAR(250)         not null default 'NO DEFINIDO',
 proc_id              INT4                 not null default 0,
 constraint PK_DIM_CLIENTE primary key (cliente_area_key)
+);
+
+/*==============================================================*/
+/* Table: dim_ubigeo_cliente                                    */
+/*==============================================================*/
+create table dim_ubigeo (
+ubigeo_key   INT4                 not null default 0,
+ubigeo_cod_pais INT4                 not null default 386,
+ubigeo_des_pais VARCHAR(250)         not null default 'NO DEFINIDO',
+ubigeo_cod_departamento INT4                 not null default 412,
+ubigeo_desc_departamento VARCHAR(250)         not null default 'NO DEFINIDO',
+ubigeo_cod_provincia INT4                 not null default 607,
+ubigeo_desc_provincia VARCHAR(250)         not null default 'NO DEFINIDO',
+ubigeo_cod_distrito INT4                 not null default 2440,
+ubigeo_desc_distrito VARCHAR(250)         not null default 'NO DEFINIDO',
+constraint PK_DIM_UBIGEO primary key (ubigeo_key)
 );
 
 /*==============================================================*/
@@ -263,6 +273,7 @@ constraint PK_DIM_ZONA primary key (zona_key)
 create table fact_cotizacion (
 cotizacion_key       INT4                 not null default 0,
 cotizacion_key_cliente_area INT4                 not null default 0,
+cotizacion_key_ubigeo_cliente INT4                 not null default 0,
 cotizacion_key_servicio INT4                 not null default 0,
 cotizacion_key_producto INT4                 not null default 0,
 cotizacion_key_fec_apro INT4                 not null default 0,
@@ -323,6 +334,7 @@ constraint PK_FACT_DESPACHO primary key (despacho_key)
 create table fact_envio (
 envio_key            INT4                 not null default 0,
 envio_key_cliente_area INT4                 not null default 0,
+envio_key_ubigeo_cliente INT4                 not null default 0,
 envio_key_servicio   INT4                 not null default 0,
 envio_key_producto   INT4                 not null default 0,
 envio_key_zona       INT4                 not null default 0,
@@ -352,6 +364,7 @@ constraint PK_FACT_ENVIO primary key (envio_key)
 create table fact_orden (
 orden_key            INT4                 not null default 0,
 orden_key_cliente_area INT4                 not null default 0,
+orden_key_ubigeo_cliente INT4                 not null default 0,
 orden_key_servicio   INT4                 not null default 0,
 orden_key_producto   INT4                 not null default 0,
 orden_key_tipo_reparto INT4                 not null default 0,
