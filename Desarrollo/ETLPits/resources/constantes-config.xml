@@ -201,7 +201,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="idTableDimensionalDimUbigeo" value="${id.table.dimensional.dim_ubigeo}"></property>
 		<property name="idTableDimensionalDimZona" value="${id.table.dimensional.dim_zona}"></property>
 		<property name="idTableDimensionalFactCotizacion" value="${id.table.dimensional.fact_cotizacion}"></property>
-		<property name="idTableDimensionalFactCespacho" value="${id.table.dimensional.fact_despacho}"></property>
+		<property name="idTableDimensionalFactDespacho" value="${id.table.dimensional.fact_despacho}"></property>
 		<property name="idTableDimensionalFactEnvio" value="${id.table.dimensional.fact_envio}"></property>
 		<property name="idTableDimensionalFactOrden" value="${id.table.dimensional.fact_orden}"></property>		
 		
