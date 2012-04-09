@@ -9,6 +9,7 @@ import com.sun.org.apache.xerces.internal.impl.dv.xs.YearDV;
 import pe.com.j2techcon.bi.etl.domain.control.*;
 import pe.com.j2techcon.bi.etl.domain.dimensional.*;
 import pe.com.j2techcon.bi.etl.domain.generic.*;
+import pe.com.j2techcon.bi.etl.util.Util;
 
 
 public class Test {
@@ -18,6 +19,7 @@ public class Test {
 	 */
 	public static void main(String[] args) {
 		
+		/*
 		TProceso x = new TProceso();
 		System.out.println(x.toString());
 		
@@ -120,7 +122,7 @@ public class Test {
 		TZona o1 = new TZona();
 		System.out.println(o1.toString());
 		
-		
+		*/
 //		Calendar calendar = Calendar.getInstance();
 //		calendar.set(1900,1,1,1,1,1);
 //		Date date = new GregorianCalendar(1900,1,1,1,1,1).getTime();
@@ -161,6 +163,13 @@ public class Test {
 		
 		//short a = (short)123;
 		//System.out.println(a);
+		
+		Long x = new Long(12222222);
+		x=Util.getCurrentDateTimeAsLong();
+		long y = new Long(1);
+		
+		System.out.println(Long.toString(x));
+		System.out.println(Long.toString(y));
 
 	}
 

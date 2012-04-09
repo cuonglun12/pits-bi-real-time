@@ -193,7 +193,7 @@ public class Constantes {
 	private int idTableDimensionalDimUbigeo;
 	private int idTableDimensionalDimZona;
 	private int idTableDimensionalFactCotizacion;
-	private int idTableDimensionalFactCespacho;
+	private int idTableDimensionalFactDespacho;
 	private int idTableDimensionalFactEnvio;
 	private int idTableDimensionalFactOrden;
 	
@@ -1104,11 +1104,11 @@ public class Constantes {
 			int idTableDimensionalFactCotizacion) {
 		this.idTableDimensionalFactCotizacion = idTableDimensionalFactCotizacion;
 	}
-	public int getIdTableDimensionalFactCespacho() {
-		return idTableDimensionalFactCespacho;
+	public int getIdTableDimensionalFactDespacho() {
+		return idTableDimensionalFactDespacho;
 	}
-	public void setIdTableDimensionalFactCespacho(int idTableDimensionalFactCespacho) {
-		this.idTableDimensionalFactCespacho = idTableDimensionalFactCespacho;
+	public void setIdTableDimensionalFactDespacho(int idTableDimensionalFactDespacho) {
+		this.idTableDimensionalFactDespacho = idTableDimensionalFactDespacho;
 	}
 	public int getIdTableDimensionalFactEnvio() {
 		return idTableDimensionalFactEnvio;
@@ -1329,8 +1329,8 @@ public class Constantes {
 				+ idTableDimensionalDimZona
 				+ ", idTableDimensionalFactCotizacion="
 				+ idTableDimensionalFactCotizacion
-				+ ", idTableDimensionalFactCespacho="
-				+ idTableDimensionalFactCespacho
+				+ ", idTableDimensionalFactDespacho="
+				+ idTableDimensionalFactDespacho
 				+ ", idTableDimensionalFactEnvio="
 				+ idTableDimensionalFactEnvio
 				+ ", idTableDimensionalFactOrden="

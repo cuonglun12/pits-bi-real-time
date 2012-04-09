@@ -1,5 +1,6 @@
 package pe.com.j2techcon.bi.etl.util;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -7,12 +8,56 @@ import java.util.GregorianCalendar;
 
 public class Util {
 	
-	public static long getDateString() {
+	public static long getDateAsLong(java.util.Date date) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		return Long.parseLong(format.format(date.getTime()));
+	}
+	
+	public static long getDateTimeAsLong(java.util.Date date) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
+		return Long.parseLong(format.format(date.getTime()));
+	}
+	
+	public static Date getDateLongAsDate(long date) {
+		Date result = null;
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		try {
+			result =  format.parse(Long.toString(date));
+		} catch (ParseException e) {
+			result = getCurrentDate();
+		}
+		
+		return result;
+	}
+	
+	public static Date getDateTimeLongAsDate(long date) {
+		Date result = null;
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
+		try {
+			result =  format.parse(Long.toString(date));
+		} catch (ParseException e) {
+			result = getCurrentDateTime();
+		}
+		
+		return result;
+	}
+
+	public static long getCurrentDateAsLong() {
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		return Long.parseLong(format.format((Calendar.getInstance()).getTime()));
+	}
+	
+	public static long getCurrentDateTimeAsLong() {
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
 		return Long.parseLong(format.format((Calendar.getInstance()).getTime()));
 	}
 	
-	public static long getDateString(java.util.Calendar date) {
+	public static long getDateAsLong(java.util.Calendar date) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		return Long.parseLong(format.format(date.getTime()));
+	}
+	
+	public static long getDateTimeAsLong(java.util.Calendar date) {
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
 		return Long.parseLong(format.format(date.getTime()));
 	}
@@ -25,9 +70,28 @@ public class Util {
 		return new GregorianCalendar(1900,0,1,1,1,1).getTime();
 	}
 	
-	public static long getDateString(java.util.Date date) {
-		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
-		return Long.parseLong(format.format(date.getTime()));
+	public static Date getCurrentDate() {
+		Calendar calendar = Calendar.getInstance();
+		return new GregorianCalendar(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).getTime();
+	}
+	
+	public static Date getCurrentDateTime() {
+		Calendar calendar = Calendar.getInstance();
+		return new GregorianCalendar(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH),calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),calendar.get(Calendar.SECOND)).getTime();
+	}
+	
+	public static Date addToDate(Date date, int field, int amount){
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		calendar.add(field, amount);
+		return calendar.getTime();
+	}
+	
+	public static Date addToDateTime(Date date, int field, int amount){
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		calendar.add(field, amount);
+		return calendar.getTime();
 	}
 	
 	public static int getDaysBetweenDates(java.util.Date lateDate, java.util.Date earlyDate) {
