@@ -33,22 +33,6 @@ public class DimCliente {
 
     private String clienteAreaDesc;
 
-    private Integer clienteAreaCodPais;
-
-    private String clienteAreaDesPais;
-
-    private Integer clienteAreaCodDepartamento;
-
-    private String clienteAreaDescDepartamento;
-
-    private Integer clienteAreaCodProvincia;
-
-    private String clienteAreaDescProvincia;
-
-    private Integer clienteAreaCodDistrito;
-
-    private String clienteAreaDescDistrito;
-
     private Integer procId;
 
     public Integer getClienteAreaKey() {
@@ -179,70 +163,6 @@ public class DimCliente {
         this.clienteAreaDesc = clienteAreaDesc == null ? null : clienteAreaDesc.trim();
     }
 
-    public Integer getClienteAreaCodPais() {
-        return clienteAreaCodPais;
-    }
-
-    public void setClienteAreaCodPais(Integer clienteAreaCodPais) {
-        this.clienteAreaCodPais = clienteAreaCodPais;
-    }
-
-    public String getClienteAreaDesPais() {
-        return clienteAreaDesPais;
-    }
-
-    public void setClienteAreaDesPais(String clienteAreaDesPais) {
-        this.clienteAreaDesPais = clienteAreaDesPais == null ? null : clienteAreaDesPais.trim();
-    }
-
-    public Integer getClienteAreaCodDepartamento() {
-        return clienteAreaCodDepartamento;
-    }
-
-    public void setClienteAreaCodDepartamento(Integer clienteAreaCodDepartamento) {
-        this.clienteAreaCodDepartamento = clienteAreaCodDepartamento;
-    }
-
-    public String getClienteAreaDescDepartamento() {
-        return clienteAreaDescDepartamento;
-    }
-
-    public void setClienteAreaDescDepartamento(String clienteAreaDescDepartamento) {
-        this.clienteAreaDescDepartamento = clienteAreaDescDepartamento == null ? null : clienteAreaDescDepartamento.trim();
-    }
-
-    public Integer getClienteAreaCodProvincia() {
-        return clienteAreaCodProvincia;
-    }
-
-    public void setClienteAreaCodProvincia(Integer clienteAreaCodProvincia) {
-        this.clienteAreaCodProvincia = clienteAreaCodProvincia;
-    }
-
-    public String getClienteAreaDescProvincia() {
-        return clienteAreaDescProvincia;
-    }
-
-    public void setClienteAreaDescProvincia(String clienteAreaDescProvincia) {
-        this.clienteAreaDescProvincia = clienteAreaDescProvincia == null ? null : clienteAreaDescProvincia.trim();
-    }
-
-    public Integer getClienteAreaCodDistrito() {
-        return clienteAreaCodDistrito;
-    }
-
-    public void setClienteAreaCodDistrito(Integer clienteAreaCodDistrito) {
-        this.clienteAreaCodDistrito = clienteAreaCodDistrito;
-    }
-
-    public String getClienteAreaDescDistrito() {
-        return clienteAreaDescDistrito;
-    }
-
-    public void setClienteAreaDescDistrito(String clienteAreaDescDistrito) {
-        this.clienteAreaDescDistrito = clienteAreaDescDistrito == null ? null : clienteAreaDescDistrito.trim();
-    }
-
     public Integer getProcId() {
         return procId;
     }
@@ -268,14 +188,6 @@ public class DimCliente {
     	clienteDesc=null;
     	clienteAreaCod=null;
     	clienteAreaDesc=null;
-    	clienteAreaCodPais=null;
-    	clienteAreaDesPais=null;
-    	clienteAreaCodDepartamento=null;
-    	clienteAreaDescDepartamento=null;
-    	clienteAreaCodProvincia=null;
-    	clienteAreaDescProvincia=null;
-    	clienteAreaCodDistrito=null;
-    	clienteAreaDescDistrito=null;
     	procId=null;
     }
 
@@ -295,14 +207,6 @@ public class DimCliente {
 				+ ", clienteNumTipDoc=" + clienteNumTipDoc + ", clienteDesc="
 				+ clienteDesc + ", clienteAreaCod=" + clienteAreaCod
 				+ ", clienteAreaDesc=" + clienteAreaDesc
-				+ ", clienteAreaCodPais=" + clienteAreaCodPais
-				+ ", clienteAreaDesPais=" + clienteAreaDesPais
-				+ ", clienteAreaCodDepartamento=" + clienteAreaCodDepartamento
-				+ ", clienteAreaDescDepartamento="
-				+ clienteAreaDescDepartamento + ", clienteAreaCodProvincia="
-				+ clienteAreaCodProvincia + ", clienteAreaDescProvincia="
-				+ clienteAreaDescProvincia + ", clienteAreaCodDistrito="
-				+ clienteAreaCodDistrito + ", clienteAreaDescDistrito="
-				+ clienteAreaDescDistrito + ", procId=" + procId + "]";
+				+ ", procId=" + procId + "]";
 	}
 }

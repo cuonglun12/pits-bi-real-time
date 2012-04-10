@@ -535,55 +535,7 @@ public class DimClienteProcess {
 		
 		dimCliente.setClienteAreaCod(tAreaCliente.getAreCliCod());
 		dimCliente.setClienteAreaDesc(tAreaCliente.getAreCliDes());
-		
-		if(tAreaCliente.getUbiId() != constantes.getValueNumberDefault()){
-			tUbigeo = tUbigeoManager.selectByPrimaryKey(tAreaCliente.getUbiId());
-			
-			dimCliente.setClienteAreaCodPais(tUbigeo.getUbiCodPais());
-			if(tUbigeo.getUbiCodPais() != constantes.getValueNumberDefault()){
-				tParametro = tParametroManager.selectByPrimaryKey(tUbigeo.getUbiCodPais());
-				dimCliente.setClienteAreaDesPais(tParametro.getParamDes());
-			}else{
-				dimCliente.setClienteAreaDesPais(constantes.getValueStringDefault());
-			}
-			
-			dimCliente.setClienteAreaCodDepartamento(tUbigeo.getUbiCodDepartamento());
-			if(tUbigeo.getUbiCodDepartamento() != constantes.getValueNumberDefault()){
-				tParametro = tParametroManager.selectByPrimaryKey(tUbigeo.getUbiCodDepartamento());
-				dimCliente.setClienteAreaDescDepartamento(tParametro.getParamDes());
-			}else{
-				dimCliente.setClienteAreaDescDepartamento(constantes.getValueStringDefault());
-			}
-			
-			dimCliente.setClienteAreaCodProvincia(tUbigeo.getUbiCodProvincia());
-			if(tUbigeo.getUbiCodProvincia() != constantes.getValueNumberDefault()){
-				tParametro = tParametroManager.selectByPrimaryKey(tUbigeo.getUbiCodProvincia());
-				dimCliente.setClienteAreaDescProvincia(tParametro.getParamDes());
-			}else{
-				dimCliente.setClienteAreaDescProvincia(constantes.getValueStringDefault());
-			}
-			
-			dimCliente.setClienteAreaCodDistrito(tUbigeo.getUbiCodDistrito());
-			if(tUbigeo.getUbiCodDistrito() != constantes.getValueNumberDefault()){
-				tParametro = tParametroManager.selectByPrimaryKey(tUbigeo.getUbiCodDistrito());
-				dimCliente.setClienteAreaDescDistrito(tParametro.getParamDes());
-			}else{
-				dimCliente.setClienteAreaDescDistrito(constantes.getValueStringDefault());
-			}
-			
-		}else{
-			dimCliente.setClienteAreaCodPais(constantes.getValueNumberDefault());
-			dimCliente.setClienteAreaDesPais(constantes.getValueStringDefault());
-			
-			dimCliente.setClienteAreaCodDepartamento(constantes.getValueNumberDefault());
-			dimCliente.setClienteAreaDescDepartamento(constantes.getValueStringDefault());
-			
-			dimCliente.setClienteAreaCodProvincia(constantes.getValueNumberDefault());
-			dimCliente.setClienteAreaDescProvincia(constantes.getValueStringDefault());
-			
-			dimCliente.setClienteAreaCodDistrito(constantes.getValueNumberDefault());
-			dimCliente.setClienteAreaDescDistrito(constantes.getValueStringDefault());
-		}
+
 		dimCliente.setProcId(process);
 	}
 	

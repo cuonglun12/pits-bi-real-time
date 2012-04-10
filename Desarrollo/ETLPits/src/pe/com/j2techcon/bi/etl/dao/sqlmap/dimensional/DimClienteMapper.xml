@@ -18,14 +18,6 @@
     <result column="cliente_desc" property="clienteDesc" jdbcType="VARCHAR" />
     <result column="cliente_area_cod" property="clienteAreaCod" jdbcType="VARCHAR" />
     <result column="cliente_area_desc" property="clienteAreaDesc" jdbcType="VARCHAR" />
-    <result column="cliente_area_cod_pais" property="clienteAreaCodPais" jdbcType="INTEGER" />
-    <result column="cliente_area_des_pais" property="clienteAreaDesPais" jdbcType="VARCHAR" />
-    <result column="cliente_area_cod_departamento" property="clienteAreaCodDepartamento" jdbcType="INTEGER" />
-    <result column="cliente_area_desc_departamento" property="clienteAreaDescDepartamento" jdbcType="VARCHAR" />
-    <result column="cliente_area_cod_provincia" property="clienteAreaCodProvincia" jdbcType="INTEGER" />
-    <result column="cliente_area_desc_provincia" property="clienteAreaDescProvincia" jdbcType="VARCHAR" />
-    <result column="cliente_area_cod_distrito" property="clienteAreaCodDistrito" jdbcType="INTEGER" />
-    <result column="cliente_area_desc_distrito" property="clienteAreaDescDistrito" jdbcType="VARCHAR" />
     <result column="proc_id" property="procId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -90,10 +82,7 @@
     cliente_area_key, cliente_key, cliente_cod_tip, cliente_desc_tip, cliente_cod_categoria, 
     cliente_desc_categoria, cliente_cod_facturacion, cliente_desc_facturacion, cliente_cod_credito, 
     cliente_desc_credito, cliente_cod_tip_doc, cliente_desc_tip_doc, cliente_num_tip_doc, 
-    cliente_desc, cliente_area_cod, cliente_area_desc, cliente_area_cod_pais, cliente_area_des_pais, 
-    cliente_area_cod_departamento, cliente_area_desc_departamento, cliente_area_cod_provincia, 
-    cliente_area_desc_provincia, cliente_area_cod_distrito, cliente_area_desc_distrito, 
-    proc_id
+    cliente_desc, cliente_area_cod, cliente_area_desc, proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimClienteExample" >
     select
@@ -134,11 +123,7 @@
       cliente_cod_facturacion, cliente_desc_facturacion, 
       cliente_cod_credito, cliente_desc_credito, 
       cliente_cod_tip_doc, cliente_desc_tip_doc, cliente_num_tip_doc, 
-      cliente_desc, cliente_area_cod, cliente_area_desc, 
-      cliente_area_cod_pais, cliente_area_des_pais, 
-      cliente_area_cod_departamento, cliente_area_desc_departamento, 
-      cliente_area_cod_provincia, cliente_area_desc_provincia, 
-      cliente_area_cod_distrito, cliente_area_desc_distrito, 
+      cliente_desc, cliente_area_cod, cliente_area_desc,
       proc_id)
     values (#{clienteAreaKey,jdbcType=INTEGER}, #{clienteKey,jdbcType=INTEGER}, #{clienteCodTip,jdbcType=INTEGER}, 
       #{clienteDescTip,jdbcType=VARCHAR}, #{clienteCodCategoria,jdbcType=INTEGER}, #{clienteDescCategoria,jdbcType=VARCHAR}, 
@@ -146,10 +131,6 @@
       #{clienteCodCredito,jdbcType=INTEGER}, #{clienteDescCredito,jdbcType=VARCHAR}, 
       #{clienteCodTipDoc,jdbcType=INTEGER}, #{clienteDescTipDoc,jdbcType=VARCHAR}, #{clienteNumTipDoc,jdbcType=CHAR}, 
       #{clienteDesc,jdbcType=VARCHAR}, #{clienteAreaCod,jdbcType=VARCHAR}, #{clienteAreaDesc,jdbcType=VARCHAR}, 
-      #{clienteAreaCodPais,jdbcType=INTEGER}, #{clienteAreaDesPais,jdbcType=VARCHAR}, 
-      #{clienteAreaCodDepartamento,jdbcType=INTEGER}, #{clienteAreaDescDepartamento,jdbcType=VARCHAR}, 
-      #{clienteAreaCodProvincia,jdbcType=INTEGER}, #{clienteAreaDescProvincia,jdbcType=VARCHAR}, 
-      #{clienteAreaCodDistrito,jdbcType=INTEGER}, #{clienteAreaDescDistrito,jdbcType=VARCHAR}, 
       #{procId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.DimCliente" >
@@ -203,30 +184,6 @@
       <if test="clienteAreaDesc != null" >
         cliente_area_desc,
       </if>
-      <if test="clienteAreaCodPais != null" >
-        cliente_area_cod_pais,
-      </if>
-      <if test="clienteAreaDesPais != null" >
-        cliente_area_des_pais,
-      </if>
-      <if test="clienteAreaCodDepartamento != null" >
-        cliente_area_cod_departamento,
-      </if>
-      <if test="clienteAreaDescDepartamento != null" >
-        cliente_area_desc_departamento,
-      </if>
-      <if test="clienteAreaCodProvincia != null" >
-        cliente_area_cod_provincia,
-      </if>
-      <if test="clienteAreaDescProvincia != null" >
-        cliente_area_desc_provincia,
-      </if>
-      <if test="clienteAreaCodDistrito != null" >
-        cliente_area_cod_distrito,
-      </if>
-      <if test="clienteAreaDescDistrito != null" >
-        cliente_area_desc_distrito,
-      </if>
       <if test="procId != null" >
         proc_id,
       </if>
@@ -279,30 +236,6 @@
       </if>
       <if test="clienteAreaDesc != null" >
         #{clienteAreaDesc,jdbcType=VARCHAR},
-      </if>
-      <if test="clienteAreaCodPais != null" >
-        #{clienteAreaCodPais,jdbcType=INTEGER},
-      </if>
-      <if test="clienteAreaDesPais != null" >
-        #{clienteAreaDesPais,jdbcType=VARCHAR},
-      </if>
-      <if test="clienteAreaCodDepartamento != null" >
-        #{clienteAreaCodDepartamento,jdbcType=INTEGER},
-      </if>
-      <if test="clienteAreaDescDepartamento != null" >
-        #{clienteAreaDescDepartamento,jdbcType=VARCHAR},
-      </if>
-      <if test="clienteAreaCodProvincia != null" >
-        #{clienteAreaCodProvincia,jdbcType=INTEGER},
-      </if>
-      <if test="clienteAreaDescProvincia != null" >
-        #{clienteAreaDescProvincia,jdbcType=VARCHAR},
-      </if>
-      <if test="clienteAreaCodDistrito != null" >
-        #{clienteAreaCodDistrito,jdbcType=INTEGER},
-      </if>
-      <if test="clienteAreaDescDistrito != null" >
-        #{clienteAreaDescDistrito,jdbcType=VARCHAR},
       </if>
       <if test="procId != null" >
         #{procId,jdbcType=INTEGER},
@@ -366,30 +299,6 @@
       <if test="record.clienteAreaDesc != null" >
         cliente_area_desc = #{record.clienteAreaDesc,jdbcType=VARCHAR},
       </if>
-      <if test="record.clienteAreaCodPais != null" >
-        cliente_area_cod_pais = #{record.clienteAreaCodPais,jdbcType=INTEGER},
-      </if>
-      <if test="record.clienteAreaDesPais != null" >
-        cliente_area_des_pais = #{record.clienteAreaDesPais,jdbcType=VARCHAR},
-      </if>
-      <if test="record.clienteAreaCodDepartamento != null" >
-        cliente_area_cod_departamento = #{record.clienteAreaCodDepartamento,jdbcType=INTEGER},
-      </if>
-      <if test="record.clienteAreaDescDepartamento != null" >
-        cliente_area_desc_departamento = #{record.clienteAreaDescDepartamento,jdbcType=VARCHAR},
-      </if>
-      <if test="record.clienteAreaCodProvincia != null" >
-        cliente_area_cod_provincia = #{record.clienteAreaCodProvincia,jdbcType=INTEGER},
-      </if>
-      <if test="record.clienteAreaDescProvincia != null" >
-        cliente_area_desc_provincia = #{record.clienteAreaDescProvincia,jdbcType=VARCHAR},
-      </if>
-      <if test="record.clienteAreaCodDistrito != null" >
-        cliente_area_cod_distrito = #{record.clienteAreaCodDistrito,jdbcType=INTEGER},
-      </if>
-      <if test="record.clienteAreaDescDistrito != null" >
-        cliente_area_desc_distrito = #{record.clienteAreaDescDistrito,jdbcType=VARCHAR},
-      </if>
       <if test="record.procId != null" >
         proc_id = #{record.procId,jdbcType=INTEGER},
       </if>
@@ -416,14 +325,6 @@
       cliente_desc = #{record.clienteDesc,jdbcType=VARCHAR},
       cliente_area_cod = #{record.clienteAreaCod,jdbcType=VARCHAR},
       cliente_area_desc = #{record.clienteAreaDesc,jdbcType=VARCHAR},
-      cliente_area_cod_pais = #{record.clienteAreaCodPais,jdbcType=INTEGER},
-      cliente_area_des_pais = #{record.clienteAreaDesPais,jdbcType=VARCHAR},
-      cliente_area_cod_departamento = #{record.clienteAreaCodDepartamento,jdbcType=INTEGER},
-      cliente_area_desc_departamento = #{record.clienteAreaDescDepartamento,jdbcType=VARCHAR},
-      cliente_area_cod_provincia = #{record.clienteAreaCodProvincia,jdbcType=INTEGER},
-      cliente_area_desc_provincia = #{record.clienteAreaDescProvincia,jdbcType=VARCHAR},
-      cliente_area_cod_distrito = #{record.clienteAreaCodDistrito,jdbcType=INTEGER},
-      cliente_area_desc_distrito = #{record.clienteAreaDescDistrito,jdbcType=VARCHAR},
       proc_id = #{record.procId,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -477,30 +378,6 @@
       <if test="clienteAreaDesc != null" >
         cliente_area_desc = #{clienteAreaDesc,jdbcType=VARCHAR},
       </if>
-      <if test="clienteAreaCodPais != null" >
-        cliente_area_cod_pais = #{clienteAreaCodPais,jdbcType=INTEGER},
-      </if>
-      <if test="clienteAreaDesPais != null" >
-        cliente_area_des_pais = #{clienteAreaDesPais,jdbcType=VARCHAR},
-      </if>
-      <if test="clienteAreaCodDepartamento != null" >
-        cliente_area_cod_departamento = #{clienteAreaCodDepartamento,jdbcType=INTEGER},
-      </if>
-      <if test="clienteAreaDescDepartamento != null" >
-        cliente_area_desc_departamento = #{clienteAreaDescDepartamento,jdbcType=VARCHAR},
-      </if>
-      <if test="clienteAreaCodProvincia != null" >
-        cliente_area_cod_provincia = #{clienteAreaCodProvincia,jdbcType=INTEGER},
-      </if>
-      <if test="clienteAreaDescProvincia != null" >
-        cliente_area_desc_provincia = #{clienteAreaDescProvincia,jdbcType=VARCHAR},
-      </if>
-      <if test="clienteAreaCodDistrito != null" >
-        cliente_area_cod_distrito = #{clienteAreaCodDistrito,jdbcType=INTEGER},
-      </if>
-      <if test="clienteAreaDescDistrito != null" >
-        cliente_area_desc_distrito = #{clienteAreaDescDistrito,jdbcType=VARCHAR},
-      </if>
       <if test="procId != null" >
         proc_id = #{procId,jdbcType=INTEGER},
       </if>
@@ -524,14 +401,6 @@
       cliente_desc = #{clienteDesc,jdbcType=VARCHAR},
       cliente_area_cod = #{clienteAreaCod,jdbcType=VARCHAR},
       cliente_area_desc = #{clienteAreaDesc,jdbcType=VARCHAR},
-      cliente_area_cod_pais = #{clienteAreaCodPais,jdbcType=INTEGER},
-      cliente_area_des_pais = #{clienteAreaDesPais,jdbcType=VARCHAR},
-      cliente_area_cod_departamento = #{clienteAreaCodDepartamento,jdbcType=INTEGER},
-      cliente_area_desc_departamento = #{clienteAreaDescDepartamento,jdbcType=VARCHAR},
-      cliente_area_cod_provincia = #{clienteAreaCodProvincia,jdbcType=INTEGER},
-      cliente_area_desc_provincia = #{clienteAreaDescProvincia,jdbcType=VARCHAR},
-      cliente_area_cod_distrito = #{clienteAreaCodDistrito,jdbcType=INTEGER},
-      cliente_area_desc_distrito = #{clienteAreaDescDistrito,jdbcType=VARCHAR},
       proc_id = #{procId,jdbcType=INTEGER}
     where cliente_area_key = #{clienteAreaKey,jdbcType=INTEGER}
   </update>
