@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schema name="Cotizacion">
+    <Cube name="Cotizacion">
+        <Table name="fact_cotizacion">
+		</Table>
+		<Dimension name="Cliente" caption="Cliente" foreignKey="cotizacion_key_cliente_area">
+            <Hierarchy hasAll="true" allMemberName="Todos los clientes" allMemberCaption="Todos los clientes" primaryKey="cliente_area_key">
+				<Table name="dim_cliente">
+				</Table>
+				<Level name="Tipo" column="cliente_desc_tip" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Tipo">
+				</Level>
+				<Level name="Cliente" column="cliente_desc" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Cliente">
+				</Level>
+            </Hierarchy>
+        </Dimension>
+		<Dimension name="Ubigeo_Cliente" caption="Ubigeo_Cliente" foreignKey="cotizacion_key_ubigeo_cliente">
+            <Hierarchy hasAll="true" allMemberName="Todos los ubigeos" allMemberCaption="Todos los ubigeos" primaryKey="ubigeo_key">
+                <Table name="dim_ubigeo">
+				</Table>
+                <Level name="Pais" column="ubigeo_des_pais" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Pais">
+				</Level>
+                <Level name="Departamento" column="ubigeo_desc_departamento" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Departamento">
+                </Level>
+				<Level name="Provincia" column="ubigeo_desc_provincia" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Provincia">
+                </Level>
+				<Level name="Distrito" column="ubigeo_desc_distrito" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Distrito">
+				</Level>
+            </Hierarchy>
+        </Dimension>
+        <Dimension name="Servicio" caption="Servicio" foreignKey="cotizacion_key_servicio">
+            <Hierarchy hasAll="true" allMemberName="Todos los servicios" allMemberCaption="Todos los servicios" primaryKey="servicio_key">
+                <Table name="dim_servicio">
+				</Table>
+                <Level name="Ambito" column="servicio_desc_ambito" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Ambito">
+                </Level>
+				<Level name="Negocio" column="servicio_desc_negocio" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Negocio">
+                </Level>
+				<Level name="Servicio" column="servicio_desc" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Servicio">
+				</Level>
+            </Hierarchy>
+        </Dimension>
+        <Dimension name="Producto" caption="Producto" foreignKey="cotizacion_key_producto">
+            <Hierarchy hasAll="true" allMemberName="Todos los productos" allMemberCaption="Todos los productos" primaryKey="producto_key">
+                <Table name="dim_producto">
+				</Table>
+                <Level name="Tipo" column="producto_desc_tip" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Tipo">
+				</Level>
+                <Level name="Producto" column="producto_desc" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Producto">
+				</Level>
+            </Hierarchy>
+        </Dimension>
+        <Dimension name="Estado" caption="Estado" foreignKey="cotizacion_key_estado">
+            <Hierarchy hasAll="true" allMemberName="Todos los estados" allMemberCaption="Todos los estados" primaryKey="estado_key">
+                <Table name="dim_estado">
+				</Table>
+                <Level name="Estado" column="estado_desc" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Estado">
+				</Level>
+            </Hierarchy>
+        </Dimension>
+        <Dimension type="TimeDimension" name="Fecha_Aprobacion" caption="Fecha_Aprobacion" foreignKey="cotizacion_key_fec_apro">
+            <Hierarchy hasAll="true" allMemberName="Todas las ordenes" allMemberCaption="Todas las ordenes" primaryKey="tiempo_key">
+                <Table name="dim_tiempo">
+				</Table>
+                <Level name="Anio" column="tiempo_anio" type="Integer" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+                <Level name="Semestre" column="tiempo_nombre_semestre" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+                <Level name="Trimestre" column="tiempo_nombre_trimestre" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+                <Level name="Mes" column="tiempo_nombre_mes" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+                <Level name="Dia" column="tiempo_dia_mes" type="Integer" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+            </Hierarchy>
+        </Dimension>
+        <Dimension type="TimeDimension" name="Fecha_Inicio" caption="Fecha_Inicio" foreignKey="cotizacion_key_fec_ini">
+            <Hierarchy hasAll="true" allMemberName="Todas las ordenes" allMemberCaption="Todas las ordenes" primaryKey="tiempo_key">
+                <Table name="dim_tiempo">
+				</Table>
+                <Level name="Anio" column="tiempo_anio" type="Integer" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+                <Level name="Semestre" column="tiempo_nombre_semestre" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+                <Level name="Trimestre" column="tiempo_nombre_trimestre" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+                <Level name="Mes" column="tiempo_nombre_mes" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+                <Level name="Dia" column="tiempo_dia_mes" type="Integer" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+            </Hierarchy>
+        </Dimension>
+        <Dimension type="TimeDimension" name="Fecha_Fin" caption="Fecha_Fin" foreignKey="cotizacion_key_fec_fin">
+            <Hierarchy hasAll="true" allMemberName="Todas las ordenes" allMemberCaption="Todas las ordenes" primaryKey="tiempo_key">
+                <Table name="dim_tiempo">
+				</Table>
+                <Level name="Anio" column="tiempo_anio" type="Integer" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+                <Level name="Semestre" column="tiempo_nombre_semestre" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+                <Level name="Trimestre" column="tiempo_nombre_trimestre" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+                <Level name="Mes" column="tiempo_nombre_mes" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+                <Level name="Dia" column="tiempo_dia_mes" type="Integer" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+            </Hierarchy>
+        </Dimension>
+        <Measure name="Cnt_Cotizacion" column="cotizacion_ind_unidad" aggregator="sum" datatype="String" formatString="#,###"/>
+		<Measure name="Cnt_Ord" column="cotizacion_cnt_ord_total" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Ord_Cerrada" column="cotizacion_cnt_ord_cer" aggregator="sum" datatype="Integer" formatString="#,###"/>
+        <Measure name="Cnt_Ord_Cerrada_A_Tiempo" column="cotizacion_cnt_ord_catiempo" aggregator="sum" datatype="Integer" formatString="#,###"/>
+        <Measure name="Cnt_Ord_Cerrada_Fuera_Tiempo" column="cotizacion_cnt_ord_cftiempo" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Ord_En_Trabajo" column="cotizacion_cnt_ord_en_trab" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Ord_Facturada" column="cotizacion_cnt_ord_fac" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Ord_Cancelada" column="cotizacion_cnt_ord_can" aggregator="sum" datatype="Integer" formatString="#,###"/>
+        <Measure name="Mon_Igv" column="cotizacion_mon_igv" aggregator="sum" datatype="Numeric" formatString="#,###.00"/>
+        <Measure name="Mon_Importe" column="cotizacion_mon_importe" aggregator="sum" datatype="Numeric" formatString="#,###.00"/>
+        <Measure name="Mon_Total" column="cotizacion_mon_total" aggregator="sum" datatype="Numeric" formatString="#,###.00"/>
+    </Cube>
+</Schema>
