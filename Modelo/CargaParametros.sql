@@ -3798,9 +3798,11 @@ INSERT INTO dim_estado(estado_key, estado_cod_tipo, estado_desc_tipo, estado_cod
 
 --DIMENSION FACTURADO
 INSERT INTO dim_facturado(facturado_key, facturado_cod, facturado_desc, proc_id)
-  VALUES(51, 'F', 'FACTURACION', 0);
+  VALUES(2441, '1', 'FACTURADO', 0);
 INSERT INTO dim_facturado(facturado_key, facturado_cod, facturado_desc, proc_id)
-  VALUES(52, '-', 'NO DEFINIDO', 0);
+  VALUES(2442, '0', 'NO FACTURADO', 0);
+INSERT INTO dim_facturado(facturado_key, facturado_cod, facturado_desc, proc_id)
+  VALUES(2443, '-', 'NO DEFINIDO', 0);
 
 --DIMENSION MONEDA
 INSERT INTO dim_moneda(moneda_key, moneda_cod, moneda_desc, proc_id)
