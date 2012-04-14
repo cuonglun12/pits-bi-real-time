@@ -11,6 +11,8 @@
 				</Level>
 				<Level name="Cliente" column="cliente_desc" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Cliente">
 				</Level>
+				<Level name="Area_Cliente" column="cliente_area_desc" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Area_Cliente">
+				</Level>
             </Hierarchy>
         </Dimension>
 		<Dimension name="Ubigeo_Cliente" caption="Ubigeo_Cliente" foreignKey="cotizacion_key_ubigeo_cliente">
@@ -58,7 +60,7 @@
             </Hierarchy>
         </Dimension>
         <Dimension type="TimeDimension" name="Fecha_Aprobacion" caption="Fecha_Aprobacion" foreignKey="cotizacion_key_fec_apro">
-            <Hierarchy hasAll="true" allMemberName="Todas las ordenes" allMemberCaption="Todas las ordenes" primaryKey="tiempo_key">
+            <Hierarchy hasAll="true" allMemberName="Todas las cotizaciones" allMemberCaption="Todas las cotizaciones" primaryKey="tiempo_key">
                 <Table name="dim_tiempo">
 				</Table>
                 <Level name="Anio" column="tiempo_anio" type="Integer" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
@@ -74,7 +76,7 @@
             </Hierarchy>
         </Dimension>
         <Dimension type="TimeDimension" name="Fecha_Inicio" caption="Fecha_Inicio" foreignKey="cotizacion_key_fec_ini">
-            <Hierarchy hasAll="true" allMemberName="Todas las ordenes" allMemberCaption="Todas las ordenes" primaryKey="tiempo_key">
+            <Hierarchy hasAll="true" allMemberName="Todas las cotizaciones" allMemberCaption="Todas las cotizaciones" primaryKey="tiempo_key">
                 <Table name="dim_tiempo">
 				</Table>
                 <Level name="Anio" column="tiempo_anio" type="Integer" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
@@ -90,7 +92,7 @@
             </Hierarchy>
         </Dimension>
         <Dimension type="TimeDimension" name="Fecha_Fin" caption="Fecha_Fin" foreignKey="cotizacion_key_fec_fin">
-            <Hierarchy hasAll="true" allMemberName="Todas las ordenes" allMemberCaption="Todas las ordenes" primaryKey="tiempo_key">
+            <Hierarchy hasAll="true" allMemberName="Todas las cotizaciones" allMemberCaption="Todas las cotizaciones" primaryKey="tiempo_key">
                 <Table name="dim_tiempo">
 				</Table>
                 <Level name="Anio" column="tiempo_anio" type="Integer" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
@@ -105,7 +107,7 @@
 				</Level>
             </Hierarchy>
         </Dimension>
-        <Measure name="Cnt_Cotizacion" column="cotizacion_ind_unidad" aggregator="sum" datatype="String" formatString="#,###"/>
+        <Measure name="Cnt_Cotizacion" column="cotizacion_ind_unidad" aggregator="sum" datatype="Integer" formatString="#,###"/>
 		<Measure name="Cnt_Ord" column="cotizacion_cnt_ord_total" aggregator="sum" datatype="Integer" formatString="#,###"/>
 		<Measure name="Cnt_Ord_Cerrada" column="cotizacion_cnt_ord_cer" aggregator="sum" datatype="Integer" formatString="#,###"/>
         <Measure name="Cnt_Ord_Cerrada_A_Tiempo" column="cotizacion_cnt_ord_catiempo" aggregator="sum" datatype="Integer" formatString="#,###"/>
@@ -113,8 +115,8 @@
 		<Measure name="Cnt_Ord_En_Trabajo" column="cotizacion_cnt_ord_en_trab" aggregator="sum" datatype="Integer" formatString="#,###"/>
 		<Measure name="Cnt_Ord_Facturada" column="cotizacion_cnt_ord_fac" aggregator="sum" datatype="Integer" formatString="#,###"/>
 		<Measure name="Cnt_Ord_Cancelada" column="cotizacion_cnt_ord_can" aggregator="sum" datatype="Integer" formatString="#,###"/>
-        <Measure name="Mon_Igv" column="cotizacion_mon_igv" aggregator="sum" datatype="Numeric" formatString="#,###.00"/>
-        <Measure name="Mon_Importe" column="cotizacion_mon_importe" aggregator="sum" datatype="Numeric" formatString="#,###.00"/>
-        <Measure name="Mon_Total" column="cotizacion_mon_total" aggregator="sum" datatype="Numeric" formatString="#,###.00"/>
+        <Measure name="Ord_Mon_Igv" column="cotizacion_mon_igv" aggregator="sum" datatype="Numeric" formatString="#,###.00"/>
+        <Measure name="Ord_Mon_Importe" column="cotizacion_mon_importe" aggregator="sum" datatype="Numeric" formatString="#,###.00"/>
+        <Measure name="Ord_Mon_Total" column="cotizacion_mon_total" aggregator="sum" datatype="Numeric" formatString="#,###.00"/>
     </Cube>
 </Schema>
