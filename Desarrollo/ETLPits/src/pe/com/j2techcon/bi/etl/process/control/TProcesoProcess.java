@@ -400,6 +400,8 @@ public class TProcesoProcess {
 	
 	public void startProcess(){
 		
+		insertProcess();
+		
 		tProceso = getLastProcess();
 		
 		if(typeLoadProcess.equals(constantes.getLoadProcessToGeneric())){
