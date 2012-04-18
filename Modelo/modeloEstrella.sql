@@ -1,5 +1,87 @@
 /*
 
+drop index idx_cotizacion_08;
+
+drop index idx_cotizacion_07;
+
+drop index idx_cotizacion_06;
+
+drop index idx_cotizacion_05;
+
+drop index idx_cotizacion_04;
+
+drop index idx_cotizacion_03;
+
+drop index idx_cotizacion_02;
+
+drop index idx_cotizacion_01;
+
+drop index idx_despacho_08;
+
+drop index idx_despacho_07;
+
+drop index idx_despacho_06;
+
+drop index idx_despacho_05;
+
+drop index idx_despacho_04;
+
+drop index idx_despacho_03;
+
+drop index idx_despacho_02;
+
+drop index idx_despacho_01;
+
+drop index idx_envio_10;
+
+drop index idx_envio_09;
+
+drop index idx_envio_08;
+
+drop index idx_envio_07;
+
+drop index idx_envio_06;
+
+drop index idx_envio_05;
+
+drop index idx_envio_04;
+
+drop index idx_envio_03;
+
+drop index idx_envio_02;
+
+drop index idx_envio_01;
+
+drop index idx_orden_15;
+
+drop index idx_orden_14;
+
+drop index idx_orden_13;
+
+drop index idx_orden_12;
+
+drop index idx_orden_11;
+
+drop index idx_orden_10;
+
+drop index idx_orden_09;
+
+drop index idx_orden_08;
+
+drop index idx_orden_07;
+
+drop index idx_orden_06;
+
+drop index idx_orden_05;
+
+drop index idx_orden_04;
+
+drop index idx_orden_03;
+
+drop index idx_orden_02;
+
+drop index idx_orden_01;
+
 drop table dim_cliente;
 
 drop table dim_ubigeo;
@@ -296,6 +378,63 @@ constraint PK_FACT_COTIZACION primary key (cotizacion_key)
 );
 
 /*==============================================================*/
+/* Index: idx_cotizacion_01                                     */
+/*==============================================================*/
+create  index idx_cotizacion_01 on fact_cotizacion (
+cotizacion_key_cliente_area
+);
+
+/*==============================================================*/
+/* Index: idx_cotizacion_02                                     */
+/*==============================================================*/
+create  index idx_cotizacion_02 on fact_cotizacion (
+cotizacion_key_ubigeo_cliente
+);
+
+/*==============================================================*/
+/* Index: idx_cotizacion_03                                     */
+/*==============================================================*/
+create  index idx_cotizacion_03 on fact_cotizacion (
+cotizacion_key_servicio
+);
+
+/*==============================================================*/
+/* Index: idx_cotizacion_04                                     */
+/*==============================================================*/
+create  index idx_cotizacion_04 on fact_cotizacion (
+cotizacion_key_producto
+);
+
+/*==============================================================*/
+/* Index: idx_cotizacion_05                                     */
+/*==============================================================*/
+create  index idx_cotizacion_05 on fact_cotizacion (
+cotizacion_key_fec_apro
+);
+
+/*==============================================================*/
+/* Index: idx_cotizacion_06                                     */
+/*==============================================================*/
+create  index idx_cotizacion_06 on fact_cotizacion (
+cotizacion_key_fec_ini
+);
+
+/*==============================================================*/
+/* Index: idx_cotizacion_07                                     */
+/*==============================================================*/
+create  index idx_cotizacion_07 on fact_cotizacion (
+cotizacion_key_fec_fin
+);
+
+/*==============================================================*/
+/* Index: idx_cotizacion_08                                     */
+/*==============================================================*/
+create  index idx_cotizacion_08 on fact_cotizacion (
+cotizacion_key_estado
+);
+
+
+/*==============================================================*/
 /* Table: fact_despacho                                         */
 /*==============================================================*/
 create table fact_despacho (
@@ -329,6 +468,62 @@ constraint PK_FACT_DESPACHO primary key (despacho_key)
 );
 
 /*==============================================================*/
+/* Index: idx_despacho_01                                       */
+/*==============================================================*/
+create  index idx_despacho_01 on fact_despacho (
+despacho_key_sede
+);
+
+/*==============================================================*/
+/* Index: idx_despacho_02                                       */
+/*==============================================================*/
+create  index idx_despacho_02 on fact_despacho (
+despacho_key_zona
+);
+
+/*==============================================================*/
+/* Index: idx_despacho_03                                       */
+/*==============================================================*/
+create  index idx_despacho_03 on fact_despacho (
+despacho_key_personal
+);
+
+/*==============================================================*/
+/* Index: idx_despacho_04                                       */
+/*==============================================================*/
+create  index idx_despacho_04 on fact_despacho (
+despacho_key_tipo_ruta
+);
+
+/*==============================================================*/
+/* Index: idx_despacho_05                                       */
+/*==============================================================*/
+create  index idx_despacho_05 on fact_despacho (
+despacho_key_fec_sal
+);
+
+/*==============================================================*/
+/* Index: idx_despacho_06                                       */
+/*==============================================================*/
+create  index idx_despacho_06 on fact_despacho (
+despacho_key_fec_retp
+);
+
+/*==============================================================*/
+/* Index: idx_despacho_07                                       */
+/*==============================================================*/
+create  index idx_despacho_07 on fact_despacho (
+despacho_key_fec_retr
+);
+
+/*==============================================================*/
+/* Index: idx_despacho_08                                       */
+/*==============================================================*/
+create  index idx_despacho_08 on fact_despacho (
+despacho_key_estado
+);
+
+/*==============================================================*/
 /* Table: fact_envio                                            */
 /*==============================================================*/
 create table fact_envio (
@@ -356,6 +551,76 @@ envio_ind_pro        INT2                 not null default 0,
 envio_ind_rob        INT2                 not null default 0,
 proc_id              INT4                 not null default 0,
 constraint PK_FACT_ENVIO primary key (envio_key)
+);
+
+/*==============================================================*/
+/* Index: idx_envio_01                                          */
+/*==============================================================*/
+create  index idx_envio_01 on fact_envio (
+envio_key_cliente_area
+);
+
+/*==============================================================*/
+/* Index: idx_envio_02                                          */
+/*==============================================================*/
+create  index idx_envio_02 on fact_envio (
+envio_key_ubigeo_cliente
+);
+
+/*==============================================================*/
+/* Index: idx_envio_03                                          */
+/*==============================================================*/
+create  index idx_envio_03 on fact_envio (
+envio_key_servicio
+);
+
+/*==============================================================*/
+/* Index: idx_envio_04                                          */
+/*==============================================================*/
+create  index idx_envio_04 on fact_envio (
+envio_key_producto
+);
+
+/*==============================================================*/
+/* Index: idx_envio_05                                          */
+/*==============================================================*/
+create  index idx_envio_05 on fact_envio (
+envio_key_zona
+);
+
+/*==============================================================*/
+/* Index: idx_envio_06                                          */
+/*==============================================================*/
+create  index idx_envio_06 on fact_envio (
+envio_key_personal
+);
+
+/*==============================================================*/
+/* Index: idx_envio_07                                          */
+/*==============================================================*/
+create  index idx_envio_07 on fact_envio (
+envio_key_fec_sal
+);
+
+/*==============================================================*/
+/* Index: idx_envio_08                                          */
+/*==============================================================*/
+create  index idx_envio_08 on fact_envio (
+envio_key_fec_retp
+);
+
+/*==============================================================*/
+/* Index: idx_envio_09                                          */
+/*==============================================================*/
+create  index idx_envio_09 on fact_envio (
+envio_key_fec_retr
+);
+
+/*==============================================================*/
+/* Index: idx_envio_10                                          */
+/*==============================================================*/
+create  index idx_envio_10 on fact_envio (
+envio_key_estado
 );
 
 /*==============================================================*/
@@ -399,4 +664,109 @@ orden_mon_igv        NUMERIC(14,4)        not null default 0,
 orden_mon_total      NUMERIC(14,4)        not null default 0,
 proc_id              INT4                 not null default 0,
 constraint PK_FACT_ORDEN primary key (orden_key)
+);
+
+/*==============================================================*/
+/* Index: idx_orden_01                                          */
+/*==============================================================*/
+create  index idx_orden_01 on fact_orden (
+orden_key_cliente_area
+);
+
+/*==============================================================*/
+/* Index: idx_orden_02                                          */
+/*==============================================================*/
+create  index idx_orden_02 on fact_orden (
+orden_key_ubigeo_cliente
+);
+
+/*==============================================================*/
+/* Index: idx_orden_03                                          */
+/*==============================================================*/
+create  index idx_orden_03 on fact_orden (
+orden_key_servicio
+);
+
+/*==============================================================*/
+/* Index: idx_orden_04                                          */
+/*==============================================================*/
+create  index idx_orden_04 on fact_orden (
+orden_key_producto
+);
+
+/*==============================================================*/
+/* Index: idx_orden_05                                          */
+/*==============================================================*/
+create  index idx_orden_05 on fact_orden (
+orden_key_tipo_reparto
+);
+
+/*==============================================================*/
+/* Index: idx_orden_06                                          */
+/*==============================================================*/
+create  index idx_orden_06 on fact_orden (
+orden_key_tipo_documento
+);
+
+/*==============================================================*/
+/* Index: idx_orden_07                                          */
+/*==============================================================*/
+create  index idx_orden_07 on fact_orden (
+orden_key_tipo_pago
+);
+
+/*==============================================================*/
+/* Index: idx_orden_08                                          */
+/*==============================================================*/
+create  index idx_orden_08 on fact_orden (
+orden_key_moneda
+);
+
+/*==============================================================*/
+/* Index: idx_orden_09                                          */
+/*==============================================================*/
+create  index idx_orden_09 on fact_orden (
+orden_key_fec_ini
+);
+
+/*==============================================================*/
+/* Index: idx_orden_10                                          */
+/*==============================================================*/
+create  index idx_orden_10 on fact_orden (
+orden_key_fec_ven
+);
+
+/*==============================================================*/
+/* Index: idx_orden_11                                          */
+/*==============================================================*/
+create  index idx_orden_11 on fact_orden (
+orden_key_fec_cie
+);
+
+/*==============================================================*/
+/* Index: idx_orden_12                                          */
+/*==============================================================*/
+create  index idx_orden_12 on fact_orden (
+orden_key_fec_dev
+);
+
+/*==============================================================*/
+/* Index: idx_orden_13                                          */
+/*==============================================================*/
+create  index idx_orden_13 on fact_orden (
+orden_key_fec_fac
+);
+
+/*==============================================================*/
+/* Index: idx_orden_14                                          */
+/*==============================================================*/
+create  index idx_orden_14 on fact_orden (
+orden_key_estado
+);
+
+/*==============================================================*/
+/* Index: idx_orden_15                                          */
+/*==============================================================*/
+create  index idx_orden_15 on fact_orden (
+orden_key_facturado
 );

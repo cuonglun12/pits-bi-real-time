@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Schema name="Cotizacion">
-    <Cube name="Cotizacion" cache="false" enabled="true">
-        <Table name="fact_cotizacion">
+<Schema name="Envio">
+    <Cube name="Envio" cache="false" enabled="true">
+        <Table name="fact_envio">
 		</Table>
-		<Dimension name="Cliente" caption="Cliente" foreignKey="cotizacion_key_cliente_area">
+		<Dimension name="Cliente" caption="Cliente" foreignKey="envio_key_cliente_area">
             <Hierarchy hasAll="true" allMemberName="Todos los clientes" allMemberCaption="Todos los clientes" primaryKey="cliente_area_key">
 				<Table name="dim_cliente">
 				</Table>
@@ -15,7 +15,7 @@
 				</Level>
             </Hierarchy>
         </Dimension>
-		<Dimension name="Ubigeo_Cliente" caption="Ubigeo_Cliente" foreignKey="cotizacion_key_ubigeo_cliente">
+		<Dimension name="Ubigeo_Cliente" caption="Ubigeo_Cliente" foreignKey="envio_key_ubigeo_cliente">
             <Hierarchy hasAll="true" allMemberName="Todos los ubigeos" allMemberCaption="Todos los ubigeos" primaryKey="ubigeo_key">
                 <Table name="dim_ubigeo">
 				</Table>
@@ -29,7 +29,7 @@
 				</Level>
             </Hierarchy>
         </Dimension>
-        <Dimension name="Servicio" caption="Servicio" foreignKey="cotizacion_key_servicio">
+        <Dimension name="Servicio" caption="Servicio" foreignKey="envio_key_servicio">
             <Hierarchy hasAll="true" allMemberName="Todos los servicios" allMemberCaption="Todos los servicios" primaryKey="servicio_key">
                 <Table name="dim_servicio">
 				</Table>
@@ -41,7 +41,7 @@
 				</Level>
             </Hierarchy>
         </Dimension>
-        <Dimension name="Producto" caption="Producto" foreignKey="cotizacion_key_producto">
+        <Dimension name="Producto" caption="Producto" foreignKey="envio_key_producto">
             <Hierarchy hasAll="true" allMemberName="Todos los productos" allMemberCaption="Todos los productos" primaryKey="producto_key">
                 <Table name="dim_producto">
 				</Table>
@@ -51,7 +51,33 @@
 				</Level>
             </Hierarchy>
         </Dimension>
-        <Dimension name="Estado" caption="Estado" foreignKey="cotizacion_key_estado">
+		<Dimension name="Zona" caption="Zona" foreignKey="envio_key_zona">
+            <Hierarchy hasAll="true" allMemberName="Todos las zonas" allMemberCaption="Todos las zonas" primaryKey="zona_key">
+                <Table name="dim_zona">
+				</Table>
+                <Level name="Pais" column="zona_desc_pais" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Pais">
+				</Level>
+                <Level name="Departamento" column="zona_desc_departamento" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Departamento">
+                </Level>
+				<Level name="Provincia" column="zona_desc_provincia" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Provincia">
+                </Level>
+				<Level name="Distrito" column="zona_desc_distrito" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Distrito">
+				</Level>
+				<Level name="Zona" column="zona_desc" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Zona">
+				</Level>
+            </Hierarchy>
+        </Dimension>
+		<Dimension name="Mensajero" caption="Mensajero" foreignKey="envio_key_personal">
+            <Hierarchy hasAll="true" allMemberName="Todos los mensajeros" allMemberCaption="Todos los mensajeros" primaryKey="personal_key">
+				<Table name="dim_personal">
+				</Table>
+				<Level name="Sexo" column="personal_sexo" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Sexo">
+				</Level>
+				<Level name="Mensajero" column="personal_nombre" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Mensajero">
+				</Level>
+            </Hierarchy>
+        </Dimension>
+		<Dimension name="Estado" caption="Estado" foreignKey="envio_key_estado">
             <Hierarchy hasAll="true" allMemberName="Todos los estados" allMemberCaption="Todos los estados" primaryKey="estado_key">
                 <Table name="dim_estado">
 				</Table>
@@ -59,8 +85,8 @@
 				</Level>
             </Hierarchy>
         </Dimension>
-        <Dimension type="TimeDimension" name="Fecha_Aprobacion" caption="Fecha_Aprobacion" foreignKey="cotizacion_key_fec_apro">
-            <Hierarchy hasAll="true" allMemberName="Todas las cotizaciones" allMemberCaption="Todas las cotizaciones" primaryKey="tiempo_key">
+		<Dimension type="TimeDimension" name="Fecha_Salida" caption="Fecha_Salida" foreignKey="envio_key_fec_sal">
+            <Hierarchy hasAll="true" allMemberName="Todos los despachos" allMemberCaption="Todos los despachos" primaryKey="tiempo_key">
                 <Table name="dim_tiempo">
 				</Table>
                 <Level name="Anio" column="tiempo_anio" type="Integer" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
@@ -75,8 +101,8 @@
 				</Level>
             </Hierarchy>
         </Dimension>
-        <Dimension type="TimeDimension" name="Fecha_Inicio" caption="Fecha_Inicio" foreignKey="cotizacion_key_fec_ini">
-            <Hierarchy hasAll="true" allMemberName="Todas las cotizaciones" allMemberCaption="Todas las cotizaciones" primaryKey="tiempo_key">
+		<Dimension type="TimeDimension" name="Fecha_Retorno_Programado" caption="Fecha_Retorno_Programado" foreignKey="envio_key_fec_retp">
+            <Hierarchy hasAll="true" allMemberName="Todos los despachos" allMemberCaption="Todos los despachos" primaryKey="tiempo_key">
                 <Table name="dim_tiempo">
 				</Table>
                 <Level name="Anio" column="tiempo_anio" type="Integer" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
@@ -91,8 +117,8 @@
 				</Level>
             </Hierarchy>
         </Dimension>
-        <Dimension type="TimeDimension" name="Fecha_Fin" caption="Fecha_Fin" foreignKey="cotizacion_key_fec_fin">
-            <Hierarchy hasAll="true" allMemberName="Todas las cotizaciones" allMemberCaption="Todas las cotizaciones" primaryKey="tiempo_key">
+		<Dimension type="TimeDimension" name="Fecha_Retorno_Real" caption="Fecha_Retorno_Real" foreignKey="envio_key_fec_retr">
+            <Hierarchy hasAll="true" allMemberName="Todos los despachos" allMemberCaption="Todos los despachos" primaryKey="tiempo_key">
                 <Table name="dim_tiempo">
 				</Table>
                 <Level name="Anio" column="tiempo_anio" type="Integer" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
@@ -107,16 +133,16 @@
 				</Level>
             </Hierarchy>
         </Dimension>
-        <Measure name="Cnt_Cotizacion" column="cotizacion_ind_unidad" aggregator="sum" datatype="Integer" formatString="#,###"/>
-		<Measure name="Cnt_Orden" column="cotizacion_cnt_ord_total" aggregator="sum" datatype="Integer" formatString="#,###"/>
-		<Measure name="Cnt_Ord_Cerrada" column="cotizacion_cnt_ord_cer" aggregator="sum" datatype="Integer" formatString="#,###"/>
-        <Measure name="Cnt_Ord_Cerrada_A_Tiempo" column="cotizacion_cnt_ord_catiempo" aggregator="sum" datatype="Integer" formatString="#,###"/>
-        <Measure name="Cnt_Ord_Cerrada_Fuera_Tiempo" column="cotizacion_cnt_ord_cftiempo" aggregator="sum" datatype="Integer" formatString="#,###"/>
-		<Measure name="Cnt_Ord_En_Trabajo" column="cotizacion_cnt_ord_en_trab" aggregator="sum" datatype="Integer" formatString="#,###"/>
-		<Measure name="Cnt_Ord_Facturada" column="cotizacion_cnt_ord_fac" aggregator="sum" datatype="Integer" formatString="#,###"/>
-		<Measure name="Cnt_Ord_Cancelada" column="cotizacion_cnt_ord_can" aggregator="sum" datatype="Integer" formatString="#,###"/>
-        <Measure name="Ord_Mon_Igv" column="cotizacion_mon_igv" aggregator="sum" datatype="Numeric" formatString="#,###.00"/>
-        <Measure name="Ord_Mon_Importe" column="cotizacion_mon_importe" aggregator="sum" datatype="Numeric" formatString="#,###.00"/>
-        <Measure name="Ord_Mon_Total" column="cotizacion_mon_total" aggregator="sum" datatype="Numeric" formatString="#,###.00"/>
+		<Measure name="Cnt_Envio" column="envio_ind_unidad" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Env_Entregado" column="envio_ind_ent" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Env_Motivado" column="envio_ind_mot" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Env_Reenviado" column="envio_ind_ree" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Env_Anulado" column="envio_ind_anu" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Env_Fuera_Zona" column="envio_ind_fue_zon" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Env_Perdido" column="envio_ind_perd" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Env_Digitado" column="envio_ind_dig" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Env_Ruta" column="envio_ind_rut" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Env_Provincia" column="envio_ind_pro" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Env_Robado" column="envio_ind_rob" aggregator="sum" datatype="Integer" formatString="#,###"/>		
     </Cube>
 </Schema>

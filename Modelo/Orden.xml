@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Schema name="Orden">
-    <Cube name="Orden">
+    <Cube name="Orden" cache="false" enabled="true">
         <Table name="fact_orden">
 		</Table>
 		<Dimension name="Cliente" caption="Cliente" foreignKey="orden_key_cliente_area">
@@ -10,6 +10,8 @@
 				<Level name="Tipo" column="cliente_desc_tip" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Tipo">
 				</Level>
 				<Level name="Cliente" column="cliente_desc" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Cliente">
+				</Level>
+				<Level name="Area_Cliente" column="cliente_area_desc" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Area_Cliente">
 				</Level>
             </Hierarchy>
         </Dimension>
@@ -172,9 +174,9 @@
 		
 		<Measure name="Cnt_Ord_En_Fecha" column="orden_aten_en_fec" aggregator="sum" datatype="Integer" formatString="#,###"/>
 		<Measure name="Cnt_Ord_Fuera_Fecha" column="orden_aten_fuera_fec" aggregator="sum" datatype="Integer" formatString="#,###"/>
-		<Measure name="Cnt_Ord" column="orden_ind_unidad" aggregator="sum" datatype="Integer" formatString="#,###"/>
-		<Measure name="Cnt_Dias_Execedido" column="orden_cnt_dias_exc" aggregator="sum" datatype="Integer" formatString="#,###"/>
-		<Measure name="Cnt_Cargos" column="orden_cnt_cargos" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Orden" column="orden_ind_unidad" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Dia_Execedido" column="orden_cnt_dias_exc" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Cargo" column="orden_cnt_cargos" aggregator="sum" datatype="Integer" formatString="#,###"/>
 		<Measure name="Cnt_Carg_Anulado" column="orden_cnt_cargos_anu" aggregator="sum" datatype="Integer" formatString="#,###"/>
 		<Measure name="Cnt_Carg_Entregado" column="orden_cnt_cargos_ent" aggregator="sum" datatype="Integer" formatString="#,###"/>
 		<Measure name="Cnt_Carg_Fuera_Zona" column="orden_cnt_cargos_fue_zon" aggregator="sum" datatype="Integer" formatString="#,###"/>

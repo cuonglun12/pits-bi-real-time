@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Schema name="Despacho">
-    <Cube name="Despacho">
+    <Cube name="Despacho" cache="false" enabled="true">
         <Table name="fact_despacho">
 		</Table>
 		<Dimension name="Mensajero" caption="Mensajero" foreignKey="despacho_key_personal">
@@ -112,8 +112,8 @@
 
 		<Measure name="Mon_pasaje" column="despacho_mon_pasaje" aggregator="sum" datatype="Numeric" formatString="#,###.00"/>
 		<Measure name="Cnt_Despacho" column="despacho_ind_unidad" aggregator="sum" datatype="Integer" formatString="#,###"/>
-		<Measure name="Cnt_Dias_Execedido" column="despacho_cnt_dias_exc" aggregator="sum" datatype="Integer" formatString="#,###"/>
-		<Measure name="Cnt_Cargos" column="despacho_cnt_cargos" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Dia_Execedido" column="despacho_cnt_dias_exc" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Cargo" column="despacho_cnt_cargos" aggregator="sum" datatype="Integer" formatString="#,###"/>
 		<Measure name="Cnt_Carg_Entregado" column="despacho_cnt_ent" aggregator="sum" datatype="Integer" formatString="#,###"/>
 		<Measure name="Cnt_Carg_Motivado" column="despacho_cnt_mot" aggregator="sum" datatype="Integer" formatString="#,###"/>
 		<Measure name="Cnt_Carg_Reenviado" column="despacho_cnt_ree" aggregator="sum" datatype="Integer" formatString="#,###"/>
