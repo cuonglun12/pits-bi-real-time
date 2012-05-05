@@ -808,7 +808,7 @@ create table T_EMPLEADO (
    EMP_DES_NOM          VARCHAR(100)         not null default '-',
    EMP_FEC_NAC          DATE                 not null default '1900-01-01',
    EMP_SEX              CHAR(1)              not null default 'M'
-      constraint CKC_EMP_SEX_T_EMPLEA check (EMP_SEX in ('0','1')),
+      constraint CKC_EMP_SEX_T_EMPLEA check (EMP_SEX in ('M','F')),
    COD_IND_CAM          CHAR(1)              not null default '1',
    FEC_NUM_CAM          INT8                 not null default 19000101010101,
    PROC_ID              INT4                 not null default 0,
