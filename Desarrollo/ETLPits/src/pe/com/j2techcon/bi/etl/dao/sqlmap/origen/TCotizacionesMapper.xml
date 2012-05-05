@@ -1,0 +1,1666 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pe.com.j2techcon.bi.etl.dao.origen.TCotizacionesMapper" >
+  <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.origen.TCotizaciones" >
+    <id column="coserie" property="coserie" jdbcType="CHAR" />
+    <id column="conumero" property="conumero" jdbcType="NUMERIC" />
+    <result column="ruc_dni" property="rucDni" jdbcType="VARCHAR" />
+    <result column="contacto" property="contacto" jdbcType="VARCHAR" />
+    <result column="direccion" property="direccion" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="codpaiscontacto" property="codpaiscontacto" jdbcType="CHAR" />
+    <result column="ubigeo" property="ubigeo" jdbcType="CHAR" />
+    <result column="codpostal" property="codpostal" jdbcType="CHAR" />
+    <result column="telefono" property="telefono" jdbcType="VARCHAR" />
+    <result column="anexo" property="anexo" jdbcType="VARCHAR" />
+    <result column="celular" property="celular" jdbcType="VARCHAR" />
+    <result column="areacontacto" property="areacontacto" jdbcType="VARCHAR" />
+    <result column="codtipoentrega" property="codtipoentrega" jdbcType="CHAR" />
+    <result column="cargocontacto" property="cargocontacto" jdbcType="VARCHAR" />
+    <result column="fax" property="fax" jdbcType="VARCHAR" />
+    <result column="codpaisorigen" property="codpaisorigen" jdbcType="CHAR" />
+    <result column="ciudadorigen" property="ciudadorigen" jdbcType="VARCHAR" />
+    <result column="puertoorigen" property="puertoorigen" jdbcType="VARCHAR" />
+    <result column="obsorigen" property="obsorigen" jdbcType="VARCHAR" />
+    <result column="transporteorigen" property="transporteorigen" jdbcType="VARCHAR" />
+    <result column="codpaisdestino" property="codpaisdestino" jdbcType="CHAR" />
+    <result column="ciudaddestino" property="ciudaddestino" jdbcType="VARCHAR" />
+    <result column="puertodestino" property="puertodestino" jdbcType="VARCHAR" />
+    <result column="transportedestino" property="transportedestino" jdbcType="VARCHAR" />
+    <result column="obsdestino" property="obsdestino" jdbcType="VARCHAR" />
+    <result column="obscotizacion" property="obscotizacion" jdbcType="VARCHAR" />
+    <result column="codnegocio" property="codnegocio" jdbcType="CHAR" />
+    <result column="codambito" property="codambito" jdbcType="CHAR" />
+    <result column="codservicio" property="codservicio" jdbcType="CHAR" />
+    <result column="codproducto" property="codproducto" jdbcType="CHAR" />
+    <result column="peso" property="peso" jdbcType="NUMERIC" />
+    <result column="pesoapox" property="pesoapox" jdbcType="NUMERIC" />
+    <result column="pesototal" property="pesototal" jdbcType="NUMERIC" />
+    <result column="preciounitario" property="preciounitario" jdbcType="NUMERIC" />
+    <result column="preciototal" property="preciototal" jdbcType="NUMERIC" />
+    <result column="descuento" property="descuento" jdbcType="NUMERIC" />
+    <result column="montoneto" property="montoneto" jdbcType="NUMERIC" />
+    <result column="porcentaje" property="porcentaje" jdbcType="INTEGER" />
+    <result column="moneda" property="moneda" jdbcType="CHAR" />
+    <result column="montopagar" property="montopagar" jdbcType="NUMERIC" />
+    <result column="flete" property="flete" jdbcType="NUMERIC" />
+    <result column="desaduanaje" property="desaduanaje" jdbcType="NUMERIC" />
+    <result column="seguro" property="seguro" jdbcType="NUMERIC" />
+    <result column="comision" property="comision" jdbcType="NUMERIC" />
+    <result column="cantidad" property="cantidad" jdbcType="NUMERIC" />
+    <result column="cntposiciones" property="cntposiciones" jdbcType="NUMERIC" />
+    <result column="cntunidades" property="cntunidades" jdbcType="NUMERIC" />
+    <result column="cntpersonas" property="cntpersonas" jdbcType="NUMERIC" />
+    <result column="unidadmedida" property="unidadmedida" jdbcType="VARCHAR" />
+    <result column="largo" property="largo" jdbcType="NUMERIC" />
+    <result column="ancho" property="ancho" jdbcType="NUMERIC" />
+    <result column="alto" property="alto" jdbcType="NUMERIC" />
+    <result column="volumen" property="volumen" jdbcType="NUMERIC" />
+    <result column="numerodias" property="numerodias" jdbcType="NUMERIC" />
+    <result column="reserie" property="reserie" jdbcType="CHAR" />
+    <result column="renumro" property="renumro" jdbcType="NUMERIC" />
+    <result column="tipoproducto" property="tipoproducto" jdbcType="CHAR" />
+    <result column="rutaimagen" property="rutaimagen" jdbcType="VARCHAR" />
+    <result column="producto" property="producto" jdbcType="VARCHAR" />
+    <result column="obsproducto" property="obsproducto" jdbcType="VARCHAR" />
+    <result column="codencuesta" property="codencuesta" jdbcType="CHAR" />
+    <result column="imo" property="imo" jdbcType="VARCHAR" />
+    <result column="umm" property="umm" jdbcType="VARCHAR" />
+    <result column="serie" property="serie" jdbcType="CHAR" />
+    <result column="orden" property="orden" jdbcType="CHAR" />
+    <result column="estado" property="estado" jdbcType="SMALLINT" />
+    <result column="empresa" property="empresa" jdbcType="VARCHAR" />
+    <result column="usuario" property="usuario" jdbcType="CHAR" />
+    <result column="fecha" property="fecha" jdbcType="TIMESTAMP" />
+    <result column="usuariomod" property="usuariomod" jdbcType="VARCHAR" />
+    <result column="fechamod" property="fechamod" jdbcType="TIMESTAMP" />
+    <result column="motivoanulacion" property="motivoanulacion" jdbcType="VARCHAR" />
+    <result column="codcliente" property="codcliente" jdbcType="CHAR" />
+    <result column="codareacliente" property="codareacliente" jdbcType="CHAR" />
+    <result column="tipocotizacion" property="tipocotizacion" jdbcType="SMALLINT" />
+    <result column="fechaanula" property="fechaanula" jdbcType="TIMESTAMP" />
+    <result column="usuarioanula" property="usuarioanula" jdbcType="CHAR" />
+    <result column="usuarioaprueba" property="usuarioaprueba" jdbcType="CHAR" />
+    <result column="fechaaprueba" property="fechaaprueba" jdbcType="TIMESTAMP" />
+    <result column="codzona" property="codzona" jdbcType="CHAR" />
+    <result column="subservicios" property="subservicios" jdbcType="VARCHAR" />
+    <result column="pplano" property="pplano" jdbcType="VARCHAR" />
+    <result column="preal" property="preal" jdbcType="VARCHAR" />
+    <result column="cod_destino" property="codDestino" jdbcType="VARCHAR" />
+    <result column="t_transporte" property="tTransporte" jdbcType="VARCHAR" />
+    <result column="preciokadic" property="preciokadic" jdbcType="NUMERIC" />
+    <result column="preciokadic_plano" property="preciokadicPlano" jdbcType="NUMERIC" />
+    <result column="kg_base" property="kgBase" jdbcType="NUMERIC" />
+    <result column="kg_recojo" property="kgRecojo" jdbcType="NUMERIC" />
+    <result column="kg_adicional_recojo" property="kgAdicionalRecojo" jdbcType="NUMERIC" />
+    <result column="recojo" property="recojo" jdbcType="VARCHAR" />
+    <result column="ubigeo_origen" property="ubigeoOrigen" jdbcType="VARCHAR" />
+    <result column="ubigeo_destino" property="ubigeoDestino" jdbcType="VARCHAR" />
+    <result column="codunidad" property="codunidad" jdbcType="VARCHAR" />
+    <result column="des_servicio" property="desServicio" jdbcType="VARCHAR" />
+    <result column="zonal" property="zonal" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    coserie, conumero, ruc_dni, contacto, direccion, email, codpaiscontacto, ubigeo, 
+    codpostal, telefono, anexo, celular, areacontacto, codtipoentrega, cargocontacto, 
+    fax, codpaisorigen, ciudadorigen, puertoorigen, obsorigen, transporteorigen, codpaisdestino, 
+    ciudaddestino, puertodestino, transportedestino, obsdestino, obscotizacion, codnegocio, 
+    codambito, codservicio, codproducto, peso, pesoapox, pesototal, preciounitario, preciototal, 
+    descuento, montoneto, porcentaje, moneda, montopagar, flete, desaduanaje, seguro, 
+    comision, cantidad, cntposiciones, cntunidades, cntpersonas, unidadmedida, largo, 
+    ancho, alto, volumen, numerodias, reserie, renumro, tipoproducto, rutaimagen, producto, 
+    obsproducto, codencuesta, imo, umm, serie, orden, estado, empresa, usuario, fecha, 
+    usuariomod, fechamod, motivoanulacion, codcliente, codareacliente, tipocotizacion, 
+    fechaanula, usuarioanula, usuarioaprueba, fechaaprueba, codzona, subservicios, pplano, 
+    preal, cod_destino, t_transporte, preciokadic, preciokadic_plano, kg_base, kg_recojo, 
+    kg_adicional_recojo, recojo, ubigeo_origen, ubigeo_destino, codunidad, des_servicio, 
+    zonal
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.origen.TCotizacionesExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_cotizaciones
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_cotizaciones
+    where coserie = #{coserie,jdbcType=CHAR}
+      and conumero = #{conumero,jdbcType=NUMERIC}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from t_cotizaciones
+    where coserie = #{coserie,jdbcType=CHAR}
+      and conumero = #{conumero,jdbcType=NUMERIC}
+  </delete>
+  <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.TCotizacionesExample" >
+    delete from t_cotizaciones
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.origen.TCotizaciones" >
+    insert into t_cotizaciones (coserie, conumero, ruc_dni, 
+      contacto, direccion, email, 
+      codpaiscontacto, ubigeo, codpostal, 
+      telefono, anexo, celular, 
+      areacontacto, codtipoentrega, cargocontacto, 
+      fax, codpaisorigen, ciudadorigen, 
+      puertoorigen, obsorigen, transporteorigen, 
+      codpaisdestino, ciudaddestino, puertodestino, 
+      transportedestino, obsdestino, obscotizacion, 
+      codnegocio, codambito, codservicio, 
+      codproducto, peso, pesoapox, 
+      pesototal, preciounitario, preciototal, 
+      descuento, montoneto, porcentaje, 
+      moneda, montopagar, flete, 
+      desaduanaje, seguro, comision, 
+      cantidad, cntposiciones, cntunidades, 
+      cntpersonas, unidadmedida, largo, 
+      ancho, alto, volumen, 
+      numerodias, reserie, renumro, 
+      tipoproducto, rutaimagen, producto, 
+      obsproducto, codencuesta, imo, 
+      umm, serie, orden, estado, 
+      empresa, usuario, fecha, 
+      usuariomod, fechamod, motivoanulacion, 
+      codcliente, codareacliente, tipocotizacion, 
+      fechaanula, usuarioanula, usuarioaprueba, 
+      fechaaprueba, codzona, subservicios, 
+      pplano, preal, cod_destino, 
+      t_transporte, preciokadic, preciokadic_plano, 
+      kg_base, kg_recojo, kg_adicional_recojo, 
+      recojo, ubigeo_origen, ubigeo_destino, 
+      codunidad, des_servicio, zonal
+      )
+    values (#{coserie,jdbcType=CHAR}, #{conumero,jdbcType=NUMERIC}, #{rucDni,jdbcType=VARCHAR}, 
+      #{contacto,jdbcType=VARCHAR}, #{direccion,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{codpaiscontacto,jdbcType=CHAR}, #{ubigeo,jdbcType=CHAR}, #{codpostal,jdbcType=CHAR}, 
+      #{telefono,jdbcType=VARCHAR}, #{anexo,jdbcType=VARCHAR}, #{celular,jdbcType=VARCHAR}, 
+      #{areacontacto,jdbcType=VARCHAR}, #{codtipoentrega,jdbcType=CHAR}, #{cargocontacto,jdbcType=VARCHAR}, 
+      #{fax,jdbcType=VARCHAR}, #{codpaisorigen,jdbcType=CHAR}, #{ciudadorigen,jdbcType=VARCHAR}, 
+      #{puertoorigen,jdbcType=VARCHAR}, #{obsorigen,jdbcType=VARCHAR}, #{transporteorigen,jdbcType=VARCHAR}, 
+      #{codpaisdestino,jdbcType=CHAR}, #{ciudaddestino,jdbcType=VARCHAR}, #{puertodestino,jdbcType=VARCHAR}, 
+      #{transportedestino,jdbcType=VARCHAR}, #{obsdestino,jdbcType=VARCHAR}, #{obscotizacion,jdbcType=VARCHAR}, 
+      #{codnegocio,jdbcType=CHAR}, #{codambito,jdbcType=CHAR}, #{codservicio,jdbcType=CHAR}, 
+      #{codproducto,jdbcType=CHAR}, #{peso,jdbcType=NUMERIC}, #{pesoapox,jdbcType=NUMERIC}, 
+      #{pesototal,jdbcType=NUMERIC}, #{preciounitario,jdbcType=NUMERIC}, #{preciototal,jdbcType=NUMERIC}, 
+      #{descuento,jdbcType=NUMERIC}, #{montoneto,jdbcType=NUMERIC}, #{porcentaje,jdbcType=INTEGER}, 
+      #{moneda,jdbcType=CHAR}, #{montopagar,jdbcType=NUMERIC}, #{flete,jdbcType=NUMERIC}, 
+      #{desaduanaje,jdbcType=NUMERIC}, #{seguro,jdbcType=NUMERIC}, #{comision,jdbcType=NUMERIC}, 
+      #{cantidad,jdbcType=NUMERIC}, #{cntposiciones,jdbcType=NUMERIC}, #{cntunidades,jdbcType=NUMERIC}, 
+      #{cntpersonas,jdbcType=NUMERIC}, #{unidadmedida,jdbcType=VARCHAR}, #{largo,jdbcType=NUMERIC}, 
+      #{ancho,jdbcType=NUMERIC}, #{alto,jdbcType=NUMERIC}, #{volumen,jdbcType=NUMERIC}, 
+      #{numerodias,jdbcType=NUMERIC}, #{reserie,jdbcType=CHAR}, #{renumro,jdbcType=NUMERIC}, 
+      #{tipoproducto,jdbcType=CHAR}, #{rutaimagen,jdbcType=VARCHAR}, #{producto,jdbcType=VARCHAR}, 
+      #{obsproducto,jdbcType=VARCHAR}, #{codencuesta,jdbcType=CHAR}, #{imo,jdbcType=VARCHAR}, 
+      #{umm,jdbcType=VARCHAR}, #{serie,jdbcType=CHAR}, #{orden,jdbcType=CHAR}, #{estado,jdbcType=SMALLINT}, 
+      #{empresa,jdbcType=VARCHAR}, #{usuario,jdbcType=CHAR}, #{fecha,jdbcType=TIMESTAMP}, 
+      #{usuariomod,jdbcType=VARCHAR}, #{fechamod,jdbcType=TIMESTAMP}, #{motivoanulacion,jdbcType=VARCHAR}, 
+      #{codcliente,jdbcType=CHAR}, #{codareacliente,jdbcType=CHAR}, #{tipocotizacion,jdbcType=SMALLINT}, 
+      #{fechaanula,jdbcType=TIMESTAMP}, #{usuarioanula,jdbcType=CHAR}, #{usuarioaprueba,jdbcType=CHAR}, 
+      #{fechaaprueba,jdbcType=TIMESTAMP}, #{codzona,jdbcType=CHAR}, #{subservicios,jdbcType=VARCHAR}, 
+      #{pplano,jdbcType=VARCHAR}, #{preal,jdbcType=VARCHAR}, #{codDestino,jdbcType=VARCHAR}, 
+      #{tTransporte,jdbcType=VARCHAR}, #{preciokadic,jdbcType=NUMERIC}, #{preciokadicPlano,jdbcType=NUMERIC}, 
+      #{kgBase,jdbcType=NUMERIC}, #{kgRecojo,jdbcType=NUMERIC}, #{kgAdicionalRecojo,jdbcType=NUMERIC}, 
+      #{recojo,jdbcType=VARCHAR}, #{ubigeoOrigen,jdbcType=VARCHAR}, #{ubigeoDestino,jdbcType=VARCHAR}, 
+      #{codunidad,jdbcType=VARCHAR}, #{desServicio,jdbcType=VARCHAR}, #{zonal,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.TCotizaciones" >
+    insert into t_cotizaciones
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="coserie != null" >
+        coserie,
+      </if>
+      <if test="conumero != null" >
+        conumero,
+      </if>
+      <if test="rucDni != null" >
+        ruc_dni,
+      </if>
+      <if test="contacto != null" >
+        contacto,
+      </if>
+      <if test="direccion != null" >
+        direccion,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="codpaiscontacto != null" >
+        codpaiscontacto,
+      </if>
+      <if test="ubigeo != null" >
+        ubigeo,
+      </if>
+      <if test="codpostal != null" >
+        codpostal,
+      </if>
+      <if test="telefono != null" >
+        telefono,
+      </if>
+      <if test="anexo != null" >
+        anexo,
+      </if>
+      <if test="celular != null" >
+        celular,
+      </if>
+      <if test="areacontacto != null" >
+        areacontacto,
+      </if>
+      <if test="codtipoentrega != null" >
+        codtipoentrega,
+      </if>
+      <if test="cargocontacto != null" >
+        cargocontacto,
+      </if>
+      <if test="fax != null" >
+        fax,
+      </if>
+      <if test="codpaisorigen != null" >
+        codpaisorigen,
+      </if>
+      <if test="ciudadorigen != null" >
+        ciudadorigen,
+      </if>
+      <if test="puertoorigen != null" >
+        puertoorigen,
+      </if>
+      <if test="obsorigen != null" >
+        obsorigen,
+      </if>
+      <if test="transporteorigen != null" >
+        transporteorigen,
+      </if>
+      <if test="codpaisdestino != null" >
+        codpaisdestino,
+      </if>
+      <if test="ciudaddestino != null" >
+        ciudaddestino,
+      </if>
+      <if test="puertodestino != null" >
+        puertodestino,
+      </if>
+      <if test="transportedestino != null" >
+        transportedestino,
+      </if>
+      <if test="obsdestino != null" >
+        obsdestino,
+      </if>
+      <if test="obscotizacion != null" >
+        obscotizacion,
+      </if>
+      <if test="codnegocio != null" >
+        codnegocio,
+      </if>
+      <if test="codambito != null" >
+        codambito,
+      </if>
+      <if test="codservicio != null" >
+        codservicio,
+      </if>
+      <if test="codproducto != null" >
+        codproducto,
+      </if>
+      <if test="peso != null" >
+        peso,
+      </if>
+      <if test="pesoapox != null" >
+        pesoapox,
+      </if>
+      <if test="pesototal != null" >
+        pesototal,
+      </if>
+      <if test="preciounitario != null" >
+        preciounitario,
+      </if>
+      <if test="preciototal != null" >
+        preciototal,
+      </if>
+      <if test="descuento != null" >
+        descuento,
+      </if>
+      <if test="montoneto != null" >
+        montoneto,
+      </if>
+      <if test="porcentaje != null" >
+        porcentaje,
+      </if>
+      <if test="moneda != null" >
+        moneda,
+      </if>
+      <if test="montopagar != null" >
+        montopagar,
+      </if>
+      <if test="flete != null" >
+        flete,
+      </if>
+      <if test="desaduanaje != null" >
+        desaduanaje,
+      </if>
+      <if test="seguro != null" >
+        seguro,
+      </if>
+      <if test="comision != null" >
+        comision,
+      </if>
+      <if test="cantidad != null" >
+        cantidad,
+      </if>
+      <if test="cntposiciones != null" >
+        cntposiciones,
+      </if>
+      <if test="cntunidades != null" >
+        cntunidades,
+      </if>
+      <if test="cntpersonas != null" >
+        cntpersonas,
+      </if>
+      <if test="unidadmedida != null" >
+        unidadmedida,
+      </if>
+      <if test="largo != null" >
+        largo,
+      </if>
+      <if test="ancho != null" >
+        ancho,
+      </if>
+      <if test="alto != null" >
+        alto,
+      </if>
+      <if test="volumen != null" >
+        volumen,
+      </if>
+      <if test="numerodias != null" >
+        numerodias,
+      </if>
+      <if test="reserie != null" >
+        reserie,
+      </if>
+      <if test="renumro != null" >
+        renumro,
+      </if>
+      <if test="tipoproducto != null" >
+        tipoproducto,
+      </if>
+      <if test="rutaimagen != null" >
+        rutaimagen,
+      </if>
+      <if test="producto != null" >
+        producto,
+      </if>
+      <if test="obsproducto != null" >
+        obsproducto,
+      </if>
+      <if test="codencuesta != null" >
+        codencuesta,
+      </if>
+      <if test="imo != null" >
+        imo,
+      </if>
+      <if test="umm != null" >
+        umm,
+      </if>
+      <if test="serie != null" >
+        serie,
+      </if>
+      <if test="orden != null" >
+        orden,
+      </if>
+      <if test="estado != null" >
+        estado,
+      </if>
+      <if test="empresa != null" >
+        empresa,
+      </if>
+      <if test="usuario != null" >
+        usuario,
+      </if>
+      <if test="fecha != null" >
+        fecha,
+      </if>
+      <if test="usuariomod != null" >
+        usuariomod,
+      </if>
+      <if test="fechamod != null" >
+        fechamod,
+      </if>
+      <if test="motivoanulacion != null" >
+        motivoanulacion,
+      </if>
+      <if test="codcliente != null" >
+        codcliente,
+      </if>
+      <if test="codareacliente != null" >
+        codareacliente,
+      </if>
+      <if test="tipocotizacion != null" >
+        tipocotizacion,
+      </if>
+      <if test="fechaanula != null" >
+        fechaanula,
+      </if>
+      <if test="usuarioanula != null" >
+        usuarioanula,
+      </if>
+      <if test="usuarioaprueba != null" >
+        usuarioaprueba,
+      </if>
+      <if test="fechaaprueba != null" >
+        fechaaprueba,
+      </if>
+      <if test="codzona != null" >
+        codzona,
+      </if>
+      <if test="subservicios != null" >
+        subservicios,
+      </if>
+      <if test="pplano != null" >
+        pplano,
+      </if>
+      <if test="preal != null" >
+        preal,
+      </if>
+      <if test="codDestino != null" >
+        cod_destino,
+      </if>
+      <if test="tTransporte != null" >
+        t_transporte,
+      </if>
+      <if test="preciokadic != null" >
+        preciokadic,
+      </if>
+      <if test="preciokadicPlano != null" >
+        preciokadic_plano,
+      </if>
+      <if test="kgBase != null" >
+        kg_base,
+      </if>
+      <if test="kgRecojo != null" >
+        kg_recojo,
+      </if>
+      <if test="kgAdicionalRecojo != null" >
+        kg_adicional_recojo,
+      </if>
+      <if test="recojo != null" >
+        recojo,
+      </if>
+      <if test="ubigeoOrigen != null" >
+        ubigeo_origen,
+      </if>
+      <if test="ubigeoDestino != null" >
+        ubigeo_destino,
+      </if>
+      <if test="codunidad != null" >
+        codunidad,
+      </if>
+      <if test="desServicio != null" >
+        des_servicio,
+      </if>
+      <if test="zonal != null" >
+        zonal,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="coserie != null" >
+        #{coserie,jdbcType=CHAR},
+      </if>
+      <if test="conumero != null" >
+        #{conumero,jdbcType=NUMERIC},
+      </if>
+      <if test="rucDni != null" >
+        #{rucDni,jdbcType=VARCHAR},
+      </if>
+      <if test="contacto != null" >
+        #{contacto,jdbcType=VARCHAR},
+      </if>
+      <if test="direccion != null" >
+        #{direccion,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="codpaiscontacto != null" >
+        #{codpaiscontacto,jdbcType=CHAR},
+      </if>
+      <if test="ubigeo != null" >
+        #{ubigeo,jdbcType=CHAR},
+      </if>
+      <if test="codpostal != null" >
+        #{codpostal,jdbcType=CHAR},
+      </if>
+      <if test="telefono != null" >
+        #{telefono,jdbcType=VARCHAR},
+      </if>
+      <if test="anexo != null" >
+        #{anexo,jdbcType=VARCHAR},
+      </if>
+      <if test="celular != null" >
+        #{celular,jdbcType=VARCHAR},
+      </if>
+      <if test="areacontacto != null" >
+        #{areacontacto,jdbcType=VARCHAR},
+      </if>
+      <if test="codtipoentrega != null" >
+        #{codtipoentrega,jdbcType=CHAR},
+      </if>
+      <if test="cargocontacto != null" >
+        #{cargocontacto,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="codpaisorigen != null" >
+        #{codpaisorigen,jdbcType=CHAR},
+      </if>
+      <if test="ciudadorigen != null" >
+        #{ciudadorigen,jdbcType=VARCHAR},
+      </if>
+      <if test="puertoorigen != null" >
+        #{puertoorigen,jdbcType=VARCHAR},
+      </if>
+      <if test="obsorigen != null" >
+        #{obsorigen,jdbcType=VARCHAR},
+      </if>
+      <if test="transporteorigen != null" >
+        #{transporteorigen,jdbcType=VARCHAR},
+      </if>
+      <if test="codpaisdestino != null" >
+        #{codpaisdestino,jdbcType=CHAR},
+      </if>
+      <if test="ciudaddestino != null" >
+        #{ciudaddestino,jdbcType=VARCHAR},
+      </if>
+      <if test="puertodestino != null" >
+        #{puertodestino,jdbcType=VARCHAR},
+      </if>
+      <if test="transportedestino != null" >
+        #{transportedestino,jdbcType=VARCHAR},
+      </if>
+      <if test="obsdestino != null" >
+        #{obsdestino,jdbcType=VARCHAR},
+      </if>
+      <if test="obscotizacion != null" >
+        #{obscotizacion,jdbcType=VARCHAR},
+      </if>
+      <if test="codnegocio != null" >
+        #{codnegocio,jdbcType=CHAR},
+      </if>
+      <if test="codambito != null" >
+        #{codambito,jdbcType=CHAR},
+      </if>
+      <if test="codservicio != null" >
+        #{codservicio,jdbcType=CHAR},
+      </if>
+      <if test="codproducto != null" >
+        #{codproducto,jdbcType=CHAR},
+      </if>
+      <if test="peso != null" >
+        #{peso,jdbcType=NUMERIC},
+      </if>
+      <if test="pesoapox != null" >
+        #{pesoapox,jdbcType=NUMERIC},
+      </if>
+      <if test="pesototal != null" >
+        #{pesototal,jdbcType=NUMERIC},
+      </if>
+      <if test="preciounitario != null" >
+        #{preciounitario,jdbcType=NUMERIC},
+      </if>
+      <if test="preciototal != null" >
+        #{preciototal,jdbcType=NUMERIC},
+      </if>
+      <if test="descuento != null" >
+        #{descuento,jdbcType=NUMERIC},
+      </if>
+      <if test="montoneto != null" >
+        #{montoneto,jdbcType=NUMERIC},
+      </if>
+      <if test="porcentaje != null" >
+        #{porcentaje,jdbcType=INTEGER},
+      </if>
+      <if test="moneda != null" >
+        #{moneda,jdbcType=CHAR},
+      </if>
+      <if test="montopagar != null" >
+        #{montopagar,jdbcType=NUMERIC},
+      </if>
+      <if test="flete != null" >
+        #{flete,jdbcType=NUMERIC},
+      </if>
+      <if test="desaduanaje != null" >
+        #{desaduanaje,jdbcType=NUMERIC},
+      </if>
+      <if test="seguro != null" >
+        #{seguro,jdbcType=NUMERIC},
+      </if>
+      <if test="comision != null" >
+        #{comision,jdbcType=NUMERIC},
+      </if>
+      <if test="cantidad != null" >
+        #{cantidad,jdbcType=NUMERIC},
+      </if>
+      <if test="cntposiciones != null" >
+        #{cntposiciones,jdbcType=NUMERIC},
+      </if>
+      <if test="cntunidades != null" >
+        #{cntunidades,jdbcType=NUMERIC},
+      </if>
+      <if test="cntpersonas != null" >
+        #{cntpersonas,jdbcType=NUMERIC},
+      </if>
+      <if test="unidadmedida != null" >
+        #{unidadmedida,jdbcType=VARCHAR},
+      </if>
+      <if test="largo != null" >
+        #{largo,jdbcType=NUMERIC},
+      </if>
+      <if test="ancho != null" >
+        #{ancho,jdbcType=NUMERIC},
+      </if>
+      <if test="alto != null" >
+        #{alto,jdbcType=NUMERIC},
+      </if>
+      <if test="volumen != null" >
+        #{volumen,jdbcType=NUMERIC},
+      </if>
+      <if test="numerodias != null" >
+        #{numerodias,jdbcType=NUMERIC},
+      </if>
+      <if test="reserie != null" >
+        #{reserie,jdbcType=CHAR},
+      </if>
+      <if test="renumro != null" >
+        #{renumro,jdbcType=NUMERIC},
+      </if>
+      <if test="tipoproducto != null" >
+        #{tipoproducto,jdbcType=CHAR},
+      </if>
+      <if test="rutaimagen != null" >
+        #{rutaimagen,jdbcType=VARCHAR},
+      </if>
+      <if test="producto != null" >
+        #{producto,jdbcType=VARCHAR},
+      </if>
+      <if test="obsproducto != null" >
+        #{obsproducto,jdbcType=VARCHAR},
+      </if>
+      <if test="codencuesta != null" >
+        #{codencuesta,jdbcType=CHAR},
+      </if>
+      <if test="imo != null" >
+        #{imo,jdbcType=VARCHAR},
+      </if>
+      <if test="umm != null" >
+        #{umm,jdbcType=VARCHAR},
+      </if>
+      <if test="serie != null" >
+        #{serie,jdbcType=CHAR},
+      </if>
+      <if test="orden != null" >
+        #{orden,jdbcType=CHAR},
+      </if>
+      <if test="estado != null" >
+        #{estado,jdbcType=SMALLINT},
+      </if>
+      <if test="empresa != null" >
+        #{empresa,jdbcType=VARCHAR},
+      </if>
+      <if test="usuario != null" >
+        #{usuario,jdbcType=CHAR},
+      </if>
+      <if test="fecha != null" >
+        #{fecha,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usuariomod != null" >
+        #{usuariomod,jdbcType=VARCHAR},
+      </if>
+      <if test="fechamod != null" >
+        #{fechamod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="motivoanulacion != null" >
+        #{motivoanulacion,jdbcType=VARCHAR},
+      </if>
+      <if test="codcliente != null" >
+        #{codcliente,jdbcType=CHAR},
+      </if>
+      <if test="codareacliente != null" >
+        #{codareacliente,jdbcType=CHAR},
+      </if>
+      <if test="tipocotizacion != null" >
+        #{tipocotizacion,jdbcType=SMALLINT},
+      </if>
+      <if test="fechaanula != null" >
+        #{fechaanula,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usuarioanula != null" >
+        #{usuarioanula,jdbcType=CHAR},
+      </if>
+      <if test="usuarioaprueba != null" >
+        #{usuarioaprueba,jdbcType=CHAR},
+      </if>
+      <if test="fechaaprueba != null" >
+        #{fechaaprueba,jdbcType=TIMESTAMP},
+      </if>
+      <if test="codzona != null" >
+        #{codzona,jdbcType=CHAR},
+      </if>
+      <if test="subservicios != null" >
+        #{subservicios,jdbcType=VARCHAR},
+      </if>
+      <if test="pplano != null" >
+        #{pplano,jdbcType=VARCHAR},
+      </if>
+      <if test="preal != null" >
+        #{preal,jdbcType=VARCHAR},
+      </if>
+      <if test="codDestino != null" >
+        #{codDestino,jdbcType=VARCHAR},
+      </if>
+      <if test="tTransporte != null" >
+        #{tTransporte,jdbcType=VARCHAR},
+      </if>
+      <if test="preciokadic != null" >
+        #{preciokadic,jdbcType=NUMERIC},
+      </if>
+      <if test="preciokadicPlano != null" >
+        #{preciokadicPlano,jdbcType=NUMERIC},
+      </if>
+      <if test="kgBase != null" >
+        #{kgBase,jdbcType=NUMERIC},
+      </if>
+      <if test="kgRecojo != null" >
+        #{kgRecojo,jdbcType=NUMERIC},
+      </if>
+      <if test="kgAdicionalRecojo != null" >
+        #{kgAdicionalRecojo,jdbcType=NUMERIC},
+      </if>
+      <if test="recojo != null" >
+        #{recojo,jdbcType=VARCHAR},
+      </if>
+      <if test="ubigeoOrigen != null" >
+        #{ubigeoOrigen,jdbcType=VARCHAR},
+      </if>
+      <if test="ubigeoDestino != null" >
+        #{ubigeoDestino,jdbcType=VARCHAR},
+      </if>
+      <if test="codunidad != null" >
+        #{codunidad,jdbcType=VARCHAR},
+      </if>
+      <if test="desServicio != null" >
+        #{desServicio,jdbcType=VARCHAR},
+      </if>
+      <if test="zonal != null" >
+        #{zonal,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.TCotizacionesExample" resultType="java.lang.Integer" >
+    select count(*) from t_cotizaciones
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_cotizaciones
+    <set >
+      <if test="record.coserie != null" >
+        coserie = #{record.coserie,jdbcType=CHAR},
+      </if>
+      <if test="record.conumero != null" >
+        conumero = #{record.conumero,jdbcType=NUMERIC},
+      </if>
+      <if test="record.rucDni != null" >
+        ruc_dni = #{record.rucDni,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contacto != null" >
+        contacto = #{record.contacto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.direccion != null" >
+        direccion = #{record.direccion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codpaiscontacto != null" >
+        codpaiscontacto = #{record.codpaiscontacto,jdbcType=CHAR},
+      </if>
+      <if test="record.ubigeo != null" >
+        ubigeo = #{record.ubigeo,jdbcType=CHAR},
+      </if>
+      <if test="record.codpostal != null" >
+        codpostal = #{record.codpostal,jdbcType=CHAR},
+      </if>
+      <if test="record.telefono != null" >
+        telefono = #{record.telefono,jdbcType=VARCHAR},
+      </if>
+      <if test="record.anexo != null" >
+        anexo = #{record.anexo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.celular != null" >
+        celular = #{record.celular,jdbcType=VARCHAR},
+      </if>
+      <if test="record.areacontacto != null" >
+        areacontacto = #{record.areacontacto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codtipoentrega != null" >
+        codtipoentrega = #{record.codtipoentrega,jdbcType=CHAR},
+      </if>
+      <if test="record.cargocontacto != null" >
+        cargocontacto = #{record.cargocontacto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fax != null" >
+        fax = #{record.fax,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codpaisorigen != null" >
+        codpaisorigen = #{record.codpaisorigen,jdbcType=CHAR},
+      </if>
+      <if test="record.ciudadorigen != null" >
+        ciudadorigen = #{record.ciudadorigen,jdbcType=VARCHAR},
+      </if>
+      <if test="record.puertoorigen != null" >
+        puertoorigen = #{record.puertoorigen,jdbcType=VARCHAR},
+      </if>
+      <if test="record.obsorigen != null" >
+        obsorigen = #{record.obsorigen,jdbcType=VARCHAR},
+      </if>
+      <if test="record.transporteorigen != null" >
+        transporteorigen = #{record.transporteorigen,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codpaisdestino != null" >
+        codpaisdestino = #{record.codpaisdestino,jdbcType=CHAR},
+      </if>
+      <if test="record.ciudaddestino != null" >
+        ciudaddestino = #{record.ciudaddestino,jdbcType=VARCHAR},
+      </if>
+      <if test="record.puertodestino != null" >
+        puertodestino = #{record.puertodestino,jdbcType=VARCHAR},
+      </if>
+      <if test="record.transportedestino != null" >
+        transportedestino = #{record.transportedestino,jdbcType=VARCHAR},
+      </if>
+      <if test="record.obsdestino != null" >
+        obsdestino = #{record.obsdestino,jdbcType=VARCHAR},
+      </if>
+      <if test="record.obscotizacion != null" >
+        obscotizacion = #{record.obscotizacion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codnegocio != null" >
+        codnegocio = #{record.codnegocio,jdbcType=CHAR},
+      </if>
+      <if test="record.codambito != null" >
+        codambito = #{record.codambito,jdbcType=CHAR},
+      </if>
+      <if test="record.codservicio != null" >
+        codservicio = #{record.codservicio,jdbcType=CHAR},
+      </if>
+      <if test="record.codproducto != null" >
+        codproducto = #{record.codproducto,jdbcType=CHAR},
+      </if>
+      <if test="record.peso != null" >
+        peso = #{record.peso,jdbcType=NUMERIC},
+      </if>
+      <if test="record.pesoapox != null" >
+        pesoapox = #{record.pesoapox,jdbcType=NUMERIC},
+      </if>
+      <if test="record.pesototal != null" >
+        pesototal = #{record.pesototal,jdbcType=NUMERIC},
+      </if>
+      <if test="record.preciounitario != null" >
+        preciounitario = #{record.preciounitario,jdbcType=NUMERIC},
+      </if>
+      <if test="record.preciototal != null" >
+        preciototal = #{record.preciototal,jdbcType=NUMERIC},
+      </if>
+      <if test="record.descuento != null" >
+        descuento = #{record.descuento,jdbcType=NUMERIC},
+      </if>
+      <if test="record.montoneto != null" >
+        montoneto = #{record.montoneto,jdbcType=NUMERIC},
+      </if>
+      <if test="record.porcentaje != null" >
+        porcentaje = #{record.porcentaje,jdbcType=INTEGER},
+      </if>
+      <if test="record.moneda != null" >
+        moneda = #{record.moneda,jdbcType=CHAR},
+      </if>
+      <if test="record.montopagar != null" >
+        montopagar = #{record.montopagar,jdbcType=NUMERIC},
+      </if>
+      <if test="record.flete != null" >
+        flete = #{record.flete,jdbcType=NUMERIC},
+      </if>
+      <if test="record.desaduanaje != null" >
+        desaduanaje = #{record.desaduanaje,jdbcType=NUMERIC},
+      </if>
+      <if test="record.seguro != null" >
+        seguro = #{record.seguro,jdbcType=NUMERIC},
+      </if>
+      <if test="record.comision != null" >
+        comision = #{record.comision,jdbcType=NUMERIC},
+      </if>
+      <if test="record.cantidad != null" >
+        cantidad = #{record.cantidad,jdbcType=NUMERIC},
+      </if>
+      <if test="record.cntposiciones != null" >
+        cntposiciones = #{record.cntposiciones,jdbcType=NUMERIC},
+      </if>
+      <if test="record.cntunidades != null" >
+        cntunidades = #{record.cntunidades,jdbcType=NUMERIC},
+      </if>
+      <if test="record.cntpersonas != null" >
+        cntpersonas = #{record.cntpersonas,jdbcType=NUMERIC},
+      </if>
+      <if test="record.unidadmedida != null" >
+        unidadmedida = #{record.unidadmedida,jdbcType=VARCHAR},
+      </if>
+      <if test="record.largo != null" >
+        largo = #{record.largo,jdbcType=NUMERIC},
+      </if>
+      <if test="record.ancho != null" >
+        ancho = #{record.ancho,jdbcType=NUMERIC},
+      </if>
+      <if test="record.alto != null" >
+        alto = #{record.alto,jdbcType=NUMERIC},
+      </if>
+      <if test="record.volumen != null" >
+        volumen = #{record.volumen,jdbcType=NUMERIC},
+      </if>
+      <if test="record.numerodias != null" >
+        numerodias = #{record.numerodias,jdbcType=NUMERIC},
+      </if>
+      <if test="record.reserie != null" >
+        reserie = #{record.reserie,jdbcType=CHAR},
+      </if>
+      <if test="record.renumro != null" >
+        renumro = #{record.renumro,jdbcType=NUMERIC},
+      </if>
+      <if test="record.tipoproducto != null" >
+        tipoproducto = #{record.tipoproducto,jdbcType=CHAR},
+      </if>
+      <if test="record.rutaimagen != null" >
+        rutaimagen = #{record.rutaimagen,jdbcType=VARCHAR},
+      </if>
+      <if test="record.producto != null" >
+        producto = #{record.producto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.obsproducto != null" >
+        obsproducto = #{record.obsproducto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codencuesta != null" >
+        codencuesta = #{record.codencuesta,jdbcType=CHAR},
+      </if>
+      <if test="record.imo != null" >
+        imo = #{record.imo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.umm != null" >
+        umm = #{record.umm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serie != null" >
+        serie = #{record.serie,jdbcType=CHAR},
+      </if>
+      <if test="record.orden != null" >
+        orden = #{record.orden,jdbcType=CHAR},
+      </if>
+      <if test="record.estado != null" >
+        estado = #{record.estado,jdbcType=SMALLINT},
+      </if>
+      <if test="record.empresa != null" >
+        empresa = #{record.empresa,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usuario != null" >
+        usuario = #{record.usuario,jdbcType=CHAR},
+      </if>
+      <if test="record.fecha != null" >
+        fecha = #{record.fecha,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.usuariomod != null" >
+        usuariomod = #{record.usuariomod,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fechamod != null" >
+        fechamod = #{record.fechamod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.motivoanulacion != null" >
+        motivoanulacion = #{record.motivoanulacion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codcliente != null" >
+        codcliente = #{record.codcliente,jdbcType=CHAR},
+      </if>
+      <if test="record.codareacliente != null" >
+        codareacliente = #{record.codareacliente,jdbcType=CHAR},
+      </if>
+      <if test="record.tipocotizacion != null" >
+        tipocotizacion = #{record.tipocotizacion,jdbcType=SMALLINT},
+      </if>
+      <if test="record.fechaanula != null" >
+        fechaanula = #{record.fechaanula,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.usuarioanula != null" >
+        usuarioanula = #{record.usuarioanula,jdbcType=CHAR},
+      </if>
+      <if test="record.usuarioaprueba != null" >
+        usuarioaprueba = #{record.usuarioaprueba,jdbcType=CHAR},
+      </if>
+      <if test="record.fechaaprueba != null" >
+        fechaaprueba = #{record.fechaaprueba,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.codzona != null" >
+        codzona = #{record.codzona,jdbcType=CHAR},
+      </if>
+      <if test="record.subservicios != null" >
+        subservicios = #{record.subservicios,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pplano != null" >
+        pplano = #{record.pplano,jdbcType=VARCHAR},
+      </if>
+      <if test="record.preal != null" >
+        preal = #{record.preal,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codDestino != null" >
+        cod_destino = #{record.codDestino,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tTransporte != null" >
+        t_transporte = #{record.tTransporte,jdbcType=VARCHAR},
+      </if>
+      <if test="record.preciokadic != null" >
+        preciokadic = #{record.preciokadic,jdbcType=NUMERIC},
+      </if>
+      <if test="record.preciokadicPlano != null" >
+        preciokadic_plano = #{record.preciokadicPlano,jdbcType=NUMERIC},
+      </if>
+      <if test="record.kgBase != null" >
+        kg_base = #{record.kgBase,jdbcType=NUMERIC},
+      </if>
+      <if test="record.kgRecojo != null" >
+        kg_recojo = #{record.kgRecojo,jdbcType=NUMERIC},
+      </if>
+      <if test="record.kgAdicionalRecojo != null" >
+        kg_adicional_recojo = #{record.kgAdicionalRecojo,jdbcType=NUMERIC},
+      </if>
+      <if test="record.recojo != null" >
+        recojo = #{record.recojo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ubigeoOrigen != null" >
+        ubigeo_origen = #{record.ubigeoOrigen,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ubigeoDestino != null" >
+        ubigeo_destino = #{record.ubigeoDestino,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codunidad != null" >
+        codunidad = #{record.codunidad,jdbcType=VARCHAR},
+      </if>
+      <if test="record.desServicio != null" >
+        des_servicio = #{record.desServicio,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zonal != null" >
+        zonal = #{record.zonal,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_cotizaciones
+    set coserie = #{record.coserie,jdbcType=CHAR},
+      conumero = #{record.conumero,jdbcType=NUMERIC},
+      ruc_dni = #{record.rucDni,jdbcType=VARCHAR},
+      contacto = #{record.contacto,jdbcType=VARCHAR},
+      direccion = #{record.direccion,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      codpaiscontacto = #{record.codpaiscontacto,jdbcType=CHAR},
+      ubigeo = #{record.ubigeo,jdbcType=CHAR},
+      codpostal = #{record.codpostal,jdbcType=CHAR},
+      telefono = #{record.telefono,jdbcType=VARCHAR},
+      anexo = #{record.anexo,jdbcType=VARCHAR},
+      celular = #{record.celular,jdbcType=VARCHAR},
+      areacontacto = #{record.areacontacto,jdbcType=VARCHAR},
+      codtipoentrega = #{record.codtipoentrega,jdbcType=CHAR},
+      cargocontacto = #{record.cargocontacto,jdbcType=VARCHAR},
+      fax = #{record.fax,jdbcType=VARCHAR},
+      codpaisorigen = #{record.codpaisorigen,jdbcType=CHAR},
+      ciudadorigen = #{record.ciudadorigen,jdbcType=VARCHAR},
+      puertoorigen = #{record.puertoorigen,jdbcType=VARCHAR},
+      obsorigen = #{record.obsorigen,jdbcType=VARCHAR},
+      transporteorigen = #{record.transporteorigen,jdbcType=VARCHAR},
+      codpaisdestino = #{record.codpaisdestino,jdbcType=CHAR},
+      ciudaddestino = #{record.ciudaddestino,jdbcType=VARCHAR},
+      puertodestino = #{record.puertodestino,jdbcType=VARCHAR},
+      transportedestino = #{record.transportedestino,jdbcType=VARCHAR},
+      obsdestino = #{record.obsdestino,jdbcType=VARCHAR},
+      obscotizacion = #{record.obscotizacion,jdbcType=VARCHAR},
+      codnegocio = #{record.codnegocio,jdbcType=CHAR},
+      codambito = #{record.codambito,jdbcType=CHAR},
+      codservicio = #{record.codservicio,jdbcType=CHAR},
+      codproducto = #{record.codproducto,jdbcType=CHAR},
+      peso = #{record.peso,jdbcType=NUMERIC},
+      pesoapox = #{record.pesoapox,jdbcType=NUMERIC},
+      pesototal = #{record.pesototal,jdbcType=NUMERIC},
+      preciounitario = #{record.preciounitario,jdbcType=NUMERIC},
+      preciototal = #{record.preciototal,jdbcType=NUMERIC},
+      descuento = #{record.descuento,jdbcType=NUMERIC},
+      montoneto = #{record.montoneto,jdbcType=NUMERIC},
+      porcentaje = #{record.porcentaje,jdbcType=INTEGER},
+      moneda = #{record.moneda,jdbcType=CHAR},
+      montopagar = #{record.montopagar,jdbcType=NUMERIC},
+      flete = #{record.flete,jdbcType=NUMERIC},
+      desaduanaje = #{record.desaduanaje,jdbcType=NUMERIC},
+      seguro = #{record.seguro,jdbcType=NUMERIC},
+      comision = #{record.comision,jdbcType=NUMERIC},
+      cantidad = #{record.cantidad,jdbcType=NUMERIC},
+      cntposiciones = #{record.cntposiciones,jdbcType=NUMERIC},
+      cntunidades = #{record.cntunidades,jdbcType=NUMERIC},
+      cntpersonas = #{record.cntpersonas,jdbcType=NUMERIC},
+      unidadmedida = #{record.unidadmedida,jdbcType=VARCHAR},
+      largo = #{record.largo,jdbcType=NUMERIC},
+      ancho = #{record.ancho,jdbcType=NUMERIC},
+      alto = #{record.alto,jdbcType=NUMERIC},
+      volumen = #{record.volumen,jdbcType=NUMERIC},
+      numerodias = #{record.numerodias,jdbcType=NUMERIC},
+      reserie = #{record.reserie,jdbcType=CHAR},
+      renumro = #{record.renumro,jdbcType=NUMERIC},
+      tipoproducto = #{record.tipoproducto,jdbcType=CHAR},
+      rutaimagen = #{record.rutaimagen,jdbcType=VARCHAR},
+      producto = #{record.producto,jdbcType=VARCHAR},
+      obsproducto = #{record.obsproducto,jdbcType=VARCHAR},
+      codencuesta = #{record.codencuesta,jdbcType=CHAR},
+      imo = #{record.imo,jdbcType=VARCHAR},
+      umm = #{record.umm,jdbcType=VARCHAR},
+      serie = #{record.serie,jdbcType=CHAR},
+      orden = #{record.orden,jdbcType=CHAR},
+      estado = #{record.estado,jdbcType=SMALLINT},
+      empresa = #{record.empresa,jdbcType=VARCHAR},
+      usuario = #{record.usuario,jdbcType=CHAR},
+      fecha = #{record.fecha,jdbcType=TIMESTAMP},
+      usuariomod = #{record.usuariomod,jdbcType=VARCHAR},
+      fechamod = #{record.fechamod,jdbcType=TIMESTAMP},
+      motivoanulacion = #{record.motivoanulacion,jdbcType=VARCHAR},
+      codcliente = #{record.codcliente,jdbcType=CHAR},
+      codareacliente = #{record.codareacliente,jdbcType=CHAR},
+      tipocotizacion = #{record.tipocotizacion,jdbcType=SMALLINT},
+      fechaanula = #{record.fechaanula,jdbcType=TIMESTAMP},
+      usuarioanula = #{record.usuarioanula,jdbcType=CHAR},
+      usuarioaprueba = #{record.usuarioaprueba,jdbcType=CHAR},
+      fechaaprueba = #{record.fechaaprueba,jdbcType=TIMESTAMP},
+      codzona = #{record.codzona,jdbcType=CHAR},
+      subservicios = #{record.subservicios,jdbcType=VARCHAR},
+      pplano = #{record.pplano,jdbcType=VARCHAR},
+      preal = #{record.preal,jdbcType=VARCHAR},
+      cod_destino = #{record.codDestino,jdbcType=VARCHAR},
+      t_transporte = #{record.tTransporte,jdbcType=VARCHAR},
+      preciokadic = #{record.preciokadic,jdbcType=NUMERIC},
+      preciokadic_plano = #{record.preciokadicPlano,jdbcType=NUMERIC},
+      kg_base = #{record.kgBase,jdbcType=NUMERIC},
+      kg_recojo = #{record.kgRecojo,jdbcType=NUMERIC},
+      kg_adicional_recojo = #{record.kgAdicionalRecojo,jdbcType=NUMERIC},
+      recojo = #{record.recojo,jdbcType=VARCHAR},
+      ubigeo_origen = #{record.ubigeoOrigen,jdbcType=VARCHAR},
+      ubigeo_destino = #{record.ubigeoDestino,jdbcType=VARCHAR},
+      codunidad = #{record.codunidad,jdbcType=VARCHAR},
+      des_servicio = #{record.desServicio,jdbcType=VARCHAR},
+      zonal = #{record.zonal,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.TCotizaciones" >
+    update t_cotizaciones
+    <set >
+      <if test="rucDni != null" >
+        ruc_dni = #{rucDni,jdbcType=VARCHAR},
+      </if>
+      <if test="contacto != null" >
+        contacto = #{contacto,jdbcType=VARCHAR},
+      </if>
+      <if test="direccion != null" >
+        direccion = #{direccion,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="codpaiscontacto != null" >
+        codpaiscontacto = #{codpaiscontacto,jdbcType=CHAR},
+      </if>
+      <if test="ubigeo != null" >
+        ubigeo = #{ubigeo,jdbcType=CHAR},
+      </if>
+      <if test="codpostal != null" >
+        codpostal = #{codpostal,jdbcType=CHAR},
+      </if>
+      <if test="telefono != null" >
+        telefono = #{telefono,jdbcType=VARCHAR},
+      </if>
+      <if test="anexo != null" >
+        anexo = #{anexo,jdbcType=VARCHAR},
+      </if>
+      <if test="celular != null" >
+        celular = #{celular,jdbcType=VARCHAR},
+      </if>
+      <if test="areacontacto != null" >
+        areacontacto = #{areacontacto,jdbcType=VARCHAR},
+      </if>
+      <if test="codtipoentrega != null" >
+        codtipoentrega = #{codtipoentrega,jdbcType=CHAR},
+      </if>
+      <if test="cargocontacto != null" >
+        cargocontacto = #{cargocontacto,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        fax = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="codpaisorigen != null" >
+        codpaisorigen = #{codpaisorigen,jdbcType=CHAR},
+      </if>
+      <if test="ciudadorigen != null" >
+        ciudadorigen = #{ciudadorigen,jdbcType=VARCHAR},
+      </if>
+      <if test="puertoorigen != null" >
+        puertoorigen = #{puertoorigen,jdbcType=VARCHAR},
+      </if>
+      <if test="obsorigen != null" >
+        obsorigen = #{obsorigen,jdbcType=VARCHAR},
+      </if>
+      <if test="transporteorigen != null" >
+        transporteorigen = #{transporteorigen,jdbcType=VARCHAR},
+      </if>
+      <if test="codpaisdestino != null" >
+        codpaisdestino = #{codpaisdestino,jdbcType=CHAR},
+      </if>
+      <if test="ciudaddestino != null" >
+        ciudaddestino = #{ciudaddestino,jdbcType=VARCHAR},
+      </if>
+      <if test="puertodestino != null" >
+        puertodestino = #{puertodestino,jdbcType=VARCHAR},
+      </if>
+      <if test="transportedestino != null" >
+        transportedestino = #{transportedestino,jdbcType=VARCHAR},
+      </if>
+      <if test="obsdestino != null" >
+        obsdestino = #{obsdestino,jdbcType=VARCHAR},
+      </if>
+      <if test="obscotizacion != null" >
+        obscotizacion = #{obscotizacion,jdbcType=VARCHAR},
+      </if>
+      <if test="codnegocio != null" >
+        codnegocio = #{codnegocio,jdbcType=CHAR},
+      </if>
+      <if test="codambito != null" >
+        codambito = #{codambito,jdbcType=CHAR},
+      </if>
+      <if test="codservicio != null" >
+        codservicio = #{codservicio,jdbcType=CHAR},
+      </if>
+      <if test="codproducto != null" >
+        codproducto = #{codproducto,jdbcType=CHAR},
+      </if>
+      <if test="peso != null" >
+        peso = #{peso,jdbcType=NUMERIC},
+      </if>
+      <if test="pesoapox != null" >
+        pesoapox = #{pesoapox,jdbcType=NUMERIC},
+      </if>
+      <if test="pesototal != null" >
+        pesototal = #{pesototal,jdbcType=NUMERIC},
+      </if>
+      <if test="preciounitario != null" >
+        preciounitario = #{preciounitario,jdbcType=NUMERIC},
+      </if>
+      <if test="preciototal != null" >
+        preciototal = #{preciototal,jdbcType=NUMERIC},
+      </if>
+      <if test="descuento != null" >
+        descuento = #{descuento,jdbcType=NUMERIC},
+      </if>
+      <if test="montoneto != null" >
+        montoneto = #{montoneto,jdbcType=NUMERIC},
+      </if>
+      <if test="porcentaje != null" >
+        porcentaje = #{porcentaje,jdbcType=INTEGER},
+      </if>
+      <if test="moneda != null" >
+        moneda = #{moneda,jdbcType=CHAR},
+      </if>
+      <if test="montopagar != null" >
+        montopagar = #{montopagar,jdbcType=NUMERIC},
+      </if>
+      <if test="flete != null" >
+        flete = #{flete,jdbcType=NUMERIC},
+      </if>
+      <if test="desaduanaje != null" >
+        desaduanaje = #{desaduanaje,jdbcType=NUMERIC},
+      </if>
+      <if test="seguro != null" >
+        seguro = #{seguro,jdbcType=NUMERIC},
+      </if>
+      <if test="comision != null" >
+        comision = #{comision,jdbcType=NUMERIC},
+      </if>
+      <if test="cantidad != null" >
+        cantidad = #{cantidad,jdbcType=NUMERIC},
+      </if>
+      <if test="cntposiciones != null" >
+        cntposiciones = #{cntposiciones,jdbcType=NUMERIC},
+      </if>
+      <if test="cntunidades != null" >
+        cntunidades = #{cntunidades,jdbcType=NUMERIC},
+      </if>
+      <if test="cntpersonas != null" >
+        cntpersonas = #{cntpersonas,jdbcType=NUMERIC},
+      </if>
+      <if test="unidadmedida != null" >
+        unidadmedida = #{unidadmedida,jdbcType=VARCHAR},
+      </if>
+      <if test="largo != null" >
+        largo = #{largo,jdbcType=NUMERIC},
+      </if>
+      <if test="ancho != null" >
+        ancho = #{ancho,jdbcType=NUMERIC},
+      </if>
+      <if test="alto != null" >
+        alto = #{alto,jdbcType=NUMERIC},
+      </if>
+      <if test="volumen != null" >
+        volumen = #{volumen,jdbcType=NUMERIC},
+      </if>
+      <if test="numerodias != null" >
+        numerodias = #{numerodias,jdbcType=NUMERIC},
+      </if>
+      <if test="reserie != null" >
+        reserie = #{reserie,jdbcType=CHAR},
+      </if>
+      <if test="renumro != null" >
+        renumro = #{renumro,jdbcType=NUMERIC},
+      </if>
+      <if test="tipoproducto != null" >
+        tipoproducto = #{tipoproducto,jdbcType=CHAR},
+      </if>
+      <if test="rutaimagen != null" >
+        rutaimagen = #{rutaimagen,jdbcType=VARCHAR},
+      </if>
+      <if test="producto != null" >
+        producto = #{producto,jdbcType=VARCHAR},
+      </if>
+      <if test="obsproducto != null" >
+        obsproducto = #{obsproducto,jdbcType=VARCHAR},
+      </if>
+      <if test="codencuesta != null" >
+        codencuesta = #{codencuesta,jdbcType=CHAR},
+      </if>
+      <if test="imo != null" >
+        imo = #{imo,jdbcType=VARCHAR},
+      </if>
+      <if test="umm != null" >
+        umm = #{umm,jdbcType=VARCHAR},
+      </if>
+      <if test="serie != null" >
+        serie = #{serie,jdbcType=CHAR},
+      </if>
+      <if test="orden != null" >
+        orden = #{orden,jdbcType=CHAR},
+      </if>
+      <if test="estado != null" >
+        estado = #{estado,jdbcType=SMALLINT},
+      </if>
+      <if test="empresa != null" >
+        empresa = #{empresa,jdbcType=VARCHAR},
+      </if>
+      <if test="usuario != null" >
+        usuario = #{usuario,jdbcType=CHAR},
+      </if>
+      <if test="fecha != null" >
+        fecha = #{fecha,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usuariomod != null" >
+        usuariomod = #{usuariomod,jdbcType=VARCHAR},
+      </if>
+      <if test="fechamod != null" >
+        fechamod = #{fechamod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="motivoanulacion != null" >
+        motivoanulacion = #{motivoanulacion,jdbcType=VARCHAR},
+      </if>
+      <if test="codcliente != null" >
+        codcliente = #{codcliente,jdbcType=CHAR},
+      </if>
+      <if test="codareacliente != null" >
+        codareacliente = #{codareacliente,jdbcType=CHAR},
+      </if>
+      <if test="tipocotizacion != null" >
+        tipocotizacion = #{tipocotizacion,jdbcType=SMALLINT},
+      </if>
+      <if test="fechaanula != null" >
+        fechaanula = #{fechaanula,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usuarioanula != null" >
+        usuarioanula = #{usuarioanula,jdbcType=CHAR},
+      </if>
+      <if test="usuarioaprueba != null" >
+        usuarioaprueba = #{usuarioaprueba,jdbcType=CHAR},
+      </if>
+      <if test="fechaaprueba != null" >
+        fechaaprueba = #{fechaaprueba,jdbcType=TIMESTAMP},
+      </if>
+      <if test="codzona != null" >
+        codzona = #{codzona,jdbcType=CHAR},
+      </if>
+      <if test="subservicios != null" >
+        subservicios = #{subservicios,jdbcType=VARCHAR},
+      </if>
+      <if test="pplano != null" >
+        pplano = #{pplano,jdbcType=VARCHAR},
+      </if>
+      <if test="preal != null" >
+        preal = #{preal,jdbcType=VARCHAR},
+      </if>
+      <if test="codDestino != null" >
+        cod_destino = #{codDestino,jdbcType=VARCHAR},
+      </if>
+      <if test="tTransporte != null" >
+        t_transporte = #{tTransporte,jdbcType=VARCHAR},
+      </if>
+      <if test="preciokadic != null" >
+        preciokadic = #{preciokadic,jdbcType=NUMERIC},
+      </if>
+      <if test="preciokadicPlano != null" >
+        preciokadic_plano = #{preciokadicPlano,jdbcType=NUMERIC},
+      </if>
+      <if test="kgBase != null" >
+        kg_base = #{kgBase,jdbcType=NUMERIC},
+      </if>
+      <if test="kgRecojo != null" >
+        kg_recojo = #{kgRecojo,jdbcType=NUMERIC},
+      </if>
+      <if test="kgAdicionalRecojo != null" >
+        kg_adicional_recojo = #{kgAdicionalRecojo,jdbcType=NUMERIC},
+      </if>
+      <if test="recojo != null" >
+        recojo = #{recojo,jdbcType=VARCHAR},
+      </if>
+      <if test="ubigeoOrigen != null" >
+        ubigeo_origen = #{ubigeoOrigen,jdbcType=VARCHAR},
+      </if>
+      <if test="ubigeoDestino != null" >
+        ubigeo_destino = #{ubigeoDestino,jdbcType=VARCHAR},
+      </if>
+      <if test="codunidad != null" >
+        codunidad = #{codunidad,jdbcType=VARCHAR},
+      </if>
+      <if test="desServicio != null" >
+        des_servicio = #{desServicio,jdbcType=VARCHAR},
+      </if>
+      <if test="zonal != null" >
+        zonal = #{zonal,jdbcType=CHAR},
+      </if>
+    </set>
+    where coserie = #{coserie,jdbcType=CHAR}
+      and conumero = #{conumero,jdbcType=NUMERIC}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.origen.TCotizaciones" >
+    update t_cotizaciones
+    set ruc_dni = #{rucDni,jdbcType=VARCHAR},
+      contacto = #{contacto,jdbcType=VARCHAR},
+      direccion = #{direccion,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      codpaiscontacto = #{codpaiscontacto,jdbcType=CHAR},
+      ubigeo = #{ubigeo,jdbcType=CHAR},
+      codpostal = #{codpostal,jdbcType=CHAR},
+      telefono = #{telefono,jdbcType=VARCHAR},
+      anexo = #{anexo,jdbcType=VARCHAR},
+      celular = #{celular,jdbcType=VARCHAR},
+      areacontacto = #{areacontacto,jdbcType=VARCHAR},
+      codtipoentrega = #{codtipoentrega,jdbcType=CHAR},
+      cargocontacto = #{cargocontacto,jdbcType=VARCHAR},
+      fax = #{fax,jdbcType=VARCHAR},
+      codpaisorigen = #{codpaisorigen,jdbcType=CHAR},
+      ciudadorigen = #{ciudadorigen,jdbcType=VARCHAR},
+      puertoorigen = #{puertoorigen,jdbcType=VARCHAR},
+      obsorigen = #{obsorigen,jdbcType=VARCHAR},
+      transporteorigen = #{transporteorigen,jdbcType=VARCHAR},
+      codpaisdestino = #{codpaisdestino,jdbcType=CHAR},
+      ciudaddestino = #{ciudaddestino,jdbcType=VARCHAR},
+      puertodestino = #{puertodestino,jdbcType=VARCHAR},
+      transportedestino = #{transportedestino,jdbcType=VARCHAR},
+      obsdestino = #{obsdestino,jdbcType=VARCHAR},
+      obscotizacion = #{obscotizacion,jdbcType=VARCHAR},
+      codnegocio = #{codnegocio,jdbcType=CHAR},
+      codambito = #{codambito,jdbcType=CHAR},
+      codservicio = #{codservicio,jdbcType=CHAR},
+      codproducto = #{codproducto,jdbcType=CHAR},
+      peso = #{peso,jdbcType=NUMERIC},
+      pesoapox = #{pesoapox,jdbcType=NUMERIC},
+      pesototal = #{pesototal,jdbcType=NUMERIC},
+      preciounitario = #{preciounitario,jdbcType=NUMERIC},
+      preciototal = #{preciototal,jdbcType=NUMERIC},
+      descuento = #{descuento,jdbcType=NUMERIC},
+      montoneto = #{montoneto,jdbcType=NUMERIC},
+      porcentaje = #{porcentaje,jdbcType=INTEGER},
+      moneda = #{moneda,jdbcType=CHAR},
+      montopagar = #{montopagar,jdbcType=NUMERIC},
+      flete = #{flete,jdbcType=NUMERIC},
+      desaduanaje = #{desaduanaje,jdbcType=NUMERIC},
+      seguro = #{seguro,jdbcType=NUMERIC},
+      comision = #{comision,jdbcType=NUMERIC},
+      cantidad = #{cantidad,jdbcType=NUMERIC},
+      cntposiciones = #{cntposiciones,jdbcType=NUMERIC},
+      cntunidades = #{cntunidades,jdbcType=NUMERIC},
+      cntpersonas = #{cntpersonas,jdbcType=NUMERIC},
+      unidadmedida = #{unidadmedida,jdbcType=VARCHAR},
+      largo = #{largo,jdbcType=NUMERIC},
+      ancho = #{ancho,jdbcType=NUMERIC},
+      alto = #{alto,jdbcType=NUMERIC},
+      volumen = #{volumen,jdbcType=NUMERIC},
+      numerodias = #{numerodias,jdbcType=NUMERIC},
+      reserie = #{reserie,jdbcType=CHAR},
+      renumro = #{renumro,jdbcType=NUMERIC},
+      tipoproducto = #{tipoproducto,jdbcType=CHAR},
+      rutaimagen = #{rutaimagen,jdbcType=VARCHAR},
+      producto = #{producto,jdbcType=VARCHAR},
+      obsproducto = #{obsproducto,jdbcType=VARCHAR},
+      codencuesta = #{codencuesta,jdbcType=CHAR},
+      imo = #{imo,jdbcType=VARCHAR},
+      umm = #{umm,jdbcType=VARCHAR},
+      serie = #{serie,jdbcType=CHAR},
+      orden = #{orden,jdbcType=CHAR},
+      estado = #{estado,jdbcType=SMALLINT},
+      empresa = #{empresa,jdbcType=VARCHAR},
+      usuario = #{usuario,jdbcType=CHAR},
+      fecha = #{fecha,jdbcType=TIMESTAMP},
+      usuariomod = #{usuariomod,jdbcType=VARCHAR},
+      fechamod = #{fechamod,jdbcType=TIMESTAMP},
+      motivoanulacion = #{motivoanulacion,jdbcType=VARCHAR},
+      codcliente = #{codcliente,jdbcType=CHAR},
+      codareacliente = #{codareacliente,jdbcType=CHAR},
+      tipocotizacion = #{tipocotizacion,jdbcType=SMALLINT},
+      fechaanula = #{fechaanula,jdbcType=TIMESTAMP},
+      usuarioanula = #{usuarioanula,jdbcType=CHAR},
+      usuarioaprueba = #{usuarioaprueba,jdbcType=CHAR},
+      fechaaprueba = #{fechaaprueba,jdbcType=TIMESTAMP},
+      codzona = #{codzona,jdbcType=CHAR},
+      subservicios = #{subservicios,jdbcType=VARCHAR},
+      pplano = #{pplano,jdbcType=VARCHAR},
+      preal = #{preal,jdbcType=VARCHAR},
+      cod_destino = #{codDestino,jdbcType=VARCHAR},
+      t_transporte = #{tTransporte,jdbcType=VARCHAR},
+      preciokadic = #{preciokadic,jdbcType=NUMERIC},
+      preciokadic_plano = #{preciokadicPlano,jdbcType=NUMERIC},
+      kg_base = #{kgBase,jdbcType=NUMERIC},
+      kg_recojo = #{kgRecojo,jdbcType=NUMERIC},
+      kg_adicional_recojo = #{kgAdicionalRecojo,jdbcType=NUMERIC},
+      recojo = #{recojo,jdbcType=VARCHAR},
+      ubigeo_origen = #{ubigeoOrigen,jdbcType=VARCHAR},
+      ubigeo_destino = #{ubigeoDestino,jdbcType=VARCHAR},
+      codunidad = #{codunidad,jdbcType=VARCHAR},
+      des_servicio = #{desServicio,jdbcType=VARCHAR},
+      zonal = #{zonal,jdbcType=CHAR}
+    where coserie = #{coserie,jdbcType=CHAR}
+      and conumero = #{conumero,jdbcType=NUMERIC}
+  </update>
+</mapper>
