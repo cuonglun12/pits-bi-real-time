@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//www.mybatis.org//DTD Config 3.0//EN"
+    "http://www.mybatis.org/dtd/mybatis-3-config.dtd">
+<!--
+    Copyright 2010 The myBatis Team
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<configuration>
+	<typeAliases>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.Areacliente" alias="Areacliente"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.AreaclienteExample" alias="AreaclienteExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.Cliente" alias="Cliente"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.ClienteExample" alias="ClienteExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.Despacho" alias="Despacho"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.DespachoExample" alias="DespachoExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.Detdespacho" alias="Detdespacho"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.DetdespachoExample" alias="DetdespachoExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.Detordenes" alias="Detordenes"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.DetordenesExample" alias="DetordenesExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.Ordenes" alias="Ordenes"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.OrdenesExample" alias="OrdenesExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.Personal" alias="Personal"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.PersonalExample" alias="PersonalExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.Sedesprov" alias="Sedesprov"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.SedesprovExample" alias="SedesprovExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.TProductos" alias="TProductos"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.TProductosExample" alias="TProductosExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.TServicios" alias="TServicios"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.TServiciosExample" alias="TServiciosExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.TTipopersonal" alias="TTipopersonal"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.TTipopersonalExample" alias="TTipopersonalExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.Ubigeos" alias="Ubigeos"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.UbigeosExample" alias="UbigeosExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.Zonas" alias="Zonas"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.ZonasExample" alias="ZonasExample"/>
+			
+	</typeAliases>
+    <mappers>
+        <mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/origen/AreaclienteMapper.xml" />
+        <mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/origen/ClienteMapper.xml" />
+        <mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/origen/DespachoMapper.xml" />
+        <mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/origen/DetdespachoMapper.xml" />
+        <mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/origen/DetordenesMapper.xml" />
+        <mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/origen/OrdenesMapper.xml" />
+        <mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/origen/PersonalMapper.xml" />
+        <mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/origen/SedesprovMapper.xml" />
+        <mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/origen/TProductosMapper.xml" />
+        <mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/origen/TServiciosMapper.xml" />
+        <mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/origen/TTipopersonalMapper.xml" />
+        <mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/origen/UbigeosMapper.xml" />
+        <mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/origen/ZonasMapper.xml" />
+    </mappers>
+</configuration>

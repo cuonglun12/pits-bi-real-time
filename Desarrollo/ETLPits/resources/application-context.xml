@@ -35,22 +35,44 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 	<import resource="constantes-config.xml"/>
 
 	<!--      -->
+	<bean id="dataSourceOrigenVentas" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"><property name="driverClassName" value="${database.origen.ventas.driverClassName}" /><property name="url" value="${database.origen.ventas.url}" /><property name="username" value="${database.origen.ventas.username}" /><property name="password" value="${database.origen.ventas.password}" /></bean>
+	<bean id="dataSourceOrigenNexus" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"><property name="driverClassName" value="${database.origen.nexus.driverClassName}" /><property name="url" value="${database.origen.nexus.url}" /><property name="username" value="${database.origen.nexus.username}" /><property name="password" value="${database.origen.nexus.password}" /></bean>
 	<bean id="dataSourceControl" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"><property name="driverClassName" value="${database.control.driverClassName}" /><property name="url" value="${database.control.url}" /><property name="username" value="${database.control.username}" /><property name="password" value="${database.control.password}" /></bean>
 	<bean id="dataSourceGeneric" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"><property name="driverClassName" value="${database.generic.driverClassName}" /><property name="url" value="${database.generic.url}" /><property name="username" value="${database.generic.username}" /><property name="password" value="${database.generic.password}" /></bean>
 	<bean id="dataSourceDimensional" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"><property name="driverClassName" value="${database.dimensional.driverClassName}" /><property name="url" value="${database.dimensional.url}" /><property name="username" value="${database.dimensional.username}" /><property name="password" value="${database.dimensional.password}" /></bean>
 
 	<!--      -->
+	<bean id="transactionManagerOrigenVentas" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"><property name="dataSource" ref="dataSourceOrigenVentas" /></bean>
+	<bean id="transactionManagerOrigenNexus" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"><property name="dataSource" ref="dataSourceOrigenNexus" /></bean>
 	<bean id="transactionManagerControl" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"><property name="dataSource" ref="dataSourceControl" /></bean>
 	<bean id="transactionManagerGeneric" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"><property name="dataSource" ref="dataSourceGeneric" /></bean>
 	<bean id="transactionManagerDimensional" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"><property name="dataSource" ref="dataSourceDimensional" /></bean>
 
 
 	<!--      -->
+	<bean id="sqlSessionFactoryOrigenVentas" class="org.mybatis.spring.SqlSessionFactoryBean"><property name="dataSource" ref="dataSourceOrigenVentas" /><property name="configLocation" value="mybatis-config-origen-ventas.xml" /></bean>
+	<bean id="sqlSessionFactoryOrigenNexus" class="org.mybatis.spring.SqlSessionFactoryBean"><property name="dataSource" ref="dataSourceOrigenNexus" /><property name="configLocation" value="mybatis-config-origen-nexus.xml" /></bean>
 	<bean id="sqlSessionFactoryControl" class="org.mybatis.spring.SqlSessionFactoryBean"><property name="dataSource" ref="dataSourceControl" /><property name="configLocation" value="mybatis-config-control.xml" /></bean>
 	<bean id="sqlSessionFactoryGeneric" class="org.mybatis.spring.SqlSessionFactoryBean"><property name="dataSource" ref="dataSourceGeneric" /><property name="configLocation" value="mybatis-config-generic.xml" /></bean>
 	<bean id="sqlSessionFactoryDimensional" class="org.mybatis.spring.SqlSessionFactoryBean"><property name="dataSource" ref="dataSourceDimensional" /><property name="configLocation" value="mybatis-config-dimensional.xml" /></bean>
 
 	<!--      -->
+		
+	<bean id="tCotizacionesMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryOrigenVentas" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.origen.TCotizacionesMapper" /></bean>
+		
+	<bean id="areaclienteMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryOrigenNexus" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.origen.AreaclienteMapper" /></bean>
+	<bean id="clienteMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryOrigenNexus" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.origen.ClienteMapper" /></bean>
+	<bean id="despachoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryOrigenNexus" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.origen.DespachoMapper" /></bean>
+	<bean id="detdespachoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryOrigenNexus" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.origen.DetdespachoMapper" /></bean>
+	<bean id="detordenesMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryOrigenNexus" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.origen.DetordenesMapper" /></bean>
+	<bean id="ordenesMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryOrigenNexus" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.origen.OrdenesMapper" /></bean>
+	<bean id="personalMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryOrigenNexus" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.origen.PersonalMapper" /></bean>
+	<bean id="sedesprovMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryOrigenNexus" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.origen.SedesprovMapper" /></bean>
+	<bean id="tProductosMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryOrigenNexus" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.origen.TProductosMapper" /></bean>
+	<bean id="tServiciosMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryOrigenNexus" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.origen.TServiciosMapper" /></bean>
+	<bean id="tTipopersonalMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryOrigenNexus" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.origen.TTipopersonalMapper" /></bean>
+	<bean id="ubigeosMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryOrigenNexus" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.origen.UbigeosMapper" /></bean>
+	<bean id="zonasMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryOrigenNexus" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.origen.ZonasMapper" /></bean>
 	
 	<bean id="tProcesoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryControl" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.control.TProcesoMapper" /></bean>		
 	<bean id="tProcesoDetalleMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryControl" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.control.TProcesoDetalleMapper" /></bean>
@@ -92,6 +114,23 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 	<bean id="tZonaMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"><property name="sqlSessionFactory" ref="sqlSessionFactoryGeneric" /><property name="mapperInterface" value="pe.com.j2techcon.bi.etl.dao.generic.TZonaMapper" /></bean>		
 
 	<!--      -->
+	
+	<bean id="tCotizacionesManager" class="pe.com.j2techcon.bi.etl.logic.origen.TCotizacionesManager"><property name="tCotizacionesMapper" ref="tCotizacionesMapper" /></bean>
+	
+	<bean id="areaclienteManager" class="pe.com.j2techcon.bi.etl.logic.origen.AreaclienteManager"><property name="areaclienteMapper" ref="areaclienteMapper" /></bean>
+	<bean id="clienteManager" class="pe.com.j2techcon.bi.etl.logic.origen.ClienteManager"><property name="clienteMapper" ref="clienteMapper" /></bean>
+	<bean id="despachoManager" class="pe.com.j2techcon.bi.etl.logic.origen.DespachoManager"><property name="despachoMapper" ref="despachoMapper" /></bean>
+	<bean id="detdespachoManager" class="pe.com.j2techcon.bi.etl.logic.origen.DetdespachoManager"><property name="detdespachoMapper" ref="detdespachoMapper" /></bean>
+	<bean id="detordenesManager" class="pe.com.j2techcon.bi.etl.logic.origen.DetordenesManager"><property name="detordenesMapper" ref="detordenesMapper" /></bean>
+	<bean id="ordenesManager" class="pe.com.j2techcon.bi.etl.logic.origen.OrdenesManager"><property name="ordenesMapper" ref="ordenesMapper" /></bean>
+	<bean id="personalManager" class="pe.com.j2techcon.bi.etl.logic.origen.PersonalManager"><property name="personalMapper" ref="personalMapper" /></bean>
+	<bean id="sedesprovManager" class="pe.com.j2techcon.bi.etl.logic.origen.SedesprovManager"><property name="sedesprovMapper" ref="sedesprovMapper" /></bean>
+	<bean id="tProductosManager" class="pe.com.j2techcon.bi.etl.logic.origen.TProductosManager"><property name="tProductosMapper" ref="tProductosMapper" /></bean>
+	<bean id="tServiciosManager" class="pe.com.j2techcon.bi.etl.logic.origen.TServiciosManager"><property name="tServiciosMapper" ref="tServiciosMapper" /></bean>
+	<bean id="tTipopersonalManager" class="pe.com.j2techcon.bi.etl.logic.origen.TTipopersonalManager"><property name="tTipopersonalMapper" ref="tTipopersonalMapper" /></bean>
+	<bean id="ubigeosManager" class="pe.com.j2techcon.bi.etl.logic.origen.UbigeosManager"><property name="ubigeosMapper" ref="ubigeosMapper" /></bean>
+	<bean id="zonasManager" class="pe.com.j2techcon.bi.etl.logic.origen.ZonasManager"><property name="zonasMapper" ref="zonasMapper" /></bean>
+	
 	<bean id="tProcesoManager" class="pe.com.j2techcon.bi.etl.logic.control.TProcesoManager"><property name="tProcesoMapper" ref="tProcesoMapper" /></bean>
 	<bean id="tProcesoDetalleManager" class="pe.com.j2techcon.bi.etl.logic.control.TProcesoDetalleManager"><property name="tProcesoDetalleMapper" ref="tProcesoDetalleMapper" /></bean>
 									
@@ -134,6 +173,23 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 	<!--      -->
 
 	<aop:config>
+		
+		<aop:advisor pointcut="execution(* *..TCotizacionesManager.*(..))" advice-ref="simpleTxAdviceOrigenVentas" />
+		
+		<aop:advisor pointcut="execution(* *..AreaclienteManager.*(..))" advice-ref="simpleTxAdviceOrigenNexus" />
+		<aop:advisor pointcut="execution(* *..ClienteManager.*(..))" advice-ref="simpleTxAdviceOrigenNexus" />
+		<aop:advisor pointcut="execution(* *..DespachoManager.*(..))" advice-ref="simpleTxAdviceOrigenNexus" />
+		<aop:advisor pointcut="execution(* *..DetdespachoManager.*(..))" advice-ref="simpleTxAdviceOrigenNexus" />
+		<aop:advisor pointcut="execution(* *..DetordenesManager.*(..))" advice-ref="simpleTxAdviceOrigenNexus" />
+		<aop:advisor pointcut="execution(* *..OrdenesManager.*(..))" advice-ref="simpleTxAdviceOrigenNexus" />
+		<aop:advisor pointcut="execution(* *..PersonalManager.*(..))" advice-ref="simpleTxAdviceOrigenNexus" />
+		<aop:advisor pointcut="execution(* *..SedesprovManager.*(..))" advice-ref="simpleTxAdviceOrigenNexus" />
+		<aop:advisor pointcut="execution(* *..TProductosManager.*(..))" advice-ref="simpleTxAdviceOrigenNexus" />
+		<aop:advisor pointcut="execution(* *..TServiciosManager.*(..))" advice-ref="simpleTxAdviceOrigenNexus" />
+		<aop:advisor pointcut="execution(* *..TTipopersonalManager.*(..))" advice-ref="simpleTxAdviceOrigenNexus" />
+		<aop:advisor pointcut="execution(* *..UbigeosManager.*(..))" advice-ref="simpleTxAdviceOrigenNexus" />
+		<aop:advisor pointcut="execution(* *..ZonasManager.*(..))" advice-ref="simpleTxAdviceOrigenNexus" />
+		
 		<aop:advisor pointcut="execution(* *..TProcesoManager.*(..))" advice-ref="simpleTxAdviceControl" />
 		<aop:advisor pointcut="execution(* *..TProcesoDetalleManager.*(..))" advice-ref="simpleTxAdviceControl" />
 		
@@ -176,6 +232,26 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 
 	<!--      -->
 
+	<tx:advice id="simpleTxAdviceOrigenVentas" transaction-manager="transactionManagerOrigenVentas">
+		<tx:attributes>
+			<tx:method name="insert*" />
+			<tx:method name="update*" />
+			<tx:method name="create*" />
+			<tx:method name="delete*" />
+			<tx:method name="*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<tx:advice id="simpleTxAdviceOrigenNexus" transaction-manager="transactionManagerOrigenNexus">
+		<tx:attributes>
+			<tx:method name="insert*" />
+			<tx:method name="update*" />
+			<tx:method name="create*" />
+			<tx:method name="delete*" />
+			<tx:method name="*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	
 	<tx:advice id="simpleTxAdviceControl" transaction-manager="transactionManagerControl">
 		<tx:attributes>
 			<tx:method name="insert*" />
