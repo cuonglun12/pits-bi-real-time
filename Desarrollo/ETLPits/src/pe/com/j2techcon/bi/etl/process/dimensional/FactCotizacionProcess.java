@@ -540,6 +540,9 @@ public class FactCotizacionProcess {
 		
 		if(recordTotal>0){
 			
+			int indEstOrdCan = 0;
+			int indEstOrdFac = 0;
+			
 			tOrdenExample.clear();
 			tOrdenExample.createCriteria().andCotiIdEqualTo(factCotizacion.getCotizacionKey());
 			factCotizacion.setCotizacionCntOrdTotal(tOrdenManager.countByExample(tOrdenExample));
@@ -580,8 +583,9 @@ public class FactCotizacionProcess {
 			tParametroExample.clear();
 			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoOrden());
 			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoOrdenAnulado());
-			tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
-			tOrdenExample.createCriteria().andOrdCodEstEqualTo(tParametro.getParamId());
+			//tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
+			indEstOrdCan = tParametroManager.selectByExample(tParametroExample).get(0).getParamId();
+			tOrdenExample.createCriteria().andOrdCodEstEqualTo(indEstOrdCan);
 			factCotizacion.setCotizacionCntOrdCan(tOrdenManager.countByExample(tOrdenExample));
 			
 			tOrdenExample.clear();
@@ -589,22 +593,31 @@ public class FactCotizacionProcess {
 			tParametroExample.clear();
 			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoFacturado());
 			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoFacturadoSi());
-			tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
-			tOrdenExample.createCriteria().andOrdCodEstEqualTo(tParametro.getParamId());
+			//tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
+			indEstOrdFac = tParametroManager.selectByExample(tParametroExample).get(0).getParamId(); 
+			tOrdenExample.createCriteria().andOrdCodEstEqualTo(indEstOrdFac);
 			factCotizacion.setCotizacionCntOrdFac(tOrdenManager.countByExample(tOrdenExample));
 			
-			factCotizacion.setCotizacionMonImporte(new BigDecimal(0));
-			factCotizacion.setCotizacionMonIgv(new BigDecimal(0));
-			factCotizacion.setCotizacionMonTotal(new BigDecimal(0));
+			tOrdenExample.clear();
+			tOrdenExample.createCriteria().andCotiIdEqualTo(factCotizacion.getCotizacionKey());
+			
+			factCotizacion.setCotizacionMonOrdTot(new BigDecimal(0));
+			factCotizacion.setCotizacionMonOrdCan(new BigDecimal(0));
+			factCotizacion.setCotizacionMonOrdFac(new BigDecimal(0));
 			
 			List<TOrden> lstOrdenes = tOrdenManager.selectByExample(tOrdenExample);
 			for (Iterator<TOrden> iterator = lstOrdenes.iterator(); iterator.hasNext();) {
+				
 				tOrden = iterator.next();
 				
-				factCotizacion.setCotizacionMonImporte(factCotizacion.getCotizacionMonImporte().add(tOrden.getOrdImporte()));
-				factCotizacion.setCotizacionMonIgv(factCotizacion.getCotizacionMonIgv().add(tOrden.getOrdIgv()));
-				factCotizacion.setCotizacionMonTotal(factCotizacion.getCotizacionMonTotal().add(tOrden.getOrdTotal()));
+				factCotizacion.setCotizacionMonOrdTot(factCotizacion.getCotizacionMonOrdTot().add(tOrden.getOrdTotal()));
 				
+				if(indEstOrdFac == tOrden.getOrdCodEst()){
+					factCotizacion.setCotizacionMonOrdFac(factCotizacion.getCotizacionMonOrdFac().add(tOrden.getOrdTotal()));
+				}
+				if(indEstOrdCan == tOrden.getOrdCodEst()){
+					factCotizacion.setCotizacionMonOrdCan(factCotizacion.getCotizacionMonOrdCan().add(tOrden.getOrdTotal()));
+				}
 			}
 			lstOrdenes.clear();
 		}

@@ -37,11 +37,11 @@ public class FactCotizacion {
 
     private Integer cotizacionCntOrdCan;
 
-    private BigDecimal cotizacionMonImporte;
+    private BigDecimal cotizacionMonOrdTot;
 
-    private BigDecimal cotizacionMonIgv;
+    private BigDecimal cotizacionMonOrdCan;
 
-    private BigDecimal cotizacionMonTotal;
+    private BigDecimal cotizacionMonOrdFac;
 
     private Integer procId;
 
@@ -181,28 +181,28 @@ public class FactCotizacion {
         this.cotizacionCntOrdCan = cotizacionCntOrdCan;
     }
 
-    public BigDecimal getCotizacionMonImporte() {
-        return cotizacionMonImporte;
+    public BigDecimal getCotizacionMonOrdTot() {
+        return cotizacionMonOrdTot;
     }
 
-    public void setCotizacionMonImporte(BigDecimal cotizacionMonImporte) {
-        this.cotizacionMonImporte = cotizacionMonImporte;
+    public void setCotizacionMonOrdTot(BigDecimal cotizacionMonOrdTot) {
+        this.cotizacionMonOrdTot = cotizacionMonOrdTot;
     }
 
-    public BigDecimal getCotizacionMonIgv() {
-        return cotizacionMonIgv;
+    public BigDecimal getCotizacionMonOrdCan() {
+        return cotizacionMonOrdCan;
     }
 
-    public void setCotizacionMonIgv(BigDecimal cotizacionMonIgv) {
-        this.cotizacionMonIgv = cotizacionMonIgv;
+    public void setCotizacionMonOrdCan(BigDecimal cotizacionMonOrdCan) {
+        this.cotizacionMonOrdCan = cotizacionMonOrdCan;
     }
 
-    public BigDecimal getCotizacionMonTotal() {
-        return cotizacionMonTotal;
+    public BigDecimal getCotizacionMonOrdFac() {
+        return cotizacionMonOrdFac;
     }
 
-    public void setCotizacionMonTotal(BigDecimal cotizacionMonTotal) {
-        this.cotizacionMonTotal = cotizacionMonTotal;
+    public void setCotizacionMonOrdFac(BigDecimal cotizacionMonOrdFac) {
+        this.cotizacionMonOrdFac = cotizacionMonOrdFac;
     }
 
     public Integer getProcId() {
@@ -212,7 +212,7 @@ public class FactCotizacion {
     public void setProcId(Integer procId) {
         this.procId = procId;
     }
-    
+
     public void clear(){
     	cotizacionKey=null;
     	cotizacionKeyClienteArea=null;
@@ -231,12 +231,12 @@ public class FactCotizacion {
     	cotizacionCntOrdCftiempo=null;
     	cotizacionCntOrdFac=null;
     	cotizacionCntOrdCan=null;
-    	cotizacionMonImporte=null;
-    	cotizacionMonIgv=null;
-    	cotizacionMonTotal=null;
+    	cotizacionMonOrdTot=null;
+    	cotizacionMonOrdCan=null;
+    	cotizacionMonOrdFac=null;
     	procId=null;
     }
-
+    
 	@Override
 	public String toString() {
 		return "FactCotizacion [cotizacionKey=" + cotizacionKey
@@ -256,9 +256,11 @@ public class FactCotizacion {
 				+ ", cotizacionCntOrdCftiempo=" + cotizacionCntOrdCftiempo
 				+ ", cotizacionCntOrdFac=" + cotizacionCntOrdFac
 				+ ", cotizacionCntOrdCan=" + cotizacionCntOrdCan
-				+ ", cotizacionMonImporte=" + cotizacionMonImporte
-				+ ", cotizacionMonIgv=" + cotizacionMonIgv
-				+ ", cotizacionMonTotal=" + cotizacionMonTotal + ", procId="
+				+ ", cotizacionMonOrdTot=" + cotizacionMonOrdTot
+				+ ", cotizacionMonOrdCan=" + cotizacionMonOrdCan
+				+ ", cotizacionMonOrdFac=" + cotizacionMonOrdFac + ", procId="
 				+ procId + "]";
 	}
+    
+    
 }

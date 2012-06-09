@@ -19,9 +19,9 @@
     <result column="cotizacion_cnt_ord_cftiempo" property="cotizacionCntOrdCftiempo" jdbcType="INTEGER" />
     <result column="cotizacion_cnt_ord_fac" property="cotizacionCntOrdFac" jdbcType="INTEGER" />
     <result column="cotizacion_cnt_ord_can" property="cotizacionCntOrdCan" jdbcType="INTEGER" />
-    <result column="cotizacion_mon_importe" property="cotizacionMonImporte" jdbcType="NUMERIC" />
-    <result column="cotizacion_mon_igv" property="cotizacionMonIgv" jdbcType="NUMERIC" />
-    <result column="cotizacion_mon_total" property="cotizacionMonTotal" jdbcType="NUMERIC" />
+    <result column="cotizacion_mon_ord_tot" property="cotizacionMonOrdTot" jdbcType="NUMERIC" />
+    <result column="cotizacion_mon_ord_can" property="cotizacionMonOrdCan" jdbcType="NUMERIC" />
+    <result column="cotizacion_mon_ord_fac" property="cotizacionMonOrdFac" jdbcType="NUMERIC" />
     <result column="proc_id" property="procId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -87,8 +87,8 @@
     cotizacion_key_producto, cotizacion_key_fec_apro, cotizacion_key_fec_ini, cotizacion_key_fec_fin, 
     cotizacion_key_estado, cotizacion_ind_unidad, cotizacion_cnt_ord_total, cotizacion_cnt_ord_en_trab, 
     cotizacion_cnt_ord_cer, cotizacion_cnt_ord_catiempo, cotizacion_cnt_ord_cftiempo, 
-    cotizacion_cnt_ord_fac, cotizacion_cnt_ord_can, cotizacion_mon_importe, cotizacion_mon_igv, 
-    cotizacion_mon_total, proc_id
+    cotizacion_cnt_ord_fac, cotizacion_cnt_ord_can, cotizacion_mon_ord_tot, cotizacion_mon_ord_can, 
+    cotizacion_mon_ord_fac, proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactCotizacionExample" >
     select
@@ -132,8 +132,8 @@
       cotizacion_cnt_ord_total, cotizacion_cnt_ord_en_trab, 
       cotizacion_cnt_ord_cer, cotizacion_cnt_ord_catiempo, 
       cotizacion_cnt_ord_cftiempo, cotizacion_cnt_ord_fac, 
-      cotizacion_cnt_ord_can, cotizacion_mon_importe, 
-      cotizacion_mon_igv, cotizacion_mon_total, proc_id
+      cotizacion_cnt_ord_can, cotizacion_mon_ord_tot, 
+      cotizacion_mon_ord_can, cotizacion_mon_ord_fac, proc_id
       )
     values (#{cotizacionKey,jdbcType=INTEGER}, #{cotizacionKeyClienteArea,jdbcType=INTEGER}, 
       #{cotizacionKeyUbigeoCliente,jdbcType=INTEGER}, #{cotizacionKeyServicio,jdbcType=INTEGER}, 
@@ -143,8 +143,8 @@
       #{cotizacionCntOrdTotal,jdbcType=INTEGER}, #{cotizacionCntOrdEnTrab,jdbcType=INTEGER}, 
       #{cotizacionCntOrdCer,jdbcType=INTEGER}, #{cotizacionCntOrdCatiempo,jdbcType=INTEGER}, 
       #{cotizacionCntOrdCftiempo,jdbcType=INTEGER}, #{cotizacionCntOrdFac,jdbcType=INTEGER}, 
-      #{cotizacionCntOrdCan,jdbcType=INTEGER}, #{cotizacionMonImporte,jdbcType=NUMERIC}, 
-      #{cotizacionMonIgv,jdbcType=NUMERIC}, #{cotizacionMonTotal,jdbcType=NUMERIC}, #{procId,jdbcType=INTEGER}
+      #{cotizacionCntOrdCan,jdbcType=INTEGER}, #{cotizacionMonOrdTot,jdbcType=NUMERIC}, 
+      #{cotizacionMonOrdCan,jdbcType=NUMERIC}, #{cotizacionMonOrdFac,jdbcType=NUMERIC}, #{procId,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.dimensional.FactCotizacion" >
@@ -201,14 +201,14 @@
       <if test="cotizacionCntOrdCan != null" >
         cotizacion_cnt_ord_can,
       </if>
-      <if test="cotizacionMonImporte != null" >
-        cotizacion_mon_importe,
+      <if test="cotizacionMonOrdTot != null" >
+        cotizacion_mon_ord_tot,
       </if>
-      <if test="cotizacionMonIgv != null" >
-        cotizacion_mon_igv,
+      <if test="cotizacionMonOrdCan != null" >
+        cotizacion_mon_ord_can,
       </if>
-      <if test="cotizacionMonTotal != null" >
-        cotizacion_mon_total,
+      <if test="cotizacionMonOrdFac != null" >
+        cotizacion_mon_ord_fac,
       </if>
       <if test="procId != null" >
         proc_id,
@@ -266,14 +266,14 @@
       <if test="cotizacionCntOrdCan != null" >
         #{cotizacionCntOrdCan,jdbcType=INTEGER},
       </if>
-      <if test="cotizacionMonImporte != null" >
-        #{cotizacionMonImporte,jdbcType=NUMERIC},
+      <if test="cotizacionMonOrdTot != null" >
+        #{cotizacionMonOrdTot,jdbcType=NUMERIC},
       </if>
-      <if test="cotizacionMonIgv != null" >
-        #{cotizacionMonIgv,jdbcType=NUMERIC},
+      <if test="cotizacionMonOrdCan != null" >
+        #{cotizacionMonOrdCan,jdbcType=NUMERIC},
       </if>
-      <if test="cotizacionMonTotal != null" >
-        #{cotizacionMonTotal,jdbcType=NUMERIC},
+      <if test="cotizacionMonOrdFac != null" >
+        #{cotizacionMonOrdFac,jdbcType=NUMERIC},
       </if>
       <if test="procId != null" >
         #{procId,jdbcType=INTEGER},
@@ -340,14 +340,14 @@
       <if test="record.cotizacionCntOrdCan != null" >
         cotizacion_cnt_ord_can = #{record.cotizacionCntOrdCan,jdbcType=INTEGER},
       </if>
-      <if test="record.cotizacionMonImporte != null" >
-        cotizacion_mon_importe = #{record.cotizacionMonImporte,jdbcType=NUMERIC},
+      <if test="record.cotizacionMonOrdTot != null" >
+        cotizacion_mon_ord_tot = #{record.cotizacionMonOrdTot,jdbcType=NUMERIC},
       </if>
-      <if test="record.cotizacionMonIgv != null" >
-        cotizacion_mon_igv = #{record.cotizacionMonIgv,jdbcType=NUMERIC},
+      <if test="record.cotizacionMonOrdCan != null" >
+        cotizacion_mon_ord_can = #{record.cotizacionMonOrdCan,jdbcType=NUMERIC},
       </if>
-      <if test="record.cotizacionMonTotal != null" >
-        cotizacion_mon_total = #{record.cotizacionMonTotal,jdbcType=NUMERIC},
+      <if test="record.cotizacionMonOrdFac != null" >
+        cotizacion_mon_ord_fac = #{record.cotizacionMonOrdFac,jdbcType=NUMERIC},
       </if>
       <if test="record.procId != null" >
         proc_id = #{record.procId,jdbcType=INTEGER},
@@ -376,9 +376,9 @@
       cotizacion_cnt_ord_cftiempo = #{record.cotizacionCntOrdCftiempo,jdbcType=INTEGER},
       cotizacion_cnt_ord_fac = #{record.cotizacionCntOrdFac,jdbcType=INTEGER},
       cotizacion_cnt_ord_can = #{record.cotizacionCntOrdCan,jdbcType=INTEGER},
-      cotizacion_mon_importe = #{record.cotizacionMonImporte,jdbcType=NUMERIC},
-      cotizacion_mon_igv = #{record.cotizacionMonIgv,jdbcType=NUMERIC},
-      cotizacion_mon_total = #{record.cotizacionMonTotal,jdbcType=NUMERIC},
+      cotizacion_mon_ord_tot = #{record.cotizacionMonOrdTot,jdbcType=NUMERIC},
+      cotizacion_mon_ord_can = #{record.cotizacionMonOrdCan,jdbcType=NUMERIC},
+      cotizacion_mon_ord_fac = #{record.cotizacionMonOrdFac,jdbcType=NUMERIC},
       proc_id = #{record.procId,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -435,14 +435,14 @@
       <if test="cotizacionCntOrdCan != null" >
         cotizacion_cnt_ord_can = #{cotizacionCntOrdCan,jdbcType=INTEGER},
       </if>
-      <if test="cotizacionMonImporte != null" >
-        cotizacion_mon_importe = #{cotizacionMonImporte,jdbcType=NUMERIC},
+      <if test="cotizacionMonOrdTot != null" >
+        cotizacion_mon_ord_tot = #{cotizacionMonOrdTot,jdbcType=NUMERIC},
       </if>
-      <if test="cotizacionMonIgv != null" >
-        cotizacion_mon_igv = #{cotizacionMonIgv,jdbcType=NUMERIC},
+      <if test="cotizacionMonOrdCan != null" >
+        cotizacion_mon_ord_can = #{cotizacionMonOrdCan,jdbcType=NUMERIC},
       </if>
-      <if test="cotizacionMonTotal != null" >
-        cotizacion_mon_total = #{cotizacionMonTotal,jdbcType=NUMERIC},
+      <if test="cotizacionMonOrdFac != null" >
+        cotizacion_mon_ord_fac = #{cotizacionMonOrdFac,jdbcType=NUMERIC},
       </if>
       <if test="procId != null" >
         proc_id = #{procId,jdbcType=INTEGER},
@@ -468,9 +468,9 @@
       cotizacion_cnt_ord_cftiempo = #{cotizacionCntOrdCftiempo,jdbcType=INTEGER},
       cotizacion_cnt_ord_fac = #{cotizacionCntOrdFac,jdbcType=INTEGER},
       cotizacion_cnt_ord_can = #{cotizacionCntOrdCan,jdbcType=INTEGER},
-      cotizacion_mon_importe = #{cotizacionMonImporte,jdbcType=NUMERIC},
-      cotizacion_mon_igv = #{cotizacionMonIgv,jdbcType=NUMERIC},
-      cotizacion_mon_total = #{cotizacionMonTotal,jdbcType=NUMERIC},
+      cotizacion_mon_ord_tot = #{cotizacionMonOrdTot,jdbcType=NUMERIC},
+      cotizacion_mon_ord_can = #{cotizacionMonOrdCan,jdbcType=NUMERIC},
+      cotizacion_mon_ord_fac = #{cotizacionMonOrdFac,jdbcType=NUMERIC},
       proc_id = #{procId,jdbcType=INTEGER}
     where cotizacion_key = #{cotizacionKey,jdbcType=INTEGER}
   </update>

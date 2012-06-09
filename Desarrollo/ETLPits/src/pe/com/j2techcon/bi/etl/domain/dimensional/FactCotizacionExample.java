@@ -17,7 +17,7 @@ public class FactCotizacionExample {
     public FactCotizacionExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
-    
+
     public String getPaginationByClause() {
 		return paginationByClause;
 	}
@@ -26,7 +26,7 @@ public class FactCotizacionExample {
 		this.paginationByClause = paginationByClause;
 	}
 
-    public void setOrderByClause(String orderByClause) {
+	public void setOrderByClause(String orderByClause) {
         this.orderByClause = orderByClause;
     }
 
@@ -1137,183 +1137,183 @@ public class FactCotizacionExample {
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonImporteIsNull() {
-            addCriterion("cotizacion_mon_importe is null");
+        public Criteria andCotizacionMonOrdTotIsNull() {
+            addCriterion("cotizacion_mon_ord_tot is null");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonImporteIsNotNull() {
-            addCriterion("cotizacion_mon_importe is not null");
+        public Criteria andCotizacionMonOrdTotIsNotNull() {
+            addCriterion("cotizacion_mon_ord_tot is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonImporteEqualTo(BigDecimal value) {
-            addCriterion("cotizacion_mon_importe =", value, "cotizacionMonImporte");
+        public Criteria andCotizacionMonOrdTotEqualTo(BigDecimal value) {
+            addCriterion("cotizacion_mon_ord_tot =", value, "cotizacionMonOrdTot");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonImporteNotEqualTo(BigDecimal value) {
-            addCriterion("cotizacion_mon_importe <>", value, "cotizacionMonImporte");
+        public Criteria andCotizacionMonOrdTotNotEqualTo(BigDecimal value) {
+            addCriterion("cotizacion_mon_ord_tot <>", value, "cotizacionMonOrdTot");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonImporteGreaterThan(BigDecimal value) {
-            addCriterion("cotizacion_mon_importe >", value, "cotizacionMonImporte");
+        public Criteria andCotizacionMonOrdTotGreaterThan(BigDecimal value) {
+            addCriterion("cotizacion_mon_ord_tot >", value, "cotizacionMonOrdTot");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonImporteGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("cotizacion_mon_importe >=", value, "cotizacionMonImporte");
+        public Criteria andCotizacionMonOrdTotGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("cotizacion_mon_ord_tot >=", value, "cotizacionMonOrdTot");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonImporteLessThan(BigDecimal value) {
-            addCriterion("cotizacion_mon_importe <", value, "cotizacionMonImporte");
+        public Criteria andCotizacionMonOrdTotLessThan(BigDecimal value) {
+            addCriterion("cotizacion_mon_ord_tot <", value, "cotizacionMonOrdTot");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonImporteLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("cotizacion_mon_importe <=", value, "cotizacionMonImporte");
+        public Criteria andCotizacionMonOrdTotLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("cotizacion_mon_ord_tot <=", value, "cotizacionMonOrdTot");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonImporteIn(List<BigDecimal> values) {
-            addCriterion("cotizacion_mon_importe in", values, "cotizacionMonImporte");
+        public Criteria andCotizacionMonOrdTotIn(List<BigDecimal> values) {
+            addCriterion("cotizacion_mon_ord_tot in", values, "cotizacionMonOrdTot");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonImporteNotIn(List<BigDecimal> values) {
-            addCriterion("cotizacion_mon_importe not in", values, "cotizacionMonImporte");
+        public Criteria andCotizacionMonOrdTotNotIn(List<BigDecimal> values) {
+            addCriterion("cotizacion_mon_ord_tot not in", values, "cotizacionMonOrdTot");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonImporteBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("cotizacion_mon_importe between", value1, value2, "cotizacionMonImporte");
+        public Criteria andCotizacionMonOrdTotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("cotizacion_mon_ord_tot between", value1, value2, "cotizacionMonOrdTot");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonImporteNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("cotizacion_mon_importe not between", value1, value2, "cotizacionMonImporte");
+        public Criteria andCotizacionMonOrdTotNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("cotizacion_mon_ord_tot not between", value1, value2, "cotizacionMonOrdTot");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonIgvIsNull() {
-            addCriterion("cotizacion_mon_igv is null");
+        public Criteria andCotizacionMonOrdCanIsNull() {
+            addCriterion("cotizacion_mon_ord_can is null");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonIgvIsNotNull() {
-            addCriterion("cotizacion_mon_igv is not null");
+        public Criteria andCotizacionMonOrdCanIsNotNull() {
+            addCriterion("cotizacion_mon_ord_can is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonIgvEqualTo(BigDecimal value) {
-            addCriterion("cotizacion_mon_igv =", value, "cotizacionMonIgv");
+        public Criteria andCotizacionMonOrdCanEqualTo(BigDecimal value) {
+            addCriterion("cotizacion_mon_ord_can =", value, "cotizacionMonOrdCan");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonIgvNotEqualTo(BigDecimal value) {
-            addCriterion("cotizacion_mon_igv <>", value, "cotizacionMonIgv");
+        public Criteria andCotizacionMonOrdCanNotEqualTo(BigDecimal value) {
+            addCriterion("cotizacion_mon_ord_can <>", value, "cotizacionMonOrdCan");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonIgvGreaterThan(BigDecimal value) {
-            addCriterion("cotizacion_mon_igv >", value, "cotizacionMonIgv");
+        public Criteria andCotizacionMonOrdCanGreaterThan(BigDecimal value) {
+            addCriterion("cotizacion_mon_ord_can >", value, "cotizacionMonOrdCan");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonIgvGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("cotizacion_mon_igv >=", value, "cotizacionMonIgv");
+        public Criteria andCotizacionMonOrdCanGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("cotizacion_mon_ord_can >=", value, "cotizacionMonOrdCan");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonIgvLessThan(BigDecimal value) {
-            addCriterion("cotizacion_mon_igv <", value, "cotizacionMonIgv");
+        public Criteria andCotizacionMonOrdCanLessThan(BigDecimal value) {
+            addCriterion("cotizacion_mon_ord_can <", value, "cotizacionMonOrdCan");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonIgvLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("cotizacion_mon_igv <=", value, "cotizacionMonIgv");
+        public Criteria andCotizacionMonOrdCanLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("cotizacion_mon_ord_can <=", value, "cotizacionMonOrdCan");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonIgvIn(List<BigDecimal> values) {
-            addCriterion("cotizacion_mon_igv in", values, "cotizacionMonIgv");
+        public Criteria andCotizacionMonOrdCanIn(List<BigDecimal> values) {
+            addCriterion("cotizacion_mon_ord_can in", values, "cotizacionMonOrdCan");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonIgvNotIn(List<BigDecimal> values) {
-            addCriterion("cotizacion_mon_igv not in", values, "cotizacionMonIgv");
+        public Criteria andCotizacionMonOrdCanNotIn(List<BigDecimal> values) {
+            addCriterion("cotizacion_mon_ord_can not in", values, "cotizacionMonOrdCan");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonIgvBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("cotizacion_mon_igv between", value1, value2, "cotizacionMonIgv");
+        public Criteria andCotizacionMonOrdCanBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("cotizacion_mon_ord_can between", value1, value2, "cotizacionMonOrdCan");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonIgvNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("cotizacion_mon_igv not between", value1, value2, "cotizacionMonIgv");
+        public Criteria andCotizacionMonOrdCanNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("cotizacion_mon_ord_can not between", value1, value2, "cotizacionMonOrdCan");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonTotalIsNull() {
-            addCriterion("cotizacion_mon_total is null");
+        public Criteria andCotizacionMonOrdFacIsNull() {
+            addCriterion("cotizacion_mon_ord_fac is null");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonTotalIsNotNull() {
-            addCriterion("cotizacion_mon_total is not null");
+        public Criteria andCotizacionMonOrdFacIsNotNull() {
+            addCriterion("cotizacion_mon_ord_fac is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonTotalEqualTo(BigDecimal value) {
-            addCriterion("cotizacion_mon_total =", value, "cotizacionMonTotal");
+        public Criteria andCotizacionMonOrdFacEqualTo(BigDecimal value) {
+            addCriterion("cotizacion_mon_ord_fac =", value, "cotizacionMonOrdFac");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonTotalNotEqualTo(BigDecimal value) {
-            addCriterion("cotizacion_mon_total <>", value, "cotizacionMonTotal");
+        public Criteria andCotizacionMonOrdFacNotEqualTo(BigDecimal value) {
+            addCriterion("cotizacion_mon_ord_fac <>", value, "cotizacionMonOrdFac");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonTotalGreaterThan(BigDecimal value) {
-            addCriterion("cotizacion_mon_total >", value, "cotizacionMonTotal");
+        public Criteria andCotizacionMonOrdFacGreaterThan(BigDecimal value) {
+            addCriterion("cotizacion_mon_ord_fac >", value, "cotizacionMonOrdFac");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonTotalGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("cotizacion_mon_total >=", value, "cotizacionMonTotal");
+        public Criteria andCotizacionMonOrdFacGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("cotizacion_mon_ord_fac >=", value, "cotizacionMonOrdFac");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonTotalLessThan(BigDecimal value) {
-            addCriterion("cotizacion_mon_total <", value, "cotizacionMonTotal");
+        public Criteria andCotizacionMonOrdFacLessThan(BigDecimal value) {
+            addCriterion("cotizacion_mon_ord_fac <", value, "cotizacionMonOrdFac");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonTotalLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("cotizacion_mon_total <=", value, "cotizacionMonTotal");
+        public Criteria andCotizacionMonOrdFacLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("cotizacion_mon_ord_fac <=", value, "cotizacionMonOrdFac");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonTotalIn(List<BigDecimal> values) {
-            addCriterion("cotizacion_mon_total in", values, "cotizacionMonTotal");
+        public Criteria andCotizacionMonOrdFacIn(List<BigDecimal> values) {
+            addCriterion("cotizacion_mon_ord_fac in", values, "cotizacionMonOrdFac");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonTotalNotIn(List<BigDecimal> values) {
-            addCriterion("cotizacion_mon_total not in", values, "cotizacionMonTotal");
+        public Criteria andCotizacionMonOrdFacNotIn(List<BigDecimal> values) {
+            addCriterion("cotizacion_mon_ord_fac not in", values, "cotizacionMonOrdFac");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonTotalBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("cotizacion_mon_total between", value1, value2, "cotizacionMonTotal");
+        public Criteria andCotizacionMonOrdFacBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("cotizacion_mon_ord_fac between", value1, value2, "cotizacionMonOrdFac");
             return (Criteria) this;
         }
 
-        public Criteria andCotizacionMonTotalNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("cotizacion_mon_total not between", value1, value2, "cotizacionMonTotal");
+        public Criteria andCotizacionMonOrdFacNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("cotizacion_mon_ord_fac not between", value1, value2, "cotizacionMonOrdFac");
             return (Criteria) this;
         }
 
