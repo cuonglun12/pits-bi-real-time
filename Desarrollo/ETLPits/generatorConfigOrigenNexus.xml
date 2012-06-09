@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<classPathEntry location="D:/jjulcah/PITS/_desarrollo/libs/postgresql-9.0-801.jdbc4.jar" />
+	<context id="DB1" targetRuntime="MyBatis3">
+
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+
+		<jdbcConnection driverClass="org.postgresql.Driver"
+			connectionURL="jdbc:postgresql://localhost:5432/db_pits" userId="postgres"
+			password="123456">
+		</jdbcConnection>	
+		
+		<javaModelGenerator targetPackage="pe.com.j2techcon.bi.etl.domain.origen"
+			targetProject="ETLPits">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<sqlMapGenerator targetPackage="pe.com.j2techcon.bi.etl.dao.sqlmap.origen"
+			targetProject="ETLPits">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="pe.com.j2techcon.bi.etl.dao.origen" targetProject="ETLPits">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		
+		<table tableName="sedesprov" modelType="flat" />
+		<table tableName="ubigeos" modelType="flat" />
+		<table tableName="zonas" modelType="flat" />
+		<table tableName="t_servicios" modelType="flat" />
+		<table tableName="t_productos" modelType="flat" />
+		<table tableName="personal" modelType="flat" />
+		<table tableName="t_tipopersonal" modelType="flat" />
+		<table tableName="cliente" modelType="flat" />
+		<table tableName="areacliente" modelType="flat" />
+		<table tableName="ordenes" modelType="flat" />
+		<table tableName="detordenes" modelType="flat" />
+		<table tableName="despacho" modelType="flat" />
+		<table tableName="detdespacho" modelType="flat" />		
+
+		<table tableName="t_parametro" modelType="flat" />		
+
+	</context>
+</generatorConfiguration>
+		

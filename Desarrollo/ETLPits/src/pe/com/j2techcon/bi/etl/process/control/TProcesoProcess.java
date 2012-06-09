@@ -61,160 +61,6 @@ public class TProcesoProcess {
 	
 	List<String> statesProceso;
 
-	public BeanFactory getFactory() {
-		return factory;
-	}
-
-	public void setFactory(BeanFactory factory) {
-		this.factory = factory;
-	}
-
-	public int getSizePage() {
-		return sizePage;
-	}
-
-	public void setSizePage(int sizePage) {
-		this.sizePage = sizePage;
-	}
-
-	public long getDateTimeFrom() {
-		return dateTimeFrom;
-	}
-
-	public void setDateTimeFrom(long dateTimeFrom) {
-		this.dateTimeFrom = dateTimeFrom;
-	}
-
-	public long getDateTimeUntil() {
-		return dateTimeUntil;
-	}
-
-	public void setDateTimeUntil(long dateTimeUntil) {
-		this.dateTimeUntil = dateTimeUntil;
-	}
-
-	public int getProcess() {
-		return process;
-	}
-
-	public void setProcess(int process) {
-		this.process = process;
-	}
-
-	public String getTypeProcess() {
-		return typeProcess;
-	}
-
-	public void setTypeProcess(String typeProcess) {
-		this.typeProcess = typeProcess;
-	}
-
-	public TProceso gettProceso() {
-		return tProceso;
-	}
-
-	public void settProceso(TProceso tProceso) {
-		this.tProceso = tProceso;
-	}
-
-	public TProcesoDetalle gettProcesoDetalle() {
-		return tProcesoDetalle;
-	}
-
-	public void settProcesoDetalle(TProcesoDetalle tProcesoDetalle) {
-		this.tProcesoDetalle = tProcesoDetalle;
-	}
-
-	public TProcesoExample gettProcesoExample() {
-		return tProcesoExample;
-	}
-
-	public void settProcesoExample(TProcesoExample tProcesoExample) {
-		this.tProcesoExample = tProcesoExample;
-	}
-
-	public TProcesoDetalleExample gettProcesoDetalleExample() {
-		return tProcesoDetalleExample;
-	}
-
-	public void settProcesoDetalleExample(
-			TProcesoDetalleExample tProcesoDetalleExample) {
-		this.tProcesoDetalleExample = tProcesoDetalleExample;
-	}
-
-	public TProcesoManager gettProcesoManager() {
-		return tProcesoManager;
-	}
-
-	public void settProcesoManager(TProcesoManager tProcesoManager) {
-		this.tProcesoManager = tProcesoManager;
-	}
-
-	public TProcesoDetalleManager gettProcesoDetalleManager() {
-		return tProcesoDetalleManager;
-	}
-
-	public void settProcesoDetalleManager(
-			TProcesoDetalleManager tProcesoDetalleManager) {
-		this.tProcesoDetalleManager = tProcesoDetalleManager;
-	}
-
-	public Constantes getConstantes() {
-		return constantes;
-	}
-
-	public void setConstantes(Constantes constantes) {
-		this.constantes = constantes;
-	}
-
-	public List<String> getStatesProceso() {
-		return statesProceso;
-	}
-
-	public void setStatesProceso(List<String> statesProceso) {
-		this.statesProceso = statesProceso;
-	}
-
-	public String getTypeLoadProcess() {
-		return typeLoadProcess;
-	}
-
-	public void setTypeLoadProcess(String typeLoadProcess) {
-		this.typeLoadProcess = typeLoadProcess;
-	}
-
-	public int getRecordTotal() {
-		return recordTotal;
-	}
-
-	public void setRecordTotal(int recordTotal) {
-		this.recordTotal = recordTotal;
-	}
-
-	public int getRecordProcessed() {
-		return recordProcessed;
-	}
-
-	public void setRecordProcessed(int recordProcessed) {
-		this.recordProcessed = recordProcessed;
-	}
-
-	public int getRecordRejected() {
-		return recordRejected;
-	}
-
-	public void setRecordRejected(int recordRejected) {
-		this.recordRejected = recordRejected;
-	}
-
-	public int getResultProcess() {
-		return resultProcess;
-	}
-
-	public void setResultProcess(int resultProcess) {
-		this.resultProcess = resultProcess;
-	}
-
 	public void start(){
 		
 		factory = new ClassPathXmlApplicationContext("application-context.xml");
@@ -405,6 +251,10 @@ public class TProcesoProcess {
 		tProceso = getLastProcess();
 		
 		if(typeLoadProcess.equals(constantes.getLoadProcessToGeneric())){
+			//insertDetProcess(constantes.getIdTableGene());
+			
+			
+			
 			
 		}
 		if(typeLoadProcess.equals(constantes.getLoadProcessToDimensional())){
@@ -724,4 +574,161 @@ public class TProcesoProcess {
 		recordProcessed = recordProcessed + tProcesoDetalle.getProcDetNumRegPro();
 		recordRejected = recordRejected + tProcesoDetalle.getProcDetNumRegRec();
 	}
+	
+	public BeanFactory getFactory() {
+		return factory;
+	}
+
+	public void setFactory(BeanFactory factory) {
+		this.factory = factory;
+	}
+
+	public int getSizePage() {
+		return sizePage;
+	}
+
+	public void setSizePage(int sizePage) {
+		this.sizePage = sizePage;
+	}
+
+	public long getDateTimeFrom() {
+		return dateTimeFrom;
+	}
+
+	public void setDateTimeFrom(long dateTimeFrom) {
+		this.dateTimeFrom = dateTimeFrom;
+	}
+
+	public long getDateTimeUntil() {
+		return dateTimeUntil;
+	}
+
+	public void setDateTimeUntil(long dateTimeUntil) {
+		this.dateTimeUntil = dateTimeUntil;
+	}
+
+	public int getProcess() {
+		return process;
+	}
+
+	public void setProcess(int process) {
+		this.process = process;
+	}
+
+	public String getTypeProcess() {
+		return typeProcess;
+	}
+
+	public void setTypeProcess(String typeProcess) {
+		this.typeProcess = typeProcess;
+	}
+
+	public TProceso gettProceso() {
+		return tProceso;
+	}
+
+	public void settProceso(TProceso tProceso) {
+		this.tProceso = tProceso;
+	}
+
+	public TProcesoDetalle gettProcesoDetalle() {
+		return tProcesoDetalle;
+	}
+
+	public void settProcesoDetalle(TProcesoDetalle tProcesoDetalle) {
+		this.tProcesoDetalle = tProcesoDetalle;
+	}
+
+	public TProcesoExample gettProcesoExample() {
+		return tProcesoExample;
+	}
+
+	public void settProcesoExample(TProcesoExample tProcesoExample) {
+		this.tProcesoExample = tProcesoExample;
+	}
+
+	public TProcesoDetalleExample gettProcesoDetalleExample() {
+		return tProcesoDetalleExample;
+	}
+
+	public void settProcesoDetalleExample(
+			TProcesoDetalleExample tProcesoDetalleExample) {
+		this.tProcesoDetalleExample = tProcesoDetalleExample;
+	}
+
+	public TProcesoManager gettProcesoManager() {
+		return tProcesoManager;
+	}
+
+	public void settProcesoManager(TProcesoManager tProcesoManager) {
+		this.tProcesoManager = tProcesoManager;
+	}
+
+	public TProcesoDetalleManager gettProcesoDetalleManager() {
+		return tProcesoDetalleManager;
+	}
+
+	public void settProcesoDetalleManager(
+			TProcesoDetalleManager tProcesoDetalleManager) {
+		this.tProcesoDetalleManager = tProcesoDetalleManager;
+	}
+
+	public Constantes getConstantes() {
+		return constantes;
+	}
+
+	public void setConstantes(Constantes constantes) {
+		this.constantes = constantes;
+	}
+
+	public List<String> getStatesProceso() {
+		return statesProceso;
+	}
+
+	public void setStatesProceso(List<String> statesProceso) {
+		this.statesProceso = statesProceso;
+	}
+
+	public String getTypeLoadProcess() {
+		return typeLoadProcess;
+	}
+
+	public void setTypeLoadProcess(String typeLoadProcess) {
+		this.typeLoadProcess = typeLoadProcess;
+	}
+
+	public int getRecordTotal() {
+		return recordTotal;
+	}
+
+	public void setRecordTotal(int recordTotal) {
+		this.recordTotal = recordTotal;
+	}
+
+	public int getRecordProcessed() {
+		return recordProcessed;
+	}
+
+	public void setRecordProcessed(int recordProcessed) {
+		this.recordProcessed = recordProcessed;
+	}
+
+	public int getRecordRejected() {
+		return recordRejected;
+	}
+
+	public void setRecordRejected(int recordRejected) {
+		this.recordRejected = recordRejected;
+	}
+
+	public int getResultProcess() {
+		return resultProcess;
+	}
+
+	public void setResultProcess(int resultProcess) {
+		this.resultProcess = resultProcess;
+	}
+	
+	
+	
 }

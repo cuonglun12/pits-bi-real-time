@@ -36,6 +36,8 @@
 		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.PersonalExample" alias="PersonalExample"/>
 		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.Sedesprov" alias="Sedesprov"/>
 		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.SedesprovExample" alias="SedesprovExample"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.TParametro" alias="TProductos"/>
+		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.TParametroExample" alias="TProductosExample"/>
 		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.TProductos" alias="TProductos"/>
 		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.TProductosExample" alias="TProductosExample"/>
 		<typeAlias type="pe.com.j2techcon.bi.etl.domain.origen.TServicios" alias="TServicios"/>
@@ -57,6 +59,7 @@
         <mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/origen/OrdenesMapper.xml" />
         <mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/origen/PersonalMapper.xml" />
         <mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/origen/SedesprovMapper.xml" />
+        <mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/origen/TParametroMapper.xml" />
         <mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/origen/TProductosMapper.xml" />
         <mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/origen/TServiciosMapper.xml" />
         <mapper resource="pe/com/j2techcon/bi/etl/dao/sqlmap/origen/TTipopersonalMapper.xml" />
