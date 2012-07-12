@@ -370,9 +370,9 @@ cotizacion_cnt_ord_catiempo INT4                 not null default 0,
 cotizacion_cnt_ord_cftiempo INT4                 not null default 0,
 cotizacion_cnt_ord_fac INT4                 not null default 0,
 cotizacion_cnt_ord_can INT4                 not null default 0,
-cotizacion_mon_importe NUMERIC(15,4)        not null default 0,
-cotizacion_mon_igv   NUMERIC(15,4)        not null default 0,
-cotizacion_mon_total NUMERIC(15,4)        not null default 0,
+cotizacion_mon_ord_tot NUMERIC(15,4)        not null default 0,
+cotizacion_mon_ord_can NUMERIC(15,4)        not null default 0,
+cotizacion_mon_ord_fac NUMERIC(15,4)        not null default 0,
 proc_id              INT4                 not null default 0,
 constraint PK_FACT_COTIZACION primary key (cotizacion_key)
 );
