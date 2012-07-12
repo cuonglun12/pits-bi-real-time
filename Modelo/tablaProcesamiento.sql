@@ -42,7 +42,7 @@ comment on column T_PROCESO.PROC_EST is
 /* Table: T_PROCESO_DETALLE                                     */
 /*==============================================================*/
 create table T_PROCESO_DETALLE (
-   PRO_DET_ID           SERIAL               not null default 0,
+   PRO_DET_ID           SERIAL               not null,
    PROC_ID              INT4                 not null default 0,
    PROC_TIP             CHAR(1)              not null default '1',
    PROC_DET_ID_TABLE    INT4                 not null default 0,
