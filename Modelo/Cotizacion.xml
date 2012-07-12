@@ -115,8 +115,8 @@
 		<Measure name="Cnt_Ord_En_Trabajo" column="cotizacion_cnt_ord_en_trab" aggregator="sum" datatype="Integer" formatString="#,###"/>
 		<Measure name="Cnt_Ord_Facturada" column="cotizacion_cnt_ord_fac" aggregator="sum" datatype="Integer" formatString="#,###"/>
 		<Measure name="Cnt_Ord_Cancelada" column="cotizacion_cnt_ord_can" aggregator="sum" datatype="Integer" formatString="#,###"/>
-        <Measure name="Ord_Mon_Igv" column="cotizacion_mon_igv" aggregator="sum" datatype="Numeric" formatString="#,###.00"/>
-        <Measure name="Ord_Mon_Importe" column="cotizacion_mon_importe" aggregator="sum" datatype="Numeric" formatString="#,###.00"/>
-        <Measure name="Ord_Mon_Total" column="cotizacion_mon_total" aggregator="sum" datatype="Numeric" formatString="#,###.00"/>
+        <Measure name="Mon_Ord_Total" column="cotizacion_mon_ord_tot" aggregator="sum" datatype="Numeric" formatString="#,###.00"/>
+        <Measure name="Mon_Ord_Facturado" column="cotizacion_mon_ord_fac" aggregator="sum" datatype="Numeric" formatString="#,###.00"/>
+        <Measure name="Mon_Ord_Cancelado" column="cotizacion_mon_ord_can" aggregator="sum" datatype="Numeric" formatString="#,###.00"/>
     </Cube>
 </Schema>
