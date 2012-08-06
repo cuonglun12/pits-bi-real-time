@@ -267,7 +267,7 @@ constraint PK_DIM_SERVICIO primary key (servicio_key)
 /* Table: dim_tiempo                                            */
 /*==============================================================*/
 create table dim_tiempo (
-tiempo_key           SERIAL               not null,
+tiempo_key           INT4                 not null default 19000101,
 tiempo_fecha         DATE                 not null,
 tiempo_dia_semana    INT2                 not null,
 tiempo_dia_mes       INT2                 not null,
