@@ -14,8 +14,9 @@ import pe.com.j2techcon.bi.etl.logic.generic.TDespachoManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TOrdenManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TParametroManager;
 import pe.com.j2techcon.bi.etl.util.Constantes;
-import pe.com.j2techcon.bi.etl.domain.dimensional.DimTiempo;
-import pe.com.j2techcon.bi.etl.domain.dimensional.DimTiempoExample;
+import pe.com.j2techcon.bi.etl.util.Util;
+//import pe.com.j2techcon.bi.etl.domain.dimensional.DimTiempo;
+//import pe.com.j2techcon.bi.etl.domain.dimensional.DimTiempoExample;
 import pe.com.j2techcon.bi.etl.domain.dimensional.FactEnvio;
 import pe.com.j2techcon.bi.etl.domain.dimensional.FactEnvioExample;
 import pe.com.j2techcon.bi.etl.domain.generic.TAreaCliente;
@@ -71,8 +72,8 @@ public class FactEnvioProcess {
 	private FactEnvio factEnvio;
 	private FactEnvioExample factEnvioExample;
 	
-	private DimTiempo dimTiempo;
-	private DimTiempoExample dimTiempoExample;
+	//private DimTiempo dimTiempo;
+	//private DimTiempoExample dimTiempoExample;
 	
 	private TAreaClienteManager tAreaClienteManager;
 	private TDespachoManager tDespachoManager;
@@ -309,21 +310,21 @@ public class FactEnvioProcess {
 		this.factEnvioExample = factEnvioExample;
 	}
 
-	public DimTiempo getDimTiempo() {
-		return dimTiempo;
-	}
-
-	public void setDimTiempo(DimTiempo dimTiempo) {
-		this.dimTiempo = dimTiempo;
-	}
-
-	public DimTiempoExample getDimTiempoExample() {
-		return dimTiempoExample;
-	}
-
-	public void setDimTiempoExample(DimTiempoExample dimTiempoExample) {
-		this.dimTiempoExample = dimTiempoExample;
-	}
+	//	public DimTiempo getDimTiempo() {
+	//		return dimTiempo;
+	//	}
+	//
+	//	public void setDimTiempo(DimTiempo dimTiempo) {
+	//		this.dimTiempo = dimTiempo;
+	//	}
+	//
+	//	public DimTiempoExample getDimTiempoExample() {
+	//		return dimTiempoExample;
+	//	}
+	//
+	//	public void setDimTiempoExample(DimTiempoExample dimTiempoExample) {
+	//		this.dimTiempoExample = dimTiempoExample;
+	//	}
 
 	public TAreaClienteManager gettAreaClienteManager() {
 		return tAreaClienteManager;
@@ -467,8 +468,8 @@ public class FactEnvioProcess {
 				factEnvio.clear();
 				factEnvioExample.clear();
 				
-				dimTiempo.clear();
-				dimTiempoExample.clear();
+				//dimTiempo.clear();
+				//dimTiempoExample.clear();
 				
 				offset = 0;
 				break;
@@ -548,20 +549,23 @@ public class FactEnvioProcess {
 		factEnvio.setEnvioKeyZona(tCargoDespacho.getZonId());
 		factEnvio.setEnvioKeyPersonal(tDespacho.getEmpCatId());
 		
-		dimTiempoExample.clear();
-		dimTiempoExample.createCriteria().andTiempoFechaEqualTo(tCargoDespacho.getCarDespFecSal());
-		dimTiempo = (dimTiempoManager.selectByExample(dimTiempoExample)).get(0);
-		factEnvio.setEnvioKeyFecSal(dimTiempo.getTiempoKey());
+		//dimTiempoExample.clear();
+		//dimTiempoExample.createCriteria().andTiempoFechaEqualTo(tCargoDespacho.getCarDespFecSal());
+		//dimTiempo = (dimTiempoManager.selectByExample(dimTiempoExample)).get(0);
+		//factEnvio.setEnvioKeyFecSal(dimTiempo.getTiempoKey());
+		factEnvio.setEnvioKeyFecSal(Util.getDateAsInteger(tCargoDespacho.getCarDespFecSal()));
 		
-		dimTiempoExample.clear();
-		dimTiempoExample.createCriteria().andTiempoFechaEqualTo(tCargoDespacho.getCarDespFecRetPro());
-		dimTiempo = (dimTiempoManager.selectByExample(dimTiempoExample)).get(0);
-		factEnvio.setEnvioKeyFecRetp(dimTiempo.getTiempoKey());
+		//dimTiempoExample.clear();
+		//dimTiempoExample.createCriteria().andTiempoFechaEqualTo(tCargoDespacho.getCarDespFecRetPro());
+		//dimTiempo = (dimTiempoManager.selectByExample(dimTiempoExample)).get(0);
+		//factEnvio.setEnvioKeyFecRetp(dimTiempo.getTiempoKey());
+		factEnvio.setEnvioKeyFecRetp(Util.getDateAsInteger(tCargoDespacho.getCarDespFecRetPro()));
 		
-		dimTiempoExample.clear();
-		dimTiempoExample.createCriteria().andTiempoFechaEqualTo(tCargoDespacho.getCarDespFecRetRea());
-		dimTiempo = (dimTiempoManager.selectByExample(dimTiempoExample)).get(0);
-		factEnvio.setEnvioKeyFecRetr(dimTiempo.getTiempoKey());
+		//dimTiempoExample.clear();
+		//dimTiempoExample.createCriteria().andTiempoFechaEqualTo(tCargoDespacho.getCarDespFecRetRea());
+		//dimTiempo = (dimTiempoManager.selectByExample(dimTiempoExample)).get(0);
+		//factEnvio.setEnvioKeyFecRetr(dimTiempo.getTiempoKey());
+		factEnvio.setEnvioKeyFecRetr(Util.getDateAsInteger(tCargoDespacho.getCarDespFecRetRea()));
 		
 		factEnvio.setEnvioKeyEstado(tCargoDespacho.getCarDespCodEst());
 		

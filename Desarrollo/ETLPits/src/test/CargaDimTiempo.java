@@ -3,6 +3,7 @@ package test;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -38,6 +39,7 @@ public class CargaDimTiempo {
 			
 			
 			String sqlInsertDimTiempo = "INSERT INTO dim_tiempo (" +
+					"tiempo_key," +
 					"tiempo_fecha," +
 					"tiempo_dia_semana," +
 					"tiempo_dia_mes," +
@@ -51,23 +53,24 @@ public class CargaDimTiempo {
 					"tiempo_semestre," +
 					"tiempo_nombre_semestre," +
 					"tiempo_anio) " +
-				"VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				"VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			
 			while(fechaCalendario.get(Calendar.YEAR)<2021){
 				PreparedStatement psInsertDimTiempo = cBi.prepareStatement(sqlInsertDimTiempo);
-				psInsertDimTiempo.setDate(1, new java.sql.Date(fechaCalendario.getTime().getTime()));
-				psInsertDimTiempo.setInt(2,fechaCalendario.get(Calendar.DAY_OF_WEEK));
-				psInsertDimTiempo.setInt(3,fechaCalendario.get(Calendar.DAY_OF_MONTH));
-				psInsertDimTiempo.setString(4,nombreDia(fechaCalendario.get(Calendar.DAY_OF_WEEK)));
-				psInsertDimTiempo.setInt(5,fechaCalendario.get(Calendar.WEEK_OF_MONTH));
-				psInsertDimTiempo.setInt(6,fechaCalendario.get(Calendar.WEEK_OF_YEAR));
-				psInsertDimTiempo.setInt(7,fechaCalendario.get(Calendar.MONTH)+1);
-				psInsertDimTiempo.setString(8,nombreMes(fechaCalendario.get(Calendar.MONTH)));
-				psInsertDimTiempo.setInt(9,numeroTrimestre(fechaCalendario.get(Calendar.MONTH)));
-				psInsertDimTiempo.setString(10,nombreTrimestre(numeroTrimestre(fechaCalendario.get(Calendar.MONTH))));
-				psInsertDimTiempo.setInt(11,numeroSemestre(fechaCalendario.get(Calendar.MONTH)));
-				psInsertDimTiempo.setString(12,nombreSemestre(numeroSemestre(fechaCalendario.get(Calendar.MONTH))));
-				psInsertDimTiempo.setInt(13,fechaCalendario.get(Calendar.YEAR));
+				psInsertDimTiempo.setInt(1, getDateAsInteger(fechaCalendario.getTime()));
+				psInsertDimTiempo.setDate(2, new java.sql.Date(fechaCalendario.getTime().getTime()));
+				psInsertDimTiempo.setInt(3,fechaCalendario.get(Calendar.DAY_OF_WEEK));
+				psInsertDimTiempo.setInt(4,fechaCalendario.get(Calendar.DAY_OF_MONTH));
+				psInsertDimTiempo.setString(5,nombreDia(fechaCalendario.get(Calendar.DAY_OF_WEEK)));
+				psInsertDimTiempo.setInt(6,fechaCalendario.get(Calendar.WEEK_OF_MONTH));
+				psInsertDimTiempo.setInt(7,fechaCalendario.get(Calendar.WEEK_OF_YEAR));
+				psInsertDimTiempo.setInt(8,fechaCalendario.get(Calendar.MONTH)+1);
+				psInsertDimTiempo.setString(9,nombreMes(fechaCalendario.get(Calendar.MONTH)));
+				psInsertDimTiempo.setInt(10,numeroTrimestre(fechaCalendario.get(Calendar.MONTH)));
+				psInsertDimTiempo.setString(11,nombreTrimestre(numeroTrimestre(fechaCalendario.get(Calendar.MONTH))));
+				psInsertDimTiempo.setInt(12,numeroSemestre(fechaCalendario.get(Calendar.MONTH)));
+				psInsertDimTiempo.setString(13,nombreSemestre(numeroSemestre(fechaCalendario.get(Calendar.MONTH))));
+				psInsertDimTiempo.setInt(14,fechaCalendario.get(Calendar.YEAR));
 				psInsertDimTiempo.executeUpdate();
 				
 				fechaCalendario.add(Calendar.DATE,1);	
@@ -169,6 +172,11 @@ public class CargaDimTiempo {
 		case 2: nombre = "2DO SEM"; break;
 		}
 		return nombre;
+	}
+	
+	public static int getDateAsInteger(java.util.Date date) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		return Integer.parseInt(format.format(date.getTime()));
 	}
 
 }

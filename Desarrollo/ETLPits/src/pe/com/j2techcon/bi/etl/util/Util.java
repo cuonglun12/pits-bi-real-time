@@ -8,9 +8,9 @@ import java.util.GregorianCalendar;
 
 public class Util {
 	
-	public static long getDateAsLong(java.util.Date date) {
+	public static int getDateAsInteger(java.util.Date date) {
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
-		return Long.parseLong(format.format(date.getTime()));
+		return Integer.parseInt(format.format(date.getTime()));
 	}
 	
 	public static long getDateTimeAsLong(java.util.Date date) {
@@ -42,9 +42,9 @@ public class Util {
 		return result;
 	}
 
-	public static long getCurrentDateAsLong() {
+	public static int getCurrentDateAsLong() {
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
-		return Long.parseLong(format.format((Calendar.getInstance()).getTime()));
+		return Integer.parseInt(format.format((Calendar.getInstance()).getTime()));
 	}
 	
 	public static long getCurrentDateTimeAsLong() {
@@ -52,9 +52,9 @@ public class Util {
 		return Long.parseLong(format.format((Calendar.getInstance()).getTime()));
 	}
 	
-	public static long getDateAsLong(java.util.Calendar date) {
+	public static int getDateAsInteger(java.util.Calendar date) {
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
-		return Long.parseLong(format.format(date.getTime()));
+		return Integer.parseInt(format.format(date.getTime()));
 	}
 	
 	public static long getDateTimeAsLong(java.util.Calendar date) {

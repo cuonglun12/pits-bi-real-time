@@ -9,19 +9,19 @@ import pe.com.j2techcon.bi.etl.logic.dimensional.DimTiempoManager;
 import pe.com.j2techcon.bi.etl.logic.dimensional.FactDespachoManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TDespachoManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TCargoDespachoManager;
-import pe.com.j2techcon.bi.etl.logic.generic.TParametroManager;
+//import pe.com.j2techcon.bi.etl.logic.generic.TParametroManager;
 import pe.com.j2techcon.bi.etl.util.Constantes;
 import pe.com.j2techcon.bi.etl.util.Util;
-import pe.com.j2techcon.bi.etl.domain.dimensional.DimTiempo;
-import pe.com.j2techcon.bi.etl.domain.dimensional.DimTiempoExample;
+//import pe.com.j2techcon.bi.etl.domain.dimensional.DimTiempo;
+//import pe.com.j2techcon.bi.etl.domain.dimensional.DimTiempoExample;
 import pe.com.j2techcon.bi.etl.domain.dimensional.FactDespacho;
 import pe.com.j2techcon.bi.etl.domain.dimensional.FactDespachoExample;
 import pe.com.j2techcon.bi.etl.domain.generic.TCargoDespacho;
 import pe.com.j2techcon.bi.etl.domain.generic.TDespacho;
 import pe.com.j2techcon.bi.etl.domain.generic.TDespachoExample;
 import pe.com.j2techcon.bi.etl.domain.generic.TCargoDespachoExample;
-import pe.com.j2techcon.bi.etl.domain.generic.TParametro;
-import pe.com.j2techcon.bi.etl.domain.generic.TParametroExample;
+//import pe.com.j2techcon.bi.etl.domain.generic.TParametro;
+//import pe.com.j2techcon.bi.etl.domain.generic.TParametroExample;
 
 public class FactDespachoProcess {
 	
@@ -48,18 +48,18 @@ public class FactDespachoProcess {
 	private TDespacho tDespacho;
 	private TDespachoExample tDespachoExample;
 	
-	private TParametro tParametro;
-	private TParametroExample tParametroExample;
+	//private TParametro tParametro;
+	//private TParametroExample tParametroExample;
 	
 	private FactDespacho factDespacho;
 	private FactDespachoExample factDespachoExample;
 	
-	private DimTiempo dimTiempo;
-	private DimTiempoExample dimTiempoExample;
+	//private DimTiempo dimTiempo;
+	//private DimTiempoExample dimTiempoExample;
 	
 	private TCargoDespachoManager tCargoDespachoManager;
 	private TDespachoManager tDespachoManager;
-	private TParametroManager tParametroManager;
+	//private TParametroManager tParametroManager;
 	private DimTiempoManager dimTiempoManager;
 	private FactDespachoManager factDespachoManager;
 	
@@ -209,21 +209,21 @@ public class FactDespachoProcess {
 		this.tDespachoExample = tDespachoExample;
 	}
 
-	public TParametro gettParametro() {
-		return tParametro;
-	}
-
-	public void settParametro(TParametro tParametro) {
-		this.tParametro = tParametro;
-	}
-
-	public TParametroExample gettParametroExample() {
-		return tParametroExample;
-	}
-
-	public void settParametroExample(TParametroExample tParametroExample) {
-		this.tParametroExample = tParametroExample;
-	}
+	//	public TParametro gettParametro() {
+	//		return tParametro;
+	//	}
+	//
+	//	public void settParametro(TParametro tParametro) {
+	//		this.tParametro = tParametro;
+	//	}
+	//
+	//	public TParametroExample gettParametroExample() {
+	//		return tParametroExample;
+	//	}
+	//
+	//	public void settParametroExample(TParametroExample tParametroExample) {
+	//		this.tParametroExample = tParametroExample;
+	//	}
 
 	public FactDespacho getFactDespacho() {
 		return factDespacho;
@@ -241,21 +241,21 @@ public class FactDespachoProcess {
 		this.factDespachoExample = factDespachoExample;
 	}
 
-	public DimTiempo getDimTiempo() {
-		return dimTiempo;
-	}
-
-	public void setDimTiempo(DimTiempo dimTiempo) {
-		this.dimTiempo = dimTiempo;
-	}
-
-	public DimTiempoExample getDimTiempoExample() {
-		return dimTiempoExample;
-	}
-
-	public void setDimTiempoExample(DimTiempoExample dimTiempoExample) {
-		this.dimTiempoExample = dimTiempoExample;
-	}
+	//	public DimTiempo getDimTiempo() {
+	//		return dimTiempo;
+	//	}
+	//
+	//	public void setDimTiempo(DimTiempo dimTiempo) {
+	//		this.dimTiempo = dimTiempo;
+	//	}
+	//
+	//	public DimTiempoExample getDimTiempoExample() {
+	//		return dimTiempoExample;
+	//	}
+	//
+	//	public void setDimTiempoExample(DimTiempoExample dimTiempoExample) {
+	//		this.dimTiempoExample = dimTiempoExample;
+	//	}
 
 	public TCargoDespachoManager gettCargoDespachoManager() {
 		return tCargoDespachoManager;
@@ -273,13 +273,13 @@ public class FactDespachoProcess {
 		this.tDespachoManager = tDespachoManager;
 	}
 
-	public TParametroManager gettParametroManager() {
-		return tParametroManager;
-	}
-
-	public void settParametroManager(TParametroManager tParametroManager) {
-		this.tParametroManager = tParametroManager;
-	}
+	//	public TParametroManager gettParametroManager() {
+	//		return tParametroManager;
+	//	}
+	//
+	//	public void settParametroManager(TParametroManager tParametroManager) {
+	//		this.tParametroManager = tParametroManager;
+	//	}
 
 	public DimTiempoManager getDimTiempoManager() {
 		return dimTiempoManager;
@@ -328,7 +328,7 @@ public class FactDespachoProcess {
 
 		tCargoDespachoManager = factory.getBean("tCargoDespachoManager", TCargoDespachoManager.class);
 		tDespachoManager = factory.getBean("tDespachoManager", TDespachoManager.class);
-		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
+		//tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
 		dimTiempoManager = factory.getBean("dimTiempoManager", DimTiempoManager.class);
 		factDespachoManager = factory.getBean("factDespachoManager", FactDespachoManager.class);
 		
@@ -361,14 +361,14 @@ public class FactDespachoProcess {
 				tDespacho.clear();
 				tDespachoExample.clear();
 				
-				tParametro.clear();
-				tParametroExample.clear();
+				//tParametro.clear();
+				//tParametroExample.clear();
 				
 				factDespacho.clear();
 				factDespachoExample.clear();
 				
-				dimTiempo.clear();
-				dimTiempoExample.clear();
+				//dimTiempo.clear();
+				//dimTiempoExample.clear();
 				
 				offset = 0;
 				break;
@@ -402,14 +402,14 @@ public class FactDespachoProcess {
 				tDespacho.clear();
 				tDespachoExample.clear();
 				
-				tParametro.clear();
-				tParametroExample.clear();
+				//tParametro.clear();
+				//tParametroExample.clear();
 				
 				factDespacho.clear();
 				factDespachoExample.clear();
 				
-				dimTiempo.clear();
-				dimTiempoExample.clear();
+				//dimTiempo.clear();
+				//dimTiempoExample.clear();
 				
 				offset = 0;
 				break;
@@ -481,30 +481,34 @@ public class FactDespachoProcess {
 		factDespacho.setDespachoKeyPersonal(tDespacho.getEmpCatId());
 		factDespacho.setDespachoKeyTipoRuta(tDespacho.getDespCodTipRut());
 		
-		dimTiempoExample.clear();
-		dimTiempoExample.createCriteria().andTiempoFechaEqualTo(tDespacho.getDespFecSal());
-		dimTiempo = (dimTiempoManager.selectByExample(dimTiempoExample)).get(0);
-		factDespacho.setDespachoKeyFecSal(dimTiempo.getTiempoKey());
+		//dimTiempoExample.clear();
+		//dimTiempoExample.createCriteria().andTiempoFechaEqualTo(tDespacho.getDespFecSal());
+		//dimTiempo = (dimTiempoManager.selectByExample(dimTiempoExample)).get(0);
+		//factDespacho.setDespachoKeyFecSal(dimTiempo.getTiempoKey());
+		factDespacho.setDespachoKeyFecSal(Util.getDateAsInteger(tDespacho.getDespFecSal()));
 		
-		dimTiempoExample.clear();
-		dimTiempoExample.createCriteria().andTiempoFechaEqualTo(tDespacho.getDespFecRetPro());
-		dimTiempo = (dimTiempoManager.selectByExample(dimTiempoExample)).get(0);
-		factDespacho.setDespachoKeyFecRetp(dimTiempo.getTiempoKey());
+		//dimTiempoExample.clear();
+		//dimTiempoExample.createCriteria().andTiempoFechaEqualTo(tDespacho.getDespFecRetPro());
+		//dimTiempo = (dimTiempoManager.selectByExample(dimTiempoExample)).get(0);
+		//factDespacho.setDespachoKeyFecRetp(dimTiempo.getTiempoKey());
+		factDespacho.setDespachoKeyFecRetp(Util.getDateAsInteger(tDespacho.getDespFecRetPro()));
 		
-		dimTiempoExample.clear();
-		dimTiempoExample.createCriteria().andTiempoFechaEqualTo(tDespacho.getDespFecRetRea());
-		dimTiempo = (dimTiempoManager.selectByExample(dimTiempoExample)).get(0);
-		factDespacho.setDespachoKeyFecRetr(dimTiempo.getTiempoKey());
+		//dimTiempoExample.clear();
+		//dimTiempoExample.createCriteria().andTiempoFechaEqualTo(tDespacho.getDespFecRetRea());
+		//dimTiempo = (dimTiempoManager.selectByExample(dimTiempoExample)).get(0);
+		//factDespacho.setDespachoKeyFecRetr(dimTiempo.getTiempoKey());
+		factDespacho.setDespachoKeyFecRetr(Util.getDateAsInteger(tDespacho.getDespFecRetRea()));
 		
 		factDespacho.setDespachoKeyEstado(tDespacho.getDespCodEst());
 		factDespacho.setDespachoMonPasaje(tDespacho.getDespMonPasaje());
 		
-		tParametroExample.clear();
-		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoDespacho());
-		tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoDespachoAnulado());
-		tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
+		//tParametroExample.clear();
+		//tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoDespacho());
+		//tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoDespachoAnulado());
+		//tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
 		
-		if(tDespacho.getDespCodEst() != tParametro.getParamId()){
+		//if(tDespacho.getDespCodEst() != tParametro.getParamId()){
+		if(tDespacho.getDespCodEst() != constantes.getParamSerialEstadoDespachoAnulado()){
 			if(Util.isEqualsWithDefaultDate(tDespacho.getDespFecRetRea())){
 				if(Util.isGreaterThanCurrentDate(tDespacho.getDespFecRetPro())){
 					factDespacho.setDespachoCntDiasExc(Util.getDaysAfterDate(tDespacho.getDespFecRetPro()));
@@ -545,92 +549,102 @@ public class FactDespachoProcess {
 			
 			tCargoDespachoExample.clear();
 			tCargoDespachoExample.createCriteria().andDespIdEqualTo(factDespacho.getDespachoKey());
-			tParametroExample.clear();
-			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
-			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoEntregado());
-			tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
-			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
+			//tParametroExample.clear();
+			//tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
+			//tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoEntregado());
+			//tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
+			//tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
+			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(constantes.getParamSerialEstadoCargoDespachoEntregado());
 			factDespacho.setDespachoCntEnt(tCargoDespachoManager.countByExample(tCargoDespachoExample));
 			
 			tCargoDespachoExample.clear();
 			tCargoDespachoExample.createCriteria().andDespIdEqualTo(factDespacho.getDespachoKey());
-			tParametroExample.clear();
-			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
-			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoMotivado());
-			tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
-			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
+			//tParametroExample.clear();
+			//tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
+			//tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoMotivado());
+			//tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
+			//tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
+			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(constantes.getParamSerialEstadoCargoDespachoMotivado());
 			factDespacho.setDespachoCntMot(tCargoDespachoManager.countByExample(tCargoDespachoExample));
 			
 			tCargoDespachoExample.clear();
 			tCargoDespachoExample.createCriteria().andDespIdEqualTo(factDespacho.getDespachoKey());
-			tParametroExample.clear();
-			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
-			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoReenviado());
-			tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
-			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
+			//tParametroExample.clear();
+			//tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
+			//tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoReenviado());
+			//tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
+			//tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
+			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(constantes.getParamSerialEstadoCargoDespachoReenviado());
 			factDespacho.setDespachoCntRee(tCargoDespachoManager.countByExample(tCargoDespachoExample));
 			
 			tCargoDespachoExample.clear();
 			tCargoDespachoExample.createCriteria().andDespIdEqualTo(factDespacho.getDespachoKey());
-			tParametroExample.clear();
-			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
-			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoAnulado());
-			tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
-			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
+			//tParametroExample.clear();
+			//tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
+			//tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoAnulado());
+			//tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
+			//tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
+			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(constantes.getParamSerialEstadoCargoDespachoAnulado());
 			factDespacho.setDespachoCntAnu(tCargoDespachoManager.countByExample(tCargoDespachoExample));
 			
 			tCargoDespachoExample.clear();
 			tCargoDespachoExample.createCriteria().andDespIdEqualTo(factDespacho.getDespachoKey());
-			tParametroExample.clear();
-			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
-			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoFueraZona());
-			tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
-			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
+			//tParametroExample.clear();
+			//tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
+			//tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoFueraZona());
+			//tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
+			//tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
+			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(constantes.getParamSerialEstadoCargoDespachoFueraZona());
 			factDespacho.setDespachoCntFueZon(tCargoDespachoManager.countByExample(tCargoDespachoExample));
 			
 			tCargoDespachoExample.clear();
 			tCargoDespachoExample.createCriteria().andDespIdEqualTo(factDespacho.getDespachoKey());
-			tParametroExample.clear();
-			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
-			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoPerdido());
-			tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
-			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
+			//tParametroExample.clear();
+			//tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
+			//tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoPerdido());
+			//tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
+			//tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
+			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(constantes.getParamSerialEstadoCargoDespachoPerdido());
 			factDespacho.setDespachoCntPerd(tCargoDespachoManager.countByExample(tCargoDespachoExample));
 			
 			tCargoDespachoExample.clear();
 			tCargoDespachoExample.createCriteria().andDespIdEqualTo(factDespacho.getDespachoKey());
-			tParametroExample.clear();
-			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
-			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoDigitado());
-			tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
-			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
+			//tParametroExample.clear();
+			//tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
+			//tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoDigitado());
+			//tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
+			//tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
+			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(constantes.getParamSerialEstadoCargoDespachoDigitado());
 			factDespacho.setDespachoCntDig(tCargoDespachoManager.countByExample(tCargoDespachoExample));
 			
 			tCargoDespachoExample.clear();
 			tCargoDespachoExample.createCriteria().andDespIdEqualTo(factDespacho.getDespachoKey());
-			tParametroExample.clear();
-			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
-			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoRuta());
-			tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
-			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
+			//tParametroExample.clear();
+			//tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
+			//tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoRuta());
+			//tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
+			//tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
+			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(constantes.getParamSerialEstadoCargoDespachoRuta());
 			factDespacho.setDespachoCntRut(tCargoDespachoManager.countByExample(tCargoDespachoExample));
 			
 			tCargoDespachoExample.clear();
 			tCargoDespachoExample.createCriteria().andDespIdEqualTo(factDespacho.getDespachoKey());
-			tParametroExample.clear();
-			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
-			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoProvincia());
-			tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
-			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
+			//tParametroExample.clear();
+			//tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
+			//tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoProvincia());
+			//tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
+			//tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
+			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(constantes.getParamSerialEstadoCargoDespachoProvincia());
 			factDespacho.setDespachoCntPro(tCargoDespachoManager.countByExample(tCargoDespachoExample));
 			
 			tCargoDespachoExample.clear();
 			tCargoDespachoExample.createCriteria().andDespIdEqualTo(factDespacho.getDespachoKey());
-			tParametroExample.clear();
-			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
-			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoRobo());
-			tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
-			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
+			//tParametroExample.clear();
+			//tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargoDespacho());
+			//tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoCargoDespachoRobo());
+			//tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
+			//tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(tParametro.getParamId());
+			tCargoDespachoExample.createCriteria().andCarDespCodEstEqualTo(constantes.getParamSerialEstadoCargoDespachoRobo());
 			factDespacho.setDespachoCntRob(tCargoDespachoManager.countByExample(tCargoDespachoExample));
 			
 		}

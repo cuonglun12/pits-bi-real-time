@@ -19,6 +19,20 @@ public class Constantes {
 	private String paramCodeEstadoCargoDespachoProvincia;
 	private String paramCodeEstadoCargoDespachoSupervision;
 	private String paramCodeEstadoCargoDespachoRobo;
+	private int paramSerialEstadoCargoDespachoDigitado;
+	private int paramSerialEstadoCargoDespachoRuta;
+	private int paramSerialEstadoCargoDespachoEntregado;
+	private int paramSerialEstadoCargoDespachoMotivado;
+	private int paramSerialEstadoCargoDespachoReenviado;
+	private int paramSerialEstadoCargoDespachoFueraZona;
+	private int paramSerialEstadoCargoDespachoPerdido;
+	private int paramSerialEstadoCargoDespachoAnulado;
+	private int paramSerialEstadoCargoDespachoNoDistribuido;
+	private int paramSerialEstadoCargoDespachoRetenido;
+	private int paramSerialEstadoCargoDespachoSinFisico;
+	private int paramSerialEstadoCargoDespachoProvincia;
+	private int paramSerialEstadoCargoDespachoSupervision;
+	private int paramSerialEstadoCargoDespachoRobo;
 	
 	private int	paramCodeEstadoCargoDespachoVerificacion;
 	
@@ -42,6 +56,23 @@ public class Constantes {
 	private String paramCodeEstadoCargoOrdenRobo;
 	private String paramCodeEstadoCargoOrdenSiLlego;
 	private String paramCodeEstadoCargoOrdenRecepcionado;
+	private int paramSerialEstadoCargoOrdenDigitado;
+	private int paramSerialEstadoCargoOrdenClasificado;
+	private int paramSerialEstadoCargoOrdenRuta;
+	private int paramSerialEstadoCargoOrdenEntregado;
+	private int paramSerialEstadoCargoOrdenMotivado;
+	private int paramSerialEstadoCargoOrdenReenviado;
+	private int paramSerialEstadoCargoOrdenFueraZona;
+	private int paramSerialEstadoCargoOrdenPerdido;
+	private int paramSerialEstadoCargoOrdenAnulado;
+	private int paramSerialEstadoCargoOrdenNoDistribuido;
+	private int paramSerialEstadoCargoOrdenRetenido;
+	private int paramSerialEstadoCargoOrdenSinFisico;
+	private int paramSerialEstadoCargoOrdenProvincia;
+	private int paramSerialEstadoCargoOrdenSupervision;
+	private int paramSerialEstadoCargoOrdenRobo;
+	private int paramSerialEstadoCargoOrdenSiLlego;
+	private int paramSerialEstadoCargoOrdenRecepcionado;
 	
 	private int	paramCodeMotivoCargo;
 	
@@ -69,6 +100,8 @@ public class Constantes {
 	private int	paramCodeTipoDocumento;
 	private String paramCodeTipoDocumentoRuc;
 	private String paramCodeTipoDocumentoDni;
+	private int paramSerialTipoDocumentoRuc;
+	private int paramSerialTipoDocumentoDni;
 	
 	private int	paramCodeEstadoDespacho;
 	private String paramCodeEstadoDespachoDespacho;
@@ -77,6 +110,12 @@ public class Constantes {
 	private String paramCodeEstadoDespachoGenerado;
 	private String paramCodeEstadoDespachoPagado;
 	private String paramCodeEstadoDespachoAnulado;
+	private int paramSerialEstadoDespachoDespacho;
+	private int paramSerialEstadoDespachoRuta;
+	private int paramSerialEstadoDespachoCerrado;
+	private int paramSerialEstadoDespachoGenerado;
+	private int paramSerialEstadoDespachoPagado;
+	private int paramSerialEstadoDespachoAnulado;
 	
 	private int	paramCodeEstadoDespachoVerificacion;
 	
@@ -91,12 +130,18 @@ public class Constantes {
 	private String paramCodeEstadoOrdenPendiente;
 	private String paramCodeEstadoOrdenCerrado;
 	private String paramCodeEstadoOrdenAnulado;
+	private int paramSerialEstadoOrdenGenerado;
+	private int paramSerialEstadoOrdenPendiente;
+	private int paramSerialEstadoOrdenCerrado;
+	private int paramSerialEstadoOrdenAnulado;
 	
 	private int	paramCodeTipoIngreso;
 	
 	private int	paramCodeTipoMoneda;
 	private String paramCodeTipoMonedaNuevoSol;
 	private String paramCodeTipoMonedaDolar;
+	private int paramSerialTipoMonedaNuevoSol;
+	private int paramSerialTipoMonedaDolar;
 	
 	private int	paramCodeTipoPago;
 	
@@ -117,6 +162,8 @@ public class Constantes {
 	private int paramCodeEstadoFacturado;
 	private String paramCodeEstadoFacturadoSi;
 	private String paramCodeEstadoFacturadoNo;
+	private int paramSerialEstadoFacturadoSi;
+	private int paramSerialEstadoFacturadoNo;
 	
 	private int paramCodeTipoAmbito;
 	private String paramCodeTipoAmbitoLocal;
@@ -125,6 +172,9 @@ public class Constantes {
 	private String paramCodeEstadoLiquidacionPendiente;
 	private String paramCodeEstadoLiquidacionParcial;
 	private String paramCodeEstadoLiquidacionTotal;
+	private int paramSerialEstadoLiquidacionPendiente;
+	private int paramSerialEstadoLiquidacionParcial;
+	private int paramSerialEstadoLiquidacionTotal;
 	
 	private String paramCodeNoDefinido;
 
@@ -196,7 +246,6 @@ public class Constantes {
 	private int idTableDimensionalFactDespacho;
 	private int idTableDimensionalFactEnvio;
 	private int idTableDimensionalFactOrden;
-	
 	public int getParamCodeTipoAreaCliente() {
 		return paramCodeTipoAreaCliente;
 	}
@@ -306,6 +355,104 @@ public class Constantes {
 	public void setParamCodeEstadoCargoDespachoRobo(
 			String paramCodeEstadoCargoDespachoRobo) {
 		this.paramCodeEstadoCargoDespachoRobo = paramCodeEstadoCargoDespachoRobo;
+	}
+	public int getParamSerialEstadoCargoDespachoDigitado() {
+		return paramSerialEstadoCargoDespachoDigitado;
+	}
+	public void setParamSerialEstadoCargoDespachoDigitado(
+			int paramSerialEstadoCargoDespachoDigitado) {
+		this.paramSerialEstadoCargoDespachoDigitado = paramSerialEstadoCargoDespachoDigitado;
+	}
+	public int getParamSerialEstadoCargoDespachoRuta() {
+		return paramSerialEstadoCargoDespachoRuta;
+	}
+	public void setParamSerialEstadoCargoDespachoRuta(
+			int paramSerialEstadoCargoDespachoRuta) {
+		this.paramSerialEstadoCargoDespachoRuta = paramSerialEstadoCargoDespachoRuta;
+	}
+	public int getParamSerialEstadoCargoDespachoEntregado() {
+		return paramSerialEstadoCargoDespachoEntregado;
+	}
+	public void setParamSerialEstadoCargoDespachoEntregado(
+			int paramSerialEstadoCargoDespachoEntregado) {
+		this.paramSerialEstadoCargoDespachoEntregado = paramSerialEstadoCargoDespachoEntregado;
+	}
+	public int getParamSerialEstadoCargoDespachoMotivado() {
+		return paramSerialEstadoCargoDespachoMotivado;
+	}
+	public void setParamSerialEstadoCargoDespachoMotivado(
+			int paramSerialEstadoCargoDespachoMotivado) {
+		this.paramSerialEstadoCargoDespachoMotivado = paramSerialEstadoCargoDespachoMotivado;
+	}
+	public int getParamSerialEstadoCargoDespachoReenviado() {
+		return paramSerialEstadoCargoDespachoReenviado;
+	}
+	public void setParamSerialEstadoCargoDespachoReenviado(
+			int paramSerialEstadoCargoDespachoReenviado) {
+		this.paramSerialEstadoCargoDespachoReenviado = paramSerialEstadoCargoDespachoReenviado;
+	}
+	public int getParamSerialEstadoCargoDespachoFueraZona() {
+		return paramSerialEstadoCargoDespachoFueraZona;
+	}
+	public void setParamSerialEstadoCargoDespachoFueraZona(
+			int paramSerialEstadoCargoDespachoFueraZona) {
+		this.paramSerialEstadoCargoDespachoFueraZona = paramSerialEstadoCargoDespachoFueraZona;
+	}
+	public int getParamSerialEstadoCargoDespachoPerdido() {
+		return paramSerialEstadoCargoDespachoPerdido;
+	}
+	public void setParamSerialEstadoCargoDespachoPerdido(
+			int paramSerialEstadoCargoDespachoPerdido) {
+		this.paramSerialEstadoCargoDespachoPerdido = paramSerialEstadoCargoDespachoPerdido;
+	}
+	public int getParamSerialEstadoCargoDespachoAnulado() {
+		return paramSerialEstadoCargoDespachoAnulado;
+	}
+	public void setParamSerialEstadoCargoDespachoAnulado(
+			int paramSerialEstadoCargoDespachoAnulado) {
+		this.paramSerialEstadoCargoDespachoAnulado = paramSerialEstadoCargoDespachoAnulado;
+	}
+	public int getParamSerialEstadoCargoDespachoNoDistribuido() {
+		return paramSerialEstadoCargoDespachoNoDistribuido;
+	}
+	public void setParamSerialEstadoCargoDespachoNoDistribuido(
+			int paramSerialEstadoCargoDespachoNoDistribuido) {
+		this.paramSerialEstadoCargoDespachoNoDistribuido = paramSerialEstadoCargoDespachoNoDistribuido;
+	}
+	public int getParamSerialEstadoCargoDespachoRetenido() {
+		return paramSerialEstadoCargoDespachoRetenido;
+	}
+	public void setParamSerialEstadoCargoDespachoRetenido(
+			int paramSerialEstadoCargoDespachoRetenido) {
+		this.paramSerialEstadoCargoDespachoRetenido = paramSerialEstadoCargoDespachoRetenido;
+	}
+	public int getParamSerialEstadoCargoDespachoSinFisico() {
+		return paramSerialEstadoCargoDespachoSinFisico;
+	}
+	public void setParamSerialEstadoCargoDespachoSinFisico(
+			int paramSerialEstadoCargoDespachoSinFisico) {
+		this.paramSerialEstadoCargoDespachoSinFisico = paramSerialEstadoCargoDespachoSinFisico;
+	}
+	public int getParamSerialEstadoCargoDespachoProvincia() {
+		return paramSerialEstadoCargoDespachoProvincia;
+	}
+	public void setParamSerialEstadoCargoDespachoProvincia(
+			int paramSerialEstadoCargoDespachoProvincia) {
+		this.paramSerialEstadoCargoDespachoProvincia = paramSerialEstadoCargoDespachoProvincia;
+	}
+	public int getParamSerialEstadoCargoDespachoSupervision() {
+		return paramSerialEstadoCargoDespachoSupervision;
+	}
+	public void setParamSerialEstadoCargoDespachoSupervision(
+			int paramSerialEstadoCargoDespachoSupervision) {
+		this.paramSerialEstadoCargoDespachoSupervision = paramSerialEstadoCargoDespachoSupervision;
+	}
+	public int getParamSerialEstadoCargoDespachoRobo() {
+		return paramSerialEstadoCargoDespachoRobo;
+	}
+	public void setParamSerialEstadoCargoDespachoRobo(
+			int paramSerialEstadoCargoDespachoRobo) {
+		this.paramSerialEstadoCargoDespachoRobo = paramSerialEstadoCargoDespachoRobo;
 	}
 	public int getParamCodeEstadoCargoDespachoVerificacion() {
 		return paramCodeEstadoCargoDespachoVerificacion;
@@ -445,6 +592,125 @@ public class Constantes {
 			String paramCodeEstadoCargoOrdenRecepcionado) {
 		this.paramCodeEstadoCargoOrdenRecepcionado = paramCodeEstadoCargoOrdenRecepcionado;
 	}
+	public int getParamSerialEstadoCargoOrdenDigitado() {
+		return paramSerialEstadoCargoOrdenDigitado;
+	}
+	public void setParamSerialEstadoCargoOrdenDigitado(
+			int paramSerialEstadoCargoOrdenDigitado) {
+		this.paramSerialEstadoCargoOrdenDigitado = paramSerialEstadoCargoOrdenDigitado;
+	}
+	public int getParamSerialEstadoCargoOrdenClasificado() {
+		return paramSerialEstadoCargoOrdenClasificado;
+	}
+	public void setParamSerialEstadoCargoOrdenClasificado(
+			int paramSerialEstadoCargoOrdenClasificado) {
+		this.paramSerialEstadoCargoOrdenClasificado = paramSerialEstadoCargoOrdenClasificado;
+	}
+	public int getParamSerialEstadoCargoOrdenRuta() {
+		return paramSerialEstadoCargoOrdenRuta;
+	}
+	public void setParamSerialEstadoCargoOrdenRuta(
+			int paramSerialEstadoCargoOrdenRuta) {
+		this.paramSerialEstadoCargoOrdenRuta = paramSerialEstadoCargoOrdenRuta;
+	}
+	public int getParamSerialEstadoCargoOrdenEntregado() {
+		return paramSerialEstadoCargoOrdenEntregado;
+	}
+	public void setParamSerialEstadoCargoOrdenEntregado(
+			int paramSerialEstadoCargoOrdenEntregado) {
+		this.paramSerialEstadoCargoOrdenEntregado = paramSerialEstadoCargoOrdenEntregado;
+	}
+	public int getParamSerialEstadoCargoOrdenMotivado() {
+		return paramSerialEstadoCargoOrdenMotivado;
+	}
+	public void setParamSerialEstadoCargoOrdenMotivado(
+			int paramSerialEstadoCargoOrdenMotivado) {
+		this.paramSerialEstadoCargoOrdenMotivado = paramSerialEstadoCargoOrdenMotivado;
+	}
+	public int getParamSerialEstadoCargoOrdenReenviado() {
+		return paramSerialEstadoCargoOrdenReenviado;
+	}
+	public void setParamSerialEstadoCargoOrdenReenviado(
+			int paramSerialEstadoCargoOrdenReenviado) {
+		this.paramSerialEstadoCargoOrdenReenviado = paramSerialEstadoCargoOrdenReenviado;
+	}
+	public int getParamSerialEstadoCargoOrdenFueraZona() {
+		return paramSerialEstadoCargoOrdenFueraZona;
+	}
+	public void setParamSerialEstadoCargoOrdenFueraZona(
+			int paramSerialEstadoCargoOrdenFueraZona) {
+		this.paramSerialEstadoCargoOrdenFueraZona = paramSerialEstadoCargoOrdenFueraZona;
+	}
+	public int getParamSerialEstadoCargoOrdenPerdido() {
+		return paramSerialEstadoCargoOrdenPerdido;
+	}
+	public void setParamSerialEstadoCargoOrdenPerdido(
+			int paramSerialEstadoCargoOrdenPerdido) {
+		this.paramSerialEstadoCargoOrdenPerdido = paramSerialEstadoCargoOrdenPerdido;
+	}
+	public int getParamSerialEstadoCargoOrdenAnulado() {
+		return paramSerialEstadoCargoOrdenAnulado;
+	}
+	public void setParamSerialEstadoCargoOrdenAnulado(
+			int paramSerialEstadoCargoOrdenAnulado) {
+		this.paramSerialEstadoCargoOrdenAnulado = paramSerialEstadoCargoOrdenAnulado;
+	}
+	public int getParamSerialEstadoCargoOrdenNoDistribuido() {
+		return paramSerialEstadoCargoOrdenNoDistribuido;
+	}
+	public void setParamSerialEstadoCargoOrdenNoDistribuido(
+			int paramSerialEstadoCargoOrdenNoDistribuido) {
+		this.paramSerialEstadoCargoOrdenNoDistribuido = paramSerialEstadoCargoOrdenNoDistribuido;
+	}
+	public int getParamSerialEstadoCargoOrdenRetenido() {
+		return paramSerialEstadoCargoOrdenRetenido;
+	}
+	public void setParamSerialEstadoCargoOrdenRetenido(
+			int paramSerialEstadoCargoOrdenRetenido) {
+		this.paramSerialEstadoCargoOrdenRetenido = paramSerialEstadoCargoOrdenRetenido;
+	}
+	public int getParamSerialEstadoCargoOrdenSinFisico() {
+		return paramSerialEstadoCargoOrdenSinFisico;
+	}
+	public void setParamSerialEstadoCargoOrdenSinFisico(
+			int paramSerialEstadoCargoOrdenSinFisico) {
+		this.paramSerialEstadoCargoOrdenSinFisico = paramSerialEstadoCargoOrdenSinFisico;
+	}
+	public int getParamSerialEstadoCargoOrdenProvincia() {
+		return paramSerialEstadoCargoOrdenProvincia;
+	}
+	public void setParamSerialEstadoCargoOrdenProvincia(
+			int paramSerialEstadoCargoOrdenProvincia) {
+		this.paramSerialEstadoCargoOrdenProvincia = paramSerialEstadoCargoOrdenProvincia;
+	}
+	public int getParamSerialEstadoCargoOrdenSupervision() {
+		return paramSerialEstadoCargoOrdenSupervision;
+	}
+	public void setParamSerialEstadoCargoOrdenSupervision(
+			int paramSerialEstadoCargoOrdenSupervision) {
+		this.paramSerialEstadoCargoOrdenSupervision = paramSerialEstadoCargoOrdenSupervision;
+	}
+	public int getParamSerialEstadoCargoOrdenRobo() {
+		return paramSerialEstadoCargoOrdenRobo;
+	}
+	public void setParamSerialEstadoCargoOrdenRobo(
+			int paramSerialEstadoCargoOrdenRobo) {
+		this.paramSerialEstadoCargoOrdenRobo = paramSerialEstadoCargoOrdenRobo;
+	}
+	public int getParamSerialEstadoCargoOrdenSiLlego() {
+		return paramSerialEstadoCargoOrdenSiLlego;
+	}
+	public void setParamSerialEstadoCargoOrdenSiLlego(
+			int paramSerialEstadoCargoOrdenSiLlego) {
+		this.paramSerialEstadoCargoOrdenSiLlego = paramSerialEstadoCargoOrdenSiLlego;
+	}
+	public int getParamSerialEstadoCargoOrdenRecepcionado() {
+		return paramSerialEstadoCargoOrdenRecepcionado;
+	}
+	public void setParamSerialEstadoCargoOrdenRecepcionado(
+			int paramSerialEstadoCargoOrdenRecepcionado) {
+		this.paramSerialEstadoCargoOrdenRecepcionado = paramSerialEstadoCargoOrdenRecepcionado;
+	}
 	public int getParamCodeMotivoCargo() {
 		return paramCodeMotivoCargo;
 	}
@@ -536,6 +802,18 @@ public class Constantes {
 	public void setParamCodeTipoDocumentoDni(String paramCodeTipoDocumentoDni) {
 		this.paramCodeTipoDocumentoDni = paramCodeTipoDocumentoDni;
 	}
+	public int getParamSerialTipoDocumentoRuc() {
+		return paramSerialTipoDocumentoRuc;
+	}
+	public void setParamSerialTipoDocumentoRuc(int paramSerialTipoDocumentoRuc) {
+		this.paramSerialTipoDocumentoRuc = paramSerialTipoDocumentoRuc;
+	}
+	public int getParamSerialTipoDocumentoDni() {
+		return paramSerialTipoDocumentoDni;
+	}
+	public void setParamSerialTipoDocumentoDni(int paramSerialTipoDocumentoDni) {
+		this.paramSerialTipoDocumentoDni = paramSerialTipoDocumentoDni;
+	}
 	public int getParamCodeEstadoDespacho() {
 		return paramCodeEstadoDespacho;
 	}
@@ -582,6 +860,47 @@ public class Constantes {
 	public void setParamCodeEstadoDespachoAnulado(
 			String paramCodeEstadoDespachoAnulado) {
 		this.paramCodeEstadoDespachoAnulado = paramCodeEstadoDespachoAnulado;
+	}
+	public int getParamSerialEstadoDespachoDespacho() {
+		return paramSerialEstadoDespachoDespacho;
+	}
+	public void setParamSerialEstadoDespachoDespacho(
+			int paramSerialEstadoDespachoDespacho) {
+		this.paramSerialEstadoDespachoDespacho = paramSerialEstadoDespachoDespacho;
+	}
+	public int getParamSerialEstadoDespachoRuta() {
+		return paramSerialEstadoDespachoRuta;
+	}
+	public void setParamSerialEstadoDespachoRuta(int paramSerialEstadoDespachoRuta) {
+		this.paramSerialEstadoDespachoRuta = paramSerialEstadoDespachoRuta;
+	}
+	public int getParamSerialEstadoDespachoCerrado() {
+		return paramSerialEstadoDespachoCerrado;
+	}
+	public void setParamSerialEstadoDespachoCerrado(
+			int paramSerialEstadoDespachoCerrado) {
+		this.paramSerialEstadoDespachoCerrado = paramSerialEstadoDespachoCerrado;
+	}
+	public int getParamSerialEstadoDespachoGenerado() {
+		return paramSerialEstadoDespachoGenerado;
+	}
+	public void setParamSerialEstadoDespachoGenerado(
+			int paramSerialEstadoDespachoGenerado) {
+		this.paramSerialEstadoDespachoGenerado = paramSerialEstadoDespachoGenerado;
+	}
+	public int getParamSerialEstadoDespachoPagado() {
+		return paramSerialEstadoDespachoPagado;
+	}
+	public void setParamSerialEstadoDespachoPagado(
+			int paramSerialEstadoDespachoPagado) {
+		this.paramSerialEstadoDespachoPagado = paramSerialEstadoDespachoPagado;
+	}
+	public int getParamSerialEstadoDespachoAnulado() {
+		return paramSerialEstadoDespachoAnulado;
+	}
+	public void setParamSerialEstadoDespachoAnulado(
+			int paramSerialEstadoDespachoAnulado) {
+		this.paramSerialEstadoDespachoAnulado = paramSerialEstadoDespachoAnulado;
 	}
 	public int getParamCodeEstadoDespachoVerificacion() {
 		return paramCodeEstadoDespachoVerificacion;
@@ -639,6 +958,31 @@ public class Constantes {
 	public void setParamCodeEstadoOrdenAnulado(String paramCodeEstadoOrdenAnulado) {
 		this.paramCodeEstadoOrdenAnulado = paramCodeEstadoOrdenAnulado;
 	}
+	public int getParamSerialEstadoOrdenGenerado() {
+		return paramSerialEstadoOrdenGenerado;
+	}
+	public void setParamSerialEstadoOrdenGenerado(int paramSerialEstadoOrdenGenerado) {
+		this.paramSerialEstadoOrdenGenerado = paramSerialEstadoOrdenGenerado;
+	}
+	public int getParamSerialEstadoOrdenPendiente() {
+		return paramSerialEstadoOrdenPendiente;
+	}
+	public void setParamSerialEstadoOrdenPendiente(
+			int paramSerialEstadoOrdenPendiente) {
+		this.paramSerialEstadoOrdenPendiente = paramSerialEstadoOrdenPendiente;
+	}
+	public int getParamSerialEstadoOrdenCerrado() {
+		return paramSerialEstadoOrdenCerrado;
+	}
+	public void setParamSerialEstadoOrdenCerrado(int paramSerialEstadoOrdenCerrado) {
+		this.paramSerialEstadoOrdenCerrado = paramSerialEstadoOrdenCerrado;
+	}
+	public int getParamSerialEstadoOrdenAnulado() {
+		return paramSerialEstadoOrdenAnulado;
+	}
+	public void setParamSerialEstadoOrdenAnulado(int paramSerialEstadoOrdenAnulado) {
+		this.paramSerialEstadoOrdenAnulado = paramSerialEstadoOrdenAnulado;
+	}
 	public int getParamCodeTipoIngreso() {
 		return paramCodeTipoIngreso;
 	}
@@ -662,6 +1006,18 @@ public class Constantes {
 	}
 	public void setParamCodeTipoMonedaDolar(String paramCodeTipoMonedaDolar) {
 		this.paramCodeTipoMonedaDolar = paramCodeTipoMonedaDolar;
+	}
+	public int getParamSerialTipoMonedaNuevoSol() {
+		return paramSerialTipoMonedaNuevoSol;
+	}
+	public void setParamSerialTipoMonedaNuevoSol(int paramSerialTipoMonedaNuevoSol) {
+		this.paramSerialTipoMonedaNuevoSol = paramSerialTipoMonedaNuevoSol;
+	}
+	public int getParamSerialTipoMonedaDolar() {
+		return paramSerialTipoMonedaDolar;
+	}
+	public void setParamSerialTipoMonedaDolar(int paramSerialTipoMonedaDolar) {
+		this.paramSerialTipoMonedaDolar = paramSerialTipoMonedaDolar;
 	}
 	public int getParamCodeTipoPago() {
 		return paramCodeTipoPago;
@@ -729,6 +1085,18 @@ public class Constantes {
 	public void setParamCodeEstadoFacturadoNo(String paramCodeEstadoFacturadoNo) {
 		this.paramCodeEstadoFacturadoNo = paramCodeEstadoFacturadoNo;
 	}
+	public int getParamSerialEstadoFacturadoSi() {
+		return paramSerialEstadoFacturadoSi;
+	}
+	public void setParamSerialEstadoFacturadoSi(int paramSerialEstadoFacturadoSi) {
+		this.paramSerialEstadoFacturadoSi = paramSerialEstadoFacturadoSi;
+	}
+	public int getParamSerialEstadoFacturadoNo() {
+		return paramSerialEstadoFacturadoNo;
+	}
+	public void setParamSerialEstadoFacturadoNo(int paramSerialEstadoFacturadoNo) {
+		this.paramSerialEstadoFacturadoNo = paramSerialEstadoFacturadoNo;
+	}
 	public int getParamCodeTipoAmbito() {
 		return paramCodeTipoAmbito;
 	}
@@ -767,6 +1135,27 @@ public class Constantes {
 	public void setParamCodeEstadoLiquidacionTotal(
 			String paramCodeEstadoLiquidacionTotal) {
 		this.paramCodeEstadoLiquidacionTotal = paramCodeEstadoLiquidacionTotal;
+	}
+	public int getParamSerialEstadoLiquidacionPendiente() {
+		return paramSerialEstadoLiquidacionPendiente;
+	}
+	public void setParamSerialEstadoLiquidacionPendiente(
+			int paramSerialEstadoLiquidacionPendiente) {
+		this.paramSerialEstadoLiquidacionPendiente = paramSerialEstadoLiquidacionPendiente;
+	}
+	public int getParamSerialEstadoLiquidacionParcial() {
+		return paramSerialEstadoLiquidacionParcial;
+	}
+	public void setParamSerialEstadoLiquidacionParcial(
+			int paramSerialEstadoLiquidacionParcial) {
+		this.paramSerialEstadoLiquidacionParcial = paramSerialEstadoLiquidacionParcial;
+	}
+	public int getParamSerialEstadoLiquidacionTotal() {
+		return paramSerialEstadoLiquidacionTotal;
+	}
+	public void setParamSerialEstadoLiquidacionTotal(
+			int paramSerialEstadoLiquidacionTotal) {
+		this.paramSerialEstadoLiquidacionTotal = paramSerialEstadoLiquidacionTotal;
 	}
 	public String getParamCodeNoDefinido() {
 		return paramCodeNoDefinido;
@@ -829,17 +1218,17 @@ public class Constantes {
 			String stateProcessCompletedCorrectly) {
 		this.stateProcessCompletedCorrectly = stateProcessCompletedCorrectly;
 	}
-	public String getStateProcessCanceled() {
-		return stateProcessCanceled;
-	}
-	public void setStateProcessCanceled(String stateProcessCanceled) {
-		this.stateProcessCanceled = stateProcessCanceled;
-	}
 	public String getStateProcessCompletedErrors() {
 		return stateProcessCompletedErrors;
 	}
 	public void setStateProcessCompletedErrors(String stateProcessCompletedErrors) {
 		this.stateProcessCompletedErrors = stateProcessCompletedErrors;
+	}
+	public String getStateProcessCanceled() {
+		return stateProcessCanceled;
+	}
+	public void setStateProcessCanceled(String stateProcessCanceled) {
+		this.stateProcessCanceled = stateProcessCanceled;
 	}
 	public String getTypeProcessSimple() {
 		return typeProcessSimple;
@@ -890,6 +1279,12 @@ public class Constantes {
 	public void setResultProcessCompletedErrors(int resultProcessCompletedErrors) {
 		this.resultProcessCompletedErrors = resultProcessCompletedErrors;
 	}
+	public int getSizePage() {
+		return sizePage;
+	}
+	public void setSizePage(int sizePage) {
+		this.sizePage = sizePage;
+	}
 	public int getMaxHoursProcess() {
 		return maxHoursProcess;
 	}
@@ -901,12 +1296,6 @@ public class Constantes {
 	}
 	public void setMaxHoursFirstProcess(int maxHoursFirstProcess) {
 		this.maxHoursFirstProcess = maxHoursFirstProcess;
-	}
-	public int getSizePage() {
-		return sizePage;
-	}
-	public void setSizePage(int sizePage) {
-		this.sizePage = sizePage;
 	}
 	public int getIdTableGenericTAreaCliente() {
 		return idTableGenericTAreaCliente;
@@ -1122,6 +1511,7 @@ public class Constantes {
 	public void setIdTableDimensionalFactOrden(int idTableDimensionalFactOrden) {
 		this.idTableDimensionalFactOrden = idTableDimensionalFactOrden;
 	}
+	
 	@Override
 	public String toString() {
 		return "Constantes [paramCodeTipoAreaCliente="
@@ -1155,6 +1545,34 @@ public class Constantes {
 				+ paramCodeEstadoCargoDespachoSupervision
 				+ ", paramCodeEstadoCargoDespachoRobo="
 				+ paramCodeEstadoCargoDespachoRobo
+				+ ", paramSerialEstadoCargoDespachoDigitado="
+				+ paramSerialEstadoCargoDespachoDigitado
+				+ ", paramSerialEstadoCargoDespachoRuta="
+				+ paramSerialEstadoCargoDespachoRuta
+				+ ", paramSerialEstadoCargoDespachoEntregado="
+				+ paramSerialEstadoCargoDespachoEntregado
+				+ ", paramSerialEstadoCargoDespachoMotivado="
+				+ paramSerialEstadoCargoDespachoMotivado
+				+ ", paramSerialEstadoCargoDespachoReenviado="
+				+ paramSerialEstadoCargoDespachoReenviado
+				+ ", paramSerialEstadoCargoDespachoFueraZona="
+				+ paramSerialEstadoCargoDespachoFueraZona
+				+ ", paramSerialEstadoCargoDespachoPerdido="
+				+ paramSerialEstadoCargoDespachoPerdido
+				+ ", paramSerialEstadoCargoDespachoAnulado="
+				+ paramSerialEstadoCargoDespachoAnulado
+				+ ", paramSerialEstadoCargoDespachoNoDistribuido="
+				+ paramSerialEstadoCargoDespachoNoDistribuido
+				+ ", paramSerialEstadoCargoDespachoRetenido="
+				+ paramSerialEstadoCargoDespachoRetenido
+				+ ", paramSerialEstadoCargoDespachoSinFisico="
+				+ paramSerialEstadoCargoDespachoSinFisico
+				+ ", paramSerialEstadoCargoDespachoProvincia="
+				+ paramSerialEstadoCargoDespachoProvincia
+				+ ", paramSerialEstadoCargoDespachoSupervision="
+				+ paramSerialEstadoCargoDespachoSupervision
+				+ ", paramSerialEstadoCargoDespachoRobo="
+				+ paramSerialEstadoCargoDespachoRobo
 				+ ", paramCodeEstadoCargoDespachoVerificacion="
 				+ paramCodeEstadoCargoDespachoVerificacion
 				+ ", paramCodeMotivoCargoDespacho="
@@ -1193,6 +1611,40 @@ public class Constantes {
 				+ paramCodeEstadoCargoOrdenSiLlego
 				+ ", paramCodeEstadoCargoOrdenRecepcionado="
 				+ paramCodeEstadoCargoOrdenRecepcionado
+				+ ", paramSerialEstadoCargoOrdenDigitado="
+				+ paramSerialEstadoCargoOrdenDigitado
+				+ ", paramSerialEstadoCargoOrdenClasificado="
+				+ paramSerialEstadoCargoOrdenClasificado
+				+ ", paramSerialEstadoCargoOrdenRuta="
+				+ paramSerialEstadoCargoOrdenRuta
+				+ ", paramSerialEstadoCargoOrdenEntregado="
+				+ paramSerialEstadoCargoOrdenEntregado
+				+ ", paramSerialEstadoCargoOrdenMotivado="
+				+ paramSerialEstadoCargoOrdenMotivado
+				+ ", paramSerialEstadoCargoOrdenReenviado="
+				+ paramSerialEstadoCargoOrdenReenviado
+				+ ", paramSerialEstadoCargoOrdenFueraZona="
+				+ paramSerialEstadoCargoOrdenFueraZona
+				+ ", paramSerialEstadoCargoOrdenPerdido="
+				+ paramSerialEstadoCargoOrdenPerdido
+				+ ", paramSerialEstadoCargoOrdenAnulado="
+				+ paramSerialEstadoCargoOrdenAnulado
+				+ ", paramSerialEstadoCargoOrdenNoDistribuido="
+				+ paramSerialEstadoCargoOrdenNoDistribuido
+				+ ", paramSerialEstadoCargoOrdenRetenido="
+				+ paramSerialEstadoCargoOrdenRetenido
+				+ ", paramSerialEstadoCargoOrdenSinFisico="
+				+ paramSerialEstadoCargoOrdenSinFisico
+				+ ", paramSerialEstadoCargoOrdenProvincia="
+				+ paramSerialEstadoCargoOrdenProvincia
+				+ ", paramSerialEstadoCargoOrdenSupervision="
+				+ paramSerialEstadoCargoOrdenSupervision
+				+ ", paramSerialEstadoCargoOrdenRobo="
+				+ paramSerialEstadoCargoOrdenRobo
+				+ ", paramSerialEstadoCargoOrdenSiLlego="
+				+ paramSerialEstadoCargoOrdenSiLlego
+				+ ", paramSerialEstadoCargoOrdenRecepcionado="
+				+ paramSerialEstadoCargoOrdenRecepcionado
 				+ ", paramCodeMotivoCargo=" + paramCodeMotivoCargo
 				+ ", paramCodeTipoIngresoCargo=" + paramCodeTipoIngresoCargo
 				+ ", paramCodeCategoriaCliente=" + paramCodeCategoriaCliente
@@ -1208,7 +1660,10 @@ public class Constantes {
 				+ paramCodeTipoServicio + ", paramCodeTipoDocumento="
 				+ paramCodeTipoDocumento + ", paramCodeTipoDocumentoRuc="
 				+ paramCodeTipoDocumentoRuc + ", paramCodeTipoDocumentoDni="
-				+ paramCodeTipoDocumentoDni + ", paramCodeEstadoDespacho="
+				+ paramCodeTipoDocumentoDni + ", paramSerialTipoDocumentoRuc="
+				+ paramSerialTipoDocumentoRuc
+				+ ", paramSerialTipoDocumentoDni="
+				+ paramSerialTipoDocumentoDni + ", paramCodeEstadoDespacho="
 				+ paramCodeEstadoDespacho
 				+ ", paramCodeEstadoDespachoDespacho="
 				+ paramCodeEstadoDespachoDespacho
@@ -1222,6 +1677,18 @@ public class Constantes {
 				+ paramCodeEstadoDespachoPagado
 				+ ", paramCodeEstadoDespachoAnulado="
 				+ paramCodeEstadoDespachoAnulado
+				+ ", paramSerialEstadoDespachoDespacho="
+				+ paramSerialEstadoDespachoDespacho
+				+ ", paramSerialEstadoDespachoRuta="
+				+ paramSerialEstadoDespachoRuta
+				+ ", paramSerialEstadoDespachoCerrado="
+				+ paramSerialEstadoDespachoCerrado
+				+ ", paramSerialEstadoDespachoGenerado="
+				+ paramSerialEstadoDespachoGenerado
+				+ ", paramSerialEstadoDespachoPagado="
+				+ paramSerialEstadoDespachoPagado
+				+ ", paramSerialEstadoDespachoAnulado="
+				+ paramSerialEstadoDespachoAnulado
 				+ ", paramCodeEstadoDespachoVerificacion="
 				+ paramCodeEstadoDespachoVerificacion
 				+ ", paramCodeTipoDespacho=" + paramCodeTipoDespacho
@@ -1235,22 +1702,37 @@ public class Constantes {
 				+ ", paramCodeEstadoOrdenCerrado="
 				+ paramCodeEstadoOrdenCerrado
 				+ ", paramCodeEstadoOrdenAnulado="
-				+ paramCodeEstadoOrdenAnulado + ", paramCodeTipoIngreso="
+				+ paramCodeEstadoOrdenAnulado
+				+ ", paramSerialEstadoOrdenGenerado="
+				+ paramSerialEstadoOrdenGenerado
+				+ ", paramSerialEstadoOrdenPendiente="
+				+ paramSerialEstadoOrdenPendiente
+				+ ", paramSerialEstadoOrdenCerrado="
+				+ paramSerialEstadoOrdenCerrado
+				+ ", paramSerialEstadoOrdenAnulado="
+				+ paramSerialEstadoOrdenAnulado + ", paramCodeTipoIngreso="
 				+ paramCodeTipoIngreso + ", paramCodeTipoMoneda="
 				+ paramCodeTipoMoneda + ", paramCodeTipoMonedaNuevoSol="
 				+ paramCodeTipoMonedaNuevoSol + ", paramCodeTipoMonedaDolar="
-				+ paramCodeTipoMonedaDolar + ", paramCodeTipoPago="
-				+ paramCodeTipoPago + ", paramCodeTipoReparto="
-				+ paramCodeTipoReparto + ", paramCodeTipoProducto="
-				+ paramCodeTipoProducto + ", paramCodeTipoSede="
-				+ paramCodeTipoSede + ", paramCodeUbigeoPais="
-				+ paramCodeUbigeoPais + ", paramCodeUbigeoDepartamento="
+				+ paramCodeTipoMonedaDolar + ", paramSerialTipoMonedaNuevoSol="
+				+ paramSerialTipoMonedaNuevoSol
+				+ ", paramSerialTipoMonedaDolar=" + paramSerialTipoMonedaDolar
+				+ ", paramCodeTipoPago=" + paramCodeTipoPago
+				+ ", paramCodeTipoReparto=" + paramCodeTipoReparto
+				+ ", paramCodeTipoProducto=" + paramCodeTipoProducto
+				+ ", paramCodeTipoSede=" + paramCodeTipoSede
+				+ ", paramCodeUbigeoPais=" + paramCodeUbigeoPais
+				+ ", paramCodeUbigeoDepartamento="
 				+ paramCodeUbigeoDepartamento + ", paramCodeUbigeoProvincia="
 				+ paramCodeUbigeoProvincia + ", paramCodeUbigeoDistrito="
 				+ paramCodeUbigeoDistrito + ", paramCodeEstadoFacturado="
 				+ paramCodeEstadoFacturado + ", paramCodeEstadoFacturadoSi="
 				+ paramCodeEstadoFacturadoSi + ", paramCodeEstadoFacturadoNo="
-				+ paramCodeEstadoFacturadoNo + ", paramCodeTipoAmbito="
+				+ paramCodeEstadoFacturadoNo
+				+ ", paramSerialEstadoFacturadoSi="
+				+ paramSerialEstadoFacturadoSi
+				+ ", paramSerialEstadoFacturadoNo="
+				+ paramSerialEstadoFacturadoNo + ", paramCodeTipoAmbito="
 				+ paramCodeTipoAmbito + ", paramCodeTipoAmbitoLocal="
 				+ paramCodeTipoAmbitoLocal + ", paramCodeEstadoLiquidacion="
 				+ paramCodeEstadoLiquidacion
@@ -1259,7 +1741,13 @@ public class Constantes {
 				+ ", paramCodeEstadoLiquidacionParcial="
 				+ paramCodeEstadoLiquidacionParcial
 				+ ", paramCodeEstadoLiquidacionTotal="
-				+ paramCodeEstadoLiquidacionTotal + ", paramCodeNoDefinido="
+				+ paramCodeEstadoLiquidacionTotal
+				+ ", paramSerialEstadoLiquidacionPendiente="
+				+ paramSerialEstadoLiquidacionPendiente
+				+ ", paramSerialEstadoLiquidacionParcial="
+				+ paramSerialEstadoLiquidacionParcial
+				+ ", paramSerialEstadoLiquidacionTotal="
+				+ paramSerialEstadoLiquidacionTotal + ", paramCodeNoDefinido="
 				+ paramCodeNoDefinido + ", valueStringDefault="
 				+ valueStringDefault + ", valueNumberDefault="
 				+ valueNumberDefault + ", valueNumberUnit=" + valueNumberUnit
@@ -1281,6 +1769,8 @@ public class Constantes {
 				+ resultProcessCompletedCorrectly
 				+ ", resultProcessCompletedErrors="
 				+ resultProcessCompletedErrors + ", sizePage=" + sizePage
+				+ ", maxHoursProcess=" + maxHoursProcess
+				+ ", maxHoursFirstProcess=" + maxHoursFirstProcess
 				+ ", idTableGenericTAreaCliente=" + idTableGenericTAreaCliente
 				+ ", idTableGenericTCargo=" + idTableGenericTCargo
 				+ ", idTableGenericTCargoDespacho="

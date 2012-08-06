@@ -11,10 +11,11 @@ import pe.com.j2techcon.bi.etl.logic.dimensional.FactCotizacionManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TAreaClienteManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TCotizacionManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TOrdenManager;
-import pe.com.j2techcon.bi.etl.logic.generic.TParametroManager;
+//import pe.com.j2techcon.bi.etl.logic.generic.TParametroManager;
 import pe.com.j2techcon.bi.etl.util.Constantes;
-import pe.com.j2techcon.bi.etl.domain.dimensional.DimTiempo;
-import pe.com.j2techcon.bi.etl.domain.dimensional.DimTiempoExample;
+import pe.com.j2techcon.bi.etl.util.Util;
+//import pe.com.j2techcon.bi.etl.domain.dimensional.DimTiempo;
+//import pe.com.j2techcon.bi.etl.domain.dimensional.DimTiempoExample;
 import pe.com.j2techcon.bi.etl.domain.dimensional.FactCotizacion;
 import pe.com.j2techcon.bi.etl.domain.dimensional.FactCotizacionExample;
 import pe.com.j2techcon.bi.etl.domain.generic.TAreaCliente;
@@ -23,8 +24,8 @@ import pe.com.j2techcon.bi.etl.domain.generic.TCotizacion;
 import pe.com.j2techcon.bi.etl.domain.generic.TCotizacionExample;
 import pe.com.j2techcon.bi.etl.domain.generic.TOrden;
 import pe.com.j2techcon.bi.etl.domain.generic.TOrdenExample;
-import pe.com.j2techcon.bi.etl.domain.generic.TParametro;
-import pe.com.j2techcon.bi.etl.domain.generic.TParametroExample;
+//import pe.com.j2techcon.bi.etl.domain.generic.TParametro;
+//import pe.com.j2techcon.bi.etl.domain.generic.TParametroExample;
 
 public class FactCotizacionProcess {
 	
@@ -54,23 +55,25 @@ public class FactCotizacionProcess {
 	private TCotizacion tCotizacion;
 	private TCotizacionExample tCotizacionExample;
 	
-	private TParametro tParametro;
-	private TParametroExample tParametroExample;
+	//private TParametro tParametro;
+	//private TParametroExample tParametroExample;
 	
 	private FactCotizacion factCotizacion;
 	private FactCotizacionExample factCotizacionExample;
 	
-	private DimTiempo dimTiempo;
-	private DimTiempoExample dimTiempoExample;
+	//private DimTiempo dimTiempo;
+	//private DimTiempoExample dimTiempoExample;
 	
 	private TAreaClienteManager tAreaClienteManager;
 	private TOrdenManager tOrdenManager;
 	private TCotizacionManager tCotizacionManager;
-	private TParametroManager tParametroManager;
+	//private TParametroManager tParametroManager;
 	private DimTiempoManager dimTiempoManager;
 	private FactCotizacionManager factCotizacionManager;
 	
 	private Constantes constantes;
+	
+	List<Integer> statesOrden;
 
 	public BeanFactory getFactory() {
 		return factory;
@@ -232,21 +235,21 @@ public class FactCotizacionProcess {
 		this.tCotizacionExample = tCotizacionExample;
 	}
 
-	public TParametro gettParametro() {
-		return tParametro;
-	}
-
-	public void settParametro(TParametro tParametro) {
-		this.tParametro = tParametro;
-	}
-
-	public TParametroExample gettParametroExample() {
-		return tParametroExample;
-	}
-
-	public void settParametroExample(TParametroExample tParametroExample) {
-		this.tParametroExample = tParametroExample;
-	}
+	//	public TParametro gettParametro() {
+	//		return tParametro;
+	//	}
+	//
+	//	public void settParametro(TParametro tParametro) {
+	//		this.tParametro = tParametro;
+	//	}
+	//
+	//	public TParametroExample gettParametroExample() {
+	//		return tParametroExample;
+	//	}
+	//
+	//	public void settParametroExample(TParametroExample tParametroExample) {
+	//		this.tParametroExample = tParametroExample;
+	//	}
 
 	public FactCotizacion getFactCotizacion() {
 		return factCotizacion;
@@ -264,21 +267,21 @@ public class FactCotizacionProcess {
 		this.factCotizacionExample = factCotizacionExample;
 	}
 
-	public DimTiempo getDimTiempo() {
-		return dimTiempo;
-	}
-
-	public void setDimTiempo(DimTiempo dimTiempo) {
-		this.dimTiempo = dimTiempo;
-	}
-
-	public DimTiempoExample getDimTiempoExample() {
-		return dimTiempoExample;
-	}
-
-	public void setDimTiempoExample(DimTiempoExample dimTiempoExample) {
-		this.dimTiempoExample = dimTiempoExample;
-	}
+	//	public DimTiempo getDimTiempo() {
+	//		return dimTiempo;
+	//	}
+	//
+	//	public void setDimTiempo(DimTiempo dimTiempo) {
+	//		this.dimTiempo = dimTiempo;
+	//	}
+	//
+	//	public DimTiempoExample getDimTiempoExample() {
+	//		return dimTiempoExample;
+	//	}
+	//
+	//	public void setDimTiempoExample(DimTiempoExample dimTiempoExample) {
+	//		this.dimTiempoExample = dimTiempoExample;
+	//	}
 
 	public TAreaClienteManager gettAreaClienteManager() {
 		return tAreaClienteManager;
@@ -304,13 +307,13 @@ public class FactCotizacionProcess {
 		this.tCotizacionManager = tCotizacionManager;
 	}
 
-	public TParametroManager gettParametroManager() {
-		return tParametroManager;
-	}
-
-	public void settParametroManager(TParametroManager tParametroManager) {
-		this.tParametroManager = tParametroManager;
-	}
+	//	public TParametroManager gettParametroManager() {
+	//		return tParametroManager;
+	//	}
+	//
+	//	public void settParametroManager(TParametroManager tParametroManager) {
+	//		this.tParametroManager = tParametroManager;
+	//	}
 
 	public DimTiempoManager getDimTiempoManager() {
 		return dimTiempoManager;
@@ -334,6 +337,14 @@ public class FactCotizacionProcess {
 
 	public void setConstantes(Constantes constantes) {
 		this.constantes = constantes;
+	}
+
+	public List<Integer> getStatesOrden() {
+		return statesOrden;
+	}
+
+	public void setStatesOrden(List<Integer> statesOrden) {
+		this.statesOrden = statesOrden;
 	}
 
 	public FactCotizacionProcess(BeanFactory factory, int sizePage,
@@ -360,8 +371,8 @@ public class FactCotizacionProcess {
 		tAreaClienteManager = factory.getBean("tAreaClienteManager", TAreaClienteManager.class);
 		tOrdenManager = factory.getBean("tOrdenManager", TOrdenManager.class);
 		tCotizacionManager = factory.getBean("tCotizacionManager", TCotizacionManager.class);
-		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
-		dimTiempoManager = factory.getBean("dimTiempoManager", DimTiempoManager.class);
+		//tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
+		//dimTiempoManager = factory.getBean("dimTiempoManager", DimTiempoManager.class);
 		factCotizacionManager = factory.getBean("factCotizacionManager", FactCotizacionManager.class);
 		
 		constantes = factory.getBean("constantes", Constantes.class);
@@ -396,14 +407,14 @@ public class FactCotizacionProcess {
 				tCotizacion.clear();
 				tCotizacionExample.clear();
 				
-				tParametro.clear();
-				tParametroExample.clear();
+				//tParametro.clear();
+				//tParametroExample.clear();
 				
 				factCotizacion.clear();
 				factCotizacionExample.clear();
 				
-				dimTiempo.clear();
-				dimTiempoExample.clear();
+				//dimTiempo.clear();
+				//dimTiempoExample.clear();
 				
 				offset = 0;
 				break;
@@ -437,14 +448,14 @@ public class FactCotizacionProcess {
 				tCotizacion.clear();
 				tCotizacionExample.clear();
 				
-				tParametro.clear();
-				tParametroExample.clear();
+				//tParametro.clear();
+				//tParametroExample.clear();
 				
 				factCotizacion.clear();
 				factCotizacionExample.clear();
 				
-				dimTiempo.clear();
-				dimTiempoExample.clear();
+				//dimTiempo.clear();
+				//dimTiempoExample.clear();
 				
 				offset = 0;
 				break;
@@ -516,20 +527,23 @@ public class FactCotizacionProcess {
 		factCotizacion.setCotizacionKeyServicio(tCotizacion.getCotiCodServ());
 		factCotizacion.setCotizacionKeyProducto(tCotizacion.getProdId());
 		
-		dimTiempoExample.clear();
-		dimTiempoExample.createCriteria().andTiempoFechaEqualTo(tCotizacion.getCotiFecApro());
-		dimTiempo = (dimTiempoManager.selectByExample(dimTiempoExample)).get(0);
-		factCotizacion.setCotizacionKeyFecApro(dimTiempo.getTiempoKey());
+		//dimTiempoExample.clear();
+		//dimTiempoExample.createCriteria().andTiempoFechaEqualTo();
+		//dimTiempo = (dimTiempoManager.selectByExample(dimTiempoExample)).get(0);
+		//factCotizacion.setCotizacionKeyFecApro(dimTiempo.getTiempoKey());
+		factCotizacion.setCotizacionKeyFecApro(Util.getDateAsInteger(tCotizacion.getCotiFecApro()));
 		
-		dimTiempoExample.clear();
-		dimTiempoExample.createCriteria().andTiempoFechaEqualTo(tCotizacion.getCotiFecIni());
-		dimTiempo = (dimTiempoManager.selectByExample(dimTiempoExample)).get(0);
-		factCotizacion.setCotizacionKeyFecIni(dimTiempo.getTiempoKey());
+		//dimTiempoExample.clear();
+		//dimTiempoExample.createCriteria().andTiempoFechaEqualTo(tCotizacion.getCotiFecIni());
+		//dimTiempo = (dimTiempoManager.selectByExample(dimTiempoExample)).get(0);
+		//factCotizacion.setCotizacionKeyFecIni(dimTiempo.getTiempoKey());
+		factCotizacion.setCotizacionKeyFecIni(Util.getDateAsInteger(tCotizacion.getCotiFecIni()));
 		
-		dimTiempoExample.clear();
-		dimTiempoExample.createCriteria().andTiempoFechaEqualTo(tCotizacion.getCotiFecFin());
-		dimTiempo = (dimTiempoManager.selectByExample(dimTiempoExample)).get(0);
-		factCotizacion.setCotizacionKeyFecFin(dimTiempo.getTiempoKey());
+		//dimTiempoExample.clear();
+		//dimTiempoExample.createCriteria().andTiempoFechaEqualTo(tCotizacion.getCotiFecFin());
+		//dimTiempo = (dimTiempoManager.selectByExample(dimTiempoExample)).get(0);
+		//factCotizacion.setCotizacionKeyFecFin(dimTiempo.getTiempoKey());
+		factCotizacion.setCotizacionKeyFecFin(Util.getDateAsInteger(tCotizacion.getCotiFecFin()));
 
 		factCotizacion.setCotizacionKeyEstado(tCotizacion.getCotiCodEst());
 		
@@ -540,8 +554,8 @@ public class FactCotizacionProcess {
 		
 		if(recordTotal>0){
 			
-			int indEstOrdCan = 0;
-			int indEstOrdFac = 0;
+			//int indEstOrdCan = 0;
+			//int indEstOrdFac = 0;
 			
 			tOrdenExample.clear();
 			tOrdenExample.createCriteria().andCotiIdEqualTo(factCotizacion.getCotizacionKey());
@@ -549,30 +563,39 @@ public class FactCotizacionProcess {
 			
 			tOrdenExample.clear();
 			tOrdenExample.createCriteria().andCotiIdEqualTo(factCotizacion.getCotizacionKey());
-			tParametroExample.clear();
-			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoOrden());
-			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoOrdenGenerado());
-			tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
-			tOrdenExample.createCriteria().andOrdCodEstEqualTo(tParametro.getParamId());
-			tParametroExample.clear();
-			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoOrden());
-			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoOrdenPendiente());
-			tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
-			tOrdenExample.createCriteria().andOrdCodEstEqualTo(tParametro.getParamId());
+			//tParametroExample.clear();
+			//tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoOrden());
+			//tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoOrdenGenerado());
+			//tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
+			//tOrdenExample.createCriteria().andOrdCodEstEqualTo(tParametro.getParamId());
+			//tParametroExample.clear();
+			//tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoOrden());
+			//tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoOrdenPendiente());
+			//tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
+			//tOrdenExample.createCriteria().andOrdCodEstEqualTo(tParametro.getParamId());
+			
+			statesOrden.clear();
+			statesOrden.add(constantes.getParamSerialEstadoOrdenGenerado());
+			statesOrden.add(constantes.getParamSerialEstadoOrdenPendiente());
+			
+			tOrdenExample.createCriteria().andOrdCodEstIn(statesOrden);
+			
 			factCotizacion.setCotizacionCntOrdEnTrab(tOrdenManager.countByExample(tOrdenExample));
 			
 			tOrdenExample.clear();
 			tOrdenExample.createCriteria().andCotiIdEqualTo(factCotizacion.getCotizacionKey());
-			tParametroExample.clear();
-			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoOrden());
-			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoOrdenCerrado());
-			tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
-			tOrdenExample.createCriteria().andOrdCodEstEqualTo(tParametro.getParamId());
+			//tParametroExample.clear();
+			//tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoOrden());
+			//tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoOrdenCerrado());
+			//tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
+			//tOrdenExample.createCriteria().andOrdCodEstEqualTo(tParametro.getParamId());
+			tOrdenExample.createCriteria().andOrdCodEstEqualTo(constantes.getParamSerialEstadoOrdenCerrado());
 			factCotizacion.setCotizacionCntOrdCer(tOrdenManager.countByExample(tOrdenExample));
 			
 			tOrdenExample.clear();
 			tOrdenExample.createCriteria().andCotiIdEqualTo(factCotizacion.getCotizacionKey());
-			tOrdenExample.createCriteria().andOrdCodEstEqualTo(tParametro.getParamId());
+			//tOrdenExample.createCriteria().andOrdCodEstEqualTo(tParametro.getParamId());
+			tOrdenExample.createCriteria().andOrdCodEstEqualTo(constantes.getParamSerialEstadoOrdenCerrado());
 			tOrdenExample.setWhereBetweenFields(" and ordfeccie > ordfecven");
 			factCotizacion.setCotizacionCntOrdCftiempo(tOrdenManager.countByExample(tOrdenExample));
 			
@@ -580,22 +603,24 @@ public class FactCotizacionProcess {
 			
 			tOrdenExample.clear();
 			tOrdenExample.createCriteria().andCotiIdEqualTo(factCotizacion.getCotizacionKey());
-			tParametroExample.clear();
-			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoOrden());
-			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoOrdenAnulado());
+			//tParametroExample.clear();
+			//tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoOrden());
+			//tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoOrdenAnulado());
 			//tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
-			indEstOrdCan = tParametroManager.selectByExample(tParametroExample).get(0).getParamId();
-			tOrdenExample.createCriteria().andOrdCodEstEqualTo(indEstOrdCan);
+			//indEstOrdCan = tParametroManager.selectByExample(tParametroExample).get(0).getParamId();
+			//indEstOrdCan = constantes.getParamSerialEstadoOrdenAnulado();
+			tOrdenExample.createCriteria().andOrdCodEstEqualTo(constantes.getParamSerialEstadoOrdenAnulado());
 			factCotizacion.setCotizacionCntOrdCan(tOrdenManager.countByExample(tOrdenExample));
 			
 			tOrdenExample.clear();
 			tOrdenExample.createCriteria().andCotiIdEqualTo(factCotizacion.getCotizacionKey());
-			tParametroExample.clear();
-			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoFacturado());
-			tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoFacturadoSi());
+			//tParametroExample.clear();
+			//tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoFacturado());
+			//tParametroExample.createCriteria().andParamCodEqualTo(constantes.getParamCodeEstadoFacturadoSi());
 			//tParametro = tParametroManager.selectByExample(tParametroExample).get(0);
-			indEstOrdFac = tParametroManager.selectByExample(tParametroExample).get(0).getParamId(); 
-			tOrdenExample.createCriteria().andOrdCodEstEqualTo(indEstOrdFac);
+			//indEstOrdFac = tParametroManager.selectByExample(tParametroExample).get(0).getParamId(); 
+			//indEstOrdFac = constantes.getParamSerialEstadoFacturadoSi();
+			tOrdenExample.createCriteria().andOrdCodEstEqualTo(constantes.getParamSerialEstadoFacturadoSi());
 			factCotizacion.setCotizacionCntOrdFac(tOrdenManager.countByExample(tOrdenExample));
 			
 			tOrdenExample.clear();
@@ -612,10 +637,10 @@ public class FactCotizacionProcess {
 				
 				factCotizacion.setCotizacionMonOrdTot(factCotizacion.getCotizacionMonOrdTot().add(tOrden.getOrdTotal()));
 				
-				if(indEstOrdFac == tOrden.getOrdCodEst()){
+				if(constantes.getParamSerialEstadoFacturadoSi() == tOrden.getOrdCodEst()){
 					factCotizacion.setCotizacionMonOrdFac(factCotizacion.getCotizacionMonOrdFac().add(tOrden.getOrdTotal()));
 				}
-				if(indEstOrdCan == tOrden.getOrdCodEst()){
+				if(constantes.getParamSerialEstadoOrdenAnulado() == tOrden.getOrdCodEst()){
 					factCotizacion.setCotizacionMonOrdCan(factCotizacion.getCotizacionMonOrdCan().add(tOrden.getOrdTotal()));
 				}
 			}
