@@ -27,6 +27,20 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="paramCodeEstadoCargoDespachoProvincia" value="${param.code.estado.cargo.despacho.provincia}"></property>
 		<property name="paramCodeEstadoCargoDespachoSupervision" value="${param.code.estado.cargo.despacho.supervision}"></property>
 		<property name="paramCodeEstadoCargoDespachoRobo" value="${param.code.estado.cargo.despacho.robo}"></property>
+		<property name="paramSerialEstadoCargoDespachoDigitado" value="${param.serial.estado.cargo.despacho.digitado}"></property>
+		<property name="paramSerialEstadoCargoDespachoRuta" value="${param.serial.estado.cargo.despacho.ruta}"></property>
+		<property name="paramSerialEstadoCargoDespachoEntregado" value="${param.serial.estado.cargo.despacho.entregado}"></property>
+		<property name="paramSerialEstadoCargoDespachoMotivado" value="${param.serial.estado.cargo.despacho.motivado}"></property>
+		<property name="paramSerialEstadoCargoDespachoReenviado" value="${param.serial.estado.cargo.despacho.reenviado}"></property>
+		<property name="paramSerialEstadoCargoDespachoFueraZona" value="${param.serial.estado.cargo.despacho.fuera.zona}"></property>
+		<property name="paramSerialEstadoCargoDespachoPerdido" value="${param.serial.estado.cargo.despacho.perdido}"></property>
+		<property name="paramSerialEstadoCargoDespachoAnulado" value="${param.serial.estado.cargo.despacho.anulado}"></property>
+		<property name="paramSerialEstadoCargoDespachoNoDistribuido" value="${param.serial.estado.cargo.despacho.no.distribuido}"></property>
+		<property name="paramSerialEstadoCargoDespachoRetenido" value="${param.serial.estado.cargo.despacho.retenido}"></property>
+		<property name="paramSerialEstadoCargoDespachoSinFisico" value="${param.serial.estado.cargo.despacho.sin.fisico}"></property>
+		<property name="paramSerialEstadoCargoDespachoProvincia" value="${param.serial.estado.cargo.despacho.provincia}"></property>
+		<property name="paramSerialEstadoCargoDespachoSupervision" value="${param.serial.estado.cargo.despacho.supervision}"></property>
+		<property name="paramSerialEstadoCargoDespachoRobo" value="${param.serial.estado.cargo.despacho.robo}"></property>
 		
 		<property name="paramCodeEstadoCargoDespachoVerificacion" value="${param.code.estado.cargo.despacho.verificacion}"></property>
 		
@@ -50,6 +64,24 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="paramCodeEstadoCargoOrdenRobo" value="${param.code.estado.cargo.orden.robo}"></property>
 		<property name="paramCodeEstadoCargoOrdenSiLlego" value="${param.code.estado.cargo.orden.si.llego}"></property>
 		<property name="paramCodeEstadoCargoOrdenRecepcionado" value="${param.code.estado.cargo.orden.recepcionado}"></property>
+		<property name="paramSerialEstadoCargoOrdenDigitado" value="${param.serial.estado.cargo.orden.digitado}"></property>
+		<property name="paramSerialEstadoCargoOrdenClasificado" value="${param.serial.estado.cargo.orden.clasificado}"></property>
+		<property name="paramSerialEstadoCargoOrdenRuta" value="${param.serial.estado.cargo.orden.ruta}"></property>
+		<property name="paramSerialEstadoCargoOrdenEntregado" value="${param.serial.estado.cargo.orden.entregado}"></property>
+		<property name="paramSerialEstadoCargoOrdenMotivado" value="${param.serial.estado.cargo.orden.motivado}"></property>
+		<property name="paramSerialEstadoCargoOrdenReenviado" value="${param.serial.estado.cargo.orden.reenviado}"></property>
+		<property name="paramSerialEstadoCargoOrdenFueraZona" value="${param.serial.estado.cargo.orden.fuera.zona}"></property>
+		<property name="paramSerialEstadoCargoOrdenPerdido" value="${param.serial.estado.cargo.orden.perdido}"></property>
+		<property name="paramSerialEstadoCargoOrdenAnulado" value="${param.serial.estado.cargo.orden.anulado}"></property>
+		<property name="paramSerialEstadoCargoOrdenNoDistribuido" value="${param.serial.estado.cargo.orden.no.distribuido}"></property>
+		<property name="paramSerialEstadoCargoOrdenRetenido" value="${param.serial.estado.cargo.orden.retenido}"></property>
+		<property name="paramSerialEstadoCargoOrdenSinFisico" value="${param.serial.estado.cargo.orden.sin.fisico}"></property>
+		<property name="paramSerialEstadoCargoOrdenProvincia" value="${param.serial.estado.cargo.orden.provincia}"></property>
+		<property name="paramSerialEstadoCargoOrdenSupervision" value="${param.serial.estado.cargo.orden.supervision}"></property>
+		<property name="paramSerialEstadoCargoOrdenRobo" value="${param.serial.estado.cargo.orden.robo}"></property>
+		<property name="paramSerialEstadoCargoOrdenSiLlego" value="${param.serial.estado.cargo.orden.si.llego}"></property>
+		<property name="paramSerialEstadoCargoOrdenRecepcionado" value="${param.serial.estado.cargo.orden.recepcionado}"></property>
+
 
 		<property name="paramCodeMotivoCargo" value="${param.code.motivo.cargo}"></property>
 		
@@ -77,6 +109,8 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="paramCodeTipoDocumento" value="${param.code.tipo.documento}"></property>
 		<property name="paramCodeTipoDocumentoRuc" value="${param.code.tipo.documento.ruc}"></property>
 		<property name="paramCodeTipoDocumentoDni" value="${param.code.tipo.documento.dni}"></property>
+		<property name="paramSerialTipoDocumentoRuc" value="${param.serial.tipo.documento.ruc}"></property>
+		<property name="paramSerialTipoDocumentoDni" value="${param.serial.tipo.documento.dni}"></property>
 		
 		<property name="paramCodeEstadoDespacho" value="${param.code.estado.despacho}"></property>
 		<property name="paramCodeEstadoDespachoDespacho" value="${param.code.estado.despacho.despacho}"></property>
@@ -85,6 +119,13 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="paramCodeEstadoDespachoGenerado" value="${param.code.estado.despacho.generado}"></property>
 		<property name="paramCodeEstadoDespachoPagado" value="${param.code.estado.despacho.pagado}"></property>
 		<property name="paramCodeEstadoDespachoAnulado" value="${param.code.estado.despacho.anulado}"></property>
+		<property name="paramSerialEstadoDespachoDespacho" value="${param.serial.estado.despacho.despacho}"></property>
+		<property name="paramSerialEstadoDespachoRuta" value="${param.serial.estado.despacho.ruta}"></property>
+		<property name="paramSerialEstadoDespachoCerrado" value="${param.serial.estado.despacho.cerrado}"></property>
+		<property name="paramSerialEstadoDespachoGenerado" value="${param.serial.estado.despacho.generado}"></property>
+		<property name="paramSerialEstadoDespachoPagado" value="${param.serial.estado.despacho.pagado}"></property>
+		<property name="paramSerialEstadoDespachoAnulado" value="${param.serial.estado.despacho.anulado}"></property>
+		
 		
 		<property name="paramCodeEstadoDespachoVerificacion" value="${param.code.estado.despacho.verificacion}"></property>
 		
@@ -99,12 +140,18 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="paramCodeEstadoOrdenPendiente" value="${param.code.estado.orden.pendiente}"></property>
 		<property name="paramCodeEstadoOrdenCerrado" value="${param.code.estado.orden.cerrado}"></property>
 		<property name="paramCodeEstadoOrdenAnulado" value="${param.code.estado.orden.anulado}"></property>
+		<property name="paramSerialEstadoOrdenGenerado" value="${param.serial.estado.orden.generado}"></property>
+		<property name="paramSerialEstadoOrdenPendiente" value="${param.serial.estado.orden.pendiente}"></property>
+		<property name="paramSerialEstadoOrdenCerrado" value="${param.serial.estado.orden.cerrado}"></property>
+		<property name="paramSerialEstadoOrdenAnulado" value="${param.serial.estado.orden.anulado}"></property>
 
 		<property name="paramCodeTipoIngreso" value="${param.code.tipo.ingreso}"></property>
 		
 		<property name="paramCodeTipoMoneda" value="${param.code.tipo.moneda}"></property>
 		<property name="paramCodeTipoMonedaNuevoSol" value="${param.code.tipo.moneda.nuevo.sol}"></property>
 		<property name="paramCodeTipoMonedaDolar" value="${param.code.tipo.moneda.dolar}"></property>
+		<property name="paramSerialTipoMonedaNuevoSol" value="${param.serial.tipo.moneda.nuevo.sol}"></property>
+		<property name="paramSerialTipoMonedaDolar" value="${param.serial.tipo.moneda.dolar}"></property>
 		
 		<property name="paramCodeTipoPago" value="${param.code.tipo.pago}"></property>
 		
@@ -125,6 +172,8 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="paramCodeEstadoFacturado" value="${param.code.estado.facturado}"></property>
 		<property name="paramCodeEstadoFacturadoSi" value="${param.code.estado.facturado.si}"></property>
 		<property name="paramCodeEstadoFacturadoNo" value="${param.code.estado.facturado.no}"></property>
+		<property name="paramSerialEstadoFacturadoSi" value="${param.serial.estado.facturado.si}"></property>
+		<property name="paramSerialEstadoFacturadoNo" value="${param.serial.estado.facturado.no}"></property>
 		
 		<property name="paramCodeTipoAmbito" value="${param.code.tipo.ambito}"></property>
 		<property name="paramCodeTipoAmbitoLocal" value="${param.code.tipo.ambito.local}"></property>
@@ -133,6 +182,9 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="paramCodeEstadoLiquidacionPendiente" value="${param.code.estado.liquidacion.pendiente}"></property>
 		<property name="paramCodeEstadoLiquidacionParcial" value="${param.code.estado.liquidacion.parcial}"></property>
 		<property name="paramCodeEstadoLiquidacionTotal" value="${param.code.estado.liquidacion.total}"></property>
+		<property name="paramSerialEstadoLiquidacionPendiente" value="${param.serial.estado.liquidacion.pendiente}"></property>
+		<property name="paramSerialEstadoLiquidacionParcial" value="${param.serial.estado.liquidacion.parcial}"></property>
+		<property name="paramSerialEstadoLiquidacionTotal" value="${param.serial.estado.liquidacion.total}"></property>
 		
 		<property name="paramCodeNoDefinido" value="${param.code.no.definido}"></property>
 
