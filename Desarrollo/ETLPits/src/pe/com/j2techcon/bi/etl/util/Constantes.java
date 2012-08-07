@@ -209,6 +209,7 @@ public class Constantes {
 	
 	private int maxHoursProcess;
 	private int maxHoursFirstProcess;
+	private long timeExecuteUpdateTable;
 	
 	private int idTableGenericTAreaCliente;
 	private int idTableGenericTCargo;
@@ -1297,6 +1298,12 @@ public class Constantes {
 	public void setMaxHoursFirstProcess(int maxHoursFirstProcess) {
 		this.maxHoursFirstProcess = maxHoursFirstProcess;
 	}
+	public long getTimeExecuteUpdateTable() {
+		return timeExecuteUpdateTable;
+	}
+	public void setTimeExecuteUpdateTable(long timeExecuteUpdateTable) {
+		this.timeExecuteUpdateTable = timeExecuteUpdateTable;
+	}
 	public int getIdTableGenericTAreaCliente() {
 		return idTableGenericTAreaCliente;
 	}
@@ -1511,7 +1518,6 @@ public class Constantes {
 	public void setIdTableDimensionalFactOrden(int idTableDimensionalFactOrden) {
 		this.idTableDimensionalFactOrden = idTableDimensionalFactOrden;
 	}
-	
 	@Override
 	public String toString() {
 		return "Constantes [paramCodeTipoAreaCliente="
@@ -1771,6 +1777,7 @@ public class Constantes {
 				+ resultProcessCompletedErrors + ", sizePage=" + sizePage
 				+ ", maxHoursProcess=" + maxHoursProcess
 				+ ", maxHoursFirstProcess=" + maxHoursFirstProcess
+				+ ", timeExecuteUpdateTable=" + timeExecuteUpdateTable
 				+ ", idTableGenericTAreaCliente=" + idTableGenericTAreaCliente
 				+ ", idTableGenericTCargo=" + idTableGenericTCargo
 				+ ", idTableGenericTCargoDespacho="

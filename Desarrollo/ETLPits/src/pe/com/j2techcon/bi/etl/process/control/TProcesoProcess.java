@@ -162,8 +162,10 @@ public class TProcesoProcess {
 				typeProcess = constantes.getTypeProcessReProcess();
 			}
 		}else{
-			dateTimeFrom = Util.getDateTimeAsLong(Util.getDateTimeDefault());
-			dateTimeUntil = Util.getDateTimeAsLong(Util.addToDateTime(Util.getDateTimeDefault(), Calendar.SECOND, 1));
+			//dateTimeFrom = Util.getDateTimeAsLong(Util.getDateTimeDefault());
+			dateTimeFrom = constantes.getTimeExecuteUpdateTable();
+			//dateTimeUntil = Util.getDateTimeAsLong(Util.addToDateTime(Util.getDateTimeDefault(), Calendar.SECOND, 1));
+			dateTimeUntil = Util.getDateTimeAsLong(Util.addToDateTime(Util.getCurrentDateTime(), Calendar.SECOND, -1));
 			
 			typeLoadProcess = constantes.getLoadProcessToGeneric();
 
