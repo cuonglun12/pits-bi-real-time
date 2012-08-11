@@ -420,7 +420,7 @@ public class DimClienteProcess {
 	
 	public void processRecordAreaCliente(){
 		
-		completeFildAreaCliente();
+		completeFieldAreaCliente();
 		
 		if(typeProcess.equals(constantes.getTypeProcessSimple())){
 			if(tAreaCliente.getCodIndCam().equals(constantes.getStateRecordNew())){
@@ -478,7 +478,7 @@ public class DimClienteProcess {
 		}
 	}
 	
-	public void completeFildAreaCliente(){
+	public void completeFieldAreaCliente(){
 		dimCliente.setClienteAreaKey(tAreaCliente.getAreCliId());
 		
 		tCliente = tClienteManager.selectByPrimaryKey(tAreaCliente.getCliId());
@@ -526,11 +526,14 @@ public class DimClienteProcess {
 			}
 			
 			dimCliente.setClienteNumTipDoc(tCliente.getCliNumTipDoc());
-			if(!tCliente.getCliDesRazSoc().equals(constantes.getValueStringDefault())){
-				dimCliente.setClienteDesc(tCliente.getCliDesRazSoc());
-			}else{
-				dimCliente.setClienteDesc(tCliente.getCliDesApePat() + " " + tCliente.getCliDesApeMat() + " " + tCliente.getCliDesNom());
-			}
+			
+			//			if(!tCliente.getCliDesRazSoc().equals(constantes.getValueStringDefault())){
+			//				dimCliente.setClienteDesc(tCliente.getCliDesRazSoc());
+			//			}else{
+			//				dimCliente.setClienteDesc(tCliente.getCliDesApePat() + " " + tCliente.getCliDesApeMat() + " " + tCliente.getCliDesNom());
+			//			}
+			dimCliente.setClienteDesc(tCliente.getCliDesRazSoc());
+			
 		}
 		
 		dimCliente.setClienteAreaCod(tAreaCliente.getAreCliCod());

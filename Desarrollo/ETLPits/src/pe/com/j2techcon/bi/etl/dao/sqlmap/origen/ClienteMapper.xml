@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.origen.ClienteMapper" >
+<mapper namespace="cliente" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.origen.Cliente" >
     <id column="codcliente" property="codcliente" jdbcType="CHAR" />
     <result column="ruc" property="ruc" jdbcType="VARCHAR" />
@@ -43,6 +43,8 @@
     <result column="email_2" property="email2" jdbcType="VARCHAR" />
     <result column="clasifica" property="clasifica" jdbcType="VARCHAR" />
     <result column="codempresa" property="codempresa" jdbcType="VARCHAR" />
+    <result column="bi_fec_num_cam" property="biFecNumCam" jdbcType="TIMESTAMP" />
+    <result column="bi_cod_ind_cam" property="biCodIndCam" jdbcType="CHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -108,7 +110,7 @@
     fecha, fechamod, usuariomod, periodo_fac, dias_credito, credito, credito_utilizado, 
     credito_disponible, sobregiro, estado, observacion, fecha_inicio_credito, fecha_vence_credito, 
     tipo_documento, referencia, telefono1, cod_encuesta, h_pactada, t_cliente, t_h_adicional, 
-    t_km_adicional, email_2, clasifica, codempresa
+    t_km_adicional, email_2, clasifica, codempresa, bi_fec_num_cam, bi_cod_ind_cam
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.origen.ClienteExample" >
     select
@@ -122,6 +124,9 @@
     </if>
     <if test="orderByClause != null" >
       order by ${orderByClause}
+    </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
@@ -154,7 +159,8 @@
       tipo_documento, referencia, telefono1, 
       cod_encuesta, h_pactada, t_cliente, 
       t_h_adicional, t_km_adicional, email_2, 
-      clasifica, codempresa)
+      clasifica, codempresa, bi_fec_num_cam, 
+      bi_cod_ind_cam)
     values (#{codcliente,jdbcType=CHAR}, #{ruc,jdbcType=VARCHAR}, #{cliente,jdbcType=VARCHAR}, 
       #{tipocliente,jdbcType=CHAR}, #{rubro,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}, 
       #{direccion,jdbcType=VARCHAR}, #{ubigeo,jdbcType=CHAR}, #{codpais,jdbcType=VARCHAR}, 
@@ -168,7 +174,8 @@
       #{tipoDocumento,jdbcType=CHAR}, #{referencia,jdbcType=VARCHAR}, #{telefono1,jdbcType=VARCHAR}, 
       #{codEncuesta,jdbcType=VARCHAR}, #{hPactada,jdbcType=NUMERIC}, #{tCliente,jdbcType=NUMERIC}, 
       #{tHAdicional,jdbcType=NUMERIC}, #{tKmAdicional,jdbcType=NUMERIC}, #{email2,jdbcType=VARCHAR}, 
-      #{clasifica,jdbcType=VARCHAR}, #{codempresa,jdbcType=VARCHAR})
+      #{clasifica,jdbcType=VARCHAR}, #{codempresa,jdbcType=VARCHAR}, #{biFecNumCam,jdbcType=TIMESTAMP}, 
+      #{biCodIndCam,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Cliente" >
     insert into cliente
@@ -296,6 +303,12 @@
       <if test="codempresa != null" >
         codempresa,
       </if>
+      <if test="biFecNumCam != null" >
+        bi_fec_num_cam,
+      </if>
+      <if test="biCodIndCam != null" >
+        bi_cod_ind_cam,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="codcliente != null" >
@@ -420,6 +433,12 @@
       </if>
       <if test="codempresa != null" >
         #{codempresa,jdbcType=VARCHAR},
+      </if>
+      <if test="biFecNumCam != null" >
+        #{biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="biCodIndCam != null" >
+        #{biCodIndCam,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
@@ -555,6 +574,12 @@
       <if test="record.codempresa != null" >
         codempresa = #{record.codempresa,jdbcType=VARCHAR},
       </if>
+      <if test="record.biFecNumCam != null" >
+        bi_fec_num_cam = #{record.biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.biCodIndCam != null" >
+        bi_cod_ind_cam = #{record.biCodIndCam,jdbcType=CHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -602,7 +627,9 @@
       t_km_adicional = #{record.tKmAdicional,jdbcType=NUMERIC},
       email_2 = #{record.email2,jdbcType=VARCHAR},
       clasifica = #{record.clasifica,jdbcType=VARCHAR},
-      codempresa = #{record.codempresa,jdbcType=VARCHAR}
+      codempresa = #{record.codempresa,jdbcType=VARCHAR},
+      bi_fec_num_cam = #{record.biFecNumCam,jdbcType=TIMESTAMP},
+      bi_cod_ind_cam = #{record.biCodIndCam,jdbcType=CHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -730,6 +757,12 @@
       <if test="codempresa != null" >
         codempresa = #{codempresa,jdbcType=VARCHAR},
       </if>
+      <if test="biFecNumCam != null" >
+        bi_fec_num_cam = #{biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="biCodIndCam != null" >
+        bi_cod_ind_cam = #{biCodIndCam,jdbcType=CHAR},
+      </if>
     </set>
     where codcliente = #{codcliente,jdbcType=CHAR}
   </update>
@@ -774,7 +807,9 @@
       t_km_adicional = #{tKmAdicional,jdbcType=NUMERIC},
       email_2 = #{email2,jdbcType=VARCHAR},
       clasifica = #{clasifica,jdbcType=VARCHAR},
-      codempresa = #{codempresa,jdbcType=VARCHAR}
+      codempresa = #{codempresa,jdbcType=VARCHAR},
+      bi_fec_num_cam = #{biFecNumCam,jdbcType=TIMESTAMP},
+      bi_cod_ind_cam = #{biCodIndCam,jdbcType=CHAR}
     where codcliente = #{codcliente,jdbcType=CHAR}
   </update>
 </mapper>

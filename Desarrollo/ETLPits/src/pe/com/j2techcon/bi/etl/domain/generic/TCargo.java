@@ -5,6 +5,12 @@ import java.util.Date;
 public class TCargo {
     private Integer cargId;
 
+    private Integer ordCodTipDoc;
+
+    private String ordSerieDoc;
+
+    private String ordNumDoc;
+
     private Integer cargCorr;
 
     private Integer ordId;
@@ -47,6 +53,30 @@ public class TCargo {
 
     public void setCargId(Integer cargId) {
         this.cargId = cargId;
+    }
+
+    public Integer getOrdCodTipDoc() {
+        return ordCodTipDoc;
+    }
+
+    public void setOrdCodTipDoc(Integer ordCodTipDoc) {
+        this.ordCodTipDoc = ordCodTipDoc;
+    }
+
+    public String getOrdSerieDoc() {
+        return ordSerieDoc;
+    }
+
+    public void setOrdSerieDoc(String ordSerieDoc) {
+        this.ordSerieDoc = ordSerieDoc == null ? null : ordSerieDoc.trim();
+    }
+
+    public String getOrdNumDoc() {
+        return ordNumDoc;
+    }
+
+    public void setOrdNumDoc(String ordNumDoc) {
+        this.ordNumDoc = ordNumDoc == null ? null : ordNumDoc.trim();
     }
 
     public Integer getCargCorr() {
@@ -194,38 +224,43 @@ public class TCargo {
     }
     
     public void clear(){
-    	cargId=null;
-    	cargCorr=null;
-    	ordId=null;
-    	prodId=null;
-    	zonId=null;
-    	zonIdNew=null;
-    	cargCodMov=null;
-    	cargCodTipIng=null;
-    	cargCodFecDes=null;
-    	cargCodFecRec=null;
-    	cargDestinatario=null;
-    	cargDir=null;
-    	cargRef=null;
-    	cargNewDir=null;
-    	cargNewRef=null;
-    	cargCodEst=null;
-    	fecNumCam=null;
-    	codIndCam=null;
-    	procId=null;
+    	cargId = null;
+    	ordCodTipDoc = null;
+    	ordSerieDoc = null;
+    	ordNumDoc = null;
+    	cargCorr = null;
+    	ordId = null;
+    	prodId = null;
+    	zonId = null;
+    	zonIdNew = null;
+    	cargCodMov = null;
+    	cargCodTipIng = null;
+    	cargCodFecDes = null;
+    	cargCodFecRec = null;
+    	cargDestinatario = null;
+    	cargDir = null;
+    	cargRef = null;
+    	cargNewDir = null;
+    	cargNewRef = null;
+    	cargCodEst = null;
+    	fecNumCam = null;
+    	codIndCam = null;
+    	procId = null;
     }
 
 	@Override
 	public String toString() {
-		return "TCargo [cargId=" + cargId + ", cargCorr=" + cargCorr
-				+ ", ordId=" + ordId + ", prodId=" + prodId + ", zonId="
-				+ zonId + ", zonIdNew=" + zonIdNew + ", cargCodMov="
-				+ cargCodMov + ", cargCodTipIng=" + cargCodTipIng
-				+ ", cargCodFecDes=" + cargCodFecDes + ", cargCodFecRec="
-				+ cargCodFecRec + ", cargDestinatario=" + cargDestinatario
-				+ ", cargDir=" + cargDir + ", cargRef=" + cargRef
-				+ ", cargNewDir=" + cargNewDir + ", cargNewRef=" + cargNewRef
-				+ ", cargCodEst=" + cargCodEst + ", fecNumCam=" + fecNumCam
-				+ ", codIndCam=" + codIndCam + ", procId=" + procId + "]";
+		return "TCargo [cargId=" + cargId + ", ordCodTipDoc=" + ordCodTipDoc
+				+ ", ordSerieDoc=" + ordSerieDoc + ", ordNumDoc=" + ordNumDoc
+				+ ", cargCorr=" + cargCorr + ", ordId=" + ordId + ", prodId="
+				+ prodId + ", zonId=" + zonId + ", zonIdNew=" + zonIdNew
+				+ ", cargCodMov=" + cargCodMov + ", cargCodTipIng="
+				+ cargCodTipIng + ", cargCodFecDes=" + cargCodFecDes
+				+ ", cargCodFecRec=" + cargCodFecRec + ", cargDestinatario="
+				+ cargDestinatario + ", cargDir=" + cargDir + ", cargRef="
+				+ cargRef + ", cargNewDir=" + cargNewDir + ", cargNewRef="
+				+ cargNewRef + ", cargCodEst=" + cargCodEst + ", fecNumCam="
+				+ fecNumCam + ", codIndCam=" + codIndCam + ", procId=" + procId
+				+ "]";
 	}
 }

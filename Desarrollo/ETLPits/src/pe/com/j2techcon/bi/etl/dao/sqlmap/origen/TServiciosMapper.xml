@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.origen.TServiciosMapper" >
+<mapper namespace="t_servicios" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.origen.TServicios" >
     <id column="codservicio" property="codservicio" jdbcType="CHAR" />
     <result column="servicio" property="servicio" jdbcType="VARCHAR" />
@@ -17,6 +17,8 @@
     <result column="precio_periferia" property="precioPeriferia" jdbcType="NUMERIC" />
     <result column="cod_centro_costo" property="codCentroCosto" jdbcType="NUMERIC" />
     <result column="tipo1" property="tipo1" jdbcType="SMALLINT" />
+    <result column="bi_fec_num_cam" property="biFecNumCam" jdbcType="TIMESTAMP" />
+    <result column="bi_cod_ind_cam" property="biCodIndCam" jdbcType="CHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -78,7 +80,8 @@
   </sql>
   <sql id="Base_Column_List" >
     codservicio, servicio, codnegocio, codambito, estado, dias, fecha, usuario, fechamod, 
-    usuariomod, tiposervicio, obs, precio_periferia, cod_centro_costo, tipo1
+    usuariomod, tiposervicio, obs, precio_periferia, cod_centro_costo, tipo1, bi_fec_num_cam, 
+    bi_cod_ind_cam
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.origen.TServiciosExample" >
     select
@@ -92,6 +95,9 @@
     </if>
     <if test="orderByClause != null" >
       order by ${orderByClause}
+    </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
@@ -115,14 +121,14 @@
       codambito, estado, dias, 
       fecha, usuario, fechamod, 
       usuariomod, tiposervicio, obs, 
-      precio_periferia, cod_centro_costo, tipo1
-      )
+      precio_periferia, cod_centro_costo, tipo1, 
+      bi_fec_num_cam, bi_cod_ind_cam)
     values (#{codservicio,jdbcType=CHAR}, #{servicio,jdbcType=VARCHAR}, #{codnegocio,jdbcType=CHAR}, 
       #{codambito,jdbcType=CHAR}, #{estado,jdbcType=SMALLINT}, #{dias,jdbcType=SMALLINT}, 
       #{fecha,jdbcType=TIMESTAMP}, #{usuario,jdbcType=CHAR}, #{fechamod,jdbcType=TIMESTAMP}, 
       #{usuariomod,jdbcType=CHAR}, #{tiposervicio,jdbcType=CHAR}, #{obs,jdbcType=VARCHAR}, 
-      #{precioPeriferia,jdbcType=NUMERIC}, #{codCentroCosto,jdbcType=NUMERIC}, #{tipo1,jdbcType=SMALLINT}
-      )
+      #{precioPeriferia,jdbcType=NUMERIC}, #{codCentroCosto,jdbcType=NUMERIC}, #{tipo1,jdbcType=SMALLINT}, 
+      #{biFecNumCam,jdbcType=TIMESTAMP}, #{biCodIndCam,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.TServicios" >
     insert into t_servicios
@@ -172,6 +178,12 @@
       <if test="tipo1 != null" >
         tipo1,
       </if>
+      <if test="biFecNumCam != null" >
+        bi_fec_num_cam,
+      </if>
+      <if test="biCodIndCam != null" >
+        bi_cod_ind_cam,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="codservicio != null" >
@@ -218,6 +230,12 @@
       </if>
       <if test="tipo1 != null" >
         #{tipo1,jdbcType=SMALLINT},
+      </if>
+      <if test="biFecNumCam != null" >
+        #{biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="biCodIndCam != null" >
+        #{biCodIndCam,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
@@ -275,6 +293,12 @@
       <if test="record.tipo1 != null" >
         tipo1 = #{record.tipo1,jdbcType=SMALLINT},
       </if>
+      <if test="record.biFecNumCam != null" >
+        bi_fec_num_cam = #{record.biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.biCodIndCam != null" >
+        bi_cod_ind_cam = #{record.biCodIndCam,jdbcType=CHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -296,7 +320,9 @@
       obs = #{record.obs,jdbcType=VARCHAR},
       precio_periferia = #{record.precioPeriferia,jdbcType=NUMERIC},
       cod_centro_costo = #{record.codCentroCosto,jdbcType=NUMERIC},
-      tipo1 = #{record.tipo1,jdbcType=SMALLINT}
+      tipo1 = #{record.tipo1,jdbcType=SMALLINT},
+      bi_fec_num_cam = #{record.biFecNumCam,jdbcType=TIMESTAMP},
+      bi_cod_ind_cam = #{record.biCodIndCam,jdbcType=CHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -346,6 +372,12 @@
       <if test="tipo1 != null" >
         tipo1 = #{tipo1,jdbcType=SMALLINT},
       </if>
+      <if test="biFecNumCam != null" >
+        bi_fec_num_cam = #{biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="biCodIndCam != null" >
+        bi_cod_ind_cam = #{biCodIndCam,jdbcType=CHAR},
+      </if>
     </set>
     where codservicio = #{codservicio,jdbcType=CHAR}
   </update>
@@ -364,7 +396,9 @@
       obs = #{obs,jdbcType=VARCHAR},
       precio_periferia = #{precioPeriferia,jdbcType=NUMERIC},
       cod_centro_costo = #{codCentroCosto,jdbcType=NUMERIC},
-      tipo1 = #{tipo1,jdbcType=SMALLINT}
+      tipo1 = #{tipo1,jdbcType=SMALLINT},
+      bi_fec_num_cam = #{biFecNumCam,jdbcType=TIMESTAMP},
+      bi_cod_ind_cam = #{biCodIndCam,jdbcType=CHAR}
     where codservicio = #{codservicio,jdbcType=CHAR}
   </update>
 </mapper>

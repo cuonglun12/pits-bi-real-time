@@ -96,6 +96,10 @@ public class Despacho {
 
     private Short flagEnvio;
 
+    private Date biFecNumCam;
+
+    private String biCodIndCam;
+
     public String getSerieguia() {
         return serieguia;
     }
@@ -463,4 +467,101 @@ public class Despacho {
     public void setFlagEnvio(Short flagEnvio) {
         this.flagEnvio = flagEnvio;
     }
+
+    public Date getBiFecNumCam() {
+        return biFecNumCam;
+    }
+
+    public void setBiFecNumCam(Date biFecNumCam) {
+        this.biFecNumCam = biFecNumCam;
+    }
+
+    public String getBiCodIndCam() {
+        return biCodIndCam;
+    }
+
+    public void setBiCodIndCam(String biCodIndCam) {
+        this.biCodIndCam = biCodIndCam == null ? null : biCodIndCam.trim();
+    }
+
+    public void clear(){
+    	serieguia=null;
+    	nroguia=null;
+    	fecsalida=null;
+    	fecretorno=null;
+    	codmensajero=null;
+    	pasaje=null;
+    	total=null;
+    	entregados=null;
+    	motivos=null;
+    	reenvios=null;
+    	anulados=null;
+    	fuerazona=null;
+    	perdidos=null;
+    	observacion=null;
+    	tiporuta=null;
+    	monto=null;
+    	codestadoguia=null;
+    	estadoveri=null;
+    	usuariodesp=null;
+    	fechadesp=null;
+    	usuariocierre=null;
+    	fechacierre=null;
+    	codtipopago=null;
+    	horaretorno=null;
+    	codzona=null;
+    	userasigna=null;
+    	fecasigna=null;
+    	codorigen=null;
+    	codsede=null;
+    	tipofi=null;
+    	usuarioflete=null;
+    	fechaflete=null;
+    	nrocaja=null;
+    	flete=null;
+    	horasalida=null;
+    	horaflete=null;
+    	usuariomod=null;
+    	fechamod=null;
+    	codplanilla=null;
+    	brevete=null;
+    	codAyudante=null;
+    	codUnidad=null;
+    	placa=null;
+    	desUnidad=null;
+    	codTrackingGuia=null;
+    	flagEnvio=null;
+    	biFecNumCam=null;
+    	biCodIndCam=null;
+    }
+    
+	@Override
+	public String toString() {
+		return "Despacho [serieguia=" + serieguia + ", nroguia=" + nroguia
+				+ ", fecsalida=" + fecsalida + ", fecretorno=" + fecretorno
+				+ ", codmensajero=" + codmensajero + ", pasaje=" + pasaje
+				+ ", total=" + total + ", entregados=" + entregados
+				+ ", motivos=" + motivos + ", reenvios=" + reenvios
+				+ ", anulados=" + anulados + ", fuerazona=" + fuerazona
+				+ ", perdidos=" + perdidos + ", observacion=" + observacion
+				+ ", tiporuta=" + tiporuta + ", monto=" + monto
+				+ ", codestadoguia=" + codestadoguia + ", estadoveri="
+				+ estadoveri + ", usuariodesp=" + usuariodesp + ", fechadesp="
+				+ fechadesp + ", usuariocierre=" + usuariocierre
+				+ ", fechacierre=" + fechacierre + ", codtipopago="
+				+ codtipopago + ", horaretorno=" + horaretorno + ", codzona="
+				+ codzona + ", userasigna=" + userasigna + ", fecasigna="
+				+ fecasigna + ", codorigen=" + codorigen + ", codsede="
+				+ codsede + ", tipofi=" + tipofi + ", usuarioflete="
+				+ usuarioflete + ", fechaflete=" + fechaflete + ", nrocaja="
+				+ nrocaja + ", flete=" + flete + ", horasalida=" + horasalida
+				+ ", horaflete=" + horaflete + ", usuariomod=" + usuariomod
+				+ ", fechamod=" + fechamod + ", codplanilla=" + codplanilla
+				+ ", brevete=" + brevete + ", codAyudante=" + codAyudante
+				+ ", codUnidad=" + codUnidad + ", placa=" + placa
+				+ ", desUnidad=" + desUnidad + ", codTrackingGuia="
+				+ codTrackingGuia + ", flagEnvio=" + flagEnvio
+				+ ", biFecNumCam=" + biFecNumCam + ", biCodIndCam="
+				+ biCodIndCam + "]";
+	}
 }

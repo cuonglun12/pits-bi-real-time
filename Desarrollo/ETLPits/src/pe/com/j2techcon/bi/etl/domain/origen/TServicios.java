@@ -34,6 +34,10 @@ public class TServicios {
 
     private Short tipo1;
 
+    private Date biFecNumCam;
+
+    private String biCodIndCam;
+
     public String getCodservicio() {
         return codservicio;
     }
@@ -153,4 +157,53 @@ public class TServicios {
     public void setTipo1(Short tipo1) {
         this.tipo1 = tipo1;
     }
+
+    public Date getBiFecNumCam() {
+        return biFecNumCam;
+    }
+
+    public void setBiFecNumCam(Date biFecNumCam) {
+        this.biFecNumCam = biFecNumCam;
+    }
+
+    public String getBiCodIndCam() {
+        return biCodIndCam;
+    }
+
+    public void setBiCodIndCam(String biCodIndCam) {
+        this.biCodIndCam = biCodIndCam == null ? null : biCodIndCam.trim();
+    }
+    
+    public void clear(){
+    	codservicio=null;
+    	servicio=null;
+    	codnegocio=null;
+    	codambito=null;
+    	estado=null;
+    	dias=null;
+    	fecha=null;
+    	usuario=null;
+    	fechamod=null;
+    	usuariomod=null;
+    	tiposervicio=null;
+    	obs=null;
+    	precioPeriferia=null;
+    	codCentroCosto=null;
+    	tipo1=null;
+    	biFecNumCam=null;
+    	biCodIndCam=null;
+    }
+
+	@Override
+	public String toString() {
+		return "TServicios [codservicio=" + codservicio + ", servicio="
+				+ servicio + ", codnegocio=" + codnegocio + ", codambito="
+				+ codambito + ", estado=" + estado + ", dias=" + dias
+				+ ", fecha=" + fecha + ", usuario=" + usuario + ", fechamod="
+				+ fechamod + ", usuariomod=" + usuariomod + ", tiposervicio="
+				+ tiposervicio + ", obs=" + obs + ", precioPeriferia="
+				+ precioPeriferia + ", codCentroCosto=" + codCentroCosto
+				+ ", tipo1=" + tipo1 + ", biFecNumCam=" + biFecNumCam
+				+ ", biCodIndCam=" + biCodIndCam + "]";
+	}
 }

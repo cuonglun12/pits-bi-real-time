@@ -7,9 +7,9 @@ import pe.com.j2techcon.bi.etl.domain.origen.Detdespacho;
 import pe.com.j2techcon.bi.etl.domain.origen.DetdespachoExample;
 
 public class DetdespachoManager {
-
-	private DetdespachoMapper detdespachoMapper;
 	
+	private DetdespachoMapper detdespachoMapper;
+
 	public DetdespachoMapper getDetdespachoMapper() {
 		return detdespachoMapper;
 	}
@@ -26,6 +26,11 @@ public class DetdespachoManager {
 		return detdespachoMapper.deleteByExample(example);
 	}
 
+	public int deleteByPrimaryKey(String serieguia, String nroguia,
+			String serie, String orden, String correlativo) {
+		return detdespachoMapper.deleteByPrimaryKey(serieguia, nroguia, serie, orden, correlativo);
+	}
+
 	public int insert(Detdespacho record) {
 		return detdespachoMapper.insert(record);
 	}
@@ -38,6 +43,11 @@ public class DetdespachoManager {
 		return detdespachoMapper.selectByExample(example);
 	}
 
+	public Detdespacho selectByPrimaryKey(String serieguia, String nroguia,
+			String serie, String orden, String correlativo) {
+		return detdespachoMapper.selectByPrimaryKey(serieguia, nroguia, serie, orden, correlativo);
+	}
+
 	public int updateByExampleSelective(Detdespacho record,
 			DetdespachoExample example) {
 		return detdespachoMapper.updateByExampleSelective(record, example);
@@ -45,6 +55,14 @@ public class DetdespachoManager {
 
 	public int updateByExample(Detdespacho record, DetdespachoExample example) {
 		return detdespachoMapper.updateByExample(record, example);
+	}
+
+	public int updateByPrimaryKeySelective(Detdespacho record) {
+		return detdespachoMapper.updateByPrimaryKeySelective(record);
+	}
+
+	public int updateByPrimaryKey(Detdespacho record) {
+		return detdespachoMapper.updateByPrimaryKey(record);
 	}
 
 }

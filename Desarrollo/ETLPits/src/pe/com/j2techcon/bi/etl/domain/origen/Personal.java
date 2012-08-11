@@ -114,6 +114,10 @@ public class Personal {
 
     private String tipoComprobante;
 
+    private Date biFecNumCam;
+
+    private String biCodIndCam;
+
     public String getCodigopersonal() {
         return codigopersonal;
     }
@@ -553,4 +557,115 @@ public class Personal {
     public void setTipoComprobante(String tipoComprobante) {
         this.tipoComprobante = tipoComprobante == null ? null : tipoComprobante.trim();
     }
+
+    public Date getBiFecNumCam() {
+        return biFecNumCam;
+    }
+
+    public void setBiFecNumCam(Date biFecNumCam) {
+        this.biFecNumCam = biFecNumCam;
+    }
+
+    public String getBiCodIndCam() {
+        return biCodIndCam;
+    }
+
+    public void setBiCodIndCam(String biCodIndCam) {
+        this.biCodIndCam = biCodIndCam == null ? null : biCodIndCam.trim();
+    }
+    
+    public void clear(){
+    	codigopersonal=null;
+    	usuario=null;
+    	tipopers=null;
+    	codtipo=null;
+    	coddepartamento=null;
+    	codbanco=null;
+    	tipopago=null;
+    	nombre=null;
+    	appaterno=null;
+    	apmaterno=null;
+    	nombres=null;
+    	direccion=null;
+    	ubigeo=null;
+    	ubigeonac=null;
+    	fechanac=null;
+    	estadocivil=null;
+    	dni=null;
+    	lmilitar=null;
+    	nroafp=null;
+    	nroruc=null;
+    	nrocuenta=null;
+    	nroessalud=null;
+    	telefono=null;
+    	correo=null;
+    	estadopersonal=null;
+    	recomendo=null;
+    	password=null;
+    	monto=null;
+    	usuarioingeso=null;
+    	fechaingreso=null;
+    	usuariomod=null;
+    	fechamod=null;
+    	fechacese=null;
+    	horaentrada=null;
+    	tarifaUrbanacc=null;
+    	tarifaUrbanasc=null;
+    	codempresa=null;
+    	codzona=null;
+    	tarifaPerifericacc=null;
+    	tarifaPerifericasc=null;
+    	tarifaExtremacc=null;
+    	tarifaExtremasc=null;
+    	sexo=null;
+    	correoEmpresa=null;
+    	empresa=null;
+    	dirempresa=null;
+    	rucempresa=null;
+    	telefono2=null;
+    	correo2=null;
+    	coddestino=null;
+    	codigojefedirecto=null;
+    	zonaBono=null;
+    	codventa=null;
+    	codsede=null;
+    	tipoComprobante=null;
+    	biFecNumCam=null;
+    	biCodIndCam=null;
+    }
+
+	@Override
+	public String toString() {
+		return "Personal [codigopersonal=" + codigopersonal + ", usuario="
+				+ usuario + ", tipopers=" + tipopers + ", codtipo=" + codtipo
+				+ ", coddepartamento=" + coddepartamento + ", codbanco="
+				+ codbanco + ", tipopago=" + tipopago + ", nombre=" + nombre
+				+ ", appaterno=" + appaterno + ", apmaterno=" + apmaterno
+				+ ", nombres=" + nombres + ", direccion=" + direccion
+				+ ", ubigeo=" + ubigeo + ", ubigeonac=" + ubigeonac
+				+ ", fechanac=" + fechanac + ", estadocivil=" + estadocivil
+				+ ", dni=" + dni + ", lmilitar=" + lmilitar + ", nroafp="
+				+ nroafp + ", nroruc=" + nroruc + ", nrocuenta=" + nrocuenta
+				+ ", nroessalud=" + nroessalud + ", telefono=" + telefono
+				+ ", correo=" + correo + ", estadopersonal=" + estadopersonal
+				+ ", recomendo=" + recomendo + ", password=" + password
+				+ ", monto=" + monto + ", usuarioingeso=" + usuarioingeso
+				+ ", fechaingreso=" + fechaingreso + ", usuariomod="
+				+ usuariomod + ", fechamod=" + fechamod + ", fechacese="
+				+ fechacese + ", horaentrada=" + horaentrada
+				+ ", tarifaUrbanacc=" + tarifaUrbanacc + ", tarifaUrbanasc="
+				+ tarifaUrbanasc + ", codempresa=" + codempresa + ", codzona="
+				+ codzona + ", tarifaPerifericacc=" + tarifaPerifericacc
+				+ ", tarifaPerifericasc=" + tarifaPerifericasc
+				+ ", tarifaExtremacc=" + tarifaExtremacc + ", tarifaExtremasc="
+				+ tarifaExtremasc + ", sexo=" + sexo + ", correoEmpresa="
+				+ correoEmpresa + ", empresa=" + empresa + ", dirempresa="
+				+ dirempresa + ", rucempresa=" + rucempresa + ", telefono2="
+				+ telefono2 + ", correo2=" + correo2 + ", coddestino="
+				+ coddestino + ", codigojefedirecto=" + codigojefedirecto
+				+ ", zonaBono=" + zonaBono + ", codventa=" + codventa
+				+ ", codsede=" + codsede + ", tipoComprobante="
+				+ tipoComprobante + ", biFecNumCam=" + biFecNumCam
+				+ ", biCodIndCam=" + biCodIndCam + "]";
+	}
 }

@@ -194,6 +194,10 @@ public class Ordenes {
 
     private String obsAnula;
 
+    private Date biFecNumCam;
+
+    private String biCodIndCam;
+
     public String getSerie() {
         return serie;
     }
@@ -953,4 +957,179 @@ public class Ordenes {
     public void setObsAnula(String obsAnula) {
         this.obsAnula = obsAnula == null ? null : obsAnula.trim();
     }
+
+    public Date getBiFecNumCam() {
+        return biFecNumCam;
+    }
+
+    public void setBiFecNumCam(Date biFecNumCam) {
+        this.biFecNumCam = biFecNumCam;
+    }
+
+    public String getBiCodIndCam() {
+        return biCodIndCam;
+    }
+
+    public void setBiCodIndCam(String biCodIndCam) {
+        this.biCodIndCam = biCodIndCam == null ? null : biCodIndCam.trim();
+    }
+    
+    public void clear(){
+    	serie=null;
+    	orden=null;
+    	preorden=null;
+    	codcliente=null;
+    	codareacliente=null;
+    	codambito=null;
+    	codnegocio=null;
+    	codservicio=null;
+    	codproducto=null;
+    	codtiporeparto=null;
+    	cntAdmision=null;
+    	cntDigitado=null;
+    	peso=null;
+    	fechaingreso=null;
+    	fechainicio=null;
+    	fechavencimiento=null;
+    	fechadevolucion=null;
+    	estadoorden=null;
+    	estadoout=null;
+    	bloqueo=null;
+    	volantes=null;
+    	valorado=null;
+    	liquidado=null;
+    	nroliquidacion=null;
+    	usuario=null;
+    	fecha=null;
+    	usuariomod=null;
+    	fechamod=null;
+    	codejecutiva=null;
+    	glosa=null;
+    	facturado=null;
+    	facSerie=null;
+    	eeccSerie=null;
+    	eeccNumero=null;
+    	importe=null;
+    	descuento=null;
+    	venta=null;
+    	igv=null;
+    	total=null;
+    	coserie=null;
+    	conumero=null;
+    	codtipooperador=null;
+    	seoperador=null;
+    	tarifaUrbana=null;
+    	tarifaPeriferica=null;
+    	tarifaExtrema=null;
+    	inafecto=null;
+    	tipocotizacion=null;
+    	moneda=null;
+    	tipoCambio=null;
+    	facNumero=null;
+    	tipodocumento=null;
+    	observacion=null;
+    	grupo=null;
+    	codorigen=null;
+    	codzona=null;
+    	importePlus=null;
+    	tarifaAdicional=null;
+    	importeServicio=null;
+    	importePeriferico=null;
+    	montoPeriferico=null;
+    	cntPeriferico=null;
+    	codtracking=null;
+    	usuarioRecojo=null;
+    	fechaRecojo=null;
+    	flagRecojo=null;
+    	tipoPagoOrden=null;
+    	ciudadOrigen=null;
+    	ciudadDestino=null;
+    	valorDeclarado=null;
+    	prioridad=null;
+    	nrooperador=null;
+    	codrecojo=null;
+    	codConformidad=null;
+    	obsConformidad=null;
+    	usuConformidad=null;
+    	fecConformidad=null;
+    	codActiva=null;
+    	ususarioActiva=null;
+    	fechaActiva=null;
+    	tTransporte=null;
+    	serieDevc=null;
+    	nroDevc=null;
+    	estadoDevc=null;
+    	observacion2=null;
+    	serieguiasol=null;
+    	nroguiasol=null;
+    	flagTipoOrden=null;
+    	codigo=null;
+    	cntM3=null;
+    	tipoUnidad=null;
+    	codSubServicio=null;
+    	usuarioAnula=null;
+    	fechaAnula=null;
+    	obsAnula=null;
+    	biFecNumCam=null;
+    	biCodIndCam=null;
+    }
+
+	@Override
+	public String toString() {
+		return "Ordenes [serie=" + serie + ", orden=" + orden + ", preorden="
+				+ preorden + ", codcliente=" + codcliente + ", codareacliente="
+				+ codareacliente + ", codambito=" + codambito + ", codnegocio="
+				+ codnegocio + ", codservicio=" + codservicio
+				+ ", codproducto=" + codproducto + ", codtiporeparto="
+				+ codtiporeparto + ", cntAdmision=" + cntAdmision
+				+ ", cntDigitado=" + cntDigitado + ", peso=" + peso
+				+ ", fechaingreso=" + fechaingreso + ", fechainicio="
+				+ fechainicio + ", fechavencimiento=" + fechavencimiento
+				+ ", fechadevolucion=" + fechadevolucion + ", estadoorden="
+				+ estadoorden + ", estadoout=" + estadoout + ", bloqueo="
+				+ bloqueo + ", volantes=" + volantes + ", valorado=" + valorado
+				+ ", liquidado=" + liquidado + ", nroliquidacion="
+				+ nroliquidacion + ", usuario=" + usuario + ", fecha=" + fecha
+				+ ", usuariomod=" + usuariomod + ", fechamod=" + fechamod
+				+ ", codejecutiva=" + codejecutiva + ", glosa=" + glosa
+				+ ", facturado=" + facturado + ", facSerie=" + facSerie
+				+ ", eeccSerie=" + eeccSerie + ", eeccNumero=" + eeccNumero
+				+ ", importe=" + importe + ", descuento=" + descuento
+				+ ", venta=" + venta + ", igv=" + igv + ", total=" + total
+				+ ", coserie=" + coserie + ", conumero=" + conumero
+				+ ", codtipooperador=" + codtipooperador + ", seoperador="
+				+ seoperador + ", tarifaUrbana=" + tarifaUrbana
+				+ ", tarifaPeriferica=" + tarifaPeriferica + ", tarifaExtrema="
+				+ tarifaExtrema + ", inafecto=" + inafecto
+				+ ", tipocotizacion=" + tipocotizacion + ", moneda=" + moneda
+				+ ", tipoCambio=" + tipoCambio + ", facNumero=" + facNumero
+				+ ", tipodocumento=" + tipodocumento + ", observacion="
+				+ observacion + ", grupo=" + grupo + ", codorigen=" + codorigen
+				+ ", codzona=" + codzona + ", importePlus=" + importePlus
+				+ ", tarifaAdicional=" + tarifaAdicional + ", importeServicio="
+				+ importeServicio + ", importePeriferico=" + importePeriferico
+				+ ", montoPeriferico=" + montoPeriferico + ", cntPeriferico="
+				+ cntPeriferico + ", codtracking=" + codtracking
+				+ ", usuarioRecojo=" + usuarioRecojo + ", fechaRecojo="
+				+ fechaRecojo + ", flagRecojo=" + flagRecojo
+				+ ", tipoPagoOrden=" + tipoPagoOrden + ", ciudadOrigen="
+				+ ciudadOrigen + ", ciudadDestino=" + ciudadDestino
+				+ ", valorDeclarado=" + valorDeclarado + ", prioridad="
+				+ prioridad + ", nrooperador=" + nrooperador + ", codrecojo="
+				+ codrecojo + ", codConformidad=" + codConformidad
+				+ ", obsConformidad=" + obsConformidad + ", usuConformidad="
+				+ usuConformidad + ", fecConformidad=" + fecConformidad
+				+ ", codActiva=" + codActiva + ", ususarioActiva="
+				+ ususarioActiva + ", fechaActiva=" + fechaActiva
+				+ ", tTransporte=" + tTransporte + ", serieDevc=" + serieDevc
+				+ ", nroDevc=" + nroDevc + ", estadoDevc=" + estadoDevc
+				+ ", observacion2=" + observacion2 + ", serieguiasol="
+				+ serieguiasol + ", nroguiasol=" + nroguiasol
+				+ ", flagTipoOrden=" + flagTipoOrden + ", codigo=" + codigo
+				+ ", cntM3=" + cntM3 + ", tipoUnidad=" + tipoUnidad
+				+ ", codSubServicio=" + codSubServicio + ", usuarioAnula="
+				+ usuarioAnula + ", fechaAnula=" + fechaAnula + ", obsAnula="
+				+ obsAnula + ", biFecNumCam=" + biFecNumCam + ", biCodIndCam="
+				+ biCodIndCam + "]";
+	}
 }

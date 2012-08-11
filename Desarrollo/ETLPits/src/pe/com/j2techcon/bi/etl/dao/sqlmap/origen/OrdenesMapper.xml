@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.origen.OrdenesMapper" >
+<mapper namespace="ordenes" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.origen.Ordenes" >
-    <result column="serie" property="serie" jdbcType="CHAR" />
-    <result column="orden" property="orden" jdbcType="CHAR" />
+    <id column="serie" property="serie" jdbcType="CHAR" />
+    <id column="orden" property="orden" jdbcType="CHAR" />
     <result column="preorden" property="preorden" jdbcType="VARCHAR" />
     <result column="codcliente" property="codcliente" jdbcType="CHAR" />
     <result column="codareacliente" property="codareacliente" jdbcType="CHAR" />
@@ -97,6 +97,8 @@
     <result column="usuario_anula" property="usuarioAnula" jdbcType="CHAR" />
     <result column="fecha_anula" property="fechaAnula" jdbcType="TIMESTAMP" />
     <result column="obs_anula" property="obsAnula" jdbcType="VARCHAR" />
+    <result column="bi_fec_num_cam" property="biFecNumCam" jdbcType="TIMESTAMP" />
+    <result column="bi_cod_ind_cam" property="biCodIndCam" jdbcType="CHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -170,7 +172,8 @@
     prioridad, nrooperador, codrecojo, cod_conformidad, obs_conformidad, usu_conformidad, 
     fec_conformidad, cod_activa, ususario_activa, fecha_activa, t_transporte, serie_devc, 
     nro_devc, estado_devc, observacion2, serieguiasol, nroguiasol, flag_tipo_orden, codigo, 
-    cnt_m3, tipo_unidad, cod_sub_servicio, usuario_anula, fecha_anula, obs_anula
+    cnt_m3, tipo_unidad, cod_sub_servicio, usuario_anula, fecha_anula, obs_anula, bi_fec_num_cam, 
+    bi_cod_ind_cam
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.origen.OrdenesExample" >
     select
@@ -185,7 +188,22 @@
     <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
+    </if>
   </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from ordenes
+    where serie = #{serie,jdbcType=CHAR}
+      and orden = #{orden,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from ordenes
+    where serie = #{serie,jdbcType=CHAR}
+      and orden = #{orden,jdbcType=CHAR}
+  </delete>
   <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.OrdenesExample" >
     delete from ordenes
     <if test="_parameter != null" >
@@ -224,7 +242,8 @@
       observacion2, serieguiasol, nroguiasol, 
       flag_tipo_orden, codigo, cnt_m3, 
       tipo_unidad, cod_sub_servicio, usuario_anula, 
-      fecha_anula, obs_anula)
+      fecha_anula, obs_anula, bi_fec_num_cam, 
+      bi_cod_ind_cam)
     values (#{serie,jdbcType=CHAR}, #{orden,jdbcType=CHAR}, #{preorden,jdbcType=VARCHAR}, 
       #{codcliente,jdbcType=CHAR}, #{codareacliente,jdbcType=CHAR}, #{codambito,jdbcType=CHAR}, 
       #{codnegocio,jdbcType=CHAR}, #{codservicio,jdbcType=CHAR}, #{codproducto,jdbcType=CHAR}, 
@@ -256,7 +275,8 @@
       #{observacion2,jdbcType=VARCHAR}, #{serieguiasol,jdbcType=CHAR}, #{nroguiasol,jdbcType=CHAR}, 
       #{flagTipoOrden,jdbcType=SMALLINT}, #{codigo,jdbcType=VARCHAR}, #{cntM3,jdbcType=SMALLINT}, 
       #{tipoUnidad,jdbcType=VARCHAR}, #{codSubServicio,jdbcType=VARCHAR}, #{usuarioAnula,jdbcType=CHAR}, 
-      #{fechaAnula,jdbcType=TIMESTAMP}, #{obsAnula,jdbcType=VARCHAR})
+      #{fechaAnula,jdbcType=TIMESTAMP}, #{obsAnula,jdbcType=VARCHAR}, #{biFecNumCam,jdbcType=TIMESTAMP}, 
+      #{biCodIndCam,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Ordenes" >
     insert into ordenes
@@ -546,6 +566,12 @@
       <if test="obsAnula != null" >
         obs_anula,
       </if>
+      <if test="biFecNumCam != null" >
+        bi_fec_num_cam,
+      </if>
+      <if test="biCodIndCam != null" >
+        bi_cod_ind_cam,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="serie != null" >
@@ -832,6 +858,12 @@
       </if>
       <if test="obsAnula != null" >
         #{obsAnula,jdbcType=VARCHAR},
+      </if>
+      <if test="biFecNumCam != null" >
+        #{biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="biCodIndCam != null" >
+        #{biCodIndCam,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
@@ -1129,6 +1161,12 @@
       <if test="record.obsAnula != null" >
         obs_anula = #{record.obsAnula,jdbcType=VARCHAR},
       </if>
+      <if test="record.biFecNumCam != null" >
+        bi_fec_num_cam = #{record.biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.biCodIndCam != null" >
+        bi_cod_ind_cam = #{record.biCodIndCam,jdbcType=CHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -1230,9 +1268,403 @@
       cod_sub_servicio = #{record.codSubServicio,jdbcType=VARCHAR},
       usuario_anula = #{record.usuarioAnula,jdbcType=CHAR},
       fecha_anula = #{record.fechaAnula,jdbcType=TIMESTAMP},
-      obs_anula = #{record.obsAnula,jdbcType=VARCHAR}
+      obs_anula = #{record.obsAnula,jdbcType=VARCHAR},
+      bi_fec_num_cam = #{record.biFecNumCam,jdbcType=TIMESTAMP},
+      bi_cod_ind_cam = #{record.biCodIndCam,jdbcType=CHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Ordenes" >
+    update ordenes
+    <set >
+      <if test="preorden != null" >
+        preorden = #{preorden,jdbcType=VARCHAR},
+      </if>
+      <if test="codcliente != null" >
+        codcliente = #{codcliente,jdbcType=CHAR},
+      </if>
+      <if test="codareacliente != null" >
+        codareacliente = #{codareacliente,jdbcType=CHAR},
+      </if>
+      <if test="codambito != null" >
+        codambito = #{codambito,jdbcType=CHAR},
+      </if>
+      <if test="codnegocio != null" >
+        codnegocio = #{codnegocio,jdbcType=CHAR},
+      </if>
+      <if test="codservicio != null" >
+        codservicio = #{codservicio,jdbcType=CHAR},
+      </if>
+      <if test="codproducto != null" >
+        codproducto = #{codproducto,jdbcType=CHAR},
+      </if>
+      <if test="codtiporeparto != null" >
+        codtiporeparto = #{codtiporeparto,jdbcType=CHAR},
+      </if>
+      <if test="cntAdmision != null" >
+        cnt_admision = #{cntAdmision,jdbcType=NUMERIC},
+      </if>
+      <if test="cntDigitado != null" >
+        cnt_digitado = #{cntDigitado,jdbcType=NUMERIC},
+      </if>
+      <if test="peso != null" >
+        peso = #{peso,jdbcType=NUMERIC},
+      </if>
+      <if test="fechaingreso != null" >
+        fechaingreso = #{fechaingreso,jdbcType=DATE},
+      </if>
+      <if test="fechainicio != null" >
+        fechainicio = #{fechainicio,jdbcType=DATE},
+      </if>
+      <if test="fechavencimiento != null" >
+        fechavencimiento = #{fechavencimiento,jdbcType=DATE},
+      </if>
+      <if test="fechadevolucion != null" >
+        fechadevolucion = #{fechadevolucion,jdbcType=DATE},
+      </if>
+      <if test="estadoorden != null" >
+        estadoorden = #{estadoorden,jdbcType=CHAR},
+      </if>
+      <if test="estadoout != null" >
+        estadoout = #{estadoout,jdbcType=CHAR},
+      </if>
+      <if test="bloqueo != null" >
+        bloqueo = #{bloqueo,jdbcType=SMALLINT},
+      </if>
+      <if test="volantes != null" >
+        volantes = #{volantes,jdbcType=SMALLINT},
+      </if>
+      <if test="valorado != null" >
+        valorado = #{valorado,jdbcType=SMALLINT},
+      </if>
+      <if test="liquidado != null" >
+        liquidado = #{liquidado,jdbcType=SMALLINT},
+      </if>
+      <if test="nroliquidacion != null" >
+        nroliquidacion = #{nroliquidacion,jdbcType=CHAR},
+      </if>
+      <if test="usuario != null" >
+        usuario = #{usuario,jdbcType=CHAR},
+      </if>
+      <if test="fecha != null" >
+        fecha = #{fecha,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usuariomod != null" >
+        usuariomod = #{usuariomod,jdbcType=CHAR},
+      </if>
+      <if test="fechamod != null" >
+        fechamod = #{fechamod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="codejecutiva != null" >
+        codejecutiva = #{codejecutiva,jdbcType=CHAR},
+      </if>
+      <if test="glosa != null" >
+        glosa = #{glosa,jdbcType=VARCHAR},
+      </if>
+      <if test="facturado != null" >
+        facturado = #{facturado,jdbcType=SMALLINT},
+      </if>
+      <if test="facSerie != null" >
+        fac_serie = #{facSerie,jdbcType=CHAR},
+      </if>
+      <if test="eeccSerie != null" >
+        eecc_serie = #{eeccSerie,jdbcType=CHAR},
+      </if>
+      <if test="eeccNumero != null" >
+        eecc_numero = #{eeccNumero,jdbcType=CHAR},
+      </if>
+      <if test="importe != null" >
+        importe = #{importe,jdbcType=NUMERIC},
+      </if>
+      <if test="descuento != null" >
+        descuento = #{descuento,jdbcType=NUMERIC},
+      </if>
+      <if test="venta != null" >
+        venta = #{venta,jdbcType=NUMERIC},
+      </if>
+      <if test="igv != null" >
+        igv = #{igv,jdbcType=NUMERIC},
+      </if>
+      <if test="total != null" >
+        total = #{total,jdbcType=NUMERIC},
+      </if>
+      <if test="coserie != null" >
+        coserie = #{coserie,jdbcType=CHAR},
+      </if>
+      <if test="conumero != null" >
+        conumero = #{conumero,jdbcType=NUMERIC},
+      </if>
+      <if test="codtipooperador != null" >
+        codtipooperador = #{codtipooperador,jdbcType=CHAR},
+      </if>
+      <if test="seoperador != null" >
+        seoperador = #{seoperador,jdbcType=CHAR},
+      </if>
+      <if test="tarifaUrbana != null" >
+        tarifa_urbana = #{tarifaUrbana,jdbcType=NUMERIC},
+      </if>
+      <if test="tarifaPeriferica != null" >
+        tarifa_periferica = #{tarifaPeriferica,jdbcType=NUMERIC},
+      </if>
+      <if test="tarifaExtrema != null" >
+        tarifa_extrema = #{tarifaExtrema,jdbcType=NUMERIC},
+      </if>
+      <if test="inafecto != null" >
+        inafecto = #{inafecto,jdbcType=NUMERIC},
+      </if>
+      <if test="tipocotizacion != null" >
+        tipocotizacion = #{tipocotizacion,jdbcType=SMALLINT},
+      </if>
+      <if test="moneda != null" >
+        moneda = #{moneda,jdbcType=CHAR},
+      </if>
+      <if test="tipoCambio != null" >
+        tipo_cambio = #{tipoCambio,jdbcType=NUMERIC},
+      </if>
+      <if test="facNumero != null" >
+        fac_numero = #{facNumero,jdbcType=NUMERIC},
+      </if>
+      <if test="tipodocumento != null" >
+        tipodocumento = #{tipodocumento,jdbcType=CHAR},
+      </if>
+      <if test="observacion != null" >
+        observacion = #{observacion,jdbcType=VARCHAR},
+      </if>
+      <if test="grupo != null" >
+        grupo = #{grupo,jdbcType=VARCHAR},
+      </if>
+      <if test="codorigen != null" >
+        codorigen = #{codorigen,jdbcType=CHAR},
+      </if>
+      <if test="codzona != null" >
+        codzona = #{codzona,jdbcType=CHAR},
+      </if>
+      <if test="importePlus != null" >
+        importe_plus = #{importePlus,jdbcType=NUMERIC},
+      </if>
+      <if test="tarifaAdicional != null" >
+        tarifa_adicional = #{tarifaAdicional,jdbcType=NUMERIC},
+      </if>
+      <if test="importeServicio != null" >
+        importe_servicio = #{importeServicio,jdbcType=NUMERIC},
+      </if>
+      <if test="importePeriferico != null" >
+        importe_periferico = #{importePeriferico,jdbcType=NUMERIC},
+      </if>
+      <if test="montoPeriferico != null" >
+        monto_periferico = #{montoPeriferico,jdbcType=NUMERIC},
+      </if>
+      <if test="cntPeriferico != null" >
+        cnt_periferico = #{cntPeriferico,jdbcType=NUMERIC},
+      </if>
+      <if test="codtracking != null" >
+        codtracking = #{codtracking,jdbcType=SMALLINT},
+      </if>
+      <if test="usuarioRecojo != null" >
+        usuario_recojo = #{usuarioRecojo,jdbcType=CHAR},
+      </if>
+      <if test="fechaRecojo != null" >
+        fecha_recojo = #{fechaRecojo,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flagRecojo != null" >
+        flag_recojo = #{flagRecojo,jdbcType=SMALLINT},
+      </if>
+      <if test="tipoPagoOrden != null" >
+        tipo_pago_orden = #{tipoPagoOrden,jdbcType=SMALLINT},
+      </if>
+      <if test="ciudadOrigen != null" >
+        ciudad_origen = #{ciudadOrigen,jdbcType=VARCHAR},
+      </if>
+      <if test="ciudadDestino != null" >
+        ciudad_destino = #{ciudadDestino,jdbcType=VARCHAR},
+      </if>
+      <if test="valorDeclarado != null" >
+        valor_declarado = #{valorDeclarado,jdbcType=NUMERIC},
+      </if>
+      <if test="prioridad != null" >
+        prioridad = #{prioridad,jdbcType=CHAR},
+      </if>
+      <if test="nrooperador != null" >
+        nrooperador = #{nrooperador,jdbcType=VARCHAR},
+      </if>
+      <if test="codrecojo != null" >
+        codrecojo = #{codrecojo,jdbcType=VARCHAR},
+      </if>
+      <if test="codConformidad != null" >
+        cod_conformidad = #{codConformidad,jdbcType=CHAR},
+      </if>
+      <if test="obsConformidad != null" >
+        obs_conformidad = #{obsConformidad,jdbcType=VARCHAR},
+      </if>
+      <if test="usuConformidad != null" >
+        usu_conformidad = #{usuConformidad,jdbcType=VARCHAR},
+      </if>
+      <if test="fecConformidad != null" >
+        fec_conformidad = #{fecConformidad,jdbcType=TIMESTAMP},
+      </if>
+      <if test="codActiva != null" >
+        cod_activa = #{codActiva,jdbcType=SMALLINT},
+      </if>
+      <if test="ususarioActiva != null" >
+        ususario_activa = #{ususarioActiva,jdbcType=CHAR},
+      </if>
+      <if test="fechaActiva != null" >
+        fecha_activa = #{fechaActiva,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tTransporte != null" >
+        t_transporte = #{tTransporte,jdbcType=CHAR},
+      </if>
+      <if test="serieDevc != null" >
+        serie_devc = #{serieDevc,jdbcType=VARCHAR},
+      </if>
+      <if test="nroDevc != null" >
+        nro_devc = #{nroDevc,jdbcType=VARCHAR},
+      </if>
+      <if test="estadoDevc != null" >
+        estado_devc = #{estadoDevc,jdbcType=VARCHAR},
+      </if>
+      <if test="observacion2 != null" >
+        observacion2 = #{observacion2,jdbcType=VARCHAR},
+      </if>
+      <if test="serieguiasol != null" >
+        serieguiasol = #{serieguiasol,jdbcType=CHAR},
+      </if>
+      <if test="nroguiasol != null" >
+        nroguiasol = #{nroguiasol,jdbcType=CHAR},
+      </if>
+      <if test="flagTipoOrden != null" >
+        flag_tipo_orden = #{flagTipoOrden,jdbcType=SMALLINT},
+      </if>
+      <if test="codigo != null" >
+        codigo = #{codigo,jdbcType=VARCHAR},
+      </if>
+      <if test="cntM3 != null" >
+        cnt_m3 = #{cntM3,jdbcType=SMALLINT},
+      </if>
+      <if test="tipoUnidad != null" >
+        tipo_unidad = #{tipoUnidad,jdbcType=VARCHAR},
+      </if>
+      <if test="codSubServicio != null" >
+        cod_sub_servicio = #{codSubServicio,jdbcType=VARCHAR},
+      </if>
+      <if test="usuarioAnula != null" >
+        usuario_anula = #{usuarioAnula,jdbcType=CHAR},
+      </if>
+      <if test="fechaAnula != null" >
+        fecha_anula = #{fechaAnula,jdbcType=TIMESTAMP},
+      </if>
+      <if test="obsAnula != null" >
+        obs_anula = #{obsAnula,jdbcType=VARCHAR},
+      </if>
+      <if test="biFecNumCam != null" >
+        bi_fec_num_cam = #{biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="biCodIndCam != null" >
+        bi_cod_ind_cam = #{biCodIndCam,jdbcType=CHAR},
+      </if>
+    </set>
+    where serie = #{serie,jdbcType=CHAR}
+      and orden = #{orden,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Ordenes" >
+    update ordenes
+    set preorden = #{preorden,jdbcType=VARCHAR},
+      codcliente = #{codcliente,jdbcType=CHAR},
+      codareacliente = #{codareacliente,jdbcType=CHAR},
+      codambito = #{codambito,jdbcType=CHAR},
+      codnegocio = #{codnegocio,jdbcType=CHAR},
+      codservicio = #{codservicio,jdbcType=CHAR},
+      codproducto = #{codproducto,jdbcType=CHAR},
+      codtiporeparto = #{codtiporeparto,jdbcType=CHAR},
+      cnt_admision = #{cntAdmision,jdbcType=NUMERIC},
+      cnt_digitado = #{cntDigitado,jdbcType=NUMERIC},
+      peso = #{peso,jdbcType=NUMERIC},
+      fechaingreso = #{fechaingreso,jdbcType=DATE},
+      fechainicio = #{fechainicio,jdbcType=DATE},
+      fechavencimiento = #{fechavencimiento,jdbcType=DATE},
+      fechadevolucion = #{fechadevolucion,jdbcType=DATE},
+      estadoorden = #{estadoorden,jdbcType=CHAR},
+      estadoout = #{estadoout,jdbcType=CHAR},
+      bloqueo = #{bloqueo,jdbcType=SMALLINT},
+      volantes = #{volantes,jdbcType=SMALLINT},
+      valorado = #{valorado,jdbcType=SMALLINT},
+      liquidado = #{liquidado,jdbcType=SMALLINT},
+      nroliquidacion = #{nroliquidacion,jdbcType=CHAR},
+      usuario = #{usuario,jdbcType=CHAR},
+      fecha = #{fecha,jdbcType=TIMESTAMP},
+      usuariomod = #{usuariomod,jdbcType=CHAR},
+      fechamod = #{fechamod,jdbcType=TIMESTAMP},
+      codejecutiva = #{codejecutiva,jdbcType=CHAR},
+      glosa = #{glosa,jdbcType=VARCHAR},
+      facturado = #{facturado,jdbcType=SMALLINT},
+      fac_serie = #{facSerie,jdbcType=CHAR},
+      eecc_serie = #{eeccSerie,jdbcType=CHAR},
+      eecc_numero = #{eeccNumero,jdbcType=CHAR},
+      importe = #{importe,jdbcType=NUMERIC},
+      descuento = #{descuento,jdbcType=NUMERIC},
+      venta = #{venta,jdbcType=NUMERIC},
+      igv = #{igv,jdbcType=NUMERIC},
+      total = #{total,jdbcType=NUMERIC},
+      coserie = #{coserie,jdbcType=CHAR},
+      conumero = #{conumero,jdbcType=NUMERIC},
+      codtipooperador = #{codtipooperador,jdbcType=CHAR},
+      seoperador = #{seoperador,jdbcType=CHAR},
+      tarifa_urbana = #{tarifaUrbana,jdbcType=NUMERIC},
+      tarifa_periferica = #{tarifaPeriferica,jdbcType=NUMERIC},
+      tarifa_extrema = #{tarifaExtrema,jdbcType=NUMERIC},
+      inafecto = #{inafecto,jdbcType=NUMERIC},
+      tipocotizacion = #{tipocotizacion,jdbcType=SMALLINT},
+      moneda = #{moneda,jdbcType=CHAR},
+      tipo_cambio = #{tipoCambio,jdbcType=NUMERIC},
+      fac_numero = #{facNumero,jdbcType=NUMERIC},
+      tipodocumento = #{tipodocumento,jdbcType=CHAR},
+      observacion = #{observacion,jdbcType=VARCHAR},
+      grupo = #{grupo,jdbcType=VARCHAR},
+      codorigen = #{codorigen,jdbcType=CHAR},
+      codzona = #{codzona,jdbcType=CHAR},
+      importe_plus = #{importePlus,jdbcType=NUMERIC},
+      tarifa_adicional = #{tarifaAdicional,jdbcType=NUMERIC},
+      importe_servicio = #{importeServicio,jdbcType=NUMERIC},
+      importe_periferico = #{importePeriferico,jdbcType=NUMERIC},
+      monto_periferico = #{montoPeriferico,jdbcType=NUMERIC},
+      cnt_periferico = #{cntPeriferico,jdbcType=NUMERIC},
+      codtracking = #{codtracking,jdbcType=SMALLINT},
+      usuario_recojo = #{usuarioRecojo,jdbcType=CHAR},
+      fecha_recojo = #{fechaRecojo,jdbcType=TIMESTAMP},
+      flag_recojo = #{flagRecojo,jdbcType=SMALLINT},
+      tipo_pago_orden = #{tipoPagoOrden,jdbcType=SMALLINT},
+      ciudad_origen = #{ciudadOrigen,jdbcType=VARCHAR},
+      ciudad_destino = #{ciudadDestino,jdbcType=VARCHAR},
+      valor_declarado = #{valorDeclarado,jdbcType=NUMERIC},
+      prioridad = #{prioridad,jdbcType=CHAR},
+      nrooperador = #{nrooperador,jdbcType=VARCHAR},
+      codrecojo = #{codrecojo,jdbcType=VARCHAR},
+      cod_conformidad = #{codConformidad,jdbcType=CHAR},
+      obs_conformidad = #{obsConformidad,jdbcType=VARCHAR},
+      usu_conformidad = #{usuConformidad,jdbcType=VARCHAR},
+      fec_conformidad = #{fecConformidad,jdbcType=TIMESTAMP},
+      cod_activa = #{codActiva,jdbcType=SMALLINT},
+      ususario_activa = #{ususarioActiva,jdbcType=CHAR},
+      fecha_activa = #{fechaActiva,jdbcType=TIMESTAMP},
+      t_transporte = #{tTransporte,jdbcType=CHAR},
+      serie_devc = #{serieDevc,jdbcType=VARCHAR},
+      nro_devc = #{nroDevc,jdbcType=VARCHAR},
+      estado_devc = #{estadoDevc,jdbcType=VARCHAR},
+      observacion2 = #{observacion2,jdbcType=VARCHAR},
+      serieguiasol = #{serieguiasol,jdbcType=CHAR},
+      nroguiasol = #{nroguiasol,jdbcType=CHAR},
+      flag_tipo_orden = #{flagTipoOrden,jdbcType=SMALLINT},
+      codigo = #{codigo,jdbcType=VARCHAR},
+      cnt_m3 = #{cntM3,jdbcType=SMALLINT},
+      tipo_unidad = #{tipoUnidad,jdbcType=VARCHAR},
+      cod_sub_servicio = #{codSubServicio,jdbcType=VARCHAR},
+      usuario_anula = #{usuarioAnula,jdbcType=CHAR},
+      fecha_anula = #{fechaAnula,jdbcType=TIMESTAMP},
+      obs_anula = #{obsAnula,jdbcType=VARCHAR},
+      bi_fec_num_cam = #{biFecNumCam,jdbcType=TIMESTAMP},
+      bi_cod_ind_cam = #{biCodIndCam,jdbcType=CHAR}
+    where serie = #{serie,jdbcType=CHAR}
+      and orden = #{orden,jdbcType=CHAR}
   </update>
 </mapper>

@@ -275,7 +275,7 @@ public class DimTipoDocumentoProcess {
 	
 	public void processRecordParametro(){
 		
-		completeFildTipoDocumento();
+		completeFieldTipoDocumento();
 		
 		if(typeProcess.equals(constantes.getTypeProcessSimple())){
 			if(tParametro.getCodIndCam().equals(constantes.getStateRecordNew())){
@@ -313,7 +313,7 @@ public class DimTipoDocumentoProcess {
 		updateRecordGenericParametro(stateRecordGeneric);
 	}
 	
-	public void completeFildTipoDocumento(){
+	public void completeFieldTipoDocumento(){
 		dimTipoDocumento.setTipoDocumentoKey(tParametro.getParamId());
 		dimTipoDocumento.setTipoDocumentoCod(tParametro.getParamCod());
 		dimTipoDocumento.setTipoDocumentoDesc(tParametro.getParamDes());

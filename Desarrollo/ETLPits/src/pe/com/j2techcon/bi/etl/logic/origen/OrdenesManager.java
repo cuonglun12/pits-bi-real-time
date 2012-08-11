@@ -26,6 +26,10 @@ public class OrdenesManager {
 		return ordenesMapper.deleteByExample(example);
 	}
 
+	public int deleteByPrimaryKey(String serie, String orden) {
+		return ordenesMapper.deleteByPrimaryKey(serie, orden);
+	}
+
 	public int insert(Ordenes record) {
 		return ordenesMapper.insert(record);
 	}
@@ -38,12 +42,24 @@ public class OrdenesManager {
 		return ordenesMapper.selectByExample(example);
 	}
 
+	public Ordenes selectByPrimaryKey(String serie, String orden) {
+		return ordenesMapper.selectByPrimaryKey(serie, orden);
+	}
+
 	public int updateByExampleSelective(Ordenes record, OrdenesExample example) {
 		return ordenesMapper.updateByExampleSelective(record, example);
 	}
 
 	public int updateByExample(Ordenes record, OrdenesExample example) {
 		return ordenesMapper.updateByExample(record, example);
+	}
+
+	public int updateByPrimaryKeySelective(Ordenes record) {
+		return ordenesMapper.updateByPrimaryKeySelective(record);
+	}
+
+	public int updateByPrimaryKey(Ordenes record) {
+		return ordenesMapper.updateByPrimaryKey(record);
 	}
 
 }

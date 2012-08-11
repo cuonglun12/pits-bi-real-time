@@ -27,6 +27,10 @@ public class TProductos {
 
     private String obs;
 
+    private Date biFecNumCam;
+
+    private String biCodIndCam;
+
     public String getCodproducto() {
         return codproducto;
     }
@@ -122,4 +126,48 @@ public class TProductos {
     public void setObs(String obs) {
         this.obs = obs == null ? null : obs.trim();
     }
+
+    public Date getBiFecNumCam() {
+        return biFecNumCam;
+    }
+
+    public void setBiFecNumCam(Date biFecNumCam) {
+        this.biFecNumCam = biFecNumCam;
+    }
+
+    public String getBiCodIndCam() {
+        return biCodIndCam;
+    }
+
+    public void setBiCodIndCam(String biCodIndCam) {
+        this.biCodIndCam = biCodIndCam == null ? null : biCodIndCam.trim();
+    }
+    
+    public void clear(){
+    	codproducto=null;
+    	producto=null;
+    	codnegocio=null;
+    	codambito=null;
+    	estado=null;
+    	usuario=null;
+    	usuariomod=null;
+    	codcliente=null;
+    	tipoproducto=null;
+    	fecha=null;
+    	fechamod=null;
+    	obs=null;
+    	biFecNumCam=null;
+    	biCodIndCam=null;
+    }
+
+	@Override
+	public String toString() {
+		return "TProductos [codproducto=" + codproducto + ", producto="
+				+ producto + ", codnegocio=" + codnegocio + ", codambito="
+				+ codambito + ", estado=" + estado + ", usuario=" + usuario
+				+ ", usuariomod=" + usuariomod + ", codcliente=" + codcliente
+				+ ", tipoproducto=" + tipoproducto + ", fecha=" + fecha
+				+ ", fechamod=" + fechamod + ", obs=" + obs + ", biFecNumCam="
+				+ biFecNumCam + ", biCodIndCam=" + biCodIndCam + "]";
+	}
 }

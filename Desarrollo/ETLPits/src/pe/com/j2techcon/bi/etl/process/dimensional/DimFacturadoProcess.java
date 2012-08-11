@@ -276,7 +276,7 @@ public class DimFacturadoProcess {
 	
 	public void processRecordParametro(){
 		
-		completeFildFacturado();
+		completeFieldFacturado();
 		
 		if(typeProcess.equals(constantes.getTypeProcessSimple())){
 			if(tParametro.getCodIndCam().equals(constantes.getStateRecordNew())){
@@ -314,7 +314,7 @@ public class DimFacturadoProcess {
 		updateRecordGenericParametro(stateRecordGeneric);
 	}
 	
-	public void completeFildFacturado(){
+	public void completeFieldFacturado(){
 		dimFacturado.setFacturadoKey(tParametro.getParamId());
 		dimFacturado.setFacturadoCod(tParametro.getParamCod());
 		dimFacturado.setFacturadoDesc(tParametro.getParamDes());

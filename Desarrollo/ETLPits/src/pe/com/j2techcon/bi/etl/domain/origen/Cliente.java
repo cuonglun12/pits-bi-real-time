@@ -86,6 +86,10 @@ public class Cliente {
 
     private String codempresa;
 
+    private Date biFecNumCam;
+
+    private String biCodIndCam;
+
     public String getCodcliente() {
         return codcliente;
     }
@@ -413,4 +417,93 @@ public class Cliente {
     public void setCodempresa(String codempresa) {
         this.codempresa = codempresa == null ? null : codempresa.trim();
     }
+
+    public Date getBiFecNumCam() {
+        return biFecNumCam;
+    }
+
+    public void setBiFecNumCam(Date biFecNumCam) {
+        this.biFecNumCam = biFecNumCam;
+    }
+
+    public String getBiCodIndCam() {
+        return biCodIndCam;
+    }
+
+    public void setBiCodIndCam(String biCodIndCam) {
+        this.biCodIndCam = biCodIndCam == null ? null : biCodIndCam.trim();
+    }
+    
+    public void clear(){
+    	codcliente=null;
+    	ruc=null;
+    	cliente=null;
+    	tipocliente=null;
+    	rubro=null;
+    	alias=null;
+    	direccion=null;
+    	ubigeo=null;
+    	codpais=null;
+    	telefono=null;
+    	movil=null;
+    	lim=null;
+    	codejecutiva=null;
+    	email=null;
+    	tipoCredito=null;
+    	tipoFacturacion=null;
+    	usuario=null;
+    	fecha=null;
+    	fechamod=null;
+    	usuariomod=null;
+    	periodoFac=null;
+    	diasCredito=null;
+    	credito=null;
+    	creditoUtilizado=null;
+    	creditoDisponible=null;
+    	sobregiro=null;
+    	estado=null;
+    	observacion=null;
+    	fechaInicioCredito=null;
+    	fechaVenceCredito=null;
+    	tipoDocumento=null;
+    	referencia=null;
+    	telefono1=null;
+    	codEncuesta=null;
+    	hPactada=null;
+    	tCliente=null;
+    	tHAdicional=null;
+    	tKmAdicional=null;
+    	email2=null;
+    	clasifica=null;
+    	codempresa=null;
+    	biFecNumCam=null;
+    	biCodIndCam=null;
+    }
+
+	@Override
+	public String toString() {
+		return "Cliente [codcliente=" + codcliente + ", ruc=" + ruc
+				+ ", cliente=" + cliente + ", tipocliente=" + tipocliente
+				+ ", rubro=" + rubro + ", alias=" + alias + ", direccion="
+				+ direccion + ", ubigeo=" + ubigeo + ", codpais=" + codpais
+				+ ", telefono=" + telefono + ", movil=" + movil + ", lim="
+				+ lim + ", codejecutiva=" + codejecutiva + ", email=" + email
+				+ ", tipoCredito=" + tipoCredito + ", tipoFacturacion="
+				+ tipoFacturacion + ", usuario=" + usuario + ", fecha=" + fecha
+				+ ", fechamod=" + fechamod + ", usuariomod=" + usuariomod
+				+ ", periodoFac=" + periodoFac + ", diasCredito=" + diasCredito
+				+ ", credito=" + credito + ", creditoUtilizado="
+				+ creditoUtilizado + ", creditoDisponible=" + creditoDisponible
+				+ ", sobregiro=" + sobregiro + ", estado=" + estado
+				+ ", observacion=" + observacion + ", fechaInicioCredito="
+				+ fechaInicioCredito + ", fechaVenceCredito="
+				+ fechaVenceCredito + ", tipoDocumento=" + tipoDocumento
+				+ ", referencia=" + referencia + ", telefono1=" + telefono1
+				+ ", codEncuesta=" + codEncuesta + ", hPactada=" + hPactada
+				+ ", tCliente=" + tCliente + ", tHAdicional=" + tHAdicional
+				+ ", tKmAdicional=" + tKmAdicional + ", email2=" + email2
+				+ ", clasifica=" + clasifica + ", codempresa=" + codempresa
+				+ ", biFecNumCam=" + biFecNumCam + ", biCodIndCam="
+				+ biCodIndCam + "]";
+	}
 }

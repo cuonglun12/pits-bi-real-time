@@ -1,5 +1,7 @@
 package pe.com.j2techcon.bi.etl.domain.origen;
 
+import java.util.Date;
+
 public class Sedesprov {
     private String codsede;
 
@@ -26,6 +28,10 @@ public class Sedesprov {
     private Short tipo;
 
     private Short tipo1;
+
+    private Date biFecNumCam;
+
+    private String biCodIndCam;
 
     public String getCodsede() {
         return codsede;
@@ -130,4 +136,50 @@ public class Sedesprov {
     public void setTipo1(Short tipo1) {
         this.tipo1 = tipo1;
     }
+
+    public Date getBiFecNumCam() {
+        return biFecNumCam;
+    }
+
+    public void setBiFecNumCam(Date biFecNumCam) {
+        this.biFecNumCam = biFecNumCam;
+    }
+
+    public String getBiCodIndCam() {
+        return biCodIndCam;
+    }
+
+    public void setBiCodIndCam(String biCodIndCam) {
+        this.biCodIndCam = biCodIndCam == null ? null : biCodIndCam.trim();
+    }
+    
+    public void clear(){
+    	codsede=null;
+    	nomsede=null;
+    	direccion=null;
+    	ubigeo=null;
+    	ciudad=null;
+    	url=null;
+    	estado=null;
+    	aliasSede=null;
+    	ipSede=null;
+    	nroMaqReg=null;
+    	nroAutorizacion=null;
+    	tipo=null;
+    	tipo1=null;
+    	biFecNumCam=null;
+    	biCodIndCam=null;
+    }
+
+	@Override
+	public String toString() {
+		return "Sedesprov [codsede=" + codsede + ", nomsede=" + nomsede
+				+ ", direccion=" + direccion + ", ubigeo=" + ubigeo
+				+ ", ciudad=" + ciudad + ", url=" + url + ", estado=" + estado
+				+ ", aliasSede=" + aliasSede + ", ipSede=" + ipSede
+				+ ", nroMaqReg=" + nroMaqReg + ", nroAutorizacion="
+				+ nroAutorizacion + ", tipo=" + tipo + ", tipo1=" + tipo1
+				+ ", biFecNumCam=" + biFecNumCam + ", biCodIndCam="
+				+ biCodIndCam + "]";
+	}
 }

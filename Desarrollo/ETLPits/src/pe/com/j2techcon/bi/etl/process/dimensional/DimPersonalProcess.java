@@ -372,7 +372,7 @@ public class DimPersonalProcess {
 	
 	public void processRecordEmpleadoCategoria(){
 		
-		completeFildEmpleadoCategoria();
+		completeFieldEmpleadoCategoria();
 		
 		if(typeProcess.equals(constantes.getTypeProcessSimple())){
 			if(tEmpleadoCategoria.getCodIndCam().equals(constantes.getStateRecordNew())){
@@ -418,7 +418,7 @@ public class DimPersonalProcess {
 	}
 	
 	public void processRecordPersonal(){
-		completeFildPersonal();
+		completeFieldPersonal();
 		
 		if(updateRecordDimensionalPersonal() > constantes.getResultTransactionNoResult()){
 			stateRecordGeneric = constantes.getStateRecordProcessed();
@@ -430,7 +430,7 @@ public class DimPersonalProcess {
 		}
 	}
 	
-	public void completeFildEmpleadoCategoria(){
+	public void completeFieldEmpleadoCategoria(){
 		dimPersonal.setPersonalKey(tEmpleadoCategoria.getEmpCatId());
 		
 		dimPersonal.setPersonalCodigoCategoria(tEmpleadoCategoria.getEmpCatCodTip());
@@ -452,7 +452,7 @@ public class DimPersonalProcess {
 		dimPersonal.setProcId(process);
 	}
 	
-	public void completeFildPersonal(){
+	public void completeFieldPersonal(){
 		dimPersonalExample.createCriteria().andPersonalKeyEqualTo(tEmpleado.getEmpId());
 		dimPersonalExample.createCriteria().andProcIdNotEqualTo(process);
 		

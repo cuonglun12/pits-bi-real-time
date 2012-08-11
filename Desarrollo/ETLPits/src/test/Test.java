@@ -1,14 +1,32 @@
 package test;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Iterator;
+import java.util.List;
 
 import com.sun.org.apache.xerces.internal.impl.dv.xs.YearDV;
 
 import pe.com.j2techcon.bi.etl.domain.control.*;
 import pe.com.j2techcon.bi.etl.domain.dimensional.*;
 import pe.com.j2techcon.bi.etl.domain.generic.*;
+import pe.com.j2techcon.bi.etl.domain.origen.Areacliente;
+import pe.com.j2techcon.bi.etl.domain.origen.Cliente;
+import pe.com.j2techcon.bi.etl.domain.origen.Despacho;
+import pe.com.j2techcon.bi.etl.domain.origen.Detdespacho;
+import pe.com.j2techcon.bi.etl.domain.origen.Detordenes;
+import pe.com.j2techcon.bi.etl.domain.origen.Ordenes;
+import pe.com.j2techcon.bi.etl.domain.origen.Personal;
+import pe.com.j2techcon.bi.etl.domain.origen.Sedesprov;
+import pe.com.j2techcon.bi.etl.domain.origen.TCotizaciones;
+import pe.com.j2techcon.bi.etl.domain.origen.TProductos;
+import pe.com.j2techcon.bi.etl.domain.origen.TServicios;
+import pe.com.j2techcon.bi.etl.domain.origen.TTipopersonal;
+import pe.com.j2techcon.bi.etl.domain.origen.Ubigeos;
+import pe.com.j2techcon.bi.etl.domain.origen.Zonas;
 import pe.com.j2techcon.bi.etl.util.Util;
 
 
@@ -20,46 +38,46 @@ public class Test {
 	public static void main(String[] args) {
 		
 		/*
-		TProceso x = new TProceso();
+		Areacliente x = new Areacliente();
 		System.out.println(x.toString());
 		
-		DimCliente a = new DimCliente();
+		Cliente a = new Cliente();
 		System.out.println(a.toString());
 		
-		DimEstado b = new DimEstado();
+		Despacho b = new Despacho();
 		System.out.println(b.toString());
 		
-		DimMoneda c = new DimMoneda();
+		Detdespacho c = new Detdespacho();
 		System.out.println(c.toString());
 		
-		DimPersonal d = new DimPersonal();
+		Detordenes d = new Detordenes();
 		System.out.println(d.toString());
 		
-		DimProducto e = new DimProducto();
+		Ordenes e = new Ordenes();
 		System.out.println(e.toString());
 		
-		DimSede f = new DimSede();
+		Personal f = new Personal();
 		System.out.println(f.toString());
 		
-		DimServicio g = new DimServicio();
+		Sedesprov g = new Sedesprov();
 		System.out.println(g.toString());
 		
-		DimTiempo h = new DimTiempo();
+		TCotizaciones h = new TCotizaciones();
 		System.out.println(h.toString());
 		
-		DimTipoDocumento i = new DimTipoDocumento();
+		TProductos i = new TProductos();
 		System.out.println(i.toString());
 		
-		DimFacturado i0 = new DimFacturado();
+		TServicios i0 = new TServicios();
 		System.out.println(i0.toString());
 		
-		DimTipoPago j = new DimTipoPago();
+		TTipopersonal j = new TTipopersonal();
 		System.out.println(j.toString());
 		
-		DimTipoReparto k = new DimTipoReparto();
+		Ubigeos k = new Ubigeos();
 		System.out.println(k.toString());
 		
-		DimTipoRuta l = new DimTipoRuta();
+		Zonas l = new Zonas();
 		System.out.println(l.toString());
 		
 		DimZona m = new DimZona();
@@ -121,8 +139,8 @@ public class Test {
 		
 		TZona o1 = new TZona();
 		System.out.println(o1.toString());
-		
 		*/
+
 //		Calendar calendar = Calendar.getInstance();
 //		calendar.set(1900,1,1,1,1,1);
 //		Date date = new GregorianCalendar(1900,1,1,1,1,1).getTime();
@@ -164,12 +182,35 @@ public class Test {
 		//short a = (short)123;
 		//System.out.println(a);
 		
-		Long x = new Long(12222222);
-		x=Util.getCurrentDateTimeAsLong();
-		long y = new Long(1);
+//		Long x = new Long(12222222);
+//		x=Util.getCurrentDateTimeAsLong();
+//		long y = new Long(1);
+//		
+//		System.out.println(Long.toString(x));
+//		System.out.println(Long.toString(y));
 		
-		System.out.println(Long.toString(x));
-		System.out.println(Long.toString(y));
+//		List<String> letras = new ArrayList<String>();
+//		letras.add("Uno");
+//		letras.add("Dos");
+//		letras.add("Tres");
+//		letras.add("Cuatro");
+//		
+//		List<Integer> numeros = new ArrayList<Integer>();
+//		numeros.add(1);
+//		numeros.add(2);
+//		numeros.add(3);
+//		numeros.add(4);
+//
+//		for (Iterator<Integer> iteratorNumeros = numeros.iterator(); iteratorNumeros.hasNext();) {
+//			System.out.println("Numero: "+iteratorNumeros.next());
+//			for (Iterator<String> iteratorLetras = letras.iterator(); iteratorLetras.hasNext();) {
+//				System.out.println("Letra: "+iteratorLetras.next());
+//				
+//			}
+//		}
+		
+		BigDecimal x = new BigDecimal("123223.42424");
+		System.out.println(x.toString());
 
 	}
 

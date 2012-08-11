@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.origen.PersonalMapper" >
+<mapper namespace="personal" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.origen.Personal" >
     <id column="codigopersonal" property="codigopersonal" jdbcType="CHAR" />
     <result column="usuario" property="usuario" jdbcType="VARCHAR" />
@@ -57,6 +57,8 @@
     <result column="codventa" property="codventa" jdbcType="VARCHAR" />
     <result column="codsede" property="codsede" jdbcType="CHAR" />
     <result column="tipo_comprobante" property="tipoComprobante" jdbcType="CHAR" />
+    <result column="bi_fec_num_cam" property="biFecNumCam" jdbcType="TIMESTAMP" />
+    <result column="bi_cod_ind_cam" property="biCodIndCam" jdbcType="CHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -124,7 +126,7 @@
     horaentrada, tarifa_urbanacc, tarifa_urbanasc, codempresa, codzona, tarifa_perifericacc, 
     tarifa_perifericasc, tarifa_extremacc, tarifa_extremasc, sexo, correo_empresa, empresa, 
     dirempresa, rucempresa, telefono2, correo2, coddestino, codigojefedirecto, zona_bono, 
-    codventa, codsede, tipo_comprobante
+    codventa, codsede, tipo_comprobante, bi_fec_num_cam, bi_cod_ind_cam
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.origen.PersonalExample" >
     select
@@ -138,6 +140,9 @@
     </if>
     <if test="orderByClause != null" >
       order by ${orderByClause}
+    </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
@@ -175,7 +180,8 @@
       dirempresa, rucempresa, telefono2, 
       correo2, coddestino, codigojefedirecto, 
       zona_bono, codventa, codsede, 
-      tipo_comprobante)
+      tipo_comprobante, bi_fec_num_cam, bi_cod_ind_cam
+      )
     values (#{codigopersonal,jdbcType=CHAR}, #{usuario,jdbcType=VARCHAR}, #{tipopers,jdbcType=CHAR}, 
       #{codtipo,jdbcType=CHAR}, #{coddepartamento,jdbcType=CHAR}, #{codbanco,jdbcType=CHAR}, 
       #{tipopago,jdbcType=CHAR}, #{nombre,jdbcType=VARCHAR}, #{appaterno,jdbcType=VARCHAR}, 
@@ -194,7 +200,8 @@
       #{dirempresa,jdbcType=VARCHAR}, #{rucempresa,jdbcType=VARCHAR}, #{telefono2,jdbcType=VARCHAR}, 
       #{correo2,jdbcType=VARCHAR}, #{coddestino,jdbcType=CHAR}, #{codigojefedirecto,jdbcType=CHAR}, 
       #{zonaBono,jdbcType=CHAR}, #{codventa,jdbcType=VARCHAR}, #{codsede,jdbcType=CHAR}, 
-      #{tipoComprobante,jdbcType=CHAR})
+      #{tipoComprobante,jdbcType=CHAR}, #{biFecNumCam,jdbcType=TIMESTAMP}, #{biCodIndCam,jdbcType=CHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Personal" >
     insert into personal
@@ -364,6 +371,12 @@
       <if test="tipoComprobante != null" >
         tipo_comprobante,
       </if>
+      <if test="biFecNumCam != null" >
+        bi_fec_num_cam,
+      </if>
+      <if test="biCodIndCam != null" >
+        bi_cod_ind_cam,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="codigopersonal != null" >
@@ -530,6 +543,12 @@
       </if>
       <if test="tipoComprobante != null" >
         #{tipoComprobante,jdbcType=CHAR},
+      </if>
+      <if test="biFecNumCam != null" >
+        #{biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="biCodIndCam != null" >
+        #{biCodIndCam,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
@@ -707,6 +726,12 @@
       <if test="record.tipoComprobante != null" >
         tipo_comprobante = #{record.tipoComprobante,jdbcType=CHAR},
       </if>
+      <if test="record.biFecNumCam != null" >
+        bi_fec_num_cam = #{record.biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.biCodIndCam != null" >
+        bi_cod_ind_cam = #{record.biCodIndCam,jdbcType=CHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -768,7 +793,9 @@
       zona_bono = #{record.zonaBono,jdbcType=CHAR},
       codventa = #{record.codventa,jdbcType=VARCHAR},
       codsede = #{record.codsede,jdbcType=CHAR},
-      tipo_comprobante = #{record.tipoComprobante,jdbcType=CHAR}
+      tipo_comprobante = #{record.tipoComprobante,jdbcType=CHAR},
+      bi_fec_num_cam = #{record.biFecNumCam,jdbcType=TIMESTAMP},
+      bi_cod_ind_cam = #{record.biCodIndCam,jdbcType=CHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -938,6 +965,12 @@
       <if test="tipoComprobante != null" >
         tipo_comprobante = #{tipoComprobante,jdbcType=CHAR},
       </if>
+      <if test="biFecNumCam != null" >
+        bi_fec_num_cam = #{biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="biCodIndCam != null" >
+        bi_cod_ind_cam = #{biCodIndCam,jdbcType=CHAR},
+      </if>
     </set>
     where codigopersonal = #{codigopersonal,jdbcType=CHAR}
   </update>
@@ -996,7 +1029,9 @@
       zona_bono = #{zonaBono,jdbcType=CHAR},
       codventa = #{codventa,jdbcType=VARCHAR},
       codsede = #{codsede,jdbcType=CHAR},
-      tipo_comprobante = #{tipoComprobante,jdbcType=CHAR}
+      tipo_comprobante = #{tipoComprobante,jdbcType=CHAR},
+      bi_fec_num_cam = #{biFecNumCam,jdbcType=TIMESTAMP},
+      bi_cod_ind_cam = #{biCodIndCam,jdbcType=CHAR}
     where codigopersonal = #{codigopersonal,jdbcType=CHAR}
   </update>
 </mapper>

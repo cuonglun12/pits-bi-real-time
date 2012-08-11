@@ -61,7 +61,7 @@ public class AreaclienteManager {
 	}
 
 	public int updateByPrimaryKey(Areacliente record) {
-		return updateByPrimaryKey(record);
+		return areaclienteMapper.updateByPrimaryKey(record);
 	}
 
 }

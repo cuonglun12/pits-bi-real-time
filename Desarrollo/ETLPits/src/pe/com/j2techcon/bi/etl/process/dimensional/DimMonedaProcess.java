@@ -276,7 +276,7 @@ public class DimMonedaProcess {
 	
 	public void processRecordParametro(){
 		
-		completeFildMoneda();
+		completeFieldMoneda();
 		
 		if(typeProcess.equals(constantes.getTypeProcessSimple())){
 			if(tParametro.getCodIndCam().equals(constantes.getStateRecordNew())){
@@ -314,7 +314,7 @@ public class DimMonedaProcess {
 		updateRecordGenericParametro(stateRecordGeneric);
 	}
 	
-	public void completeFildMoneda(){
+	public void completeFieldMoneda(){
 		dimMoneda.setMonedaKey(tParametro.getParamId());
 		dimMoneda.setMonedaCod(tParametro.getParamCod());
 		dimMoneda.setMonedaDesc(tParametro.getParamDes());

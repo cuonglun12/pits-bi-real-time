@@ -10,13 +10,21 @@ public interface SedesprovMapper {
 
     int deleteByExample(SedesprovExample example);
 
+    int deleteByPrimaryKey(String codsede);
+
     int insert(Sedesprov record);
 
     int insertSelective(Sedesprov record);
 
     List<Sedesprov> selectByExample(SedesprovExample example);
 
+    Sedesprov selectByPrimaryKey(String codsede);
+
     int updateByExampleSelective(@Param("record") Sedesprov record, @Param("example") SedesprovExample example);
 
     int updateByExample(@Param("record") Sedesprov record, @Param("example") SedesprovExample example);
+
+    int updateByPrimaryKeySelective(Sedesprov record);
+
+    int updateByPrimaryKey(Sedesprov record);
 }

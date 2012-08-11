@@ -11,6 +11,7 @@ public class TCargoDespachoProcess {
    private long dateTimeFrom;
    private long dateTimeUntil;
    private String typeProcess;
+   private int process;
 
    private int recordTotal;
    private int recordProcessed;
@@ -58,7 +59,15 @@ public class TCargoDespachoProcess {
        this.typeProcess = typeProcess;
    }
 
-   public int getRecordTotal() {
+   public int getProcess() {
+		return process;
+	}
+	
+	public void setProcess(int process) {
+		this.process = process;
+	}
+
+	public int getRecordTotal() {
        return recordTotal;
    }
 
@@ -99,12 +108,13 @@ public class TCargoDespachoProcess {
    }
 
    public TCargoDespachoProcess(BeanFactory factory, int sizePage,
-		   long dateTimeFrom, long dateTimeUntil, String typeProcess) {
+		   long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
        this.factory = factory;
        this.sizePage = sizePage;
        this.dateTimeFrom = dateTimeFrom;
        this.dateTimeUntil = dateTimeUntil;
        this.typeProcess = typeProcess;
+       this.process = process;
 
        this.recordTotal = 0;
        this.recordProcessed = 0;

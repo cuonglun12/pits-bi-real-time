@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.generic.TCargoMapper" >
+<mapper namespace="t_cargo" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.generic.TCargo" >
     <id column="carg_id" property="cargId" jdbcType="INTEGER" />
+    <result column="ord_cod_tip_doc" property="ordCodTipDoc" jdbcType="INTEGER" />
+    <result column="ord_serie_doc" property="ordSerieDoc" jdbcType="VARCHAR" />
+    <result column="ord_num_doc" property="ordNumDoc" jdbcType="VARCHAR" />
     <result column="carg_corr" property="cargCorr" jdbcType="INTEGER" />
     <result column="ord_id" property="ordId" jdbcType="INTEGER" />
     <result column="prod_id" property="prodId" jdbcType="INTEGER" />
@@ -81,9 +84,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    carg_id, carg_corr, ord_id, prod_id, zon_id, zon_id_new, carg_cod_mov, carg_cod_tip_ing, 
-    carg_cod_fec_des, carg_cod_fec_rec, carg_destinatario, carg_dir, carg_ref, carg_new_dir, 
-    carg_new_ref, carg_cod_est, fec_num_cam, cod_ind_cam, proc_id
+    carg_id, ord_cod_tip_doc, ord_serie_doc, ord_num_doc, carg_corr, ord_id, prod_id, 
+    zon_id, zon_id_new, carg_cod_mov, carg_cod_tip_ing, carg_cod_fec_des, carg_cod_fec_rec, 
+    carg_destinatario, carg_dir, carg_ref, carg_new_dir, carg_new_ref, carg_cod_est, 
+    fec_num_cam, cod_ind_cam, proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCargoExample" >
     select
@@ -119,14 +123,16 @@
     </if>
   </delete>
   <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCargo" >
-    insert into t_cargo (carg_id, carg_corr, ord_id, 
+    insert into t_cargo (carg_id, ord_cod_tip_doc, ord_serie_doc, 
+      ord_num_doc, carg_corr, ord_id, 
       prod_id, zon_id, zon_id_new, 
       carg_cod_mov, carg_cod_tip_ing, carg_cod_fec_des, 
       carg_cod_fec_rec, carg_destinatario, carg_dir, 
       carg_ref, carg_new_dir, carg_new_ref, 
       carg_cod_est, fec_num_cam, cod_ind_cam, 
       proc_id)
-    values (#{cargId,jdbcType=INTEGER}, #{cargCorr,jdbcType=INTEGER}, #{ordId,jdbcType=INTEGER}, 
+    values (#{cargId,jdbcType=INTEGER}, #{ordCodTipDoc,jdbcType=INTEGER}, #{ordSerieDoc,jdbcType=VARCHAR}, 
+      #{ordNumDoc,jdbcType=VARCHAR}, #{cargCorr,jdbcType=INTEGER}, #{ordId,jdbcType=INTEGER}, 
       #{prodId,jdbcType=INTEGER}, #{zonId,jdbcType=INTEGER}, #{zonIdNew,jdbcType=INTEGER}, 
       #{cargCodMov,jdbcType=INTEGER}, #{cargCodTipIng,jdbcType=INTEGER}, #{cargCodFecDes,jdbcType=DATE}, 
       #{cargCodFecRec,jdbcType=DATE}, #{cargDestinatario,jdbcType=VARCHAR}, #{cargDir,jdbcType=VARCHAR}, 
@@ -139,6 +145,15 @@
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="cargId != null" >
         carg_id,
+      </if>
+      <if test="ordCodTipDoc != null" >
+        ord_cod_tip_doc,
+      </if>
+      <if test="ordSerieDoc != null" >
+        ord_serie_doc,
+      </if>
+      <if test="ordNumDoc != null" >
+        ord_num_doc,
       </if>
       <if test="cargCorr != null" >
         carg_corr,
@@ -198,6 +213,15 @@
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="cargId != null" >
         #{cargId,jdbcType=INTEGER},
+      </if>
+      <if test="ordCodTipDoc != null" >
+        #{ordCodTipDoc,jdbcType=INTEGER},
+      </if>
+      <if test="ordSerieDoc != null" >
+        #{ordSerieDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="ordNumDoc != null" >
+        #{ordNumDoc,jdbcType=VARCHAR},
       </if>
       <if test="cargCorr != null" >
         #{cargCorr,jdbcType=INTEGER},
@@ -267,6 +291,15 @@
       <if test="record.cargId != null" >
         carg_id = #{record.cargId,jdbcType=INTEGER},
       </if>
+      <if test="record.ordCodTipDoc != null" >
+        ord_cod_tip_doc = #{record.ordCodTipDoc,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordSerieDoc != null" >
+        ord_serie_doc = #{record.ordSerieDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ordNumDoc != null" >
+        ord_num_doc = #{record.ordNumDoc,jdbcType=VARCHAR},
+      </if>
       <if test="record.cargCorr != null" >
         carg_corr = #{record.cargCorr,jdbcType=INTEGER},
       </if>
@@ -329,6 +362,9 @@
   <update id="updateByExample" parameterType="map" >
     update t_cargo
     set carg_id = #{record.cargId,jdbcType=INTEGER},
+      ord_cod_tip_doc = #{record.ordCodTipDoc,jdbcType=INTEGER},
+      ord_serie_doc = #{record.ordSerieDoc,jdbcType=VARCHAR},
+      ord_num_doc = #{record.ordNumDoc,jdbcType=VARCHAR},
       carg_corr = #{record.cargCorr,jdbcType=INTEGER},
       ord_id = #{record.ordId,jdbcType=INTEGER},
       prod_id = #{record.prodId,jdbcType=INTEGER},
@@ -354,6 +390,15 @@
   <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCargo" >
     update t_cargo
     <set >
+      <if test="ordCodTipDoc != null" >
+        ord_cod_tip_doc = #{ordCodTipDoc,jdbcType=INTEGER},
+      </if>
+      <if test="ordSerieDoc != null" >
+        ord_serie_doc = #{ordSerieDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="ordNumDoc != null" >
+        ord_num_doc = #{ordNumDoc,jdbcType=VARCHAR},
+      </if>
       <if test="cargCorr != null" >
         carg_corr = #{cargCorr,jdbcType=INTEGER},
       </if>
@@ -413,7 +458,10 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCargo" >
     update t_cargo
-    set carg_corr = #{cargCorr,jdbcType=INTEGER},
+    set ord_cod_tip_doc = #{ordCodTipDoc,jdbcType=INTEGER},
+      ord_serie_doc = #{ordSerieDoc,jdbcType=VARCHAR},
+      ord_num_doc = #{ordNumDoc,jdbcType=VARCHAR},
+      carg_corr = #{cargCorr,jdbcType=INTEGER},
       ord_id = #{ordId,jdbcType=INTEGER},
       prod_id = #{prodId,jdbcType=INTEGER},
       zon_id = #{zonId,jdbcType=INTEGER},

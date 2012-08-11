@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.origen.TTipopersonalMapper" >
+<mapper namespace="t_tipopersonal" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.origen.TTipopersonal" >
-    <result column="codtipopersonal" property="codtipopersonal" jdbcType="CHAR" />
+    <id column="codtipopersonal" property="codtipopersonal" jdbcType="CHAR" />
     <result column="tipopersonal" property="tipopersonal" jdbcType="VARCHAR" />
     <result column="usuario" property="usuario" jdbcType="CHAR" />
     <result column="fecha" property="fecha" jdbcType="TIMESTAMP" />
@@ -84,7 +84,20 @@
     <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
+    </if>
   </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_tipopersonal
+    where codtipopersonal = #{codtipopersonal,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_tipopersonal
+    where codtipopersonal = #{codtipopersonal,jdbcType=CHAR}
+  </delete>
   <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.TTipopersonalExample" >
     delete from t_tipopersonal
     <if test="_parameter != null" >
@@ -195,5 +208,39 @@
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.TTipopersonal" >
+    update t_tipopersonal
+    <set >
+      <if test="tipopersonal != null" >
+        tipopersonal = #{tipopersonal,jdbcType=VARCHAR},
+      </if>
+      <if test="usuario != null" >
+        usuario = #{usuario,jdbcType=CHAR},
+      </if>
+      <if test="fecha != null" >
+        fecha = #{fecha,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usuariomod != null" >
+        usuariomod = #{usuariomod,jdbcType=CHAR},
+      </if>
+      <if test="fechamod != null" >
+        fechamod = #{fechamod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="anulado != null" >
+        anulado = #{anulado,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where codtipopersonal = #{codtipopersonal,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.origen.TTipopersonal" >
+    update t_tipopersonal
+    set tipopersonal = #{tipopersonal,jdbcType=VARCHAR},
+      usuario = #{usuario,jdbcType=CHAR},
+      fecha = #{fecha,jdbcType=TIMESTAMP},
+      usuariomod = #{usuariomod,jdbcType=CHAR},
+      fechamod = #{fechamod,jdbcType=TIMESTAMP},
+      anulado = #{anulado,jdbcType=SMALLINT}
+    where codtipopersonal = #{codtipopersonal,jdbcType=CHAR}
   </update>
 </mapper>

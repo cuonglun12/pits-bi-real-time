@@ -38,6 +38,10 @@ public class Zonas {
 
     private Short cantidad;
 
+    private Date biFecNumCam;
+
+    private String biCodIndCam;
+
     public String getCodzona() {
         return codzona;
     }
@@ -173,4 +177,56 @@ public class Zonas {
     public void setCantidad(Short cantidad) {
         this.cantidad = cantidad;
     }
+
+    public Date getBiFecNumCam() {
+        return biFecNumCam;
+    }
+
+    public void setBiFecNumCam(Date biFecNumCam) {
+        this.biFecNumCam = biFecNumCam;
+    }
+
+    public String getBiCodIndCam() {
+        return biCodIndCam;
+    }
+
+    public void setBiCodIndCam(String biCodIndCam) {
+        this.biCodIndCam = biCodIndCam == null ? null : biCodIndCam.trim();
+    }
+    
+    public void clear(){
+        codzona = null;
+        codpostal = null;
+        codclasificador = null;
+        bonozona = null;
+        descripcion = null;
+        pasaje = null;
+        monto = null;
+        fecha = null;
+        usuariomod = null;
+        fechamod = null;
+        estado = null;
+        usuario = null;
+        bono = null;
+        efectividad = null;
+        ubigeo = null;
+        tipozona = null;
+        cantidad = null;
+        biFecNumCam = null;
+        biCodIndCam = null;
+    }
+
+	@Override
+	public String toString() {
+		return "Zonas [codzona=" + codzona + ", codpostal=" + codpostal
+				+ ", codclasificador=" + codclasificador + ", bonozona="
+				+ bonozona + ", descripcion=" + descripcion + ", pasaje="
+				+ pasaje + ", monto=" + monto + ", fecha=" + fecha
+				+ ", usuariomod=" + usuariomod + ", fechamod=" + fechamod
+				+ ", estado=" + estado + ", usuario=" + usuario + ", bono="
+				+ bono + ", efectividad=" + efectividad + ", ubigeo=" + ubigeo
+				+ ", tipozona=" + tipozona + ", cantidad=" + cantidad
+				+ ", biFecNumCam=" + biFecNumCam + ", biCodIndCam="
+				+ biCodIndCam + "]";
+	}
 }

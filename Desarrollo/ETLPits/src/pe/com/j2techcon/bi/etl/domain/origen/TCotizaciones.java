@@ -198,6 +198,10 @@ public class TCotizaciones {
 
     private String zonal;
 
+    private Date biFecNumCam;
+
+    private String biCodIndCam;
+
     public String getCoserie() {
         return coserie;
     }
@@ -973,4 +977,181 @@ public class TCotizaciones {
     public void setZonal(String zonal) {
         this.zonal = zonal == null ? null : zonal.trim();
     }
+
+    public Date getBiFecNumCam() {
+        return biFecNumCam;
+    }
+
+    public void setBiFecNumCam(Date biFecNumCam) {
+        this.biFecNumCam = biFecNumCam;
+    }
+
+    public String getBiCodIndCam() {
+        return biCodIndCam;
+    }
+
+    public void setBiCodIndCam(String biCodIndCam) {
+        this.biCodIndCam = biCodIndCam == null ? null : biCodIndCam.trim();
+    }
+    
+    public void clear(){
+    	coserie=null;
+    	conumero=null;
+    	rucDni=null;
+    	contacto=null;
+    	direccion=null;
+    	email=null;
+    	codpaiscontacto=null;
+    	ubigeo=null;
+    	codpostal=null;
+    	telefono=null;
+    	anexo=null;
+    	celular=null;
+    	areacontacto=null;
+    	codtipoentrega=null;
+    	cargocontacto=null;
+    	fax=null;
+    	codpaisorigen=null;
+    	ciudadorigen=null;
+    	puertoorigen=null;
+    	obsorigen=null;
+    	transporteorigen=null;
+    	codpaisdestino=null;
+    	ciudaddestino=null;
+    	puertodestino=null;
+    	transportedestino=null;
+    	obsdestino=null;
+    	obscotizacion=null;
+    	codnegocio=null;
+    	codambito=null;
+    	codservicio=null;
+    	codproducto=null;
+    	peso=null;
+    	pesoapox=null;
+    	pesototal=null;
+    	preciounitario=null;
+    	preciototal=null;
+    	descuento=null;
+    	montoneto=null;
+    	porcentaje=null;
+    	moneda=null;
+    	montopagar=null;
+    	flete=null;
+    	desaduanaje=null;
+    	seguro=null;
+    	comision=null;
+    	cantidad=null;
+    	cntposiciones=null;
+    	cntunidades=null;
+    	cntpersonas=null;
+    	unidadmedida=null;
+    	largo=null;
+    	ancho=null;
+    	alto=null;
+    	volumen=null;
+    	numerodias=null;
+    	reserie=null;
+    	renumro=null;
+    	tipoproducto=null;
+    	rutaimagen=null;
+    	producto=null;
+    	obsproducto=null;
+    	codencuesta=null;
+    	imo=null;
+    	umm=null;
+    	serie=null;
+    	orden=null;
+    	estado=null;
+    	empresa=null;
+    	usuario=null;
+    	fecha=null;
+    	usuariomod=null;
+    	fechamod=null;
+    	motivoanulacion=null;
+    	codcliente=null;
+    	codareacliente=null;
+    	tipocotizacion=null;
+    	fechaanula=null;
+    	usuarioanula=null;
+    	usuarioaprueba=null;
+    	fechaaprueba=null;
+    	codzona=null;
+    	subservicios=null;
+    	pplano=null;
+    	preal=null;
+    	codDestino=null;
+    	tTransporte=null;
+    	preciokadic=null;
+    	preciokadicPlano=null;
+    	kgBase=null;
+    	kgRecojo=null;
+    	kgAdicionalRecojo=null;
+    	recojo=null;
+    	ubigeoOrigen=null;
+    	ubigeoDestino=null;
+    	codunidad=null;
+    	desServicio=null;
+    	zonal=null;
+    	biFecNumCam=null;
+    	biCodIndCam=null;
+    }
+
+	@Override
+	public String toString() {
+		return "TCotizaciones [coserie=" + coserie + ", conumero=" + conumero
+				+ ", rucDni=" + rucDni + ", contacto=" + contacto
+				+ ", direccion=" + direccion + ", email=" + email
+				+ ", codpaiscontacto=" + codpaiscontacto + ", ubigeo=" + ubigeo
+				+ ", codpostal=" + codpostal + ", telefono=" + telefono
+				+ ", anexo=" + anexo + ", celular=" + celular
+				+ ", areacontacto=" + areacontacto + ", codtipoentrega="
+				+ codtipoentrega + ", cargocontacto=" + cargocontacto
+				+ ", fax=" + fax + ", codpaisorigen=" + codpaisorigen
+				+ ", ciudadorigen=" + ciudadorigen + ", puertoorigen="
+				+ puertoorigen + ", obsorigen=" + obsorigen
+				+ ", transporteorigen=" + transporteorigen
+				+ ", codpaisdestino=" + codpaisdestino + ", ciudaddestino="
+				+ ciudaddestino + ", puertodestino=" + puertodestino
+				+ ", transportedestino=" + transportedestino + ", obsdestino="
+				+ obsdestino + ", obscotizacion=" + obscotizacion
+				+ ", codnegocio=" + codnegocio + ", codambito=" + codambito
+				+ ", codservicio=" + codservicio + ", codproducto="
+				+ codproducto + ", peso=" + peso + ", pesoapox=" + pesoapox
+				+ ", pesototal=" + pesototal + ", preciounitario="
+				+ preciounitario + ", preciototal=" + preciototal
+				+ ", descuento=" + descuento + ", montoneto=" + montoneto
+				+ ", porcentaje=" + porcentaje + ", moneda=" + moneda
+				+ ", montopagar=" + montopagar + ", flete=" + flete
+				+ ", desaduanaje=" + desaduanaje + ", seguro=" + seguro
+				+ ", comision=" + comision + ", cantidad=" + cantidad
+				+ ", cntposiciones=" + cntposiciones + ", cntunidades="
+				+ cntunidades + ", cntpersonas=" + cntpersonas
+				+ ", unidadmedida=" + unidadmedida + ", largo=" + largo
+				+ ", ancho=" + ancho + ", alto=" + alto + ", volumen="
+				+ volumen + ", numerodias=" + numerodias + ", reserie="
+				+ reserie + ", renumro=" + renumro + ", tipoproducto="
+				+ tipoproducto + ", rutaimagen=" + rutaimagen + ", producto="
+				+ producto + ", obsproducto=" + obsproducto + ", codencuesta="
+				+ codencuesta + ", imo=" + imo + ", umm=" + umm + ", serie="
+				+ serie + ", orden=" + orden + ", estado=" + estado
+				+ ", empresa=" + empresa + ", usuario=" + usuario + ", fecha="
+				+ fecha + ", usuariomod=" + usuariomod + ", fechamod="
+				+ fechamod + ", motivoanulacion=" + motivoanulacion
+				+ ", codcliente=" + codcliente + ", codareacliente="
+				+ codareacliente + ", tipocotizacion=" + tipocotizacion
+				+ ", fechaanula=" + fechaanula + ", usuarioanula="
+				+ usuarioanula + ", usuarioaprueba=" + usuarioaprueba
+				+ ", fechaaprueba=" + fechaaprueba + ", codzona=" + codzona
+				+ ", subservicios=" + subservicios + ", pplano=" + pplano
+				+ ", preal=" + preal + ", codDestino=" + codDestino
+				+ ", tTransporte=" + tTransporte + ", preciokadic="
+				+ preciokadic + ", preciokadicPlano=" + preciokadicPlano
+				+ ", kgBase=" + kgBase + ", kgRecojo=" + kgRecojo
+				+ ", kgAdicionalRecojo=" + kgAdicionalRecojo + ", recojo="
+				+ recojo + ", ubigeoOrigen=" + ubigeoOrigen
+				+ ", ubigeoDestino=" + ubigeoDestino + ", codunidad="
+				+ codunidad + ", desServicio=" + desServicio + ", zonal="
+				+ zonal + ", biFecNumCam=" + biFecNumCam + ", biCodIndCam="
+				+ biCodIndCam + "]";
+	}
 }

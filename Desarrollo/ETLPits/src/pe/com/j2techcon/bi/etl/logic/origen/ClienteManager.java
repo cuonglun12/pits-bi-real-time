@@ -7,9 +7,9 @@ import pe.com.j2techcon.bi.etl.domain.origen.Cliente;
 import pe.com.j2techcon.bi.etl.domain.origen.ClienteExample;
 
 public class ClienteManager {
-
-	private ClienteMapper clienteMapper;
 	
+	private ClienteMapper clienteMapper;
+
 	public ClienteMapper getClienteMapper() {
 		return clienteMapper;
 	}

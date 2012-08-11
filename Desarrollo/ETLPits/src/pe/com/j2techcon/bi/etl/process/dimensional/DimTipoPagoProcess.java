@@ -275,7 +275,7 @@ public class DimTipoPagoProcess {
 	
 	public void processRecordParametro(){
 		
-		completeFildTipoPago();
+		completeFieldTipoPago();
 		
 		if(typeProcess.equals(constantes.getTypeProcessSimple())){
 			if(tParametro.getCodIndCam().equals(constantes.getStateRecordNew())){
@@ -313,7 +313,7 @@ public class DimTipoPagoProcess {
 		updateRecordGenericParametro(stateRecordGeneric);
 	}
 	
-	public void completeFildTipoPago(){
+	public void completeFieldTipoPago(){
 		dimTipoPago.setTipoPagoKey(tParametro.getParamId());
 		dimTipoPago.setTipoPagoCod(tParametro.getParamCod());
 		dimTipoPago.setTipoPagoDesc(tParametro.getParamDes());

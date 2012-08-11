@@ -26,6 +26,11 @@ public class DetordenesManager {
 		return detordenesMapper.deleteByExample(example);
 	}
 
+	public int deleteByPrimaryKey(String serie, String orden,
+			String correlativo, String tipoingreso, String userDigitacion) {
+		return detordenesMapper.deleteByPrimaryKey(serie, orden, correlativo, tipoingreso, userDigitacion);
+	}
+
 	public int insert(Detordenes record) {
 		return detordenesMapper.insert(record);
 	}
@@ -38,6 +43,11 @@ public class DetordenesManager {
 		return detordenesMapper.selectByExample(example);
 	}
 
+	public Detordenes selectByPrimaryKey(String serie, String orden,
+			String correlativo, String tipoingreso, String userDigitacion) {
+		return detordenesMapper.selectByPrimaryKey(serie, orden, correlativo, tipoingreso, userDigitacion);
+	}
+
 	public int updateByExampleSelective(Detordenes record,
 			DetordenesExample example) {
 		return detordenesMapper.updateByExampleSelective(record, example);
@@ -45,6 +55,14 @@ public class DetordenesManager {
 
 	public int updateByExample(Detordenes record, DetordenesExample example) {
 		return detordenesMapper.updateByExample(record, example);
+	}
+
+	public int updateByPrimaryKeySelective(Detordenes record) {
+		return detordenesMapper.updateByPrimaryKeySelective(record);
+	}
+
+	public int updateByPrimaryKey(Detordenes record) {
+		return detordenesMapper.updateByPrimaryKey(record);
 	}
 
 }

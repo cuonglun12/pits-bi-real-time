@@ -6,7 +6,7 @@ import java.util.List;
 public class TAreaClienteExample {
 	
 	protected String paginationByClause;
-	
+
     protected String orderByClause;
 
     protected boolean distinct;
@@ -493,6 +493,76 @@ public class TAreaClienteExample {
 
         public Criteria andAreCliDesDirNotBetween(String value1, String value2) {
             addCriterion("are_cli_des_dir not between", value1, value2, "areCliDesDir");
+            return (Criteria) this;
+        }
+
+        public Criteria andCliCodIsNull() {
+            addCriterion("cli_cod is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCliCodIsNotNull() {
+            addCriterion("cli_cod is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCliCodEqualTo(String value) {
+            addCriterion("cli_cod =", value, "cliCod");
+            return (Criteria) this;
+        }
+
+        public Criteria andCliCodNotEqualTo(String value) {
+            addCriterion("cli_cod <>", value, "cliCod");
+            return (Criteria) this;
+        }
+
+        public Criteria andCliCodGreaterThan(String value) {
+            addCriterion("cli_cod >", value, "cliCod");
+            return (Criteria) this;
+        }
+
+        public Criteria andCliCodGreaterThanOrEqualTo(String value) {
+            addCriterion("cli_cod >=", value, "cliCod");
+            return (Criteria) this;
+        }
+
+        public Criteria andCliCodLessThan(String value) {
+            addCriterion("cli_cod <", value, "cliCod");
+            return (Criteria) this;
+        }
+
+        public Criteria andCliCodLessThanOrEqualTo(String value) {
+            addCriterion("cli_cod <=", value, "cliCod");
+            return (Criteria) this;
+        }
+
+        public Criteria andCliCodLike(String value) {
+            addCriterion("cli_cod like", value, "cliCod");
+            return (Criteria) this;
+        }
+
+        public Criteria andCliCodNotLike(String value) {
+            addCriterion("cli_cod not like", value, "cliCod");
+            return (Criteria) this;
+        }
+
+        public Criteria andCliCodIn(List<String> values) {
+            addCriterion("cli_cod in", values, "cliCod");
+            return (Criteria) this;
+        }
+
+        public Criteria andCliCodNotIn(List<String> values) {
+            addCriterion("cli_cod not in", values, "cliCod");
+            return (Criteria) this;
+        }
+
+        public Criteria andCliCodBetween(String value1, String value2) {
+            addCriterion("cli_cod between", value1, value2, "cliCod");
+            return (Criteria) this;
+        }
+
+        public Criteria andCliCodNotBetween(String value1, String value2) {
+            addCriterion("cli_cod not between", value1, value2, "cliCod");
             return (Criteria) this;
         }
 

@@ -8,9 +8,9 @@ import pe.com.j2techcon.bi.etl.domain.origen.TCotizaciones;
 import pe.com.j2techcon.bi.etl.domain.origen.TCotizacionesExample;
 
 public class TCotizacionesManager {
-
-	private TCotizacionesMapper tCotizacionesMapper;
 	
+	private TCotizacionesMapper tCotizacionesMapper;
+
 	public TCotizacionesMapper gettCotizacionesMapper() {
 		return tCotizacionesMapper;
 	}
@@ -64,5 +64,4 @@ public class TCotizacionesManager {
 	public int updateByPrimaryKey(TCotizaciones record) {
 		return tCotizacionesMapper.updateByPrimaryKey(record);
 	}
-
 }

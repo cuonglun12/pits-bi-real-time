@@ -6,129 +6,140 @@ import pe.com.j2techcon.bi.etl.logic.generic.TEmpleadoCategoriaManager;
 
 public class TEmpleadoCategoriaProcess {
 
-   private BeanFactory factory;
-   private int sizePage;
-   private long dateTimeFrom;
-   private long dateTimeUntil;
-   private String typeProcess;
+	private BeanFactory factory;
+	private int sizePage;
+	private long dateTimeFrom;
+	private long dateTimeUntil;
+	private String typeProcess;
+	private int process;
 
-   private int recordTotal;
-   private int recordProcessed;
-   private int recordRejected;
-   private int resultProcess;
-   private int resultTransaction;
+	private int recordTotal;
+	private int recordProcessed;
+	private int recordRejected;
+	private int resultProcess;
+	private int resultTransaction;
 
-   public BeanFactory getFactory() {
-       return factory;
-   }
+	public BeanFactory getFactory() {
+		return factory;
+	}
 
-   public void setFactory(BeanFactory factory) {
-       this.factory = factory;
-   }
+	public void setFactory(BeanFactory factory) {
+		this.factory = factory;
+	}
 
-   public int getSizePage() {
-       return sizePage;
-   }
+	public int getSizePage() {
+		return sizePage;
+	}
 
-   public void setSizePage(int sizePage) {
-       this.sizePage = sizePage;
-   }
+	public void setSizePage(int sizePage) {
+		this.sizePage = sizePage;
+	}
 
-   public long getDateTimeFrom() {
-       return dateTimeFrom;
-   }
+	public long getDateTimeFrom() {
+		return dateTimeFrom;
+	}
 
-   public void setDateTimeFrom(long dateTimeFrom) {
-       this.dateTimeFrom = dateTimeFrom;
-   }
+	public void setDateTimeFrom(long dateTimeFrom) {
+		this.dateTimeFrom = dateTimeFrom;
+	}
 
-   public long getDateTimeUntil() {
-       return dateTimeUntil;
-   }
+	public long getDateTimeUntil() {
+		return dateTimeUntil;
+	}
 
-   public void setDateTimeUntil(long dateTimeUntil) {
-       this.dateTimeUntil = dateTimeUntil;
-   }
+	public void setDateTimeUntil(long dateTimeUntil) {
+		this.dateTimeUntil = dateTimeUntil;
+	}
 
-   public String getTypeProcess() {
-       return typeProcess;
-   }
+	public String getTypeProcess() {
+		return typeProcess;
+	}
 
-   public void setTypeProcess(String typeProcess) {
-       this.typeProcess = typeProcess;
-   }
+	public void setTypeProcess(String typeProcess) {
+		this.typeProcess = typeProcess;
+	}
 
-   public int getRecordTotal() {
-       return recordTotal;
-   }
+	public int getProcess() {
+		return process;
+	}
 
-   public void setRecordTotal(int recordTotal) {
-       this.recordTotal = recordTotal;
-   }
+	public void setProcess(int process) {
+		this.process = process;
+	}
 
-   public int getRecordProcessed() {
-       return recordProcessed;
-   }
+	public int getRecordTotal() {
+		return recordTotal;
+	}
 
-   public void setRecordProcessed(int recordProcessed) {
-       this.recordProcessed = recordProcessed;
-   }
+	public void setRecordTotal(int recordTotal) {
+		this.recordTotal = recordTotal;
+	}
 
-   public int getRecordRejected() {
-       return recordRejected;
-   }
+	public int getRecordProcessed() {
+		return recordProcessed;
+	}
 
-   public void setRecordRejected(int recordRejected) {
-       this.recordRejected = recordRejected;
-   }
+	public void setRecordProcessed(int recordProcessed) {
+		this.recordProcessed = recordProcessed;
+	}
 
-   public int getResultProcess() {
-       return resultProcess;
-   }
+	public int getRecordRejected() {
+		return recordRejected;
+	}
 
-   public void setResultProcess(int resultProcess) {
-       this.resultProcess = resultProcess;
-   }
+	public void setRecordRejected(int recordRejected) {
+		this.recordRejected = recordRejected;
+	}
 
-   public int getResultTransaction() {
-       return resultTransaction;
-   }
+	public int getResultProcess() {
+		return resultProcess;
+	}
 
-   public void setResultTransaction(int resultTransaction) {
-       this.resultTransaction = resultTransaction;
-   }
+	public void setResultProcess(int resultProcess) {
+		this.resultProcess = resultProcess;
+	}
 
-   public TEmpleadoCategoriaProcess(BeanFactory factory, int sizePage,
-		   long dateTimeFrom, long dateTimeUntil, String typeProcess) {
-       this.factory = factory;
-       this.sizePage = sizePage;
-       this.dateTimeFrom = dateTimeFrom;
-       this.dateTimeUntil = dateTimeUntil;
-       this.typeProcess = typeProcess;
+	public int getResultTransaction() {
+		return resultTransaction;
+	}
 
-       this.recordTotal = 0;
-       this.recordProcessed = 0;
-       this.recordRejected = 0;
-       this.resultProcess = 0;
-       this.resultTransaction = 0;
+	public void setResultTransaction(int resultTransaction) {
+		this.resultTransaction = resultTransaction;
+	}
 
-   }
+	public TEmpleadoCategoriaProcess(BeanFactory factory, int sizePage,
+			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
+		this.factory = factory;
+		this.sizePage = sizePage;
+		this.dateTimeFrom = dateTimeFrom;
+		this.dateTimeUntil = dateTimeUntil;
+		this.typeProcess = typeProcess;
+		this.process = process;
 
-   public int startProcess(){
-       TEmpleadoCategoriaManager tEmpleadoCategoriaManager = factory.getBean("tEmpleadoCategoriaManager", TEmpleadoCategoriaManager.class);
-       return getResultProcess();
-   }
+		this.recordTotal = 0;
+		this.recordProcessed = 0;
+		this.recordRejected = 0;
+		this.resultProcess = 0;
+		this.resultTransaction = 0;
 
-   public int insertRecord(){
-       return getResultTransaction();
-   }
+	}
 
-   public int updateRecord(){
-       return getResultTransaction();
-   }
+	public int startProcess() {
+		TEmpleadoCategoriaManager tEmpleadoCategoriaManager = factory.getBean(
+				"tEmpleadoCategoriaManager", TEmpleadoCategoriaManager.class);
+		return getResultProcess();
+	}
 
-   public int deleteRecord(){
-       return getResultTransaction();
-   }
+	public int insertRecord() {
+		return getResultTransaction();
+	}
+
+	public int updateRecord() {
+		return getResultTransaction();
+	}
+
+	public int deleteRecord() {
+		return getResultTransaction();
+	}
 
 }

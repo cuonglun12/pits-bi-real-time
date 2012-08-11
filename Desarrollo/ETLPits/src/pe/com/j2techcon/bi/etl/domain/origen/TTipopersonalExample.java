@@ -5,6 +5,9 @@ import java.util.Date;
 import java.util.List;
 
 public class TTipopersonalExample {
+	
+	protected String paginationByClause;
+	
     protected String orderByClause;
 
     protected boolean distinct;
@@ -15,7 +18,15 @@ public class TTipopersonalExample {
         oredCriteria = new ArrayList<Criteria>();
     }
 
-    public void setOrderByClause(String orderByClause) {
+    public String getPaginationByClause() {
+		return paginationByClause;
+	}
+
+	public void setPaginationByClause(String paginationByClause) {
+		this.paginationByClause = paginationByClause;
+	}
+
+	public void setOrderByClause(String orderByClause) {
         this.orderByClause = orderByClause;
     }
 
@@ -60,6 +71,7 @@ public class TTipopersonalExample {
 
     public void clear() {
         oredCriteria.clear();
+        paginationByClause = null;
         orderByClause = null;
         distinct = false;
     }

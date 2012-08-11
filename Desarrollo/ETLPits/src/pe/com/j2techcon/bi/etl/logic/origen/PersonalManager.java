@@ -7,9 +7,9 @@ import pe.com.j2techcon.bi.etl.domain.origen.Personal;
 import pe.com.j2techcon.bi.etl.domain.origen.PersonalExample;
 
 public class PersonalManager {
-
-	private PersonalMapper personalMapper;
 	
+	private PersonalMapper personalMapper;
+
 	public PersonalMapper getPersonalMapper() {
 		return personalMapper;
 	}

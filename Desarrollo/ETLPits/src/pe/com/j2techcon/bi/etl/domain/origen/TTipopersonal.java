@@ -72,4 +72,22 @@ public class TTipopersonal {
     public void setAnulado(Short anulado) {
         this.anulado = anulado;
     }
+    
+    public void clear(){
+    	codtipopersonal=null;
+    	tipopersonal=null;
+    	usuario=null;
+    	fecha=null;
+    	usuariomod=null;
+    	fechamod=null;
+    	anulado=null;
+    }
+
+	@Override
+	public String toString() {
+		return "TTipopersonal [codtipopersonal=" + codtipopersonal
+				+ ", tipopersonal=" + tipopersonal + ", usuario=" + usuario
+				+ ", fecha=" + fecha + ", usuariomod=" + usuariomod
+				+ ", fechamod=" + fechamod + ", anulado=" + anulado + "]";
+	}
 }

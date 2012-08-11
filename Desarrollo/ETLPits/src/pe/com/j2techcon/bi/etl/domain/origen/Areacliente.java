@@ -43,6 +43,10 @@ public class Areacliente {
 
     private String preorden;
 
+    private Date biFecNumCam;
+
+    private String biCodIndCam;
+
     public String getCodareacliente() {
         return codareacliente;
     }
@@ -202,4 +206,61 @@ public class Areacliente {
     public void setPreorden(String preorden) {
         this.preorden = preorden == null ? null : preorden.trim();
     }
+
+    public Date getBiFecNumCam() {
+        return biFecNumCam;
+    }
+
+    public void setBiFecNumCam(Date biFecNumCam) {
+        this.biFecNumCam = biFecNumCam;
+    }
+
+    public String getBiCodIndCam() {
+        return biCodIndCam;
+    }
+
+    public void setBiCodIndCam(String biCodIndCam) {
+        this.biCodIndCam = biCodIndCam == null ? null : biCodIndCam.trim();
+    }
+
+    public void clear(){
+    	codareacliente=null;
+    	codcliente=null;
+    	ruc=null;
+    	areacliente=null;
+    	direccion=null;
+    	ubigeo=null;
+    	codpais=null;
+    	telefono=null;
+    	movil=null;
+    	email=null;
+    	codejecutiva=null;
+    	observacion=null;
+    	usuario=null;
+    	fecha=null;
+    	usuariomod=null;
+    	fechamod=null;
+    	estado=null;
+    	contacto=null;
+    	areacontacto=null;
+    	preorden=null;
+    	biFecNumCam=null;
+    	biCodIndCam=null;
+    }
+    
+	@Override
+	public String toString() {
+		return "Areacliente [codareacliente=" + codareacliente
+				+ ", codcliente=" + codcliente + ", ruc=" + ruc
+				+ ", areacliente=" + areacliente + ", direccion=" + direccion
+				+ ", ubigeo=" + ubigeo + ", codpais=" + codpais + ", telefono="
+				+ telefono + ", movil=" + movil + ", email=" + email
+				+ ", codejecutiva=" + codejecutiva + ", observacion="
+				+ observacion + ", usuario=" + usuario + ", fecha=" + fecha
+				+ ", usuariomod=" + usuariomod + ", fechamod=" + fechamod
+				+ ", estado=" + estado + ", contacto=" + contacto
+				+ ", areacontacto=" + areacontacto + ", preorden=" + preorden
+				+ ", biFecNumCam=" + biFecNumCam + ", biCodIndCam="
+				+ biCodIndCam + "]";
+	}
 }

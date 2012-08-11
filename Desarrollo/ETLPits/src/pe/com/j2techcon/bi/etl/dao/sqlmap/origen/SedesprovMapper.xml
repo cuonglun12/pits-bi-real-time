@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.origen.SedesprovMapper" >
+<mapper namespace="sedesprov" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.origen.Sedesprov" >
-    <result column="codsede" property="codsede" jdbcType="CHAR" />
+    <id column="codsede" property="codsede" jdbcType="CHAR" />
     <result column="nomsede" property="nomsede" jdbcType="VARCHAR" />
     <result column="direccion" property="direccion" jdbcType="VARCHAR" />
     <result column="ubigeo" property="ubigeo" jdbcType="CHAR" />
@@ -15,6 +15,8 @@
     <result column="nro_autorizacion" property="nroAutorizacion" jdbcType="VARCHAR" />
     <result column="tipo" property="tipo" jdbcType="SMALLINT" />
     <result column="tipo1" property="tipo1" jdbcType="SMALLINT" />
+    <result column="bi_fec_num_cam" property="biFecNumCam" jdbcType="TIMESTAMP" />
+    <result column="bi_cod_ind_cam" property="biCodIndCam" jdbcType="CHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -76,7 +78,7 @@
   </sql>
   <sql id="Base_Column_List" >
     codsede, nomsede, direccion, ubigeo, ciudad, url, estado, alias_sede, ip_sede, nro_maq_reg, 
-    nro_autorizacion, tipo, tipo1
+    nro_autorizacion, tipo, tipo1, bi_fec_num_cam, bi_cod_ind_cam
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.origen.SedesprovExample" >
     select
@@ -91,7 +93,20 @@
     <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
+    </if>
   </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sedesprov
+    where codsede = #{codsede,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sedesprov
+    where codsede = #{codsede,jdbcType=CHAR}
+  </delete>
   <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.SedesprovExample" >
     delete from sedesprov
     <if test="_parameter != null" >
@@ -102,13 +117,13 @@
     insert into sedesprov (codsede, nomsede, direccion, 
       ubigeo, ciudad, url, estado, 
       alias_sede, ip_sede, nro_maq_reg, 
-      nro_autorizacion, tipo, tipo1
-      )
+      nro_autorizacion, tipo, tipo1, 
+      bi_fec_num_cam, bi_cod_ind_cam)
     values (#{codsede,jdbcType=CHAR}, #{nomsede,jdbcType=VARCHAR}, #{direccion,jdbcType=VARCHAR}, 
       #{ubigeo,jdbcType=CHAR}, #{ciudad,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{estado,jdbcType=SMALLINT}, 
       #{aliasSede,jdbcType=VARCHAR}, #{ipSede,jdbcType=VARCHAR}, #{nroMaqReg,jdbcType=VARCHAR}, 
-      #{nroAutorizacion,jdbcType=VARCHAR}, #{tipo,jdbcType=SMALLINT}, #{tipo1,jdbcType=SMALLINT}
-      )
+      #{nroAutorizacion,jdbcType=VARCHAR}, #{tipo,jdbcType=SMALLINT}, #{tipo1,jdbcType=SMALLINT}, 
+      #{biFecNumCam,jdbcType=TIMESTAMP}, #{biCodIndCam,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Sedesprov" >
     insert into sedesprov
@@ -152,6 +167,12 @@
       <if test="tipo1 != null" >
         tipo1,
       </if>
+      <if test="biFecNumCam != null" >
+        bi_fec_num_cam,
+      </if>
+      <if test="biCodIndCam != null" >
+        bi_cod_ind_cam,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="codsede != null" >
@@ -192,6 +213,12 @@
       </if>
       <if test="tipo1 != null" >
         #{tipo1,jdbcType=SMALLINT},
+      </if>
+      <if test="biFecNumCam != null" >
+        #{biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="biCodIndCam != null" >
+        #{biCodIndCam,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
@@ -243,6 +270,12 @@
       <if test="record.tipo1 != null" >
         tipo1 = #{record.tipo1,jdbcType=SMALLINT},
       </if>
+      <if test="record.biFecNumCam != null" >
+        bi_fec_num_cam = #{record.biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.biCodIndCam != null" >
+        bi_cod_ind_cam = #{record.biCodIndCam,jdbcType=CHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -262,9 +295,77 @@
       nro_maq_reg = #{record.nroMaqReg,jdbcType=VARCHAR},
       nro_autorizacion = #{record.nroAutorizacion,jdbcType=VARCHAR},
       tipo = #{record.tipo,jdbcType=SMALLINT},
-      tipo1 = #{record.tipo1,jdbcType=SMALLINT}
+      tipo1 = #{record.tipo1,jdbcType=SMALLINT},
+      bi_fec_num_cam = #{record.biFecNumCam,jdbcType=TIMESTAMP},
+      bi_cod_ind_cam = #{record.biCodIndCam,jdbcType=CHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Sedesprov" >
+    update sedesprov
+    <set >
+      <if test="nomsede != null" >
+        nomsede = #{nomsede,jdbcType=VARCHAR},
+      </if>
+      <if test="direccion != null" >
+        direccion = #{direccion,jdbcType=VARCHAR},
+      </if>
+      <if test="ubigeo != null" >
+        ubigeo = #{ubigeo,jdbcType=CHAR},
+      </if>
+      <if test="ciudad != null" >
+        ciudad = #{ciudad,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="estado != null" >
+        estado = #{estado,jdbcType=SMALLINT},
+      </if>
+      <if test="aliasSede != null" >
+        alias_sede = #{aliasSede,jdbcType=VARCHAR},
+      </if>
+      <if test="ipSede != null" >
+        ip_sede = #{ipSede,jdbcType=VARCHAR},
+      </if>
+      <if test="nroMaqReg != null" >
+        nro_maq_reg = #{nroMaqReg,jdbcType=VARCHAR},
+      </if>
+      <if test="nroAutorizacion != null" >
+        nro_autorizacion = #{nroAutorizacion,jdbcType=VARCHAR},
+      </if>
+      <if test="tipo != null" >
+        tipo = #{tipo,jdbcType=SMALLINT},
+      </if>
+      <if test="tipo1 != null" >
+        tipo1 = #{tipo1,jdbcType=SMALLINT},
+      </if>
+      <if test="biFecNumCam != null" >
+        bi_fec_num_cam = #{biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="biCodIndCam != null" >
+        bi_cod_ind_cam = #{biCodIndCam,jdbcType=CHAR},
+      </if>
+    </set>
+    where codsede = #{codsede,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Sedesprov" >
+    update sedesprov
+    set nomsede = #{nomsede,jdbcType=VARCHAR},
+      direccion = #{direccion,jdbcType=VARCHAR},
+      ubigeo = #{ubigeo,jdbcType=CHAR},
+      ciudad = #{ciudad,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      estado = #{estado,jdbcType=SMALLINT},
+      alias_sede = #{aliasSede,jdbcType=VARCHAR},
+      ip_sede = #{ipSede,jdbcType=VARCHAR},
+      nro_maq_reg = #{nroMaqReg,jdbcType=VARCHAR},
+      nro_autorizacion = #{nroAutorizacion,jdbcType=VARCHAR},
+      tipo = #{tipo,jdbcType=SMALLINT},
+      tipo1 = #{tipo1,jdbcType=SMALLINT},
+      bi_fec_num_cam = #{biFecNumCam,jdbcType=TIMESTAMP},
+      bi_cod_ind_cam = #{biCodIndCam,jdbcType=CHAR}
+    where codsede = #{codsede,jdbcType=CHAR}
   </update>
 </mapper>

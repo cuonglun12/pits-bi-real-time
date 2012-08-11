@@ -432,7 +432,7 @@ public class FactDespachoProcess {
 		
 		if(!tDespacho.getProcId().equals(process)){
 		
-			completeFildDespacho();
+			completeFieldDespacho();
 			
 			if(typeProcess.equals(constantes.getTypeProcessSimple())){
 				if(tDespacho.getCodIndCam().equals(constantes.getStateRecordNew())){
@@ -474,7 +474,7 @@ public class FactDespachoProcess {
 		}
 	}
 	
-	public void completeFildDespacho(){
+	public void completeFieldDespacho(){
 		factDespacho.setDespachoKey(tDespacho.getDespId());
 		factDespacho.setDespachoKeySede(tDespacho.getSedId());
 		factDespacho.setDespachoKeyZona(tDespacho.getZonId());

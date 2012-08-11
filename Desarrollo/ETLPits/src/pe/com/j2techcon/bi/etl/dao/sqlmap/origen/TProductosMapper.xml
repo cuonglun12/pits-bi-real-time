@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.origen.TProductosMapper" >
+<mapper namespace="t_productos" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.origen.TProductos" >
     <id column="codproducto" property="codproducto" jdbcType="CHAR" />
     <result column="producto" property="producto" jdbcType="VARCHAR" />
@@ -14,6 +14,8 @@
     <result column="fecha" property="fecha" jdbcType="TIMESTAMP" />
     <result column="fechamod" property="fechamod" jdbcType="TIMESTAMP" />
     <result column="obs" property="obs" jdbcType="VARCHAR" />
+    <result column="bi_fec_num_cam" property="biFecNumCam" jdbcType="TIMESTAMP" />
+    <result column="bi_cod_ind_cam" property="biCodIndCam" jdbcType="CHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -75,7 +77,7 @@
   </sql>
   <sql id="Base_Column_List" >
     codproducto, producto, codnegocio, codambito, estado, usuario, usuariomod, codcliente, 
-    tipoproducto, fecha, fechamod, obs
+    tipoproducto, fecha, fechamod, obs, bi_fec_num_cam, bi_cod_ind_cam
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.origen.TProductosExample" >
     select
@@ -89,6 +91,9 @@
     </if>
     <if test="orderByClause != null" >
       order by ${orderByClause}
+    </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
@@ -111,13 +116,13 @@
     insert into t_productos (codproducto, producto, codnegocio, 
       codambito, estado, usuario, 
       usuariomod, codcliente, tipoproducto, 
-      fecha, fechamod, obs
-      )
+      fecha, fechamod, obs, 
+      bi_fec_num_cam, bi_cod_ind_cam)
     values (#{codproducto,jdbcType=CHAR}, #{producto,jdbcType=VARCHAR}, #{codnegocio,jdbcType=CHAR}, 
       #{codambito,jdbcType=CHAR}, #{estado,jdbcType=SMALLINT}, #{usuario,jdbcType=CHAR}, 
       #{usuariomod,jdbcType=CHAR}, #{codcliente,jdbcType=CHAR}, #{tipoproducto,jdbcType=CHAR}, 
-      #{fecha,jdbcType=TIMESTAMP}, #{fechamod,jdbcType=TIMESTAMP}, #{obs,jdbcType=VARCHAR}
-      )
+      #{fecha,jdbcType=TIMESTAMP}, #{fechamod,jdbcType=TIMESTAMP}, #{obs,jdbcType=VARCHAR}, 
+      #{biFecNumCam,jdbcType=TIMESTAMP}, #{biCodIndCam,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.TProductos" >
     insert into t_productos
@@ -158,6 +163,12 @@
       <if test="obs != null" >
         obs,
       </if>
+      <if test="biFecNumCam != null" >
+        bi_fec_num_cam,
+      </if>
+      <if test="biCodIndCam != null" >
+        bi_cod_ind_cam,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="codproducto != null" >
@@ -195,6 +206,12 @@
       </if>
       <if test="obs != null" >
         #{obs,jdbcType=VARCHAR},
+      </if>
+      <if test="biFecNumCam != null" >
+        #{biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="biCodIndCam != null" >
+        #{biCodIndCam,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
@@ -243,6 +260,12 @@
       <if test="record.obs != null" >
         obs = #{record.obs,jdbcType=VARCHAR},
       </if>
+      <if test="record.biFecNumCam != null" >
+        bi_fec_num_cam = #{record.biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.biCodIndCam != null" >
+        bi_cod_ind_cam = #{record.biCodIndCam,jdbcType=CHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -261,7 +284,9 @@
       tipoproducto = #{record.tipoproducto,jdbcType=CHAR},
       fecha = #{record.fecha,jdbcType=TIMESTAMP},
       fechamod = #{record.fechamod,jdbcType=TIMESTAMP},
-      obs = #{record.obs,jdbcType=VARCHAR}
+      obs = #{record.obs,jdbcType=VARCHAR},
+      bi_fec_num_cam = #{record.biFecNumCam,jdbcType=TIMESTAMP},
+      bi_cod_ind_cam = #{record.biCodIndCam,jdbcType=CHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -302,6 +327,12 @@
       <if test="obs != null" >
         obs = #{obs,jdbcType=VARCHAR},
       </if>
+      <if test="biFecNumCam != null" >
+        bi_fec_num_cam = #{biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="biCodIndCam != null" >
+        bi_cod_ind_cam = #{biCodIndCam,jdbcType=CHAR},
+      </if>
     </set>
     where codproducto = #{codproducto,jdbcType=CHAR}
   </update>
@@ -317,7 +348,9 @@
       tipoproducto = #{tipoproducto,jdbcType=CHAR},
       fecha = #{fecha,jdbcType=TIMESTAMP},
       fechamod = #{fechamod,jdbcType=TIMESTAMP},
-      obs = #{obs,jdbcType=VARCHAR}
+      obs = #{obs,jdbcType=VARCHAR},
+      bi_fec_num_cam = #{biFecNumCam,jdbcType=TIMESTAMP},
+      bi_cod_ind_cam = #{biCodIndCam,jdbcType=CHAR}
     where codproducto = #{codproducto,jdbcType=CHAR}
   </update>
 </mapper>

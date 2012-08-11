@@ -26,6 +26,10 @@ public class UbigeosManager {
 		return ubigeosMapper.deleteByExample(example);
 	}
 
+	public int deleteByPrimaryKey(String ubigeo) {
+		return ubigeosMapper.deleteByPrimaryKey(ubigeo);
+	}
+
 	public int insert(Ubigeos record) {
 		return ubigeosMapper.insert(record);
 	}
@@ -38,12 +42,24 @@ public class UbigeosManager {
 		return ubigeosMapper.selectByExample(example);
 	}
 
+	public Ubigeos selectByPrimaryKey(String ubigeo) {
+		return ubigeosMapper.selectByPrimaryKey(ubigeo);
+	}
+
 	public int updateByExampleSelective(Ubigeos record, UbigeosExample example) {
 		return ubigeosMapper.updateByExampleSelective(record, example);
 	}
 
 	public int updateByExample(Ubigeos record, UbigeosExample example) {
 		return ubigeosMapper.updateByExample(record, example);
+	}
+
+	public int updateByPrimaryKeySelective(Ubigeos record) {
+		return ubigeosMapper.updateByPrimaryKeySelective(record);
+	}
+
+	public int updateByPrimaryKey(Ubigeos record) {
+		return ubigeosMapper.updateByPrimaryKey(record);
 	}
 
 }

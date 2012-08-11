@@ -10,13 +10,21 @@ public interface UbigeosMapper {
 
     int deleteByExample(UbigeosExample example);
 
+    int deleteByPrimaryKey(String ubigeo);
+
     int insert(Ubigeos record);
 
     int insertSelective(Ubigeos record);
 
     List<Ubigeos> selectByExample(UbigeosExample example);
 
+    Ubigeos selectByPrimaryKey(String ubigeo);
+
     int updateByExampleSelective(@Param("record") Ubigeos record, @Param("example") UbigeosExample example);
 
     int updateByExample(@Param("record") Ubigeos record, @Param("example") UbigeosExample example);
+
+    int updateByPrimaryKeySelective(Ubigeos record);
+
+    int updateByPrimaryKey(Ubigeos record);
 }

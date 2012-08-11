@@ -10,13 +10,21 @@ public interface TTipopersonalMapper {
 
     int deleteByExample(TTipopersonalExample example);
 
+    int deleteByPrimaryKey(String codtipopersonal);
+
     int insert(TTipopersonal record);
 
     int insertSelective(TTipopersonal record);
 
     List<TTipopersonal> selectByExample(TTipopersonalExample example);
 
+    TTipopersonal selectByPrimaryKey(String codtipopersonal);
+
     int updateByExampleSelective(@Param("record") TTipopersonal record, @Param("example") TTipopersonalExample example);
 
     int updateByExample(@Param("record") TTipopersonal record, @Param("example") TTipopersonalExample example);
+
+    int updateByPrimaryKeySelective(TTipopersonal record);
+
+    int updateByPrimaryKey(TTipopersonal record);
 }

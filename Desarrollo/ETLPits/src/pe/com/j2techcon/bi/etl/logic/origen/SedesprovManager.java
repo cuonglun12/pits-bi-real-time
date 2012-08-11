@@ -7,9 +7,9 @@ import pe.com.j2techcon.bi.etl.domain.origen.Sedesprov;
 import pe.com.j2techcon.bi.etl.domain.origen.SedesprovExample;
 
 public class SedesprovManager {
-
-	private SedesprovMapper sedesprovMapper;
 	
+	private SedesprovMapper sedesprovMapper;
+
 	public SedesprovMapper getSedesprovMapper() {
 		return sedesprovMapper;
 	}
@@ -26,6 +26,10 @@ public class SedesprovManager {
 		return sedesprovMapper.deleteByExample(example);
 	}
 
+	public int deleteByPrimaryKey(String codsede) {
+		return sedesprovMapper.deleteByPrimaryKey(codsede);
+	}
+
 	public int insert(Sedesprov record) {
 		return sedesprovMapper.insert(record);
 	}
@@ -38,6 +42,10 @@ public class SedesprovManager {
 		return sedesprovMapper.selectByExample(example);
 	}
 
+	public Sedesprov selectByPrimaryKey(String codsede) {
+		return sedesprovMapper.selectByPrimaryKey(codsede);
+	}
+
 	public int updateByExampleSelective(Sedesprov record,
 			SedesprovExample example) {
 		return sedesprovMapper.updateByExampleSelective(record, example);
@@ -45,6 +53,14 @@ public class SedesprovManager {
 
 	public int updateByExample(Sedesprov record, SedesprovExample example) {
 		return sedesprovMapper.updateByExample(record, example);
+	}
+
+	public int updateByPrimaryKeySelective(Sedesprov record) {
+		return sedesprovMapper.updateByPrimaryKeySelective(record);
+	}
+
+	public int updateByPrimaryKey(Sedesprov record) {
+		return sedesprovMapper.updateByPrimaryKey(record);
 	}
 
 }

@@ -493,7 +493,7 @@ public class FactEnvioProcess {
 		
 		if(!tCargoDespacho.getProcId().equals(process)){
 		
-			completeFildEnvio();
+			completeFieldEnvio();
 			
 			if(typeProcess.equals(constantes.getTypeProcessSimple())){
 				if(tCargoDespacho.getCodIndCam().equals(constantes.getStateRecordNew())){
@@ -535,7 +535,7 @@ public class FactEnvioProcess {
 		}
 	}
 	
-	public void completeFildEnvio(){
+	public void completeFieldEnvio(){
 		
 		tCargo = tCargoManager.selectByPrimaryKey(tCargoDespacho.getCargId());
 		tOrden = tOrdenManager.selectByPrimaryKey(tCargo.getOrdId());

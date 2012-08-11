@@ -1,125 +1,137 @@
 package pe.com.j2techcon.bi.etl.domain.generic;
 
 public class TAreaCliente {
-    private Integer areCliId;
+	private Integer areCliId;
 
-    private Integer cliId;
+	private Integer cliId;
 
-    private Integer areCliCodTip;
+	private Integer areCliCodTip;
 
-    private Integer ubiId;
+	private Integer ubiId;
 
-    private String areCliDes;
+	private String areCliDes;
 
-    private String areCliDesDir;
+	private String areCliDesDir;
 
-    private String areCliCod;
+	private String cliCod;
 
-    private Long fecNumCam;
+	private String areCliCod;
 
-    private String codIndCam;
+	private Long fecNumCam;
 
-    private Integer procId;
+	private String codIndCam;
 
-    public Integer getAreCliId() {
-        return areCliId;
-    }
+	private Integer procId;
 
-    public void setAreCliId(Integer areCliId) {
-        this.areCliId = areCliId;
-    }
+	public Integer getAreCliId() {
+		return areCliId;
+	}
 
-    public Integer getCliId() {
-        return cliId;
-    }
+	public void setAreCliId(Integer areCliId) {
+		this.areCliId = areCliId;
+	}
 
-    public void setCliId(Integer cliId) {
-        this.cliId = cliId;
-    }
+	public Integer getCliId() {
+		return cliId;
+	}
 
-    public Integer getAreCliCodTip() {
-        return areCliCodTip;
-    }
+	public void setCliId(Integer cliId) {
+		this.cliId = cliId;
+	}
 
-    public void setAreCliCodTip(Integer areCliCodTip) {
-        this.areCliCodTip = areCliCodTip;
-    }
+	public Integer getAreCliCodTip() {
+		return areCliCodTip;
+	}
 
-    public Integer getUbiId() {
-        return ubiId;
-    }
+	public void setAreCliCodTip(Integer areCliCodTip) {
+		this.areCliCodTip = areCliCodTip;
+	}
 
-    public void setUbiId(Integer ubiId) {
-        this.ubiId = ubiId;
-    }
+	public Integer getUbiId() {
+		return ubiId;
+	}
 
-    public String getAreCliDes() {
-        return areCliDes;
-    }
+	public void setUbiId(Integer ubiId) {
+		this.ubiId = ubiId;
+	}
 
-    public void setAreCliDes(String areCliDes) {
-        this.areCliDes = areCliDes == null ? null : areCliDes.trim();
-    }
+	public String getAreCliDes() {
+		return areCliDes;
+	}
 
-    public String getAreCliDesDir() {
-        return areCliDesDir;
-    }
+	public void setAreCliDes(String areCliDes) {
+		this.areCliDes = areCliDes == null ? null : areCliDes.trim();
+	}
 
-    public void setAreCliDesDir(String areCliDesDir) {
-        this.areCliDesDir = areCliDesDir == null ? null : areCliDesDir.trim();
-    }
+	public String getAreCliDesDir() {
+		return areCliDesDir;
+	}
 
-    public String getAreCliCod() {
-        return areCliCod;
-    }
+	public void setAreCliDesDir(String areCliDesDir) {
+		this.areCliDesDir = areCliDesDir == null ? null : areCliDesDir.trim();
+	}
 
-    public void setAreCliCod(String areCliCod) {
-        this.areCliCod = areCliCod == null ? null : areCliCod.trim();
-    }
+	public String getCliCod() {
+		return cliCod;
+	}
 
-    public Long getFecNumCam() {
-        return fecNumCam;
-    }
+	public void setCliCod(String cliCod) {
+		this.cliCod = cliCod == null ? null : cliCod.trim();
+	}
 
-    public void setFecNumCam(Long fecNumCam) {
-        this.fecNumCam = fecNumCam;
-    }
+	public String getAreCliCod() {
+		return areCliCod;
+	}
 
-    public String getCodIndCam() {
-        return codIndCam;
-    }
+	public void setAreCliCod(String areCliCod) {
+		this.areCliCod = areCliCod == null ? null : areCliCod.trim();
+	}
 
-    public void setCodIndCam(String codIndCam) {
-        this.codIndCam = codIndCam == null ? null : codIndCam.trim();
-    }
+	public Long getFecNumCam() {
+		return fecNumCam;
+	}
 
-    public Integer getProcId() {
-        return procId;
-    }
+	public void setFecNumCam(Long fecNumCam) {
+		this.fecNumCam = fecNumCam;
+	}
 
-    public void setProcId(Integer procId) {
-        this.procId = procId;
-    }
-    
-    public void clear(){
-    	areCliId=null;
-    	cliId=null;
-    	areCliCodTip=null;
-    	ubiId=null;
-    	areCliDes=null;
-    	areCliDesDir=null;
-    	areCliCod=null;
-    	fecNumCam=null;
-    	codIndCam=null;
-    	procId=null;
-    }
+	public String getCodIndCam() {
+		return codIndCam;
+	}
+
+	public void setCodIndCam(String codIndCam) {
+		this.codIndCam = codIndCam == null ? null : codIndCam.trim();
+	}
+
+	public Integer getProcId() {
+		return procId;
+	}
+
+	public void setProcId(Integer procId) {
+		this.procId = procId;
+	}
+
+	public void clear() {
+		areCliId = null;
+		cliId = null;
+		areCliCodTip = null;
+		ubiId = null;
+		areCliDes = null;
+		areCliDesDir = null;
+		cliCod = null;
+		areCliCod = null;
+		fecNumCam = null;
+		codIndCam = null;
+		procId = null;
+	}
 
 	@Override
 	public String toString() {
 		return "TAreaCliente [areCliId=" + areCliId + ", cliId=" + cliId
 				+ ", areCliCodTip=" + areCliCodTip + ", ubiId=" + ubiId
 				+ ", areCliDes=" + areCliDes + ", areCliDesDir=" + areCliDesDir
-				+ ", areCliCod=" + areCliCod + ", fecNumCam=" + fecNumCam
-				+ ", codIndCam=" + codIndCam + ", procId=" + procId + "]";
+				+ ", cliCod=" + cliCod + ", areCliCod=" + areCliCod
+				+ ", fecNumCam=" + fecNumCam + ", codIndCam=" + codIndCam
+				+ ", procId=" + procId + "]";
 	}
 }

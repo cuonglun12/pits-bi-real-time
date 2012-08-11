@@ -82,14 +82,14 @@ public class TZona {
     }
     
     public void clear(){
-    	zonId=null;
-    	zonCod=null;
-    	ubiId=null;
-    	zonDes=null;
-    	zonCodPostal=null;
-    	codIndCam=null;
-    	fecNumCam=null;
-    	procId=null;
+    	zonId = null;
+        zonCod = null;
+        ubiId = null;
+        zonDes = null;
+        zonCodPostal = null;
+        codIndCam = null;
+        fecNumCam = null;
+        procId = null;
     }
 
 	@Override

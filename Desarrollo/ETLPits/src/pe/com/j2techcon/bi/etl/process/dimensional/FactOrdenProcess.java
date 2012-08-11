@@ -464,7 +464,7 @@ public class FactOrdenProcess {
 		
 		if(!tOrden.getProcId().equals(process)){
 		
-			completeFildOrden();
+			completeFieldOrden();
 			
 			if(typeProcess.equals(constantes.getTypeProcessSimple())){
 				if(tOrden.getCodIndCam().equals(constantes.getStateRecordNew())){
@@ -506,7 +506,7 @@ public class FactOrdenProcess {
 		}
 	}
 	
-	public void completeFildOrden(){
+	public void completeFieldOrden(){
 		factOrden.setOrdenKey(tOrden.getOrdId());
 		factOrden.setOrdenKeyClienteArea(tOrden.getCodAreCli());
 		factOrden.setOrdenKeyUbigeoCliente(tAreaClienteManager.selectByPrimaryKey(tOrden.getCodAreCli()).getUbiId());

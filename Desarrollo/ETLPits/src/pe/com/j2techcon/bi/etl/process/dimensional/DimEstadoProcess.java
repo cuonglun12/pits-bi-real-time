@@ -294,7 +294,7 @@ public class DimEstadoProcess {
 	
 	public void processRecordParametro(){
 		
-		completeFildEstado();
+		completeFieldEstado();
 		
 		if(typeProcess.equals(constantes.getTypeProcessSimple())){
 			if(tParametro.getCodIndCam().equals(constantes.getStateRecordNew())){
@@ -332,7 +332,7 @@ public class DimEstadoProcess {
 		updateRecordGenericParametro(stateRecordGeneric);
 	}
 	
-	public void completeFildEstado(){
+	public void completeFieldEstado(){
 		dimEstado.setEstadoKey(tParametro.getParamId());
 		dimEstado.setEstadoCod(tParametro.getParamCod());
 		dimEstado.setEstadoDesc(tParametro.getParamDes());

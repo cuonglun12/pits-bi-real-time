@@ -7,9 +7,9 @@ import pe.com.j2techcon.bi.etl.domain.origen.TProductos;
 import pe.com.j2techcon.bi.etl.domain.origen.TProductosExample;
 
 public class TProductosManager {
-
-	private TProductosMapper tProductosMapper;
 	
+	private TProductosMapper tProductosMapper;
+
 	public TProductosMapper gettProductosMapper() {
 		return tProductosMapper;
 	}

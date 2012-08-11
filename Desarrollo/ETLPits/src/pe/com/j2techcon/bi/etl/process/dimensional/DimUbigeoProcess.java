@@ -310,7 +310,7 @@ public class DimUbigeoProcess {
 	
 	public void processRecordUbigeo(){
 		
-		completeFildUbigeo();
+		completeFieldUbigeo();
 		
 		if(typeProcess.equals(constantes.getTypeProcessSimple())){
 			if(tUbigeo.getCodIndCam().equals(constantes.getStateRecordNew())){
@@ -348,7 +348,7 @@ public class DimUbigeoProcess {
 		updateRecordGenericUbigeo(stateRecordGeneric);
 	}
 	
-	public void completeFildUbigeo(){
+	public void completeFieldUbigeo(){
 		dimUbigeo.setUbigeoKey(tUbigeo.getProcId());
 		dimUbigeo.setUbigeoCodPais(tUbigeo.getUbiCodPais());
 		

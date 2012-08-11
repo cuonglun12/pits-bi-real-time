@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.generic.TAreaClienteMapper" >
+<mapper namespace="t_area_cliente" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.generic.TAreaCliente" >
     <id column="are_cli_id" property="areCliId" jdbcType="INTEGER" />
     <result column="cli_id" property="cliId" jdbcType="INTEGER" />
@@ -8,6 +8,7 @@
     <result column="ubi_id" property="ubiId" jdbcType="INTEGER" />
     <result column="are_cli_des" property="areCliDes" jdbcType="VARCHAR" />
     <result column="are_cli_des_dir" property="areCliDesDir" jdbcType="VARCHAR" />
+    <result column="cli_cod" property="cliCod" jdbcType="VARCHAR" />
     <result column="are_cli_cod" property="areCliCod" jdbcType="VARCHAR" />
     <result column="fec_num_cam" property="fecNumCam" jdbcType="BIGINT" />
     <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
@@ -72,8 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    are_cli_id, cli_id, are_cli_cod_tip, ubi_id, are_cli_des, are_cli_des_dir, are_cli_cod, 
-    fec_num_cam, cod_ind_cam, proc_id
+    are_cli_id, cli_id, are_cli_cod_tip, ubi_id, are_cli_des, are_cli_des_dir, cli_cod, 
+    are_cli_cod, fec_num_cam, cod_ind_cam, proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TAreaClienteExample" >
     select
@@ -111,12 +112,12 @@
   <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TAreaCliente" >
     insert into t_area_cliente (are_cli_id, cli_id, are_cli_cod_tip, 
       ubi_id, are_cli_des, are_cli_des_dir, 
-      are_cli_cod, fec_num_cam, cod_ind_cam, 
-      proc_id)
+      cli_cod, are_cli_cod, fec_num_cam, 
+      cod_ind_cam, proc_id)
     values (#{areCliId,jdbcType=INTEGER}, #{cliId,jdbcType=INTEGER}, #{areCliCodTip,jdbcType=INTEGER}, 
       #{ubiId,jdbcType=INTEGER}, #{areCliDes,jdbcType=VARCHAR}, #{areCliDesDir,jdbcType=VARCHAR}, 
-      #{areCliCod,jdbcType=VARCHAR}, #{fecNumCam,jdbcType=BIGINT}, #{codIndCam,jdbcType=CHAR}, 
-      #{procId,jdbcType=INTEGER})
+      #{cliCod,jdbcType=VARCHAR}, #{areCliCod,jdbcType=VARCHAR}, #{fecNumCam,jdbcType=BIGINT}, 
+      #{codIndCam,jdbcType=CHAR}, #{procId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TAreaCliente" >
     insert into t_area_cliente
@@ -138,6 +139,9 @@
       </if>
       <if test="areCliDesDir != null" >
         are_cli_des_dir,
+      </if>
+      <if test="cliCod != null" >
+        cli_cod,
       </if>
       <if test="areCliCod != null" >
         are_cli_cod,
@@ -170,6 +174,9 @@
       </if>
       <if test="areCliDesDir != null" >
         #{areCliDesDir,jdbcType=VARCHAR},
+      </if>
+      <if test="cliCod != null" >
+        #{cliCod,jdbcType=VARCHAR},
       </if>
       <if test="areCliCod != null" >
         #{areCliCod,jdbcType=VARCHAR},
@@ -212,6 +219,9 @@
       <if test="record.areCliDesDir != null" >
         are_cli_des_dir = #{record.areCliDesDir,jdbcType=VARCHAR},
       </if>
+      <if test="record.cliCod != null" >
+        cli_cod = #{record.cliCod,jdbcType=VARCHAR},
+      </if>
       <if test="record.areCliCod != null" >
         are_cli_cod = #{record.areCliCod,jdbcType=VARCHAR},
       </if>
@@ -237,6 +247,7 @@
       ubi_id = #{record.ubiId,jdbcType=INTEGER},
       are_cli_des = #{record.areCliDes,jdbcType=VARCHAR},
       are_cli_des_dir = #{record.areCliDesDir,jdbcType=VARCHAR},
+      cli_cod = #{record.cliCod,jdbcType=VARCHAR},
       are_cli_cod = #{record.areCliCod,jdbcType=VARCHAR},
       fec_num_cam = #{record.fecNumCam,jdbcType=BIGINT},
       cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
@@ -263,6 +274,9 @@
       <if test="areCliDesDir != null" >
         are_cli_des_dir = #{areCliDesDir,jdbcType=VARCHAR},
       </if>
+      <if test="cliCod != null" >
+        cli_cod = #{cliCod,jdbcType=VARCHAR},
+      </if>
       <if test="areCliCod != null" >
         are_cli_cod = #{areCliCod,jdbcType=VARCHAR},
       </if>
@@ -285,6 +299,7 @@
       ubi_id = #{ubiId,jdbcType=INTEGER},
       are_cli_des = #{areCliDes,jdbcType=VARCHAR},
       are_cli_des_dir = #{areCliDesDir,jdbcType=VARCHAR},
+      cli_cod = #{cliCod,jdbcType=VARCHAR},
       are_cli_cod = #{areCliCod,jdbcType=VARCHAR},
       fec_num_cam = #{fecNumCam,jdbcType=BIGINT},
       cod_ind_cam = #{codIndCam,jdbcType=CHAR},

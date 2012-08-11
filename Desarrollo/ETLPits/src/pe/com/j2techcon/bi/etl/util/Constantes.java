@@ -3,6 +3,10 @@ package pe.com.j2techcon.bi.etl.util;
 public class Constantes {
 	
 	private int	paramCodeTipoAreaCliente;
+	private String paramCodeTipoAreaClienteCentral;
+	private String paramCodeTipoAreaClienteNoDefinido;
+	private int paramSerialTipoAreaClienteCentral;
+	private int paramSerialTipoAreaClienteNoDefinido;
 	
 	private int paramCodeEstadoCargoDespacho;
 	private String paramCodeEstadoCargoDespachoDigitado;
@@ -79,14 +83,36 @@ public class Constantes {
 	private int	paramCodeTipoIngresoCargo;
 	
 	private int	paramCodeCategoriaCliente;
+	private String	paramCodeCategoriaClienteNoDefinido;
+	private int	paramSerialCategoriaClienteNoDefinido;
 	
 	private int	paramCodeTipoCliente;
+	private String	paramCodeTipoClienteJuridica;
+	private String	paramCodeTipoClienteNatural;
+	private String	paramCodeTipoClienteEstatal;
+	private String	paramCodeTipoClienteNoDefinido;
+	private int	paramSerialTipoClienteJuridica;
+	private int	paramSerialTipoClienteNatural;
+	private int	paramSerialTipoClienteEstatal;
+	private int	paramSerialTipoClienteNoDefinido;
 	
 	private int	paramCodeTipoCredito;
+	private String	paramCodeTipoCreditoCredito;
+	private String	paramCodeTipoCreditoNoDefinido;
+	private int	paramSerialTipoCreditoCredito;
+	private int	paramSerialTipoCreditoNoDefinido;
 	
 	private int	paramCodeTipoDocumentoTrabajo;
+	private String paramCodeTipoDocumentoTrabajoGuia;
+	private String paramCodeTipoDocumentoTrabajoNoDefinido;
+	private int paramSerialTipoDocumentoTrabajoGuia;
+	private int paramSerialTipoDocumentoTrabajoNoDefinido;
 	
 	private int	paramCodeTipoFacturacion;
+	private String	paramCodeTipoFacturacionFacturacion;
+	private String	paramCodeTipoFacturacionNoDefinido;
+	private int	paramSerialTipoFacturacionFacturacion;
+	private int	paramSerialTipoFacturacionNoDefinido;
 	
 	private int	paramCodeTipoCambio;
 	
@@ -94,14 +120,19 @@ public class Constantes {
 	
 	private int	paramCodeTipoNegocio;
 	private String paramCodeTipoNegocioMensajeria;
+	private String paramCodeTipoNegocioNoDefinido;
+	private int paramSerialTipoNegocioMensajeria;
+	private int paramSerialTipoNegocioNoDefinido;
 	
 	private int	paramCodeTipoServicio;
 	
 	private int	paramCodeTipoDocumento;
 	private String paramCodeTipoDocumentoRuc;
 	private String paramCodeTipoDocumentoDni;
+	private String paramCodeTipoDocumentoNoDefinido;
 	private int paramSerialTipoDocumentoRuc;
 	private int paramSerialTipoDocumentoDni;
+	private int paramSerialTipoDocumentoNoDefinido;
 	
 	private int	paramCodeEstadoDespacho;
 	private String paramCodeEstadoDespachoDespacho;
@@ -124,30 +155,56 @@ public class Constantes {
 	private int	paramCodeTipoRuta;
 	
 	private int	paramCodeCategoriaEmpleado;
+	private String paramCodeCategoriaEmpleadoMensajero;
+	private String paramCodeCategoriaEmpleadoNoDefinido;
+	private int paramSerialCategoriaEmpleadoMensajero;
+	private int paramSerialCategoriaEmpleadoNoDefinido;
 	
 	private int	paramCodeEstadoOrden;
 	private String paramCodeEstadoOrdenGenerado;
 	private String paramCodeEstadoOrdenPendiente;
 	private String paramCodeEstadoOrdenCerrado;
 	private String paramCodeEstadoOrdenAnulado;
+	private String paramCodeEstadoOrdenNoDefinido;
 	private int paramSerialEstadoOrdenGenerado;
 	private int paramSerialEstadoOrdenPendiente;
 	private int paramSerialEstadoOrdenCerrado;
 	private int paramSerialEstadoOrdenAnulado;
+	private int paramSerialEstadoOrdenNoDefinido;
 	
 	private int	paramCodeTipoIngreso;
 	
 	private int	paramCodeTipoMoneda;
 	private String paramCodeTipoMonedaNuevoSol;
 	private String paramCodeTipoMonedaDolar;
+	private String paramCodeTipoMonedaNoDefinido;
 	private int paramSerialTipoMonedaNuevoSol;
 	private int paramSerialTipoMonedaDolar;
+	private int paramSerialTipoMonedaNoDefinido;
 	
 	private int	paramCodeTipoPago;
+	private String paramCodeTipoPagoCredito;
+	private String paramCodeTipoPagoContado;
+	private String paramCodeTipoPagoCuotas;
+	private String paramCodeTipoPagoPrepaid;
+	private String paramCodeTipoPagoCollect;
+	private String paramCodeTipoPagoNoDefinido;
+	private int paramSerialTipoPagoCredito;
+	private int paramSerialTipoPagoContado;
+	private int paramSerialTipoPagoCuotas;
+	private int paramSerialTipoPagoPrepaid;
+	private int paramSerialTipoPagoCollect;
+	private int paramSerialTipoPagoNoDefinido;
 	
 	private int	paramCodeTipoReparto;
 	
 	private int	paramCodeTipoProducto;
+	private String paramCodeTipoProductoDocumento;
+	private String paramCodeTipoProductoMuestra;
+	private String paramCodeTipoProductoNoDefinido;
+	private int paramSerialTipoProductoDocumento;
+	private int paramSerialTipoProductoMuestra;
+	private int paramSerialTipoProductoNoDefinido;
 	
 	private int	paramCodeTipoSede;
 	
@@ -158,6 +215,8 @@ public class Constantes {
 	private int	paramCodeUbigeoProvincia;
 	
 	private int	paramCodeUbigeoDistrito;
+	private String	paramCodeUbigeoDistritoNoDefinido;
+	private int	paramSerialUbigeoDistritoNoDefinido;
 
 	private int paramCodeEstadoFacturado;
 	private String paramCodeEstadoFacturadoSi;
@@ -167,6 +226,9 @@ public class Constantes {
 	
 	private int paramCodeTipoAmbito;
 	private String paramCodeTipoAmbitoLocal;
+	private String paramCodeTipoAmbitoNoDefinido;
+	private int paramSerialTipoAmbitoLocal;
+	private int paramSerialTipoAmbitoNoDefinido;
 	
 	private int paramCodeEstadoLiquidacion;
 	private String paramCodeEstadoLiquidacionPendiente;
@@ -247,11 +309,41 @@ public class Constantes {
 	private int idTableDimensionalFactDespacho;
 	private int idTableDimensionalFactEnvio;
 	private int idTableDimensionalFactOrden;
+	
+	
 	public int getParamCodeTipoAreaCliente() {
 		return paramCodeTipoAreaCliente;
 	}
 	public void setParamCodeTipoAreaCliente(int paramCodeTipoAreaCliente) {
 		this.paramCodeTipoAreaCliente = paramCodeTipoAreaCliente;
+	}
+	public String getParamCodeTipoAreaClienteCentral() {
+		return paramCodeTipoAreaClienteCentral;
+	}
+	public void setParamCodeTipoAreaClienteCentral(
+			String paramCodeTipoAreaClienteCentral) {
+		this.paramCodeTipoAreaClienteCentral = paramCodeTipoAreaClienteCentral;
+	}
+	public String getParamCodeTipoAreaClienteNoDefinido() {
+		return paramCodeTipoAreaClienteNoDefinido;
+	}
+	public void setParamCodeTipoAreaClienteNoDefinido(
+			String paramCodeTipoAreaClienteNoDefinido) {
+		this.paramCodeTipoAreaClienteNoDefinido = paramCodeTipoAreaClienteNoDefinido;
+	}
+	public int getParamSerialTipoAreaClienteCentral() {
+		return paramSerialTipoAreaClienteCentral;
+	}
+	public void setParamSerialTipoAreaClienteCentral(
+			int paramSerialTipoAreaClienteCentral) {
+		this.paramSerialTipoAreaClienteCentral = paramSerialTipoAreaClienteCentral;
+	}
+	public int getParamSerialTipoAreaClienteNoDefinido() {
+		return paramSerialTipoAreaClienteNoDefinido;
+	}
+	public void setParamSerialTipoAreaClienteNoDefinido(
+			int paramSerialTipoAreaClienteNoDefinido) {
+		this.paramSerialTipoAreaClienteNoDefinido = paramSerialTipoAreaClienteNoDefinido;
 	}
 	public int getParamCodeEstadoCargoDespacho() {
 		return paramCodeEstadoCargoDespacho;
@@ -730,11 +822,75 @@ public class Constantes {
 	public void setParamCodeCategoriaCliente(int paramCodeCategoriaCliente) {
 		this.paramCodeCategoriaCliente = paramCodeCategoriaCliente;
 	}
+	public String getParamCodeCategoriaClienteNoDefinido() {
+		return paramCodeCategoriaClienteNoDefinido;
+	}
+	public void setParamCodeCategoriaClienteNoDefinido(
+			String paramCodeCategoriaClienteNoDefinido) {
+		this.paramCodeCategoriaClienteNoDefinido = paramCodeCategoriaClienteNoDefinido;
+	}
+	public int getParamSerialCategoriaClienteNoDefinido() {
+		return paramSerialCategoriaClienteNoDefinido;
+	}
+	public void setParamSerialCategoriaClienteNoDefinido(
+			int paramSerialCategoriaClienteNoDefinido) {
+		this.paramSerialCategoriaClienteNoDefinido = paramSerialCategoriaClienteNoDefinido;
+	}
 	public int getParamCodeTipoCliente() {
 		return paramCodeTipoCliente;
 	}
 	public void setParamCodeTipoCliente(int paramCodeTipoCliente) {
 		this.paramCodeTipoCliente = paramCodeTipoCliente;
+	}
+	public String getParamCodeTipoClienteJuridica() {
+		return paramCodeTipoClienteJuridica;
+	}
+	public void setParamCodeTipoClienteJuridica(String paramCodeTipoClienteJuridica) {
+		this.paramCodeTipoClienteJuridica = paramCodeTipoClienteJuridica;
+	}
+	public String getParamCodeTipoClienteNatural() {
+		return paramCodeTipoClienteNatural;
+	}
+	public void setParamCodeTipoClienteNatural(String paramCodeTipoClienteNatural) {
+		this.paramCodeTipoClienteNatural = paramCodeTipoClienteNatural;
+	}
+	public String getParamCodeTipoClienteEstatal() {
+		return paramCodeTipoClienteEstatal;
+	}
+	public void setParamCodeTipoClienteEstatal(String paramCodeTipoClienteEstatal) {
+		this.paramCodeTipoClienteEstatal = paramCodeTipoClienteEstatal;
+	}
+	public String getParamCodeTipoClienteNoDefinido() {
+		return paramCodeTipoClienteNoDefinido;
+	}
+	public void setParamCodeTipoClienteNoDefinido(
+			String paramCodeTipoClienteNoDefinido) {
+		this.paramCodeTipoClienteNoDefinido = paramCodeTipoClienteNoDefinido;
+	}
+	public int getParamSerialTipoClienteJuridica() {
+		return paramSerialTipoClienteJuridica;
+	}
+	public void setParamSerialTipoClienteJuridica(int paramSerialTipoClienteJuridica) {
+		this.paramSerialTipoClienteJuridica = paramSerialTipoClienteJuridica;
+	}
+	public int getParamSerialTipoClienteNatural() {
+		return paramSerialTipoClienteNatural;
+	}
+	public void setParamSerialTipoClienteNatural(int paramSerialTipoClienteNatural) {
+		this.paramSerialTipoClienteNatural = paramSerialTipoClienteNatural;
+	}
+	public int getParamSerialTipoClienteEstatal() {
+		return paramSerialTipoClienteEstatal;
+	}
+	public void setParamSerialTipoClienteEstatal(int paramSerialTipoClienteEstatal) {
+		this.paramSerialTipoClienteEstatal = paramSerialTipoClienteEstatal;
+	}
+	public int getParamSerialTipoClienteNoDefinido() {
+		return paramSerialTipoClienteNoDefinido;
+	}
+	public void setParamSerialTipoClienteNoDefinido(
+			int paramSerialTipoClienteNoDefinido) {
+		this.paramSerialTipoClienteNoDefinido = paramSerialTipoClienteNoDefinido;
 	}
 	public int getParamCodeTipoCredito() {
 		return paramCodeTipoCredito;
@@ -742,17 +898,99 @@ public class Constantes {
 	public void setParamCodeTipoCredito(int paramCodeTipoCredito) {
 		this.paramCodeTipoCredito = paramCodeTipoCredito;
 	}
+	public String getParamCodeTipoCreditoCredito() {
+		return paramCodeTipoCreditoCredito;
+	}
+	public void setParamCodeTipoCreditoCredito(String paramCodeTipoCreditoCredito) {
+		this.paramCodeTipoCreditoCredito = paramCodeTipoCreditoCredito;
+	}
+	public String getParamCodeTipoCreditoNoDefinido() {
+		return paramCodeTipoCreditoNoDefinido;
+	}
+	public void setParamCodeTipoCreditoNoDefinido(
+			String paramCodeTipoCreditoNoDefinido) {
+		this.paramCodeTipoCreditoNoDefinido = paramCodeTipoCreditoNoDefinido;
+	}
+	public int getParamSerialTipoCreditoCredito() {
+		return paramSerialTipoCreditoCredito;
+	}
+	public void setParamSerialTipoCreditoCredito(int paramSerialTipoCreditoCredito) {
+		this.paramSerialTipoCreditoCredito = paramSerialTipoCreditoCredito;
+	}
+	public int getParamSerialTipoCreditoNoDefinido() {
+		return paramSerialTipoCreditoNoDefinido;
+	}
+	public void setParamSerialTipoCreditoNoDefinido(
+			int paramSerialTipoCreditoNoDefinido) {
+		this.paramSerialTipoCreditoNoDefinido = paramSerialTipoCreditoNoDefinido;
+	}
 	public int getParamCodeTipoDocumentoTrabajo() {
 		return paramCodeTipoDocumentoTrabajo;
 	}
 	public void setParamCodeTipoDocumentoTrabajo(int paramCodeTipoDocumentoTrabajo) {
 		this.paramCodeTipoDocumentoTrabajo = paramCodeTipoDocumentoTrabajo;
 	}
+	public String getParamCodeTipoDocumentoTrabajoGuia() {
+		return paramCodeTipoDocumentoTrabajoGuia;
+	}
+	public void setParamCodeTipoDocumentoTrabajoGuia(
+			String paramCodeTipoDocumentoTrabajoGuia) {
+		this.paramCodeTipoDocumentoTrabajoGuia = paramCodeTipoDocumentoTrabajoGuia;
+	}
+	public String getParamCodeTipoDocumentoTrabajoNoDefinido() {
+		return paramCodeTipoDocumentoTrabajoNoDefinido;
+	}
+	public void setParamCodeTipoDocumentoTrabajoNoDefinido(
+			String paramCodeTipoDocumentoTrabajoNoDefinido) {
+		this.paramCodeTipoDocumentoTrabajoNoDefinido = paramCodeTipoDocumentoTrabajoNoDefinido;
+	}
+	public int getParamSerialTipoDocumentoTrabajoGuia() {
+		return paramSerialTipoDocumentoTrabajoGuia;
+	}
+	public void setParamSerialTipoDocumentoTrabajoGuia(
+			int paramSerialTipoDocumentoTrabajoGuia) {
+		this.paramSerialTipoDocumentoTrabajoGuia = paramSerialTipoDocumentoTrabajoGuia;
+	}
+	public int getParamSerialTipoDocumentoTrabajoNoDefinido() {
+		return paramSerialTipoDocumentoTrabajoNoDefinido;
+	}
+	public void setParamSerialTipoDocumentoTrabajoNoDefinido(
+			int paramSerialTipoDocumentoTrabajoNoDefinido) {
+		this.paramSerialTipoDocumentoTrabajoNoDefinido = paramSerialTipoDocumentoTrabajoNoDefinido;
+	}
 	public int getParamCodeTipoFacturacion() {
 		return paramCodeTipoFacturacion;
 	}
 	public void setParamCodeTipoFacturacion(int paramCodeTipoFacturacion) {
 		this.paramCodeTipoFacturacion = paramCodeTipoFacturacion;
+	}
+	public String getParamCodeTipoFacturacionFacturacion() {
+		return paramCodeTipoFacturacionFacturacion;
+	}
+	public void setParamCodeTipoFacturacionFacturacion(
+			String paramCodeTipoFacturacionFacturacion) {
+		this.paramCodeTipoFacturacionFacturacion = paramCodeTipoFacturacionFacturacion;
+	}
+	public String getParamCodeTipoFacturacionNoDefinido() {
+		return paramCodeTipoFacturacionNoDefinido;
+	}
+	public void setParamCodeTipoFacturacionNoDefinido(
+			String paramCodeTipoFacturacionNoDefinido) {
+		this.paramCodeTipoFacturacionNoDefinido = paramCodeTipoFacturacionNoDefinido;
+	}
+	public int getParamSerialTipoFacturacionFacturacion() {
+		return paramSerialTipoFacturacionFacturacion;
+	}
+	public void setParamSerialTipoFacturacionFacturacion(
+			int paramSerialTipoFacturacionFacturacion) {
+		this.paramSerialTipoFacturacionFacturacion = paramSerialTipoFacturacionFacturacion;
+	}
+	public int getParamSerialTipoFacturacionNoDefinido() {
+		return paramSerialTipoFacturacionNoDefinido;
+	}
+	public void setParamSerialTipoFacturacionNoDefinido(
+			int paramSerialTipoFacturacionNoDefinido) {
+		this.paramSerialTipoFacturacionNoDefinido = paramSerialTipoFacturacionNoDefinido;
 	}
 	public int getParamCodeTipoCambio() {
 		return paramCodeTipoCambio;
@@ -779,6 +1017,27 @@ public class Constantes {
 			String paramCodeTipoNegocioMensajeria) {
 		this.paramCodeTipoNegocioMensajeria = paramCodeTipoNegocioMensajeria;
 	}
+	public String getParamCodeTipoNegocioNoDefinido() {
+		return paramCodeTipoNegocioNoDefinido;
+	}
+	public void setParamCodeTipoNegocioNoDefinido(
+			String paramCodeTipoNegocioNoDefinido) {
+		this.paramCodeTipoNegocioNoDefinido = paramCodeTipoNegocioNoDefinido;
+	}
+	public int getParamSerialTipoNegocioMensajeria() {
+		return paramSerialTipoNegocioMensajeria;
+	}
+	public void setParamSerialTipoNegocioMensajeria(
+			int paramSerialTipoNegocioMensajeria) {
+		this.paramSerialTipoNegocioMensajeria = paramSerialTipoNegocioMensajeria;
+	}
+	public int getParamSerialTipoNegocioNoDefinido() {
+		return paramSerialTipoNegocioNoDefinido;
+	}
+	public void setParamSerialTipoNegocioNoDefinido(
+			int paramSerialTipoNegocioNoDefinido) {
+		this.paramSerialTipoNegocioNoDefinido = paramSerialTipoNegocioNoDefinido;
+	}
 	public int getParamCodeTipoServicio() {
 		return paramCodeTipoServicio;
 	}
@@ -803,6 +1062,13 @@ public class Constantes {
 	public void setParamCodeTipoDocumentoDni(String paramCodeTipoDocumentoDni) {
 		this.paramCodeTipoDocumentoDni = paramCodeTipoDocumentoDni;
 	}
+	public String getParamCodeTipoDocumentoNoDefinido() {
+		return paramCodeTipoDocumentoNoDefinido;
+	}
+	public void setParamCodeTipoDocumentoNoDefinido(
+			String paramCodeTipoDocumentoNoDefinido) {
+		this.paramCodeTipoDocumentoNoDefinido = paramCodeTipoDocumentoNoDefinido;
+	}
 	public int getParamSerialTipoDocumentoRuc() {
 		return paramSerialTipoDocumentoRuc;
 	}
@@ -814,6 +1080,13 @@ public class Constantes {
 	}
 	public void setParamSerialTipoDocumentoDni(int paramSerialTipoDocumentoDni) {
 		this.paramSerialTipoDocumentoDni = paramSerialTipoDocumentoDni;
+	}
+	public int getParamSerialTipoDocumentoNoDefinido() {
+		return paramSerialTipoDocumentoNoDefinido;
+	}
+	public void setParamSerialTipoDocumentoNoDefinido(
+			int paramSerialTipoDocumentoNoDefinido) {
+		this.paramSerialTipoDocumentoNoDefinido = paramSerialTipoDocumentoNoDefinido;
 	}
 	public int getParamCodeEstadoDespacho() {
 		return paramCodeEstadoDespacho;
@@ -928,6 +1201,34 @@ public class Constantes {
 	public void setParamCodeCategoriaEmpleado(int paramCodeCategoriaEmpleado) {
 		this.paramCodeCategoriaEmpleado = paramCodeCategoriaEmpleado;
 	}
+	public String getParamCodeCategoriaEmpleadoMensajero() {
+		return paramCodeCategoriaEmpleadoMensajero;
+	}
+	public void setParamCodeCategoriaEmpleadoMensajero(
+			String paramCodeCategoriaEmpleadoMensajero) {
+		this.paramCodeCategoriaEmpleadoMensajero = paramCodeCategoriaEmpleadoMensajero;
+	}
+	public String getParamCodeCategoriaEmpleadoNoDefinido() {
+		return paramCodeCategoriaEmpleadoNoDefinido;
+	}
+	public void setParamCodeCategoriaEmpleadoNoDefinido(
+			String paramCodeCategoriaEmpleadoNoDefinido) {
+		this.paramCodeCategoriaEmpleadoNoDefinido = paramCodeCategoriaEmpleadoNoDefinido;
+	}
+	public int getParamSerialCategoriaEmpleadoMensajero() {
+		return paramSerialCategoriaEmpleadoMensajero;
+	}
+	public void setParamSerialCategoriaEmpleadoMensajero(
+			int paramSerialCategoriaEmpleadoMensajero) {
+		this.paramSerialCategoriaEmpleadoMensajero = paramSerialCategoriaEmpleadoMensajero;
+	}
+	public int getParamSerialCategoriaEmpleadoNoDefinido() {
+		return paramSerialCategoriaEmpleadoNoDefinido;
+	}
+	public void setParamSerialCategoriaEmpleadoNoDefinido(
+			int paramSerialCategoriaEmpleadoNoDefinido) {
+		this.paramSerialCategoriaEmpleadoNoDefinido = paramSerialCategoriaEmpleadoNoDefinido;
+	}
 	public int getParamCodeEstadoOrden() {
 		return paramCodeEstadoOrden;
 	}
@@ -959,6 +1260,13 @@ public class Constantes {
 	public void setParamCodeEstadoOrdenAnulado(String paramCodeEstadoOrdenAnulado) {
 		this.paramCodeEstadoOrdenAnulado = paramCodeEstadoOrdenAnulado;
 	}
+	public String getParamCodeEstadoOrdenNoDefinido() {
+		return paramCodeEstadoOrdenNoDefinido;
+	}
+	public void setParamCodeEstadoOrdenNoDefinido(
+			String paramCodeEstadoOrdenNoDefinido) {
+		this.paramCodeEstadoOrdenNoDefinido = paramCodeEstadoOrdenNoDefinido;
+	}
 	public int getParamSerialEstadoOrdenGenerado() {
 		return paramSerialEstadoOrdenGenerado;
 	}
@@ -984,6 +1292,13 @@ public class Constantes {
 	public void setParamSerialEstadoOrdenAnulado(int paramSerialEstadoOrdenAnulado) {
 		this.paramSerialEstadoOrdenAnulado = paramSerialEstadoOrdenAnulado;
 	}
+	public int getParamSerialEstadoOrdenNoDefinido() {
+		return paramSerialEstadoOrdenNoDefinido;
+	}
+	public void setParamSerialEstadoOrdenNoDefinido(
+			int paramSerialEstadoOrdenNoDefinido) {
+		this.paramSerialEstadoOrdenNoDefinido = paramSerialEstadoOrdenNoDefinido;
+	}
 	public int getParamCodeTipoIngreso() {
 		return paramCodeTipoIngreso;
 	}
@@ -1008,6 +1323,13 @@ public class Constantes {
 	public void setParamCodeTipoMonedaDolar(String paramCodeTipoMonedaDolar) {
 		this.paramCodeTipoMonedaDolar = paramCodeTipoMonedaDolar;
 	}
+	public String getParamCodeTipoMonedaNoDefinido() {
+		return paramCodeTipoMonedaNoDefinido;
+	}
+	public void setParamCodeTipoMonedaNoDefinido(
+			String paramCodeTipoMonedaNoDefinido) {
+		this.paramCodeTipoMonedaNoDefinido = paramCodeTipoMonedaNoDefinido;
+	}
 	public int getParamSerialTipoMonedaNuevoSol() {
 		return paramSerialTipoMonedaNuevoSol;
 	}
@@ -1020,11 +1342,90 @@ public class Constantes {
 	public void setParamSerialTipoMonedaDolar(int paramSerialTipoMonedaDolar) {
 		this.paramSerialTipoMonedaDolar = paramSerialTipoMonedaDolar;
 	}
+	public int getParamSerialTipoMonedaNoDefinido() {
+		return paramSerialTipoMonedaNoDefinido;
+	}
+	public void setParamSerialTipoMonedaNoDefinido(
+			int paramSerialTipoMonedaNoDefinido) {
+		this.paramSerialTipoMonedaNoDefinido = paramSerialTipoMonedaNoDefinido;
+	}
 	public int getParamCodeTipoPago() {
 		return paramCodeTipoPago;
 	}
 	public void setParamCodeTipoPago(int paramCodeTipoPago) {
 		this.paramCodeTipoPago = paramCodeTipoPago;
+	}
+	public String getParamCodeTipoPagoCredito() {
+		return paramCodeTipoPagoCredito;
+	}
+	public void setParamCodeTipoPagoCredito(String paramCodeTipoPagoCredito) {
+		this.paramCodeTipoPagoCredito = paramCodeTipoPagoCredito;
+	}
+	public String getParamCodeTipoPagoContado() {
+		return paramCodeTipoPagoContado;
+	}
+	public void setParamCodeTipoPagoContado(String paramCodeTipoPagoContado) {
+		this.paramCodeTipoPagoContado = paramCodeTipoPagoContado;
+	}
+	public String getParamCodeTipoPagoCuotas() {
+		return paramCodeTipoPagoCuotas;
+	}
+	public void setParamCodeTipoPagoCuotas(String paramCodeTipoPagoCuotas) {
+		this.paramCodeTipoPagoCuotas = paramCodeTipoPagoCuotas;
+	}
+	public String getParamCodeTipoPagoPrepaid() {
+		return paramCodeTipoPagoPrepaid;
+	}
+	public void setParamCodeTipoPagoPrepaid(String paramCodeTipoPagoPrepaid) {
+		this.paramCodeTipoPagoPrepaid = paramCodeTipoPagoPrepaid;
+	}
+	public String getParamCodeTipoPagoCollect() {
+		return paramCodeTipoPagoCollect;
+	}
+	public void setParamCodeTipoPagoCollect(String paramCodeTipoPagoCollect) {
+		this.paramCodeTipoPagoCollect = paramCodeTipoPagoCollect;
+	}
+	public String getParamCodeTipoPagoNoDefinido() {
+		return paramCodeTipoPagoNoDefinido;
+	}
+	public void setParamCodeTipoPagoNoDefinido(String paramCodeTipoPagoNoDefinido) {
+		this.paramCodeTipoPagoNoDefinido = paramCodeTipoPagoNoDefinido;
+	}
+	public int getParamSerialTipoPagoCredito() {
+		return paramSerialTipoPagoCredito;
+	}
+	public void setParamSerialTipoPagoCredito(int paramSerialTipoPagoCredito) {
+		this.paramSerialTipoPagoCredito = paramSerialTipoPagoCredito;
+	}
+	public int getParamSerialTipoPagoContado() {
+		return paramSerialTipoPagoContado;
+	}
+	public void setParamSerialTipoPagoContado(int paramSerialTipoPagoContado) {
+		this.paramSerialTipoPagoContado = paramSerialTipoPagoContado;
+	}
+	public int getParamSerialTipoPagoCuotas() {
+		return paramSerialTipoPagoCuotas;
+	}
+	public void setParamSerialTipoPagoCuotas(int paramSerialTipoPagoCuotas) {
+		this.paramSerialTipoPagoCuotas = paramSerialTipoPagoCuotas;
+	}
+	public int getParamSerialTipoPagoPrepaid() {
+		return paramSerialTipoPagoPrepaid;
+	}
+	public void setParamSerialTipoPagoPrepaid(int paramSerialTipoPagoPrepaid) {
+		this.paramSerialTipoPagoPrepaid = paramSerialTipoPagoPrepaid;
+	}
+	public int getParamSerialTipoPagoCollect() {
+		return paramSerialTipoPagoCollect;
+	}
+	public void setParamSerialTipoPagoCollect(int paramSerialTipoPagoCollect) {
+		this.paramSerialTipoPagoCollect = paramSerialTipoPagoCollect;
+	}
+	public int getParamSerialTipoPagoNoDefinido() {
+		return paramSerialTipoPagoNoDefinido;
+	}
+	public void setParamSerialTipoPagoNoDefinido(int paramSerialTipoPagoNoDefinido) {
+		this.paramSerialTipoPagoNoDefinido = paramSerialTipoPagoNoDefinido;
 	}
 	public int getParamCodeTipoReparto() {
 		return paramCodeTipoReparto;
@@ -1037,6 +1438,46 @@ public class Constantes {
 	}
 	public void setParamCodeTipoProducto(int paramCodeTipoProducto) {
 		this.paramCodeTipoProducto = paramCodeTipoProducto;
+	}
+	public String getParamCodeTipoProductoDocumento() {
+		return paramCodeTipoProductoDocumento;
+	}
+	public void setParamCodeTipoProductoDocumento(
+			String paramCodeTipoProductoDocumento) {
+		this.paramCodeTipoProductoDocumento = paramCodeTipoProductoDocumento;
+	}
+	public String getParamCodeTipoProductoMuestra() {
+		return paramCodeTipoProductoMuestra;
+	}
+	public void setParamCodeTipoProductoMuestra(String paramCodeTipoProductoMuestra) {
+		this.paramCodeTipoProductoMuestra = paramCodeTipoProductoMuestra;
+	}
+	public String getParamCodeTipoProductoNoDefinido() {
+		return paramCodeTipoProductoNoDefinido;
+	}
+	public void setParamCodeTipoProductoNoDefinido(
+			String paramCodeTipoProductoNoDefinido) {
+		this.paramCodeTipoProductoNoDefinido = paramCodeTipoProductoNoDefinido;
+	}
+	public int getParamSerialTipoProductoDocumento() {
+		return paramSerialTipoProductoDocumento;
+	}
+	public void setParamSerialTipoProductoDocumento(
+			int paramSerialTipoProductoDocumento) {
+		this.paramSerialTipoProductoDocumento = paramSerialTipoProductoDocumento;
+	}
+	public int getParamSerialTipoProductoMuestra() {
+		return paramSerialTipoProductoMuestra;
+	}
+	public void setParamSerialTipoProductoMuestra(int paramSerialTipoProductoMuestra) {
+		this.paramSerialTipoProductoMuestra = paramSerialTipoProductoMuestra;
+	}
+	public int getParamSerialTipoProductoNoDefinido() {
+		return paramSerialTipoProductoNoDefinido;
+	}
+	public void setParamSerialTipoProductoNoDefinido(
+			int paramSerialTipoProductoNoDefinido) {
+		this.paramSerialTipoProductoNoDefinido = paramSerialTipoProductoNoDefinido;
 	}
 	public int getParamCodeTipoSede() {
 		return paramCodeTipoSede;
@@ -1067,6 +1508,20 @@ public class Constantes {
 	}
 	public void setParamCodeUbigeoDistrito(int paramCodeUbigeoDistrito) {
 		this.paramCodeUbigeoDistrito = paramCodeUbigeoDistrito;
+	}
+	public String getParamCodeUbigeoDistritoNoDefinido() {
+		return paramCodeUbigeoDistritoNoDefinido;
+	}
+	public void setParamCodeUbigeoDistritoNoDefinido(
+			String paramCodeUbigeoDistritoNoDefinido) {
+		this.paramCodeUbigeoDistritoNoDefinido = paramCodeUbigeoDistritoNoDefinido;
+	}
+	public int getParamSerialUbigeoDistritoNoDefinido() {
+		return paramSerialUbigeoDistritoNoDefinido;
+	}
+	public void setParamSerialUbigeoDistritoNoDefinido(
+			int paramSerialUbigeoDistritoNoDefinido) {
+		this.paramSerialUbigeoDistritoNoDefinido = paramSerialUbigeoDistritoNoDefinido;
 	}
 	public int getParamCodeEstadoFacturado() {
 		return paramCodeEstadoFacturado;
@@ -1109,6 +1564,26 @@ public class Constantes {
 	}
 	public void setParamCodeTipoAmbitoLocal(String paramCodeTipoAmbitoLocal) {
 		this.paramCodeTipoAmbitoLocal = paramCodeTipoAmbitoLocal;
+	}
+	public String getParamCodeTipoAmbitoNoDefinido() {
+		return paramCodeTipoAmbitoNoDefinido;
+	}
+	public void setParamCodeTipoAmbitoNoDefinido(
+			String paramCodeTipoAmbitoNoDefinido) {
+		this.paramCodeTipoAmbitoNoDefinido = paramCodeTipoAmbitoNoDefinido;
+	}
+	public int getParamSerialTipoAmbitoLocal() {
+		return paramSerialTipoAmbitoLocal;
+	}
+	public void setParamSerialTipoAmbitoLocal(int paramSerialTipoAmbitoLocal) {
+		this.paramSerialTipoAmbitoLocal = paramSerialTipoAmbitoLocal;
+	}
+	public int getParamSerialTipoAmbitoNoDefinido() {
+		return paramSerialTipoAmbitoNoDefinido;
+	}
+	public void setParamSerialTipoAmbitoNoDefinido(
+			int paramSerialTipoAmbitoNoDefinido) {
+		this.paramSerialTipoAmbitoNoDefinido = paramSerialTipoAmbitoNoDefinido;
 	}
 	public int getParamCodeEstadoLiquidacion() {
 		return paramCodeEstadoLiquidacion;
@@ -1517,321 +1992,6 @@ public class Constantes {
 	}
 	public void setIdTableDimensionalFactOrden(int idTableDimensionalFactOrden) {
 		this.idTableDimensionalFactOrden = idTableDimensionalFactOrden;
-	}
-	@Override
-	public String toString() {
-		return "Constantes [paramCodeTipoAreaCliente="
-				+ paramCodeTipoAreaCliente + ", paramCodeEstadoCargoDespacho="
-				+ paramCodeEstadoCargoDespacho
-				+ ", paramCodeEstadoCargoDespachoDigitado="
-				+ paramCodeEstadoCargoDespachoDigitado
-				+ ", paramCodeEstadoCargoDespachoRuta="
-				+ paramCodeEstadoCargoDespachoRuta
-				+ ", paramCodeEstadoCargoDespachoEntregado="
-				+ paramCodeEstadoCargoDespachoEntregado
-				+ ", paramCodeEstadoCargoDespachoMotivado="
-				+ paramCodeEstadoCargoDespachoMotivado
-				+ ", paramCodeEstadoCargoDespachoReenviado="
-				+ paramCodeEstadoCargoDespachoReenviado
-				+ ", paramCodeEstadoCargoDespachoFueraZona="
-				+ paramCodeEstadoCargoDespachoFueraZona
-				+ ", paramCodeEstadoCargoDespachoPerdido="
-				+ paramCodeEstadoCargoDespachoPerdido
-				+ ", paramCodeEstadoCargoDespachoAnulado="
-				+ paramCodeEstadoCargoDespachoAnulado
-				+ ", paramCodeEstadoCargoDespachoNoDistribuido="
-				+ paramCodeEstadoCargoDespachoNoDistribuido
-				+ ", paramCodeEstadoCargoDespachoRetenido="
-				+ paramCodeEstadoCargoDespachoRetenido
-				+ ", paramCodeEstadoCargoDespachoSinFisico="
-				+ paramCodeEstadoCargoDespachoSinFisico
-				+ ", paramCodeEstadoCargoDespachoProvincia="
-				+ paramCodeEstadoCargoDespachoProvincia
-				+ ", paramCodeEstadoCargoDespachoSupervision="
-				+ paramCodeEstadoCargoDespachoSupervision
-				+ ", paramCodeEstadoCargoDespachoRobo="
-				+ paramCodeEstadoCargoDespachoRobo
-				+ ", paramSerialEstadoCargoDespachoDigitado="
-				+ paramSerialEstadoCargoDespachoDigitado
-				+ ", paramSerialEstadoCargoDespachoRuta="
-				+ paramSerialEstadoCargoDespachoRuta
-				+ ", paramSerialEstadoCargoDespachoEntregado="
-				+ paramSerialEstadoCargoDespachoEntregado
-				+ ", paramSerialEstadoCargoDespachoMotivado="
-				+ paramSerialEstadoCargoDespachoMotivado
-				+ ", paramSerialEstadoCargoDespachoReenviado="
-				+ paramSerialEstadoCargoDespachoReenviado
-				+ ", paramSerialEstadoCargoDespachoFueraZona="
-				+ paramSerialEstadoCargoDespachoFueraZona
-				+ ", paramSerialEstadoCargoDespachoPerdido="
-				+ paramSerialEstadoCargoDespachoPerdido
-				+ ", paramSerialEstadoCargoDespachoAnulado="
-				+ paramSerialEstadoCargoDespachoAnulado
-				+ ", paramSerialEstadoCargoDespachoNoDistribuido="
-				+ paramSerialEstadoCargoDespachoNoDistribuido
-				+ ", paramSerialEstadoCargoDespachoRetenido="
-				+ paramSerialEstadoCargoDespachoRetenido
-				+ ", paramSerialEstadoCargoDespachoSinFisico="
-				+ paramSerialEstadoCargoDespachoSinFisico
-				+ ", paramSerialEstadoCargoDespachoProvincia="
-				+ paramSerialEstadoCargoDespachoProvincia
-				+ ", paramSerialEstadoCargoDespachoSupervision="
-				+ paramSerialEstadoCargoDespachoSupervision
-				+ ", paramSerialEstadoCargoDespachoRobo="
-				+ paramSerialEstadoCargoDespachoRobo
-				+ ", paramCodeEstadoCargoDespachoVerificacion="
-				+ paramCodeEstadoCargoDespachoVerificacion
-				+ ", paramCodeMotivoCargoDespacho="
-				+ paramCodeMotivoCargoDespacho + ", paramCodeEstadoCargo="
-				+ paramCodeEstadoCargo + ", paramCodeEstadoCargoOrdenDigitado="
-				+ paramCodeEstadoCargoOrdenDigitado
-				+ ", paramCodeEstadoCargoOrdenClasificado="
-				+ paramCodeEstadoCargoOrdenClasificado
-				+ ", paramCodeEstadoCargoOrdenRuta="
-				+ paramCodeEstadoCargoOrdenRuta
-				+ ", paramCodeEstadoCargoOrdenEntregado="
-				+ paramCodeEstadoCargoOrdenEntregado
-				+ ", paramCodeEstadoCargoOrdenMotivado="
-				+ paramCodeEstadoCargoOrdenMotivado
-				+ ", paramCodeEstadoCargoOrdenReenviado="
-				+ paramCodeEstadoCargoOrdenReenviado
-				+ ", paramCodeEstadoCargoOrdenFueraZona="
-				+ paramCodeEstadoCargoOrdenFueraZona
-				+ ", paramCodeEstadoCargoOrdenPerdido="
-				+ paramCodeEstadoCargoOrdenPerdido
-				+ ", paramCodeEstadoCargoOrdenAnulado="
-				+ paramCodeEstadoCargoOrdenAnulado
-				+ ", paramCodeEstadoCargoOrdenNoDistribuido="
-				+ paramCodeEstadoCargoOrdenNoDistribuido
-				+ ", paramCodeEstadoCargoOrdenRetenido="
-				+ paramCodeEstadoCargoOrdenRetenido
-				+ ", paramCodeEstadoCargoOrdenSinFisico="
-				+ paramCodeEstadoCargoOrdenSinFisico
-				+ ", paramCodeEstadoCargoOrdenProvincia="
-				+ paramCodeEstadoCargoOrdenProvincia
-				+ ", paramCodeEstadoCargoOrdenSupervision="
-				+ paramCodeEstadoCargoOrdenSupervision
-				+ ", paramCodeEstadoCargoOrdenRobo="
-				+ paramCodeEstadoCargoOrdenRobo
-				+ ", paramCodeEstadoCargoOrdenSiLlego="
-				+ paramCodeEstadoCargoOrdenSiLlego
-				+ ", paramCodeEstadoCargoOrdenRecepcionado="
-				+ paramCodeEstadoCargoOrdenRecepcionado
-				+ ", paramSerialEstadoCargoOrdenDigitado="
-				+ paramSerialEstadoCargoOrdenDigitado
-				+ ", paramSerialEstadoCargoOrdenClasificado="
-				+ paramSerialEstadoCargoOrdenClasificado
-				+ ", paramSerialEstadoCargoOrdenRuta="
-				+ paramSerialEstadoCargoOrdenRuta
-				+ ", paramSerialEstadoCargoOrdenEntregado="
-				+ paramSerialEstadoCargoOrdenEntregado
-				+ ", paramSerialEstadoCargoOrdenMotivado="
-				+ paramSerialEstadoCargoOrdenMotivado
-				+ ", paramSerialEstadoCargoOrdenReenviado="
-				+ paramSerialEstadoCargoOrdenReenviado
-				+ ", paramSerialEstadoCargoOrdenFueraZona="
-				+ paramSerialEstadoCargoOrdenFueraZona
-				+ ", paramSerialEstadoCargoOrdenPerdido="
-				+ paramSerialEstadoCargoOrdenPerdido
-				+ ", paramSerialEstadoCargoOrdenAnulado="
-				+ paramSerialEstadoCargoOrdenAnulado
-				+ ", paramSerialEstadoCargoOrdenNoDistribuido="
-				+ paramSerialEstadoCargoOrdenNoDistribuido
-				+ ", paramSerialEstadoCargoOrdenRetenido="
-				+ paramSerialEstadoCargoOrdenRetenido
-				+ ", paramSerialEstadoCargoOrdenSinFisico="
-				+ paramSerialEstadoCargoOrdenSinFisico
-				+ ", paramSerialEstadoCargoOrdenProvincia="
-				+ paramSerialEstadoCargoOrdenProvincia
-				+ ", paramSerialEstadoCargoOrdenSupervision="
-				+ paramSerialEstadoCargoOrdenSupervision
-				+ ", paramSerialEstadoCargoOrdenRobo="
-				+ paramSerialEstadoCargoOrdenRobo
-				+ ", paramSerialEstadoCargoOrdenSiLlego="
-				+ paramSerialEstadoCargoOrdenSiLlego
-				+ ", paramSerialEstadoCargoOrdenRecepcionado="
-				+ paramSerialEstadoCargoOrdenRecepcionado
-				+ ", paramCodeMotivoCargo=" + paramCodeMotivoCargo
-				+ ", paramCodeTipoIngresoCargo=" + paramCodeTipoIngresoCargo
-				+ ", paramCodeCategoriaCliente=" + paramCodeCategoriaCliente
-				+ ", paramCodeTipoCliente=" + paramCodeTipoCliente
-				+ ", paramCodeTipoCredito=" + paramCodeTipoCredito
-				+ ", paramCodeTipoDocumentoTrabajo="
-				+ paramCodeTipoDocumentoTrabajo + ", paramCodeTipoFacturacion="
-				+ paramCodeTipoFacturacion + ", paramCodeTipoCambio="
-				+ paramCodeTipoCambio + ", paramCodeEstadoCotizacion="
-				+ paramCodeEstadoCotizacion + ", paramCodeTipoNegocio="
-				+ paramCodeTipoNegocio + ", paramCodeTipoNegocioMensajeria="
-				+ paramCodeTipoNegocioMensajeria + ", paramCodeTipoServicio="
-				+ paramCodeTipoServicio + ", paramCodeTipoDocumento="
-				+ paramCodeTipoDocumento + ", paramCodeTipoDocumentoRuc="
-				+ paramCodeTipoDocumentoRuc + ", paramCodeTipoDocumentoDni="
-				+ paramCodeTipoDocumentoDni + ", paramSerialTipoDocumentoRuc="
-				+ paramSerialTipoDocumentoRuc
-				+ ", paramSerialTipoDocumentoDni="
-				+ paramSerialTipoDocumentoDni + ", paramCodeEstadoDespacho="
-				+ paramCodeEstadoDespacho
-				+ ", paramCodeEstadoDespachoDespacho="
-				+ paramCodeEstadoDespachoDespacho
-				+ ", paramCodeEstadoDespachoRuta="
-				+ paramCodeEstadoDespachoRuta
-				+ ", paramCodeEstadoDespachoCerrado="
-				+ paramCodeEstadoDespachoCerrado
-				+ ", paramCodeEstadoDespachoGenerado="
-				+ paramCodeEstadoDespachoGenerado
-				+ ", paramCodeEstadoDespachoPagado="
-				+ paramCodeEstadoDespachoPagado
-				+ ", paramCodeEstadoDespachoAnulado="
-				+ paramCodeEstadoDespachoAnulado
-				+ ", paramSerialEstadoDespachoDespacho="
-				+ paramSerialEstadoDespachoDespacho
-				+ ", paramSerialEstadoDespachoRuta="
-				+ paramSerialEstadoDespachoRuta
-				+ ", paramSerialEstadoDespachoCerrado="
-				+ paramSerialEstadoDespachoCerrado
-				+ ", paramSerialEstadoDespachoGenerado="
-				+ paramSerialEstadoDespachoGenerado
-				+ ", paramSerialEstadoDespachoPagado="
-				+ paramSerialEstadoDespachoPagado
-				+ ", paramSerialEstadoDespachoAnulado="
-				+ paramSerialEstadoDespachoAnulado
-				+ ", paramCodeEstadoDespachoVerificacion="
-				+ paramCodeEstadoDespachoVerificacion
-				+ ", paramCodeTipoDespacho=" + paramCodeTipoDespacho
-				+ ", paramCodeTipoRuta=" + paramCodeTipoRuta
-				+ ", paramCodeCategoriaEmpleado=" + paramCodeCategoriaEmpleado
-				+ ", paramCodeEstadoOrden=" + paramCodeEstadoOrden
-				+ ", paramCodeEstadoOrdenGenerado="
-				+ paramCodeEstadoOrdenGenerado
-				+ ", paramCodeEstadoOrdenPendiente="
-				+ paramCodeEstadoOrdenPendiente
-				+ ", paramCodeEstadoOrdenCerrado="
-				+ paramCodeEstadoOrdenCerrado
-				+ ", paramCodeEstadoOrdenAnulado="
-				+ paramCodeEstadoOrdenAnulado
-				+ ", paramSerialEstadoOrdenGenerado="
-				+ paramSerialEstadoOrdenGenerado
-				+ ", paramSerialEstadoOrdenPendiente="
-				+ paramSerialEstadoOrdenPendiente
-				+ ", paramSerialEstadoOrdenCerrado="
-				+ paramSerialEstadoOrdenCerrado
-				+ ", paramSerialEstadoOrdenAnulado="
-				+ paramSerialEstadoOrdenAnulado + ", paramCodeTipoIngreso="
-				+ paramCodeTipoIngreso + ", paramCodeTipoMoneda="
-				+ paramCodeTipoMoneda + ", paramCodeTipoMonedaNuevoSol="
-				+ paramCodeTipoMonedaNuevoSol + ", paramCodeTipoMonedaDolar="
-				+ paramCodeTipoMonedaDolar + ", paramSerialTipoMonedaNuevoSol="
-				+ paramSerialTipoMonedaNuevoSol
-				+ ", paramSerialTipoMonedaDolar=" + paramSerialTipoMonedaDolar
-				+ ", paramCodeTipoPago=" + paramCodeTipoPago
-				+ ", paramCodeTipoReparto=" + paramCodeTipoReparto
-				+ ", paramCodeTipoProducto=" + paramCodeTipoProducto
-				+ ", paramCodeTipoSede=" + paramCodeTipoSede
-				+ ", paramCodeUbigeoPais=" + paramCodeUbigeoPais
-				+ ", paramCodeUbigeoDepartamento="
-				+ paramCodeUbigeoDepartamento + ", paramCodeUbigeoProvincia="
-				+ paramCodeUbigeoProvincia + ", paramCodeUbigeoDistrito="
-				+ paramCodeUbigeoDistrito + ", paramCodeEstadoFacturado="
-				+ paramCodeEstadoFacturado + ", paramCodeEstadoFacturadoSi="
-				+ paramCodeEstadoFacturadoSi + ", paramCodeEstadoFacturadoNo="
-				+ paramCodeEstadoFacturadoNo
-				+ ", paramSerialEstadoFacturadoSi="
-				+ paramSerialEstadoFacturadoSi
-				+ ", paramSerialEstadoFacturadoNo="
-				+ paramSerialEstadoFacturadoNo + ", paramCodeTipoAmbito="
-				+ paramCodeTipoAmbito + ", paramCodeTipoAmbitoLocal="
-				+ paramCodeTipoAmbitoLocal + ", paramCodeEstadoLiquidacion="
-				+ paramCodeEstadoLiquidacion
-				+ ", paramCodeEstadoLiquidacionPendiente="
-				+ paramCodeEstadoLiquidacionPendiente
-				+ ", paramCodeEstadoLiquidacionParcial="
-				+ paramCodeEstadoLiquidacionParcial
-				+ ", paramCodeEstadoLiquidacionTotal="
-				+ paramCodeEstadoLiquidacionTotal
-				+ ", paramSerialEstadoLiquidacionPendiente="
-				+ paramSerialEstadoLiquidacionPendiente
-				+ ", paramSerialEstadoLiquidacionParcial="
-				+ paramSerialEstadoLiquidacionParcial
-				+ ", paramSerialEstadoLiquidacionTotal="
-				+ paramSerialEstadoLiquidacionTotal + ", paramCodeNoDefinido="
-				+ paramCodeNoDefinido + ", valueStringDefault="
-				+ valueStringDefault + ", valueNumberDefault="
-				+ valueNumberDefault + ", valueNumberUnit=" + valueNumberUnit
-				+ ", valueNumberCero=" + valueNumberCero + ", stateRecordNew="
-				+ stateRecordNew + ", stateRecordProcessed="
-				+ stateRecordProcessed + ", stateRecordInconsistent="
-				+ stateRecordInconsistent + ", stateProcessStarted="
-				+ stateProcessStarted + ", stateProcessCompletedCorrectly="
-				+ stateProcessCompletedCorrectly
-				+ ", stateProcessCompletedErrors="
-				+ stateProcessCompletedErrors + ", stateProcessCanceled="
-				+ stateProcessCanceled + ", typeProcessSimple="
-				+ typeProcessSimple + ", typeProcessReProcess="
-				+ typeProcessReProcess + ", loadProcessToGeneric="
-				+ loadProcessToGeneric + ", loadProcessToDimensional="
-				+ loadProcessToDimensional + ", resultTransactionNoResult="
-				+ resultTransactionNoResult + ", resultProcessStarted="
-				+ resultProcessStarted + ", resultProcessCompletedCorrectly="
-				+ resultProcessCompletedCorrectly
-				+ ", resultProcessCompletedErrors="
-				+ resultProcessCompletedErrors + ", sizePage=" + sizePage
-				+ ", maxHoursProcess=" + maxHoursProcess
-				+ ", maxHoursFirstProcess=" + maxHoursFirstProcess
-				+ ", timeExecuteUpdateTable=" + timeExecuteUpdateTable
-				+ ", idTableGenericTAreaCliente=" + idTableGenericTAreaCliente
-				+ ", idTableGenericTCargo=" + idTableGenericTCargo
-				+ ", idTableGenericTCargoDespacho="
-				+ idTableGenericTCargoDespacho + ", idTableGenericTCliente="
-				+ idTableGenericTCliente + ", idTableGenericTCotizacion="
-				+ idTableGenericTCotizacion + ", idTableGenericTDespacho="
-				+ idTableGenericTDespacho + ", idTableGenericTEmpleado="
-				+ idTableGenericTEmpleado
-				+ ", idTableGenericTEmpleadoCategoria="
-				+ idTableGenericTEmpleadoCategoria
-				+ ", idTableGenericTLiquidacion=" + idTableGenericTLiquidacion
-				+ ", idTableGenericTOrden=" + idTableGenericTOrden
-				+ ", idTableGenericTParametro=" + idTableGenericTParametro
-				+ ", idTableGenericTProducto=" + idTableGenericTProducto
-				+ ", idTableGenericTSede=" + idTableGenericTSede
-				+ ", idTableGenericTServicio=" + idTableGenericTServicio
-				+ ", idTableGenericTUbigeo=" + idTableGenericTUbigeo
-				+ ", idTableGenericTZona=" + idTableGenericTZona
-				+ ", idTableDimensionalDimCliente="
-				+ idTableDimensionalDimCliente
-				+ ", idTableDimensionalDimEstado="
-				+ idTableDimensionalDimEstado
-				+ ", idTableDimensionalDimFacturado="
-				+ idTableDimensionalDimFacturado
-				+ ", idTableDimensionalDimMoneda="
-				+ idTableDimensionalDimMoneda
-				+ ", idTableDimensionalDimPersonal="
-				+ idTableDimensionalDimPersonal
-				+ ", idTableDimensionalDimProducto="
-				+ idTableDimensionalDimProducto
-				+ ", idTableDimensionalDimSede=" + idTableDimensionalDimSede
-				+ ", idTableDimensionalDimServicio="
-				+ idTableDimensionalDimServicio
-				+ ", idTableDimensionalDimTiempo="
-				+ idTableDimensionalDimTiempo
-				+ ", idTableDimensionalDimTipoDocumento="
-				+ idTableDimensionalDimTipoDocumento
-				+ ", idTableDimensionalDimTipoPago="
-				+ idTableDimensionalDimTipoPago
-				+ ", idTableDimensionalDimTipoReparto="
-				+ idTableDimensionalDimTipoReparto
-				+ ", idTableDimensionalDimTipoRuta="
-				+ idTableDimensionalDimTipoRuta
-				+ ", idTableDimensionalDimUbigeo="
-				+ idTableDimensionalDimUbigeo + ", idTableDimensionalDimZona="
-				+ idTableDimensionalDimZona
-				+ ", idTableDimensionalFactCotizacion="
-				+ idTableDimensionalFactCotizacion
-				+ ", idTableDimensionalFactDespacho="
-				+ idTableDimensionalFactDespacho
-				+ ", idTableDimensionalFactEnvio="
-				+ idTableDimensionalFactEnvio
-				+ ", idTableDimensionalFactOrden="
-				+ idTableDimensionalFactOrden + "]";
 	}
 }
 

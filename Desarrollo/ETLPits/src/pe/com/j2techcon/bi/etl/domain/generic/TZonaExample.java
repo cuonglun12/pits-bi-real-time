@@ -6,7 +6,7 @@ import java.util.List;
 public class TZonaExample {
 	
 	protected String paginationByClause;
-	
+
     protected String orderByClause;
 
     protected boolean distinct;

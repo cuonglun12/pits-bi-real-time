@@ -10,13 +10,21 @@ public interface OrdenesMapper {
 
     int deleteByExample(OrdenesExample example);
 
+    int deleteByPrimaryKey(@Param("serie") String serie, @Param("orden") String orden);
+
     int insert(Ordenes record);
 
     int insertSelective(Ordenes record);
 
     List<Ordenes> selectByExample(OrdenesExample example);
 
+    Ordenes selectByPrimaryKey(@Param("serie") String serie, @Param("orden") String orden);
+
     int updateByExampleSelective(@Param("record") Ordenes record, @Param("example") OrdenesExample example);
 
     int updateByExample(@Param("record") Ordenes record, @Param("example") OrdenesExample example);
+
+    int updateByPrimaryKeySelective(Ordenes record);
+
+    int updateByPrimaryKey(Ordenes record);
 }

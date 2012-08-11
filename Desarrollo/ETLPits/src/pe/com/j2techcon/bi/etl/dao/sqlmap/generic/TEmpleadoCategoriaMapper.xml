@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.generic.TEmpleadoCategoriaMapper" >
+<mapper namespace="t_empleado_categoria" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.generic.TEmpleadoCategoria" >
     <id column="emp_cat_id" property="empCatId" jdbcType="INTEGER" />
     <result column="emp_id" property="empId" jdbcType="INTEGER" />
+    <result column="emp_cod" property="empCod" jdbcType="VARCHAR" />
     <result column="emp_cat_cod_tip" property="empCatCodTip" jdbcType="INTEGER" />
     <result column="emp_cat_cod" property="empCatCod" jdbcType="VARCHAR" />
     <result column="fec_num_cam" property="fecNumCam" jdbcType="BIGINT" />
@@ -69,7 +70,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    emp_cat_id, emp_id, emp_cat_cod_tip, emp_cat_cod, fec_num_cam, cod_ind_cam, proc_id
+    emp_cat_id, emp_id, emp_cod, emp_cat_cod_tip, emp_cat_cod, fec_num_cam, cod_ind_cam, 
+    proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TEmpleadoCategoriaExample" >
     select
@@ -105,12 +107,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TEmpleadoCategoria" >
-    insert into t_empleado_categoria (emp_cat_id, emp_id, emp_cat_cod_tip, 
-      emp_cat_cod, fec_num_cam, cod_ind_cam, 
-      proc_id)
-    values (#{empCatId,jdbcType=INTEGER}, #{empId,jdbcType=INTEGER}, #{empCatCodTip,jdbcType=INTEGER}, 
-      #{empCatCod,jdbcType=VARCHAR}, #{fecNumCam,jdbcType=BIGINT}, #{codIndCam,jdbcType=CHAR}, 
-      #{procId,jdbcType=INTEGER})
+    insert into t_empleado_categoria (emp_cat_id, emp_id, emp_cod, 
+      emp_cat_cod_tip, emp_cat_cod, fec_num_cam, 
+      cod_ind_cam, proc_id)
+    values (#{empCatId,jdbcType=INTEGER}, #{empId,jdbcType=INTEGER}, #{empCod,jdbcType=VARCHAR}, 
+      #{empCatCodTip,jdbcType=INTEGER}, #{empCatCod,jdbcType=VARCHAR}, #{fecNumCam,jdbcType=BIGINT}, 
+      #{codIndCam,jdbcType=CHAR}, #{procId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TEmpleadoCategoria" >
     insert into t_empleado_categoria
@@ -120,6 +122,9 @@
       </if>
       <if test="empId != null" >
         emp_id,
+      </if>
+      <if test="empCod != null" >
+        emp_cod,
       </if>
       <if test="empCatCodTip != null" >
         emp_cat_cod_tip,
@@ -143,6 +148,9 @@
       </if>
       <if test="empId != null" >
         #{empId,jdbcType=INTEGER},
+      </if>
+      <if test="empCod != null" >
+        #{empCod,jdbcType=VARCHAR},
       </if>
       <if test="empCatCodTip != null" >
         #{empCatCodTip,jdbcType=INTEGER},
@@ -176,6 +184,9 @@
       <if test="record.empId != null" >
         emp_id = #{record.empId,jdbcType=INTEGER},
       </if>
+      <if test="record.empCod != null" >
+        emp_cod = #{record.empCod,jdbcType=VARCHAR},
+      </if>
       <if test="record.empCatCodTip != null" >
         emp_cat_cod_tip = #{record.empCatCodTip,jdbcType=INTEGER},
       </if>
@@ -200,6 +211,7 @@
     update t_empleado_categoria
     set emp_cat_id = #{record.empCatId,jdbcType=INTEGER},
       emp_id = #{record.empId,jdbcType=INTEGER},
+      emp_cod = #{record.empCod,jdbcType=VARCHAR},
       emp_cat_cod_tip = #{record.empCatCodTip,jdbcType=INTEGER},
       emp_cat_cod = #{record.empCatCod,jdbcType=VARCHAR},
       fec_num_cam = #{record.fecNumCam,jdbcType=BIGINT},
@@ -214,6 +226,9 @@
     <set >
       <if test="empId != null" >
         emp_id = #{empId,jdbcType=INTEGER},
+      </if>
+      <if test="empCod != null" >
+        emp_cod = #{empCod,jdbcType=VARCHAR},
       </if>
       <if test="empCatCodTip != null" >
         emp_cat_cod_tip = #{empCatCodTip,jdbcType=INTEGER},
@@ -236,6 +251,7 @@
   <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TEmpleadoCategoria" >
     update t_empleado_categoria
     set emp_id = #{empId,jdbcType=INTEGER},
+      emp_cod = #{empCod,jdbcType=VARCHAR},
       emp_cat_cod_tip = #{empCatCodTip,jdbcType=INTEGER},
       emp_cat_cod = #{empCatCod,jdbcType=VARCHAR},
       fec_num_cam = #{fecNumCam,jdbcType=BIGINT},

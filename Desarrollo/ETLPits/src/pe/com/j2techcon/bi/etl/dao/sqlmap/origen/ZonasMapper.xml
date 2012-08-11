@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.origen.ZonasMapper" >
+<mapper namespace="zonas" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.origen.Zonas" >
-    <result column="codzona" property="codzona" jdbcType="CHAR" />
+    <id column="codzona" property="codzona" jdbcType="CHAR" />
     <result column="codpostal" property="codpostal" jdbcType="CHAR" />
     <result column="codclasificador" property="codclasificador" jdbcType="CHAR" />
     <result column="bonozona" property="bonozona" jdbcType="CHAR" />
@@ -19,6 +19,8 @@
     <result column="ubigeo" property="ubigeo" jdbcType="CHAR" />
     <result column="tipozona" property="tipozona" jdbcType="CHAR" />
     <result column="cantidad" property="cantidad" jdbcType="SMALLINT" />
+    <result column="bi_fec_num_cam" property="biFecNumCam" jdbcType="TIMESTAMP" />
+    <result column="bi_cod_ind_cam" property="biCodIndCam" jdbcType="CHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -80,7 +82,8 @@
   </sql>
   <sql id="Base_Column_List" >
     codzona, codpostal, codclasificador, bonozona, descripcion, pasaje, monto, fecha, 
-    usuariomod, fechamod, estado, usuario, bono, efectividad, ubigeo, tipozona, cantidad
+    usuariomod, fechamod, estado, usuario, bono, efectividad, ubigeo, tipozona, cantidad, 
+    bi_fec_num_cam, bi_cod_ind_cam
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.origen.ZonasExample" >
     select
@@ -95,7 +98,20 @@
     <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
+    </if>
   </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from zonas
+    where codzona = #{codzona,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from zonas
+    where codzona = #{codzona,jdbcType=CHAR}
+  </delete>
   <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.ZonasExample" >
     delete from zonas
     <if test="_parameter != null" >
@@ -108,13 +124,15 @@
       monto, fecha, usuariomod, 
       fechamod, estado, usuario, 
       bono, efectividad, ubigeo, 
-      tipozona, cantidad)
+      tipozona, cantidad, bi_fec_num_cam, 
+      bi_cod_ind_cam)
     values (#{codzona,jdbcType=CHAR}, #{codpostal,jdbcType=CHAR}, #{codclasificador,jdbcType=CHAR}, 
       #{bonozona,jdbcType=CHAR}, #{descripcion,jdbcType=VARCHAR}, #{pasaje,jdbcType=NUMERIC}, 
       #{monto,jdbcType=NUMERIC}, #{fecha,jdbcType=TIMESTAMP}, #{usuariomod,jdbcType=CHAR}, 
       #{fechamod,jdbcType=TIMESTAMP}, #{estado,jdbcType=SMALLINT}, #{usuario,jdbcType=CHAR}, 
       #{bono,jdbcType=NUMERIC}, #{efectividad,jdbcType=SMALLINT}, #{ubigeo,jdbcType=CHAR}, 
-      #{tipozona,jdbcType=CHAR}, #{cantidad,jdbcType=SMALLINT})
+      #{tipozona,jdbcType=CHAR}, #{cantidad,jdbcType=SMALLINT}, #{biFecNumCam,jdbcType=TIMESTAMP}, 
+      #{biCodIndCam,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Zonas" >
     insert into zonas
@@ -170,6 +188,12 @@
       <if test="cantidad != null" >
         cantidad,
       </if>
+      <if test="biFecNumCam != null" >
+        bi_fec_num_cam,
+      </if>
+      <if test="biCodIndCam != null" >
+        bi_cod_ind_cam,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="codzona != null" >
@@ -222,6 +246,12 @@
       </if>
       <if test="cantidad != null" >
         #{cantidad,jdbcType=SMALLINT},
+      </if>
+      <if test="biFecNumCam != null" >
+        #{biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="biCodIndCam != null" >
+        #{biCodIndCam,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
@@ -285,6 +315,12 @@
       <if test="record.cantidad != null" >
         cantidad = #{record.cantidad,jdbcType=SMALLINT},
       </if>
+      <if test="record.biFecNumCam != null" >
+        bi_fec_num_cam = #{record.biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.biCodIndCam != null" >
+        bi_cod_ind_cam = #{record.biCodIndCam,jdbcType=CHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -308,9 +344,93 @@
       efectividad = #{record.efectividad,jdbcType=SMALLINT},
       ubigeo = #{record.ubigeo,jdbcType=CHAR},
       tipozona = #{record.tipozona,jdbcType=CHAR},
-      cantidad = #{record.cantidad,jdbcType=SMALLINT}
+      cantidad = #{record.cantidad,jdbcType=SMALLINT},
+      bi_fec_num_cam = #{record.biFecNumCam,jdbcType=TIMESTAMP},
+      bi_cod_ind_cam = #{record.biCodIndCam,jdbcType=CHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Zonas" >
+    update zonas
+    <set >
+      <if test="codpostal != null" >
+        codpostal = #{codpostal,jdbcType=CHAR},
+      </if>
+      <if test="codclasificador != null" >
+        codclasificador = #{codclasificador,jdbcType=CHAR},
+      </if>
+      <if test="bonozona != null" >
+        bonozona = #{bonozona,jdbcType=CHAR},
+      </if>
+      <if test="descripcion != null" >
+        descripcion = #{descripcion,jdbcType=VARCHAR},
+      </if>
+      <if test="pasaje != null" >
+        pasaje = #{pasaje,jdbcType=NUMERIC},
+      </if>
+      <if test="monto != null" >
+        monto = #{monto,jdbcType=NUMERIC},
+      </if>
+      <if test="fecha != null" >
+        fecha = #{fecha,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usuariomod != null" >
+        usuariomod = #{usuariomod,jdbcType=CHAR},
+      </if>
+      <if test="fechamod != null" >
+        fechamod = #{fechamod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="estado != null" >
+        estado = #{estado,jdbcType=SMALLINT},
+      </if>
+      <if test="usuario != null" >
+        usuario = #{usuario,jdbcType=CHAR},
+      </if>
+      <if test="bono != null" >
+        bono = #{bono,jdbcType=NUMERIC},
+      </if>
+      <if test="efectividad != null" >
+        efectividad = #{efectividad,jdbcType=SMALLINT},
+      </if>
+      <if test="ubigeo != null" >
+        ubigeo = #{ubigeo,jdbcType=CHAR},
+      </if>
+      <if test="tipozona != null" >
+        tipozona = #{tipozona,jdbcType=CHAR},
+      </if>
+      <if test="cantidad != null" >
+        cantidad = #{cantidad,jdbcType=SMALLINT},
+      </if>
+      <if test="biFecNumCam != null" >
+        bi_fec_num_cam = #{biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="biCodIndCam != null" >
+        bi_cod_ind_cam = #{biCodIndCam,jdbcType=CHAR},
+      </if>
+    </set>
+    where codzona = #{codzona,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Zonas" >
+    update zonas
+    set codpostal = #{codpostal,jdbcType=CHAR},
+      codclasificador = #{codclasificador,jdbcType=CHAR},
+      bonozona = #{bonozona,jdbcType=CHAR},
+      descripcion = #{descripcion,jdbcType=VARCHAR},
+      pasaje = #{pasaje,jdbcType=NUMERIC},
+      monto = #{monto,jdbcType=NUMERIC},
+      fecha = #{fecha,jdbcType=TIMESTAMP},
+      usuariomod = #{usuariomod,jdbcType=CHAR},
+      fechamod = #{fechamod,jdbcType=TIMESTAMP},
+      estado = #{estado,jdbcType=SMALLINT},
+      usuario = #{usuario,jdbcType=CHAR},
+      bono = #{bono,jdbcType=NUMERIC},
+      efectividad = #{efectividad,jdbcType=SMALLINT},
+      ubigeo = #{ubigeo,jdbcType=CHAR},
+      tipozona = #{tipozona,jdbcType=CHAR},
+      cantidad = #{cantidad,jdbcType=SMALLINT},
+      bi_fec_num_cam = #{biFecNumCam,jdbcType=TIMESTAMP},
+      bi_cod_ind_cam = #{biCodIndCam,jdbcType=CHAR}
+    where codzona = #{codzona,jdbcType=CHAR}
   </update>
 </mapper>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.origen.AreaclienteMapper" >
+<mapper namespace="areacliente" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.origen.Areacliente" >
     <id column="codareacliente" property="codareacliente" jdbcType="CHAR" />
     <id column="codcliente" property="codcliente" jdbcType="CHAR" />
@@ -22,6 +22,8 @@
     <result column="contacto" property="contacto" jdbcType="VARCHAR" />
     <result column="areacontacto" property="areacontacto" jdbcType="VARCHAR" />
     <result column="preorden" property="preorden" jdbcType="VARCHAR" />
+    <result column="bi_fec_num_cam" property="biFecNumCam" jdbcType="TIMESTAMP" />
+    <result column="bi_cod_ind_cam" property="biCodIndCam" jdbcType="CHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -84,7 +86,7 @@
   <sql id="Base_Column_List" >
     codareacliente, codcliente, ruc, areacliente, direccion, ubigeo, codpais, telefono, 
     movil, email, codejecutiva, observacion, usuario, fecha, usuariomod, fechamod, estado, 
-    contacto, areacontacto, preorden
+    contacto, areacontacto, preorden, bi_fec_num_cam, bi_cod_ind_cam
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.origen.AreaclienteExample" >
     select
@@ -98,6 +100,9 @@
     </if>
     <if test="orderByClause != null" >
       order by ${orderByClause}
+    </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
@@ -125,14 +130,16 @@
       email, codejecutiva, observacion, 
       usuario, fecha, usuariomod, 
       fechamod, estado, contacto, 
-      areacontacto, preorden)
+      areacontacto, preorden, bi_fec_num_cam, 
+      bi_cod_ind_cam)
     values (#{codareacliente,jdbcType=CHAR}, #{codcliente,jdbcType=CHAR}, #{ruc,jdbcType=VARCHAR}, 
       #{areacliente,jdbcType=VARCHAR}, #{direccion,jdbcType=VARCHAR}, #{ubigeo,jdbcType=VARCHAR}, 
       #{codpais,jdbcType=VARCHAR}, #{telefono,jdbcType=VARCHAR}, #{movil,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{codejecutiva,jdbcType=CHAR}, #{observacion,jdbcType=VARCHAR}, 
       #{usuario,jdbcType=CHAR}, #{fecha,jdbcType=TIMESTAMP}, #{usuariomod,jdbcType=CHAR}, 
       #{fechamod,jdbcType=TIMESTAMP}, #{estado,jdbcType=SMALLINT}, #{contacto,jdbcType=VARCHAR}, 
-      #{areacontacto,jdbcType=VARCHAR}, #{preorden,jdbcType=VARCHAR})
+      #{areacontacto,jdbcType=VARCHAR}, #{preorden,jdbcType=VARCHAR}, #{biFecNumCam,jdbcType=TIMESTAMP}, 
+      #{biCodIndCam,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Areacliente" >
     insert into areacliente
@@ -197,6 +204,12 @@
       <if test="preorden != null" >
         preorden,
       </if>
+      <if test="biFecNumCam != null" >
+        bi_fec_num_cam,
+      </if>
+      <if test="biCodIndCam != null" >
+        bi_cod_ind_cam,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="codareacliente != null" >
@@ -258,6 +271,12 @@
       </if>
       <if test="preorden != null" >
         #{preorden,jdbcType=VARCHAR},
+      </if>
+      <if test="biFecNumCam != null" >
+        #{biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="biCodIndCam != null" >
+        #{biCodIndCam,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
@@ -330,6 +349,12 @@
       <if test="record.preorden != null" >
         preorden = #{record.preorden,jdbcType=VARCHAR},
       </if>
+      <if test="record.biFecNumCam != null" >
+        bi_fec_num_cam = #{record.biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.biCodIndCam != null" >
+        bi_cod_ind_cam = #{record.biCodIndCam,jdbcType=CHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -356,7 +381,9 @@
       estado = #{record.estado,jdbcType=SMALLINT},
       contacto = #{record.contacto,jdbcType=VARCHAR},
       areacontacto = #{record.areacontacto,jdbcType=VARCHAR},
-      preorden = #{record.preorden,jdbcType=VARCHAR}
+      preorden = #{record.preorden,jdbcType=VARCHAR},
+      bi_fec_num_cam = #{record.biFecNumCam,jdbcType=TIMESTAMP},
+      bi_cod_ind_cam = #{record.biCodIndCam,jdbcType=CHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -418,6 +445,12 @@
       <if test="preorden != null" >
         preorden = #{preorden,jdbcType=VARCHAR},
       </if>
+      <if test="biFecNumCam != null" >
+        bi_fec_num_cam = #{biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="biCodIndCam != null" >
+        bi_cod_ind_cam = #{biCodIndCam,jdbcType=CHAR},
+      </if>
     </set>
     where codareacliente = #{codareacliente,jdbcType=CHAR}
       and codcliente = #{codcliente,jdbcType=CHAR}
@@ -441,7 +474,9 @@
       estado = #{estado,jdbcType=SMALLINT},
       contacto = #{contacto,jdbcType=VARCHAR},
       areacontacto = #{areacontacto,jdbcType=VARCHAR},
-      preorden = #{preorden,jdbcType=VARCHAR}
+      preorden = #{preorden,jdbcType=VARCHAR},
+      bi_fec_num_cam = #{biFecNumCam,jdbcType=TIMESTAMP},
+      bi_cod_ind_cam = #{biCodIndCam,jdbcType=CHAR}
     where codareacliente = #{codareacliente,jdbcType=CHAR}
       and codcliente = #{codcliente,jdbcType=CHAR}
   </update>

@@ -43,6 +43,10 @@ public class Detdespacho {
 
     private Date fecRecep;
 
+    private Date biFecNumCam;
+
+    private String biCodIndCam;
+
     public String getSerieguia() {
         return serieguia;
     }
@@ -202,4 +206,60 @@ public class Detdespacho {
     public void setFecRecep(Date fecRecep) {
         this.fecRecep = fecRecep;
     }
+
+    public Date getBiFecNumCam() {
+        return biFecNumCam;
+    }
+
+    public void setBiFecNumCam(Date biFecNumCam) {
+        this.biFecNumCam = biFecNumCam;
+    }
+
+    public String getBiCodIndCam() {
+        return biCodIndCam;
+    }
+
+    public void setBiCodIndCam(String biCodIndCam) {
+        this.biCodIndCam = biCodIndCam == null ? null : biCodIndCam.trim();
+    }
+
+    public void clear(){
+    	serieguia=null;
+    	nroguia=null;
+    	serie=null;
+    	orden=null;
+    	correlativo=null;
+    	codorigen=null;
+    	codsede=null;
+    	codclienteb=null;
+    	estacion=null;
+    	contador=null;
+    	volante=null;
+    	codzona=null;
+    	codestado=null;
+    	codmotivo=null;
+    	estadoveri=null;
+    	fecasignado=null;
+    	userCla=null;
+    	fecCla=null;
+    	userRecep=null;
+    	fecRecep=null;
+    	biFecNumCam=null;
+    	biCodIndCam=null;
+    }
+    
+	@Override
+	public String toString() {
+		return "Detdespacho [serieguia=" + serieguia + ", nroguia=" + nroguia
+				+ ", serie=" + serie + ", orden=" + orden + ", correlativo="
+				+ correlativo + ", codorigen=" + codorigen + ", codsede="
+				+ codsede + ", codclienteb=" + codclienteb + ", estacion="
+				+ estacion + ", contador=" + contador + ", volante=" + volante
+				+ ", codzona=" + codzona + ", codestado=" + codestado
+				+ ", codmotivo=" + codmotivo + ", estadoveri=" + estadoveri
+				+ ", fecasignado=" + fecasignado + ", userCla=" + userCla
+				+ ", fecCla=" + fecCla + ", userRecep=" + userRecep
+				+ ", fecRecep=" + fecRecep + ", biFecNumCam=" + biFecNumCam
+				+ ", biCodIndCam=" + biCodIndCam + "]";
+	}
 }

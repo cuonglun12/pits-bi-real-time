@@ -7,6 +7,9 @@ import java.util.Iterator;
 import java.util.List;
 
 public class DespachoExample {
+	
+	protected String paginationByClause;
+	
     protected String orderByClause;
 
     protected boolean distinct;
@@ -17,7 +20,15 @@ public class DespachoExample {
         oredCriteria = new ArrayList<Criteria>();
     }
 
-    public void setOrderByClause(String orderByClause) {
+    public String getPaginationByClause() {
+		return paginationByClause;
+	}
+
+	public void setPaginationByClause(String paginationByClause) {
+		this.paginationByClause = paginationByClause;
+	}
+
+	public void setOrderByClause(String orderByClause) {
         this.orderByClause = orderByClause;
     }
 
@@ -62,6 +73,7 @@ public class DespachoExample {
 
     public void clear() {
         oredCriteria.clear();
+        paginationByClause = null;
         orderByClause = null;
         distinct = false;
     }
@@ -3156,6 +3168,136 @@ public class DespachoExample {
 
         public Criteria andFlagEnvioNotBetween(Short value1, Short value2) {
             addCriterion("flag_envio not between", value1, value2, "flagEnvio");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiFecNumCamIsNull() {
+            addCriterion("bi_fec_num_cam is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiFecNumCamIsNotNull() {
+            addCriterion("bi_fec_num_cam is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiFecNumCamEqualTo(Date value) {
+            addCriterion("bi_fec_num_cam =", value, "biFecNumCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiFecNumCamNotEqualTo(Date value) {
+            addCriterion("bi_fec_num_cam <>", value, "biFecNumCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiFecNumCamGreaterThan(Date value) {
+            addCriterion("bi_fec_num_cam >", value, "biFecNumCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiFecNumCamGreaterThanOrEqualTo(Date value) {
+            addCriterion("bi_fec_num_cam >=", value, "biFecNumCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiFecNumCamLessThan(Date value) {
+            addCriterion("bi_fec_num_cam <", value, "biFecNumCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiFecNumCamLessThanOrEqualTo(Date value) {
+            addCriterion("bi_fec_num_cam <=", value, "biFecNumCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiFecNumCamIn(List<Date> values) {
+            addCriterion("bi_fec_num_cam in", values, "biFecNumCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiFecNumCamNotIn(List<Date> values) {
+            addCriterion("bi_fec_num_cam not in", values, "biFecNumCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiFecNumCamBetween(Date value1, Date value2) {
+            addCriterion("bi_fec_num_cam between", value1, value2, "biFecNumCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiFecNumCamNotBetween(Date value1, Date value2) {
+            addCriterion("bi_fec_num_cam not between", value1, value2, "biFecNumCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiCodIndCamIsNull() {
+            addCriterion("bi_cod_ind_cam is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiCodIndCamIsNotNull() {
+            addCriterion("bi_cod_ind_cam is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiCodIndCamEqualTo(String value) {
+            addCriterion("bi_cod_ind_cam =", value, "biCodIndCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiCodIndCamNotEqualTo(String value) {
+            addCriterion("bi_cod_ind_cam <>", value, "biCodIndCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiCodIndCamGreaterThan(String value) {
+            addCriterion("bi_cod_ind_cam >", value, "biCodIndCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiCodIndCamGreaterThanOrEqualTo(String value) {
+            addCriterion("bi_cod_ind_cam >=", value, "biCodIndCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiCodIndCamLessThan(String value) {
+            addCriterion("bi_cod_ind_cam <", value, "biCodIndCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiCodIndCamLessThanOrEqualTo(String value) {
+            addCriterion("bi_cod_ind_cam <=", value, "biCodIndCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiCodIndCamLike(String value) {
+            addCriterion("bi_cod_ind_cam like", value, "biCodIndCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiCodIndCamNotLike(String value) {
+            addCriterion("bi_cod_ind_cam not like", value, "biCodIndCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiCodIndCamIn(List<String> values) {
+            addCriterion("bi_cod_ind_cam in", values, "biCodIndCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiCodIndCamNotIn(List<String> values) {
+            addCriterion("bi_cod_ind_cam not in", values, "biCodIndCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiCodIndCamBetween(String value1, String value2) {
+            addCriterion("bi_cod_ind_cam between", value1, value2, "biCodIndCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiCodIndCamNotBetween(String value1, String value2) {
+            addCriterion("bi_cod_ind_cam not between", value1, value2, "biCodIndCam");
             return (Criteria) this;
         }
     }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.origen.UbigeosMapper" >
+<mapper namespace="ubigeos" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.origen.Ubigeos" >
+    <id column="ubigeo" property="ubigeo" jdbcType="CHAR" />
     <result column="coddepa" property="coddepa" jdbcType="CHAR" />
     <result column="codprov" property="codprov" jdbcType="CHAR" />
     <result column="codpos" property="codpos" jdbcType="CHAR" />
-    <result column="ubigeo" property="ubigeo" jdbcType="CHAR" />
     <result column="departamento" property="departamento" jdbcType="VARCHAR" />
     <result column="provincia" property="provincia" jdbcType="VARCHAR" />
     <result column="distrito" property="distrito" jdbcType="VARCHAR" />
@@ -13,6 +13,8 @@
     <result column="flagprov" property="flagprov" jdbcType="SMALLINT" />
     <result column="codpostal" property="codpostal" jdbcType="CHAR" />
     <result column="codzona" property="codzona" jdbcType="VARCHAR" />
+    <result column="bi_fec_num_cam" property="biFecNumCam" jdbcType="TIMESTAMP" />
+    <result column="bi_cod_ind_cam" property="biCodIndCam" jdbcType="CHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -73,8 +75,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    coddepa, codprov, codpos, ubigeo, departamento, provincia, distrito, nombre, flagprov, 
-    codpostal, codzona
+    ubigeo, coddepa, codprov, codpos, departamento, provincia, distrito, nombre, flagprov, 
+    codpostal, codzona, bi_fec_num_cam, bi_cod_ind_cam
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.origen.UbigeosExample" >
     select
@@ -89,7 +91,20 @@
     <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
+    </if>
   </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ubigeos
+    where ubigeo = #{ubigeo,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ubigeos
+    where ubigeo = #{ubigeo,jdbcType=CHAR}
+  </delete>
   <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.UbigeosExample" >
     delete from ubigeos
     <if test="_parameter != null" >
@@ -97,18 +112,23 @@
     </if>
   </delete>
   <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Ubigeos" >
-    insert into ubigeos (coddepa, codprov, codpos, 
-      ubigeo, departamento, provincia, 
+    insert into ubigeos (ubigeo, coddepa, codprov, 
+      codpos, departamento, provincia, 
       distrito, nombre, flagprov, 
-      codpostal, codzona)
-    values (#{coddepa,jdbcType=CHAR}, #{codprov,jdbcType=CHAR}, #{codpos,jdbcType=CHAR}, 
-      #{ubigeo,jdbcType=CHAR}, #{departamento,jdbcType=VARCHAR}, #{provincia,jdbcType=VARCHAR}, 
+      codpostal, codzona, bi_fec_num_cam, 
+      bi_cod_ind_cam)
+    values (#{ubigeo,jdbcType=CHAR}, #{coddepa,jdbcType=CHAR}, #{codprov,jdbcType=CHAR}, 
+      #{codpos,jdbcType=CHAR}, #{departamento,jdbcType=VARCHAR}, #{provincia,jdbcType=VARCHAR}, 
       #{distrito,jdbcType=VARCHAR}, #{nombre,jdbcType=VARCHAR}, #{flagprov,jdbcType=SMALLINT}, 
-      #{codpostal,jdbcType=CHAR}, #{codzona,jdbcType=VARCHAR})
+      #{codpostal,jdbcType=CHAR}, #{codzona,jdbcType=VARCHAR}, #{biFecNumCam,jdbcType=TIMESTAMP}, 
+      #{biCodIndCam,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Ubigeos" >
     insert into ubigeos
     <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ubigeo != null" >
+        ubigeo,
+      </if>
       <if test="coddepa != null" >
         coddepa,
       </if>
@@ -117,9 +137,6 @@
       </if>
       <if test="codpos != null" >
         codpos,
-      </if>
-      <if test="ubigeo != null" >
-        ubigeo,
       </if>
       <if test="departamento != null" >
         departamento,
@@ -142,8 +159,17 @@
       <if test="codzona != null" >
         codzona,
       </if>
+      <if test="biFecNumCam != null" >
+        bi_fec_num_cam,
+      </if>
+      <if test="biCodIndCam != null" >
+        bi_cod_ind_cam,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ubigeo != null" >
+        #{ubigeo,jdbcType=CHAR},
+      </if>
       <if test="coddepa != null" >
         #{coddepa,jdbcType=CHAR},
       </if>
@@ -152,9 +178,6 @@
       </if>
       <if test="codpos != null" >
         #{codpos,jdbcType=CHAR},
-      </if>
-      <if test="ubigeo != null" >
-        #{ubigeo,jdbcType=CHAR},
       </if>
       <if test="departamento != null" >
         #{departamento,jdbcType=VARCHAR},
@@ -177,6 +200,12 @@
       <if test="codzona != null" >
         #{codzona,jdbcType=VARCHAR},
       </if>
+      <if test="biFecNumCam != null" >
+        #{biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="biCodIndCam != null" >
+        #{biCodIndCam,jdbcType=CHAR},
+      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.UbigeosExample" resultType="java.lang.Integer" >
@@ -188,6 +217,9 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update ubigeos
     <set >
+      <if test="record.ubigeo != null" >
+        ubigeo = #{record.ubigeo,jdbcType=CHAR},
+      </if>
       <if test="record.coddepa != null" >
         coddepa = #{record.coddepa,jdbcType=CHAR},
       </if>
@@ -196,9 +228,6 @@
       </if>
       <if test="record.codpos != null" >
         codpos = #{record.codpos,jdbcType=CHAR},
-      </if>
-      <if test="record.ubigeo != null" >
-        ubigeo = #{record.ubigeo,jdbcType=CHAR},
       </if>
       <if test="record.departamento != null" >
         departamento = #{record.departamento,jdbcType=VARCHAR},
@@ -221,6 +250,12 @@
       <if test="record.codzona != null" >
         codzona = #{record.codzona,jdbcType=VARCHAR},
       </if>
+      <if test="record.biFecNumCam != null" >
+        bi_fec_num_cam = #{record.biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.biCodIndCam != null" >
+        bi_cod_ind_cam = #{record.biCodIndCam,jdbcType=CHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -228,19 +263,79 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update ubigeos
-    set coddepa = #{record.coddepa,jdbcType=CHAR},
+    set ubigeo = #{record.ubigeo,jdbcType=CHAR},
+      coddepa = #{record.coddepa,jdbcType=CHAR},
       codprov = #{record.codprov,jdbcType=CHAR},
       codpos = #{record.codpos,jdbcType=CHAR},
-      ubigeo = #{record.ubigeo,jdbcType=CHAR},
       departamento = #{record.departamento,jdbcType=VARCHAR},
       provincia = #{record.provincia,jdbcType=VARCHAR},
       distrito = #{record.distrito,jdbcType=VARCHAR},
       nombre = #{record.nombre,jdbcType=VARCHAR},
       flagprov = #{record.flagprov,jdbcType=SMALLINT},
       codpostal = #{record.codpostal,jdbcType=CHAR},
-      codzona = #{record.codzona,jdbcType=VARCHAR}
+      codzona = #{record.codzona,jdbcType=VARCHAR},
+      bi_fec_num_cam = #{record.biFecNumCam,jdbcType=TIMESTAMP},
+      bi_cod_ind_cam = #{record.biCodIndCam,jdbcType=CHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Ubigeos" >
+    update ubigeos
+    <set >
+      <if test="coddepa != null" >
+        coddepa = #{coddepa,jdbcType=CHAR},
+      </if>
+      <if test="codprov != null" >
+        codprov = #{codprov,jdbcType=CHAR},
+      </if>
+      <if test="codpos != null" >
+        codpos = #{codpos,jdbcType=CHAR},
+      </if>
+      <if test="departamento != null" >
+        departamento = #{departamento,jdbcType=VARCHAR},
+      </if>
+      <if test="provincia != null" >
+        provincia = #{provincia,jdbcType=VARCHAR},
+      </if>
+      <if test="distrito != null" >
+        distrito = #{distrito,jdbcType=VARCHAR},
+      </if>
+      <if test="nombre != null" >
+        nombre = #{nombre,jdbcType=VARCHAR},
+      </if>
+      <if test="flagprov != null" >
+        flagprov = #{flagprov,jdbcType=SMALLINT},
+      </if>
+      <if test="codpostal != null" >
+        codpostal = #{codpostal,jdbcType=CHAR},
+      </if>
+      <if test="codzona != null" >
+        codzona = #{codzona,jdbcType=VARCHAR},
+      </if>
+      <if test="biFecNumCam != null" >
+        bi_fec_num_cam = #{biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="biCodIndCam != null" >
+        bi_cod_ind_cam = #{biCodIndCam,jdbcType=CHAR},
+      </if>
+    </set>
+    where ubigeo = #{ubigeo,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Ubigeos" >
+    update ubigeos
+    set coddepa = #{coddepa,jdbcType=CHAR},
+      codprov = #{codprov,jdbcType=CHAR},
+      codpos = #{codpos,jdbcType=CHAR},
+      departamento = #{departamento,jdbcType=VARCHAR},
+      provincia = #{provincia,jdbcType=VARCHAR},
+      distrito = #{distrito,jdbcType=VARCHAR},
+      nombre = #{nombre,jdbcType=VARCHAR},
+      flagprov = #{flagprov,jdbcType=SMALLINT},
+      codpostal = #{codpostal,jdbcType=CHAR},
+      codzona = #{codzona,jdbcType=VARCHAR},
+      bi_fec_num_cam = #{biFecNumCam,jdbcType=TIMESTAMP},
+      bi_cod_ind_cam = #{biCodIndCam,jdbcType=CHAR}
+    where ubigeo = #{ubigeo,jdbcType=CHAR}
   </update>
 </mapper>

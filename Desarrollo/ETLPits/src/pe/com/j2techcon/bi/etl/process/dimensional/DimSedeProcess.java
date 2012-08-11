@@ -346,7 +346,7 @@ public class DimSedeProcess {
 	
 	public void processRecordSede(){
 		
-		completeFildSede();
+		completeFieldSede();
 		
 		if(typeProcess.equals(constantes.getTypeProcessSimple())){
 			if(tSede.getCodIndCam().equals(constantes.getStateRecordNew())){
@@ -384,7 +384,7 @@ public class DimSedeProcess {
 		updateRecordGenericSede(stateRecordGeneric);
 	}
 	
-	public void completeFildSede(){
+	public void completeFieldSede(){
 		dimSede.setSedeKey(tSede.getProcId());
 		dimSede.setSedeCod(tSede.getSedCod());
 		

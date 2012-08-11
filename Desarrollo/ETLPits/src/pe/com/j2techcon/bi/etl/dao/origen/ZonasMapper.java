@@ -10,13 +10,21 @@ public interface ZonasMapper {
 
     int deleteByExample(ZonasExample example);
 
+    int deleteByPrimaryKey(String codzona);
+
     int insert(Zonas record);
 
     int insertSelective(Zonas record);
 
     List<Zonas> selectByExample(ZonasExample example);
 
+    Zonas selectByPrimaryKey(String codzona);
+
     int updateByExampleSelective(@Param("record") Zonas record, @Param("example") ZonasExample example);
 
     int updateByExample(@Param("record") Zonas record, @Param("example") ZonasExample example);
+
+    int updateByPrimaryKeySelective(Zonas record);
+
+    int updateByPrimaryKey(Zonas record);
 }

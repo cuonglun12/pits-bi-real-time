@@ -310,7 +310,7 @@ public class DimServicioProcess {
 	
 	public void processRecordServicio(){
 		
-		completeFildServicio();
+		completeFieldServicio();
 		
 		if(typeProcess.equals(constantes.getTypeProcessSimple())){
 			if(tServicio.getCodIndCam().equals(constantes.getStateRecordNew())){
@@ -348,7 +348,7 @@ public class DimServicioProcess {
 		updateRecordGenericServicio(stateRecordGeneric);
 	}
 	
-	public void completeFildServicio(){
+	public void completeFieldServicio(){
 		dimServicio.setServicioKey(tServicio.getProcId());
 		dimServicio.setServicioCod(tServicio.getSevCod());
 		

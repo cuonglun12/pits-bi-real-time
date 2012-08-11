@@ -6,7 +6,7 @@ import java.util.List;
 public class TEmpleadoCategoriaExample {
 	
 	protected String paginationByClause;
-	
+
     protected String orderByClause;
 
     protected boolean distinct;
@@ -233,6 +233,76 @@ public class TEmpleadoCategoriaExample {
 
         public Criteria andEmpIdNotBetween(Integer value1, Integer value2) {
             addCriterion("emp_id not between", value1, value2, "empId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpCodIsNull() {
+            addCriterion("emp_cod is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpCodIsNotNull() {
+            addCriterion("emp_cod is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpCodEqualTo(String value) {
+            addCriterion("emp_cod =", value, "empCod");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpCodNotEqualTo(String value) {
+            addCriterion("emp_cod <>", value, "empCod");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpCodGreaterThan(String value) {
+            addCriterion("emp_cod >", value, "empCod");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpCodGreaterThanOrEqualTo(String value) {
+            addCriterion("emp_cod >=", value, "empCod");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpCodLessThan(String value) {
+            addCriterion("emp_cod <", value, "empCod");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpCodLessThanOrEqualTo(String value) {
+            addCriterion("emp_cod <=", value, "empCod");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpCodLike(String value) {
+            addCriterion("emp_cod like", value, "empCod");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpCodNotLike(String value) {
+            addCriterion("emp_cod not like", value, "empCod");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpCodIn(List<String> values) {
+            addCriterion("emp_cod in", values, "empCod");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpCodNotIn(List<String> values) {
+            addCriterion("emp_cod not in", values, "empCod");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpCodBetween(String value1, String value2) {
+            addCriterion("emp_cod between", value1, value2, "empCod");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpCodNotBetween(String value1, String value2) {
+            addCriterion("emp_cod not between", value1, value2, "empCod");
             return (Criteria) this;
         }
 

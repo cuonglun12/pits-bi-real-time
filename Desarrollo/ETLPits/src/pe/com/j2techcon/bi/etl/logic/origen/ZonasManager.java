@@ -7,9 +7,9 @@ import pe.com.j2techcon.bi.etl.domain.origen.Zonas;
 import pe.com.j2techcon.bi.etl.domain.origen.ZonasExample;
 
 public class ZonasManager {
-
-	private ZonasMapper zonasMapper;
 	
+	private ZonasMapper zonasMapper;
+
 	public ZonasMapper getZonasMapper() {
 		return zonasMapper;
 	}
@@ -26,6 +26,10 @@ public class ZonasManager {
 		return zonasMapper.deleteByExample(example);
 	}
 
+	public int deleteByPrimaryKey(String codzona) {
+		return zonasMapper.deleteByPrimaryKey(codzona);
+	}
+
 	public int insert(Zonas record) {
 		return zonasMapper.insert(record);
 	}
@@ -38,12 +42,24 @@ public class ZonasManager {
 		return zonasMapper.selectByExample(example);
 	}
 
+	public Zonas selectByPrimaryKey(String codzona) {
+		return zonasMapper.selectByPrimaryKey(codzona);
+	}
+
 	public int updateByExampleSelective(Zonas record, ZonasExample example) {
 		return zonasMapper.updateByExampleSelective(record, example);
 	}
 
 	public int updateByExample(Zonas record, ZonasExample example) {
 		return zonasMapper.updateByExample(record, example);
+	}
+
+	public int updateByPrimaryKeySelective(Zonas record) {
+		return zonasMapper.updateByPrimaryKeySelective(record);
+	}
+
+	public int updateByPrimaryKey(Zonas record) {
+		return zonasMapper.updateByPrimaryKey(record);
 	}
 
 }

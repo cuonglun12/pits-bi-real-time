@@ -7,6 +7,9 @@ import java.util.Iterator;
 import java.util.List;
 
 public class DetordenesExample {
+	
+	protected String paginationByClause;
+	
     protected String orderByClause;
 
     protected boolean distinct;
@@ -17,7 +20,15 @@ public class DetordenesExample {
         oredCriteria = new ArrayList<Criteria>();
     }
 
-    public void setOrderByClause(String orderByClause) {
+    public String getPaginationByClause() {
+		return paginationByClause;
+	}
+
+	public void setPaginationByClause(String paginationByClause) {
+		this.paginationByClause = paginationByClause;
+	}
+
+	public void setOrderByClause(String orderByClause) {
         this.orderByClause = orderByClause;
     }
 
@@ -62,6 +73,7 @@ public class DetordenesExample {
 
     public void clear() {
         oredCriteria.clear();
+        paginationByClause = null;
         orderByClause = null;
         distinct = false;
     }
@@ -340,6 +352,146 @@ public class DetordenesExample {
 
         public Criteria andCorrelativoNotBetween(String value1, String value2) {
             addCriterion("correlativo not between", value1, value2, "correlativo");
+            return (Criteria) this;
+        }
+
+        public Criteria andTipoingresoIsNull() {
+            addCriterion("tipoingreso is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTipoingresoIsNotNull() {
+            addCriterion("tipoingreso is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTipoingresoEqualTo(String value) {
+            addCriterion("tipoingreso =", value, "tipoingreso");
+            return (Criteria) this;
+        }
+
+        public Criteria andTipoingresoNotEqualTo(String value) {
+            addCriterion("tipoingreso <>", value, "tipoingreso");
+            return (Criteria) this;
+        }
+
+        public Criteria andTipoingresoGreaterThan(String value) {
+            addCriterion("tipoingreso >", value, "tipoingreso");
+            return (Criteria) this;
+        }
+
+        public Criteria andTipoingresoGreaterThanOrEqualTo(String value) {
+            addCriterion("tipoingreso >=", value, "tipoingreso");
+            return (Criteria) this;
+        }
+
+        public Criteria andTipoingresoLessThan(String value) {
+            addCriterion("tipoingreso <", value, "tipoingreso");
+            return (Criteria) this;
+        }
+
+        public Criteria andTipoingresoLessThanOrEqualTo(String value) {
+            addCriterion("tipoingreso <=", value, "tipoingreso");
+            return (Criteria) this;
+        }
+
+        public Criteria andTipoingresoLike(String value) {
+            addCriterion("tipoingreso like", value, "tipoingreso");
+            return (Criteria) this;
+        }
+
+        public Criteria andTipoingresoNotLike(String value) {
+            addCriterion("tipoingreso not like", value, "tipoingreso");
+            return (Criteria) this;
+        }
+
+        public Criteria andTipoingresoIn(List<String> values) {
+            addCriterion("tipoingreso in", values, "tipoingreso");
+            return (Criteria) this;
+        }
+
+        public Criteria andTipoingresoNotIn(List<String> values) {
+            addCriterion("tipoingreso not in", values, "tipoingreso");
+            return (Criteria) this;
+        }
+
+        public Criteria andTipoingresoBetween(String value1, String value2) {
+            addCriterion("tipoingreso between", value1, value2, "tipoingreso");
+            return (Criteria) this;
+        }
+
+        public Criteria andTipoingresoNotBetween(String value1, String value2) {
+            addCriterion("tipoingreso not between", value1, value2, "tipoingreso");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserDigitacionIsNull() {
+            addCriterion("user_digitacion is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserDigitacionIsNotNull() {
+            addCriterion("user_digitacion is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserDigitacionEqualTo(String value) {
+            addCriterion("user_digitacion =", value, "userDigitacion");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserDigitacionNotEqualTo(String value) {
+            addCriterion("user_digitacion <>", value, "userDigitacion");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserDigitacionGreaterThan(String value) {
+            addCriterion("user_digitacion >", value, "userDigitacion");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserDigitacionGreaterThanOrEqualTo(String value) {
+            addCriterion("user_digitacion >=", value, "userDigitacion");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserDigitacionLessThan(String value) {
+            addCriterion("user_digitacion <", value, "userDigitacion");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserDigitacionLessThanOrEqualTo(String value) {
+            addCriterion("user_digitacion <=", value, "userDigitacion");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserDigitacionLike(String value) {
+            addCriterion("user_digitacion like", value, "userDigitacion");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserDigitacionNotLike(String value) {
+            addCriterion("user_digitacion not like", value, "userDigitacion");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserDigitacionIn(List<String> values) {
+            addCriterion("user_digitacion in", values, "userDigitacion");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserDigitacionNotIn(List<String> values) {
+            addCriterion("user_digitacion not in", values, "userDigitacion");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserDigitacionBetween(String value1, String value2) {
+            addCriterion("user_digitacion between", value1, value2, "userDigitacion");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserDigitacionNotBetween(String value1, String value2) {
+            addCriterion("user_digitacion not between", value1, value2, "userDigitacion");
             return (Criteria) this;
         }
 
@@ -2790,146 +2942,6 @@ public class DetordenesExample {
 
         public Criteria andCodmotivocliNotBetween(String value1, String value2) {
             addCriterion("codmotivocli not between", value1, value2, "codmotivocli");
-            return (Criteria) this;
-        }
-
-        public Criteria andTipoingresoIsNull() {
-            addCriterion("tipoingreso is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTipoingresoIsNotNull() {
-            addCriterion("tipoingreso is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTipoingresoEqualTo(String value) {
-            addCriterion("tipoingreso =", value, "tipoingreso");
-            return (Criteria) this;
-        }
-
-        public Criteria andTipoingresoNotEqualTo(String value) {
-            addCriterion("tipoingreso <>", value, "tipoingreso");
-            return (Criteria) this;
-        }
-
-        public Criteria andTipoingresoGreaterThan(String value) {
-            addCriterion("tipoingreso >", value, "tipoingreso");
-            return (Criteria) this;
-        }
-
-        public Criteria andTipoingresoGreaterThanOrEqualTo(String value) {
-            addCriterion("tipoingreso >=", value, "tipoingreso");
-            return (Criteria) this;
-        }
-
-        public Criteria andTipoingresoLessThan(String value) {
-            addCriterion("tipoingreso <", value, "tipoingreso");
-            return (Criteria) this;
-        }
-
-        public Criteria andTipoingresoLessThanOrEqualTo(String value) {
-            addCriterion("tipoingreso <=", value, "tipoingreso");
-            return (Criteria) this;
-        }
-
-        public Criteria andTipoingresoLike(String value) {
-            addCriterion("tipoingreso like", value, "tipoingreso");
-            return (Criteria) this;
-        }
-
-        public Criteria andTipoingresoNotLike(String value) {
-            addCriterion("tipoingreso not like", value, "tipoingreso");
-            return (Criteria) this;
-        }
-
-        public Criteria andTipoingresoIn(List<String> values) {
-            addCriterion("tipoingreso in", values, "tipoingreso");
-            return (Criteria) this;
-        }
-
-        public Criteria andTipoingresoNotIn(List<String> values) {
-            addCriterion("tipoingreso not in", values, "tipoingreso");
-            return (Criteria) this;
-        }
-
-        public Criteria andTipoingresoBetween(String value1, String value2) {
-            addCriterion("tipoingreso between", value1, value2, "tipoingreso");
-            return (Criteria) this;
-        }
-
-        public Criteria andTipoingresoNotBetween(String value1, String value2) {
-            addCriterion("tipoingreso not between", value1, value2, "tipoingreso");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserDigitacionIsNull() {
-            addCriterion("user_digitacion is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserDigitacionIsNotNull() {
-            addCriterion("user_digitacion is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserDigitacionEqualTo(String value) {
-            addCriterion("user_digitacion =", value, "userDigitacion");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserDigitacionNotEqualTo(String value) {
-            addCriterion("user_digitacion <>", value, "userDigitacion");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserDigitacionGreaterThan(String value) {
-            addCriterion("user_digitacion >", value, "userDigitacion");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserDigitacionGreaterThanOrEqualTo(String value) {
-            addCriterion("user_digitacion >=", value, "userDigitacion");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserDigitacionLessThan(String value) {
-            addCriterion("user_digitacion <", value, "userDigitacion");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserDigitacionLessThanOrEqualTo(String value) {
-            addCriterion("user_digitacion <=", value, "userDigitacion");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserDigitacionLike(String value) {
-            addCriterion("user_digitacion like", value, "userDigitacion");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserDigitacionNotLike(String value) {
-            addCriterion("user_digitacion not like", value, "userDigitacion");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserDigitacionIn(List<String> values) {
-            addCriterion("user_digitacion in", values, "userDigitacion");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserDigitacionNotIn(List<String> values) {
-            addCriterion("user_digitacion not in", values, "userDigitacion");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserDigitacionBetween(String value1, String value2) {
-            addCriterion("user_digitacion between", value1, value2, "userDigitacion");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserDigitacionNotBetween(String value1, String value2) {
-            addCriterion("user_digitacion not between", value1, value2, "userDigitacion");
             return (Criteria) this;
         }
 
@@ -7750,6 +7762,136 @@ public class DetordenesExample {
 
         public Criteria andFechaCoordinaNotBetween(Date value1, Date value2) {
             addCriterion("fecha_coordina not between", value1, value2, "fechaCoordina");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiFecNumCamIsNull() {
+            addCriterion("bi_fec_num_cam is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiFecNumCamIsNotNull() {
+            addCriterion("bi_fec_num_cam is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiFecNumCamEqualTo(Date value) {
+            addCriterion("bi_fec_num_cam =", value, "biFecNumCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiFecNumCamNotEqualTo(Date value) {
+            addCriterion("bi_fec_num_cam <>", value, "biFecNumCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiFecNumCamGreaterThan(Date value) {
+            addCriterion("bi_fec_num_cam >", value, "biFecNumCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiFecNumCamGreaterThanOrEqualTo(Date value) {
+            addCriterion("bi_fec_num_cam >=", value, "biFecNumCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiFecNumCamLessThan(Date value) {
+            addCriterion("bi_fec_num_cam <", value, "biFecNumCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiFecNumCamLessThanOrEqualTo(Date value) {
+            addCriterion("bi_fec_num_cam <=", value, "biFecNumCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiFecNumCamIn(List<Date> values) {
+            addCriterion("bi_fec_num_cam in", values, "biFecNumCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiFecNumCamNotIn(List<Date> values) {
+            addCriterion("bi_fec_num_cam not in", values, "biFecNumCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiFecNumCamBetween(Date value1, Date value2) {
+            addCriterion("bi_fec_num_cam between", value1, value2, "biFecNumCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiFecNumCamNotBetween(Date value1, Date value2) {
+            addCriterion("bi_fec_num_cam not between", value1, value2, "biFecNumCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiCodIndCamIsNull() {
+            addCriterion("bi_cod_ind_cam is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiCodIndCamIsNotNull() {
+            addCriterion("bi_cod_ind_cam is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiCodIndCamEqualTo(String value) {
+            addCriterion("bi_cod_ind_cam =", value, "biCodIndCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiCodIndCamNotEqualTo(String value) {
+            addCriterion("bi_cod_ind_cam <>", value, "biCodIndCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiCodIndCamGreaterThan(String value) {
+            addCriterion("bi_cod_ind_cam >", value, "biCodIndCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiCodIndCamGreaterThanOrEqualTo(String value) {
+            addCriterion("bi_cod_ind_cam >=", value, "biCodIndCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiCodIndCamLessThan(String value) {
+            addCriterion("bi_cod_ind_cam <", value, "biCodIndCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiCodIndCamLessThanOrEqualTo(String value) {
+            addCriterion("bi_cod_ind_cam <=", value, "biCodIndCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiCodIndCamLike(String value) {
+            addCriterion("bi_cod_ind_cam like", value, "biCodIndCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiCodIndCamNotLike(String value) {
+            addCriterion("bi_cod_ind_cam not like", value, "biCodIndCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiCodIndCamIn(List<String> values) {
+            addCriterion("bi_cod_ind_cam in", values, "biCodIndCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiCodIndCamNotIn(List<String> values) {
+            addCriterion("bi_cod_ind_cam not in", values, "biCodIndCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiCodIndCamBetween(String value1, String value2) {
+            addCriterion("bi_cod_ind_cam between", value1, value2, "biCodIndCam");
+            return (Criteria) this;
+        }
+
+        public Criteria andBiCodIndCamNotBetween(String value1, String value2) {
+            addCriterion("bi_cod_ind_cam not between", value1, value2, "biCodIndCam");
             return (Criteria) this;
         }
     }

@@ -311,7 +311,7 @@ public class DimProductoProcess {
 	
 	public void processRecordProducto(){
 		
-		completeFildProducto();
+		completeFieldProducto();
 		
 		if(typeProcess.equals(constantes.getTypeProcessSimple())){
 			if(tProducto.getCodIndCam().equals(constantes.getStateRecordNew())){
@@ -349,7 +349,7 @@ public class DimProductoProcess {
 		updateRecordGenericProducto(stateRecordGeneric);
 	}
 	
-	public void completeFildProducto(){
+	public void completeFieldProducto(){
 		dimProducto.setProductoKey(tProducto.getProcId());
 		dimProducto.setProductoCod(tProducto.getProdCod());
 		

@@ -346,7 +346,7 @@ public class DimZonaProcess {
 	
 	public void processRecordZona(){
 		
-		completeFildZona();
+		completeFieldZona();
 		
 		if(typeProcess.equals(constantes.getTypeProcessSimple())){
 			if(tZona.getCodIndCam().equals(constantes.getStateRecordNew())){
@@ -384,7 +384,7 @@ public class DimZonaProcess {
 		updateRecordGenericZona(stateRecordGeneric);
 	}
 	
-	public void completeFildZona(){
+	public void completeFieldZona(){
 		dimZona.setZonaKey(tZona.getZonId());
 		
 		tUbigeo = tUbigeoManager.selectByPrimaryKey(tZona.getUbiId());

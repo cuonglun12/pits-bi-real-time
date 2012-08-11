@@ -5,6 +5,8 @@ public class TEmpleadoCategoria {
 
     private Integer empId;
 
+    private String empCod;
+
     private Integer empCatCodTip;
 
     private String empCatCod;
@@ -29,6 +31,14 @@ public class TEmpleadoCategoria {
 
     public void setEmpId(Integer empId) {
         this.empId = empId;
+    }
+
+    public String getEmpCod() {
+        return empCod;
+    }
+
+    public void setEmpCod(String empCod) {
+        this.empCod = empCod == null ? null : empCod.trim();
     }
 
     public Integer getEmpCatCodTip() {
@@ -72,20 +82,22 @@ public class TEmpleadoCategoria {
     }
     
     public void clear(){
-    	empCatId=null;
-    	empId=null;
-    	empCatCodTip=null;
-    	empCatCod=null;
-    	fecNumCam=null;
-    	codIndCam=null;
-    	procId=null;
+        empCatId = null;
+        empId = null;
+        empCod = null;
+        empCatCodTip = null;
+        empCatCod = null;
+        fecNumCam = null;
+        codIndCam = null;
+        procId = null;
     }
 
 	@Override
 	public String toString() {
 		return "TEmpleadoCategoria [empCatId=" + empCatId + ", empId=" + empId
-				+ ", empCatCodTip=" + empCatCodTip + ", empCatCod=" + empCatCod
-				+ ", fecNumCam=" + fecNumCam + ", codIndCam=" + codIndCam
-				+ ", procId=" + procId + "]";
+				+ ", empCod=" + empCod + ", empCatCodTip=" + empCatCodTip
+				+ ", empCatCod=" + empCatCod + ", fecNumCam=" + fecNumCam
+				+ ", codIndCam=" + codIndCam + ", procId=" + procId + "]";
 	}
+    
 }

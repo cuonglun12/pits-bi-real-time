@@ -1,13 +1,15 @@
 package pe.com.j2techcon.bi.etl.domain.origen;
 
+import java.util.Date;
+
 public class Ubigeos {
+    private String ubigeo;
+
     private String coddepa;
 
     private String codprov;
 
     private String codpos;
-
-    private String ubigeo;
 
     private String departamento;
 
@@ -22,6 +24,18 @@ public class Ubigeos {
     private String codpostal;
 
     private String codzona;
+
+    private Date biFecNumCam;
+
+    private String biCodIndCam;
+
+    public String getUbigeo() {
+        return ubigeo;
+    }
+
+    public void setUbigeo(String ubigeo) {
+        this.ubigeo = ubigeo == null ? null : ubigeo.trim();
+    }
 
     public String getCoddepa() {
         return coddepa;
@@ -45,14 +59,6 @@ public class Ubigeos {
 
     public void setCodpos(String codpos) {
         this.codpos = codpos == null ? null : codpos.trim();
-    }
-
-    public String getUbigeo() {
-        return ubigeo;
-    }
-
-    public void setUbigeo(String ubigeo) {
-        this.ubigeo = ubigeo == null ? null : ubigeo.trim();
     }
 
     public String getDepartamento() {
@@ -110,4 +116,47 @@ public class Ubigeos {
     public void setCodzona(String codzona) {
         this.codzona = codzona == null ? null : codzona.trim();
     }
+
+    public Date getBiFecNumCam() {
+        return biFecNumCam;
+    }
+
+    public void setBiFecNumCam(Date biFecNumCam) {
+        this.biFecNumCam = biFecNumCam;
+    }
+
+    public String getBiCodIndCam() {
+        return biCodIndCam;
+    }
+
+    public void setBiCodIndCam(String biCodIndCam) {
+        this.biCodIndCam = biCodIndCam == null ? null : biCodIndCam.trim();
+    }
+    
+    public void clear(){
+    	ubigeo=null;
+    	coddepa=null;
+    	codprov=null;
+    	codpos=null;
+    	departamento=null;
+    	provincia=null;
+    	distrito=null;
+    	nombre=null;
+    	flagprov=null;
+    	codpostal=null;
+    	codzona=null;
+    	biFecNumCam=null;
+    	biCodIndCam=null;
+    }
+
+	@Override
+	public String toString() {
+		return "Ubigeos [ubigeo=" + ubigeo + ", coddepa=" + coddepa
+				+ ", codprov=" + codprov + ", codpos=" + codpos
+				+ ", departamento=" + departamento + ", provincia=" + provincia
+				+ ", distrito=" + distrito + ", nombre=" + nombre
+				+ ", flagprov=" + flagprov + ", codpostal=" + codpostal
+				+ ", codzona=" + codzona + ", biFecNumCam=" + biFecNumCam
+				+ ", biCodIndCam=" + biCodIndCam + "]";
+	}
 }

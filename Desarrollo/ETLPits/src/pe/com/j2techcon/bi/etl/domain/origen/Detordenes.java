@@ -10,6 +10,10 @@ public class Detordenes {
 
     private String correlativo;
 
+    private String tipoingreso;
+
+    private String userDigitacion;
+
     private String preorden;
 
     private String codcliente;
@@ -79,10 +83,6 @@ public class Detordenes {
     private String codestadocli;
 
     private String codmotivocli;
-
-    private String tipoingreso;
-
-    private String userDigitacion;
 
     private Date fecDigitacion;
 
@@ -230,6 +230,10 @@ public class Detordenes {
 
     private Date fechaCoordina;
 
+    private Date biFecNumCam;
+
+    private String biCodIndCam;
+
     public String getSerie() {
         return serie;
     }
@@ -252,6 +256,22 @@ public class Detordenes {
 
     public void setCorrelativo(String correlativo) {
         this.correlativo = correlativo == null ? null : correlativo.trim();
+    }
+
+    public String getTipoingreso() {
+        return tipoingreso;
+    }
+
+    public void setTipoingreso(String tipoingreso) {
+        this.tipoingreso = tipoingreso == null ? null : tipoingreso.trim();
+    }
+
+    public String getUserDigitacion() {
+        return userDigitacion;
+    }
+
+    public void setUserDigitacion(String userDigitacion) {
+        this.userDigitacion = userDigitacion == null ? null : userDigitacion.trim();
     }
 
     public String getPreorden() {
@@ -532,22 +552,6 @@ public class Detordenes {
 
     public void setCodmotivocli(String codmotivocli) {
         this.codmotivocli = codmotivocli == null ? null : codmotivocli.trim();
-    }
-
-    public String getTipoingreso() {
-        return tipoingreso;
-    }
-
-    public void setTipoingreso(String tipoingreso) {
-        this.tipoingreso = tipoingreso == null ? null : tipoingreso.trim();
-    }
-
-    public String getUserDigitacion() {
-        return userDigitacion;
-    }
-
-    public void setUserDigitacion(String userDigitacion) {
-        this.userDigitacion = userDigitacion == null ? null : userDigitacion.trim();
     }
 
     public Date getFecDigitacion() {
@@ -1133,4 +1137,204 @@ public class Detordenes {
     public void setFechaCoordina(Date fechaCoordina) {
         this.fechaCoordina = fechaCoordina;
     }
+
+    public Date getBiFecNumCam() {
+        return biFecNumCam;
+    }
+
+    public void setBiFecNumCam(Date biFecNumCam) {
+        this.biFecNumCam = biFecNumCam;
+    }
+
+    public String getBiCodIndCam() {
+        return biCodIndCam;
+    }
+
+    public void setBiCodIndCam(String biCodIndCam) {
+        this.biCodIndCam = biCodIndCam == null ? null : biCodIndCam.trim();
+    }
+    
+    public void clear(){
+    	serie=null;
+    	orden=null;
+    	correlativo=null;
+    	tipoingreso=null;
+    	userDigitacion=null;
+    	preorden=null;
+    	codcliente=null;
+    	codareacliente=null;
+    	empresa=null;
+    	llaveempresa=null;
+    	destinatario=null;
+    	llavedestina=null;
+    	cargo=null;
+    	direccion=null;
+    	distrito=null;
+    	referencia=null;
+    	codpostal=null;
+    	ubigeo=null;
+    	codzona=null;
+    	cuadrante=null;
+    	nuevadireccion=null;
+    	nuevareferencia=null;
+    	nuevocodpostal=null;
+    	nuevoubigeo=null;
+    	llave=null;
+    	codigo=null;
+    	codigo1=null;
+    	codigo2=null;
+    	codigo3=null;
+    	codigo4=null;
+    	codigo5=null;
+    	codigo6=null;
+    	codestado=null;
+    	codmotivo=null;
+    	codestadodesc=null;
+    	codmotivodesc=null;
+    	codestadoant=null;
+    	codmotivoant=null;
+    	codestadocli=null;
+    	codmotivocli=null;
+    	fecDigitacion=null;
+    	horaDigitacion=null;
+    	userDigitacionmod=null;
+    	fecDigitacionmod=null;
+    	horaDigitacionmod=null;
+    	userDescargo=null;
+    	fecDescargo=null;
+    	fecrecepcion=null;
+    	torre=null;
+    	nroguia=null;
+    	ajuste=null;
+    	liquidado=null;
+    	nroliquidacion=null;
+    	recepcion=null;
+    	recepcionDni=null;
+    	parentesco=null;
+    	colorcasa=null;
+    	puerta=null;
+    	nropisos=null;
+    	suministro=null;
+    	telefono=null;
+    	ventana=null;
+    	tipoviv=null;
+    	vecinoizq=null;
+    	vecinoder=null;
+    	material=null;
+    	estadoviv=null;
+    	rejacolor=null;
+    	locald=null;
+    	imagen=null;
+    	userScaneo=null;
+    	fecScaneo=null;
+    	sesionscaneo=null;
+    	tiposcaneo=null;
+    	monto=null;
+    	oficina=null;
+    	moneda=null;
+    	coordinado=null;
+    	fechaCoor=null;
+    	userCoor=null;
+    	observacion=null;
+    	nropiezas=null;
+    	peso=null;
+    	pesoreal=null;
+    	cargoagente=null;
+    	nrocargoagente=null;
+    	codenvio=null;
+    	ancho=null;
+    	largo=null;
+    	alto=null;
+    	vbase=null;
+    	vexceso=null;
+    	bloqueo=null;
+    	ruc=null;
+    	dni=null;
+    	flagdescargo=null;
+    	nuevodistrito=null;
+    	serieliquidacion=null;
+    	serieguia=null;
+    	userCuadre=null;
+    	fechaCuadre=null;
+    	estCuadre=null;
+    	flagCoor=null;
+    	useruarioCoor=null;
+    	fechaCoordinacion=null;
+    	serieguiasol=null;
+    	nroguiasol=null;
+    	imagenFtp=null;
+    	usuarioFtp=null;
+    	fechaFtp=null;
+    	usuarioWs=null;
+    	usuarioCoordina=null;
+    	fechaCoordina=null;
+    	biFecNumCam=null;
+    	biCodIndCam=null;
+    }
+
+	@Override
+	public String toString() {
+		return "Detordenes [serie=" + serie + ", orden=" + orden
+				+ ", correlativo=" + correlativo + ", tipoingreso="
+				+ tipoingreso + ", userDigitacion=" + userDigitacion
+				+ ", preorden=" + preorden + ", codcliente=" + codcliente
+				+ ", codareacliente=" + codareacliente + ", empresa=" + empresa
+				+ ", llaveempresa=" + llaveempresa + ", destinatario="
+				+ destinatario + ", llavedestina=" + llavedestina + ", cargo="
+				+ cargo + ", direccion=" + direccion + ", distrito=" + distrito
+				+ ", referencia=" + referencia + ", codpostal=" + codpostal
+				+ ", ubigeo=" + ubigeo + ", codzona=" + codzona
+				+ ", cuadrante=" + cuadrante + ", nuevadireccion="
+				+ nuevadireccion + ", nuevareferencia=" + nuevareferencia
+				+ ", nuevocodpostal=" + nuevocodpostal + ", nuevoubigeo="
+				+ nuevoubigeo + ", llave=" + llave + ", codigo=" + codigo
+				+ ", codigo1=" + codigo1 + ", codigo2=" + codigo2
+				+ ", codigo3=" + codigo3 + ", codigo4=" + codigo4
+				+ ", codigo5=" + codigo5 + ", codigo6=" + codigo6
+				+ ", codestado=" + codestado + ", codmotivo=" + codmotivo
+				+ ", codestadodesc=" + codestadodesc + ", codmotivodesc="
+				+ codmotivodesc + ", codestadoant=" + codestadoant
+				+ ", codmotivoant=" + codmotivoant + ", codestadocli="
+				+ codestadocli + ", codmotivocli=" + codmotivocli
+				+ ", fecDigitacion=" + fecDigitacion + ", horaDigitacion="
+				+ horaDigitacion + ", userDigitacionmod=" + userDigitacionmod
+				+ ", fecDigitacionmod=" + fecDigitacionmod
+				+ ", horaDigitacionmod=" + horaDigitacionmod
+				+ ", userDescargo=" + userDescargo + ", fecDescargo="
+				+ fecDescargo + ", fecrecepcion=" + fecrecepcion + ", torre="
+				+ torre + ", nroguia=" + nroguia + ", ajuste=" + ajuste
+				+ ", liquidado=" + liquidado + ", nroliquidacion="
+				+ nroliquidacion + ", recepcion=" + recepcion
+				+ ", recepcionDni=" + recepcionDni + ", parentesco="
+				+ parentesco + ", colorcasa=" + colorcasa + ", puerta="
+				+ puerta + ", nropisos=" + nropisos + ", suministro="
+				+ suministro + ", telefono=" + telefono + ", ventana="
+				+ ventana + ", tipoviv=" + tipoviv + ", vecinoizq=" + vecinoizq
+				+ ", vecinoder=" + vecinoder + ", material=" + material
+				+ ", estadoviv=" + estadoviv + ", rejacolor=" + rejacolor
+				+ ", locald=" + locald + ", imagen=" + imagen + ", userScaneo="
+				+ userScaneo + ", fecScaneo=" + fecScaneo + ", sesionscaneo="
+				+ sesionscaneo + ", tiposcaneo=" + tiposcaneo + ", monto="
+				+ monto + ", oficina=" + oficina + ", moneda=" + moneda
+				+ ", coordinado=" + coordinado + ", fechaCoor=" + fechaCoor
+				+ ", userCoor=" + userCoor + ", observacion=" + observacion
+				+ ", nropiezas=" + nropiezas + ", peso=" + peso + ", pesoreal="
+				+ pesoreal + ", cargoagente=" + cargoagente
+				+ ", nrocargoagente=" + nrocargoagente + ", codenvio="
+				+ codenvio + ", ancho=" + ancho + ", largo=" + largo
+				+ ", alto=" + alto + ", vbase=" + vbase + ", vexceso="
+				+ vexceso + ", bloqueo=" + bloqueo + ", ruc=" + ruc + ", dni="
+				+ dni + ", flagdescargo=" + flagdescargo + ", nuevodistrito="
+				+ nuevodistrito + ", serieliquidacion=" + serieliquidacion
+				+ ", serieguia=" + serieguia + ", userCuadre=" + userCuadre
+				+ ", fechaCuadre=" + fechaCuadre + ", estCuadre=" + estCuadre
+				+ ", flagCoor=" + flagCoor + ", useruarioCoor=" + useruarioCoor
+				+ ", fechaCoordinacion=" + fechaCoordinacion
+				+ ", serieguiasol=" + serieguiasol + ", nroguiasol="
+				+ nroguiasol + ", imagenFtp=" + imagenFtp + ", usuarioFtp="
+				+ usuarioFtp + ", fechaFtp=" + fechaFtp + ", usuarioWs="
+				+ usuarioWs + ", usuarioCoordina=" + usuarioCoordina
+				+ ", fechaCoordina=" + fechaCoordina + ", biFecNumCam="
+				+ biFecNumCam + ", biCodIndCam=" + biCodIndCam + "]";
+	}
 }

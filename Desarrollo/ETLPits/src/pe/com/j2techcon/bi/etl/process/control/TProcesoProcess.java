@@ -273,9 +273,23 @@ public class TProcesoProcess {
 		tProceso = getLastProcess();
 		
 		if(typeLoadProcess.equals(constantes.getLoadProcessToGeneric())){
+			
+			insertDetProcess(constantes.getIdTableGenericTCliente());
+			tProcesoDetalle = getLastDetProcess();
+			TClienteProcess tClienteProcess = new TClienteProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess, tProceso.getProcId());
+			tClienteProcess.startProcess();
+			tProcesoDetalle.setProcDetNumRegTot(tClienteProcess.getRecordTotal());
+			tProcesoDetalle.setProcDetNumRegPro(tClienteProcess.getRecordProcessed());
+			tProcesoDetalle.setProcDetNumRegRec(tClienteProcess.getRecordRejected());
+			tProcesoDetalle.setProcDetFecFin(Util.getCurrentDateTime());
+			tProcesoDetalle.setProcDetFecAct(Util.getCurrentDateTime());
+			tProcesoDetalle.setProcDetEst(Integer.toString(tClienteProcess.getResultProcess()));
+			updateDetProcess();
+			updateCountRegProcess();
+			
 			insertDetProcess(constantes.getIdTableGenericTAreaCliente());
 			tProcesoDetalle = getLastDetProcess();
-			TAreaClienteProcess tAreaClienteProcess = new TAreaClienteProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess);
+			TAreaClienteProcess tAreaClienteProcess = new TAreaClienteProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess, tProceso.getProcId());
 			tAreaClienteProcess.startProcess();
 			tProcesoDetalle.setProcDetNumRegTot(tAreaClienteProcess.getRecordTotal());
 			tProcesoDetalle.setProcDetNumRegPro(tAreaClienteProcess.getRecordProcessed());
@@ -289,7 +303,7 @@ public class TProcesoProcess {
 
 			insertDetProcess(constantes.getIdTableGenericTCargo());
 			tProcesoDetalle = getLastDetProcess();
-			TCargoProcess tCargoProcess = new TCargoProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess);
+			TCargoProcess tCargoProcess = new TCargoProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess, tProceso.getProcId());
 			tCargoProcess.startProcess();
 			tProcesoDetalle.setProcDetNumRegTot(tCargoProcess.getRecordTotal());
 			tProcesoDetalle.setProcDetNumRegPro(tCargoProcess.getRecordProcessed());
@@ -303,7 +317,7 @@ public class TProcesoProcess {
 
 			insertDetProcess(constantes.getIdTableGenericTCargoDespacho());
 			tProcesoDetalle = getLastDetProcess();
-			TCargoDespachoProcess tCargoDespachoProcess = new TCargoDespachoProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess);
+			TCargoDespachoProcess tCargoDespachoProcess = new TCargoDespachoProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess, tProceso.getProcId());
 			tCargoDespachoProcess.startProcess();
 			tProcesoDetalle.setProcDetNumRegTot(tCargoDespachoProcess.getRecordTotal());
 			tProcesoDetalle.setProcDetNumRegPro(tCargoDespachoProcess.getRecordProcessed());
@@ -314,24 +328,9 @@ public class TProcesoProcess {
 			updateDetProcess();
 			updateCountRegProcess();
 			
-
-			insertDetProcess(constantes.getIdTableGenericTCliente());
-			tProcesoDetalle = getLastDetProcess();
-			TClienteProcess tClienteProcess = new TClienteProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess);
-			tClienteProcess.startProcess();
-			tProcesoDetalle.setProcDetNumRegTot(tClienteProcess.getRecordTotal());
-			tProcesoDetalle.setProcDetNumRegPro(tClienteProcess.getRecordProcessed());
-			tProcesoDetalle.setProcDetNumRegRec(tClienteProcess.getRecordRejected());
-			tProcesoDetalle.setProcDetFecFin(Util.getCurrentDateTime());
-			tProcesoDetalle.setProcDetFecAct(Util.getCurrentDateTime());
-			tProcesoDetalle.setProcDetEst(Integer.toString(tClienteProcess.getResultProcess()));
-			updateDetProcess();
-			updateCountRegProcess();
-			
-			
 			insertDetProcess(constantes.getIdTableGenericTCotizacion());
 			tProcesoDetalle = getLastDetProcess();
-			TCotizacionProcess tCotizacionProcess = new TCotizacionProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess);
+			TCotizacionProcess tCotizacionProcess = new TCotizacionProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess, tProceso.getProcId());
 			tCotizacionProcess.startProcess();
 			tProcesoDetalle.setProcDetNumRegTot(tCotizacionProcess.getRecordTotal());
 			tProcesoDetalle.setProcDetNumRegPro(tCotizacionProcess.getRecordProcessed());
@@ -345,7 +344,7 @@ public class TProcesoProcess {
 
 			insertDetProcess(constantes.getIdTableGenericTDespacho());
 			tProcesoDetalle = getLastDetProcess();
-			TDespachoProcess tDespachoProcess = new TDespachoProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess);
+			TDespachoProcess tDespachoProcess = new TDespachoProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess, tProceso.getProcId());
 			tDespachoProcess.startProcess();
 			tProcesoDetalle.setProcDetNumRegTot(tDespachoProcess.getRecordTotal());
 			tProcesoDetalle.setProcDetNumRegPro(tDespachoProcess.getRecordProcessed());
@@ -359,7 +358,7 @@ public class TProcesoProcess {
 
 			insertDetProcess(constantes.getIdTableGenericTEmpleadoCategoria());
 			tProcesoDetalle = getLastDetProcess();
-			TEmpleadoCategoriaProcess tEmpleadoCategoriaProcess = new TEmpleadoCategoriaProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess);
+			TEmpleadoCategoriaProcess tEmpleadoCategoriaProcess = new TEmpleadoCategoriaProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess, tProceso.getProcId());
 			tEmpleadoCategoriaProcess.startProcess();
 			tProcesoDetalle.setProcDetNumRegTot(tEmpleadoCategoriaProcess.getRecordTotal());
 			tProcesoDetalle.setProcDetNumRegPro(tEmpleadoCategoriaProcess.getRecordProcessed());
@@ -373,7 +372,7 @@ public class TProcesoProcess {
 			
 			insertDetProcess(constantes.getIdTableGenericTEmpleado());
 			tProcesoDetalle = getLastDetProcess();
-			TEmpleadoProcess tEmpleadoProcess = new TEmpleadoProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess);
+			TEmpleadoProcess tEmpleadoProcess = new TEmpleadoProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess, tProceso.getProcId());
 			tEmpleadoProcess.startProcess();
 			tProcesoDetalle.setProcDetNumRegTot(tEmpleadoProcess.getRecordTotal());
 			tProcesoDetalle.setProcDetNumRegPro(tEmpleadoProcess.getRecordProcessed());
@@ -387,7 +386,7 @@ public class TProcesoProcess {
 			
 			insertDetProcess(constantes.getIdTableGenericTOrden());
 			tProcesoDetalle = getLastDetProcess();
-			TOrdenProcess tOrdenProcess = new TOrdenProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess);
+			TOrdenProcess tOrdenProcess = new TOrdenProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess, tProceso.getProcId());
 			tOrdenProcess.startProcess();
 			tProcesoDetalle.setProcDetNumRegTot(tOrdenProcess.getRecordTotal());
 			tProcesoDetalle.setProcDetNumRegPro(tOrdenProcess.getRecordProcessed());
@@ -401,7 +400,7 @@ public class TProcesoProcess {
 			
 			insertDetProcess(constantes.getIdTableGenericTProducto());
 			tProcesoDetalle = getLastDetProcess();
-			TProductoProcess tProductoProcess = new TProductoProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess);
+			TProductoProcess tProductoProcess = new TProductoProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess, tProceso.getProcId());
 			tProductoProcess.startProcess();
 			tProcesoDetalle.setProcDetNumRegTot(tProductoProcess.getRecordTotal());
 			tProcesoDetalle.setProcDetNumRegPro(tProductoProcess.getRecordProcessed());
@@ -415,7 +414,7 @@ public class TProcesoProcess {
 
 			insertDetProcess(constantes.getIdTableGenericTSede());
 			tProcesoDetalle = getLastDetProcess();
-			TSedeProcess tSedeProcess = new TSedeProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess);
+			TSedeProcess tSedeProcess = new TSedeProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess, tProceso.getProcId());
 			tSedeProcess.startProcess();
 			tProcesoDetalle.setProcDetNumRegTot(tSedeProcess.getRecordTotal());
 			tProcesoDetalle.setProcDetNumRegPro(tSedeProcess.getRecordProcessed());
@@ -429,7 +428,7 @@ public class TProcesoProcess {
 			
 			insertDetProcess(constantes.getIdTableGenericTServicio());
 			tProcesoDetalle = getLastDetProcess();
-			TServicioProcess tServicioProcess = new TServicioProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess);
+			TServicioProcess tServicioProcess = new TServicioProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess, tProceso.getProcId());
 			tServicioProcess.startProcess();
 			tProcesoDetalle.setProcDetNumRegTot(tServicioProcess.getRecordTotal());
 			tProcesoDetalle.setProcDetNumRegPro(tServicioProcess.getRecordProcessed());
@@ -443,7 +442,7 @@ public class TProcesoProcess {
 			
 			insertDetProcess(constantes.getIdTableGenericTUbigeo());
 			tProcesoDetalle = getLastDetProcess();
-			TUbigeoProcess tUbigeoProcess = new TUbigeoProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess);
+			TUbigeoProcess tUbigeoProcess = new TUbigeoProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess, tProceso.getProcId());
 			tUbigeoProcess.startProcess();
 			tProcesoDetalle.setProcDetNumRegTot(tUbigeoProcess.getRecordTotal());
 			tProcesoDetalle.setProcDetNumRegPro(tUbigeoProcess.getRecordProcessed());
@@ -457,7 +456,7 @@ public class TProcesoProcess {
 
 			insertDetProcess(constantes.getIdTableGenericTZona());
 			tProcesoDetalle = getLastDetProcess();
-			TZonaProcess tZonaProcess = new TZonaProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess);
+			TZonaProcess tZonaProcess = new TZonaProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess, tProceso.getProcId());
 			tZonaProcess.startProcess();
 			tProcesoDetalle.setProcDetNumRegTot(tZonaProcess.getRecordTotal());
 			tProcesoDetalle.setProcDetNumRegPro(tZonaProcess.getRecordProcessed());

@@ -275,7 +275,7 @@ public class DimTipoRepartoProcess {
 	
 	public void processRecordParametro(){
 		
-		completeFildTipoReparto();
+		completeFieldTipoReparto();
 		
 		if(typeProcess.equals(constantes.getTypeProcessSimple())){
 			if(tParametro.getCodIndCam().equals(constantes.getStateRecordNew())){
@@ -313,7 +313,7 @@ public class DimTipoRepartoProcess {
 		updateRecordGenericParametro(stateRecordGeneric);
 	}
 	
-	public void completeFildTipoReparto(){
+	public void completeFieldTipoReparto(){
 		dimTipoReparto.setTipoRepartoKey(tParametro.getParamId());
 		dimTipoReparto.setTipoRepartoCod(tParametro.getParamCod());
 		dimTipoReparto.setTipoRepartoDesc(tParametro.getParamDes());

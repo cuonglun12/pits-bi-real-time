@@ -276,7 +276,7 @@ public class DimTipoRutaProcess {
 	
 	public void processRecordParametro(){
 		
-		completeFildTipoRuta();
+		completeFieldTipoRuta();
 		
 		if(typeProcess.equals(constantes.getTypeProcessSimple())){
 			if(tParametro.getCodIndCam().equals(constantes.getStateRecordNew())){
@@ -314,7 +314,7 @@ public class DimTipoRutaProcess {
 		updateRecordGenericParametro(stateRecordGeneric);
 	}
 	
-	public void completeFildTipoRuta(){
+	public void completeFieldTipoRuta(){
 		dimTipoRuta.setTipoRutaKey(tParametro.getParamId());
 		dimTipoRuta.setTipoRutaCod(tParametro.getParamCod());
 		dimTipoRuta.setTipoRutaDesc(tParametro.getParamDes());

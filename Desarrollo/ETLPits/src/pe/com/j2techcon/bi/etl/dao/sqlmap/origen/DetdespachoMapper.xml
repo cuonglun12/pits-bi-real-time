@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.origen.DetdespachoMapper" >
+<mapper namespace="detdespacho" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.origen.Detdespacho" >
-    <result column="serieguia" property="serieguia" jdbcType="CHAR" />
-    <result column="nroguia" property="nroguia" jdbcType="CHAR" />
-    <result column="serie" property="serie" jdbcType="CHAR" />
-    <result column="orden" property="orden" jdbcType="CHAR" />
-    <result column="correlativo" property="correlativo" jdbcType="CHAR" />
+    <id column="serieguia" property="serieguia" jdbcType="CHAR" />
+    <id column="nroguia" property="nroguia" jdbcType="CHAR" />
+    <id column="serie" property="serie" jdbcType="CHAR" />
+    <id column="orden" property="orden" jdbcType="CHAR" />
+    <id column="correlativo" property="correlativo" jdbcType="CHAR" />
     <result column="codorigen" property="codorigen" jdbcType="CHAR" />
     <result column="codsede" property="codsede" jdbcType="CHAR" />
     <result column="codclienteb" property="codclienteb" jdbcType="VARCHAR" />
@@ -22,6 +22,8 @@
     <result column="fec_cla" property="fecCla" jdbcType="TIMESTAMP" />
     <result column="user_recep" property="userRecep" jdbcType="CHAR" />
     <result column="fec_recep" property="fecRecep" jdbcType="TIMESTAMP" />
+    <result column="bi_fec_num_cam" property="biFecNumCam" jdbcType="TIMESTAMP" />
+    <result column="bi_cod_ind_cam" property="biCodIndCam" jdbcType="CHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -84,7 +86,7 @@
   <sql id="Base_Column_List" >
     serieguia, nroguia, serie, orden, correlativo, codorigen, codsede, codclienteb, estacion, 
     contador, volante, codzona, codestado, codmotivo, estadoveri, fecasignado, user_cla, 
-    fec_cla, user_recep, fec_recep
+    fec_cla, user_recep, fec_recep, bi_fec_num_cam, bi_cod_ind_cam
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.origen.DetdespachoExample" >
     select
@@ -99,7 +101,28 @@
     <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
+    <if test="paginationByClause != null" >
+      ${paginationByClause}
+    </if>
   </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from detdespacho
+    where serieguia = #{serieguia,jdbcType=CHAR}
+      and nroguia = #{nroguia,jdbcType=CHAR}
+      and serie = #{serie,jdbcType=CHAR}
+      and orden = #{orden,jdbcType=CHAR}
+      and correlativo = #{correlativo,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from detdespacho
+    where serieguia = #{serieguia,jdbcType=CHAR}
+      and nroguia = #{nroguia,jdbcType=CHAR}
+      and serie = #{serie,jdbcType=CHAR}
+      and orden = #{orden,jdbcType=CHAR}
+      and correlativo = #{correlativo,jdbcType=CHAR}
+  </delete>
   <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.origen.DetdespachoExample" >
     delete from detdespacho
     <if test="_parameter != null" >
@@ -113,14 +136,16 @@
       contador, volante, codzona, 
       codestado, codmotivo, estadoveri, 
       fecasignado, user_cla, fec_cla, 
-      user_recep, fec_recep)
+      user_recep, fec_recep, bi_fec_num_cam, 
+      bi_cod_ind_cam)
     values (#{serieguia,jdbcType=CHAR}, #{nroguia,jdbcType=CHAR}, #{serie,jdbcType=CHAR}, 
       #{orden,jdbcType=CHAR}, #{correlativo,jdbcType=CHAR}, #{codorigen,jdbcType=CHAR}, 
       #{codsede,jdbcType=CHAR}, #{codclienteb,jdbcType=VARCHAR}, #{estacion,jdbcType=CHAR}, 
       #{contador,jdbcType=CHAR}, #{volante,jdbcType=SMALLINT}, #{codzona,jdbcType=CHAR}, 
       #{codestado,jdbcType=CHAR}, #{codmotivo,jdbcType=CHAR}, #{estadoveri,jdbcType=CHAR}, 
       #{fecasignado,jdbcType=DATE}, #{userCla,jdbcType=CHAR}, #{fecCla,jdbcType=TIMESTAMP}, 
-      #{userRecep,jdbcType=CHAR}, #{fecRecep,jdbcType=TIMESTAMP})
+      #{userRecep,jdbcType=CHAR}, #{fecRecep,jdbcType=TIMESTAMP}, #{biFecNumCam,jdbcType=TIMESTAMP}, 
+      #{biCodIndCam,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Detdespacho" >
     insert into detdespacho
@@ -185,6 +210,12 @@
       <if test="fecRecep != null" >
         fec_recep,
       </if>
+      <if test="biFecNumCam != null" >
+        bi_fec_num_cam,
+      </if>
+      <if test="biCodIndCam != null" >
+        bi_cod_ind_cam,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="serieguia != null" >
@@ -246,6 +277,12 @@
       </if>
       <if test="fecRecep != null" >
         #{fecRecep,jdbcType=TIMESTAMP},
+      </if>
+      <if test="biFecNumCam != null" >
+        #{biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="biCodIndCam != null" >
+        #{biCodIndCam,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
@@ -318,6 +355,12 @@
       <if test="record.fecRecep != null" >
         fec_recep = #{record.fecRecep,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.biFecNumCam != null" >
+        bi_fec_num_cam = #{record.biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.biCodIndCam != null" >
+        bi_cod_ind_cam = #{record.biCodIndCam,jdbcType=CHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -344,9 +387,97 @@
       user_cla = #{record.userCla,jdbcType=CHAR},
       fec_cla = #{record.fecCla,jdbcType=TIMESTAMP},
       user_recep = #{record.userRecep,jdbcType=CHAR},
-      fec_recep = #{record.fecRecep,jdbcType=TIMESTAMP}
+      fec_recep = #{record.fecRecep,jdbcType=TIMESTAMP},
+      bi_fec_num_cam = #{record.biFecNumCam,jdbcType=TIMESTAMP},
+      bi_cod_ind_cam = #{record.biCodIndCam,jdbcType=CHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Detdespacho" >
+    update detdespacho
+    <set >
+      <if test="codorigen != null" >
+        codorigen = #{codorigen,jdbcType=CHAR},
+      </if>
+      <if test="codsede != null" >
+        codsede = #{codsede,jdbcType=CHAR},
+      </if>
+      <if test="codclienteb != null" >
+        codclienteb = #{codclienteb,jdbcType=VARCHAR},
+      </if>
+      <if test="estacion != null" >
+        estacion = #{estacion,jdbcType=CHAR},
+      </if>
+      <if test="contador != null" >
+        contador = #{contador,jdbcType=CHAR},
+      </if>
+      <if test="volante != null" >
+        volante = #{volante,jdbcType=SMALLINT},
+      </if>
+      <if test="codzona != null" >
+        codzona = #{codzona,jdbcType=CHAR},
+      </if>
+      <if test="codestado != null" >
+        codestado = #{codestado,jdbcType=CHAR},
+      </if>
+      <if test="codmotivo != null" >
+        codmotivo = #{codmotivo,jdbcType=CHAR},
+      </if>
+      <if test="estadoveri != null" >
+        estadoveri = #{estadoveri,jdbcType=CHAR},
+      </if>
+      <if test="fecasignado != null" >
+        fecasignado = #{fecasignado,jdbcType=DATE},
+      </if>
+      <if test="userCla != null" >
+        user_cla = #{userCla,jdbcType=CHAR},
+      </if>
+      <if test="fecCla != null" >
+        fec_cla = #{fecCla,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userRecep != null" >
+        user_recep = #{userRecep,jdbcType=CHAR},
+      </if>
+      <if test="fecRecep != null" >
+        fec_recep = #{fecRecep,jdbcType=TIMESTAMP},
+      </if>
+      <if test="biFecNumCam != null" >
+        bi_fec_num_cam = #{biFecNumCam,jdbcType=TIMESTAMP},
+      </if>
+      <if test="biCodIndCam != null" >
+        bi_cod_ind_cam = #{biCodIndCam,jdbcType=CHAR},
+      </if>
+    </set>
+    where serieguia = #{serieguia,jdbcType=CHAR}
+      and nroguia = #{nroguia,jdbcType=CHAR}
+      and serie = #{serie,jdbcType=CHAR}
+      and orden = #{orden,jdbcType=CHAR}
+      and correlativo = #{correlativo,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.origen.Detdespacho" >
+    update detdespacho
+    set codorigen = #{codorigen,jdbcType=CHAR},
+      codsede = #{codsede,jdbcType=CHAR},
+      codclienteb = #{codclienteb,jdbcType=VARCHAR},
+      estacion = #{estacion,jdbcType=CHAR},
+      contador = #{contador,jdbcType=CHAR},
+      volante = #{volante,jdbcType=SMALLINT},
+      codzona = #{codzona,jdbcType=CHAR},
+      codestado = #{codestado,jdbcType=CHAR},
+      codmotivo = #{codmotivo,jdbcType=CHAR},
+      estadoveri = #{estadoveri,jdbcType=CHAR},
+      fecasignado = #{fecasignado,jdbcType=DATE},
+      user_cla = #{userCla,jdbcType=CHAR},
+      fec_cla = #{fecCla,jdbcType=TIMESTAMP},
+      user_recep = #{userRecep,jdbcType=CHAR},
+      fec_recep = #{fecRecep,jdbcType=TIMESTAMP},
+      bi_fec_num_cam = #{biFecNumCam,jdbcType=TIMESTAMP},
+      bi_cod_ind_cam = #{biCodIndCam,jdbcType=CHAR}
+    where serieguia = #{serieguia,jdbcType=CHAR}
+      and nroguia = #{nroguia,jdbcType=CHAR}
+      and serie = #{serie,jdbcType=CHAR}
+      and orden = #{orden,jdbcType=CHAR}
+      and correlativo = #{correlativo,jdbcType=CHAR}
   </update>
 </mapper>
