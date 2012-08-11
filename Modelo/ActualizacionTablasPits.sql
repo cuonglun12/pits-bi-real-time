@@ -65,6 +65,9 @@ ALTER TABLE "t_servicios" ADD COLUMN "bi_cod_ind_cam" char(1) default '1';
 ALTER TABLE "ubigeos" ADD COLUMN "bi_fec_num_cam" timestamp default current_timestamp;
 ALTER TABLE "ubigeos" ADD COLUMN "bi_cod_ind_cam" char(1) default '1';
 
+ALTER TABLE "zonas" ADD COLUMN "bi_fec_num_cam" timestamp default current_timestamp;
+ALTER TABLE "zonas" ADD COLUMN "bi_cod_ind_cam" char(1) default '1';
+
 --Creacion de Funciones
 CREATE OR REPLACE FUNCTION bi_proc_update_areacliente()
     RETURNS trigger AS
@@ -243,6 +246,20 @@ $BODY$
 		RETURN NULL;
 	END;
 $BODY$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION bi_proc_update_zonas()
+    RETURNS trigger AS
+$BODY$
+	BEGIN
+		UPDATE zonas
+		SET
+			bi_fec_num_cam = now(),
+			bi_cod_ind_cam = '1'
+		WHERE
+			codzona = OLD.codzona;
+		RETURN NULL;
+	END;
+$BODY$ LANGUAGE plpgsql;
 	
 --Creacion de Triggers
 CREATE TRIGGER "bi_tr_update_areacliente" AFTER UPDATE ON "areacliente"
@@ -340,3 +357,11 @@ CREATE TRIGGER "bi_tr_update_ubigeos" AFTER UPDATE ON "ubigeos"
 			OR OLD.campo2 IS DISTINCT FROM NEW.campo2
 		)
 	    EXECUTE PROCEDURE bi_proc_update_ubigeos();
+
+CREATE TRIGGER "bi_tr_update_zonas" AFTER UPDATE ON "zonas"
+    FOR EACH ROW
+	    WHEN (
+			OLD.campo1 IS DISTINCT FROM NEW.campo1
+			OR OLD.campo2 IS DISTINCT FROM NEW.campo2
+		)
+	    EXECUTE PROCEDURE bi_proc_update_zonas();
