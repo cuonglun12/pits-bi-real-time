@@ -209,8 +209,17 @@ public class Test {
 //			}
 //		}
 		
-		BigDecimal x = new BigDecimal("123223.42424");
-		System.out.println(x.toString());
+		BigDecimal a = new BigDecimal("123223.42424");
+		System.out.println(a.toString());
+		
+		String x = null;
+		if(x!= null && x.length()>0){
+			System.out.println(x);
+		}
+		x = "123";
+		if( x!= null && x.length()>0){
+			System.out.println(x);
+		}
 
 	}
 
