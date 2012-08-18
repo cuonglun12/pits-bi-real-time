@@ -12,8 +12,6 @@ drop index IDX_ARE_CLI_00;
 
 drop table T_AREA_CLIENTE;
 
-drop index IDX_CARG_10;
-
 drop index IDX_CARG_09;
 
 drop index IDX_CARG_08;
@@ -99,8 +97,6 @@ drop index IDX_COTI_01;
 drop index IDX_COTI_00;
 
 drop table T_COTIZACION;
-
-drop index IDX_DESP_11;
 
 drop index IDX_DESP_10;
 
@@ -256,6 +252,7 @@ create table T_AREA_CLIENTE (
    UBI_ID               INT4                 not null default 0,
    ARE_CLI_DES          VARCHAR(250)         not null default '-',
    ARE_CLI_DES_DIR      VARCHAR(250)         null default '-',
+   CLI_COD              VARCHAR(20)          not null default '-',
    ARE_CLI_COD          VARCHAR(30)          not null default '-',
    FEC_NUM_CAM          INT8                 not null default 19000101010101,
    COD_IND_CAM          CHAR(1)              not null default '1',
@@ -295,6 +292,7 @@ UBI_ID
 /* Index: IDX_ARE_CLI_04                                        */
 /*==============================================================*/
 create unique index IDX_ARE_CLI_04 on T_AREA_CLIENTE (
+CLI_COD,
 ARE_CLI_COD
 );
 
@@ -303,15 +301,17 @@ ARE_CLI_COD
 /*==============================================================*/
 create table T_CARGO (
    CARG_ID              SERIAL               not null,
+   ORD_COD_TIP_DOC      INT4                 not null default 50,
+   ORD_SERIE_DOC        VARCHAR(6)           not null default '-',
+   ORD_NUM_DOC          VARCHAR(10)          not null default '-',
    CARG_CORR            INT4                 not null default 0,
    ORD_ID               INT4                 not null default 0,
-   PROD_ID              INT4                 not null default 0,
    ZON_ID               INT4                 not null default 0,
    ZON_ID_NEW           INT4                 not null default 0,
    CARG_COD_MOV         INT4                 not null default 38,
    CARG_COD_TIP_ING     INT4                 not null default 41,
-   CARG_COD_FEC_DES     DATE                 not null default '1900-01-01',
-   CARG_COD_FEC_REC     DATE                 not null default '1900-01-01',
+   CARG_FEC_DES     	DATE                 not null default '1900-01-01',
+   CARG_FEC_REC     	DATE                 not null default '1900-01-01',
    CARG_DESTINATARIO    VARCHAR(250)         not null default '-',
    CARG_DIR             VARCHAR(250)         not null default '-',
    CARG_REF             VARCHAR(250)         not null default '-',
@@ -335,8 +335,10 @@ FEC_NUM_CAM
 /* Index: IDX_CARG_01                                           */
 /*==============================================================*/
 create unique index IDX_CARG_01 on T_CARGO (
-CARG_CORR,
-ORD_ID
+ORD_COD_TIP_DOC,
+ORD_SERIE_DOC,
+ORD_NUM_DOC,
+CARG_CORR
 );
 
 /*==============================================================*/
@@ -357,49 +359,42 @@ ORD_ID
 /* Index: IDX_CARG_04                                           */
 /*==============================================================*/
 create  index IDX_CARG_04 on T_CARGO (
-PROD_ID
+ZON_ID
 );
 
 /*==============================================================*/
 /* Index: IDX_CARG_05                                           */
 /*==============================================================*/
 create  index IDX_CARG_05 on T_CARGO (
-ZON_ID
+ZON_ID_NEW
 );
 
 /*==============================================================*/
 /* Index: IDX_CARG_06                                           */
 /*==============================================================*/
 create  index IDX_CARG_06 on T_CARGO (
-ZON_ID_NEW
+CARG_COD_MOV
 );
 
 /*==============================================================*/
 /* Index: IDX_CARG_07                                           */
 /*==============================================================*/
 create  index IDX_CARG_07 on T_CARGO (
-CARG_COD_MOV
+CARG_COD_TIP_ING
 );
 
 /*==============================================================*/
 /* Index: IDX_CARG_08                                           */
 /*==============================================================*/
 create  index IDX_CARG_08 on T_CARGO (
-CARG_COD_TIP_ING
+CARG_FEC_DES
 );
 
 /*==============================================================*/
 /* Index: IDX_CARG_09                                           */
 /*==============================================================*/
 create  index IDX_CARG_09 on T_CARGO (
-CARG_COD_FEC_DES
-);
-
-/*==============================================================*/
-/* Index: IDX_CARG_10                                           */
-/*==============================================================*/
-create  index IDX_CARG_10 on T_CARGO (
-CARG_COD_FEC_REC
+CARG_FEC_REC
 );
 
 /*==============================================================*/
@@ -409,7 +404,14 @@ create table T_CARGO_DESPACHO (
    CAR_DESP_ID          SERIAL               not null,
    DESP_ID              INT4                 not null default 0,
    CARG_ID              INT4                 not null default 0,
-   ZON_ID               INT4                 null default 0,
+   DESP_COD_TIP_DOC     INT4                 not null default 50,
+   DESP_SERIE_DOC       VARCHAR(6)           not null default '-',
+   DESP_NUMERO_DOC      VARCHAR(10)          not null default '-',
+   ORD_COD_TIP_DOC      INT4                 not null default 50,
+   ORD_SERIE_DOC        VARCHAR(6)           not null default '-',
+   ORD_NUM_DOC          VARCHAR(10)          not null default '-',
+   CARG_CORR            INT4                 not null default 0,
+   ZON_ID               INT4                 not null default 0,
    CAR_DESP_COD_MOV     INT4                 not null default 19,
    CAR_DESP_COD_VER     INT4                 not null default 18,
    CAR_DESP_DIR         VARCHAR(250)         not null default '-',
@@ -436,8 +438,13 @@ FEC_NUM_CAM
 /* Index: IDX_CAR_DESP_01                                       */
 /*==============================================================*/
 create unique index IDX_CAR_DESP_01 on T_CARGO_DESPACHO (
-DESP_ID,
-CARG_ID
+DESP_COD_TIP_DOC,
+DESP_SERIE_DOC,
+DESP_NUMERO_DOC,
+ORD_COD_TIP_DOC,
+ORD_SERIE_DOC,
+ORD_NUM_DOC,
+CARG_CORR
 );
 
 /*==============================================================*/
@@ -700,8 +707,6 @@ create table T_DESPACHO (
    DESP_FEC_SAL         DATE                 not null default '1900-01-01',
    DESP_FEC_RET_PRO     DATE                 not null default '1900-01-01',
    DESP_FEC_RET_REA     DATE                 not null default '1900-01-01',
-   DESP_FEC_VER         DATE                 not null default '1900-01-01',
-   DESP_CAN_PAS         NUMERIC(14,4)        not null default 0,
    DESP_COD_EST         INT4                 not null default 84,
    FEC_NUM_CAM          INT8                 not null default 19000101010101,
    COD_IND_CAM          CHAR(1)              not null default '1',
@@ -789,13 +794,6 @@ DESP_FEC_RET_REA
 );
 
 /*==============================================================*/
-/* Index: IDX_DESP_11                                           */
-/*==============================================================*/
-create  index IDX_DESP_11 on T_DESPACHO (
-DESP_FEC_VER
-);
-
-/*==============================================================*/
 /* Table: T_EMPLEADO                                            */
 /*==============================================================*/
 create table T_EMPLEADO (
@@ -843,6 +841,7 @@ EMP_NUM_TIP_DOC
 create table T_EMPLEADO_CATEGORIA (
    EMP_CAT_ID           SERIAL               not null,
    EMP_ID               INT4                 not null default 0,
+   EMP_COD              VARCHAR(10)          not null default '-',
    EMP_CAT_COD_TIP      INT4                 not null default 92,
    EMP_CAT_COD          VARCHAR(12)          not null default '-',
    FEC_NUM_CAM          INT8                 not null default 19000101010101,
@@ -862,6 +861,7 @@ FEC_NUM_CAM
 /* Index: IDX_EMP_CAT_01                                        */
 /*==============================================================*/
 create unique index IDX_EMP_CAT_01 on T_EMPLEADO_CATEGORIA (
+EMP_COD,
 EMP_CAT_COD
 );
 
@@ -1188,7 +1188,7 @@ UBI_ID
 /*==============================================================*/
 create table T_SERVICIO (
    SERV_ID              SERIAL               not null,
-   SEV_COD              VARCHAR(10)          not null default '-',
+   SERV_COD              VARCHAR(10)          not null default '-',
    SERV_COD_NEG         INT4                 not null default 62,
    SERV_COD_AMB         INT4                 not null default 2445,
    SERV_DES             VARCHAR(250)         not null default '-',
@@ -1209,7 +1209,7 @@ FEC_NUM_CAM
 /* Index: IDX_SERV_01                                           */
 /*==============================================================*/
 create unique index IDX_SERV_01 on T_SERVICIO (
-SEV_COD
+SERV_COD
 );
 
 /*==============================================================*/
