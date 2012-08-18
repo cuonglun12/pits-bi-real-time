@@ -9,6 +9,20 @@ public class TCargoDespacho {
 
     private Integer cargId;
 
+    private Integer despCodTipDoc;
+
+    private String despSerieDoc;
+
+    private String despNumeroDoc;
+
+    private Integer ordCodTipDoc;
+
+    private String ordSerieDoc;
+
+    private String ordNumDoc;
+
+    private Integer cargCorr;
+
     private Integer zonId;
 
     private Integer carDespCodMov;
@@ -57,6 +71,62 @@ public class TCargoDespacho {
 
     public void setCargId(Integer cargId) {
         this.cargId = cargId;
+    }
+
+    public Integer getDespCodTipDoc() {
+        return despCodTipDoc;
+    }
+
+    public void setDespCodTipDoc(Integer despCodTipDoc) {
+        this.despCodTipDoc = despCodTipDoc;
+    }
+
+    public String getDespSerieDoc() {
+        return despSerieDoc;
+    }
+
+    public void setDespSerieDoc(String despSerieDoc) {
+        this.despSerieDoc = despSerieDoc == null ? null : despSerieDoc.trim();
+    }
+
+    public String getDespNumeroDoc() {
+        return despNumeroDoc;
+    }
+
+    public void setDespNumeroDoc(String despNumeroDoc) {
+        this.despNumeroDoc = despNumeroDoc == null ? null : despNumeroDoc.trim();
+    }
+
+    public Integer getOrdCodTipDoc() {
+        return ordCodTipDoc;
+    }
+
+    public void setOrdCodTipDoc(Integer ordCodTipDoc) {
+        this.ordCodTipDoc = ordCodTipDoc;
+    }
+
+    public String getOrdSerieDoc() {
+        return ordSerieDoc;
+    }
+
+    public void setOrdSerieDoc(String ordSerieDoc) {
+        this.ordSerieDoc = ordSerieDoc == null ? null : ordSerieDoc.trim();
+    }
+
+    public String getOrdNumDoc() {
+        return ordNumDoc;
+    }
+
+    public void setOrdNumDoc(String ordNumDoc) {
+        this.ordNumDoc = ordNumDoc == null ? null : ordNumDoc.trim();
+    }
+
+    public Integer getCargCorr() {
+        return cargCorr;
+    }
+
+    public void setCargCorr(Integer cargCorr) {
+        this.cargCorr = cargCorr;
     }
 
     public Integer getZonId() {
@@ -164,28 +234,39 @@ public class TCargoDespacho {
     }
     
     public void clear(){
-    	carDespId=null;
-    	despId=null;
-    	cargId=null;
-    	zonId=null;
-    	carDespCodMov=null;
-    	carDespCodVer=null;
-    	carDespDir=null;
-    	carDespRef=null;
-    	carDespFecSal=null;
-    	carDespFecRetPro=null;
-    	carDespFecRetRea=null;
-    	carDespFecVer=null;
-    	carDespCodEst=null;
-    	fecNumCam=null;
-    	codIndCam=null;
-    	procId=null;
+    	carDespId = null;
+    	despId = null;
+    	cargId = null;
+    	despCodTipDoc = null;
+    	despSerieDoc = null;
+    	despNumeroDoc = null;
+    	ordCodTipDoc = null;
+    	ordSerieDoc = null;
+    	ordNumDoc = null;
+    	cargCorr = null;
+    	zonId = null;
+    	carDespCodMov = null;
+    	carDespCodVer = null;
+    	carDespDir = null;
+    	carDespRef = null;
+    	carDespFecSal = null;
+    	carDespFecRetPro = null;
+    	carDespFecRetRea = null;
+    	carDespFecVer = null;
+    	carDespCodEst = null;
+    	fecNumCam = null;
+    	codIndCam = null;
+    	procId = null;
     }
 
 	@Override
 	public String toString() {
 		return "TCargoDespacho [carDespId=" + carDespId + ", despId=" + despId
-				+ ", cargId=" + cargId + ", zonId=" + zonId
+				+ ", cargId=" + cargId + ", despCodTipDoc=" + despCodTipDoc
+				+ ", despSerieDoc=" + despSerieDoc + ", despNumeroDoc="
+				+ despNumeroDoc + ", ordCodTipDoc=" + ordCodTipDoc
+				+ ", ordSerieDoc=" + ordSerieDoc + ", ordNumDoc=" + ordNumDoc
+				+ ", cargCorr=" + cargCorr + ", zonId=" + zonId
 				+ ", carDespCodMov=" + carDespCodMov + ", carDespCodVer="
 				+ carDespCodVer + ", carDespDir=" + carDespDir
 				+ ", carDespRef=" + carDespRef + ", carDespFecSal="
@@ -195,4 +276,5 @@ public class TCargoDespacho {
 				+ ", fecNumCam=" + fecNumCam + ", codIndCam=" + codIndCam
 				+ ", procId=" + procId + "]";
 	}
+    
 }

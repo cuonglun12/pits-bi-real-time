@@ -58,7 +58,6 @@ public class TAreaClienteProcess {
 	private Constantes constantes;
 	
 	private List<TParametro> lstParametro;
-	
 	private List<TCliente> lstCliente;
 	private List<TAreaCliente> lstAreaCliente;
 
@@ -328,11 +327,10 @@ public class TAreaClienteProcess {
 		while (true) {
 
 			areaClienteExample.clear();
-
 			areaClienteExample.createCriteria().andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom));
 			areaClienteExample.createCriteria().andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil));
-
 			areaClienteExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
+			
 			List<Areacliente> lstAreaCliente = areaClienteManager.selectByExample(areaClienteExample);
 
 			if (lstAreaCliente.size() > 0) {
@@ -343,17 +341,21 @@ public class TAreaClienteProcess {
 				}
 				offset = offset + constantes.getSizePage();
 			} else {
-
-				lstAreaCliente.clear();
-
+				tParametro.clear();
+				tParametroExample.clear();
+				
+				tCliente.clear();
+				tClienteExample.clear();
+				
 				areaCliente.clear();
 				areaClienteExample.clear();
 				
-				tParametro.clear();
-				tParametroExample.clear();
-
-				tCliente.clear();
-				tClienteExample.clear();
+				tAreaCliente.clear();
+				tAreaClienteExample.clear();
+				
+				lstParametro.clear();
+				lstCliente.clear();
+				lstAreaCliente.clear();
 
 				offset = 0;
 				break;
@@ -423,84 +425,92 @@ public class TAreaClienteProcess {
 		
 		completeFieldAreaCliente();
 		
-		if(typeProcess.equals(constantes.getTypeProcessSimple())){
-			if(tAreaCliente.getCodIndCam().equals(constantes.getStateRecordNew())){
-				if(insertRecordGenericAreaCliente()> constantes.getResultTransactionNoResult()){
-					stateRecordOrigen = constantes.getStateRecordProcessed();
-					recordProcessed = recordProcessed + 1; 
-				} else{
-					stateRecordOrigen = constantes.getStateRecordInconsistent();
-					recordRejected = recordRejected + 1;
+		//Verificamos la existencia del Cliente
+		if(tAreaCliente.getCliId() != constantes.getValueNumberCero()){
+			if(typeProcess.equals(constantes.getTypeProcessSimple())){
+				if(tAreaCliente.getCodIndCam().equals(constantes.getStateRecordNew())){
+					if(insertRecordGenericAreaCliente()> constantes.getResultTransactionNoResult()){
+						stateRecordOrigen = constantes.getStateRecordProcessed();
+						recordProcessed = recordProcessed + 1; 
+					} else{
+						stateRecordOrigen = constantes.getStateRecordInconsistent();
+						recordRejected = recordRejected + 1;
+					}
+				}else{
+					if(updateRecordGenericAreaCliente() > constantes.getResultTransactionNoResult()){
+						stateRecordOrigen = constantes.getStateRecordProcessed();
+						recordProcessed = recordProcessed + 1; 
+					} else{
+						stateRecordOrigen = constantes.getStateRecordInconsistent();
+						recordRejected = recordRejected + 1;
+					}
 				}
 			}else{
 				if(updateRecordGenericAreaCliente() > constantes.getResultTransactionNoResult()){
 					stateRecordOrigen = constantes.getStateRecordProcessed();
 					recordProcessed = recordProcessed + 1; 
-				} else{
-					stateRecordOrigen = constantes.getStateRecordInconsistent();
-					recordRejected = recordRejected + 1;
-				}
-			}
-		}else{
-			if(updateRecordGenericAreaCliente() > constantes.getResultTransactionNoResult()){
-				stateRecordOrigen = constantes.getStateRecordProcessed();
-				recordProcessed = recordProcessed + 1; 
-			}else{
-				if(insertRecordGenericAreaCliente() > constantes.getResultTransactionNoResult()){
-					stateRecordOrigen = constantes.getStateRecordProcessed();
-					recordProcessed = recordProcessed + 1;
 				}else{
-					stateRecordOrigen = constantes.getStateRecordInconsistent();
-					recordRejected = recordRejected + 1;
+					if(insertRecordGenericAreaCliente() > constantes.getResultTransactionNoResult()){
+						stateRecordOrigen = constantes.getStateRecordProcessed();
+						recordProcessed = recordProcessed + 1;
+					}else{
+						stateRecordOrigen = constantes.getStateRecordInconsistent();
+						recordRejected = recordRejected + 1;
+					}
 				}
 			}
+			
+			updateRecordOrigenAreaCliente(stateRecordOrigen);
+		}else{
+			stateRecordOrigen = constantes.getStateRecordInconsistent();
+			recordRejected = recordRejected + 1;
+			updateRecordOrigenAreaCliente(stateRecordOrigen);
 		}
-		
-		updateRecordOrigenAreaCliente(stateRecordOrigen);
-		
 	}
 
 	public void completeFieldAreaCliente() {
 
 		//Id de cliente
-		tAreaCliente.setAreCliId(getCliId(areaCliente.getCodcliente()));
+		tAreaCliente.setCliId(getCliId(areaCliente.getCodcliente()));
 		
-		//Tipo de area del cliente: Se le asigna a todos el tipo CENTRAL
-		tAreaCliente.setAreCliCodTip(constantes.getParamSerialTipoAreaClienteCentral());
-		
-		//Ubicacion
-		tParametroExample.clear();
-		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeUbigeoDistrito());
-		tParametroExample.createCriteria().andParamCodEqualTo(areaCliente.getUbigeo());
-		
-		lstParametro = tParametroManager.selectByExample(tParametroExample);
-		if(lstParametro.size()>0){
-			tAreaCliente.setUbiId(lstParametro.get(0).getParamId());
-		}else{
-			tAreaCliente.setUbiId(constantes.getParamSerialUbigeoDistritoNoDefinido());
+		if(tAreaCliente.getCliId() != constantes.getValueNumberCero()){
+			//Tipo de area del cliente: Se le asigna a todos el tipo CENTRAL
+			tAreaCliente.setAreCliCodTip(constantes.getParamSerialTipoAreaClienteCentral());
+			
+			//Ubicacion
+			tParametroExample.clear();
+			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeUbigeoDistrito());
+			tParametroExample.createCriteria().andParamCodEqualTo(areaCliente.getUbigeo());
+			
+			lstParametro = tParametroManager.selectByExample(tParametroExample);
+			if(lstParametro.size()>0){
+				tAreaCliente.setUbiId(lstParametro.get(0).getParamId());
+			}else{
+				tAreaCliente.setUbiId(constantes.getParamSerialUbigeoDistritoNoDefinido());
+			}
+			
+			//Descripcion del area del cliente
+			tAreaCliente.setAreCliDes(areaCliente.getAreacliente());
+			
+			//Direccion del area del cliente
+			tAreaCliente.setAreCliDesDir(areaCliente.getDireccion());
+			
+			//Codigo del cliente
+			tAreaCliente.setCliCod(areaCliente.getCodcliente());
+			
+			//Codigo del area del cliente
+			tAreaCliente.setAreCliCod(areaCliente.getCodareacliente());
+			
+			//Campos de control
+			tAreaCliente.setFecNumCam(Util.getCurrentDateTimeAsLong());
+			if(constantes.getStateRecordNew().equals(areaCliente.getBiCodIndCam())){
+				tAreaCliente.setCodIndCam(constantes.getStateRecordNew());
+			}else{
+				tAreaCliente.setCodIndCam(constantes.getStateRecordProcessed());
+			}
+			tAreaCliente.setProcId(process);
 		}
 		
-		//Descripcion del area del cliente
-		tAreaCliente.setAreCliDes(areaCliente.getAreacliente());
-		
-		//Direccion del area del cliente
-		tAreaCliente.setAreCliDesDir(areaCliente.getDireccion());
-		
-		//Codigo del cliente
-		tAreaCliente.setCliCod(areaCliente.getCodcliente());
-		
-		//Codigo del area del cliente
-		tAreaCliente.setAreCliCod(areaCliente.getCodareacliente());
-		
-		//Campos de control
-		tAreaCliente.setFecNumCam(Util.getCurrentDateTimeAsLong());
-		if(constantes.getStateRecordNew().equals(areaCliente.getBiCodIndCam())){
-			tAreaCliente.setCodIndCam(constantes.getStateRecordNew());
-		}else{
-			tAreaCliente.setCodIndCam(constantes.getStateRecordProcessed());
-		}
-		tAreaCliente.setProcId(process);
-
 	}
 
 	public int insertRecordGenericAreaCliente() {

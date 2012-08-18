@@ -235,11 +235,10 @@ public class TProductoProcess {
 		while (true) {
 
 			tProductosExample.clear();
-
 			tProductosExample.createCriteria().andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom));
 			tProductosExample.createCriteria().andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil));
-
 			tProductosExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
+			
 			List<TProductos> lstProductos = tProductosManager.selectByExample(tProductosExample);
 
 			if (lstProductos.size() > 0) {
@@ -250,9 +249,6 @@ public class TProductoProcess {
 				}
 				offset = offset + constantes.getSizePage();
 			} else {
-
-				lstProductos.clear();
-
 				tProductos.clear();
 				tProductosExample.clear();
 

@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.generic.TCargoDespachoMapper" >
+<mapper namespace="t_cargo_despacho" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.generic.TCargoDespacho" >
     <id column="car_desp_id" property="carDespId" jdbcType="INTEGER" />
     <result column="desp_id" property="despId" jdbcType="INTEGER" />
     <result column="carg_id" property="cargId" jdbcType="INTEGER" />
+    <result column="desp_cod_tip_doc" property="despCodTipDoc" jdbcType="INTEGER" />
+    <result column="desp_serie_doc" property="despSerieDoc" jdbcType="VARCHAR" />
+    <result column="desp_numero_doc" property="despNumeroDoc" jdbcType="VARCHAR" />
+    <result column="ord_cod_tip_doc" property="ordCodTipDoc" jdbcType="INTEGER" />
+    <result column="ord_serie_doc" property="ordSerieDoc" jdbcType="VARCHAR" />
+    <result column="ord_num_doc" property="ordNumDoc" jdbcType="VARCHAR" />
+    <result column="carg_corr" property="cargCorr" jdbcType="INTEGER" />
     <result column="zon_id" property="zonId" jdbcType="INTEGER" />
     <result column="car_desp_cod_mov" property="carDespCodMov" jdbcType="INTEGER" />
     <result column="car_desp_cod_ver" property="carDespCodVer" jdbcType="INTEGER" />
@@ -78,9 +85,11 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    car_desp_id, desp_id, carg_id, zon_id, car_desp_cod_mov, car_desp_cod_ver, car_desp_dir, 
-    car_desp_ref, car_desp_fec_sal, car_desp_fec_ret_pro, car_desp_fec_ret_rea, car_desp_fec_ver, 
-    car_desp_cod_est, fec_num_cam, cod_ind_cam, proc_id
+    car_desp_id, desp_id, carg_id, desp_cod_tip_doc, desp_serie_doc, desp_numero_doc, 
+    ord_cod_tip_doc, ord_serie_doc, ord_num_doc, carg_corr, zon_id, car_desp_cod_mov, 
+    car_desp_cod_ver, car_desp_dir, car_desp_ref, car_desp_fec_sal, car_desp_fec_ret_pro, 
+    car_desp_fec_ret_rea, car_desp_fec_ver, car_desp_cod_est, fec_num_cam, cod_ind_cam, 
+    proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCargoDespachoExample" >
     select
@@ -117,17 +126,21 @@
   </delete>
   <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCargoDespacho" >
     insert into t_cargo_despacho (car_desp_id, desp_id, carg_id, 
-      zon_id, car_desp_cod_mov, car_desp_cod_ver, 
-      car_desp_dir, car_desp_ref, car_desp_fec_sal, 
-      car_desp_fec_ret_pro, car_desp_fec_ret_rea, car_desp_fec_ver, 
-      car_desp_cod_est, fec_num_cam, cod_ind_cam, 
-      proc_id)
+      desp_cod_tip_doc, desp_serie_doc, desp_numero_doc, 
+      ord_cod_tip_doc, ord_serie_doc, ord_num_doc, 
+      carg_corr, zon_id, car_desp_cod_mov, 
+      car_desp_cod_ver, car_desp_dir, car_desp_ref, 
+      car_desp_fec_sal, car_desp_fec_ret_pro, car_desp_fec_ret_rea, 
+      car_desp_fec_ver, car_desp_cod_est, fec_num_cam, 
+      cod_ind_cam, proc_id)
     values (#{carDespId,jdbcType=INTEGER}, #{despId,jdbcType=INTEGER}, #{cargId,jdbcType=INTEGER}, 
-      #{zonId,jdbcType=INTEGER}, #{carDespCodMov,jdbcType=INTEGER}, #{carDespCodVer,jdbcType=INTEGER}, 
-      #{carDespDir,jdbcType=VARCHAR}, #{carDespRef,jdbcType=VARCHAR}, #{carDespFecSal,jdbcType=DATE}, 
-      #{carDespFecRetPro,jdbcType=DATE}, #{carDespFecRetRea,jdbcType=DATE}, #{carDespFecVer,jdbcType=DATE}, 
-      #{carDespCodEst,jdbcType=INTEGER}, #{fecNumCam,jdbcType=BIGINT}, #{codIndCam,jdbcType=CHAR}, 
-      #{procId,jdbcType=INTEGER})
+      #{despCodTipDoc,jdbcType=INTEGER}, #{despSerieDoc,jdbcType=VARCHAR}, #{despNumeroDoc,jdbcType=VARCHAR}, 
+      #{ordCodTipDoc,jdbcType=INTEGER}, #{ordSerieDoc,jdbcType=VARCHAR}, #{ordNumDoc,jdbcType=VARCHAR}, 
+      #{cargCorr,jdbcType=INTEGER}, #{zonId,jdbcType=INTEGER}, #{carDespCodMov,jdbcType=INTEGER}, 
+      #{carDespCodVer,jdbcType=INTEGER}, #{carDespDir,jdbcType=VARCHAR}, #{carDespRef,jdbcType=VARCHAR}, 
+      #{carDespFecSal,jdbcType=DATE}, #{carDespFecRetPro,jdbcType=DATE}, #{carDespFecRetRea,jdbcType=DATE}, 
+      #{carDespFecVer,jdbcType=DATE}, #{carDespCodEst,jdbcType=INTEGER}, #{fecNumCam,jdbcType=BIGINT}, 
+      #{codIndCam,jdbcType=CHAR}, #{procId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCargoDespacho" >
     insert into t_cargo_despacho
@@ -140,6 +153,27 @@
       </if>
       <if test="cargId != null" >
         carg_id,
+      </if>
+      <if test="despCodTipDoc != null" >
+        desp_cod_tip_doc,
+      </if>
+      <if test="despSerieDoc != null" >
+        desp_serie_doc,
+      </if>
+      <if test="despNumeroDoc != null" >
+        desp_numero_doc,
+      </if>
+      <if test="ordCodTipDoc != null" >
+        ord_cod_tip_doc,
+      </if>
+      <if test="ordSerieDoc != null" >
+        ord_serie_doc,
+      </if>
+      <if test="ordNumDoc != null" >
+        ord_num_doc,
+      </if>
+      <if test="cargCorr != null" >
+        carg_corr,
       </if>
       <if test="zonId != null" >
         zon_id,
@@ -190,6 +224,27 @@
       </if>
       <if test="cargId != null" >
         #{cargId,jdbcType=INTEGER},
+      </if>
+      <if test="despCodTipDoc != null" >
+        #{despCodTipDoc,jdbcType=INTEGER},
+      </if>
+      <if test="despSerieDoc != null" >
+        #{despSerieDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="despNumeroDoc != null" >
+        #{despNumeroDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="ordCodTipDoc != null" >
+        #{ordCodTipDoc,jdbcType=INTEGER},
+      </if>
+      <if test="ordSerieDoc != null" >
+        #{ordSerieDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="ordNumDoc != null" >
+        #{ordNumDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="cargCorr != null" >
+        #{cargCorr,jdbcType=INTEGER},
       </if>
       <if test="zonId != null" >
         #{zonId,jdbcType=INTEGER},
@@ -250,6 +305,27 @@
       <if test="record.cargId != null" >
         carg_id = #{record.cargId,jdbcType=INTEGER},
       </if>
+      <if test="record.despCodTipDoc != null" >
+        desp_cod_tip_doc = #{record.despCodTipDoc,jdbcType=INTEGER},
+      </if>
+      <if test="record.despSerieDoc != null" >
+        desp_serie_doc = #{record.despSerieDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.despNumeroDoc != null" >
+        desp_numero_doc = #{record.despNumeroDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ordCodTipDoc != null" >
+        ord_cod_tip_doc = #{record.ordCodTipDoc,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordSerieDoc != null" >
+        ord_serie_doc = #{record.ordSerieDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ordNumDoc != null" >
+        ord_num_doc = #{record.ordNumDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cargCorr != null" >
+        carg_corr = #{record.cargCorr,jdbcType=INTEGER},
+      </if>
       <if test="record.zonId != null" >
         zon_id = #{record.zonId,jdbcType=INTEGER},
       </if>
@@ -299,6 +375,13 @@
     set car_desp_id = #{record.carDespId,jdbcType=INTEGER},
       desp_id = #{record.despId,jdbcType=INTEGER},
       carg_id = #{record.cargId,jdbcType=INTEGER},
+      desp_cod_tip_doc = #{record.despCodTipDoc,jdbcType=INTEGER},
+      desp_serie_doc = #{record.despSerieDoc,jdbcType=VARCHAR},
+      desp_numero_doc = #{record.despNumeroDoc,jdbcType=VARCHAR},
+      ord_cod_tip_doc = #{record.ordCodTipDoc,jdbcType=INTEGER},
+      ord_serie_doc = #{record.ordSerieDoc,jdbcType=VARCHAR},
+      ord_num_doc = #{record.ordNumDoc,jdbcType=VARCHAR},
+      carg_corr = #{record.cargCorr,jdbcType=INTEGER},
       zon_id = #{record.zonId,jdbcType=INTEGER},
       car_desp_cod_mov = #{record.carDespCodMov,jdbcType=INTEGER},
       car_desp_cod_ver = #{record.carDespCodVer,jdbcType=INTEGER},
@@ -324,6 +407,27 @@
       </if>
       <if test="cargId != null" >
         carg_id = #{cargId,jdbcType=INTEGER},
+      </if>
+      <if test="despCodTipDoc != null" >
+        desp_cod_tip_doc = #{despCodTipDoc,jdbcType=INTEGER},
+      </if>
+      <if test="despSerieDoc != null" >
+        desp_serie_doc = #{despSerieDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="despNumeroDoc != null" >
+        desp_numero_doc = #{despNumeroDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="ordCodTipDoc != null" >
+        ord_cod_tip_doc = #{ordCodTipDoc,jdbcType=INTEGER},
+      </if>
+      <if test="ordSerieDoc != null" >
+        ord_serie_doc = #{ordSerieDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="ordNumDoc != null" >
+        ord_num_doc = #{ordNumDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="cargCorr != null" >
+        carg_corr = #{cargCorr,jdbcType=INTEGER},
       </if>
       <if test="zonId != null" >
         zon_id = #{zonId,jdbcType=INTEGER},
@@ -371,6 +475,13 @@
     update t_cargo_despacho
     set desp_id = #{despId,jdbcType=INTEGER},
       carg_id = #{cargId,jdbcType=INTEGER},
+      desp_cod_tip_doc = #{despCodTipDoc,jdbcType=INTEGER},
+      desp_serie_doc = #{despSerieDoc,jdbcType=VARCHAR},
+      desp_numero_doc = #{despNumeroDoc,jdbcType=VARCHAR},
+      ord_cod_tip_doc = #{ordCodTipDoc,jdbcType=INTEGER},
+      ord_serie_doc = #{ordSerieDoc,jdbcType=VARCHAR},
+      ord_num_doc = #{ordNumDoc,jdbcType=VARCHAR},
+      carg_corr = #{cargCorr,jdbcType=INTEGER},
       zon_id = #{zonId,jdbcType=INTEGER},
       car_desp_cod_mov = #{carDespCodMov,jdbcType=INTEGER},
       car_desp_cod_ver = #{carDespCodVer,jdbcType=INTEGER},

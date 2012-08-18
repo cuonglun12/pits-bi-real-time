@@ -8,13 +8,12 @@
     <result column="ord_num_doc" property="ordNumDoc" jdbcType="VARCHAR" />
     <result column="carg_corr" property="cargCorr" jdbcType="INTEGER" />
     <result column="ord_id" property="ordId" jdbcType="INTEGER" />
-    <result column="prod_id" property="prodId" jdbcType="INTEGER" />
     <result column="zon_id" property="zonId" jdbcType="INTEGER" />
     <result column="zon_id_new" property="zonIdNew" jdbcType="INTEGER" />
     <result column="carg_cod_mov" property="cargCodMov" jdbcType="INTEGER" />
     <result column="carg_cod_tip_ing" property="cargCodTipIng" jdbcType="INTEGER" />
-    <result column="carg_cod_fec_des" property="cargCodFecDes" jdbcType="DATE" />
-    <result column="carg_cod_fec_rec" property="cargCodFecRec" jdbcType="DATE" />
+    <result column="carg_fec_des" property="cargFecDes" jdbcType="DATE" />
+    <result column="carg_fec_rec" property="cargFecRec" jdbcType="DATE" />
     <result column="carg_destinatario" property="cargDestinatario" jdbcType="VARCHAR" />
     <result column="carg_dir" property="cargDir" jdbcType="VARCHAR" />
     <result column="carg_ref" property="cargRef" jdbcType="VARCHAR" />
@@ -84,10 +83,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    carg_id, ord_cod_tip_doc, ord_serie_doc, ord_num_doc, carg_corr, ord_id, prod_id, 
-    zon_id, zon_id_new, carg_cod_mov, carg_cod_tip_ing, carg_cod_fec_des, carg_cod_fec_rec, 
-    carg_destinatario, carg_dir, carg_ref, carg_new_dir, carg_new_ref, carg_cod_est, 
-    fec_num_cam, cod_ind_cam, proc_id
+    carg_id, ord_cod_tip_doc, ord_serie_doc, ord_num_doc, carg_corr, ord_id, zon_id, 
+    zon_id_new, carg_cod_mov, carg_cod_tip_ing, carg_fec_des, carg_fec_rec, carg_destinatario, 
+    carg_dir, carg_ref, carg_new_dir, carg_new_ref, carg_cod_est, fec_num_cam, cod_ind_cam, 
+    proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCargoExample" >
     select
@@ -125,20 +124,20 @@
   <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCargo" >
     insert into t_cargo (carg_id, ord_cod_tip_doc, ord_serie_doc, 
       ord_num_doc, carg_corr, ord_id, 
-      prod_id, zon_id, zon_id_new, 
-      carg_cod_mov, carg_cod_tip_ing, carg_cod_fec_des, 
-      carg_cod_fec_rec, carg_destinatario, carg_dir, 
-      carg_ref, carg_new_dir, carg_new_ref, 
-      carg_cod_est, fec_num_cam, cod_ind_cam, 
-      proc_id)
+      zon_id, zon_id_new, carg_cod_mov, 
+      carg_cod_tip_ing, carg_fec_des, carg_fec_rec, 
+      carg_destinatario, carg_dir, carg_ref, 
+      carg_new_dir, carg_new_ref, carg_cod_est, 
+      fec_num_cam, cod_ind_cam, proc_id
+      )
     values (#{cargId,jdbcType=INTEGER}, #{ordCodTipDoc,jdbcType=INTEGER}, #{ordSerieDoc,jdbcType=VARCHAR}, 
       #{ordNumDoc,jdbcType=VARCHAR}, #{cargCorr,jdbcType=INTEGER}, #{ordId,jdbcType=INTEGER}, 
-      #{prodId,jdbcType=INTEGER}, #{zonId,jdbcType=INTEGER}, #{zonIdNew,jdbcType=INTEGER}, 
-      #{cargCodMov,jdbcType=INTEGER}, #{cargCodTipIng,jdbcType=INTEGER}, #{cargCodFecDes,jdbcType=DATE}, 
-      #{cargCodFecRec,jdbcType=DATE}, #{cargDestinatario,jdbcType=VARCHAR}, #{cargDir,jdbcType=VARCHAR}, 
-      #{cargRef,jdbcType=VARCHAR}, #{cargNewDir,jdbcType=VARCHAR}, #{cargNewRef,jdbcType=VARCHAR}, 
-      #{cargCodEst,jdbcType=INTEGER}, #{fecNumCam,jdbcType=BIGINT}, #{codIndCam,jdbcType=CHAR}, 
-      #{procId,jdbcType=INTEGER})
+      #{zonId,jdbcType=INTEGER}, #{zonIdNew,jdbcType=INTEGER}, #{cargCodMov,jdbcType=INTEGER}, 
+      #{cargCodTipIng,jdbcType=INTEGER}, #{cargFecDes,jdbcType=DATE}, #{cargFecRec,jdbcType=DATE}, 
+      #{cargDestinatario,jdbcType=VARCHAR}, #{cargDir,jdbcType=VARCHAR}, #{cargRef,jdbcType=VARCHAR}, 
+      #{cargNewDir,jdbcType=VARCHAR}, #{cargNewRef,jdbcType=VARCHAR}, #{cargCodEst,jdbcType=INTEGER}, 
+      #{fecNumCam,jdbcType=BIGINT}, #{codIndCam,jdbcType=CHAR}, #{procId,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCargo" >
     insert into t_cargo
@@ -161,9 +160,6 @@
       <if test="ordId != null" >
         ord_id,
       </if>
-      <if test="prodId != null" >
-        prod_id,
-      </if>
       <if test="zonId != null" >
         zon_id,
       </if>
@@ -176,11 +172,11 @@
       <if test="cargCodTipIng != null" >
         carg_cod_tip_ing,
       </if>
-      <if test="cargCodFecDes != null" >
-        carg_cod_fec_des,
+      <if test="cargFecDes != null" >
+        carg_fec_des,
       </if>
-      <if test="cargCodFecRec != null" >
-        carg_cod_fec_rec,
+      <if test="cargFecRec != null" >
+        carg_fec_rec,
       </if>
       <if test="cargDestinatario != null" >
         carg_destinatario,
@@ -229,9 +225,6 @@
       <if test="ordId != null" >
         #{ordId,jdbcType=INTEGER},
       </if>
-      <if test="prodId != null" >
-        #{prodId,jdbcType=INTEGER},
-      </if>
       <if test="zonId != null" >
         #{zonId,jdbcType=INTEGER},
       </if>
@@ -244,11 +237,11 @@
       <if test="cargCodTipIng != null" >
         #{cargCodTipIng,jdbcType=INTEGER},
       </if>
-      <if test="cargCodFecDes != null" >
-        #{cargCodFecDes,jdbcType=DATE},
+      <if test="cargFecDes != null" >
+        #{cargFecDes,jdbcType=DATE},
       </if>
-      <if test="cargCodFecRec != null" >
-        #{cargCodFecRec,jdbcType=DATE},
+      <if test="cargFecRec != null" >
+        #{cargFecRec,jdbcType=DATE},
       </if>
       <if test="cargDestinatario != null" >
         #{cargDestinatario,jdbcType=VARCHAR},
@@ -306,9 +299,6 @@
       <if test="record.ordId != null" >
         ord_id = #{record.ordId,jdbcType=INTEGER},
       </if>
-      <if test="record.prodId != null" >
-        prod_id = #{record.prodId,jdbcType=INTEGER},
-      </if>
       <if test="record.zonId != null" >
         zon_id = #{record.zonId,jdbcType=INTEGER},
       </if>
@@ -321,11 +311,11 @@
       <if test="record.cargCodTipIng != null" >
         carg_cod_tip_ing = #{record.cargCodTipIng,jdbcType=INTEGER},
       </if>
-      <if test="record.cargCodFecDes != null" >
-        carg_cod_fec_des = #{record.cargCodFecDes,jdbcType=DATE},
+      <if test="record.cargFecDes != null" >
+        carg_fec_des = #{record.cargFecDes,jdbcType=DATE},
       </if>
-      <if test="record.cargCodFecRec != null" >
-        carg_cod_fec_rec = #{record.cargCodFecRec,jdbcType=DATE},
+      <if test="record.cargFecRec != null" >
+        carg_fec_rec = #{record.cargFecRec,jdbcType=DATE},
       </if>
       <if test="record.cargDestinatario != null" >
         carg_destinatario = #{record.cargDestinatario,jdbcType=VARCHAR},
@@ -367,13 +357,12 @@
       ord_num_doc = #{record.ordNumDoc,jdbcType=VARCHAR},
       carg_corr = #{record.cargCorr,jdbcType=INTEGER},
       ord_id = #{record.ordId,jdbcType=INTEGER},
-      prod_id = #{record.prodId,jdbcType=INTEGER},
       zon_id = #{record.zonId,jdbcType=INTEGER},
       zon_id_new = #{record.zonIdNew,jdbcType=INTEGER},
       carg_cod_mov = #{record.cargCodMov,jdbcType=INTEGER},
       carg_cod_tip_ing = #{record.cargCodTipIng,jdbcType=INTEGER},
-      carg_cod_fec_des = #{record.cargCodFecDes,jdbcType=DATE},
-      carg_cod_fec_rec = #{record.cargCodFecRec,jdbcType=DATE},
+      carg_fec_des = #{record.cargFecDes,jdbcType=DATE},
+      carg_fec_rec = #{record.cargFecRec,jdbcType=DATE},
       carg_destinatario = #{record.cargDestinatario,jdbcType=VARCHAR},
       carg_dir = #{record.cargDir,jdbcType=VARCHAR},
       carg_ref = #{record.cargRef,jdbcType=VARCHAR},
@@ -405,9 +394,6 @@
       <if test="ordId != null" >
         ord_id = #{ordId,jdbcType=INTEGER},
       </if>
-      <if test="prodId != null" >
-        prod_id = #{prodId,jdbcType=INTEGER},
-      </if>
       <if test="zonId != null" >
         zon_id = #{zonId,jdbcType=INTEGER},
       </if>
@@ -420,11 +406,11 @@
       <if test="cargCodTipIng != null" >
         carg_cod_tip_ing = #{cargCodTipIng,jdbcType=INTEGER},
       </if>
-      <if test="cargCodFecDes != null" >
-        carg_cod_fec_des = #{cargCodFecDes,jdbcType=DATE},
+      <if test="cargFecDes != null" >
+        carg_fec_des = #{cargFecDes,jdbcType=DATE},
       </if>
-      <if test="cargCodFecRec != null" >
-        carg_cod_fec_rec = #{cargCodFecRec,jdbcType=DATE},
+      <if test="cargFecRec != null" >
+        carg_fec_rec = #{cargFecRec,jdbcType=DATE},
       </if>
       <if test="cargDestinatario != null" >
         carg_destinatario = #{cargDestinatario,jdbcType=VARCHAR},
@@ -463,13 +449,12 @@
       ord_num_doc = #{ordNumDoc,jdbcType=VARCHAR},
       carg_corr = #{cargCorr,jdbcType=INTEGER},
       ord_id = #{ordId,jdbcType=INTEGER},
-      prod_id = #{prodId,jdbcType=INTEGER},
       zon_id = #{zonId,jdbcType=INTEGER},
       zon_id_new = #{zonIdNew,jdbcType=INTEGER},
       carg_cod_mov = #{cargCodMov,jdbcType=INTEGER},
       carg_cod_tip_ing = #{cargCodTipIng,jdbcType=INTEGER},
-      carg_cod_fec_des = #{cargCodFecDes,jdbcType=DATE},
-      carg_cod_fec_rec = #{cargCodFecRec,jdbcType=DATE},
+      carg_fec_des = #{cargFecDes,jdbcType=DATE},
+      carg_fec_rec = #{cargFecRec,jdbcType=DATE},
       carg_destinatario = #{cargDestinatario,jdbcType=VARCHAR},
       carg_dir = #{cargDir,jdbcType=VARCHAR},
       carg_ref = #{cargRef,jdbcType=VARCHAR},

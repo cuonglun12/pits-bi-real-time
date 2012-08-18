@@ -23,6 +23,7 @@ public class Constantes {
 	private String paramCodeEstadoCargoDespachoProvincia;
 	private String paramCodeEstadoCargoDespachoSupervision;
 	private String paramCodeEstadoCargoDespachoRobo;
+	private String paramCodeEstadoCargoDespachoNoDefinido;
 	private int paramSerialEstadoCargoDespachoDigitado;
 	private int paramSerialEstadoCargoDespachoRuta;
 	private int paramSerialEstadoCargoDespachoEntregado;
@@ -37,10 +38,15 @@ public class Constantes {
 	private int paramSerialEstadoCargoDespachoProvincia;
 	private int paramSerialEstadoCargoDespachoSupervision;
 	private int paramSerialEstadoCargoDespachoRobo;
+	private int paramSerialEstadoCargoDespachoNoDefinido;
 	
 	private int	paramCodeEstadoCargoDespachoVerificacion;
+	private String paramCodeEstadoCargoDespachoVerificacionNoDefinido;
+	private int paramSerialEstadoCargoDespachoVerificacionNoDefinido;
 	
 	private int	paramCodeMotivoCargoDespacho;
+	private String paramCodeMotivoCargoDespachoNoDefinido;
+	private int paramSerialMotivoCargoDespachoNoDefinido;
 	
 	private int	paramCodeEstadoCargo;
 	private String paramCodeEstadoCargoOrdenDigitado;
@@ -60,6 +66,7 @@ public class Constantes {
 	private String paramCodeEstadoCargoOrdenRobo;
 	private String paramCodeEstadoCargoOrdenSiLlego;
 	private String paramCodeEstadoCargoOrdenRecepcionado;
+	private String paramCodeEstadoCargoOrdenNoDefinido;
 	private int paramSerialEstadoCargoOrdenDigitado;
 	private int paramSerialEstadoCargoOrdenClasificado;
 	private int paramSerialEstadoCargoOrdenRuta;
@@ -77,10 +84,19 @@ public class Constantes {
 	private int paramSerialEstadoCargoOrdenRobo;
 	private int paramSerialEstadoCargoOrdenSiLlego;
 	private int paramSerialEstadoCargoOrdenRecepcionado;
+	private int paramSerialEstadoCargoOrdenNoDefinido;
 	
 	private int	paramCodeMotivoCargo;
+	private String paramCodeMotivoCargoNoDefinido;
+	private int paramSerialMotivoCargoNoDefinido;
 	
 	private int	paramCodeTipoIngresoCargo;
+	private String paramCodeTipoIngresoCargoDigitado;
+	private String paramCodeTipoIngresoCargoTransferido;
+	private String paramCodeTipoIngresoCargoNoDefinido;
+	private int paramSerialTipoIngresoCargoDigitado;
+	private int paramSerialTipoIngresoCargoTransferido;
+	private int paramSerialTipoIngresoCargoNoDefinido;
 	
 	private int	paramCodeCategoriaCliente;
 	private String	paramCodeCategoriaClienteNoDefinido;
@@ -117,6 +133,20 @@ public class Constantes {
 	private int	paramCodeTipoCambio;
 	
 	private int	paramCodeEstadoCotizacion;
+	private String paramCodeEstadoCotizacionNormal;
+	private String paramCodeEstadoCotizacionPlana;
+	private String paramCodeEstadoCotizacionValijas;
+	private String paramCodeEstadoCotizacionUbigeos;
+	private String paramCodeEstadoCotizacionRangos;
+	private String paramCodeEstadoCotizacionGiroRecojo;
+	private String paramCodeEstadoCotizacionNoDefinido;
+	private int paramSerialEstadoCotizacionNormal;
+	private int paramSerialEstadoCotizacionPlana;
+	private int paramSerialEstadoCotizacionValijas;
+	private int paramSerialEstadoCotizacionUbigeos;
+	private int paramSerialEstadoCotizacionRangos;
+	private int paramSerialEstadoCotizacionGiroRecojo;
+	private int paramSerialEstadoCotizacionNoDefinido;
 	
 	private int	paramCodeTipoNegocio;
 	private String paramCodeTipoNegocioMensajeria;
@@ -125,6 +155,30 @@ public class Constantes {
 	private int paramSerialTipoNegocioNoDefinido;
 	
 	private int	paramCodeTipoServicio;
+	private String paramCodeTipoServicioCorreo1Dia;
+	private String paramCodeTipoServicioCorreo2Dias;
+	private String paramCodeTipoServicioCorreo3Dias;
+	private String paramCodeTipoServicioCorreo4Dias;
+	private String paramCodeTipoServicioCorreo5Dias;
+	private String paramCodeTipoServicioExpress25Dias;
+	private String paramCodeTipoServicioEconExp1530Dias;
+	private String paramCodeTipoServicioCorreo1530Dias;
+	private String paramCodeTipoServicioCorreo4DiasAMas;
+	private String paramCodeTipoServicioVolanteoPersonalizado;
+	private String paramCodeTipoServicioVolanteoSimple;
+	private String paramCodeTipoServicioNoDefinido;
+	private int paramSerialTipoServicioCorreo1Dia;
+	private int paramSerialTipoServicioCorreo2Dias;
+	private int paramSerialTipoServicioCorreo3Dias;
+	private int paramSerialTipoServicioCorreo4Dias;
+	private int paramSerialTipoServicioCorreo5Dias;
+	private int paramSerialTipoServicioExpress25Dias;
+	private int paramSerialTipoServicioEconExp1530Dias;
+	private int paramSerialTipoServicioCorreo1530Dias;
+	private int paramSerialTipoServicioCorreo4DiasAMas;
+	private int paramSerialTipoServicioVolanteoPersonalizado;
+	private int paramSerialTipoServicioVolanteoSimple;
+	private int paramSerialTipoServicioNoDefinido;
 	
 	private int	paramCodeTipoDocumento;
 	private String paramCodeTipoDocumentoRuc;
@@ -141,18 +195,32 @@ public class Constantes {
 	private String paramCodeEstadoDespachoGenerado;
 	private String paramCodeEstadoDespachoPagado;
 	private String paramCodeEstadoDespachoAnulado;
+	private String paramCodeEstadoDespachoNoDefinido;
 	private int paramSerialEstadoDespachoDespacho;
 	private int paramSerialEstadoDespachoRuta;
 	private int paramSerialEstadoDespachoCerrado;
 	private int paramSerialEstadoDespachoGenerado;
 	private int paramSerialEstadoDespachoPagado;
 	private int paramSerialEstadoDespachoAnulado;
+	private int paramSerialEstadoDespachoNoDefinido;
 	
 	private int	paramCodeEstadoDespachoVerificacion;
+	private String paramCodeEstadoDespachoVerificacionNoDefinido;
+	private int paramSerialEstadoDespachoVerificacionNoDefinido;
 	
 	private int	paramCodeTipoDespacho;
+	private String paramCodeTipoDespachoNoDefinido;
+	private int paramSerialTipoDespachoNoDefinido;
 	
 	private int	paramCodeTipoRuta;
+	private String paramCodeTipoRutaMensajeria;
+	private String paramCodeTipoRutaCourier;
+	private String paramCodeTipoRutaRecojo;
+	private String paramCodeTipoRutaNoDefinido;
+	private int paramSerialTipoRutaMensajeria;
+	private int paramSerialTipoRutaCourier;
+	private int paramSerialTipoRutaRecojo;
+	private int paramSerialTipoRutaNoDefinido;
 	
 	private int	paramCodeCategoriaEmpleado;
 	private String paramCodeCategoriaEmpleadoMensajero;
@@ -197,6 +265,22 @@ public class Constantes {
 	private int paramSerialTipoPagoNoDefinido;
 	
 	private int	paramCodeTipoReparto;
+	private String paramCodeTipoRepartoNoBajoPuerta;
+	private String paramCodeTipoRepartoBajoPuerta;
+	private String paramCodeTipoRepartoPorcentajeDeBajoPuerta;
+	private String paramCodeTipoRepartoVolanteSinCargo;
+	private String paramCodeTipoRepartoSinValor;
+	private String paramCodeTipoReparto3DiasBajoPuerta;
+	private String paramCodeTipoReparto4DiasBajoPuerta;
+	private String paramCodeTipoRepartoNoDefinido;
+	private int paramSerialTipoRepartoNoBajoPuerta;
+	private int paramSerialTipoRepartoBajoPuerta;
+	private int paramSerialTipoRepartoPorcentajeDeBajoPuerta;
+	private int paramSerialTipoRepartoVolanteSinCargo;
+	private int paramSerialTipoRepartoSinValor;
+	private int paramSerialTipoReparto3DiasBajoPuerta;
+	private int paramSerialTipoReparto4DiasBajoPuerta;
+	private int paramSerialTipoRepartoNoDefinido;
 	
 	private int	paramCodeTipoProducto;
 	private String paramCodeTipoProductoDocumento;
@@ -207,6 +291,8 @@ public class Constantes {
 	private int paramSerialTipoProductoNoDefinido;
 	
 	private int	paramCodeTipoSede;
+	private String paramCodeTipoSedeNoDefinido;
+	private int paramSerialTipoSedeNoDefinido;
 	
 	private int	paramCodeUbigeoPais;
 	
@@ -309,7 +395,6 @@ public class Constantes {
 	private int idTableDimensionalFactDespacho;
 	private int idTableDimensionalFactEnvio;
 	private int idTableDimensionalFactOrden;
-	
 	
 	public int getParamCodeTipoAreaCliente() {
 		return paramCodeTipoAreaCliente;
@@ -449,6 +534,13 @@ public class Constantes {
 			String paramCodeEstadoCargoDespachoRobo) {
 		this.paramCodeEstadoCargoDespachoRobo = paramCodeEstadoCargoDespachoRobo;
 	}
+	public String getParamCodeEstadoCargoDespachoNoDefinido() {
+		return paramCodeEstadoCargoDespachoNoDefinido;
+	}
+	public void setParamCodeEstadoCargoDespachoNoDefinido(
+			String paramCodeEstadoCargoDespachoNoDefinido) {
+		this.paramCodeEstadoCargoDespachoNoDefinido = paramCodeEstadoCargoDespachoNoDefinido;
+	}
 	public int getParamSerialEstadoCargoDespachoDigitado() {
 		return paramSerialEstadoCargoDespachoDigitado;
 	}
@@ -547,6 +639,13 @@ public class Constantes {
 			int paramSerialEstadoCargoDespachoRobo) {
 		this.paramSerialEstadoCargoDespachoRobo = paramSerialEstadoCargoDespachoRobo;
 	}
+	public int getParamSerialEstadoCargoDespachoNoDefinido() {
+		return paramSerialEstadoCargoDespachoNoDefinido;
+	}
+	public void setParamSerialEstadoCargoDespachoNoDefinido(
+			int paramSerialEstadoCargoDespachoNoDefinido) {
+		this.paramSerialEstadoCargoDespachoNoDefinido = paramSerialEstadoCargoDespachoNoDefinido;
+	}
 	public int getParamCodeEstadoCargoDespachoVerificacion() {
 		return paramCodeEstadoCargoDespachoVerificacion;
 	}
@@ -554,11 +653,39 @@ public class Constantes {
 			int paramCodeEstadoCargoDespachoVerificacion) {
 		this.paramCodeEstadoCargoDespachoVerificacion = paramCodeEstadoCargoDespachoVerificacion;
 	}
+	public String getParamCodeEstadoCargoDespachoVerificacionNoDefinido() {
+		return paramCodeEstadoCargoDespachoVerificacionNoDefinido;
+	}
+	public void setParamCodeEstadoCargoDespachoVerificacionNoDefinido(
+			String paramCodeEstadoCargoDespachoVerificacionNoDefinido) {
+		this.paramCodeEstadoCargoDespachoVerificacionNoDefinido = paramCodeEstadoCargoDespachoVerificacionNoDefinido;
+	}
+	public int getParamSerialEstadoCargoDespachoVerificacionNoDefinido() {
+		return paramSerialEstadoCargoDespachoVerificacionNoDefinido;
+	}
+	public void setParamSerialEstadoCargoDespachoVerificacionNoDefinido(
+			int paramSerialEstadoCargoDespachoVerificacionNoDefinido) {
+		this.paramSerialEstadoCargoDespachoVerificacionNoDefinido = paramSerialEstadoCargoDespachoVerificacionNoDefinido;
+	}
 	public int getParamCodeMotivoCargoDespacho() {
 		return paramCodeMotivoCargoDespacho;
 	}
 	public void setParamCodeMotivoCargoDespacho(int paramCodeMotivoCargoDespacho) {
 		this.paramCodeMotivoCargoDespacho = paramCodeMotivoCargoDespacho;
+	}
+	public String getParamCodeMotivoCargoDespachoNoDefinido() {
+		return paramCodeMotivoCargoDespachoNoDefinido;
+	}
+	public void setParamCodeMotivoCargoDespachoNoDefinido(
+			String paramCodeMotivoCargoDespachoNoDefinido) {
+		this.paramCodeMotivoCargoDespachoNoDefinido = paramCodeMotivoCargoDespachoNoDefinido;
+	}
+	public int getParamSerialMotivoCargoDespachoNoDefinido() {
+		return paramSerialMotivoCargoDespachoNoDefinido;
+	}
+	public void setParamSerialMotivoCargoDespachoNoDefinido(
+			int paramSerialMotivoCargoDespachoNoDefinido) {
+		this.paramSerialMotivoCargoDespachoNoDefinido = paramSerialMotivoCargoDespachoNoDefinido;
 	}
 	public int getParamCodeEstadoCargo() {
 		return paramCodeEstadoCargo;
@@ -685,6 +812,13 @@ public class Constantes {
 			String paramCodeEstadoCargoOrdenRecepcionado) {
 		this.paramCodeEstadoCargoOrdenRecepcionado = paramCodeEstadoCargoOrdenRecepcionado;
 	}
+	public String getParamCodeEstadoCargoOrdenNoDefinido() {
+		return paramCodeEstadoCargoOrdenNoDefinido;
+	}
+	public void setParamCodeEstadoCargoOrdenNoDefinido(
+			String paramCodeEstadoCargoOrdenNoDefinido) {
+		this.paramCodeEstadoCargoOrdenNoDefinido = paramCodeEstadoCargoOrdenNoDefinido;
+	}
 	public int getParamSerialEstadoCargoOrdenDigitado() {
 		return paramSerialEstadoCargoOrdenDigitado;
 	}
@@ -804,17 +938,80 @@ public class Constantes {
 			int paramSerialEstadoCargoOrdenRecepcionado) {
 		this.paramSerialEstadoCargoOrdenRecepcionado = paramSerialEstadoCargoOrdenRecepcionado;
 	}
+	public int getParamSerialEstadoCargoOrdenNoDefinido() {
+		return paramSerialEstadoCargoOrdenNoDefinido;
+	}
+	public void setParamSerialEstadoCargoOrdenNoDefinido(
+			int paramSerialEstadoCargoOrdenNoDefinido) {
+		this.paramSerialEstadoCargoOrdenNoDefinido = paramSerialEstadoCargoOrdenNoDefinido;
+	}
 	public int getParamCodeMotivoCargo() {
 		return paramCodeMotivoCargo;
 	}
 	public void setParamCodeMotivoCargo(int paramCodeMotivoCargo) {
 		this.paramCodeMotivoCargo = paramCodeMotivoCargo;
 	}
+	public String getParamCodeMotivoCargoNoDefinido() {
+		return paramCodeMotivoCargoNoDefinido;
+	}
+	public void setParamCodeMotivoCargoNoDefinido(
+			String paramCodeMotivoCargoNoDefinido) {
+		this.paramCodeMotivoCargoNoDefinido = paramCodeMotivoCargoNoDefinido;
+	}
+	public int getParamSerialMotivoCargoNoDefinido() {
+		return paramSerialMotivoCargoNoDefinido;
+	}
+	public void setParamSerialMotivoCargoNoDefinido(
+			int paramSerialMotivoCargoNoDefinido) {
+		this.paramSerialMotivoCargoNoDefinido = paramSerialMotivoCargoNoDefinido;
+	}
 	public int getParamCodeTipoIngresoCargo() {
 		return paramCodeTipoIngresoCargo;
 	}
 	public void setParamCodeTipoIngresoCargo(int paramCodeTipoIngresoCargo) {
 		this.paramCodeTipoIngresoCargo = paramCodeTipoIngresoCargo;
+	}
+	public String getParamCodeTipoIngresoCargoDigitado() {
+		return paramCodeTipoIngresoCargoDigitado;
+	}
+	public void setParamCodeTipoIngresoCargoDigitado(
+			String paramCodeTipoIngresoCargoDigitado) {
+		this.paramCodeTipoIngresoCargoDigitado = paramCodeTipoIngresoCargoDigitado;
+	}
+	public String getParamCodeTipoIngresoCargoTransferido() {
+		return paramCodeTipoIngresoCargoTransferido;
+	}
+	public void setParamCodeTipoIngresoCargoTransferido(
+			String paramCodeTipoIngresoCargoTransferido) {
+		this.paramCodeTipoIngresoCargoTransferido = paramCodeTipoIngresoCargoTransferido;
+	}
+	public String getParamCodeTipoIngresoCargoNoDefinido() {
+		return paramCodeTipoIngresoCargoNoDefinido;
+	}
+	public void setParamCodeTipoIngresoCargoNoDefinido(
+			String paramCodeTipoIngresoCargoNoDefinido) {
+		this.paramCodeTipoIngresoCargoNoDefinido = paramCodeTipoIngresoCargoNoDefinido;
+	}
+	public int getParamSerialTipoIngresoCargoDigitado() {
+		return paramSerialTipoIngresoCargoDigitado;
+	}
+	public void setParamSerialTipoIngresoCargoDigitado(
+			int paramSerialTipoIngresoCargoDigitado) {
+		this.paramSerialTipoIngresoCargoDigitado = paramSerialTipoIngresoCargoDigitado;
+	}
+	public int getParamSerialTipoIngresoCargoTransferido() {
+		return paramSerialTipoIngresoCargoTransferido;
+	}
+	public void setParamSerialTipoIngresoCargoTransferido(
+			int paramSerialTipoIngresoCargoTransferido) {
+		this.paramSerialTipoIngresoCargoTransferido = paramSerialTipoIngresoCargoTransferido;
+	}
+	public int getParamSerialTipoIngresoCargoNoDefinido() {
+		return paramSerialTipoIngresoCargoNoDefinido;
+	}
+	public void setParamSerialTipoIngresoCargoNoDefinido(
+			int paramSerialTipoIngresoCargoNoDefinido) {
+		this.paramSerialTipoIngresoCargoNoDefinido = paramSerialTipoIngresoCargoNoDefinido;
 	}
 	public int getParamCodeCategoriaCliente() {
 		return paramCodeCategoriaCliente;
@@ -1004,6 +1201,104 @@ public class Constantes {
 	public void setParamCodeEstadoCotizacion(int paramCodeEstadoCotizacion) {
 		this.paramCodeEstadoCotizacion = paramCodeEstadoCotizacion;
 	}
+	public String getParamCodeEstadoCotizacionNormal() {
+		return paramCodeEstadoCotizacionNormal;
+	}
+	public void setParamCodeEstadoCotizacionNormal(
+			String paramCodeEstadoCotizacionNormal) {
+		this.paramCodeEstadoCotizacionNormal = paramCodeEstadoCotizacionNormal;
+	}
+	public String getParamCodeEstadoCotizacionPlana() {
+		return paramCodeEstadoCotizacionPlana;
+	}
+	public void setParamCodeEstadoCotizacionPlana(
+			String paramCodeEstadoCotizacionPlana) {
+		this.paramCodeEstadoCotizacionPlana = paramCodeEstadoCotizacionPlana;
+	}
+	public String getParamCodeEstadoCotizacionValijas() {
+		return paramCodeEstadoCotizacionValijas;
+	}
+	public void setParamCodeEstadoCotizacionValijas(
+			String paramCodeEstadoCotizacionValijas) {
+		this.paramCodeEstadoCotizacionValijas = paramCodeEstadoCotizacionValijas;
+	}
+	public String getParamCodeEstadoCotizacionUbigeos() {
+		return paramCodeEstadoCotizacionUbigeos;
+	}
+	public void setParamCodeEstadoCotizacionUbigeos(
+			String paramCodeEstadoCotizacionUbigeos) {
+		this.paramCodeEstadoCotizacionUbigeos = paramCodeEstadoCotizacionUbigeos;
+	}
+	public String getParamCodeEstadoCotizacionRangos() {
+		return paramCodeEstadoCotizacionRangos;
+	}
+	public void setParamCodeEstadoCotizacionRangos(
+			String paramCodeEstadoCotizacionRangos) {
+		this.paramCodeEstadoCotizacionRangos = paramCodeEstadoCotizacionRangos;
+	}
+	public String getParamCodeEstadoCotizacionGiroRecojo() {
+		return paramCodeEstadoCotizacionGiroRecojo;
+	}
+	public void setParamCodeEstadoCotizacionGiroRecojo(
+			String paramCodeEstadoCotizacionGiroRecojo) {
+		this.paramCodeEstadoCotizacionGiroRecojo = paramCodeEstadoCotizacionGiroRecojo;
+	}
+	public String getParamCodeEstadoCotizacionNoDefinido() {
+		return paramCodeEstadoCotizacionNoDefinido;
+	}
+	public void setParamCodeEstadoCotizacionNoDefinido(
+			String paramCodeEstadoCotizacionNoDefinido) {
+		this.paramCodeEstadoCotizacionNoDefinido = paramCodeEstadoCotizacionNoDefinido;
+	}
+	public int getParamSerialEstadoCotizacionNormal() {
+		return paramSerialEstadoCotizacionNormal;
+	}
+	public void setParamSerialEstadoCotizacionNormal(
+			int paramSerialEstadoCotizacionNormal) {
+		this.paramSerialEstadoCotizacionNormal = paramSerialEstadoCotizacionNormal;
+	}
+	public int getParamSerialEstadoCotizacionPlana() {
+		return paramSerialEstadoCotizacionPlana;
+	}
+	public void setParamSerialEstadoCotizacionPlana(
+			int paramSerialEstadoCotizacionPlana) {
+		this.paramSerialEstadoCotizacionPlana = paramSerialEstadoCotizacionPlana;
+	}
+	public int getParamSerialEstadoCotizacionValijas() {
+		return paramSerialEstadoCotizacionValijas;
+	}
+	public void setParamSerialEstadoCotizacionValijas(
+			int paramSerialEstadoCotizacionValijas) {
+		this.paramSerialEstadoCotizacionValijas = paramSerialEstadoCotizacionValijas;
+	}
+	public int getParamSerialEstadoCotizacionUbigeos() {
+		return paramSerialEstadoCotizacionUbigeos;
+	}
+	public void setParamSerialEstadoCotizacionUbigeos(
+			int paramSerialEstadoCotizacionUbigeos) {
+		this.paramSerialEstadoCotizacionUbigeos = paramSerialEstadoCotizacionUbigeos;
+	}
+	public int getParamSerialEstadoCotizacionRangos() {
+		return paramSerialEstadoCotizacionRangos;
+	}
+	public void setParamSerialEstadoCotizacionRangos(
+			int paramSerialEstadoCotizacionRangos) {
+		this.paramSerialEstadoCotizacionRangos = paramSerialEstadoCotizacionRangos;
+	}
+	public int getParamSerialEstadoCotizacionGiroRecojo() {
+		return paramSerialEstadoCotizacionGiroRecojo;
+	}
+	public void setParamSerialEstadoCotizacionGiroRecojo(
+			int paramSerialEstadoCotizacionGiroRecojo) {
+		this.paramSerialEstadoCotizacionGiroRecojo = paramSerialEstadoCotizacionGiroRecojo;
+	}
+	public int getParamSerialEstadoCotizacionNoDefinido() {
+		return paramSerialEstadoCotizacionNoDefinido;
+	}
+	public void setParamSerialEstadoCotizacionNoDefinido(
+			int paramSerialEstadoCotizacionNoDefinido) {
+		this.paramSerialEstadoCotizacionNoDefinido = paramSerialEstadoCotizacionNoDefinido;
+	}
 	public int getParamCodeTipoNegocio() {
 		return paramCodeTipoNegocio;
 	}
@@ -1043,6 +1338,174 @@ public class Constantes {
 	}
 	public void setParamCodeTipoServicio(int paramCodeTipoServicio) {
 		this.paramCodeTipoServicio = paramCodeTipoServicio;
+	}
+	public String getParamCodeTipoServicioCorreo1Dia() {
+		return paramCodeTipoServicioCorreo1Dia;
+	}
+	public void setParamCodeTipoServicioCorreo1Dia(
+			String paramCodeTipoServicioCorreo1Dia) {
+		this.paramCodeTipoServicioCorreo1Dia = paramCodeTipoServicioCorreo1Dia;
+	}
+	public String getParamCodeTipoServicioCorreo2Dias() {
+		return paramCodeTipoServicioCorreo2Dias;
+	}
+	public void setParamCodeTipoServicioCorreo2Dias(
+			String paramCodeTipoServicioCorreo2Dias) {
+		this.paramCodeTipoServicioCorreo2Dias = paramCodeTipoServicioCorreo2Dias;
+	}
+	public String getParamCodeTipoServicioCorreo3Dias() {
+		return paramCodeTipoServicioCorreo3Dias;
+	}
+	public void setParamCodeTipoServicioCorreo3Dias(
+			String paramCodeTipoServicioCorreo3Dias) {
+		this.paramCodeTipoServicioCorreo3Dias = paramCodeTipoServicioCorreo3Dias;
+	}
+	public String getParamCodeTipoServicioCorreo4Dias() {
+		return paramCodeTipoServicioCorreo4Dias;
+	}
+	public void setParamCodeTipoServicioCorreo4Dias(
+			String paramCodeTipoServicioCorreo4Dias) {
+		this.paramCodeTipoServicioCorreo4Dias = paramCodeTipoServicioCorreo4Dias;
+	}
+	public String getParamCodeTipoServicioCorreo5Dias() {
+		return paramCodeTipoServicioCorreo5Dias;
+	}
+	public void setParamCodeTipoServicioCorreo5Dias(
+			String paramCodeTipoServicioCorreo5Dias) {
+		this.paramCodeTipoServicioCorreo5Dias = paramCodeTipoServicioCorreo5Dias;
+	}
+	public String getParamCodeTipoServicioExpress25Dias() {
+		return paramCodeTipoServicioExpress25Dias;
+	}
+	public void setParamCodeTipoServicioExpress25Dias(
+			String paramCodeTipoServicioExpress25Dias) {
+		this.paramCodeTipoServicioExpress25Dias = paramCodeTipoServicioExpress25Dias;
+	}
+	public String getParamCodeTipoServicioEconExp1530Dias() {
+		return paramCodeTipoServicioEconExp1530Dias;
+	}
+	public void setParamCodeTipoServicioEconExp1530Dias(
+			String paramCodeTipoServicioEconExp1530Dias) {
+		this.paramCodeTipoServicioEconExp1530Dias = paramCodeTipoServicioEconExp1530Dias;
+	}
+	public String getParamCodeTipoServicioCorreo1530Dias() {
+		return paramCodeTipoServicioCorreo1530Dias;
+	}
+	public void setParamCodeTipoServicioCorreo1530Dias(
+			String paramCodeTipoServicioCorreo1530Dias) {
+		this.paramCodeTipoServicioCorreo1530Dias = paramCodeTipoServicioCorreo1530Dias;
+	}
+	public String getParamCodeTipoServicioCorreo4DiasAMas() {
+		return paramCodeTipoServicioCorreo4DiasAMas;
+	}
+	public void setParamCodeTipoServicioCorreo4DiasAMas(
+			String paramCodeTipoServicioCorreo4DiasAMas) {
+		this.paramCodeTipoServicioCorreo4DiasAMas = paramCodeTipoServicioCorreo4DiasAMas;
+	}
+	public String getParamCodeTipoServicioVolanteoPersonalizado() {
+		return paramCodeTipoServicioVolanteoPersonalizado;
+	}
+	public void setParamCodeTipoServicioVolanteoPersonalizado(
+			String paramCodeTipoServicioVolanteoPersonalizado) {
+		this.paramCodeTipoServicioVolanteoPersonalizado = paramCodeTipoServicioVolanteoPersonalizado;
+	}
+	public String getParamCodeTipoServicioVolanteoSimple() {
+		return paramCodeTipoServicioVolanteoSimple;
+	}
+	public void setParamCodeTipoServicioVolanteoSimple(
+			String paramCodeTipoServicioVolanteoSimple) {
+		this.paramCodeTipoServicioVolanteoSimple = paramCodeTipoServicioVolanteoSimple;
+	}
+	public String getParamCodeTipoServicioNoDefinido() {
+		return paramCodeTipoServicioNoDefinido;
+	}
+	public void setParamCodeTipoServicioNoDefinido(
+			String paramCodeTipoServicioNoDefinido) {
+		this.paramCodeTipoServicioNoDefinido = paramCodeTipoServicioNoDefinido;
+	}
+	public int getParamSerialTipoServicioCorreo1Dia() {
+		return paramSerialTipoServicioCorreo1Dia;
+	}
+	public void setParamSerialTipoServicioCorreo1Dia(
+			int paramSerialTipoServicioCorreo1Dia) {
+		this.paramSerialTipoServicioCorreo1Dia = paramSerialTipoServicioCorreo1Dia;
+	}
+	public int getParamSerialTipoServicioCorreo2Dias() {
+		return paramSerialTipoServicioCorreo2Dias;
+	}
+	public void setParamSerialTipoServicioCorreo2Dias(
+			int paramSerialTipoServicioCorreo2Dias) {
+		this.paramSerialTipoServicioCorreo2Dias = paramSerialTipoServicioCorreo2Dias;
+	}
+	public int getParamSerialTipoServicioCorreo3Dias() {
+		return paramSerialTipoServicioCorreo3Dias;
+	}
+	public void setParamSerialTipoServicioCorreo3Dias(
+			int paramSerialTipoServicioCorreo3Dias) {
+		this.paramSerialTipoServicioCorreo3Dias = paramSerialTipoServicioCorreo3Dias;
+	}
+	public int getParamSerialTipoServicioCorreo4Dias() {
+		return paramSerialTipoServicioCorreo4Dias;
+	}
+	public void setParamSerialTipoServicioCorreo4Dias(
+			int paramSerialTipoServicioCorreo4Dias) {
+		this.paramSerialTipoServicioCorreo4Dias = paramSerialTipoServicioCorreo4Dias;
+	}
+	public int getParamSerialTipoServicioCorreo5Dias() {
+		return paramSerialTipoServicioCorreo5Dias;
+	}
+	public void setParamSerialTipoServicioCorreo5Dias(
+			int paramSerialTipoServicioCorreo5Dias) {
+		this.paramSerialTipoServicioCorreo5Dias = paramSerialTipoServicioCorreo5Dias;
+	}
+	public int getParamSerialTipoServicioExpress25Dias() {
+		return paramSerialTipoServicioExpress25Dias;
+	}
+	public void setParamSerialTipoServicioExpress25Dias(
+			int paramSerialTipoServicioExpress25Dias) {
+		this.paramSerialTipoServicioExpress25Dias = paramSerialTipoServicioExpress25Dias;
+	}
+	public int getParamSerialTipoServicioEconExp1530Dias() {
+		return paramSerialTipoServicioEconExp1530Dias;
+	}
+	public void setParamSerialTipoServicioEconExp1530Dias(
+			int paramSerialTipoServicioEconExp1530Dias) {
+		this.paramSerialTipoServicioEconExp1530Dias = paramSerialTipoServicioEconExp1530Dias;
+	}
+	public int getParamSerialTipoServicioCorreo1530Dias() {
+		return paramSerialTipoServicioCorreo1530Dias;
+	}
+	public void setParamSerialTipoServicioCorreo1530Dias(
+			int paramSerialTipoServicioCorreo1530Dias) {
+		this.paramSerialTipoServicioCorreo1530Dias = paramSerialTipoServicioCorreo1530Dias;
+	}
+	public int getParamSerialTipoServicioCorreo4DiasAMas() {
+		return paramSerialTipoServicioCorreo4DiasAMas;
+	}
+	public void setParamSerialTipoServicioCorreo4DiasAMas(
+			int paramSerialTipoServicioCorreo4DiasAMas) {
+		this.paramSerialTipoServicioCorreo4DiasAMas = paramSerialTipoServicioCorreo4DiasAMas;
+	}
+	public int getParamSerialTipoServicioVolanteoPersonalizado() {
+		return paramSerialTipoServicioVolanteoPersonalizado;
+	}
+	public void setParamSerialTipoServicioVolanteoPersonalizado(
+			int paramSerialTipoServicioVolanteoPersonalizado) {
+		this.paramSerialTipoServicioVolanteoPersonalizado = paramSerialTipoServicioVolanteoPersonalizado;
+	}
+	public int getParamSerialTipoServicioVolanteoSimple() {
+		return paramSerialTipoServicioVolanteoSimple;
+	}
+	public void setParamSerialTipoServicioVolanteoSimple(
+			int paramSerialTipoServicioVolanteoSimple) {
+		this.paramSerialTipoServicioVolanteoSimple = paramSerialTipoServicioVolanteoSimple;
+	}
+	public int getParamSerialTipoServicioNoDefinido() {
+		return paramSerialTipoServicioNoDefinido;
+	}
+	public void setParamSerialTipoServicioNoDefinido(
+			int paramSerialTipoServicioNoDefinido) {
+		this.paramSerialTipoServicioNoDefinido = paramSerialTipoServicioNoDefinido;
 	}
 	public int getParamCodeTipoDocumento() {
 		return paramCodeTipoDocumento;
@@ -1135,6 +1598,13 @@ public class Constantes {
 			String paramCodeEstadoDespachoAnulado) {
 		this.paramCodeEstadoDespachoAnulado = paramCodeEstadoDespachoAnulado;
 	}
+	public String getParamCodeEstadoDespachoNoDefinido() {
+		return paramCodeEstadoDespachoNoDefinido;
+	}
+	public void setParamCodeEstadoDespachoNoDefinido(
+			String paramCodeEstadoDespachoNoDefinido) {
+		this.paramCodeEstadoDespachoNoDefinido = paramCodeEstadoDespachoNoDefinido;
+	}
 	public int getParamSerialEstadoDespachoDespacho() {
 		return paramSerialEstadoDespachoDespacho;
 	}
@@ -1176,6 +1646,13 @@ public class Constantes {
 			int paramSerialEstadoDespachoAnulado) {
 		this.paramSerialEstadoDespachoAnulado = paramSerialEstadoDespachoAnulado;
 	}
+	public int getParamSerialEstadoDespachoNoDefinido() {
+		return paramSerialEstadoDespachoNoDefinido;
+	}
+	public void setParamSerialEstadoDespachoNoDefinido(
+			int paramSerialEstadoDespachoNoDefinido) {
+		this.paramSerialEstadoDespachoNoDefinido = paramSerialEstadoDespachoNoDefinido;
+	}
 	public int getParamCodeEstadoDespachoVerificacion() {
 		return paramCodeEstadoDespachoVerificacion;
 	}
@@ -1183,17 +1660,93 @@ public class Constantes {
 			int paramCodeEstadoDespachoVerificacion) {
 		this.paramCodeEstadoDespachoVerificacion = paramCodeEstadoDespachoVerificacion;
 	}
+	public String getParamCodeEstadoDespachoVerificacionNoDefinido() {
+		return paramCodeEstadoDespachoVerificacionNoDefinido;
+	}
+	public void setParamCodeEstadoDespachoVerificacionNoDefinido(
+			String paramCodeEstadoDespachoVerificacionNoDefinido) {
+		this.paramCodeEstadoDespachoVerificacionNoDefinido = paramCodeEstadoDespachoVerificacionNoDefinido;
+	}
+	public int getParamSerialEstadoDespachoVerificacionNoDefinido() {
+		return paramSerialEstadoDespachoVerificacionNoDefinido;
+	}
+	public void setParamSerialEstadoDespachoVerificacionNoDefinido(
+			int paramSerialEstadoDespachoVerificacionNoDefinido) {
+		this.paramSerialEstadoDespachoVerificacionNoDefinido = paramSerialEstadoDespachoVerificacionNoDefinido;
+	}
 	public int getParamCodeTipoDespacho() {
 		return paramCodeTipoDespacho;
 	}
 	public void setParamCodeTipoDespacho(int paramCodeTipoDespacho) {
 		this.paramCodeTipoDespacho = paramCodeTipoDespacho;
 	}
+	public String getParamCodeTipoDespachoNoDefinido() {
+		return paramCodeTipoDespachoNoDefinido;
+	}
+	public void setParamCodeTipoDespachoNoDefinido(
+			String paramCodeTipoDespachoNoDefinido) {
+		this.paramCodeTipoDespachoNoDefinido = paramCodeTipoDespachoNoDefinido;
+	}
+	public int getParamSerialTipoDespachoNoDefinido() {
+		return paramSerialTipoDespachoNoDefinido;
+	}
+	public void setParamSerialTipoDespachoNoDefinido(
+			int paramSerialTipoDespachoNoDefinido) {
+		this.paramSerialTipoDespachoNoDefinido = paramSerialTipoDespachoNoDefinido;
+	}
 	public int getParamCodeTipoRuta() {
 		return paramCodeTipoRuta;
 	}
 	public void setParamCodeTipoRuta(int paramCodeTipoRuta) {
 		this.paramCodeTipoRuta = paramCodeTipoRuta;
+	}
+	public String getParamCodeTipoRutaMensajeria() {
+		return paramCodeTipoRutaMensajeria;
+	}
+	public void setParamCodeTipoRutaMensajeria(String paramCodeTipoRutaMensajeria) {
+		this.paramCodeTipoRutaMensajeria = paramCodeTipoRutaMensajeria;
+	}
+	public String getParamCodeTipoRutaCourier() {
+		return paramCodeTipoRutaCourier;
+	}
+	public void setParamCodeTipoRutaCourier(String paramCodeTipoRutaCourier) {
+		this.paramCodeTipoRutaCourier = paramCodeTipoRutaCourier;
+	}
+	public String getParamCodeTipoRutaRecojo() {
+		return paramCodeTipoRutaRecojo;
+	}
+	public void setParamCodeTipoRutaRecojo(String paramCodeTipoRutaRecojo) {
+		this.paramCodeTipoRutaRecojo = paramCodeTipoRutaRecojo;
+	}
+	public String getParamCodeTipoRutaNoDefinido() {
+		return paramCodeTipoRutaNoDefinido;
+	}
+	public void setParamCodeTipoRutaNoDefinido(String paramCodeTipoRutaNoDefinido) {
+		this.paramCodeTipoRutaNoDefinido = paramCodeTipoRutaNoDefinido;
+	}
+	public int getParamSerialTipoRutaMensajeria() {
+		return paramSerialTipoRutaMensajeria;
+	}
+	public void setParamSerialTipoRutaMensajeria(int paramSerialTipoRutaMensajeria) {
+		this.paramSerialTipoRutaMensajeria = paramSerialTipoRutaMensajeria;
+	}
+	public int getParamSerialTipoRutaCourier() {
+		return paramSerialTipoRutaCourier;
+	}
+	public void setParamSerialTipoRutaCourier(int paramSerialTipoRutaCourier) {
+		this.paramSerialTipoRutaCourier = paramSerialTipoRutaCourier;
+	}
+	public int getParamSerialTipoRutaRecojo() {
+		return paramSerialTipoRutaRecojo;
+	}
+	public void setParamSerialTipoRutaRecojo(int paramSerialTipoRutaRecojo) {
+		this.paramSerialTipoRutaRecojo = paramSerialTipoRutaRecojo;
+	}
+	public int getParamSerialTipoRutaNoDefinido() {
+		return paramSerialTipoRutaNoDefinido;
+	}
+	public void setParamSerialTipoRutaNoDefinido(int paramSerialTipoRutaNoDefinido) {
+		this.paramSerialTipoRutaNoDefinido = paramSerialTipoRutaNoDefinido;
 	}
 	public int getParamCodeCategoriaEmpleado() {
 		return paramCodeCategoriaEmpleado;
@@ -1433,6 +1986,116 @@ public class Constantes {
 	public void setParamCodeTipoReparto(int paramCodeTipoReparto) {
 		this.paramCodeTipoReparto = paramCodeTipoReparto;
 	}
+	public String getParamCodeTipoRepartoNoBajoPuerta() {
+		return paramCodeTipoRepartoNoBajoPuerta;
+	}
+	public void setParamCodeTipoRepartoNoBajoPuerta(
+			String paramCodeTipoRepartoNoBajoPuerta) {
+		this.paramCodeTipoRepartoNoBajoPuerta = paramCodeTipoRepartoNoBajoPuerta;
+	}
+	public String getParamCodeTipoRepartoBajoPuerta() {
+		return paramCodeTipoRepartoBajoPuerta;
+	}
+	public void setParamCodeTipoRepartoBajoPuerta(
+			String paramCodeTipoRepartoBajoPuerta) {
+		this.paramCodeTipoRepartoBajoPuerta = paramCodeTipoRepartoBajoPuerta;
+	}
+	public String getParamCodeTipoRepartoPorcentajeDeBajoPuerta() {
+		return paramCodeTipoRepartoPorcentajeDeBajoPuerta;
+	}
+	public void setParamCodeTipoRepartoPorcentajeDeBajoPuerta(
+			String paramCodeTipoRepartoPorcentajeDeBajoPuerta) {
+		this.paramCodeTipoRepartoPorcentajeDeBajoPuerta = paramCodeTipoRepartoPorcentajeDeBajoPuerta;
+	}
+	public String getParamCodeTipoRepartoVolanteSinCargo() {
+		return paramCodeTipoRepartoVolanteSinCargo;
+	}
+	public void setParamCodeTipoRepartoVolanteSinCargo(
+			String paramCodeTipoRepartoVolanteSinCargo) {
+		this.paramCodeTipoRepartoVolanteSinCargo = paramCodeTipoRepartoVolanteSinCargo;
+	}
+	public String getParamCodeTipoRepartoSinValor() {
+		return paramCodeTipoRepartoSinValor;
+	}
+	public void setParamCodeTipoRepartoSinValor(String paramCodeTipoRepartoSinValor) {
+		this.paramCodeTipoRepartoSinValor = paramCodeTipoRepartoSinValor;
+	}
+	public String getParamCodeTipoReparto3DiasBajoPuerta() {
+		return paramCodeTipoReparto3DiasBajoPuerta;
+	}
+	public void setParamCodeTipoReparto3DiasBajoPuerta(
+			String paramCodeTipoReparto3DiasBajoPuerta) {
+		this.paramCodeTipoReparto3DiasBajoPuerta = paramCodeTipoReparto3DiasBajoPuerta;
+	}
+	public String getParamCodeTipoReparto4DiasBajoPuerta() {
+		return paramCodeTipoReparto4DiasBajoPuerta;
+	}
+	public void setParamCodeTipoReparto4DiasBajoPuerta(
+			String paramCodeTipoReparto4DiasBajoPuerta) {
+		this.paramCodeTipoReparto4DiasBajoPuerta = paramCodeTipoReparto4DiasBajoPuerta;
+	}
+	public String getParamCodeTipoRepartoNoDefinido() {
+		return paramCodeTipoRepartoNoDefinido;
+	}
+	public void setParamCodeTipoRepartoNoDefinido(
+			String paramCodeTipoRepartoNoDefinido) {
+		this.paramCodeTipoRepartoNoDefinido = paramCodeTipoRepartoNoDefinido;
+	}
+	public int getParamSerialTipoRepartoNoBajoPuerta() {
+		return paramSerialTipoRepartoNoBajoPuerta;
+	}
+	public void setParamSerialTipoRepartoNoBajoPuerta(
+			int paramSerialTipoRepartoNoBajoPuerta) {
+		this.paramSerialTipoRepartoNoBajoPuerta = paramSerialTipoRepartoNoBajoPuerta;
+	}
+	public int getParamSerialTipoRepartoBajoPuerta() {
+		return paramSerialTipoRepartoBajoPuerta;
+	}
+	public void setParamSerialTipoRepartoBajoPuerta(
+			int paramSerialTipoRepartoBajoPuerta) {
+		this.paramSerialTipoRepartoBajoPuerta = paramSerialTipoRepartoBajoPuerta;
+	}
+	public int getParamSerialTipoRepartoPorcentajeDeBajoPuerta() {
+		return paramSerialTipoRepartoPorcentajeDeBajoPuerta;
+	}
+	public void setParamSerialTipoRepartoPorcentajeDeBajoPuerta(
+			int paramSerialTipoRepartoPorcentajeDeBajoPuerta) {
+		this.paramSerialTipoRepartoPorcentajeDeBajoPuerta = paramSerialTipoRepartoPorcentajeDeBajoPuerta;
+	}
+	public int getParamSerialTipoRepartoVolanteSinCargo() {
+		return paramSerialTipoRepartoVolanteSinCargo;
+	}
+	public void setParamSerialTipoRepartoVolanteSinCargo(
+			int paramSerialTipoRepartoVolanteSinCargo) {
+		this.paramSerialTipoRepartoVolanteSinCargo = paramSerialTipoRepartoVolanteSinCargo;
+	}
+	public int getParamSerialTipoRepartoSinValor() {
+		return paramSerialTipoRepartoSinValor;
+	}
+	public void setParamSerialTipoRepartoSinValor(int paramSerialTipoRepartoSinValor) {
+		this.paramSerialTipoRepartoSinValor = paramSerialTipoRepartoSinValor;
+	}
+	public int getParamSerialTipoReparto3DiasBajoPuerta() {
+		return paramSerialTipoReparto3DiasBajoPuerta;
+	}
+	public void setParamSerialTipoReparto3DiasBajoPuerta(
+			int paramSerialTipoReparto3DiasBajoPuerta) {
+		this.paramSerialTipoReparto3DiasBajoPuerta = paramSerialTipoReparto3DiasBajoPuerta;
+	}
+	public int getParamSerialTipoReparto4DiasBajoPuerta() {
+		return paramSerialTipoReparto4DiasBajoPuerta;
+	}
+	public void setParamSerialTipoReparto4DiasBajoPuerta(
+			int paramSerialTipoReparto4DiasBajoPuerta) {
+		this.paramSerialTipoReparto4DiasBajoPuerta = paramSerialTipoReparto4DiasBajoPuerta;
+	}
+	public int getParamSerialTipoRepartoNoDefinido() {
+		return paramSerialTipoRepartoNoDefinido;
+	}
+	public void setParamSerialTipoRepartoNoDefinido(
+			int paramSerialTipoRepartoNoDefinido) {
+		this.paramSerialTipoRepartoNoDefinido = paramSerialTipoRepartoNoDefinido;
+	}
 	public int getParamCodeTipoProducto() {
 		return paramCodeTipoProducto;
 	}
@@ -1484,6 +2147,18 @@ public class Constantes {
 	}
 	public void setParamCodeTipoSede(int paramCodeTipoSede) {
 		this.paramCodeTipoSede = paramCodeTipoSede;
+	}
+	public String getParamCodeTipoSedeNoDefinido() {
+		return paramCodeTipoSedeNoDefinido;
+	}
+	public void setParamCodeTipoSedeNoDefinido(String paramCodeTipoSedeNoDefinido) {
+		this.paramCodeTipoSedeNoDefinido = paramCodeTipoSedeNoDefinido;
+	}
+	public int getParamSerialTipoSedeNoDefinido() {
+		return paramSerialTipoSedeNoDefinido;
+	}
+	public void setParamSerialTipoSedeNoDefinido(int paramSerialTipoSedeNoDefinido) {
+		this.paramSerialTipoSedeNoDefinido = paramSerialTipoSedeNoDefinido;
 	}
 	public int getParamCodeUbigeoPais() {
 		return paramCodeUbigeoPais;

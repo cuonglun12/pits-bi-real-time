@@ -15,8 +15,6 @@ public class TCargo {
 
     private Integer ordId;
 
-    private Integer prodId;
-
     private Integer zonId;
 
     private Integer zonIdNew;
@@ -25,9 +23,9 @@ public class TCargo {
 
     private Integer cargCodTipIng;
 
-    private Date cargCodFecDes;
+    private Date cargFecDes;
 
-    private Date cargCodFecRec;
+    private Date cargFecRec;
 
     private String cargDestinatario;
 
@@ -95,14 +93,6 @@ public class TCargo {
         this.ordId = ordId;
     }
 
-    public Integer getProdId() {
-        return prodId;
-    }
-
-    public void setProdId(Integer prodId) {
-        this.prodId = prodId;
-    }
-
     public Integer getZonId() {
         return zonId;
     }
@@ -135,20 +125,20 @@ public class TCargo {
         this.cargCodTipIng = cargCodTipIng;
     }
 
-    public Date getCargCodFecDes() {
-        return cargCodFecDes;
+    public Date getCargFecDes() {
+        return cargFecDes;
     }
 
-    public void setCargCodFecDes(Date cargCodFecDes) {
-        this.cargCodFecDes = cargCodFecDes;
+    public void setCargFecDes(Date cargFecDes) {
+        this.cargFecDes = cargFecDes;
     }
 
-    public Date getCargCodFecRec() {
-        return cargCodFecRec;
+    public Date getCargFecRec() {
+        return cargFecRec;
     }
 
-    public void setCargCodFecRec(Date cargCodFecRec) {
-        this.cargCodFecRec = cargCodFecRec;
+    public void setCargFecRec(Date cargFecRec) {
+        this.cargFecRec = cargFecRec;
     }
 
     public String getCargDestinatario() {
@@ -224,43 +214,41 @@ public class TCargo {
     }
     
     public void clear(){
-    	cargId = null;
-    	ordCodTipDoc = null;
-    	ordSerieDoc = null;
-    	ordNumDoc = null;
-    	cargCorr = null;
-    	ordId = null;
-    	prodId = null;
-    	zonId = null;
-    	zonIdNew = null;
-    	cargCodMov = null;
-    	cargCodTipIng = null;
-    	cargCodFecDes = null;
-    	cargCodFecRec = null;
-    	cargDestinatario = null;
-    	cargDir = null;
-    	cargRef = null;
-    	cargNewDir = null;
-    	cargNewRef = null;
-    	cargCodEst = null;
-    	fecNumCam = null;
-    	codIndCam = null;
-    	procId = null;
+        cargId = null;
+        ordCodTipDoc = null;
+        ordSerieDoc = null;
+        ordNumDoc = null;
+        cargCorr = null;
+        ordId = null;
+        zonId = null;
+        zonIdNew = null;
+        cargCodMov = null;
+        cargCodTipIng = null;
+        cargFecDes = null;
+        cargFecRec = null;
+        cargDestinatario = null;
+        cargDir = null;
+        cargRef = null;
+        cargNewDir = null;
+        cargNewRef = null;
+        cargCodEst = null;
+        fecNumCam = null;
+        codIndCam = null;
+        procId = null;
     }
 
 	@Override
 	public String toString() {
 		return "TCargo [cargId=" + cargId + ", ordCodTipDoc=" + ordCodTipDoc
 				+ ", ordSerieDoc=" + ordSerieDoc + ", ordNumDoc=" + ordNumDoc
-				+ ", cargCorr=" + cargCorr + ", ordId=" + ordId + ", prodId="
-				+ prodId + ", zonId=" + zonId + ", zonIdNew=" + zonIdNew
-				+ ", cargCodMov=" + cargCodMov + ", cargCodTipIng="
-				+ cargCodTipIng + ", cargCodFecDes=" + cargCodFecDes
-				+ ", cargCodFecRec=" + cargCodFecRec + ", cargDestinatario="
-				+ cargDestinatario + ", cargDir=" + cargDir + ", cargRef="
-				+ cargRef + ", cargNewDir=" + cargNewDir + ", cargNewRef="
-				+ cargNewRef + ", cargCodEst=" + cargCodEst + ", fecNumCam="
-				+ fecNumCam + ", codIndCam=" + codIndCam + ", procId=" + procId
-				+ "]";
+				+ ", cargCorr=" + cargCorr + ", ordId=" + ordId + ", zonId="
+				+ zonId + ", zonIdNew=" + zonIdNew + ", cargCodMov="
+				+ cargCodMov + ", cargCodTipIng=" + cargCodTipIng
+				+ ", cargFecDes=" + cargFecDes + ", cargFecRec=" + cargFecRec
+				+ ", cargDestinatario=" + cargDestinatario + ", cargDir="
+				+ cargDir + ", cargRef=" + cargRef + ", cargNewDir="
+				+ cargNewDir + ", cargNewRef=" + cargNewRef + ", cargCodEst="
+				+ cargCodEst + ", fecNumCam=" + fecNumCam + ", codIndCam="
+				+ codIndCam + ", procId=" + procId + "]";
 	}
 }

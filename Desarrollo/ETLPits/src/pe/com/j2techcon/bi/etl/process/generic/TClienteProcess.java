@@ -275,13 +275,12 @@ public class TClienteProcess {
 		int offset = 0;
 
 		while (true) {
-
+			
 			clienteExample.clear();
-
 			clienteExample.createCriteria().andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom));
 			clienteExample.createCriteria().andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil));
-
 			clienteExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
+			
 			List<Cliente> lstCliente = clienteManager.selectByExample(clienteExample);
 
 			if (lstCliente.size() > 0) {
@@ -292,17 +291,16 @@ public class TClienteProcess {
 				}
 				offset = offset + constantes.getSizePage();
 			} else {
-
-				lstCliente.clear();
+				tParametro.clear();
+				tParametroExample.clear();
 
 				cliente.clear();
 				clienteExample.clear();
 				
-				tParametro.clear();
-				tParametroExample.clear();
-
 				tCliente.clear();
 				tClienteExample.clear();
+				
+				lstParametro.clear();
 
 				offset = 0;
 				break;
@@ -363,7 +361,7 @@ public class TClienteProcess {
 
 	public void completeFieldCliente() {
 
-		// Tipo de cliente
+		//Tipo de cliente
 		if (constantes.getParamCodeTipoClienteJuridica().equals(cliente.getTipocliente())) {
 			tCliente.setCliCodTip(constantes.getParamSerialTipoClienteJuridica());
 		} else if (constantes.getParamCodeTipoClienteNatural().equals(cliente.getTipocliente())) {
@@ -374,10 +372,10 @@ public class TClienteProcess {
 			tCliente.setCliCodTip(constantes.getParamSerialTipoClienteNoDefinido());
 		}
 
-		// Categoria del cliente (valor por defecto)
+		//Categoria del cliente (valor por defecto)
 		tCliente.setCliCodCat(constantes.getParamSerialCategoriaClienteNoDefinido());
 
-		// Tipo de documento (campo RUC, Si longitud es 11=RUC, 8=DNI, Otro)
+		//Tipo de documento (si longitud es 11=RUC, 8=DNI, Otro)
 		if (cliente.getRuc() != null) {
 			if (cliente.getRuc().trim().length() == 11) {
 				tCliente.setCliCodTipDoc(constantes.getParamSerialTipoDocumentoRuc());
@@ -390,16 +388,16 @@ public class TClienteProcess {
 			tCliente.setCliCodTipDoc(constantes.getParamSerialTipoDocumentoNoDefinido());
 		}
 
-		// Numero de documento
+		//Numero de documento
 		tCliente.setCliNumTipDoc(cliente.getRuc());
 
-		// Razon Social (+ nombre, paterno, materno)
+		//Razon Social (+ nombre, paterno, materno)
 		tCliente.setCliDesRazSoc(cliente.getCliente());
 		tCliente.setCliDesNom(constantes.getValueStringDefault());
 		tCliente.setCliDesApePat(constantes.getValueStringDefault());
 		tCliente.setCliDesApeMat(constantes.getValueStringDefault());
 
-		// Tipo de facturacion
+		//Tipo de facturacion
 		if (constantes.getParamCodeTipoFacturacionFacturacion().equals(cliente.getTipoFacturacion())) {
 			tCliente.setCliCodTipFac(constantes.getParamSerialTipoFacturacionFacturacion());
 		} else {

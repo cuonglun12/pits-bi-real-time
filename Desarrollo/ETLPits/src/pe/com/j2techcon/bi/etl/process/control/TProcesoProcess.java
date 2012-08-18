@@ -36,13 +36,11 @@ import pe.com.j2techcon.bi.etl.process.generic.TCargoProcess;
 import pe.com.j2techcon.bi.etl.process.generic.TClienteProcess;
 import pe.com.j2techcon.bi.etl.process.generic.TCotizacionProcess;
 import pe.com.j2techcon.bi.etl.process.generic.TDespachoProcess;
-import pe.com.j2techcon.bi.etl.process.generic.TEmpleadoCategoriaProcess;
 import pe.com.j2techcon.bi.etl.process.generic.TEmpleadoProcess;
 import pe.com.j2techcon.bi.etl.process.generic.TOrdenProcess;
 import pe.com.j2techcon.bi.etl.process.generic.TProductoProcess;
 import pe.com.j2techcon.bi.etl.process.generic.TSedeProcess;
 import pe.com.j2techcon.bi.etl.process.generic.TServicioProcess;
-import pe.com.j2techcon.bi.etl.process.generic.TUbigeoProcess;
 import pe.com.j2techcon.bi.etl.process.generic.TZonaProcess;
 import pe.com.j2techcon.bi.etl.util.Constantes;
 import pe.com.j2techcon.bi.etl.util.Util;
@@ -356,18 +354,18 @@ public class TProcesoProcess {
 			updateCountRegProcess();
 			
 
-			insertDetProcess(constantes.getIdTableGenericTEmpleadoCategoria());
-			tProcesoDetalle = getLastDetProcess();
-			TEmpleadoCategoriaProcess tEmpleadoCategoriaProcess = new TEmpleadoCategoriaProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess, tProceso.getProcId());
-			tEmpleadoCategoriaProcess.startProcess();
-			tProcesoDetalle.setProcDetNumRegTot(tEmpleadoCategoriaProcess.getRecordTotal());
-			tProcesoDetalle.setProcDetNumRegPro(tEmpleadoCategoriaProcess.getRecordProcessed());
-			tProcesoDetalle.setProcDetNumRegRec(tEmpleadoCategoriaProcess.getRecordRejected());
-			tProcesoDetalle.setProcDetFecFin(Util.getCurrentDateTime());
-			tProcesoDetalle.setProcDetFecAct(Util.getCurrentDateTime());
-			tProcesoDetalle.setProcDetEst(Integer.toString(tEmpleadoCategoriaProcess.getResultProcess()));
-			updateDetProcess();
-			updateCountRegProcess();
+			//			insertDetProcess(constantes.getIdTableGenericTEmpleadoCategoria());
+			//			tProcesoDetalle = getLastDetProcess();
+			//			TEmpleadoCategoriaProcess tEmpleadoCategoriaProcess = new TEmpleadoCategoriaProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess, tProceso.getProcId());
+			//			tEmpleadoCategoriaProcess.startProcess();
+			//			tProcesoDetalle.setProcDetNumRegTot(tEmpleadoCategoriaProcess.getRecordTotal());
+			//			tProcesoDetalle.setProcDetNumRegPro(tEmpleadoCategoriaProcess.getRecordProcessed());
+			//			tProcesoDetalle.setProcDetNumRegRec(tEmpleadoCategoriaProcess.getRecordRejected());
+			//			tProcesoDetalle.setProcDetFecFin(Util.getCurrentDateTime());
+			//			tProcesoDetalle.setProcDetFecAct(Util.getCurrentDateTime());
+			//			tProcesoDetalle.setProcDetEst(Integer.toString(tEmpleadoCategoriaProcess.getResultProcess()));
+			//			updateDetProcess();
+			//			updateCountRegProcess();
 			
 			
 			insertDetProcess(constantes.getIdTableGenericTEmpleado());
@@ -440,18 +438,18 @@ public class TProcesoProcess {
 			updateCountRegProcess();
 			
 			
-			insertDetProcess(constantes.getIdTableGenericTUbigeo());
-			tProcesoDetalle = getLastDetProcess();
-			TUbigeoProcess tUbigeoProcess = new TUbigeoProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess, tProceso.getProcId());
-			tUbigeoProcess.startProcess();
-			tProcesoDetalle.setProcDetNumRegTot(tUbigeoProcess.getRecordTotal());
-			tProcesoDetalle.setProcDetNumRegPro(tUbigeoProcess.getRecordProcessed());
-			tProcesoDetalle.setProcDetNumRegRec(tUbigeoProcess.getRecordRejected());
-			tProcesoDetalle.setProcDetFecFin(Util.getCurrentDateTime());
-			tProcesoDetalle.setProcDetFecAct(Util.getCurrentDateTime());
-			tProcesoDetalle.setProcDetEst(Integer.toString(tUbigeoProcess.getResultProcess()));
-			updateDetProcess();
-			updateCountRegProcess();
+			//			insertDetProcess(constantes.getIdTableGenericTUbigeo());
+			//			tProcesoDetalle = getLastDetProcess();
+			//			TUbigeoProcess tUbigeoProcess = new TUbigeoProcess(factory, sizePage, dateTimeFrom, dateTimeUntil, typeProcess, tProceso.getProcId());
+			//			tUbigeoProcess.startProcess();
+			//			tProcesoDetalle.setProcDetNumRegTot(tUbigeoProcess.getRecordTotal());
+			//			tProcesoDetalle.setProcDetNumRegPro(tUbigeoProcess.getRecordProcessed());
+			//			tProcesoDetalle.setProcDetNumRegRec(tUbigeoProcess.getRecordRejected());
+			//			tProcesoDetalle.setProcDetFecFin(Util.getCurrentDateTime());
+			//			tProcesoDetalle.setProcDetFecAct(Util.getCurrentDateTime());
+			//			tProcesoDetalle.setProcDetEst(Integer.toString(tUbigeoProcess.getResultProcess()));
+			//			updateDetProcess();
+			//			updateCountRegProcess();
 						
 
 			insertDetProcess(constantes.getIdTableGenericTZona());
@@ -938,7 +936,4 @@ public class TProcesoProcess {
 	public void setResultProcess(int resultProcess) {
 		this.resultProcess = resultProcess;
 	}
-	
-	
-	
 }

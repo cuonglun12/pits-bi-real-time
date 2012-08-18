@@ -324,6 +324,466 @@ public class TCargoDespachoExample {
             return (Criteria) this;
         }
 
+        public Criteria andDespCodTipDocIsNull() {
+            addCriterion("desp_cod_tip_doc is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespCodTipDocIsNotNull() {
+            addCriterion("desp_cod_tip_doc is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespCodTipDocEqualTo(Integer value) {
+            addCriterion("desp_cod_tip_doc =", value, "despCodTipDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespCodTipDocNotEqualTo(Integer value) {
+            addCriterion("desp_cod_tip_doc <>", value, "despCodTipDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespCodTipDocGreaterThan(Integer value) {
+            addCriterion("desp_cod_tip_doc >", value, "despCodTipDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespCodTipDocGreaterThanOrEqualTo(Integer value) {
+            addCriterion("desp_cod_tip_doc >=", value, "despCodTipDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespCodTipDocLessThan(Integer value) {
+            addCriterion("desp_cod_tip_doc <", value, "despCodTipDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespCodTipDocLessThanOrEqualTo(Integer value) {
+            addCriterion("desp_cod_tip_doc <=", value, "despCodTipDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespCodTipDocIn(List<Integer> values) {
+            addCriterion("desp_cod_tip_doc in", values, "despCodTipDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespCodTipDocNotIn(List<Integer> values) {
+            addCriterion("desp_cod_tip_doc not in", values, "despCodTipDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespCodTipDocBetween(Integer value1, Integer value2) {
+            addCriterion("desp_cod_tip_doc between", value1, value2, "despCodTipDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespCodTipDocNotBetween(Integer value1, Integer value2) {
+            addCriterion("desp_cod_tip_doc not between", value1, value2, "despCodTipDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespSerieDocIsNull() {
+            addCriterion("desp_serie_doc is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespSerieDocIsNotNull() {
+            addCriterion("desp_serie_doc is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespSerieDocEqualTo(String value) {
+            addCriterion("desp_serie_doc =", value, "despSerieDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespSerieDocNotEqualTo(String value) {
+            addCriterion("desp_serie_doc <>", value, "despSerieDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespSerieDocGreaterThan(String value) {
+            addCriterion("desp_serie_doc >", value, "despSerieDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespSerieDocGreaterThanOrEqualTo(String value) {
+            addCriterion("desp_serie_doc >=", value, "despSerieDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespSerieDocLessThan(String value) {
+            addCriterion("desp_serie_doc <", value, "despSerieDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespSerieDocLessThanOrEqualTo(String value) {
+            addCriterion("desp_serie_doc <=", value, "despSerieDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespSerieDocLike(String value) {
+            addCriterion("desp_serie_doc like", value, "despSerieDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespSerieDocNotLike(String value) {
+            addCriterion("desp_serie_doc not like", value, "despSerieDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespSerieDocIn(List<String> values) {
+            addCriterion("desp_serie_doc in", values, "despSerieDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespSerieDocNotIn(List<String> values) {
+            addCriterion("desp_serie_doc not in", values, "despSerieDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespSerieDocBetween(String value1, String value2) {
+            addCriterion("desp_serie_doc between", value1, value2, "despSerieDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespSerieDocNotBetween(String value1, String value2) {
+            addCriterion("desp_serie_doc not between", value1, value2, "despSerieDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespNumeroDocIsNull() {
+            addCriterion("desp_numero_doc is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespNumeroDocIsNotNull() {
+            addCriterion("desp_numero_doc is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespNumeroDocEqualTo(String value) {
+            addCriterion("desp_numero_doc =", value, "despNumeroDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespNumeroDocNotEqualTo(String value) {
+            addCriterion("desp_numero_doc <>", value, "despNumeroDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespNumeroDocGreaterThan(String value) {
+            addCriterion("desp_numero_doc >", value, "despNumeroDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespNumeroDocGreaterThanOrEqualTo(String value) {
+            addCriterion("desp_numero_doc >=", value, "despNumeroDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespNumeroDocLessThan(String value) {
+            addCriterion("desp_numero_doc <", value, "despNumeroDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespNumeroDocLessThanOrEqualTo(String value) {
+            addCriterion("desp_numero_doc <=", value, "despNumeroDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespNumeroDocLike(String value) {
+            addCriterion("desp_numero_doc like", value, "despNumeroDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespNumeroDocNotLike(String value) {
+            addCriterion("desp_numero_doc not like", value, "despNumeroDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespNumeroDocIn(List<String> values) {
+            addCriterion("desp_numero_doc in", values, "despNumeroDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespNumeroDocNotIn(List<String> values) {
+            addCriterion("desp_numero_doc not in", values, "despNumeroDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespNumeroDocBetween(String value1, String value2) {
+            addCriterion("desp_numero_doc between", value1, value2, "despNumeroDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespNumeroDocNotBetween(String value1, String value2) {
+            addCriterion("desp_numero_doc not between", value1, value2, "despNumeroDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdCodTipDocIsNull() {
+            addCriterion("ord_cod_tip_doc is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdCodTipDocIsNotNull() {
+            addCriterion("ord_cod_tip_doc is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdCodTipDocEqualTo(Integer value) {
+            addCriterion("ord_cod_tip_doc =", value, "ordCodTipDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdCodTipDocNotEqualTo(Integer value) {
+            addCriterion("ord_cod_tip_doc <>", value, "ordCodTipDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdCodTipDocGreaterThan(Integer value) {
+            addCriterion("ord_cod_tip_doc >", value, "ordCodTipDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdCodTipDocGreaterThanOrEqualTo(Integer value) {
+            addCriterion("ord_cod_tip_doc >=", value, "ordCodTipDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdCodTipDocLessThan(Integer value) {
+            addCriterion("ord_cod_tip_doc <", value, "ordCodTipDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdCodTipDocLessThanOrEqualTo(Integer value) {
+            addCriterion("ord_cod_tip_doc <=", value, "ordCodTipDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdCodTipDocIn(List<Integer> values) {
+            addCriterion("ord_cod_tip_doc in", values, "ordCodTipDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdCodTipDocNotIn(List<Integer> values) {
+            addCriterion("ord_cod_tip_doc not in", values, "ordCodTipDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdCodTipDocBetween(Integer value1, Integer value2) {
+            addCriterion("ord_cod_tip_doc between", value1, value2, "ordCodTipDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdCodTipDocNotBetween(Integer value1, Integer value2) {
+            addCriterion("ord_cod_tip_doc not between", value1, value2, "ordCodTipDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdSerieDocIsNull() {
+            addCriterion("ord_serie_doc is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdSerieDocIsNotNull() {
+            addCriterion("ord_serie_doc is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdSerieDocEqualTo(String value) {
+            addCriterion("ord_serie_doc =", value, "ordSerieDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdSerieDocNotEqualTo(String value) {
+            addCriterion("ord_serie_doc <>", value, "ordSerieDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdSerieDocGreaterThan(String value) {
+            addCriterion("ord_serie_doc >", value, "ordSerieDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdSerieDocGreaterThanOrEqualTo(String value) {
+            addCriterion("ord_serie_doc >=", value, "ordSerieDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdSerieDocLessThan(String value) {
+            addCriterion("ord_serie_doc <", value, "ordSerieDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdSerieDocLessThanOrEqualTo(String value) {
+            addCriterion("ord_serie_doc <=", value, "ordSerieDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdSerieDocLike(String value) {
+            addCriterion("ord_serie_doc like", value, "ordSerieDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdSerieDocNotLike(String value) {
+            addCriterion("ord_serie_doc not like", value, "ordSerieDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdSerieDocIn(List<String> values) {
+            addCriterion("ord_serie_doc in", values, "ordSerieDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdSerieDocNotIn(List<String> values) {
+            addCriterion("ord_serie_doc not in", values, "ordSerieDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdSerieDocBetween(String value1, String value2) {
+            addCriterion("ord_serie_doc between", value1, value2, "ordSerieDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdSerieDocNotBetween(String value1, String value2) {
+            addCriterion("ord_serie_doc not between", value1, value2, "ordSerieDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdNumDocIsNull() {
+            addCriterion("ord_num_doc is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdNumDocIsNotNull() {
+            addCriterion("ord_num_doc is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdNumDocEqualTo(String value) {
+            addCriterion("ord_num_doc =", value, "ordNumDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdNumDocNotEqualTo(String value) {
+            addCriterion("ord_num_doc <>", value, "ordNumDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdNumDocGreaterThan(String value) {
+            addCriterion("ord_num_doc >", value, "ordNumDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdNumDocGreaterThanOrEqualTo(String value) {
+            addCriterion("ord_num_doc >=", value, "ordNumDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdNumDocLessThan(String value) {
+            addCriterion("ord_num_doc <", value, "ordNumDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdNumDocLessThanOrEqualTo(String value) {
+            addCriterion("ord_num_doc <=", value, "ordNumDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdNumDocLike(String value) {
+            addCriterion("ord_num_doc like", value, "ordNumDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdNumDocNotLike(String value) {
+            addCriterion("ord_num_doc not like", value, "ordNumDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdNumDocIn(List<String> values) {
+            addCriterion("ord_num_doc in", values, "ordNumDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdNumDocNotIn(List<String> values) {
+            addCriterion("ord_num_doc not in", values, "ordNumDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdNumDocBetween(String value1, String value2) {
+            addCriterion("ord_num_doc between", value1, value2, "ordNumDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdNumDocNotBetween(String value1, String value2) {
+            addCriterion("ord_num_doc not between", value1, value2, "ordNumDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andCargCorrIsNull() {
+            addCriterion("carg_corr is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCargCorrIsNotNull() {
+            addCriterion("carg_corr is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCargCorrEqualTo(Integer value) {
+            addCriterion("carg_corr =", value, "cargCorr");
+            return (Criteria) this;
+        }
+
+        public Criteria andCargCorrNotEqualTo(Integer value) {
+            addCriterion("carg_corr <>", value, "cargCorr");
+            return (Criteria) this;
+        }
+
+        public Criteria andCargCorrGreaterThan(Integer value) {
+            addCriterion("carg_corr >", value, "cargCorr");
+            return (Criteria) this;
+        }
+
+        public Criteria andCargCorrGreaterThanOrEqualTo(Integer value) {
+            addCriterion("carg_corr >=", value, "cargCorr");
+            return (Criteria) this;
+        }
+
+        public Criteria andCargCorrLessThan(Integer value) {
+            addCriterion("carg_corr <", value, "cargCorr");
+            return (Criteria) this;
+        }
+
+        public Criteria andCargCorrLessThanOrEqualTo(Integer value) {
+            addCriterion("carg_corr <=", value, "cargCorr");
+            return (Criteria) this;
+        }
+
+        public Criteria andCargCorrIn(List<Integer> values) {
+            addCriterion("carg_corr in", values, "cargCorr");
+            return (Criteria) this;
+        }
+
+        public Criteria andCargCorrNotIn(List<Integer> values) {
+            addCriterion("carg_corr not in", values, "cargCorr");
+            return (Criteria) this;
+        }
+
+        public Criteria andCargCorrBetween(Integer value1, Integer value2) {
+            addCriterion("carg_corr between", value1, value2, "cargCorr");
+            return (Criteria) this;
+        }
+
+        public Criteria andCargCorrNotBetween(Integer value1, Integer value2) {
+            addCriterion("carg_corr not between", value1, value2, "cargCorr");
+            return (Criteria) this;
+        }
+
         public Criteria andZonIdIsNull() {
             addCriterion("zon_id is null");
             return (Criteria) this;

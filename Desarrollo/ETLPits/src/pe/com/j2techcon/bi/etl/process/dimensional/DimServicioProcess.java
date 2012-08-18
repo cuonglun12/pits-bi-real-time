@@ -350,7 +350,7 @@ public class DimServicioProcess {
 	
 	public void completeFieldServicio(){
 		dimServicio.setServicioKey(tServicio.getProcId());
-		dimServicio.setServicioCod(tServicio.getSevCod());
+		dimServicio.setServicioCod(tServicio.getServCod());
 		
 		dimServicio.setServicioCodAmbito(tServicio.getServCodAmb());
 		if(tServicio.getServCodAmb() != constantes.getValueNumberDefault()){

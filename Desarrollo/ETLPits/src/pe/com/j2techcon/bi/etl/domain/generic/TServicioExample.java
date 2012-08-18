@@ -6,7 +6,7 @@ import java.util.List;
 public class TServicioExample {
 	
 	protected String paginationByClause;
-	
+
     protected String orderByClause;
 
     protected boolean distinct;
@@ -176,73 +176,73 @@ public class TServicioExample {
             return (Criteria) this;
         }
 
-        public Criteria andSevCodIsNull() {
-            addCriterion("sev_cod is null");
+        public Criteria andServCodIsNull() {
+            addCriterion("serv_cod is null");
             return (Criteria) this;
         }
 
-        public Criteria andSevCodIsNotNull() {
-            addCriterion("sev_cod is not null");
+        public Criteria andServCodIsNotNull() {
+            addCriterion("serv_cod is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSevCodEqualTo(String value) {
-            addCriterion("sev_cod =", value, "sevCod");
+        public Criteria andServCodEqualTo(String value) {
+            addCriterion("serv_cod =", value, "servCod");
             return (Criteria) this;
         }
 
-        public Criteria andSevCodNotEqualTo(String value) {
-            addCriterion("sev_cod <>", value, "sevCod");
+        public Criteria andServCodNotEqualTo(String value) {
+            addCriterion("serv_cod <>", value, "servCod");
             return (Criteria) this;
         }
 
-        public Criteria andSevCodGreaterThan(String value) {
-            addCriterion("sev_cod >", value, "sevCod");
+        public Criteria andServCodGreaterThan(String value) {
+            addCriterion("serv_cod >", value, "servCod");
             return (Criteria) this;
         }
 
-        public Criteria andSevCodGreaterThanOrEqualTo(String value) {
-            addCriterion("sev_cod >=", value, "sevCod");
+        public Criteria andServCodGreaterThanOrEqualTo(String value) {
+            addCriterion("serv_cod >=", value, "servCod");
             return (Criteria) this;
         }
 
-        public Criteria andSevCodLessThan(String value) {
-            addCriterion("sev_cod <", value, "sevCod");
+        public Criteria andServCodLessThan(String value) {
+            addCriterion("serv_cod <", value, "servCod");
             return (Criteria) this;
         }
 
-        public Criteria andSevCodLessThanOrEqualTo(String value) {
-            addCriterion("sev_cod <=", value, "sevCod");
+        public Criteria andServCodLessThanOrEqualTo(String value) {
+            addCriterion("serv_cod <=", value, "servCod");
             return (Criteria) this;
         }
 
-        public Criteria andSevCodLike(String value) {
-            addCriterion("sev_cod like", value, "sevCod");
+        public Criteria andServCodLike(String value) {
+            addCriterion("serv_cod like", value, "servCod");
             return (Criteria) this;
         }
 
-        public Criteria andSevCodNotLike(String value) {
-            addCriterion("sev_cod not like", value, "sevCod");
+        public Criteria andServCodNotLike(String value) {
+            addCriterion("serv_cod not like", value, "servCod");
             return (Criteria) this;
         }
 
-        public Criteria andSevCodIn(List<String> values) {
-            addCriterion("sev_cod in", values, "sevCod");
+        public Criteria andServCodIn(List<String> values) {
+            addCriterion("serv_cod in", values, "servCod");
             return (Criteria) this;
         }
 
-        public Criteria andSevCodNotIn(List<String> values) {
-            addCriterion("sev_cod not in", values, "sevCod");
+        public Criteria andServCodNotIn(List<String> values) {
+            addCriterion("serv_cod not in", values, "servCod");
             return (Criteria) this;
         }
 
-        public Criteria andSevCodBetween(String value1, String value2) {
-            addCriterion("sev_cod between", value1, value2, "sevCod");
+        public Criteria andServCodBetween(String value1, String value2) {
+            addCriterion("serv_cod between", value1, value2, "servCod");
             return (Criteria) this;
         }
 
-        public Criteria andSevCodNotBetween(String value1, String value2) {
-            addCriterion("sev_cod not between", value1, value2, "sevCod");
+        public Criteria andServCodNotBetween(String value1, String value2) {
+            addCriterion("serv_cod not between", value1, value2, "servCod");
             return (Criteria) this;
         }
 

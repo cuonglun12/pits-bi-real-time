@@ -403,7 +403,9 @@ public class TCotizacionProcess {
 
 			tCotizacionesExample.clear();
 
+			//Se trabajara solo con las cotizaciones del negocio de mensajeria local
 			tCotizacionesExample.createCriteria().andCodnegocioEqualTo(constantes.getParamCodeTipoNegocioMensajeria());
+			
 			tCotizacionesExample.createCriteria().andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom));
 			tCotizacionesExample.createCriteria().andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil));
 			
@@ -566,12 +568,26 @@ public class TCotizacionProcess {
 		tCotizacion.setCotiNumDoc(tCotizaciones.getConumero().toString());
 		
 		//Estado de la cotizacion
-		tParametroExample.clear();
-		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCotizacion());
-		tParametroExample.createCriteria().andParamCodEqualTo(tCotizaciones.getEstado().toString());
-		lstParametro = tParametroManager.selectByExample(tParametroExample);
-		if(lstParametro.size()>0){
-			tCotizacion.setCotiCodEst(lstParametro.get(0).getParamId());
+		if(constantes.getParamCodeEstadoCotizacionNormal().equals(tCotizaciones.getEstado().toString())){
+			tCotizacion.setCotiCodEst(constantes.getParamSerialEstadoCotizacionNormal());
+		}
+		else if(constantes.getParamCodeEstadoCotizacionPlana().equals(tCotizaciones.getEstado().toString())){
+			tCotizacion.setCotiCodEst(constantes.getParamSerialEstadoCotizacionPlana());
+		}
+		else if(constantes.getParamCodeEstadoCotizacionValijas().equals(tCotizaciones.getEstado().toString())){
+			tCotizacion.setCotiCodEst(constantes.getParamSerialEstadoCotizacionValijas());
+		}
+		else if(constantes.getParamCodeEstadoCotizacionUbigeos().equals(tCotizaciones.getEstado().toString())){
+			tCotizacion.setCotiCodEst(constantes.getParamSerialEstadoCotizacionUbigeos());
+		}
+		else if(constantes.getParamCodeEstadoCotizacionRangos().equals(tCotizaciones.getEstado().toString())){
+			tCotizacion.setCotiCodEst(constantes.getParamSerialEstadoCotizacionRangos());
+		}
+		else if(constantes.getParamCodeEstadoCotizacionGiroRecojo().equals(tCotizaciones.getEstado().toString())){
+			tCotizacion.setCotiCodEst(constantes.getParamSerialEstadoCotizacionGiroRecojo());
+		}
+		else{
+			tCotizacion.setCotiCodEst(constantes.getParamSerialEstadoCotizacionNoDefinido());
 		}
 		
 		//Fechas

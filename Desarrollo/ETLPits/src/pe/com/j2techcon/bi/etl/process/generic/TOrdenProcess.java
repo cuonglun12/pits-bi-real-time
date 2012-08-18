@@ -17,6 +17,8 @@ import pe.com.j2techcon.bi.etl.domain.generic.TParametro;
 import pe.com.j2techcon.bi.etl.domain.generic.TParametroExample;
 import pe.com.j2techcon.bi.etl.domain.generic.TProducto;
 import pe.com.j2techcon.bi.etl.domain.generic.TProductoExample;
+import pe.com.j2techcon.bi.etl.domain.generic.TServicio;
+import pe.com.j2techcon.bi.etl.domain.generic.TServicioExample;
 import pe.com.j2techcon.bi.etl.domain.origen.Ordenes;
 import pe.com.j2techcon.bi.etl.domain.origen.OrdenesExample;
 import pe.com.j2techcon.bi.etl.logic.generic.TAreaClienteManager;
@@ -25,6 +27,7 @@ import pe.com.j2techcon.bi.etl.logic.generic.TEmpleadoCategoriaManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TOrdenManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TParametroManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TProductoManager;
+import pe.com.j2techcon.bi.etl.logic.generic.TServicioManager;
 import pe.com.j2techcon.bi.etl.logic.origen.OrdenesManager;
 import pe.com.j2techcon.bi.etl.util.Constantes;
 import pe.com.j2techcon.bi.etl.util.Util;
@@ -68,6 +71,9 @@ public class TOrdenProcess {
 	private TOrden tOrden;
 	private TOrdenExample tOrdenExample;
 	
+	private TServicio tServicio;
+	private TServicioExample tServicioExample;
+	
 	private TParametroManager tParametroManager;
 	private TEmpleadoCategoriaManager tEmpleadoCategoriaManager;
 	private TAreaClienteManager tAreaClienteManager;
@@ -75,16 +81,19 @@ public class TOrdenProcess {
 	private OrdenesManager ordenesManager;
 	private TOrdenManager tOrdenManager;
 	private TCotizacionManager tCotizacionManager;
+	private TServicioManager tServicioManager;
 	
 	private List<TParametro> lstParametro;
 	private List<TAreaCliente> lstAreaCliente;
 	private List<TProducto> lstProducto;
 	private List<TEmpleadoCategoria> lstEmpleadoCategoria;
 	private List<TCotizacion> lstCotizacion;
+	private List<TServicio> lstServicio;
+	
 	private List<String> lstLista;
 	
 	private Constantes constantes;
-
+	
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -302,6 +311,22 @@ public class TOrdenProcess {
 		this.tOrdenExample = tOrdenExample;
 	}
 
+	public TServicio gettServicio() {
+		return tServicio;
+	}
+
+	public void settServicio(TServicio tServicio) {
+		this.tServicio = tServicio;
+	}
+
+	public TServicioExample gettServicioExample() {
+		return tServicioExample;
+	}
+
+	public void settServicioExample(TServicioExample tServicioExample) {
+		this.tServicioExample = tServicioExample;
+	}
+
 	public TParametroManager gettParametroManager() {
 		return tParametroManager;
 	}
@@ -359,6 +384,14 @@ public class TOrdenProcess {
 		this.tCotizacionManager = tCotizacionManager;
 	}
 
+	public TServicioManager gettServicioManager() {
+		return tServicioManager;
+	}
+
+	public void settServicioManager(TServicioManager tServicioManager) {
+		this.tServicioManager = tServicioManager;
+	}
+
 	public List<TParametro> getLstParametro() {
 		return lstParametro;
 	}
@@ -398,6 +431,14 @@ public class TOrdenProcess {
 
 	public void setLstCotizacion(List<TCotizacion> lstCotizacion) {
 		this.lstCotizacion = lstCotizacion;
+	}
+
+	public List<TServicio> getLstServicio() {
+		return lstServicio;
+	}
+
+	public void setLstServicio(List<TServicio> lstServicio) {
+		this.lstServicio = lstServicio;
 	}
 
 	public List<String> getLstLista() {
@@ -443,6 +484,8 @@ public class TOrdenProcess {
 		ordenesManager = factory.getBean("ordenesManager", OrdenesManager.class);
 		tOrdenManager = factory.getBean("tOrdenManager", TOrdenManager.class);
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
+		tCotizacionManager = factory.getBean("tCotizacionManager", TCotizacionManager.class);
+		tServicioManager = factory.getBean("tServicioManager", TServicioManager.class);
 		
 		constantes = factory.getBean("constantes", Constantes.class);
 		
@@ -451,11 +494,10 @@ public class TOrdenProcess {
 		while (true) {
 
 			ordenesExample.clear();
-
+			//Se trabajara solo con las ordenes del negocio de mensajeria local
 			ordenesExample.createCriteria().andCodnegocioEqualTo(constantes.getParamCodeTipoNegocioMensajeria());
 			ordenesExample.createCriteria().andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom));
 			ordenesExample.createCriteria().andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil));
-			
 			ordenesExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
 			
 			List<Ordenes> lstOrden = ordenesManager.selectByExample(ordenesExample);
@@ -486,11 +528,19 @@ public class TOrdenProcess {
 
 				tOrden.clear();
 				tOrdenExample.clear();
+				
+				tCotizacion.clear();
+				tCotizacionExample.clear();
+				
+				tServicio.clear();
+				tServicioExample.clear();
 
 				lstParametro.clear();
 				lstAreaCliente.clear();
 				lstProducto.clear();
 				lstEmpleadoCategoria.clear();
+				lstServicio.clear();
+				lstCotizacion.clear();
 				lstLista.clear();
 
 				offset = 0;
@@ -514,194 +564,205 @@ public class TOrdenProcess {
 		
 		completeFieldOrden();
 		
-		if(typeProcess.equals(constantes.getTypeProcessSimple())){
-			if(tOrden.getCodIndCam().equals(constantes.getStateRecordNew())){
-				if(insertRecordGenericOrden()> constantes.getResultTransactionNoResult()){
-					stateRecordOrigen = constantes.getStateRecordProcessed();
-					recordProcessed = recordProcessed + 1; 
-				} else{
-					stateRecordOrigen = constantes.getStateRecordInconsistent();
-					recordRejected = recordRejected + 1;
+		//Verificamos la existencia de la cotizacion de la orden correspondiente
+		if(tOrden.getCotiId() != constantes.getValueNumberCero()){
+			if(typeProcess.equals(constantes.getTypeProcessSimple())){
+				if(tOrden.getCodIndCam().equals(constantes.getStateRecordNew())){
+					if(insertRecordGenericOrden()> constantes.getResultTransactionNoResult()){
+						stateRecordOrigen = constantes.getStateRecordProcessed();
+						recordProcessed = recordProcessed + 1; 
+					} else{
+						stateRecordOrigen = constantes.getStateRecordInconsistent();
+						recordRejected = recordRejected + 1;
+					}
+				}else{
+					if(updateRecordGenericOrden() > constantes.getResultTransactionNoResult()){
+						stateRecordOrigen = constantes.getStateRecordProcessed();
+						recordProcessed = recordProcessed + 1; 
+					} else{
+						stateRecordOrigen = constantes.getStateRecordInconsistent();
+						recordRejected = recordRejected + 1;
+					}
 				}
 			}else{
 				if(updateRecordGenericOrden() > constantes.getResultTransactionNoResult()){
 					stateRecordOrigen = constantes.getStateRecordProcessed();
 					recordProcessed = recordProcessed + 1; 
-				} else{
-					stateRecordOrigen = constantes.getStateRecordInconsistent();
-					recordRejected = recordRejected + 1;
-				}
-			}
-		}else{
-			if(updateRecordGenericOrden() > constantes.getResultTransactionNoResult()){
-				stateRecordOrigen = constantes.getStateRecordProcessed();
-				recordProcessed = recordProcessed + 1; 
-			}else{
-				if(insertRecordGenericOrden() > constantes.getResultTransactionNoResult()){
-					stateRecordOrigen = constantes.getStateRecordProcessed();
-					recordProcessed = recordProcessed + 1;
 				}else{
-					stateRecordOrigen = constantes.getStateRecordInconsistent();
-					recordRejected = recordRejected + 1;
+					if(insertRecordGenericOrden() > constantes.getResultTransactionNoResult()){
+						stateRecordOrigen = constantes.getStateRecordProcessed();
+						recordProcessed = recordProcessed + 1;
+					}else{
+						stateRecordOrigen = constantes.getStateRecordInconsistent();
+						recordRejected = recordRejected + 1;
+					}
 				}
 			}
-		}
-		
-		updateRecordOrigenOrden(stateRecordOrigen);
-		
+			
+			updateRecordOrigenOrden(stateRecordOrigen);
+		}else{
+			stateRecordOrigen = constantes.getStateRecordInconsistent();
+			recordRejected = recordRejected + 1;
+			updateRecordOrigenOrden(stateRecordOrigen);
+		}		
 	}
 
 	public void completeFieldOrden() {
 
 		//Id de la cotizacion
-		tCotizacionExample.clear();
-		tCotizacionExample.createCriteria().andCotiCodTipDocEqualTo(constantes.getParamSerialTipoDocumentoTrabajoNoDefinido());
-		tCotizacionExample.createCriteria().andCotiSerieDocEqualTo(ordenes.getCoserie());
-		tCotizacionExample.createCriteria().andCotiNumDocEqualTo(Integer.toString(ordenes.getConumero()));
-		lstCotizacion = tCotizacionManager.selectByExample(tCotizacionExample);
-		if(lstCotizacion.size()>0){
-			tOrden.setCotiId(lstCotizacion.get(0).getCotiId());
-		}
+		tOrden.setCotiId(getCotiId(ordenes.getCoserie(), Integer.toString(ordenes.getConumero())));
 		
-		//Codigo del area del cliente
-		lstLista.clear();
-		lstLista.add(ordenes.getCodareacliente());
-		lstLista.add(constantes.getValueStringDefault());
-		
-		tAreaClienteExample.clear();
-		tAreaClienteExample.createCriteria().andCliCodEqualTo(ordenes.getCodcliente());
-		tAreaClienteExample.createCriteria().andAreCliCodIn(lstLista);
-		lstAreaCliente = tAreaClienteManager.selectByExample(tAreaClienteExample);
-		if(lstAreaCliente.size()>0){
-			if(lstAreaCliente.size()>1){
-				if(!constantes.getValueStringDefault().equals(lstAreaCliente.get(0).getAreCliCod())){
-					tOrden.setCodAreCli(lstAreaCliente.get(0).getAreCliId());
-				}else{
-					tOrden.setCodAreCli(lstAreaCliente.get(1).getAreCliId());
-				}
-			}else{
-				tOrden.setCodAreCli(lstAreaCliente.get(0).getAreCliId());
-			}
-		}
-		
-		//Codido de la categoria del empleado: Por defecto se ingresa el valor 0
-		tOrden.setEmpCatId(constantes.getValueNumberCero());
-		
-		//Tipo de reparto
-		tParametroExample.clear();
-		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeTipoReparto());
-		tParametroExample.createCriteria().andParamCodEqualTo(ordenes.getCodtiporeparto());
-		lstParametro = tParametroManager.selectByExample(tParametroExample);
-		if(lstParametro.size()>0){
-			tOrden.setOrdCodTipRep(lstParametro.get(0).getParamId());
-		}
-		
-		//Tipo de servicio
-		tParametroExample.clear();
-		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeTipoServicio());
-		tParametroExample.createCriteria().andParamCodEqualTo(ordenes.getCodservicio());
-		lstParametro = tParametroManager.selectByExample(tParametroExample);
-		if(lstParametro.size()>0){
-			tOrden.setServId(lstParametro.get(0).getParamId());
-		}
-		
-		//Codigo del producto
-		tProductoExample.clear();
-		tProductoExample.createCriteria().andProdCodEqualTo(ordenes.getCodproducto());
-		lstProducto = tProductoManager.selectByExample(tProductoExample);
-		if(lstProducto.size()>0){
-			tOrden.setProdId(lstProducto.get(0).getProdId());
-		}
-		
-		//Tipo de pago
-		if(constantes.getParamCodeTipoPagoCredito().equals(ordenes.getTipoPagoOrden())){
-			tOrden.setOrdCodTipPag(constantes.getParamSerialTipoPagoCredito());
-		}
-		else if (constantes.getParamCodeTipoPagoContado().equals(ordenes.getTipoPagoOrden())){
-			tOrden.setOrdCodTipPag(constantes.getParamSerialTipoPagoContado());
-		}
-		else if (constantes.getParamCodeTipoPagoCuotas().equals(ordenes.getTipoPagoOrden())){
-			tOrden.setOrdCodTipPag(constantes.getParamSerialTipoPagoCuotas());
-		}
-		else if (constantes.getParamCodeTipoPagoPrepaid().equals(ordenes.getTipoPagoOrden())){
-			tOrden.setOrdCodTipPag(constantes.getParamSerialTipoPagoPrepaid());
-		}
-		else if (constantes.getParamCodeTipoPagoCollect().equals(ordenes.getTipoPagoOrden())){
-			tOrden.setOrdCodTipPag(constantes.getParamSerialTipoPagoCollect());
-		}
-		else {
-			tOrden.setOrdCodTipPag(constantes.getParamSerialTipoPagoNoDefinido());
-		}
-		
-		//Tipo de moneda
-		if(constantes.getParamCodeTipoMonedaNuevoSol().equals(ordenes.getMoneda())){
-			tOrden.setOrdCodTipMon(constantes.getParamSerialTipoMonedaNuevoSol());
-		}
-		else if(constantes.getParamCodeTipoMonedaDolar().equals(ordenes.getMoneda())){
-			tOrden.setOrdCodTipMon(constantes.getParamSerialTipoMonedaDolar());
-		}
-		else{
-			tOrden.setOrdCodTipMon(constantes.getParamSerialTipoMonedaNoDefinido());
-		}
-		
-		//Tipo de documento de trabajo: Por defecto se colocara no definido
-		tOrden.setOrdCodTipDoc(constantes.getParamSerialTipoDocumentoTrabajoNoDefinido());
-		
-		//Cantidad de cargos
-		if(ordenes.getCntDigitado() == 0){
-			tOrden.setOrdCntCargos(ordenes.getCntAdmision().intValue());
-		}else{
-			tOrden.setOrdCntCargos(ordenes.getCntDigitado().intValue());
-		}
-		
-		//Indicador de facturacion
-		if(constantes.getParamCodeEstadoFacturadoSi().equals(ordenes.getFacturado())){
-			tOrden.setOrdIndFac(constantes.getParamSerialEstadoFacturadoSi());
-		}else{
-			tOrden.setOrdIndFac(constantes.getParamSerialEstadoFacturadoNo());
-		}
-		
-		//Fechas
-		tOrden.setOrdFecIni(ordenes.getFechainicio());
-		tOrden.setOrdFecVen(ordenes.getFechavencimiento());
-		//tOrden.setOrdFecCie();
-		tOrden.setOrdFecDev(ordenes.getFechadevolucion());
-		//tOrden.setOrdFecLiq();
-		//tOrden.setOrdFecFac();
-		
-		//Montos
-		tOrden.setOrdImporte(ordenes.getImporte());
-		tOrden.setOrdDescuento(ordenes.getDescuento());
-		tOrden.setOrdVenta(ordenes.getVenta());
-		tOrden.setOrdIgv(ordenes.getIgv());
-		tOrden.setOrdTotal(ordenes.getTotal());
-		
-		//Estado de la orden
-		if(constantes.getParamCodeEstadoOrdenGenerado().equals(ordenes.getEstadoorden())){
-			tOrden.setOrdCodEst(constantes.getParamSerialEstadoOrdenGenerado());
-		}
-		else if(constantes.getParamCodeEstadoOrdenPendiente().equals(ordenes.getEstadoorden())){
-			tOrden.setOrdCodEst(constantes.getParamSerialEstadoOrdenPendiente());
-		}
-		else if(constantes.getParamCodeEstadoOrdenAnulado().equals(ordenes.getEstadoorden())){
-			tOrden.setOrdCodEst(constantes.getParamSerialEstadoOrdenAnulado());
-		}
-		else if(constantes.getParamCodeEstadoOrdenCerrado().equals(ordenes.getEstadoorden())){
-			tOrden.setOrdCodEst(constantes.getParamSerialEstadoOrdenCerrado());
-		}
-		else{
-			tOrden.setOrdCodEst(constantes.getParamSerialEstadoOrdenNoDefinido());
-		}
-		
-		//Campos de control
-		tOrden.setFecNumCam(Util.getCurrentDateTimeAsLong());
-		if(constantes.getStateRecordNew().equals(ordenes.getBiCodIndCam())){
-			tOrden.setCodIndCam(constantes.getStateRecordNew());
-		}else{
-			tOrden.setCodIndCam(constantes.getStateRecordProcessed());
-		}
-		tOrden.setProcId(process);
+		//Verificamos la existencia de la cotizacion de la orden correspondiente
+		if(tOrden.getCotiId() != constantes.getValueNumberCero()){
 
+			//Codigo del area del cliente
+			lstLista.clear();
+			lstLista.add(ordenes.getCodareacliente());
+			lstLista.add(constantes.getValueStringDefault());
+			
+			tAreaClienteExample.clear();
+			tAreaClienteExample.createCriteria().andCliCodEqualTo(ordenes.getCodcliente());
+			tAreaClienteExample.createCriteria().andAreCliCodIn(lstLista);
+			lstAreaCliente = tAreaClienteManager.selectByExample(tAreaClienteExample);
+			if(lstAreaCliente.size()>0){
+				if(lstAreaCliente.size()>1){
+					if(!constantes.getValueStringDefault().equals(lstAreaCliente.get(0).getAreCliCod())){
+						tOrden.setCodAreCli(lstAreaCliente.get(0).getAreCliId());
+					}else{
+						tOrden.setCodAreCli(lstAreaCliente.get(1).getAreCliId());
+					}
+				}else{
+					tOrden.setCodAreCli(lstAreaCliente.get(0).getAreCliId());
+				}
+			}
+			
+			//Codido de la categoria del empleado: Por defecto se ingresa el valor 0
+			tOrden.setEmpCatId(constantes.getValueNumberCero());
+			
+			//Tipo de reparto			
+			if(constantes.getParamCodeTipoRepartoNoBajoPuerta().equals(ordenes.getCodtiporeparto())){
+				tOrden.setOrdCodTipRep(constantes.getParamSerialTipoRepartoNoBajoPuerta());
+			}else if(constantes.getParamCodeTipoRepartoBajoPuerta().equals(ordenes.getCodtiporeparto())){
+				tOrden.setOrdCodTipRep(constantes.getParamSerialTipoRepartoBajoPuerta());
+			}else if(constantes.getParamCodeTipoRepartoPorcentajeDeBajoPuerta().equals(ordenes.getCodtiporeparto())){
+				tOrden.setOrdCodTipRep(constantes.getParamSerialTipoRepartoPorcentajeDeBajoPuerta());
+			}else if(constantes.getParamCodeTipoRepartoVolanteSinCargo().equals(ordenes.getCodtiporeparto())){
+				tOrden.setOrdCodTipRep(constantes.getParamSerialTipoRepartoVolanteSinCargo());
+			}else if(constantes.getParamCodeTipoRepartoSinValor().equals(ordenes.getCodtiporeparto())){
+				tOrden.setOrdCodTipRep(constantes.getParamSerialTipoRepartoSinValor());
+			}else if(constantes.getParamCodeTipoReparto3DiasBajoPuerta().equals(ordenes.getCodtiporeparto())){
+				tOrden.setOrdCodTipRep(constantes.getParamSerialTipoReparto3DiasBajoPuerta());
+			}else if(constantes.getParamCodeTipoReparto4DiasBajoPuerta().equals(ordenes.getCodtiporeparto())){
+				tOrden.setOrdCodTipRep(constantes.getParamSerialTipoReparto4DiasBajoPuerta());
+			}else{
+				tOrden.setOrdCodTipRep(constantes.getParamSerialTipoRepartoNoDefinido());
+			}
+			
+			//Tipo de servicio
+			tServicioExample.clear();
+			tServicioExample.createCriteria().andServCodEqualTo(ordenes.getCodservicio());
+			lstServicio = tServicioManager.selectByExample(tServicioExample);
+			if(lstServicio.size()>0){
+				tOrden.setServId(lstServicio.get(0).getServId());
+			}
+			
+			//Codigo del producto
+			tProductoExample.clear();
+			tProductoExample.createCriteria().andProdCodEqualTo(ordenes.getCodproducto());
+			lstProducto = tProductoManager.selectByExample(tProductoExample);
+			if(lstProducto.size()>0){
+				tOrden.setProdId(lstProducto.get(0).getProdId());
+			}
+			
+			//Tipo de pago
+			if(constantes.getParamCodeTipoPagoCredito().equals(ordenes.getTipoPagoOrden())){
+				tOrden.setOrdCodTipPag(constantes.getParamSerialTipoPagoCredito());
+			}
+			else if (constantes.getParamCodeTipoPagoContado().equals(ordenes.getTipoPagoOrden())){
+				tOrden.setOrdCodTipPag(constantes.getParamSerialTipoPagoContado());
+			}
+			else if (constantes.getParamCodeTipoPagoCuotas().equals(ordenes.getTipoPagoOrden())){
+				tOrden.setOrdCodTipPag(constantes.getParamSerialTipoPagoCuotas());
+			}
+			else if (constantes.getParamCodeTipoPagoPrepaid().equals(ordenes.getTipoPagoOrden())){
+				tOrden.setOrdCodTipPag(constantes.getParamSerialTipoPagoPrepaid());
+			}
+			else if (constantes.getParamCodeTipoPagoCollect().equals(ordenes.getTipoPagoOrden())){
+				tOrden.setOrdCodTipPag(constantes.getParamSerialTipoPagoCollect());
+			}
+			else {
+				tOrden.setOrdCodTipPag(constantes.getParamSerialTipoPagoNoDefinido());
+			}
+			
+			//Tipo de moneda
+			if(constantes.getParamCodeTipoMonedaNuevoSol().equals(ordenes.getMoneda())){
+				tOrden.setOrdCodTipMon(constantes.getParamSerialTipoMonedaNuevoSol());
+			}
+			else if(constantes.getParamCodeTipoMonedaDolar().equals(ordenes.getMoneda())){
+				tOrden.setOrdCodTipMon(constantes.getParamSerialTipoMonedaDolar());
+			}
+			else{
+				tOrden.setOrdCodTipMon(constantes.getParamSerialTipoMonedaNoDefinido());
+			}
+			
+			//Tipo de documento de trabajo: Por defecto se colocara no definido
+			tOrden.setOrdCodTipDoc(constantes.getParamSerialTipoDocumentoTrabajoNoDefinido());
+			
+			//Cantidad de cargos
+			if(ordenes.getCntDigitado() == 0){
+				tOrden.setOrdCntCargos(ordenes.getCntAdmision().intValue());
+			}else{
+				tOrden.setOrdCntCargos(ordenes.getCntDigitado().intValue());
+			}
+			
+			//Indicador de facturacion
+			if(constantes.getParamCodeEstadoFacturadoSi().equals(ordenes.getFacturado())){
+				tOrden.setOrdIndFac(constantes.getParamSerialEstadoFacturadoSi());
+			}else{
+				tOrden.setOrdIndFac(constantes.getParamSerialEstadoFacturadoNo());
+			}
+			
+			//Fechas
+			tOrden.setOrdFecIni(ordenes.getFechainicio());
+			tOrden.setOrdFecVen(ordenes.getFechavencimiento());
+			//tOrden.setOrdFecCie();
+			tOrden.setOrdFecDev(ordenes.getFechadevolucion());
+			//tOrden.setOrdFecLiq();
+			//tOrden.setOrdFecFac();
+			
+			//Montos
+			tOrden.setOrdImporte(ordenes.getImporte());
+			tOrden.setOrdDescuento(ordenes.getDescuento());
+			tOrden.setOrdVenta(ordenes.getVenta());
+			tOrden.setOrdIgv(ordenes.getIgv());
+			tOrden.setOrdTotal(ordenes.getTotal());
+			
+			//Estado de la orden
+			if(constantes.getParamCodeEstadoOrdenGenerado().equals(ordenes.getEstadoorden())){
+				tOrden.setOrdCodEst(constantes.getParamSerialEstadoOrdenGenerado());
+			}
+			else if(constantes.getParamCodeEstadoOrdenPendiente().equals(ordenes.getEstadoorden())){
+				tOrden.setOrdCodEst(constantes.getParamSerialEstadoOrdenPendiente());
+			}
+			else if(constantes.getParamCodeEstadoOrdenAnulado().equals(ordenes.getEstadoorden())){
+				tOrden.setOrdCodEst(constantes.getParamSerialEstadoOrdenAnulado());
+			}
+			else if(constantes.getParamCodeEstadoOrdenCerrado().equals(ordenes.getEstadoorden())){
+				tOrden.setOrdCodEst(constantes.getParamSerialEstadoOrdenCerrado());
+			}
+			else{
+				tOrden.setOrdCodEst(constantes.getParamSerialEstadoOrdenNoDefinido());
+			}
+			
+			//Campos de control
+			tOrden.setFecNumCam(Util.getCurrentDateTimeAsLong());
+			if(constantes.getStateRecordNew().equals(ordenes.getBiCodIndCam())){
+				tOrden.setCodIndCam(constantes.getStateRecordNew());
+			}else{
+				tOrden.setCodIndCam(constantes.getStateRecordProcessed());
+			}
+			tOrden.setProcId(process);
+		}
 	}
 
 	public int insertRecordGenericOrden() {
@@ -752,5 +813,22 @@ public class TOrdenProcess {
 
 		}
 	}
-
+	
+	public int getCotiId(String serie, String numero){
+		int cotiId = constantes.getValueNumberCero();
+		if(serie.equals(tCotizacion.getCotiSerieDoc()) && numero.equals(tCotizacion.getCotiNumDoc())){
+			cotiId = tCotizacion.getCotiId();
+		}else{
+			tCotizacionExample.clear();
+			tCotizacionExample.createCriteria().andCotiCodTipDocEqualTo(constantes.getParamSerialTipoDocumentoTrabajoNoDefinido());
+			tCotizacionExample.createCriteria().andCotiSerieDocEqualTo(ordenes.getCoserie());
+			tCotizacionExample.createCriteria().andCotiNumDocEqualTo(Integer.toString(ordenes.getConumero()));
+			lstCotizacion = tCotizacionManager.selectByExample(tCotizacionExample);
+			if(lstCotizacion.size()>0){
+				tCotizacion = lstCotizacion.get(0);
+				cotiId = tCotizacion.getCotiId();
+			}
+		}		
+		return cotiId;
+	}
 }

@@ -9,7 +9,7 @@ import java.util.List;
 public class TDespachoExample {
 	
 	protected String paginationByClause;
-	
+
     protected String orderByClause;
 
     protected boolean distinct;
@@ -1062,126 +1062,6 @@ public class TDespachoExample {
 
         public Criteria andDespFecRetReaNotBetween(Date value1, Date value2) {
             addCriterionForJDBCDate("desp_fec_ret_rea not between", value1, value2, "despFecRetRea");
-            return (Criteria) this;
-        }
-
-        public Criteria andDespFecVerIsNull() {
-            addCriterion("desp_fec_ver is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andDespFecVerIsNotNull() {
-            addCriterion("desp_fec_ver is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andDespFecVerEqualTo(Date value) {
-            addCriterionForJDBCDate("desp_fec_ver =", value, "despFecVer");
-            return (Criteria) this;
-        }
-
-        public Criteria andDespFecVerNotEqualTo(Date value) {
-            addCriterionForJDBCDate("desp_fec_ver <>", value, "despFecVer");
-            return (Criteria) this;
-        }
-
-        public Criteria andDespFecVerGreaterThan(Date value) {
-            addCriterionForJDBCDate("desp_fec_ver >", value, "despFecVer");
-            return (Criteria) this;
-        }
-
-        public Criteria andDespFecVerGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("desp_fec_ver >=", value, "despFecVer");
-            return (Criteria) this;
-        }
-
-        public Criteria andDespFecVerLessThan(Date value) {
-            addCriterionForJDBCDate("desp_fec_ver <", value, "despFecVer");
-            return (Criteria) this;
-        }
-
-        public Criteria andDespFecVerLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("desp_fec_ver <=", value, "despFecVer");
-            return (Criteria) this;
-        }
-
-        public Criteria andDespFecVerIn(List<Date> values) {
-            addCriterionForJDBCDate("desp_fec_ver in", values, "despFecVer");
-            return (Criteria) this;
-        }
-
-        public Criteria andDespFecVerNotIn(List<Date> values) {
-            addCriterionForJDBCDate("desp_fec_ver not in", values, "despFecVer");
-            return (Criteria) this;
-        }
-
-        public Criteria andDespFecVerBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("desp_fec_ver between", value1, value2, "despFecVer");
-            return (Criteria) this;
-        }
-
-        public Criteria andDespFecVerNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("desp_fec_ver not between", value1, value2, "despFecVer");
-            return (Criteria) this;
-        }
-
-        public Criteria andDespCanPasIsNull() {
-            addCriterion("desp_can_pas is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andDespCanPasIsNotNull() {
-            addCriterion("desp_can_pas is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andDespCanPasEqualTo(BigDecimal value) {
-            addCriterion("desp_can_pas =", value, "despCanPas");
-            return (Criteria) this;
-        }
-
-        public Criteria andDespCanPasNotEqualTo(BigDecimal value) {
-            addCriterion("desp_can_pas <>", value, "despCanPas");
-            return (Criteria) this;
-        }
-
-        public Criteria andDespCanPasGreaterThan(BigDecimal value) {
-            addCriterion("desp_can_pas >", value, "despCanPas");
-            return (Criteria) this;
-        }
-
-        public Criteria andDespCanPasGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("desp_can_pas >=", value, "despCanPas");
-            return (Criteria) this;
-        }
-
-        public Criteria andDespCanPasLessThan(BigDecimal value) {
-            addCriterion("desp_can_pas <", value, "despCanPas");
-            return (Criteria) this;
-        }
-
-        public Criteria andDespCanPasLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("desp_can_pas <=", value, "despCanPas");
-            return (Criteria) this;
-        }
-
-        public Criteria andDespCanPasIn(List<BigDecimal> values) {
-            addCriterion("desp_can_pas in", values, "despCanPas");
-            return (Criteria) this;
-        }
-
-        public Criteria andDespCanPasNotIn(List<BigDecimal> values) {
-            addCriterion("desp_can_pas not in", values, "despCanPas");
-            return (Criteria) this;
-        }
-
-        public Criteria andDespCanPasBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("desp_can_pas between", value1, value2, "despCanPas");
-            return (Criteria) this;
-        }
-
-        public Criteria andDespCanPasNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("desp_can_pas not between", value1, value2, "despCanPas");
             return (Criteria) this;
         }
 

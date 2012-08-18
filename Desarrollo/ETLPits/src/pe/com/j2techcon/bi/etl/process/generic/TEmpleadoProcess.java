@@ -288,11 +288,9 @@ public class TEmpleadoProcess {
 		while (true) {
 
 			personalExample.clear();
-
 			personalExample.createCriteria().andCodtipoEqualTo(constantes.getParamCodeCategoriaEmpleadoMensajero());
 			personalExample.createCriteria().andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom));
 			personalExample.createCriteria().andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil));
-			
 			personalExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
 			
 			List<Personal> lstPersonal = personalManager.selectByExample(personalExample);
@@ -307,9 +305,6 @@ public class TEmpleadoProcess {
 				}
 				offset = offset + constantes.getSizePage();
 			} else {
-
-				lstPersonal.clear();
-
 				personal.clear();
 				personalExample.clear();
 
@@ -318,6 +313,9 @@ public class TEmpleadoProcess {
 				
 				tEmpleadoCategoria.clear();
 				tEmpleadoCategoriaExample.clear();
+				
+				lstEmpleado.clear();
+				lstEmpleadoCategoria.clear();
 
 				offset = 0;
 				break;
@@ -355,7 +353,6 @@ public class TEmpleadoProcess {
 				if(!existEmpleadoCategoria){
 					
 					tEmpleadoCategoria.clear();
-					
 					tEmpleadoCategoria.setEmpId(tEmpleado.getEmpId());
 					tEmpleadoCategoria.setEmpCod(tEmpleado.getEmpCod());
 					tEmpleadoCategoria.setEmpCatCodTip(constantes.getParamSerialCategoriaEmpleadoMensajero());
@@ -374,6 +371,7 @@ public class TEmpleadoProcess {
 		
 		lstEmpleado.clear();
 		lstEmpleadoCategoria.clear();
+		
 		tEmpleado.clear();
 		tEmpleadoCategoria.clear();
 
@@ -416,9 +414,7 @@ public class TEmpleadoProcess {
 				}
 			}
 		}
-		
 		updateRecordOrigenEmpleado(stateRecordOrigen);
-		
 	}
 
 	public void completeFieldEmpleado() {

@@ -524,66 +524,6 @@ public class TCargoExample {
             return (Criteria) this;
         }
 
-        public Criteria andProdIdIsNull() {
-            addCriterion("prod_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andProdIdIsNotNull() {
-            addCriterion("prod_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andProdIdEqualTo(Integer value) {
-            addCriterion("prod_id =", value, "prodId");
-            return (Criteria) this;
-        }
-
-        public Criteria andProdIdNotEqualTo(Integer value) {
-            addCriterion("prod_id <>", value, "prodId");
-            return (Criteria) this;
-        }
-
-        public Criteria andProdIdGreaterThan(Integer value) {
-            addCriterion("prod_id >", value, "prodId");
-            return (Criteria) this;
-        }
-
-        public Criteria andProdIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("prod_id >=", value, "prodId");
-            return (Criteria) this;
-        }
-
-        public Criteria andProdIdLessThan(Integer value) {
-            addCriterion("prod_id <", value, "prodId");
-            return (Criteria) this;
-        }
-
-        public Criteria andProdIdLessThanOrEqualTo(Integer value) {
-            addCriterion("prod_id <=", value, "prodId");
-            return (Criteria) this;
-        }
-
-        public Criteria andProdIdIn(List<Integer> values) {
-            addCriterion("prod_id in", values, "prodId");
-            return (Criteria) this;
-        }
-
-        public Criteria andProdIdNotIn(List<Integer> values) {
-            addCriterion("prod_id not in", values, "prodId");
-            return (Criteria) this;
-        }
-
-        public Criteria andProdIdBetween(Integer value1, Integer value2) {
-            addCriterion("prod_id between", value1, value2, "prodId");
-            return (Criteria) this;
-        }
-
-        public Criteria andProdIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("prod_id not between", value1, value2, "prodId");
-            return (Criteria) this;
-        }
-
         public Criteria andZonIdIsNull() {
             addCriterion("zon_id is null");
             return (Criteria) this;
@@ -824,123 +764,123 @@ public class TCargoExample {
             return (Criteria) this;
         }
 
-        public Criteria andCargCodFecDesIsNull() {
-            addCriterion("carg_cod_fec_des is null");
+        public Criteria andCargFecDesIsNull() {
+            addCriterion("carg_fec_des is null");
             return (Criteria) this;
         }
 
-        public Criteria andCargCodFecDesIsNotNull() {
-            addCriterion("carg_cod_fec_des is not null");
+        public Criteria andCargFecDesIsNotNull() {
+            addCriterion("carg_fec_des is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCargCodFecDesEqualTo(Date value) {
-            addCriterionForJDBCDate("carg_cod_fec_des =", value, "cargCodFecDes");
+        public Criteria andCargFecDesEqualTo(Date value) {
+            addCriterionForJDBCDate("carg_fec_des =", value, "cargFecDes");
             return (Criteria) this;
         }
 
-        public Criteria andCargCodFecDesNotEqualTo(Date value) {
-            addCriterionForJDBCDate("carg_cod_fec_des <>", value, "cargCodFecDes");
+        public Criteria andCargFecDesNotEqualTo(Date value) {
+            addCriterionForJDBCDate("carg_fec_des <>", value, "cargFecDes");
             return (Criteria) this;
         }
 
-        public Criteria andCargCodFecDesGreaterThan(Date value) {
-            addCriterionForJDBCDate("carg_cod_fec_des >", value, "cargCodFecDes");
+        public Criteria andCargFecDesGreaterThan(Date value) {
+            addCriterionForJDBCDate("carg_fec_des >", value, "cargFecDes");
             return (Criteria) this;
         }
 
-        public Criteria andCargCodFecDesGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("carg_cod_fec_des >=", value, "cargCodFecDes");
+        public Criteria andCargFecDesGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("carg_fec_des >=", value, "cargFecDes");
             return (Criteria) this;
         }
 
-        public Criteria andCargCodFecDesLessThan(Date value) {
-            addCriterionForJDBCDate("carg_cod_fec_des <", value, "cargCodFecDes");
+        public Criteria andCargFecDesLessThan(Date value) {
+            addCriterionForJDBCDate("carg_fec_des <", value, "cargFecDes");
             return (Criteria) this;
         }
 
-        public Criteria andCargCodFecDesLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("carg_cod_fec_des <=", value, "cargCodFecDes");
+        public Criteria andCargFecDesLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("carg_fec_des <=", value, "cargFecDes");
             return (Criteria) this;
         }
 
-        public Criteria andCargCodFecDesIn(List<Date> values) {
-            addCriterionForJDBCDate("carg_cod_fec_des in", values, "cargCodFecDes");
+        public Criteria andCargFecDesIn(List<Date> values) {
+            addCriterionForJDBCDate("carg_fec_des in", values, "cargFecDes");
             return (Criteria) this;
         }
 
-        public Criteria andCargCodFecDesNotIn(List<Date> values) {
-            addCriterionForJDBCDate("carg_cod_fec_des not in", values, "cargCodFecDes");
+        public Criteria andCargFecDesNotIn(List<Date> values) {
+            addCriterionForJDBCDate("carg_fec_des not in", values, "cargFecDes");
             return (Criteria) this;
         }
 
-        public Criteria andCargCodFecDesBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("carg_cod_fec_des between", value1, value2, "cargCodFecDes");
+        public Criteria andCargFecDesBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("carg_fec_des between", value1, value2, "cargFecDes");
             return (Criteria) this;
         }
 
-        public Criteria andCargCodFecDesNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("carg_cod_fec_des not between", value1, value2, "cargCodFecDes");
+        public Criteria andCargFecDesNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("carg_fec_des not between", value1, value2, "cargFecDes");
             return (Criteria) this;
         }
 
-        public Criteria andCargCodFecRecIsNull() {
-            addCriterion("carg_cod_fec_rec is null");
+        public Criteria andCargFecRecIsNull() {
+            addCriterion("carg_fec_rec is null");
             return (Criteria) this;
         }
 
-        public Criteria andCargCodFecRecIsNotNull() {
-            addCriterion("carg_cod_fec_rec is not null");
+        public Criteria andCargFecRecIsNotNull() {
+            addCriterion("carg_fec_rec is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCargCodFecRecEqualTo(Date value) {
-            addCriterionForJDBCDate("carg_cod_fec_rec =", value, "cargCodFecRec");
+        public Criteria andCargFecRecEqualTo(Date value) {
+            addCriterionForJDBCDate("carg_fec_rec =", value, "cargFecRec");
             return (Criteria) this;
         }
 
-        public Criteria andCargCodFecRecNotEqualTo(Date value) {
-            addCriterionForJDBCDate("carg_cod_fec_rec <>", value, "cargCodFecRec");
+        public Criteria andCargFecRecNotEqualTo(Date value) {
+            addCriterionForJDBCDate("carg_fec_rec <>", value, "cargFecRec");
             return (Criteria) this;
         }
 
-        public Criteria andCargCodFecRecGreaterThan(Date value) {
-            addCriterionForJDBCDate("carg_cod_fec_rec >", value, "cargCodFecRec");
+        public Criteria andCargFecRecGreaterThan(Date value) {
+            addCriterionForJDBCDate("carg_fec_rec >", value, "cargFecRec");
             return (Criteria) this;
         }
 
-        public Criteria andCargCodFecRecGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("carg_cod_fec_rec >=", value, "cargCodFecRec");
+        public Criteria andCargFecRecGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("carg_fec_rec >=", value, "cargFecRec");
             return (Criteria) this;
         }
 
-        public Criteria andCargCodFecRecLessThan(Date value) {
-            addCriterionForJDBCDate("carg_cod_fec_rec <", value, "cargCodFecRec");
+        public Criteria andCargFecRecLessThan(Date value) {
+            addCriterionForJDBCDate("carg_fec_rec <", value, "cargFecRec");
             return (Criteria) this;
         }
 
-        public Criteria andCargCodFecRecLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("carg_cod_fec_rec <=", value, "cargCodFecRec");
+        public Criteria andCargFecRecLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("carg_fec_rec <=", value, "cargFecRec");
             return (Criteria) this;
         }
 
-        public Criteria andCargCodFecRecIn(List<Date> values) {
-            addCriterionForJDBCDate("carg_cod_fec_rec in", values, "cargCodFecRec");
+        public Criteria andCargFecRecIn(List<Date> values) {
+            addCriterionForJDBCDate("carg_fec_rec in", values, "cargFecRec");
             return (Criteria) this;
         }
 
-        public Criteria andCargCodFecRecNotIn(List<Date> values) {
-            addCriterionForJDBCDate("carg_cod_fec_rec not in", values, "cargCodFecRec");
+        public Criteria andCargFecRecNotIn(List<Date> values) {
+            addCriterionForJDBCDate("carg_fec_rec not in", values, "cargFecRec");
             return (Criteria) this;
         }
 
-        public Criteria andCargCodFecRecBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("carg_cod_fec_rec between", value1, value2, "cargCodFecRec");
+        public Criteria andCargFecRecBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("carg_fec_rec between", value1, value2, "cargFecRec");
             return (Criteria) this;
         }
 
-        public Criteria andCargCodFecRecNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("carg_cod_fec_rec not between", value1, value2, "cargCodFecRec");
+        public Criteria andCargFecRecNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("carg_fec_rec not between", value1, value2, "cargFecRec");
             return (Criteria) this;
         }
 

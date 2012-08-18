@@ -3,7 +3,7 @@ package pe.com.j2techcon.bi.etl.domain.generic;
 public class TServicio {
     private Integer servId;
 
-    private String sevCod;
+    private String servCod;
 
     private Integer servCodNeg;
 
@@ -25,12 +25,12 @@ public class TServicio {
         this.servId = servId;
     }
 
-    public String getSevCod() {
-        return sevCod;
+    public String getServCod() {
+        return servCod;
     }
 
-    public void setSevCod(String sevCod) {
-        this.sevCod = sevCod == null ? null : sevCod.trim();
+    public void setServCod(String servCod) {
+        this.servCod = servCod == null ? null : servCod.trim();
     }
 
     public Integer getServCodNeg() {
@@ -82,19 +82,19 @@ public class TServicio {
     }
     
     public void clear(){
-    	servId=null;
-    	sevCod=null;
-    	servCodNeg=null;
-    	servCodAmb=null;
-    	servDes=null;
-    	codIndCam=null;
-    	fecNumCam=null;
-    	procId=null;
+        servId = null;
+        servCod = null;
+        servCodNeg = null;
+        servCodAmb = null;
+        servDes = null;
+        codIndCam = null;
+        fecNumCam = null;
+        procId = null;
     }
 
 	@Override
 	public String toString() {
-		return "TServicio [servId=" + servId + ", sevCod=" + sevCod
+		return "TServicio [servId=" + servId + ", servCod=" + servCod
 				+ ", servCodNeg=" + servCodNeg + ", servCodAmb=" + servCodAmb
 				+ ", servDes=" + servDes + ", codIndCam=" + codIndCam
 				+ ", fecNumCam=" + fecNumCam + ", procId=" + procId + "]";

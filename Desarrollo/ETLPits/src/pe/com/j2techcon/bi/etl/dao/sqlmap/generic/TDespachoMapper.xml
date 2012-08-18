@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.generic.TDespachoMapper" >
+<mapper namespace="t_despacho" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.generic.TDespacho" >
     <id column="desp_id" property="despId" jdbcType="INTEGER" />
     <result column="desp_cod_tip_doc" property="despCodTipDoc" jdbcType="INTEGER" />
@@ -17,8 +17,6 @@
     <result column="desp_fec_sal" property="despFecSal" jdbcType="DATE" />
     <result column="desp_fec_ret_pro" property="despFecRetPro" jdbcType="DATE" />
     <result column="desp_fec_ret_rea" property="despFecRetRea" jdbcType="DATE" />
-    <result column="desp_fec_ver" property="despFecVer" jdbcType="DATE" />
-    <result column="desp_can_pas" property="despCanPas" jdbcType="NUMERIC" />
     <result column="desp_cod_est" property="despCodEst" jdbcType="INTEGER" />
     <result column="fec_num_cam" property="fecNumCam" jdbcType="BIGINT" />
     <result column="cod_ind_cam" property="codIndCam" jdbcType="CHAR" />
@@ -85,8 +83,7 @@
   <sql id="Base_Column_List" >
     desp_id, desp_cod_tip_doc, desp_serie_doc, desp_numero_doc, sed_id, zon_id, emp_cat_id, 
     desp_cod_tip, desp_cod_tip_rut, desp_cod_ver, desp_mon_pasaje, desp_cnt_cargos, desp_fec_sal, 
-    desp_fec_ret_pro, desp_fec_ret_rea, desp_fec_ver, desp_can_pas, desp_cod_est, fec_num_cam, 
-    cod_ind_cam, proc_id
+    desp_fec_ret_pro, desp_fec_ret_rea, desp_cod_est, fec_num_cam, cod_ind_cam, proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TDespachoExample" >
     select
@@ -127,17 +124,15 @@
       emp_cat_id, desp_cod_tip, desp_cod_tip_rut, 
       desp_cod_ver, desp_mon_pasaje, desp_cnt_cargos, 
       desp_fec_sal, desp_fec_ret_pro, desp_fec_ret_rea, 
-      desp_fec_ver, desp_can_pas, desp_cod_est, 
-      fec_num_cam, cod_ind_cam, proc_id
-      )
+      desp_cod_est, fec_num_cam, cod_ind_cam, 
+      proc_id)
     values (#{despId,jdbcType=INTEGER}, #{despCodTipDoc,jdbcType=INTEGER}, #{despSerieDoc,jdbcType=VARCHAR}, 
       #{despNumeroDoc,jdbcType=VARCHAR}, #{sedId,jdbcType=INTEGER}, #{zonId,jdbcType=INTEGER}, 
       #{empCatId,jdbcType=INTEGER}, #{despCodTip,jdbcType=INTEGER}, #{despCodTipRut,jdbcType=INTEGER}, 
       #{despCodVer,jdbcType=INTEGER}, #{despMonPasaje,jdbcType=NUMERIC}, #{despCntCargos,jdbcType=INTEGER}, 
       #{despFecSal,jdbcType=DATE}, #{despFecRetPro,jdbcType=DATE}, #{despFecRetRea,jdbcType=DATE}, 
-      #{despFecVer,jdbcType=DATE}, #{despCanPas,jdbcType=NUMERIC}, #{despCodEst,jdbcType=INTEGER}, 
-      #{fecNumCam,jdbcType=BIGINT}, #{codIndCam,jdbcType=CHAR}, #{procId,jdbcType=INTEGER}
-      )
+      #{despCodEst,jdbcType=INTEGER}, #{fecNumCam,jdbcType=BIGINT}, #{codIndCam,jdbcType=CHAR}, 
+      #{procId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TDespacho" >
     insert into t_despacho
@@ -186,12 +181,6 @@
       </if>
       <if test="despFecRetRea != null" >
         desp_fec_ret_rea,
-      </if>
-      <if test="despFecVer != null" >
-        desp_fec_ver,
-      </if>
-      <if test="despCanPas != null" >
-        desp_can_pas,
       </if>
       <if test="despCodEst != null" >
         desp_cod_est,
@@ -251,12 +240,6 @@
       </if>
       <if test="despFecRetRea != null" >
         #{despFecRetRea,jdbcType=DATE},
-      </if>
-      <if test="despFecVer != null" >
-        #{despFecVer,jdbcType=DATE},
-      </if>
-      <if test="despCanPas != null" >
-        #{despCanPas,jdbcType=NUMERIC},
       </if>
       <if test="despCodEst != null" >
         #{despCodEst,jdbcType=INTEGER},
@@ -326,12 +309,6 @@
       <if test="record.despFecRetRea != null" >
         desp_fec_ret_rea = #{record.despFecRetRea,jdbcType=DATE},
       </if>
-      <if test="record.despFecVer != null" >
-        desp_fec_ver = #{record.despFecVer,jdbcType=DATE},
-      </if>
-      <if test="record.despCanPas != null" >
-        desp_can_pas = #{record.despCanPas,jdbcType=NUMERIC},
-      </if>
       <if test="record.despCodEst != null" >
         desp_cod_est = #{record.despCodEst,jdbcType=INTEGER},
       </if>
@@ -366,8 +343,6 @@
       desp_fec_sal = #{record.despFecSal,jdbcType=DATE},
       desp_fec_ret_pro = #{record.despFecRetPro,jdbcType=DATE},
       desp_fec_ret_rea = #{record.despFecRetRea,jdbcType=DATE},
-      desp_fec_ver = #{record.despFecVer,jdbcType=DATE},
-      desp_can_pas = #{record.despCanPas,jdbcType=NUMERIC},
       desp_cod_est = #{record.despCodEst,jdbcType=INTEGER},
       fec_num_cam = #{record.fecNumCam,jdbcType=BIGINT},
       cod_ind_cam = #{record.codIndCam,jdbcType=CHAR},
@@ -421,12 +396,6 @@
       <if test="despFecRetRea != null" >
         desp_fec_ret_rea = #{despFecRetRea,jdbcType=DATE},
       </if>
-      <if test="despFecVer != null" >
-        desp_fec_ver = #{despFecVer,jdbcType=DATE},
-      </if>
-      <if test="despCanPas != null" >
-        desp_can_pas = #{despCanPas,jdbcType=NUMERIC},
-      </if>
       <if test="despCodEst != null" >
         desp_cod_est = #{despCodEst,jdbcType=INTEGER},
       </if>
@@ -458,8 +427,6 @@
       desp_fec_sal = #{despFecSal,jdbcType=DATE},
       desp_fec_ret_pro = #{despFecRetPro,jdbcType=DATE},
       desp_fec_ret_rea = #{despFecRetRea,jdbcType=DATE},
-      desp_fec_ver = #{despFecVer,jdbcType=DATE},
-      desp_can_pas = #{despCanPas,jdbcType=NUMERIC},
       desp_cod_est = #{despCodEst,jdbcType=INTEGER},
       fec_num_cam = #{fecNumCam,jdbcType=BIGINT},
       cod_ind_cam = #{codIndCam,jdbcType=CHAR},

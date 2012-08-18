@@ -21,6 +21,7 @@ import pe.com.j2techcon.bi.etl.logic.generic.TCargoManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TOrdenManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TParametroManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TProductoManager;
+import pe.com.j2techcon.bi.etl.logic.generic.TZonaManager;
 import pe.com.j2techcon.bi.etl.logic.origen.DetordenesManager;
 import pe.com.j2techcon.bi.etl.util.Constantes;
 import pe.com.j2techcon.bi.etl.util.Util;
@@ -66,10 +67,13 @@ public class TCargoProcess {
 	private TOrdenManager tOrdenManager;
 	private DetordenesManager detordenesManager;
 	private TCargoManager tCargoManager;
+	private TZonaManager tZonaManager;
 	
 	private List<TParametro> lstParametro;
 	private List<TProducto> lstProducto;
 	private List<String> lstLista;
+	private List<TOrden> lstOrden;
+	private List<TZona> lstZona;
 	
 	private Constantes constantes;
 
@@ -313,6 +317,14 @@ public class TCargoProcess {
 		this.tCargoManager = tCargoManager;
 	}
 
+	public TZonaManager gettZonaManager() {
+		return tZonaManager;
+	}
+
+	public void settZonaManager(TZonaManager tZonaManager) {
+		this.tZonaManager = tZonaManager;
+	}
+
 	public List<TParametro> getLstParametro() {
 		return lstParametro;
 	}
@@ -335,6 +347,22 @@ public class TCargoProcess {
 
 	public void setLstLista(List<String> lstLista) {
 		this.lstLista = lstLista;
+	}
+
+	public List<TOrden> getLstOrden() {
+		return lstOrden;
+	}
+
+	public void setLstOrden(List<TOrden> lstOrden) {
+		this.lstOrden = lstOrden;
+	}
+
+	public List<TZona> getLstZona() {
+		return lstZona;
+	}
+
+	public void setLstZona(List<TZona> lstZona) {
+		this.lstZona = lstZona;
 	}
 
 	public Constantes getConstantes() {
@@ -371,6 +399,7 @@ public class TCargoProcess {
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
 		detordenesManager = factory.getBean("detordenesManager", DetordenesManager.class);
 		tCargoManager = factory.getBean("tCargoManager", TCargoManager.class);
+		tZonaManager = factory.getBean("tZonaManager", TZonaManager.class);
 		
 		constantes = factory.getBean("constantes", Constantes.class);
 		
@@ -379,10 +408,8 @@ public class TCargoProcess {
 		while (true) {
 
 			detordenesExample.clear();
-
 			detordenesExample.createCriteria().andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom));
 			detordenesExample.createCriteria().andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil));
-			
 			detordenesExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
 			
 			List<Detordenes> lstCargo = detordenesManager.selectByExample(detordenesExample);
@@ -395,7 +422,6 @@ public class TCargoProcess {
 				}
 				offset = offset + constantes.getSizePage();
 			} else {
-
 				tParametro.clear();
 				tParametroExample.clear();
 
@@ -417,6 +443,8 @@ public class TCargoProcess {
 				lstParametro.clear();
 				lstProducto.clear();
 				lstLista.clear();
+				lstOrden.clear();
+				lstZona.clear();
 
 				offset = 0;
 				break;
@@ -438,200 +466,160 @@ public class TCargoProcess {
 	public void processRecordCargo() {
 		
 		completeFieldCargo();
-		
-		if(typeProcess.equals(constantes.getTypeProcessSimple())){
-			if(tOrden.getCodIndCam().equals(constantes.getStateRecordNew())){
-				if(insertRecordGenericCargo()> constantes.getResultTransactionNoResult()){
-					stateRecordOrigen = constantes.getStateRecordProcessed();
-					recordProcessed = recordProcessed + 1; 
-				} else{
-					stateRecordOrigen = constantes.getStateRecordInconsistent();
-					recordRejected = recordRejected + 1;
+		//Identificamos si el detalle corresponde a una orden del negocio de mensajeria local
+		if(tOrden.getOrdId()!=constantes.getValueNumberCero()){
+			if(typeProcess.equals(constantes.getTypeProcessSimple())){
+				if(tCargo.getCodIndCam().equals(constantes.getStateRecordNew())){
+					if(insertRecordGenericCargo()> constantes.getResultTransactionNoResult()){
+						stateRecordOrigen = constantes.getStateRecordProcessed();
+						recordProcessed = recordProcessed + 1; 
+					} else{
+						stateRecordOrigen = constantes.getStateRecordInconsistent();
+						recordRejected = recordRejected + 1;
+					}
+				}else{
+					if(updateRecordGenericCargo() > constantes.getResultTransactionNoResult()){
+						stateRecordOrigen = constantes.getStateRecordProcessed();
+						recordProcessed = recordProcessed + 1; 
+					} else{
+						stateRecordOrigen = constantes.getStateRecordInconsistent();
+						recordRejected = recordRejected + 1;
+					}
 				}
 			}else{
 				if(updateRecordGenericCargo() > constantes.getResultTransactionNoResult()){
 					stateRecordOrigen = constantes.getStateRecordProcessed();
 					recordProcessed = recordProcessed + 1; 
-				} else{
-					stateRecordOrigen = constantes.getStateRecordInconsistent();
-					recordRejected = recordRejected + 1;
-				}
-			}
-		}else{
-			if(updateRecordGenericCargo() > constantes.getResultTransactionNoResult()){
-				stateRecordOrigen = constantes.getStateRecordProcessed();
-				recordProcessed = recordProcessed + 1; 
-			}else{
-				if(insertRecordGenericCargo() > constantes.getResultTransactionNoResult()){
-					stateRecordOrigen = constantes.getStateRecordProcessed();
-					recordProcessed = recordProcessed + 1;
 				}else{
-					stateRecordOrigen = constantes.getStateRecordInconsistent();
-					recordRejected = recordRejected + 1;
+					if(insertRecordGenericCargo() > constantes.getResultTransactionNoResult()){
+						stateRecordOrigen = constantes.getStateRecordProcessed();
+						recordProcessed = recordProcessed + 1;
+					}else{
+						stateRecordOrigen = constantes.getStateRecordInconsistent();
+						recordRejected = recordRejected + 1;
+					}
 				}
 			}
+			updateRecordOrigenCargo(stateRecordOrigen);
+		}else{
+			stateRecordOrigen = constantes.getStateRecordInconsistent();
+			recordRejected = recordRejected + 1;
+			updateRecordOrigenCargo(stateRecordOrigen);
 		}
-		
-		updateRecordOrigenCargo(stateRecordOrigen);
-		
 	}
 
 	public void completeFieldCargo() {
 
-		//Id de la cotizacion
-		tCotizacionExample.clear();
-		tCotizacionExample.createCriteria().andCotiCodTipDocEqualTo(constantes.getParamSerialTipoDocumentoTrabajoNoDefinido());
-		tCotizacionExample.createCriteria().andCotiSerieDocEqualTo(ordenes.getCoserie());
-		tCotizacionExample.createCriteria().andCotiNumDocEqualTo(Integer.toString(ordenes.getConumero()));
-		lstCotizacion = tCotizacionManager.selectByExample(tCotizacionExample);
-		if(lstCotizacion.size()>0){
-			tOrden.setCotiId(lstCotizacion.get(0).getCotiId());
-		}
+		//Identificamos si el detalle corresponde a una orden del negocio de mensajeria local
+		//Id de la orden
+		tCargo.setOrdId(getOrdId(detordenes.getSerie(), detordenes.getOrden()));
 		
-		//Codigo del area del cliente
-		lstLista.clear();
-		lstLista.add(ordenes.getCodareacliente());
-		lstLista.add(constantes.getValueStringDefault());
-		
-		tAreaClienteExample.clear();
-		tAreaClienteExample.createCriteria().andCliCodEqualTo(ordenes.getCodcliente());
-		tAreaClienteExample.createCriteria().andAreCliCodIn(lstLista);
-		lstAreaCliente = tAreaClienteManager.selectByExample(tAreaClienteExample);
-		if(lstAreaCliente.size()>0){
-			if(lstAreaCliente.size()>1){
-				if(!constantes.getValueStringDefault().equals(lstAreaCliente.get(0).getAreCliCod())){
-					tOrden.setCodAreCli(lstAreaCliente.get(0).getAreCliId());
-				}else{
-					tOrden.setCodAreCli(lstAreaCliente.get(1).getAreCliId());
+		if(tCargo.getOrdId()!=constantes.getValueNumberCero()){
+			//Id de la orden
+			tCargo.setOrdCodTipDoc(constantes.getParamSerialTipoDocumentoTrabajoNoDefinido());
+			tCargo.setOrdSerieDoc(detordenes.getSerie());
+			tCargo.setOrdNumDoc(detordenes.getOrden());
+			
+			//Correlativo
+			tCargo.setCargCorr(Integer.parseInt(detordenes.getCorrelativo()));
+			
+			//Zona
+			if(detordenes.getCodzona() != null && detordenes.getCodzona().length()>0){
+				tZonaExample.clear();
+				tZonaExample.createCriteria().andZonCodEqualTo(detordenes.getCodzona());
+				lstZona = tZonaManager.selectByExample(tZonaExample);
+				if(lstZona.size()>0){
+					tCargo.setZonId(lstZona.get(0).getZonId());
 				}
-			}else{
-				tOrden.setCodAreCli(lstAreaCliente.get(0).getAreCliId());
 			}
+			
+			//Zona (new): Por defecto 0
+			tCargo.setZonIdNew(constantes.getValueNumberCero());
+			
+			//Motivo: Valor por defecto
+			tCargo.setCargCodMov(constantes.getParamSerialMotivoCargoNoDefinido());
+			
+			//Tipo de ingreso
+			if(constantes.getParamCodeTipoIngresoCargoDigitado().equals(detordenes.getTipoingreso())){
+				tCargo.setCargCodTipIng(constantes.getParamSerialTipoIngresoCargoDigitado());
+			}else if(constantes.getParamCodeTipoIngresoCargoDigitado().equals(detordenes.getTipoingreso())){
+				tCargo.setCargCodTipIng(constantes.getParamSerialTipoIngresoCargoTransferido());
+			}else{
+				tCargo.setCargCodTipIng(constantes.getParamSerialTipoIngresoCargoNoDefinido());
+			}
+			
+			//Fechas
+			tCargo.setCargFecDes(detordenes.getFecDescargo());
+			tCargo.setCargFecRec(detordenes.getFecrecepcion());
+			
+			//Destinatario
+			tCargo.setCargDestinatario(detordenes.getDestinatario());
+			
+			//Direccion
+			tCargo.setCargDir(detordenes.getDireccion());
+			
+			//Referencia
+			tCargo.setCargRef(detordenes.getReferencia());
+			
+			//Nueva direccion
+			tCargo.setCargNewDir(detordenes.getNuevadireccion());
+			
+			//Nueva referencia
+			tCargo.setCargNewRef(detordenes.getNuevareferencia());
+			
+			//Estado
+			if(constantes.getParamCodeEstadoCargoOrdenDigitado().equals(detordenes.getCodestado())){
+				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenDigitado());
+			} else if(constantes.getParamCodeEstadoCargoOrdenClasificado().equals(detordenes.getCodestado())){
+				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenClasificado());
+			} else if(constantes.getParamCodeEstadoCargoOrdenRuta().equals(detordenes.getCodestado())){
+				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenRuta());
+			} else if(constantes.getParamCodeEstadoCargoOrdenEntregado().equals(detordenes.getCodestado())){
+				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenEntregado());
+			} else if(constantes.getParamCodeEstadoCargoOrdenMotivado().equals(detordenes.getCodestado())){
+				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenMotivado());
+			} else if(constantes.getParamCodeEstadoCargoOrdenReenviado().equals(detordenes.getCodestado())){
+				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenReenviado());
+			} else if(constantes.getParamCodeEstadoCargoOrdenFueraZona().equals(detordenes.getCodestado())){
+				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenFueraZona());
+			} else if(constantes.getParamCodeEstadoCargoOrdenPerdido().equals(detordenes.getCodestado())){
+				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenPerdido());
+			} else if(constantes.getParamCodeEstadoCargoOrdenAnulado().equals(detordenes.getCodestado())){
+				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenAnulado());
+			} else if(constantes.getParamCodeEstadoCargoOrdenNoDistribuido().equals(detordenes.getCodestado())){
+				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenNoDistribuido());
+			} else if(constantes.getParamCodeEstadoCargoOrdenRetenido().equals(detordenes.getCodestado())){
+				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenRetenido());
+			} else if(constantes.getParamCodeEstadoCargoOrdenSinFisico().equals(detordenes.getCodestado())){
+				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenSinFisico());
+			} else if(constantes.getParamCodeEstadoCargoOrdenProvincia().equals(detordenes.getCodestado())){
+				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenProvincia());
+			} else if(constantes.getParamCodeEstadoCargoOrdenSupervision().equals(detordenes.getCodestado())){
+				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenSupervision());
+			} else if(constantes.getParamCodeEstadoCargoOrdenRobo().equals(detordenes.getCodestado())){
+				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenRobo());
+			} else if(constantes.getParamCodeEstadoCargoOrdenSiLlego().equals(detordenes.getCodestado())){
+				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenSiLlego());
+			} else if(constantes.getParamCodeEstadoCargoOrdenRecepcionado().equals(detordenes.getCodestado())){
+				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenRecepcionado());
+			} else {
+				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenNoDefinido());
+			}
+			
+			//Campos de control
+			tCargo.setFecNumCam(Util.getCurrentDateTimeAsLong());
+			if(constantes.getStateRecordNew().equals(detordenes.getBiCodIndCam())){
+				tCargo.setCodIndCam(constantes.getStateRecordNew());
+			}else{
+				tCargo.setCodIndCam(constantes.getStateRecordProcessed());
+			}
+			tCargo.setProcId(process);
 		}
-		
-		//Codido de la categoria del empleado: Por defecto se ingresa el valor 0
-		tOrden.setEmpCatId(constantes.getValueNumberCero());
-		
-		//Tipo de reparto
-		tParametroExample.clear();
-		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeTipoReparto());
-		tParametroExample.createCriteria().andParamCodEqualTo(ordenes.getCodtiporeparto());
-		lstParametro = tParametroManager.selectByExample(tParametroExample);
-		if(lstParametro.size()>0){
-			tOrden.setOrdCodTipRep(lstParametro.get(0).getParamId());
-		}
-		
-		//Tipo de servicio
-		tParametroExample.clear();
-		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeTipoServicio());
-		tParametroExample.createCriteria().andParamCodEqualTo(ordenes.getCodservicio());
-		lstParametro = tParametroManager.selectByExample(tParametroExample);
-		if(lstParametro.size()>0){
-			tOrden.setServId(lstParametro.get(0).getParamId());
-		}
-		
-		//Codigo del producto
-		tProductoExample.clear();
-		tProductoExample.createCriteria().andProdCodEqualTo(ordenes.getCodproducto());
-		lstProducto = tProductoManager.selectByExample(tProductoExample);
-		if(lstProducto.size()>0){
-			tOrden.setProdId(lstProducto.get(0).getProdId());
-		}
-		
-		//Tipo de pago
-		if(constantes.getParamCodeTipoPagoCredito().equals(ordenes.getTipoPagoOrden())){
-			tOrden.setOrdCodTipPag(constantes.getParamSerialTipoPagoCredito());
-		}
-		else if (constantes.getParamCodeTipoPagoContado().equals(ordenes.getTipoPagoOrden())){
-			tOrden.setOrdCodTipPag(constantes.getParamSerialTipoPagoContado());
-		}
-		else if (constantes.getParamCodeTipoPagoCuotas().equals(ordenes.getTipoPagoOrden())){
-			tOrden.setOrdCodTipPag(constantes.getParamSerialTipoPagoCuotas());
-		}
-		else if (constantes.getParamCodeTipoPagoPrepaid().equals(ordenes.getTipoPagoOrden())){
-			tOrden.setOrdCodTipPag(constantes.getParamSerialTipoPagoPrepaid());
-		}
-		else if (constantes.getParamCodeTipoPagoCollect().equals(ordenes.getTipoPagoOrden())){
-			tOrden.setOrdCodTipPag(constantes.getParamSerialTipoPagoCollect());
-		}
-		else {
-			tOrden.setOrdCodTipPag(constantes.getParamSerialTipoPagoNoDefinido());
-		}
-		
-		//Tipo de moneda
-		if(constantes.getParamCodeTipoMonedaNuevoSol().equals(ordenes.getMoneda())){
-			tOrden.setOrdCodTipMon(constantes.getParamSerialTipoMonedaNuevoSol());
-		}
-		else if(constantes.getParamCodeTipoMonedaDolar().equals(ordenes.getMoneda())){
-			tOrden.setOrdCodTipMon(constantes.getParamSerialTipoMonedaDolar());
-		}
-		else{
-			tOrden.setOrdCodTipMon(constantes.getParamSerialTipoMonedaNoDefinido());
-		}
-		
-		//Tipo de documento de trabajo: Por defecto se colocara no definido
-		tOrden.setOrdCodTipDoc(constantes.getParamSerialTipoDocumentoTrabajoNoDefinido());
-		
-		//Cantidad de cargos
-		if(ordenes.getCntDigitado() == 0){
-			tOrden.setOrdCntCargos(ordenes.getCntAdmision().intValue());
-		}else{
-			tOrden.setOrdCntCargos(ordenes.getCntDigitado().intValue());
-		}
-		
-		//Indicador de facturacion
-		if(constantes.getParamCodeEstadoFacturadoSi().equals(ordenes.getFacturado())){
-			tOrden.setOrdIndFac(constantes.getParamSerialEstadoFacturadoSi());
-		}else{
-			tOrden.setOrdIndFac(constantes.getParamSerialEstadoFacturadoNo());
-		}
-		
-		//Fechas
-		tOrden.setOrdFecIni(ordenes.getFechainicio());
-		tOrden.setOrdFecVen(ordenes.getFechavencimiento());
-		//tOrden.setOrdFecCie();
-		tOrden.setOrdFecDev(ordenes.getFechadevolucion());
-		//tOrden.setOrdFecLiq();
-		//tOrden.setOrdFecFac();
-		
-		//Montos
-		tOrden.setOrdImporte(ordenes.getImporte());
-		tOrden.setOrdDescuento(ordenes.getDescuento());
-		tOrden.setOrdVenta(ordenes.getVenta());
-		tOrden.setOrdIgv(ordenes.getIgv());
-		tOrden.setOrdTotal(ordenes.getTotal());
-		
-		//Estado de la orden
-		if(constantes.getParamCodeEstadoOrdenGenerado().equals(ordenes.getEstadoorden())){
-			tOrden.setOrdCodEst(constantes.getParamSerialEstadoOrdenGenerado());
-		}
-		else if(constantes.getParamCodeEstadoOrdenPendiente().equals(ordenes.getEstadoorden())){
-			tOrden.setOrdCodEst(constantes.getParamSerialEstadoOrdenPendiente());
-		}
-		else if(constantes.getParamCodeEstadoOrdenAnulado().equals(ordenes.getEstadoorden())){
-			tOrden.setOrdCodEst(constantes.getParamSerialEstadoOrdenAnulado());
-		}
-		else if(constantes.getParamCodeEstadoOrdenCerrado().equals(ordenes.getEstadoorden())){
-			tOrden.setOrdCodEst(constantes.getParamSerialEstadoOrdenCerrado());
-		}
-		else{
-			tOrden.setOrdCodEst(constantes.getParamSerialEstadoOrdenNoDefinido());
-		}
-		
-		//Campos de control
-		tOrden.setFecNumCam(Util.getCurrentDateTimeAsLong());
-		if(constantes.getStateRecordNew().equals(ordenes.getBiCodIndCam())){
-			tOrden.setCodIndCam(constantes.getStateRecordNew());
-		}else{
-			tOrden.setCodIndCam(constantes.getStateRecordProcessed());
-		}
-		tOrden.setProcId(process);
-
 	}
 
 	public int insertRecordGenericCargo() {
 		try {
-			resultTransaction = tOrdenManager.insertSelective(tOrden);
+			resultTransaction = tCargoManager.insertSelective(tCargo);
 		} catch (Exception e) {
 			resultTransaction = constantes.getResultTransactionNoResult();
 		}
@@ -640,11 +628,12 @@ public class TCargoProcess {
 
 	public int updateRecordGenericCargo() {
 		try {
-			tOrdenExample.clear();
-			tOrdenExample.createCriteria().andOrdCodTipDocEqualTo(constantes.getParamSerialTipoDocumentoTrabajoNoDefinido());
-			tOrdenExample.createCriteria().andOrdSerieDocEqualTo(tOrden.getOrdSerieDoc());
-			tOrdenExample.createCriteria().andOrdNumDocEqualTo(tOrden.getOrdNumDoc());
-			resultTransaction = tOrdenManager.updateByExampleSelective(tOrden, tOrdenExample);	
+			tCargoExample.clear();
+			tCargoExample.createCriteria().andOrdCodTipDocEqualTo(constantes.getParamSerialTipoDocumentoTrabajoNoDefinido());
+			tCargoExample.createCriteria().andOrdSerieDocEqualTo(tCargo.getOrdSerieDoc());
+			tCargoExample.createCriteria().andOrdNumDocEqualTo(tCargo.getOrdNumDoc());
+			tCargoExample.createCriteria().andCargCorrEqualTo(tCargo.getCargCorr());
+			resultTransaction = tCargoManager.updateByExampleSelective(tCargo, tCargoExample);	
 		} catch (Exception e) {
 			resultTransaction = constantes.getResultTransactionNoResult();
 		}
@@ -653,11 +642,12 @@ public class TCargoProcess {
 
 	public int deleteRecordGenericCargo() {
 		try {
-			tOrdenExample.clear();
-			tOrdenExample.createCriteria().andOrdCodTipDocEqualTo(constantes.getParamSerialTipoDocumentoTrabajoNoDefinido());
-			tOrdenExample.createCriteria().andOrdSerieDocEqualTo(tOrden.getOrdSerieDoc());
-			tOrdenExample.createCriteria().andOrdNumDocEqualTo(tOrden.getOrdNumDoc());
-			resultTransaction = tOrdenManager.deleteByExample(tOrdenExample);
+			tCargoExample.clear();
+			tCargoExample.createCriteria().andOrdCodTipDocEqualTo(constantes.getParamSerialTipoDocumentoTrabajoNoDefinido());
+			tCargoExample.createCriteria().andOrdSerieDocEqualTo(tCargo.getOrdSerieDoc());
+			tCargoExample.createCriteria().andOrdNumDocEqualTo(tCargo.getOrdNumDoc());
+			tCargoExample.createCriteria().andCargCorrEqualTo(tCargo.getCargCorr());
+			resultTransaction = tCargoManager.deleteByExample(tCargoExample);
 		} catch (Exception e) {
 			resultTransaction = constantes.getResultTransactionNoResult();
 		}
@@ -666,20 +656,36 @@ public class TCargoProcess {
 
 	public void updateRecordOrigenCargo(String statusRecord) {
 		try {
-			String serie = ordenes.getSerie();
-			String orden = ordenes.getOrden();
-			ordenes.clear();
-			ordenes.setSerie(serie);
-			ordenes.setOrden(orden);
-			ordenes.setBiCodIndCam(statusRecord);
-			ordenesManager.updateByPrimaryKeySelective(ordenes);
+			String serie = detordenes.getSerie();
+			String orden = detordenes.getOrden();
+			String correlativo = detordenes.getCorrelativo();
+			detordenes.clear();
+			detordenes.setSerie(serie);
+			detordenes.setOrden(orden);
+			detordenes.setCorrelativo(correlativo);
+			detordenes.setBiCodIndCam(statusRecord);
+			detordenesManager.updateByPrimaryKeySelective(detordenes);
 		} catch (Exception e) {
 
 		}
 	}
 	
-	public void setIdOrden(){
+	public int getOrdId(String serie, String numero){
+		int ordId = constantes.getValueNumberCero();
+		if(serie.equals(tOrden.getOrdSerieDoc()) && numero.equals(tOrden.getOrdNumDoc())){
+			ordId = tOrden.getOrdId();
+		}else{
+			tOrdenExample.clear();
+			tOrdenExample.createCriteria().andOrdSerieDocEqualTo(serie);
+			tOrdenExample.createCriteria().andOrdNumDocEqualTo(numero);
+			lstOrden = tOrdenManager.selectByExample(tOrdenExample);
+			if(lstOrden.size()>0){
+				tOrden = lstOrden.get(0);
+				ordId = tOrden.getOrdId();
+			}
+		}
 		
+		return ordId;
 	}
 
 }

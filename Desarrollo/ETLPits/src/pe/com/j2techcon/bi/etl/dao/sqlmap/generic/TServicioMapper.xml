@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pe.com.j2techcon.bi.etl.dao.generic.TServicioMapper" >
+<mapper namespace="t_servicio" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.generic.TServicio" >
     <id column="serv_id" property="servId" jdbcType="INTEGER" />
-    <result column="sev_cod" property="sevCod" jdbcType="VARCHAR" />
+    <result column="serv_cod" property="servCod" jdbcType="VARCHAR" />
     <result column="serv_cod_neg" property="servCodNeg" jdbcType="INTEGER" />
     <result column="serv_cod_amb" property="servCodAmb" jdbcType="INTEGER" />
     <result column="serv_des" property="servDes" jdbcType="VARCHAR" />
@@ -70,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    serv_id, sev_cod, serv_cod_neg, serv_cod_amb, serv_des, cod_ind_cam, fec_num_cam, 
+    serv_id, serv_cod, serv_cod_neg, serv_cod_amb, serv_des, cod_ind_cam, fec_num_cam, 
     proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TServicioExample" >
@@ -107,10 +107,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TServicio" >
-    insert into t_servicio (serv_id, sev_cod, serv_cod_neg, 
+    insert into t_servicio (serv_id, serv_cod, serv_cod_neg, 
       serv_cod_amb, serv_des, cod_ind_cam, 
       fec_num_cam, proc_id)
-    values (#{servId,jdbcType=INTEGER}, #{sevCod,jdbcType=VARCHAR}, #{servCodNeg,jdbcType=INTEGER}, 
+    values (#{servId,jdbcType=INTEGER}, #{servCod,jdbcType=VARCHAR}, #{servCodNeg,jdbcType=INTEGER}, 
       #{servCodAmb,jdbcType=INTEGER}, #{servDes,jdbcType=VARCHAR}, #{codIndCam,jdbcType=CHAR}, 
       #{fecNumCam,jdbcType=BIGINT}, #{procId,jdbcType=INTEGER})
   </insert>
@@ -120,8 +120,8 @@
       <if test="servId != null" >
         serv_id,
       </if>
-      <if test="sevCod != null" >
-        sev_cod,
+      <if test="servCod != null" >
+        serv_cod,
       </if>
       <if test="servCodNeg != null" >
         serv_cod_neg,
@@ -146,8 +146,8 @@
       <if test="servId != null" >
         #{servId,jdbcType=INTEGER},
       </if>
-      <if test="sevCod != null" >
-        #{sevCod,jdbcType=VARCHAR},
+      <if test="servCod != null" >
+        #{servCod,jdbcType=VARCHAR},
       </if>
       <if test="servCodNeg != null" >
         #{servCodNeg,jdbcType=INTEGER},
@@ -181,8 +181,8 @@
       <if test="record.servId != null" >
         serv_id = #{record.servId,jdbcType=INTEGER},
       </if>
-      <if test="record.sevCod != null" >
-        sev_cod = #{record.sevCod,jdbcType=VARCHAR},
+      <if test="record.servCod != null" >
+        serv_cod = #{record.servCod,jdbcType=VARCHAR},
       </if>
       <if test="record.servCodNeg != null" >
         serv_cod_neg = #{record.servCodNeg,jdbcType=INTEGER},
@@ -210,7 +210,7 @@
   <update id="updateByExample" parameterType="map" >
     update t_servicio
     set serv_id = #{record.servId,jdbcType=INTEGER},
-      sev_cod = #{record.sevCod,jdbcType=VARCHAR},
+      serv_cod = #{record.servCod,jdbcType=VARCHAR},
       serv_cod_neg = #{record.servCodNeg,jdbcType=INTEGER},
       serv_cod_amb = #{record.servCodAmb,jdbcType=INTEGER},
       serv_des = #{record.servDes,jdbcType=VARCHAR},
@@ -224,8 +224,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TServicio" >
     update t_servicio
     <set >
-      <if test="sevCod != null" >
-        sev_cod = #{sevCod,jdbcType=VARCHAR},
+      <if test="servCod != null" >
+        serv_cod = #{servCod,jdbcType=VARCHAR},
       </if>
       <if test="servCodNeg != null" >
         serv_cod_neg = #{servCodNeg,jdbcType=INTEGER},
@@ -250,7 +250,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TServicio" >
     update t_servicio
-    set sev_cod = #{sevCod,jdbcType=VARCHAR},
+    set serv_cod = #{servCod,jdbcType=VARCHAR},
       serv_cod_neg = #{servCodNeg,jdbcType=INTEGER},
       serv_cod_amb = #{servCodAmb,jdbcType=INTEGER},
       serv_des = #{servDes,jdbcType=VARCHAR},

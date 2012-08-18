@@ -1,8 +1,18 @@
 package pe.com.j2techcon.bi.etl.process.generic;
 
+import java.util.Iterator;
+import java.util.List;
+
 import org.springframework.beans.factory.BeanFactory;
 
+import pe.com.j2techcon.bi.etl.domain.generic.TServicio;
+import pe.com.j2techcon.bi.etl.domain.generic.TServicioExample;
+import pe.com.j2techcon.bi.etl.domain.origen.TServicios;
+import pe.com.j2techcon.bi.etl.domain.origen.TServiciosExample;
 import pe.com.j2techcon.bi.etl.logic.generic.TServicioManager;
+import pe.com.j2techcon.bi.etl.logic.origen.TServiciosManager;
+import pe.com.j2techcon.bi.etl.util.Constantes;
+import pe.com.j2techcon.bi.etl.util.Util;
 
 public class TServicioProcess {
 
@@ -18,6 +28,20 @@ public class TServicioProcess {
 	private int recordRejected;
 	private int resultProcess;
 	private int resultTransaction;
+	
+	private String stateRecordOrigen;
+	private String stateRecordGeneric;
+	
+	private TServicios tServicios;
+	private TServiciosExample tServiciosExample;
+	
+	private TServicio tServicio;
+	private TServicioExample tServicioExample;
+	
+	private TServiciosManager tServiciosManager;
+	private TServicioManager tServicioManager;
+	
+	private Constantes constantes;
 
 	public BeanFactory getFactory() {
 		return factory;
@@ -107,6 +131,78 @@ public class TServicioProcess {
 		this.resultTransaction = resultTransaction;
 	}
 
+	public String getStateRecordOrigen() {
+		return stateRecordOrigen;
+	}
+
+	public void setStateRecordOrigen(String stateRecordOrigen) {
+		this.stateRecordOrigen = stateRecordOrigen;
+	}
+
+	public String getStateRecordGeneric() {
+		return stateRecordGeneric;
+	}
+
+	public void setStateRecordGeneric(String stateRecordGeneric) {
+		this.stateRecordGeneric = stateRecordGeneric;
+	}
+
+	public TServicios gettServicios() {
+		return tServicios;
+	}
+
+	public void settServicios(TServicios tServicios) {
+		this.tServicios = tServicios;
+	}
+
+	public TServiciosExample gettServiciosExample() {
+		return tServiciosExample;
+	}
+
+	public void settServiciosExample(TServiciosExample tServiciosExample) {
+		this.tServiciosExample = tServiciosExample;
+	}
+
+	public TServicio gettServicio() {
+		return tServicio;
+	}
+
+	public void settServicio(TServicio tServicio) {
+		this.tServicio = tServicio;
+	}
+
+	public TServicioExample gettServicioExample() {
+		return tServicioExample;
+	}
+
+	public void settServicioExample(TServicioExample tServicioExample) {
+		this.tServicioExample = tServicioExample;
+	}
+
+	public TServiciosManager gettServiciosManager() {
+		return tServiciosManager;
+	}
+
+	public void settServiciosManager(TServiciosManager tServiciosManager) {
+		this.tServiciosManager = tServiciosManager;
+	}
+
+	public TServicioManager gettServicioManager() {
+		return tServicioManager;
+	}
+
+	public void settServicioManager(TServicioManager tServicioManager) {
+		this.tServicioManager = tServicioManager;
+	}
+
+	public Constantes getConstantes() {
+		return constantes;
+	}
+
+	public void setConstantes(Constantes constantes) {
+		this.constantes = constantes;
+	}
+
 	public TServicioProcess(BeanFactory factory, int sizePage,
 			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
 		this.factory = factory;
@@ -116,30 +212,180 @@ public class TServicioProcess {
 		this.typeProcess = typeProcess;
 		this.process = process;
 
-		this.recordTotal = 0;
-		this.recordProcessed = 0;
-		this.recordRejected = 0;
-		this.resultProcess = 0;
-		this.resultTransaction = 0;
-
+		recordTotal = constantes.getValueNumberDefault();
+		recordProcessed = constantes.getValueNumberDefault();
+		recordRejected = constantes.getValueNumberDefault();
+		resultProcess = constantes.getResultProcessStarted();
+		resultTransaction = constantes.getResultTransactionNoResult();
+		stateRecordOrigen = constantes.getStateRecordNew();
+		stateRecordGeneric = constantes.getStateRecordNew();
 	}
 
 	public int startProcess() {
-		TServicioManager tServicioManager = factory.getBean("tServicioManager",
-				TServicioManager.class);
-		return getResultProcess();
+		
+		tServicioManager = factory.getBean("tServicioManager",TServicioManager.class);
+		tServiciosManager = factory.getBean("tServiciosManager",TServiciosManager.class);
+
+		constantes = factory.getBean("constantes", Constantes.class);
+
+		int offset = 0;
+
+		while (true) {
+
+			tServiciosExample.clear();
+			
+			//Se trabajara solo con las ordenes del negocio de mensajeria local
+			tServiciosExample.createCriteria().andCodambitoEqualTo(constantes.getParamCodeTipoAmbitoLocal());
+			tServiciosExample.createCriteria().andCodnegocioEqualTo(constantes.getParamCodeTipoNegocioMensajeria());
+			tServiciosExample.createCriteria().andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom));
+			tServiciosExample.createCriteria().andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil));
+			tServiciosExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
+
+			List<TServicios> lstServicios = tServiciosManager.selectByExample(tServiciosExample);
+
+			if (lstServicios.size() > 0) {
+				for (Iterator<TServicios> iterator = lstServicios.iterator(); iterator.hasNext();) {
+					tServicios = iterator.next();
+					tServicio.clear();
+					processRecordServicio();
+				}
+				offset = offset + constantes.getSizePage();
+			} else {
+				tServicios.clear();
+				tServiciosExample.clear();
+
+				tServicio.clear();
+				tServicioExample.clear();
+
+				offset = 0;
+				break;
+			}
+		}
+
+		if (recordRejected > 0) {
+			resultProcess = constantes.getResultProcessCompletedErrors();
+		} else {
+			resultProcess = constantes.getResultProcessCompletedCorrectly();
+		}
+
+		recordTotal = recordProcessed + recordRejected;
+
+		return resultProcess;
 	}
 
-	public int insertRecord() {
-		return getResultTransaction();
+	public void processRecordServicio() {
+		
+		completeFieldServicio();
+		
+		if(typeProcess.equals(constantes.getTypeProcessSimple())){
+			if(tServicio.getCodIndCam().equals(constantes.getStateRecordNew())){
+				if(insertRecordGenericServicio()> constantes.getResultTransactionNoResult()){
+					stateRecordOrigen = constantes.getStateRecordProcessed();
+					recordProcessed = recordProcessed + 1; 
+				} else{
+					stateRecordOrigen = constantes.getStateRecordInconsistent();
+					recordRejected = recordRejected + 1;
+				}
+			}else{
+				if(updateRecordGenericServicio() > constantes.getResultTransactionNoResult()){
+					stateRecordOrigen = constantes.getStateRecordProcessed();
+					recordProcessed = recordProcessed + 1; 
+				} else{
+					stateRecordOrigen = constantes.getStateRecordInconsistent();
+					recordRejected = recordRejected + 1;
+				}
+			}
+		}else{
+			if(updateRecordGenericServicio() > constantes.getResultTransactionNoResult()){
+				stateRecordOrigen = constantes.getStateRecordProcessed();
+				recordProcessed = recordProcessed + 1; 
+			}else{
+				if(insertRecordGenericServicio() > constantes.getResultTransactionNoResult()){
+					stateRecordOrigen = constantes.getStateRecordProcessed();
+					recordProcessed = recordProcessed + 1;
+				}else{
+					stateRecordOrigen = constantes.getStateRecordInconsistent();
+					recordRejected = recordRejected + 1;
+				}
+			}
+		}
+		updateRecordOrigenServicio(stateRecordOrigen);
 	}
 
-	public int updateRecord() {
-		return getResultTransaction();
+	public void completeFieldServicio() {
+
+		//Codigo del servicio
+		tServicio.setServCod(tServicios.getCodservicio());
+		
+		//Codigo del negocio
+		if(constantes.getParamCodeTipoNegocioMensajeria().equals(tServicios.getCodnegocio())){
+			tServicio.setServCodNeg(constantes.getParamSerialTipoNegocioMensajeria());
+		}else{
+			tServicio.setServCodNeg(constantes.getParamSerialTipoNegocioNoDefinido());
+		}
+		
+		//Codigo del ambito
+		if(constantes.getParamCodeTipoAmbitoLocal().equals(tServicios.getCodambito())){
+			tServicio.setServCodAmb(constantes.getParamSerialTipoAmbitoLocal());
+		}else{
+			tServicio.setServCodAmb(constantes.getParamSerialTipoAmbitoNoDefinido());
+		}
+		
+		//Descripion
+		tServicio.setServDes(tServicios.getServicio());
+		
+		//Campos de control
+		tServicio.setFecNumCam(Util.getCurrentDateTimeAsLong());
+		if(constantes.getStateRecordNew().equals(tServicios.getBiCodIndCam())){
+			tServicio.setCodIndCam(constantes.getStateRecordNew());
+		}else{
+			tServicio.setCodIndCam(constantes.getStateRecordProcessed());
+		}
+		tServicio.setProcId(process);
+
 	}
 
-	public int deleteRecord() {
-		return getResultTransaction();
+	public int insertRecordGenericServicio() {
+		try {
+			resultTransaction = tServicioManager.insertSelective(tServicio);
+		} catch (Exception e) {
+			resultTransaction = constantes.getResultTransactionNoResult();
+		}
+		return resultTransaction;
+	}
+
+	public int updateRecordGenericServicio() {
+		try {
+			tServicioExample.clear();
+			tServicioExample.createCriteria().andServCodEqualTo(tServicio.getServCod());	
+			resultTransaction = tServicioManager.updateByExampleSelective(tServicio, tServicioExample);	
+		} catch (Exception e) {
+			resultTransaction = constantes.getResultTransactionNoResult();
+		}
+		return resultTransaction;
+	}
+
+	public int deleteRecordGenericServicio() {
+		try {
+			tServicioExample.clear();
+			tServicioExample.createCriteria().andServCodEqualTo(tServicio.getServCod());	
+			resultTransaction = tServicioManager.deleteByExample(tServicioExample);
+		} catch (Exception e) {
+			resultTransaction = constantes.getResultTransactionNoResult();
+		}
+		return resultTransaction;
+	}
+
+	public void updateRecordOrigenServicio(String statusRecord) {
+		try {
+			String codServicio = tServicios.getCodservicio();
+			tServicios.clear();
+			tServicios.setCodservicio(codServicio);
+			tServicios.setBiCodIndCam(statusRecord);
+			tServiciosManager.updateByPrimaryKeySelective(tServicios);
+		} catch (Exception e) {
+
+		}
 	}
 
 }

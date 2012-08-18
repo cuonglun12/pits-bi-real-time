@@ -275,11 +275,10 @@ public class TZonaProcess {
 		while (true) {
 
 			zonasExample.clear();
-
 			zonasExample.createCriteria().andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom));
 			zonasExample.createCriteria().andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil));
-
 			zonasExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
+			
 			List<Zonas> lstZonas = zonasManager.selectByExample(zonasExample);
 
 			if (lstZonas.size() > 0) {

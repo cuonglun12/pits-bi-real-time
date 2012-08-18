@@ -34,10 +34,6 @@ public class TDespacho {
 
     private Date despFecRetRea;
 
-    private Date despFecVer;
-
-    private BigDecimal despCanPas;
-
     private Integer despCodEst;
 
     private Long fecNumCam;
@@ -166,22 +162,6 @@ public class TDespacho {
         this.despFecRetRea = despFecRetRea;
     }
 
-    public Date getDespFecVer() {
-        return despFecVer;
-    }
-
-    public void setDespFecVer(Date despFecVer) {
-        this.despFecVer = despFecVer;
-    }
-
-    public BigDecimal getDespCanPas() {
-        return despCanPas;
-    }
-
-    public void setDespCanPas(BigDecimal despCanPas) {
-        this.despCanPas = despCanPas;
-    }
-
     public Integer getDespCodEst() {
         return despCodEst;
     }
@@ -215,27 +195,25 @@ public class TDespacho {
     }
     
     public void clear(){
-    	despId=null;
-    	despCodTipDoc=null;
-    	despSerieDoc=null;
-    	despNumeroDoc=null;
-    	sedId=null;
-    	zonId=null;
-    	empCatId=null;
-    	despCodTip=null;
-    	despCodTipRut=null;
-    	despCodVer=null;
-    	despMonPasaje=null;
-    	despCntCargos=null;
-    	despFecSal=null;
-    	despFecRetPro=null;
-    	despFecRetRea=null;
-    	despFecVer=null;
-    	despCanPas=null;
-    	despCodEst=null;
-    	fecNumCam=null;
-    	codIndCam=null;
-    	procId=null;
+    	despId = null;
+    	despCodTipDoc = null;
+    	despSerieDoc = null;
+    	despNumeroDoc = null;
+    	sedId = null;
+    	zonId = null;
+    	empCatId = null;
+    	despCodTip = null;
+    	despCodTipRut = null;
+    	despCodVer = null;
+    	despMonPasaje = null;
+    	despCntCargos = null;
+    	despFecSal = null;
+    	despFecRetPro = null;
+    	despFecRetRea = null;
+    	despCodEst = null;
+    	fecNumCam = null;
+    	codIndCam = null;
+    	procId = null;
     }
 
 	@Override
@@ -249,9 +227,9 @@ public class TDespacho {
 				+ ", despMonPasaje=" + despMonPasaje + ", despCntCargos="
 				+ despCntCargos + ", despFecSal=" + despFecSal
 				+ ", despFecRetPro=" + despFecRetPro + ", despFecRetRea="
-				+ despFecRetRea + ", despFecVer=" + despFecVer
-				+ ", despCanPas=" + despCanPas + ", despCodEst=" + despCodEst
-				+ ", fecNumCam=" + fecNumCam + ", codIndCam=" + codIndCam
-				+ ", procId=" + procId + "]";
+				+ despFecRetRea + ", despCodEst=" + despCodEst + ", fecNumCam="
+				+ fecNumCam + ", codIndCam=" + codIndCam + ", procId=" + procId
+				+ "]";
 	}
+    
 }
