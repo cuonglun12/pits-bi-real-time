@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-	<classPathEntry location="D:/jjulcah/PITS/_desarrollo/libs/postgresql-9.0-801.jdbc4.jar" />
+	<classPathEntry location="c:/lib/postgresql-9.0-801.jdbc4.jar" />
 	<context id="DB1" targetRuntime="MyBatis3">
 
 		<commentGenerator>
@@ -27,10 +27,10 @@
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
 
-		<javaClientGenerator type="XMLMAPPER"
+		<!--javaClientGenerator type="XMLMAPPER"
 			targetPackage="pe.com.j2techcon.bi.etl.dao.origen" targetProject="ETLPits">
 			<property name="enableSubPackages" value="true" />
-		</javaClientGenerator>
+		</javaClientGenerator-->
 		
 		<table tableName="t_cotizaciones" modelType="flat" />
 	

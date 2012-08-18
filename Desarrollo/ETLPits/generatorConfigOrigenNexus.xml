@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-	<classPathEntry location="D:/jjulcah/PITS/_desarrollo/libs/postgresql-9.0-801.jdbc4.jar" />
+	<classPathEntry location="c:/lib/postgresql-9.0-801.jdbc4.jar" />
 	<context id="DB1" targetRuntime="MyBatis3">
 
 		<commentGenerator>
@@ -12,7 +12,7 @@
 		</commentGenerator>
 
 		<jdbcConnection driverClass="org.postgresql.Driver"
-			connectionURL="jdbc:postgresql://localhost:5432/db_pits" userId="postgres"
+			connectionURL="jdbc:postgresql://localhost:5432/db_next" userId="postgres"
 			password="123456">
 		</jdbcConnection>	
 		
@@ -27,15 +27,15 @@
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
 
-		<javaClientGenerator type="XMLMAPPER"
+		<!--javaClientGenerator type="XMLMAPPER"
 			targetPackage="pe.com.j2techcon.bi.etl.dao.origen" targetProject="ETLPits">
 			<property name="enableSubPackages" value="true" />
-		</javaClientGenerator>
+		</javaClientGenerator-->
 		
-		<table tableName="sedesprov" modelType="flat" />
-		<table tableName="ubigeos" modelType="flat" />
+		<!--table tableName="sedesprov" modelType="flat" />
+		<table tableName="ubigeos" modelType="flat" /-->
 		<table tableName="zonas" modelType="flat" />
-		<table tableName="t_servicios" modelType="flat" />
+		<!--table tableName="t_servicios" modelType="flat" />
 		<table tableName="t_productos" modelType="flat" />
 		<table tableName="personal" modelType="flat" />
 		<table tableName="t_tipopersonal" modelType="flat" />
@@ -44,9 +44,9 @@
 		<table tableName="ordenes" modelType="flat" />
 		<table tableName="detordenes" modelType="flat" />
 		<table tableName="despacho" modelType="flat" />
-		<table tableName="detdespacho" modelType="flat" />		
+		<table tableName="detdespacho" modelType="flat" /-->		
 
-		<table tableName="t_parametro" modelType="flat" />		
+		<!--table tableName="t_parametro" modelType="flat" /  -->		
 
 	</context>
 </generatorConfiguration>
