@@ -27,15 +27,15 @@
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
 
-		<!--javaClientGenerator type="XMLMAPPER"
+		<javaClientGenerator type="XMLMAPPER"
 			targetPackage="pe.com.j2techcon.bi.etl.dao.origen" targetProject="ETLPits">
 			<property name="enableSubPackages" value="true" />
-		</javaClientGenerator-->
+		</javaClientGenerator>
 		
-		<!--table tableName="sedesprov" modelType="flat" />
-		<table tableName="ubigeos" modelType="flat" /-->
+		<table tableName="sedesprov" modelType="flat" />
+		<table tableName="ubigeos" modelType="flat" />
 		<table tableName="zonas" modelType="flat" />
-		<!--table tableName="t_servicios" modelType="flat" />
+		<table tableName="t_servicios" modelType="flat" />
 		<table tableName="t_productos" modelType="flat" />
 		<table tableName="personal" modelType="flat" />
 		<table tableName="t_tipopersonal" modelType="flat" />
@@ -44,7 +44,7 @@
 		<table tableName="ordenes" modelType="flat" />
 		<table tableName="detordenes" modelType="flat" />
 		<table tableName="despacho" modelType="flat" />
-		<table tableName="detdespacho" modelType="flat" /-->		
+		<table tableName="detdespacho" modelType="flat" />		
 
 		<!--table tableName="t_parametro" modelType="flat" /  -->		
 

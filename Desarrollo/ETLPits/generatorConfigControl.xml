@@ -27,12 +27,12 @@
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
 
-		<javaClientGenerator type="XMLMAPPER"
+		<!--javaClientGenerator type="XMLMAPPER"
 			targetPackage="pe.com.j2techcon.bi.etl.dao.control" targetProject="ETLPits">
 			<property name="enableSubPackages" value="true" />
-		</javaClientGenerator>
+		</javaClientGenerator-->
 		
-		<table tableName="t_proceso" modelType="flat" />
+		<!--table tableName="t_proceso" modelType="flat" /-->
 		<table tableName="t_proceso_detalle" modelType="flat" />
 
 	</context>
