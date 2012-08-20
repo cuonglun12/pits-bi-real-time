@@ -7,7 +7,7 @@ import java.util.List;
 public class TProcesoDetalleExample {
 	
 	protected String paginationByClause;
-	
+
     protected String orderByClause;
 
     protected boolean distinct;
@@ -117,63 +117,63 @@ public class TProcesoDetalleExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andProDetIdIsNull() {
-            addCriterion("pro_det_id is null");
+        public Criteria andProcDetIdIsNull() {
+            addCriterion("proc_det_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andProDetIdIsNotNull() {
-            addCriterion("pro_det_id is not null");
+        public Criteria andProcDetIdIsNotNull() {
+            addCriterion("proc_det_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andProDetIdEqualTo(Integer value) {
-            addCriterion("pro_det_id =", value, "proDetId");
+        public Criteria andProcDetIdEqualTo(Integer value) {
+            addCriterion("proc_det_id =", value, "procDetId");
             return (Criteria) this;
         }
 
-        public Criteria andProDetIdNotEqualTo(Integer value) {
-            addCriterion("pro_det_id <>", value, "proDetId");
+        public Criteria andProcDetIdNotEqualTo(Integer value) {
+            addCriterion("proc_det_id <>", value, "procDetId");
             return (Criteria) this;
         }
 
-        public Criteria andProDetIdGreaterThan(Integer value) {
-            addCriterion("pro_det_id >", value, "proDetId");
+        public Criteria andProcDetIdGreaterThan(Integer value) {
+            addCriterion("proc_det_id >", value, "procDetId");
             return (Criteria) this;
         }
 
-        public Criteria andProDetIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("pro_det_id >=", value, "proDetId");
+        public Criteria andProcDetIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("proc_det_id >=", value, "procDetId");
             return (Criteria) this;
         }
 
-        public Criteria andProDetIdLessThan(Integer value) {
-            addCriterion("pro_det_id <", value, "proDetId");
+        public Criteria andProcDetIdLessThan(Integer value) {
+            addCriterion("proc_det_id <", value, "procDetId");
             return (Criteria) this;
         }
 
-        public Criteria andProDetIdLessThanOrEqualTo(Integer value) {
-            addCriterion("pro_det_id <=", value, "proDetId");
+        public Criteria andProcDetIdLessThanOrEqualTo(Integer value) {
+            addCriterion("proc_det_id <=", value, "procDetId");
             return (Criteria) this;
         }
 
-        public Criteria andProDetIdIn(List<Integer> values) {
-            addCriterion("pro_det_id in", values, "proDetId");
+        public Criteria andProcDetIdIn(List<Integer> values) {
+            addCriterion("proc_det_id in", values, "procDetId");
             return (Criteria) this;
         }
 
-        public Criteria andProDetIdNotIn(List<Integer> values) {
-            addCriterion("pro_det_id not in", values, "proDetId");
+        public Criteria andProcDetIdNotIn(List<Integer> values) {
+            addCriterion("proc_det_id not in", values, "procDetId");
             return (Criteria) this;
         }
 
-        public Criteria andProDetIdBetween(Integer value1, Integer value2) {
-            addCriterion("pro_det_id between", value1, value2, "proDetId");
+        public Criteria andProcDetIdBetween(Integer value1, Integer value2) {
+            addCriterion("proc_det_id between", value1, value2, "procDetId");
             return (Criteria) this;
         }
 
-        public Criteria andProDetIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("pro_det_id not between", value1, value2, "proDetId");
+        public Criteria andProcDetIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("proc_det_id not between", value1, value2, "procDetId");
             return (Criteria) this;
         }
 

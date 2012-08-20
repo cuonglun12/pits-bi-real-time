@@ -211,6 +211,8 @@ public class DimTipoRutaProcess {
 		this.typeProcess = typeProcess;
 		this.process = process;
 		
+		constantes = factory.getBean("constantes", Constantes.class);
+		
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
 		recordRejected = constantes.getValueNumberDefault();
@@ -226,7 +228,11 @@ public class DimTipoRutaProcess {
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
 		dimTipoRutaManager = factory.getBean("dimTipoRutaManager", DimTipoRutaManager.class);
 		
-		constantes = factory.getBean("constantes", Constantes.class);
+		tParametro = new TParametro();
+		tParametroExample = new TParametroExample();
+		
+		dimTipoRuta = new DimTipoRuta();
+		dimTipoRutaExample = new DimTipoRutaExample();
 
 		int offset = 0;
 		

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="t_despacho" >
+<mapper namespace="pe.com.j2techcon.bi.etl.dao.generic.TDespachoMapper" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.generic.TDespacho" >
     <id column="desp_id" property="despId" jdbcType="INTEGER" />
     <result column="desp_cod_tip_doc" property="despCodTipDoc" jdbcType="INTEGER" />

@@ -1,5 +1,6 @@
 package pe.com.j2techcon.bi.etl.process.generic;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -252,6 +253,8 @@ public class TZonaProcess {
 		this.dateTimeUntil = dateTimeUntil;
 		this.typeProcess = typeProcess;
 		this.process = process;
+		
+		constantes = factory.getBean("constantes", Constantes.class);
 
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
@@ -267,8 +270,17 @@ public class TZonaProcess {
 		tParametroManager = factory.getBean("tParametroManager",TParametroManager.class);
 		zonasManager = factory.getBean("zonasManager",ZonasManager.class);
 		tZonaManager = factory.getBean("tZonaManager", TZonaManager.class);
-
-		constantes = factory.getBean("constantes", Constantes.class);
+		
+		tParametro = new TParametro();
+		tParametroExample = new TParametroExample();
+		
+		zonas = new Zonas();
+		zonasExample = new ZonasExample();
+		
+		tZona = new TZona();
+		tZonaExample = new TZonaExample();
+		
+		lstParametro = new ArrayList<TParametro>();
 
 		int offset = 0;
 
@@ -366,13 +378,17 @@ public class TZonaProcess {
 		tZona.setZonCod(zonas.getCodzona());
 		
 		//Ubigeo
-		tParametroExample.clear();
-		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeUbigeoDistrito());
-		tParametroExample.createCriteria().andParamCodEqualTo(zonas.getUbigeo());
-		
-		lstParametro = tParametroManager.selectByExample(tParametroExample);
-		if(lstParametro.size()>0){
-			tZona.setUbiId(lstParametro.get(0).getParamId());
+		if(zonas.getUbigeo() != null && zonas.getUbigeo().length()>0){
+			tParametroExample.clear();
+			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeUbigeoDistrito());
+			tParametroExample.createCriteria().andParamCodEqualTo(zonas.getUbigeo());
+			
+			lstParametro = tParametroManager.selectByExample(tParametroExample);
+			if(lstParametro.size()>0){
+				tZona.setUbiId(lstParametro.get(0).getParamId());
+			}else{
+				tZona.setUbiId(constantes.getParamSerialUbigeoDistritoNoDefinido());
+			}
 		}else{
 			tZona.setUbiId(constantes.getParamSerialUbigeoDistritoNoDefinido());
 		}

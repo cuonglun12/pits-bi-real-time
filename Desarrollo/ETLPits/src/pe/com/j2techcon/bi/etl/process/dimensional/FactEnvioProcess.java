@@ -407,6 +407,8 @@ public class FactEnvioProcess {
 		this.typeProcess = typeProcess;
 		this.process = process;
 		
+		constantes = factory.getBean("constantes", Constantes.class);
+		
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
 		recordRejected = constantes.getValueNumberDefault();
@@ -428,7 +430,29 @@ public class FactEnvioProcess {
 		dimTiempoManager = factory.getBean("dimTiempoManager", DimTiempoManager.class);
 		factEnvioManager = factory.getBean("factEnvioManager", FactEnvioManager.class);
 		
-		constantes = factory.getBean("constantes", Constantes.class);
+		tAreaCliente = new TAreaCliente();
+		tAreaClienteExample = new TAreaClienteExample();
+		
+		tCargoDespacho = new TCargoDespacho();
+		tCargoDespachoExample = new TCargoDespachoExample();
+		
+		tDespacho = new TDespacho();
+		tDespachoExample = new TDespachoExample();
+		
+		tCargo = new TCargo();
+		tCargoExample = new TCargoExample();
+		
+		tOrden = new TOrden();
+		tOrdenExample = new TOrdenExample();
+		
+		tParametro = new TParametro();
+		tParametroExample = new TParametroExample();
+		
+		factEnvio = new FactEnvio();
+		factEnvioExample = new FactEnvioExample();
+		
+		//dimTiempo = new DimTiempo();
+		//dimTiempoExample = new DimTiempoExample();
 
 		int offset = 0;
 		
@@ -573,134 +597,134 @@ public class FactEnvioProcess {
 		
 		if(constantes.getParamCodeEstadoCargoDespachoEntregado().equals(tParametro.getParamCod())){
 			
-			factEnvio.setEnvioIndEnt((short)constantes.getValueNumberUnit());
-			factEnvio.setEnvioIndMot((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRee((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndAnu((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndFueZon((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndPerd((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndDig((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRut((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndPro((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRob((short)constantes.getValueNumberCero());
+			factEnvio.setEnvioIndEnt((short) 1);
+			factEnvio.setEnvioIndMot((short) 0);
+			factEnvio.setEnvioIndRee((short) 0);
+			factEnvio.setEnvioIndAnu((short) 0);
+			factEnvio.setEnvioIndFueZon((short) 0);
+			factEnvio.setEnvioIndPerd((short) 0);
+			factEnvio.setEnvioIndDig((short) 0);
+			factEnvio.setEnvioIndRut((short) 0);
+			factEnvio.setEnvioIndPro((short) 0);
+			factEnvio.setEnvioIndRob((short) 0);
 			
 			
 		}else if (constantes.getParamCodeEstadoCargoDespachoMotivado().equals(tParametro.getParamCod())){
-			factEnvio.setEnvioIndEnt((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndMot((short)constantes.getValueNumberUnit());
-			factEnvio.setEnvioIndRee((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndAnu((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndFueZon((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndPerd((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndDig((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRut((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndPro((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRob((short)constantes.getValueNumberCero());
+			factEnvio.setEnvioIndEnt((short) 0);
+			factEnvio.setEnvioIndMot((short) 1);
+			factEnvio.setEnvioIndRee((short) 0);
+			factEnvio.setEnvioIndAnu((short) 0);
+			factEnvio.setEnvioIndFueZon((short) 0);
+			factEnvio.setEnvioIndPerd((short) 0);
+			factEnvio.setEnvioIndDig((short) 0);
+			factEnvio.setEnvioIndRut((short) 0);
+			factEnvio.setEnvioIndPro((short) 0);
+			factEnvio.setEnvioIndRob((short) 0);
 			
 		}else if (constantes.getParamCodeEstadoCargoDespachoReenviado().equals(tParametro.getParamCod())){
-			factEnvio.setEnvioIndEnt((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndMot((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRee((short)constantes.getValueNumberUnit());
-			factEnvio.setEnvioIndAnu((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndFueZon((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndPerd((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndDig((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRut((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndPro((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRob((short)constantes.getValueNumberCero());
+			factEnvio.setEnvioIndEnt((short) 0);
+			factEnvio.setEnvioIndMot((short) 0);
+			factEnvio.setEnvioIndRee((short) 1);
+			factEnvio.setEnvioIndAnu((short) 0);
+			factEnvio.setEnvioIndFueZon((short) 0);
+			factEnvio.setEnvioIndPerd((short) 0);
+			factEnvio.setEnvioIndDig((short) 0);
+			factEnvio.setEnvioIndRut((short) 0);
+			factEnvio.setEnvioIndPro((short) 0);
+			factEnvio.setEnvioIndRob((short) 0);
 			
 		}else if (constantes.getParamCodeEstadoCargoDespachoAnulado().equals(tParametro.getParamCod())){
-			factEnvio.setEnvioIndEnt((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndMot((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRee((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndAnu((short)constantes.getValueNumberUnit());
-			factEnvio.setEnvioIndFueZon((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndPerd((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndDig((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRut((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndPro((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRob((short)constantes.getValueNumberCero());
+			factEnvio.setEnvioIndEnt((short) 0);
+			factEnvio.setEnvioIndMot((short) 0);
+			factEnvio.setEnvioIndRee((short) 0);
+			factEnvio.setEnvioIndAnu((short) 1);
+			factEnvio.setEnvioIndFueZon((short) 0);
+			factEnvio.setEnvioIndPerd((short) 0);
+			factEnvio.setEnvioIndDig((short) 0);
+			factEnvio.setEnvioIndRut((short) 0);
+			factEnvio.setEnvioIndPro((short) 0);
+			factEnvio.setEnvioIndRob((short) 0);
 			
 		}else if (constantes.getParamCodeEstadoCargoDespachoFueraZona().equals(tParametro.getParamCod())){
-			factEnvio.setEnvioIndEnt((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndMot((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRee((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndAnu((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndFueZon((short)constantes.getValueNumberUnit());
-			factEnvio.setEnvioIndPerd((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndDig((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRut((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndPro((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRob((short)constantes.getValueNumberCero());
+			factEnvio.setEnvioIndEnt((short) 0);
+			factEnvio.setEnvioIndMot((short) 0);
+			factEnvio.setEnvioIndRee((short) 0);
+			factEnvio.setEnvioIndAnu((short) 0);
+			factEnvio.setEnvioIndFueZon((short) 1);
+			factEnvio.setEnvioIndPerd((short) 0);
+			factEnvio.setEnvioIndDig((short) 0);
+			factEnvio.setEnvioIndRut((short) 0);
+			factEnvio.setEnvioIndPro((short) 0);
+			factEnvio.setEnvioIndRob((short) 0);
 			
 		}else if (constantes.getParamCodeEstadoCargoDespachoPerdido().equals(tParametro.getParamCod())){
-			factEnvio.setEnvioIndEnt((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndMot((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRee((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndAnu((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndFueZon((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndPerd((short)constantes.getValueNumberUnit());
-			factEnvio.setEnvioIndDig((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRut((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndPro((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRob((short)constantes.getValueNumberCero());
+			factEnvio.setEnvioIndEnt((short) 0);
+			factEnvio.setEnvioIndMot((short) 0);
+			factEnvio.setEnvioIndRee((short) 0);
+			factEnvio.setEnvioIndAnu((short) 0);
+			factEnvio.setEnvioIndFueZon((short) 0);
+			factEnvio.setEnvioIndPerd((short) 1);
+			factEnvio.setEnvioIndDig((short) 0);
+			factEnvio.setEnvioIndRut((short) 0);
+			factEnvio.setEnvioIndPro((short) 0);
+			factEnvio.setEnvioIndRob((short) 0);
 			
 		}else if (constantes.getParamCodeEstadoCargoDespachoDigitado().equals(tParametro.getParamCod())){
-			factEnvio.setEnvioIndEnt((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndMot((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRee((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndAnu((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndFueZon((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndPerd((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndDig((short)constantes.getValueNumberUnit());
-			factEnvio.setEnvioIndRut((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndPro((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRob((short)constantes.getValueNumberCero());
+			factEnvio.setEnvioIndEnt((short) 0);
+			factEnvio.setEnvioIndMot((short) 0);
+			factEnvio.setEnvioIndRee((short) 0);
+			factEnvio.setEnvioIndAnu((short) 0);
+			factEnvio.setEnvioIndFueZon((short) 0);
+			factEnvio.setEnvioIndPerd((short) 0);
+			factEnvio.setEnvioIndDig((short) 1);
+			factEnvio.setEnvioIndRut((short) 0);
+			factEnvio.setEnvioIndPro((short) 0);
+			factEnvio.setEnvioIndRob((short) 0);
 		}else if (constantes.getParamCodeEstadoCargoDespachoRuta().equals(tParametro.getParamCod())){
-			factEnvio.setEnvioIndEnt((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndMot((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRee((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndAnu((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndFueZon((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndPerd((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndDig((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRut((short)constantes.getValueNumberUnit());
-			factEnvio.setEnvioIndPro((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRob((short)constantes.getValueNumberCero());
+			factEnvio.setEnvioIndEnt((short) 0);
+			factEnvio.setEnvioIndMot((short) 0);
+			factEnvio.setEnvioIndRee((short) 0);
+			factEnvio.setEnvioIndAnu((short) 0);
+			factEnvio.setEnvioIndFueZon((short) 0);
+			factEnvio.setEnvioIndPerd((short) 0);
+			factEnvio.setEnvioIndDig((short) 0);
+			factEnvio.setEnvioIndRut((short) 1);
+			factEnvio.setEnvioIndPro((short) 0);
+			factEnvio.setEnvioIndRob((short) 0);
 			
 		}else if (constantes.getParamCodeEstadoCargoDespachoProvincia().equals(tParametro.getParamCod())){
-			factEnvio.setEnvioIndEnt((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndMot((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRee((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndAnu((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndFueZon((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndPerd((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndDig((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRut((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndPro((short)constantes.getValueNumberUnit());
-			factEnvio.setEnvioIndRob((short)constantes.getValueNumberCero());
+			factEnvio.setEnvioIndEnt((short) 0);
+			factEnvio.setEnvioIndMot((short) 0);
+			factEnvio.setEnvioIndRee((short) 0);
+			factEnvio.setEnvioIndAnu((short) 0);
+			factEnvio.setEnvioIndFueZon((short) 0);
+			factEnvio.setEnvioIndPerd((short) 0);
+			factEnvio.setEnvioIndDig((short) 0);
+			factEnvio.setEnvioIndRut((short) 0);
+			factEnvio.setEnvioIndPro((short) 1);
+			factEnvio.setEnvioIndRob((short) 0);
 		}else if (constantes.getParamCodeEstadoCargoDespachoRobo().equals(tParametro.getParamCod())){
-			factEnvio.setEnvioIndEnt((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndMot((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRee((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndAnu((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndFueZon((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndPerd((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndDig((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRut((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndPro((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRob((short)constantes.getValueNumberUnit());
+			factEnvio.setEnvioIndEnt((short) 0);
+			factEnvio.setEnvioIndMot((short) 0);
+			factEnvio.setEnvioIndRee((short) 0);
+			factEnvio.setEnvioIndAnu((short) 0);
+			factEnvio.setEnvioIndFueZon((short) 0);
+			factEnvio.setEnvioIndPerd((short) 0);
+			factEnvio.setEnvioIndDig((short) 0);
+			factEnvio.setEnvioIndRut((short) 0);
+			factEnvio.setEnvioIndPro((short) 0);
+			factEnvio.setEnvioIndRob((short) 1);
 		}else{
-			factEnvio.setEnvioIndEnt((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndMot((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRee((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndAnu((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndFueZon((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndPerd((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndDig((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRut((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndPro((short)constantes.getValueNumberCero());
-			factEnvio.setEnvioIndRob((short)constantes.getValueNumberCero());
+			factEnvio.setEnvioIndEnt((short) 0);
+			factEnvio.setEnvioIndMot((short) 0);
+			factEnvio.setEnvioIndRee((short) 0);
+			factEnvio.setEnvioIndAnu((short) 0);
+			factEnvio.setEnvioIndFueZon((short) 0);
+			factEnvio.setEnvioIndPerd((short) 0);
+			factEnvio.setEnvioIndDig((short) 0);
+			factEnvio.setEnvioIndRut((short) 0);
+			factEnvio.setEnvioIndPro((short) 0);
+			factEnvio.setEnvioIndRob((short) 0);
 		}
 		factEnvio.setProcId(process);
 	}

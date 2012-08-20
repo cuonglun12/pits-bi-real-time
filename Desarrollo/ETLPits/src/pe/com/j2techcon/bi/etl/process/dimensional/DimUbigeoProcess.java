@@ -242,6 +242,8 @@ public class DimUbigeoProcess {
 		this.typeProcess = typeProcess;
 		this.process = process;
 		
+		constantes = factory.getBean("constantes", Constantes.class);
+		
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
 		recordRejected = constantes.getValueNumberDefault();
@@ -258,7 +260,14 @@ public class DimUbigeoProcess {
 		tUbigeoManager = factory.getBean("tUbigeoManager", TUbigeoManager.class);
 		dimUbigeoManager = factory.getBean("dimUbigeoManager", DimUbigeoManager.class);
 		
-		constantes = factory.getBean("constantes", Constantes.class);
+		tParametro = new TParametro();
+		tParametroExample = new TParametroExample();
+		
+		tUbigeo = new TUbigeo();
+		tUbigeoExample = new TUbigeoExample();
+		
+		dimUbigeo = new DimUbigeo();
+		dimUbigeoExample = new DimUbigeoExample();
 
 		int offset = 0;
 		

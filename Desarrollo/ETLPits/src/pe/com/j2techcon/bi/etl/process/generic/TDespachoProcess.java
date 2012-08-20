@@ -1,5 +1,6 @@
 package pe.com.j2techcon.bi.etl.process.generic;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -335,6 +336,8 @@ public class TDespachoProcess {
 		this.dateTimeUntil = dateTimeUntil;
 		this.typeProcess = typeProcess;
 		this.process = process;
+		
+		constantes = factory.getBean("constantes", Constantes.class);
 
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
@@ -353,7 +356,25 @@ public class TDespachoProcess {
 		tZonaManager = factory.getBean("tZonaManager", TZonaManager.class);
 		despachoManager = factory.getBean("despachoManager", DespachoManager.class);
 		tDespachoManager = factory.getBean("tDespachoManager", TDespachoManager.class);
-		constantes = factory.getBean("constantes", Constantes.class);
+		
+		tSede = new TSede();
+		tSedeExample = new TSedeExample();
+		
+		tZona = new TZona();
+		tZonaExample = new TZonaExample();
+		
+		tEmpleadoCategoria = new TEmpleadoCategoria();
+		tEmpleadoCategoriaExample = new TEmpleadoCategoriaExample();
+		
+		despacho = new Despacho();
+		despachoExample = new DespachoExample();
+		
+		tDespacho = new TDespacho();
+		tDespachoExample = new TDespachoExample();
+		
+		lstSede = new ArrayList<TSede>();
+		lstZona = new ArrayList<TZona>();
+		lstEmpleadoCategoria = new ArrayList<TEmpleadoCategoria>();
 		
 		int offset = 0;
 		

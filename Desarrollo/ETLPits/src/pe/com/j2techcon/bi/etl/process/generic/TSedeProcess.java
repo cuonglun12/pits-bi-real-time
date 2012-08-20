@@ -1,5 +1,6 @@
 package pe.com.j2techcon.bi.etl.process.generic;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -252,6 +253,8 @@ public class TSedeProcess {
 		this.dateTimeUntil = dateTimeUntil;
 		this.typeProcess = typeProcess;
 		this.process = process;
+		
+		constantes = factory.getBean("constantes", Constantes.class);
 
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
@@ -269,7 +272,16 @@ public class TSedeProcess {
 		tSedeManager = factory.getBean("tSedeManager",TSedeManager.class);
 		tParametroManager = factory.getBean("tParametroManager",TParametroManager.class);
 		
-		constantes = factory.getBean("constantes", Constantes.class);
+		sedesprov = new Sedesprov();
+		sedesprovExample = new SedesprovExample();
+		
+		tSede = new TSede();
+		tSedeExample = new TSedeExample();
+		
+		tParametro = new TParametro();
+		tParametroExample = new TParametroExample();
+		
+		lstParametro = new ArrayList<TParametro>();
 		
 		int offset = 0;
 		

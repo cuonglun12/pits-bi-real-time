@@ -243,6 +243,8 @@ public class DimProductoProcess {
 		this.typeProcess = typeProcess;
 		this.process = process;
 		
+		constantes = factory.getBean("constantes", Constantes.class);
+		
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
 		recordRejected = constantes.getValueNumberDefault();
@@ -259,7 +261,14 @@ public class DimProductoProcess {
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
 		dimProductoManager = factory.getBean("dimProductoManager", DimProductoManager.class);
 		
-		constantes = factory.getBean("constantes", Constantes.class);
+		tProducto = new TProducto();
+		tProductoExample = new TProductoExample();
+		
+		tParametro = new TParametro();
+		tParametroExample = new TParametroExample();
+		
+		dimProducto = new DimProducto();
+		dimProductoExample = new DimProductoExample();
 
 		int offset = 0;
 		

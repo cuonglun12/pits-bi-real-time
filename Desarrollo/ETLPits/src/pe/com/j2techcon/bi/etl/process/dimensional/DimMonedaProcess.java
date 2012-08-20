@@ -211,6 +211,8 @@ public class DimMonedaProcess {
 		this.typeProcess = typeProcess;
 		this.process = process;
 		
+		constantes = factory.getBean("constantes", Constantes.class);
+		
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
 		recordRejected = constantes.getValueNumberDefault();
@@ -226,8 +228,12 @@ public class DimMonedaProcess {
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
 		dimMonedaManager = factory.getBean("dimMonedaManager", DimMonedaManager.class);
 		
-		constantes = factory.getBean("constantes", Constantes.class);
-
+		tParametro = new TParametro();
+		tParametroExample = new TParametroExample();
+		
+		dimMoneda = new DimMoneda();
+		dimMonedaExample = new DimMonedaExample();
+		
 		int offset = 0;
 		
 		while(true) {

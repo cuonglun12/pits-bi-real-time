@@ -273,6 +273,8 @@ public class DimPersonalProcess {
 		this.typeProcess = typeProcess;
 		this.process = process;
 		
+		constantes = factory.getBean("constantes", Constantes.class);
+		
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
 		recordRejected = constantes.getValueNumberDefault();
@@ -290,7 +292,17 @@ public class DimPersonalProcess {
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
 		dimPersonalManager = factory.getBean("dimPersonalManager", DimPersonalManager.class);
 		
-		constantes = factory.getBean("constantes", Constantes.class);
+		tEmpleado = new TEmpleado();
+		tEmpleadoExample = new TEmpleadoExample();
+		
+		tEmpleadoCategoria = new TEmpleadoCategoria();
+		tEmpleadoCategoriaExample = new TEmpleadoCategoriaExample();
+		
+		tParametro = new TParametro();
+		tParametroExample = new TParametroExample();
+		
+		dimPersonal = new DimPersonal();
+		dimPersonalExample = new DimPersonalExample();
 
 		int offset = 0;
 		

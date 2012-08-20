@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="despacho" >
+<mapper namespace="pe.com.j2techcon.bi.etl.dao.origen.DespachoMapper" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.origen.Despacho" >
     <id column="serieguia" property="serieguia" jdbcType="CHAR" />
     <id column="nroguia" property="nroguia" jdbcType="CHAR" />

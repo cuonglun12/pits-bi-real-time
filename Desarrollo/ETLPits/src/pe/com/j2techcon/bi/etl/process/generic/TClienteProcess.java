@@ -1,5 +1,6 @@
 package pe.com.j2techcon.bi.etl.process.generic;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -253,7 +254,8 @@ public class TClienteProcess {
 		this.typeProcess = typeProcess;
 		this.process = process;
 		
-
+		constantes = factory.getBean("constantes", Constantes.class);
+		
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
 		recordRejected = constantes.getValueNumberDefault();
@@ -269,8 +271,17 @@ public class TClienteProcess {
 		tParametroManager = factory.getBean("tParametroManager",TParametroManager.class);
 		tClienteManager = factory.getBean("tClienteManager",TClienteManager.class);
 		clienteManager = factory.getBean("clienteManager", ClienteManager.class);
+		
+		tParametro = new TParametro();
+		tParametroExample = new TParametroExample();
 
-		constantes = factory.getBean("constantes", Constantes.class);
+		tCliente = new TCliente();
+		tClienteExample = new TClienteExample();
+
+		cliente = new Cliente();
+		clienteExample = new ClienteExample();
+		
+		lstParametro = new ArrayList<TParametro>();
 
 		int offset = 0;
 
@@ -412,13 +423,16 @@ public class TClienteProcess {
 		}
 		
 		//Ubicacion
-		tParametroExample.clear();
-		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeUbigeoDistrito());
-		tParametroExample.createCriteria().andParamCodEqualTo(cliente.getUbigeo());
-		
-		lstParametro = tParametroManager.selectByExample(tParametroExample);
-		if(lstParametro.size()>0){
-			tCliente.setUbiId(lstParametro.get(0).getParamId());
+		if(cliente.getUbigeo() != null && cliente.getUbigeo().length()>0){
+			tParametroExample.clear();
+			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeUbigeoDistrito());
+			tParametroExample.createCriteria().andParamCodEqualTo(cliente.getUbigeo());
+			lstParametro = tParametroManager.selectByExample(tParametroExample);
+			if(lstParametro.size()>0){
+				tCliente.setUbiId(lstParametro.get(0).getParamId());
+			}else{
+				tCliente.setUbiId(constantes.getParamSerialUbigeoDistritoNoDefinido());
+			}
 		}else{
 			tCliente.setUbiId(constantes.getParamSerialUbigeoDistritoNoDefinido());
 		}

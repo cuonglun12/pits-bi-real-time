@@ -329,9 +329,6 @@ public class Constantes {
 	private String valueStringDefault;
 	private int valueNumberDefault;
 	
-	private int valueNumberUnit;
-	private int valueNumberCero;
-	
 	private String stateRecordNew;
 	private String stateRecordProcessed;
 	private String stateRecordInconsistent;
@@ -2326,18 +2323,7 @@ public class Constantes {
 	public void setValueNumberDefault(int valueNumberDefault) {
 		this.valueNumberDefault = valueNumberDefault;
 	}
-	public int getValueNumberUnit() {
-		return valueNumberUnit;
-	}
-	public void setValueNumberUnit(int valueNumberUnit) {
-		this.valueNumberUnit = valueNumberUnit;
-	}
-	public int getValueNumberCero() {
-		return valueNumberCero;
-	}
-	public void setValueNumberCero(int valueNumberCero) {
-		this.valueNumberCero = valueNumberCero;
-	}
+	
 	public String getStateRecordNew() {
 		return stateRecordNew;
 	}

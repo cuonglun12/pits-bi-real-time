@@ -211,6 +211,8 @@ public class DimFacturadoProcess {
 		this.typeProcess = typeProcess;
 		this.process = process;
 		
+		constantes = factory.getBean("constantes", Constantes.class);
+		
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
 		recordRejected = constantes.getValueNumberDefault();
@@ -226,7 +228,11 @@ public class DimFacturadoProcess {
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
 		dimFacturadoManager = factory.getBean("dimFacturadoManager", DimFacturadoManager.class);
 		
-		constantes = factory.getBean("constantes", Constantes.class);
+		tParametro = new TParametro();
+		tParametroExample = new TParametroExample();
+		
+		dimFacturado = new DimFacturado();
+		dimFacturadoExample = new DimFacturadoExample();
 
 		int offset = 0;
 		

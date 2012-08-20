@@ -1,6 +1,7 @@
 package pe.com.j2techcon.bi.etl.process.generic;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -375,6 +376,8 @@ public class TCotizacionProcess {
 		this.dateTimeUntil = dateTimeUntil;
 		this.typeProcess = typeProcess;
 		this.process = process;
+		
+		constantes = factory.getBean("constantes", Constantes.class);
 
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
@@ -395,7 +398,28 @@ public class TCotizacionProcess {
 		tCotizacionManager = factory.getBean("tCotizacionManager", TCotizacionManager.class);
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
 		
-		constantes = factory.getBean("constantes", Constantes.class);
+		tParametro = new TParametro();
+		tParametroExample = new TParametroExample();
+		
+		tEmpleadoCategoria = new TEmpleadoCategoria();
+		tEmpleadoCategoriaExample = new TEmpleadoCategoriaExample();
+		
+		tAreaCliente = new TAreaCliente();
+		tAreaClienteExample = new TAreaClienteExample();
+		
+		tProducto = new TProducto();
+		tProductoExample = new TProductoExample();
+		
+		tCotizaciones = new TCotizaciones();
+		tCotizacionesExample = new TCotizacionesExample();
+		
+		tCotizacion = new TCotizacion();
+		tCotizacionExample = new TCotizacionExample();
+		
+		lstParametro = new ArrayList<TParametro>();
+		lstAreaCliente = new ArrayList<TAreaCliente>();
+		lstProducto = new ArrayList<TProducto>();
+		lstLista = new ArrayList<String>();
 		
 		int offset = 0;
 		
@@ -404,8 +428,8 @@ public class TCotizacionProcess {
 			tCotizacionesExample.clear();
 
 			//Se trabajara solo con las cotizaciones del negocio de mensajeria local
+			tCotizacionesExample.createCriteria().andCodambitoEqualTo(constantes.getParamCodeTipoAmbitoLocal());
 			tCotizacionesExample.createCriteria().andCodnegocioEqualTo(constantes.getParamCodeTipoNegocioMensajeria());
-			
 			tCotizacionesExample.createCriteria().andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom));
 			tCotizacionesExample.createCriteria().andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil));
 			
@@ -506,7 +530,7 @@ public class TCotizacionProcess {
 	public void completeFieldCotizacion() {
 
 		//Codido de la categoria del empleado: Por defecto se ingresa el valor 0
-		tCotizacion.setEmpCatId(constantes.getValueNumberCero());
+		tCotizacion.setEmpCatId(0);
 		
 		//Codigo del area del cliente
 		lstLista.clear();

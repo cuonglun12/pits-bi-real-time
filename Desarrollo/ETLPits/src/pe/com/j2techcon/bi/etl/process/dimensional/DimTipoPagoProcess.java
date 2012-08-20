@@ -211,6 +211,8 @@ public class DimTipoPagoProcess {
 		this.typeProcess = typeProcess;
 		this.process = process;
 		
+		constantes = factory.getBean("constantes", Constantes.class);
+		
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
 		recordRejected = constantes.getValueNumberDefault();
@@ -226,7 +228,11 @@ public class DimTipoPagoProcess {
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
 		dimTipoPagoManager = factory.getBean("dimTipoPagoManager", DimTipoPagoManager.class);
 		
-		constantes = factory.getBean("constantes", Constantes.class);
+		tParametro = new TParametro();
+		tParametroExample = new TParametroExample();
+		
+		dimTipoPago = new DimTipoPago();
+		dimTipoPagoExample = new DimTipoPagoExample();
 
 		int offset = 0;
 		

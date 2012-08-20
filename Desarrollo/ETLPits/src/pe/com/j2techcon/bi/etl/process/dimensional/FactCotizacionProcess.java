@@ -1,6 +1,7 @@
 package pe.com.j2techcon.bi.etl.process.dimensional;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -356,6 +357,8 @@ public class FactCotizacionProcess {
 		this.typeProcess = typeProcess;
 		this.process = process;
 		
+		constantes = factory.getBean("constantes", Constantes.class);
+		
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
 		recordRejected = constantes.getValueNumberDefault();
@@ -375,7 +378,25 @@ public class FactCotizacionProcess {
 		//dimTiempoManager = factory.getBean("dimTiempoManager", DimTiempoManager.class);
 		factCotizacionManager = factory.getBean("factCotizacionManager", FactCotizacionManager.class);
 		
-		constantes = factory.getBean("constantes", Constantes.class);
+		tAreaCliente = new TAreaCliente();
+		tAreaClienteExample = new TAreaClienteExample();
+		
+		tOrden = new TOrden();
+		tOrdenExample = new TOrdenExample();
+		
+		tCotizacion = new TCotizacion();
+		tCotizacionExample = new TCotizacionExample();
+		
+		//tParametro = new TParametro();
+		//tParametroExample = new TParametroExample();
+		
+		factCotizacion = new FactCotizacion();
+		factCotizacionExample = new FactCotizacionExample();
+		
+		//dimTiempo = new DimTiempo();
+		//dimTiempoExample = new DimTiempoExample();
+		
+		statesOrden = new ArrayList<Integer>();
 
 		int offset = 0;
 		

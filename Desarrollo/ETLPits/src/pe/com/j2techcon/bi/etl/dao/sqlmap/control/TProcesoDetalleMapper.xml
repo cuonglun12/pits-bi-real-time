@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="pe.com.j2techcon.bi.etl.dao.control.TProcesoDetalleMapper" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.control.TProcesoDetalle" >
-    <id column="pro_det_id" property="proDetId" jdbcType="INTEGER" />
+    <id column="proc_det_id" property="procDetId" jdbcType="INTEGER" />
     <result column="proc_id" property="procId" jdbcType="INTEGER" />
     <result column="proc_tip" property="procTip" jdbcType="CHAR" />
     <result column="proc_det_id_table" property="procDetIdTable" jdbcType="INTEGER" />
@@ -75,7 +75,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    pro_det_id, proc_id, proc_tip, proc_det_id_table, proc_det_fec_desde, proc_det_fec_hasta, 
+    proc_det_id, proc_id, proc_tip, proc_det_id_table, proc_det_fec_desde, proc_det_fec_hasta, 
     proc_det_num_reg_tot, proc_det_num_reg_pro, proc_det_num_reg_rec, proc_det_fec_ini, 
     proc_det_fec_fin, proc_det_fec_act, proc_det_est
   </sql>
@@ -100,11 +100,11 @@
     select 
     <include refid="Base_Column_List" />
     from t_proceso_detalle
-    where pro_det_id = #{proDetId,jdbcType=INTEGER}
+    where proc_det_id = #{procDetId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from t_proceso_detalle
-    where pro_det_id = #{proDetId,jdbcType=INTEGER}
+    where proc_det_id = #{procDetId,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="pe.com.j2techcon.bi.etl.domain.control.TProcesoDetalleExample" >
     delete from t_proceso_detalle
@@ -113,12 +113,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.control.TProcesoDetalle" >
-    insert into t_proceso_detalle (pro_det_id, proc_id, proc_tip, 
+    insert into t_proceso_detalle (proc_det_id, proc_id, proc_tip, 
       proc_det_id_table, proc_det_fec_desde, proc_det_fec_hasta, 
       proc_det_num_reg_tot, proc_det_num_reg_pro, proc_det_num_reg_rec, 
       proc_det_fec_ini, proc_det_fec_fin, proc_det_fec_act, 
       proc_det_est)
-    values (#{proDetId,jdbcType=INTEGER}, #{procId,jdbcType=INTEGER}, #{procTip,jdbcType=CHAR}, 
+    values (#{procDetId,jdbcType=INTEGER}, #{procId,jdbcType=INTEGER}, #{procTip,jdbcType=CHAR}, 
       #{procDetIdTable,jdbcType=INTEGER}, #{procDetFecDesde,jdbcType=TIMESTAMP}, #{procDetFecHasta,jdbcType=TIMESTAMP}, 
       #{procDetNumRegTot,jdbcType=INTEGER}, #{procDetNumRegPro,jdbcType=INTEGER}, #{procDetNumRegRec,jdbcType=INTEGER}, 
       #{procDetFecIni,jdbcType=TIMESTAMP}, #{procDetFecFin,jdbcType=TIMESTAMP}, #{procDetFecAct,jdbcType=TIMESTAMP}, 
@@ -127,8 +127,8 @@
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.control.TProcesoDetalle" >
     insert into t_proceso_detalle
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="proDetId != null" >
-        pro_det_id,
+      <if test="procDetId != null" >
+        proc_det_id,
       </if>
       <if test="procId != null" >
         proc_id,
@@ -168,8 +168,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="proDetId != null" >
-        #{proDetId,jdbcType=INTEGER},
+      <if test="procDetId != null" >
+        #{procDetId,jdbcType=INTEGER},
       </if>
       <if test="procId != null" >
         #{procId,jdbcType=INTEGER},
@@ -218,8 +218,8 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update t_proceso_detalle
     <set >
-      <if test="record.proDetId != null" >
-        pro_det_id = #{record.proDetId,jdbcType=INTEGER},
+      <if test="record.procDetId != null" >
+        proc_det_id = #{record.procDetId,jdbcType=INTEGER},
       </if>
       <if test="record.procId != null" >
         proc_id = #{record.procId,jdbcType=INTEGER},
@@ -264,7 +264,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update t_proceso_detalle
-    set pro_det_id = #{record.proDetId,jdbcType=INTEGER},
+    set proc_det_id = #{record.procDetId,jdbcType=INTEGER},
       proc_id = #{record.procId,jdbcType=INTEGER},
       proc_tip = #{record.procTip,jdbcType=CHAR},
       proc_det_id_table = #{record.procDetIdTable,jdbcType=INTEGER},
@@ -321,7 +321,7 @@
         proc_det_est = #{procDetEst,jdbcType=CHAR},
       </if>
     </set>
-    where pro_det_id = #{proDetId,jdbcType=INTEGER}
+    where proc_det_id = #{procDetId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="pe.com.j2techcon.bi.etl.domain.control.TProcesoDetalle" >
     update t_proceso_detalle
@@ -337,6 +337,6 @@
       proc_det_fec_fin = #{procDetFecFin,jdbcType=TIMESTAMP},
       proc_det_fec_act = #{procDetFecAct,jdbcType=TIMESTAMP},
       proc_det_est = #{procDetEst,jdbcType=CHAR}
-    where pro_det_id = #{proDetId,jdbcType=INTEGER}
+    where proc_det_id = #{procDetId,jdbcType=INTEGER}
   </update>
 </mapper>

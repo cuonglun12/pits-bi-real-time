@@ -304,6 +304,8 @@ public class DimClienteProcess {
 		this.typeProcess = typeProcess;
 		this.process = process;
 		
+		constantes = factory.getBean("constantes", Constantes.class);
+
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
 		recordRejected = constantes.getValueNumberDefault();
@@ -322,8 +324,21 @@ public class DimClienteProcess {
 		tUbigeoManager = factory.getBean("tUbigeoManager", TUbigeoManager.class);
 		dimClienteManager = factory.getBean("dimClienteManager", DimClienteManager.class);
 		
-		constantes = factory.getBean("constantes", Constantes.class);
-
+		tCliente = new TCliente();
+		tClienteExample = new TClienteExample();
+		
+		tAreaCliente = new TAreaCliente();
+		tAreaClienteExample = new TAreaClienteExample();
+		
+		tUbigeo = new TUbigeo();
+		tUbigeoExample = new TUbigeoExample();
+		
+		tParametro = new TParametro();
+		tParametroExample = new TParametroExample();
+		
+		dimCliente = new DimCliente();
+		dimClienteExample = new DimClienteExample();
+		
 		int offset = 0;
 		
 		while(true) {

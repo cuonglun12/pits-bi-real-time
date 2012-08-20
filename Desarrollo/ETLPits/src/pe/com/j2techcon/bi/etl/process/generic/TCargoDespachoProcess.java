@@ -1,5 +1,6 @@
 package pe.com.j2techcon.bi.etl.process.generic;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -333,6 +334,8 @@ public class TCargoDespachoProcess {
 		this.dateTimeUntil = dateTimeUntil;
 		this.typeProcess = typeProcess;
 		this.process = process;
+		
+		constantes = factory.getBean("constantes", Constantes.class);
 
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
@@ -352,7 +355,24 @@ public class TCargoDespachoProcess {
 		tCargoDespachoManager = factory.getBean("tCargoDespachoManager", TCargoDespachoManager.class);
 		tZonaManager = factory.getBean("tZonaManager", TZonaManager.class);
 		
-		constantes = factory.getBean("constantes", Constantes.class);
+		tDespacho = new TDespacho();
+		tDespachoExample = new TDespachoExample();
+		
+		detdespacho = new Detdespacho();
+		detdespachoExample = new DetdespachoExample();
+
+		tCargo = new TCargo();
+		tCargoExample = new TCargoExample();
+		
+		tCargoDespacho = new TCargoDespacho();
+		tCargoDespachoExample = new TCargoDespachoExample();
+
+		tZona = new TZona();
+		tZonaExample = new TZonaExample();
+		
+		lstZona = new ArrayList<TZona>();
+		lstCargo = new ArrayList<TCargo>();
+		lstDespacho = new ArrayList<TDespacho>();
 		
 		int offset = 0;
 		
@@ -414,7 +434,7 @@ public class TCargoDespachoProcess {
 		
 		completeFieldCargoDespacho();
 		//Identificamos si el detalle corresponde a una orden del negocio de mensajeria local
-		if(tCargoDespacho.getDespId()!=constantes.getValueNumberCero()){
+		if(tCargoDespacho.getDespId() != 0){
 			if(typeProcess.equals(constantes.getTypeProcessSimple())){
 				if(tCargoDespacho.getCodIndCam().equals(constantes.getStateRecordNew())){
 					if(insertRecordGenericCargoDespacho()> constantes.getResultTransactionNoResult()){
@@ -462,7 +482,7 @@ public class TCargoDespachoProcess {
 		tCargoDespacho.setDespId(getDespId(detdespacho.getSerieguia(), detdespacho.getNroguia()));
 		
 		//Identificamos si el detalle corresponde a un despacho
-		if(tCargoDespacho.getDespId()!=constantes.getValueNumberCero()){
+		if(tCargoDespacho.getDespId() != 0){
 			
 			//Id del Cargo
 			tCargoExample.clear();
@@ -619,7 +639,7 @@ public class TCargoDespachoProcess {
 	}
 	
 	public int getDespId(String serieGuia, String numeroGuia){
-		int despId = constantes.getValueNumberCero();
+		int despId = 0;
 		if(serieGuia.equals(tDespacho.getDespSerieDoc()) && numeroGuia.equals(tDespacho.getDespNumeroDoc())){
 			despId = tDespacho.getDespId();
 		}else{

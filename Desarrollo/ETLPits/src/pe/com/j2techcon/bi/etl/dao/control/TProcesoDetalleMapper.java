@@ -10,7 +10,7 @@ public interface TProcesoDetalleMapper {
 
     int deleteByExample(TProcesoDetalleExample example);
 
-    int deleteByPrimaryKey(Integer proDetId);
+    int deleteByPrimaryKey(Integer procDetId);
 
     int insert(TProcesoDetalle record);
 
@@ -18,7 +18,7 @@ public interface TProcesoDetalleMapper {
 
     List<TProcesoDetalle> selectByExample(TProcesoDetalleExample example);
 
-    TProcesoDetalle selectByPrimaryKey(Integer proDetId);
+    TProcesoDetalle selectByPrimaryKey(Integer procDetId);
 
     int updateByExampleSelective(@Param("record") TProcesoDetalle record, @Param("example") TProcesoDetalleExample example);
 

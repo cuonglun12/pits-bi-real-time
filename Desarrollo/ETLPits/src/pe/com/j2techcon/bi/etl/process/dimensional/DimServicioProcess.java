@@ -243,6 +243,8 @@ public class DimServicioProcess {
 		this.typeProcess = typeProcess;
 		this.process = process;
 		
+		constantes = factory.getBean("constantes", Constantes.class);
+		
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
 		recordRejected = constantes.getValueNumberDefault();
@@ -259,7 +261,14 @@ public class DimServicioProcess {
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
 		dimServicioManager = factory.getBean("dimServicioManager", DimServicioManager.class);
 		
-		constantes = factory.getBean("constantes", Constantes.class);
+		tServicio = new TServicio();
+		tServicioExample = new TServicioExample();
+		
+		tParametro = new TParametro();
+		tParametroExample = new TParametroExample();
+		
+		dimServicio = new DimServicio();
+		dimServicioExample = new DimServicioExample();
 
 		int offset = 0;
 		

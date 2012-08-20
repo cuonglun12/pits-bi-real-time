@@ -274,6 +274,8 @@ public class DimSedeProcess {
 		this.typeProcess = typeProcess;
 		this.process = process;
 		
+		constantes = factory.getBean("constantes", Constantes.class);
+		
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
 		recordRejected = constantes.getValueNumberDefault();
@@ -291,7 +293,17 @@ public class DimSedeProcess {
 		tUbigeoManager = factory.getBean("tUbigeoManager", TUbigeoManager.class);
 		dimSedeManager = factory.getBean("dimSedeManager", DimSedeManager.class);
 		
-		constantes = factory.getBean("constantes", Constantes.class);
+		tSede = new TSede();
+		tSedeExample = new TSedeExample();
+		
+		tParametro = new TParametro();
+		tParametroExample = new TParametroExample();
+		
+		dimSede = new DimSede();
+		dimSedeExample = new DimSedeExample();
+		
+		tUbigeo = new TUbigeo();
+		tUbigeoExample = new TUbigeoExample();
 
 		int offset = 0;
 		

@@ -1,5 +1,6 @@
 package pe.com.j2techcon.bi.etl.process.dimensional;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -222,6 +223,8 @@ public class DimEstadoProcess {
 		this.typeProcess = typeProcess;
 		this.process = process;
 		
+		constantes = factory.getBean("constantes", Constantes.class);
+		
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
 		recordRejected = constantes.getValueNumberDefault();
@@ -237,8 +240,14 @@ public class DimEstadoProcess {
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
 		dimEstadoManager = factory.getBean("dimEstadoManager", DimEstadoManager.class);
 		
-		constantes = factory.getBean("constantes", Constantes.class);
-
+		tParametro = new TParametro();
+		tParametroExample = new TParametroExample();
+		
+		dimEstado = new DimEstado();
+		dimEstadoExample = new DimEstadoExample();
+		
+		statesProceso = new ArrayList<Integer>();
+		
 		int offset = 0;
 		
 		while(true) {

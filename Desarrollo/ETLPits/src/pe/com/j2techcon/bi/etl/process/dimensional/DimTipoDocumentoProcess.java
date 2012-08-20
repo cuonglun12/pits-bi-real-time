@@ -211,6 +211,8 @@ public class DimTipoDocumentoProcess {
 		this.typeProcess = typeProcess;
 		this.process = process;
 		
+		constantes = factory.getBean("constantes", Constantes.class);
+		
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
 		recordRejected = constantes.getValueNumberDefault();
@@ -226,7 +228,11 @@ public class DimTipoDocumentoProcess {
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
 		dimTipoDocumentoManager = factory.getBean("dimTipoDocumentoManager", DimTipoDocumentoManager.class);
 		
-		constantes = factory.getBean("constantes", Constantes.class);
+		tParametro = new TParametro();
+		tParametroExample = new TParametroExample();
+		
+		dimTipoDocumento = new DimTipoDocumento();
+		dimTipoDocumentoExample = new DimTipoDocumentoExample();
 
 		int offset = 0;
 		

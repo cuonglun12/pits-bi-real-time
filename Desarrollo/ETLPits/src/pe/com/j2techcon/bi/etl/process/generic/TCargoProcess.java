@@ -1,5 +1,6 @@
 package pe.com.j2techcon.bi.etl.process.generic;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -381,6 +382,8 @@ public class TCargoProcess {
 		this.dateTimeUntil = dateTimeUntil;
 		this.typeProcess = typeProcess;
 		this.process = process;
+		
+		constantes = factory.getBean("constantes", Constantes.class);
 
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
@@ -401,7 +404,29 @@ public class TCargoProcess {
 		tCargoManager = factory.getBean("tCargoManager", TCargoManager.class);
 		tZonaManager = factory.getBean("tZonaManager", TZonaManager.class);
 		
-		constantes = factory.getBean("constantes", Constantes.class);
+		tParametro = new TParametro();
+		tParametroExample = new TParametroExample();
+		
+		tProducto = new TProducto();
+		tProductoExample = new TProductoExample();
+		
+		tOrden = new TOrden();
+		tOrdenExample = new TOrdenExample();
+		
+		tZona = new TZona();
+		tZonaExample = new TZonaExample();
+		
+		detordenes = new Detordenes();
+		detordenesExample = new DetordenesExample();
+		
+		tCargo = new TCargo();
+		tCargoExample = new TCargoExample();
+		
+		lstParametro = new ArrayList<TParametro>();
+		lstProducto = new ArrayList<TProducto>();
+		lstLista = new ArrayList<String>();
+		lstOrden = new ArrayList<TOrden>();
+		lstZona = new ArrayList<TZona>();
 		
 		int offset = 0;
 		
@@ -467,7 +492,7 @@ public class TCargoProcess {
 		
 		completeFieldCargo();
 		//Identificamos si el detalle corresponde a una orden del negocio de mensajeria local
-		if(tOrden.getOrdId()!=constantes.getValueNumberCero()){
+		if(tOrden.getOrdId() != 0){
 			if(typeProcess.equals(constantes.getTypeProcessSimple())){
 				if(tCargo.getCodIndCam().equals(constantes.getStateRecordNew())){
 					if(insertRecordGenericCargo()> constantes.getResultTransactionNoResult()){
@@ -514,7 +539,7 @@ public class TCargoProcess {
 		//Id de la orden
 		tCargo.setOrdId(getOrdId(detordenes.getSerie(), detordenes.getOrden()));
 		
-		if(tCargo.getOrdId()!=constantes.getValueNumberCero()){
+		if(tCargo.getOrdId() != 0){
 			//Id de la orden
 			tCargo.setOrdCodTipDoc(constantes.getParamSerialTipoDocumentoTrabajoNoDefinido());
 			tCargo.setOrdSerieDoc(detordenes.getSerie());
@@ -534,7 +559,7 @@ public class TCargoProcess {
 			}
 			
 			//Zona (new): Por defecto 0
-			tCargo.setZonIdNew(constantes.getValueNumberCero());
+			tCargo.setZonIdNew(0);
 			
 			//Motivo: Valor por defecto
 			tCargo.setCargCodMov(constantes.getParamSerialMotivoCargoNoDefinido());
@@ -671,7 +696,7 @@ public class TCargoProcess {
 	}
 	
 	public int getOrdId(String serie, String numero){
-		int ordId = constantes.getValueNumberCero();
+		int ordId = 0;
 		if(serie.equals(tOrden.getOrdSerieDoc()) && numero.equals(tOrden.getOrdNumDoc())){
 			ordId = tOrden.getOrdId();
 		}else{

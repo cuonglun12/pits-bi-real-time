@@ -3,7 +3,7 @@ package pe.com.j2techcon.bi.etl.domain.control;
 import java.util.Date;
 
 public class TProcesoDetalle {
-    private Integer proDetId;
+    private Integer procDetId;
 
     private Integer procId;
 
@@ -29,12 +29,12 @@ public class TProcesoDetalle {
 
     private String procDetEst;
 
-    public Integer getProDetId() {
-        return proDetId;
+    public Integer getProcDetId() {
+        return procDetId;
     }
 
-    public void setProDetId(Integer proDetId) {
-        this.proDetId = proDetId;
+    public void setProcDetId(Integer procDetId) {
+        this.procDetId = procDetId;
     }
 
     public Integer getProcId() {
@@ -134,24 +134,24 @@ public class TProcesoDetalle {
     }
     
     public void clear(){
-        proDetId=null;
-        procId=null;
-        procTip=null;
-        procDetIdTable=null;
-        procDetFecDesde=null;
-        procDetFecHasta=null;
-        procDetNumRegTot=null;
-        procDetNumRegPro=null;
-        procDetNumRegRec=null;
-        procDetFecIni=null;
-        procDetFecFin=null;
-        procDetFecAct=null;
-        procDetEst=null;
+        procDetId = null;
+        procId = null;
+        procTip = null;
+        procDetIdTable = null;
+        procDetFecDesde = null;
+        procDetFecHasta = null;
+        procDetNumRegTot = null;
+        procDetNumRegPro = null;
+        procDetNumRegRec = null;
+        procDetFecIni = null;
+        procDetFecFin = null;
+        procDetFecAct = null;
+        procDetEst = null;
     }
 
 	@Override
 	public String toString() {
-		return "TProcesoDetalle [proDetId=" + proDetId + ", procId=" + procId
+		return "TProcesoDetalle [procDetId=" + procDetId + ", procId=" + procId
 				+ ", procTip=" + procTip + ", procDetIdTable=" + procDetIdTable
 				+ ", procDetFecDesde=" + procDetFecDesde + ", procDetFecHasta="
 				+ procDetFecHasta + ", procDetNumRegTot=" + procDetNumRegTot

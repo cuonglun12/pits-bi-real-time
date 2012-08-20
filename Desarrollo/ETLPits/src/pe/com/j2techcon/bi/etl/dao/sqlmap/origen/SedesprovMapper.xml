@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="sedesprov" >
+<mapper namespace="pe.com.j2techcon.bi.etl.dao.origen.SedesprovMapper" >
   <resultMap id="BaseResultMap" type="pe.com.j2techcon.bi.etl.domain.origen.Sedesprov" >
     <id column="codsede" property="codsede" jdbcType="CHAR" />
     <result column="nomsede" property="nomsede" jdbcType="VARCHAR" />

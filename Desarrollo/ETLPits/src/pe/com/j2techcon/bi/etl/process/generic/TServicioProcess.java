@@ -211,6 +211,8 @@ public class TServicioProcess {
 		this.dateTimeUntil = dateTimeUntil;
 		this.typeProcess = typeProcess;
 		this.process = process;
+		
+		constantes = factory.getBean("constantes", Constantes.class);
 
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
@@ -225,8 +227,12 @@ public class TServicioProcess {
 		
 		tServicioManager = factory.getBean("tServicioManager",TServicioManager.class);
 		tServiciosManager = factory.getBean("tServiciosManager",TServiciosManager.class);
-
-		constantes = factory.getBean("constantes", Constantes.class);
+		
+		tServicios = new TServicios();
+		tServiciosExample = new TServiciosExample();
+		
+		tServicio = new TServicio();
+		tServicioExample = new TServicioExample();
 
 		int offset = 0;
 

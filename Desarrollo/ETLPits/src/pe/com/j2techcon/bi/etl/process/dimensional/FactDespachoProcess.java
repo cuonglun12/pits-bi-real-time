@@ -314,6 +314,8 @@ public class FactDespachoProcess {
 		this.typeProcess = typeProcess;
 		this.process = process;
 		
+		constantes = factory.getBean("constantes", Constantes.class);
+		
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
 		recordRejected = constantes.getValueNumberDefault();
@@ -332,7 +334,20 @@ public class FactDespachoProcess {
 		dimTiempoManager = factory.getBean("dimTiempoManager", DimTiempoManager.class);
 		factDespachoManager = factory.getBean("factDespachoManager", FactDespachoManager.class);
 		
-		constantes = factory.getBean("constantes", Constantes.class);
+		tCargoDespacho = new TCargoDespacho();
+		tCargoDespachoExample = new TCargoDespachoExample();
+		
+		tDespacho = new TDespacho();
+		tDespachoExample = new TDespachoExample();
+		
+		//tParametro = new TParametro();
+		//tParametroExample = new TParametroExample();
+		
+		factDespacho = new FactDespacho();
+		factDespachoExample = new FactDespachoExample();
+		
+		//dimTiempo = new DimTiempo();
+		//dimTiempoExample = new DimTiempoExample();
 
 		int offset = 0;
 		
@@ -512,28 +527,28 @@ public class FactDespachoProcess {
 			if(Util.isEqualsWithDefaultDate(tDespacho.getDespFecRetRea())){
 				if(Util.isGreaterThanCurrentDate(tDespacho.getDespFecRetPro())){
 					factDespacho.setDespachoCntDiasExc(Util.getDaysAfterDate(tDespacho.getDespFecRetPro()));
-					factDespacho.setDespachoTrabEnFec((short)constantes.getValueNumberCero());
-					factDespacho.setDespachoTrabFueraFec((short)constantes.getValueNumberUnit());
+					factDespacho.setDespachoTrabEnFec((short) 0);
+					factDespacho.setDespachoTrabFueraFec((short) 1);
 				}else{
-					factDespacho.setDespachoCntDiasExc(constantes.getValueNumberCero());
-					factDespacho.setDespachoTrabEnFec((short)constantes.getValueNumberUnit());
-					factDespacho.setDespachoTrabFueraFec((short)constantes.getValueNumberCero());
+					factDespacho.setDespachoCntDiasExc(0);
+					factDespacho.setDespachoTrabEnFec((short) 1);
+					factDespacho.setDespachoTrabFueraFec((short) 0);
 				}
 			}else{
 				if(Util.isGreaterThanAnotherDate(tDespacho.getDespFecRetRea(), tDespacho.getDespFecRetPro())){
 					factDespacho.setDespachoCntDiasExc(Util.getDaysBetweenDates(tDespacho.getDespFecRetRea(), tDespacho.getDespFecRetPro()));
-					factDespacho.setDespachoTrabEnFec((short)constantes.getValueNumberCero());
-					factDespacho.setDespachoTrabFueraFec((short)constantes.getValueNumberUnit());
+					factDespacho.setDespachoTrabEnFec((short) 0);
+					factDespacho.setDespachoTrabFueraFec((short) 1);
 				}else{
-					factDespacho.setDespachoCntDiasExc(constantes.getValueNumberCero());
-					factDespacho.setDespachoTrabEnFec((short)constantes.getValueNumberUnit());
-					factDespacho.setDespachoTrabFueraFec((short)constantes.getValueNumberCero());
+					factDespacho.setDespachoCntDiasExc(0);
+					factDespacho.setDespachoTrabEnFec((short) 1);
+					factDespacho.setDespachoTrabFueraFec((short) 0);
 				}
 			}
 		}else{
-			factDespacho.setDespachoCntDiasExc(constantes.getValueNumberCero());
-			factDespacho.setDespachoTrabEnFec((short)constantes.getValueNumberCero());
-			factDespacho.setDespachoTrabFueraFec((short)constantes.getValueNumberCero());
+			factDespacho.setDespachoCntDiasExc(0);
+			factDespacho.setDespachoTrabEnFec((short) 0);
+			factDespacho.setDespachoTrabFueraFec((short) 0);
 		}
 
 		tCargoDespachoExample.clear();

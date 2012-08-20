@@ -211,6 +211,8 @@ public class DimTipoRepartoProcess {
 		this.typeProcess = typeProcess;
 		this.process = process;
 		
+		constantes = factory.getBean("constantes", Constantes.class);
+		
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
 		recordRejected = constantes.getValueNumberDefault();
@@ -226,7 +228,11 @@ public class DimTipoRepartoProcess {
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
 		dimTipoRepartoManager = factory.getBean("dimTipoRepartoManager", DimTipoRepartoManager.class);
 		
-		constantes = factory.getBean("constantes", Constantes.class);
+		tParametro = new TParametro();
+		tParametroExample = new TParametroExample();
+		
+		dimTipoReparto = new DimTipoReparto();
+		dimTipoRepartoExample = new DimTipoRepartoExample();
 
 		int offset = 0;
 		

@@ -345,6 +345,8 @@ public class FactOrdenProcess {
 		this.typeProcess = typeProcess;
 		this.process = process;
 		
+		constantes = factory.getBean("constantes", Constantes.class);
+		
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
 		recordRejected = constantes.getValueNumberDefault();
@@ -364,7 +366,23 @@ public class FactOrdenProcess {
 		dimTiempoManager = factory.getBean("dimTiempoManager", DimTiempoManager.class);
 		factOrdenManager = factory.getBean("factOrdenManager", FactOrdenManager.class);
 		
-		constantes = factory.getBean("constantes", Constantes.class);
+		tAreaCliente = new TAreaCliente();
+		tAreaClienteExample = new TAreaClienteExample();
+		
+		tCargo = new TCargo();
+		tCargoExample = new TCargoExample();
+		
+		tOrden = new TOrden();
+		tOrdenExample = new TOrdenExample();
+		
+		//tParametro = new TParametro();
+		//tParametroExample = new TParametroExample();
+		
+		factOrden = new FactOrden();
+		factOrdenExample = new FactOrdenExample();
+		
+		//dimTiempo = new DimTiempo();
+		//dimTiempoExample = new DimTiempoExample();
 
 		int offset = 0;
 		
@@ -554,28 +572,28 @@ public class FactOrdenProcess {
 			if(Util.isEqualsWithDefaultDate(tOrden.getOrdFecCie())){
 				if(Util.isGreaterThanCurrentDate(tOrden.getOrdFecVen())){
 					factOrden.setOrdenCntDiasExc(Util.getDaysAfterDate(tOrden.getOrdFecVen()));
-					factOrden.setOrdenAtenEnFec((short)constantes.getValueNumberCero());
-					factOrden.setOrdenAtenFueraFec((short)constantes.getValueNumberUnit());
+					factOrden.setOrdenAtenEnFec((short) 0);
+					factOrden.setOrdenAtenFueraFec((short) 1);
 				}else{
-					factOrden.setOrdenCntDiasExc(constantes.getValueNumberCero());
-					factOrden.setOrdenAtenEnFec((short)constantes.getValueNumberUnit());
-					factOrden.setOrdenAtenFueraFec((short)constantes.getValueNumberCero());
+					factOrden.setOrdenCntDiasExc(0);
+					factOrden.setOrdenAtenEnFec((short) 1);
+					factOrden.setOrdenAtenFueraFec((short) 0);
 				}
 			}else{
 				if(Util.isGreaterThanAnotherDate(tOrden.getOrdFecCie(), tOrden.getOrdFecVen())){
 					factOrden.setOrdenCntDiasExc(Util.getDaysBetweenDates(tOrden.getOrdFecCie(), tOrden.getOrdFecVen()));
-					factOrden.setOrdenAtenEnFec((short)constantes.getValueNumberCero());
-					factOrden.setOrdenAtenFueraFec((short)constantes.getValueNumberUnit());
+					factOrden.setOrdenAtenEnFec((short) 0);
+					factOrden.setOrdenAtenFueraFec((short) 1);
 				}else{
-					factOrden.setOrdenCntDiasExc(constantes.getValueNumberCero());
-					factOrden.setOrdenAtenEnFec((short)constantes.getValueNumberUnit());
-					factOrden.setOrdenAtenFueraFec((short)constantes.getValueNumberCero());
+					factOrden.setOrdenCntDiasExc(0);
+					factOrden.setOrdenAtenEnFec((short) 1);
+					factOrden.setOrdenAtenFueraFec((short) 0);
 				}
 			}
 		}else{
-			factOrden.setOrdenCntDiasExc(constantes.getValueNumberCero());
-			factOrden.setOrdenAtenEnFec((short)constantes.getValueNumberCero());
-			factOrden.setOrdenAtenFueraFec((short)constantes.getValueNumberCero());
+			factOrden.setOrdenCntDiasExc(0);
+			factOrden.setOrdenAtenEnFec((short) 0);
+			factOrden.setOrdenAtenFueraFec((short) 0);
 		}
 
 		tCargoExample.clear();

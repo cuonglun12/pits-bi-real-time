@@ -1,5 +1,6 @@
 package pe.com.j2techcon.bi.etl.process.generic;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -302,6 +303,8 @@ public class TAreaClienteProcess {
 		this.dateTimeUntil = dateTimeUntil;
 		this.typeProcess = typeProcess;
 		this.process = process;
+		
+		constantes = factory.getBean("constantes", Constantes.class);
 
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
@@ -318,9 +321,23 @@ public class TAreaClienteProcess {
 		tParametroManager = factory.getBean("tParametroManager",TParametroManager.class);
 		tClienteManager = factory.getBean("tClienteManager",TClienteManager.class);
 		tAreaClienteManager = factory.getBean("tAreaClienteManager",TAreaClienteManager.class);
-		areaClienteManager = factory.getBean("areaClienteManager",AreaclienteManager.class);
-
-		constantes = factory.getBean("constantes", Constantes.class);
+		areaClienteManager = factory.getBean("areaclienteManager",AreaclienteManager.class);
+		
+		tParametro = new TParametro();
+		tParametroExample = new TParametroExample();
+		
+		tCliente = new TCliente();
+		tClienteExample = new TClienteExample();
+		
+		areaCliente = new Areacliente();
+		areaClienteExample = new AreaclienteExample();
+		
+		tAreaCliente = new TAreaCliente();
+		tAreaClienteExample = new TAreaClienteExample();
+		
+		lstParametro = new ArrayList<TParametro>();
+		lstCliente = new ArrayList<TCliente>();
+		lstAreaCliente = new ArrayList<TAreaCliente>();
 
 		int offset = 0;
 
@@ -426,7 +443,7 @@ public class TAreaClienteProcess {
 		completeFieldAreaCliente();
 		
 		//Verificamos la existencia del Cliente
-		if(tAreaCliente.getCliId() != constantes.getValueNumberCero()){
+		if(tAreaCliente.getCliId() != 0){
 			if(typeProcess.equals(constantes.getTypeProcessSimple())){
 				if(tAreaCliente.getCodIndCam().equals(constantes.getStateRecordNew())){
 					if(insertRecordGenericAreaCliente()> constantes.getResultTransactionNoResult()){
@@ -473,18 +490,22 @@ public class TAreaClienteProcess {
 		//Id de cliente
 		tAreaCliente.setCliId(getCliId(areaCliente.getCodcliente()));
 		
-		if(tAreaCliente.getCliId() != constantes.getValueNumberCero()){
+		if(tAreaCliente.getCliId() != 0){
 			//Tipo de area del cliente: Se le asigna a todos el tipo CENTRAL
 			tAreaCliente.setAreCliCodTip(constantes.getParamSerialTipoAreaClienteCentral());
 			
 			//Ubicacion
-			tParametroExample.clear();
-			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeUbigeoDistrito());
-			tParametroExample.createCriteria().andParamCodEqualTo(areaCliente.getUbigeo());
-			
-			lstParametro = tParametroManager.selectByExample(tParametroExample);
-			if(lstParametro.size()>0){
-				tAreaCliente.setUbiId(lstParametro.get(0).getParamId());
+			if(areaCliente.getUbigeo() != null && areaCliente.getUbigeo().length()>0){
+				tParametroExample.clear();
+				tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeUbigeoDistrito());
+				tParametroExample.createCriteria().andParamCodEqualTo(areaCliente.getUbigeo());
+				
+				lstParametro = tParametroManager.selectByExample(tParametroExample);
+				if(lstParametro.size()>0){
+					tAreaCliente.setUbiId(lstParametro.get(0).getParamId());
+				}else{
+					tAreaCliente.setUbiId(constantes.getParamSerialUbigeoDistritoNoDefinido());
+				}
 			}else{
 				tAreaCliente.setUbiId(constantes.getParamSerialUbigeoDistritoNoDefinido());
 			}
@@ -561,7 +582,7 @@ public class TAreaClienteProcess {
 	}
 	
 	public int getCliId(String codCliente){
-		int cliId = constantes.getValueNumberCero();
+		int cliId = 0;
 		if(codCliente.equals(tCliente.getCliCod())){
 			cliId = tCliente.getCliId();
 		}else{

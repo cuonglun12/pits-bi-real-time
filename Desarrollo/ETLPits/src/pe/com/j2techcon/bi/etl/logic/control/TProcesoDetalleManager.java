@@ -26,8 +26,8 @@ public class TProcesoDetalleManager {
 		return tProcesoDetalleMapper.deleteByExample(example);
 	}
 
-	public int deleteByPrimaryKey(Integer proDetId) {
-		return tProcesoDetalleMapper.deleteByPrimaryKey(proDetId);
+	public int deleteByPrimaryKey(Integer procDetId) {
+		return tProcesoDetalleMapper.deleteByPrimaryKey(procDetId);
 	}
 
 	public int insert(TProcesoDetalle record) {
@@ -42,8 +42,8 @@ public class TProcesoDetalleManager {
 		return tProcesoDetalleMapper.selectByExample(example);
 	}
 
-	public TProcesoDetalle selectByPrimaryKey(Integer proDetId) {
-		return tProcesoDetalleMapper.selectByPrimaryKey(proDetId);
+	public TProcesoDetalle selectByPrimaryKey(Integer procDetId) {
+		return tProcesoDetalleMapper.selectByPrimaryKey(procDetId);
 	}
 
 	public int updateByExampleSelective(TProcesoDetalle record,

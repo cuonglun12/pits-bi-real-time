@@ -274,6 +274,8 @@ public class DimZonaProcess {
 		this.typeProcess = typeProcess;
 		this.process = process;
 		
+		constantes = factory.getBean("constantes", Constantes.class);
+		
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
 		recordRejected = constantes.getValueNumberDefault();
@@ -290,8 +292,18 @@ public class DimZonaProcess {
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
 		tUbigeoManager = factory.getBean("tUbigeoManager", TUbigeoManager.class);
 		dimZonaManager = factory.getBean("dimZonaManager", DimZonaManager.class);
+
+		tZona = new TZona();
+		tZonaExample = new TZonaExample();
 		
-		constantes = factory.getBean("constantes", Constantes.class);
+		tParametro = new TParametro();
+		tParametroExample = new TParametroExample();
+		
+		dimZona = new DimZona();
+		dimZonaExample = new DimZonaExample();
+		
+		tUbigeo = new TUbigeo();
+		tUbigeoExample = new TUbigeoExample();
 
 		int offset = 0;
 		

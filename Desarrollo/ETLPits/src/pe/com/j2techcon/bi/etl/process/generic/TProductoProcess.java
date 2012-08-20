@@ -212,6 +212,8 @@ public class TProductoProcess {
 		this.dateTimeUntil = dateTimeUntil;
 		this.typeProcess = typeProcess;
 		this.process = process;
+		
+		constantes = factory.getBean("constantes", Constantes.class);
 
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
@@ -227,8 +229,12 @@ public class TProductoProcess {
 		
 		tProductoManager = factory.getBean("tProductoManager",TProductoManager.class);
 		tProductosManager = factory.getBean("tProductosManager",TProductosManager.class);
-
-		constantes = factory.getBean("constantes", Constantes.class);
+		
+		tProducto = new TProducto();
+		tProductoExample = new TProductoExample();
+		
+		tProductos = new TProductos();
+		tProductosExample = new TProductosExample();
 
 		int offset = 0;
 
@@ -342,7 +348,7 @@ public class TProductoProcess {
 		//Datos generales del producto
 		tProducto.setProdCod(tProductos.getCodproducto());
 		tProducto.setProdDes(tProductos.getProducto());
-		tProducto.setProdPre(new BigDecimal(constantes.getValueNumberCero()));
+		tProducto.setProdPre(new BigDecimal(0));
 		
 		//Campos de control
 		tProducto.setFecNumCam(Util.getCurrentDateTimeAsLong());

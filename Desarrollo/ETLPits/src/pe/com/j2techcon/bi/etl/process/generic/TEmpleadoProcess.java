@@ -1,5 +1,6 @@
 package pe.com.j2techcon.bi.etl.process.generic;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -264,6 +265,8 @@ public class TEmpleadoProcess {
 		this.dateTimeUntil = dateTimeUntil;
 		this.typeProcess = typeProcess;
 		this.process = process;
+		
+		constantes = factory.getBean("constantes", Constantes.class);
 
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
@@ -281,7 +284,17 @@ public class TEmpleadoProcess {
 		tEmpleadoManager = factory.getBean("tEmpleadoManager",TEmpleadoManager.class);
 		tEmpleadoCategoriaManager = factory.getBean("tEmpleadoCategoriaManager",TEmpleadoCategoriaManager.class);
 		
-		constantes = factory.getBean("constantes", Constantes.class);
+		personal = new Personal();
+		personalExample = new PersonalExample();
+		
+		tEmpleado = new TEmpleado();
+		tEmpleadoExample = new TEmpleadoExample();
+		
+		tEmpleadoCategoria = new TEmpleadoCategoria();
+		tEmpleadoCategoriaExample = new TEmpleadoCategoriaExample();
+		
+		lstEmpleado = new ArrayList<TEmpleado>();
+		lstEmpleadoCategoria = new ArrayList<TEmpleadoCategoria>();
 		
 		int offset = 0;
 		

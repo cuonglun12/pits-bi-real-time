@@ -1,5 +1,6 @@
 package pe.com.j2techcon.bi.etl.process.generic;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -465,6 +466,8 @@ public class TOrdenProcess {
 		this.dateTimeUntil = dateTimeUntil;
 		this.typeProcess = typeProcess;
 		this.process = process;
+		
+		constantes = factory.getBean("constantes", Constantes.class);
 
 		recordTotal = constantes.getValueNumberDefault();
 		recordProcessed = constantes.getValueNumberDefault();
@@ -487,7 +490,37 @@ public class TOrdenProcess {
 		tCotizacionManager = factory.getBean("tCotizacionManager", TCotizacionManager.class);
 		tServicioManager = factory.getBean("tServicioManager", TServicioManager.class);
 		
-		constantes = factory.getBean("constantes", Constantes.class);
+		tParametro = new TParametro();
+		tParametroExample = new TParametroExample();
+		
+		tEmpleadoCategoria = new TEmpleadoCategoria();
+		tEmpleadoCategoriaExample = new TEmpleadoCategoriaExample();
+		
+		tAreaCliente = new TAreaCliente();
+		tAreaClienteExample = new TAreaClienteExample();
+		
+		tProducto = new TProducto();
+		tProductoExample = new TProductoExample();
+		
+		ordenes = new Ordenes();
+		ordenesExample = new OrdenesExample();
+		
+		tCotizacion = new TCotizacion();
+		tCotizacionExample = new TCotizacionExample();
+		
+		tOrden = new TOrden();
+		tOrdenExample = new TOrdenExample();
+		
+		tServicio = new TServicio();
+		tServicioExample = new TServicioExample();
+		
+		lstParametro = new ArrayList<TParametro>();
+		lstAreaCliente = new ArrayList<TAreaCliente>();
+		lstProducto = new ArrayList<TProducto>();
+		lstEmpleadoCategoria = new ArrayList<TEmpleadoCategoria>();
+		lstCotizacion = new ArrayList<TCotizacion>();
+		lstServicio = new ArrayList<TServicio>();
+		lstLista = new ArrayList<String>();
 		
 		int offset = 0;
 		
@@ -495,6 +528,7 @@ public class TOrdenProcess {
 
 			ordenesExample.clear();
 			//Se trabajara solo con las ordenes del negocio de mensajeria local
+			ordenesExample.createCriteria().andCodambitoEqualTo(constantes.getParamCodeTipoAmbitoLocal());
 			ordenesExample.createCriteria().andCodnegocioEqualTo(constantes.getParamCodeTipoNegocioMensajeria());
 			ordenesExample.createCriteria().andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom));
 			ordenesExample.createCriteria().andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil));
@@ -565,7 +599,7 @@ public class TOrdenProcess {
 		completeFieldOrden();
 		
 		//Verificamos la existencia de la cotizacion de la orden correspondiente
-		if(tOrden.getCotiId() != constantes.getValueNumberCero()){
+		if(tOrden.getCotiId() != 0){
 			if(typeProcess.equals(constantes.getTypeProcessSimple())){
 				if(tOrden.getCodIndCam().equals(constantes.getStateRecordNew())){
 					if(insertRecordGenericOrden()> constantes.getResultTransactionNoResult()){
@@ -613,7 +647,7 @@ public class TOrdenProcess {
 		tOrden.setCotiId(getCotiId(ordenes.getCoserie(), Integer.toString(ordenes.getConumero())));
 		
 		//Verificamos la existencia de la cotizacion de la orden correspondiente
-		if(tOrden.getCotiId() != constantes.getValueNumberCero()){
+		if(tOrden.getCotiId() != 0){
 
 			//Codigo del area del cliente
 			lstLista.clear();
@@ -637,7 +671,7 @@ public class TOrdenProcess {
 			}
 			
 			//Codido de la categoria del empleado: Por defecto se ingresa el valor 0
-			tOrden.setEmpCatId(constantes.getValueNumberCero());
+			tOrden.setEmpCatId(0);
 			
 			//Tipo de reparto			
 			if(constantes.getParamCodeTipoRepartoNoBajoPuerta().equals(ordenes.getCodtiporeparto())){
@@ -815,7 +849,7 @@ public class TOrdenProcess {
 	}
 	
 	public int getCotiId(String serie, String numero){
-		int cotiId = constantes.getValueNumberCero();
+		int cotiId = 0;
 		if(serie.equals(tCotizacion.getCotiSerieDoc()) && numero.equals(tCotizacion.getCotiNumDoc())){
 			cotiId = tCotizacion.getCotiId();
 		}else{
