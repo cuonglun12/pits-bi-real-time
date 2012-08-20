@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schema name="Envio">
+    <Cube name="Envio" cache="false" enabled="true">
+        <Table name="fact_envio">
+		</Table>
+		<Dimension name="Cliente" caption="Cliente" foreignKey="envio_key_cliente_area">
+            <Hierarchy hasAll="true" allMemberName="Todos los clientes" allMemberCaption="Todos los clientes" primaryKey="cliente_area_key">
+				<Table name="dim_cliente">
+				</Table>
+				<Level name="Tipo" column="cliente_desc_tip" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Tipo">
+				</Level>
+				<Level name="Cliente" column="cliente_desc" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Cliente">
+				</Level>
+				<Level name="Area_Cliente" column="cliente_area_desc" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Area_Cliente">
+				</Level>
+            </Hierarchy>
+        </Dimension>
+		<Dimension name="Ubigeo_Cliente" caption="Ubigeo_Cliente" foreignKey="envio_key_ubigeo_cliente">
+            <Hierarchy hasAll="true" allMemberName="Todos los ubigeos" allMemberCaption="Todos los ubigeos" primaryKey="ubigeo_key">
+                <Table name="dim_ubigeo">
+				</Table>
+                <Level name="Pais" column="ubigeo_des_pais" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Pais">
+				</Level>
+                <Level name="Departamento" column="ubigeo_desc_departamento" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Departamento">
+                </Level>
+				<Level name="Provincia" column="ubigeo_desc_provincia" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Provincia">
+                </Level>
+				<Level name="Distrito" column="ubigeo_desc_distrito" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Distrito">
+				</Level>
+            </Hierarchy>
+        </Dimension>
+        <Dimension name="Servicio" caption="Servicio" foreignKey="envio_key_servicio">
+            <Hierarchy hasAll="true" allMemberName="Todos los servicios" allMemberCaption="Todos los servicios" primaryKey="servicio_key">
+                <Table name="dim_servicio">
+				</Table>
+                <Level name="Ambito" column="servicio_desc_ambito" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Ambito">
+                </Level>
+				<Level name="Negocio" column="servicio_desc_negocio" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Negocio">
+                </Level>
+				<Level name="Servicio" column="servicio_desc" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Servicio">
+				</Level>
+            </Hierarchy>
+        </Dimension>
+        <Dimension name="Producto" caption="Producto" foreignKey="envio_key_producto">
+            <Hierarchy hasAll="true" allMemberName="Todos los productos" allMemberCaption="Todos los productos" primaryKey="producto_key">
+                <Table name="dim_producto">
+				</Table>
+                <Level name="Tipo" column="producto_desc_tip" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Tipo">
+				</Level>
+                <Level name="Producto" column="producto_desc" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Producto">
+				</Level>
+            </Hierarchy>
+        </Dimension>
+		<Dimension name="Zona" caption="Zona" foreignKey="envio_key_zona">
+            <Hierarchy hasAll="true" allMemberName="Todos las zonas" allMemberCaption="Todos las zonas" primaryKey="zona_key">
+                <Table name="dim_zona">
+				</Table>
+                <Level name="Pais" column="zona_desc_pais" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Pais">
+				</Level>
+                <Level name="Departamento" column="zona_desc_departamento" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Departamento">
+                </Level>
+				<Level name="Provincia" column="zona_desc_provincia" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Provincia">
+                </Level>
+				<Level name="Distrito" column="zona_desc_distrito" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Distrito">
+				</Level>
+				<Level name="Zona" column="zona_desc" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Zona">
+				</Level>
+            </Hierarchy>
+        </Dimension>
+		<Dimension name="Mensajero" caption="Mensajero" foreignKey="envio_key_personal">
+            <Hierarchy hasAll="true" allMemberName="Todos los mensajeros" allMemberCaption="Todos los mensajeros" primaryKey="personal_key">
+				<Table name="dim_personal">
+				</Table>
+				<Level name="Sexo" column="personal_sexo" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Sexo">
+				</Level>
+				<Level name="Mensajero" column="personal_nombre" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Mensajero">
+				</Level>
+            </Hierarchy>
+        </Dimension>
+		<Dimension name="Estado" caption="Estado" foreignKey="envio_key_estado">
+            <Hierarchy hasAll="true" allMemberName="Todos los estados" allMemberCaption="Todos los estados" primaryKey="estado_key">
+                <Table name="dim_estado">
+				</Table>
+                <Level name="Estado" column="estado_desc" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="Estado">
+				</Level>
+            </Hierarchy>
+        </Dimension>
+		<Dimension type="TimeDimension" name="Fecha_Salida" caption="Fecha_Salida" foreignKey="envio_key_fec_sal">
+            <Hierarchy hasAll="true" allMemberName="Todos los despachos" allMemberCaption="Todos los despachos" primaryKey="tiempo_key">
+                <Table name="dim_tiempo">
+				</Table>
+                <Level name="Anio" column="tiempo_anio" type="Integer" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+                <Level name="Semestre" column="tiempo_nombre_semestre" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+                <Level name="Trimestre" column="tiempo_nombre_trimestre" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+                <Level name="Mes" column="tiempo_nombre_mes" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+                <Level name="Dia" column="tiempo_dia_mes" type="Integer" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+            </Hierarchy>
+        </Dimension>
+		<Dimension type="TimeDimension" name="Fecha_Retorno_Programado" caption="Fecha_Retorno_Programado" foreignKey="envio_key_fec_retp">
+            <Hierarchy hasAll="true" allMemberName="Todos los despachos" allMemberCaption="Todos los despachos" primaryKey="tiempo_key">
+                <Table name="dim_tiempo">
+				</Table>
+                <Level name="Anio" column="tiempo_anio" type="Integer" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+                <Level name="Semestre" column="tiempo_nombre_semestre" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+                <Level name="Trimestre" column="tiempo_nombre_trimestre" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+                <Level name="Mes" column="tiempo_nombre_mes" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+                <Level name="Dia" column="tiempo_dia_mes" type="Integer" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+            </Hierarchy>
+        </Dimension>
+		<Dimension type="TimeDimension" name="Fecha_Retorno_Real" caption="Fecha_Retorno_Real" foreignKey="envio_key_fec_retr">
+            <Hierarchy hasAll="true" allMemberName="Todos los despachos" allMemberCaption="Todos los despachos" primaryKey="tiempo_key">
+                <Table name="dim_tiempo">
+				</Table>
+                <Level name="Anio" column="tiempo_anio" type="Integer" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+                <Level name="Semestre" column="tiempo_nombre_semestre" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+                <Level name="Trimestre" column="tiempo_nombre_trimestre" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+                <Level name="Mes" column="tiempo_nombre_mes" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+                <Level name="Dia" column="tiempo_dia_mes" type="Integer" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+				</Level>
+            </Hierarchy>
+        </Dimension>
+		<Measure name="Cnt_Envio" column="envio_ind_unidad" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Env_Entregado" column="envio_ind_ent" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Env_Motivado" column="envio_ind_mot" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Env_Reenviado" column="envio_ind_ree" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Env_Anulado" column="envio_ind_anu" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Env_Fuera_Zona" column="envio_ind_fue_zon" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Env_Perdido" column="envio_ind_perd" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Env_Digitado" column="envio_ind_dig" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Env_Ruta" column="envio_ind_rut" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Env_Provincia" column="envio_ind_pro" aggregator="sum" datatype="Integer" formatString="#,###"/>
+		<Measure name="Cnt_Env_Robado" column="envio_ind_rob" aggregator="sum" datatype="Integer" formatString="#,###"/>		
+    </Cube>
+</Schema>
