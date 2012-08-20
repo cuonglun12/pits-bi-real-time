@@ -1,0 +1,4 @@
+WARN   | wrapper  | 2012/08/20 16:28:28 | wrapper.logfile must contain "YYYYMMDD" for a roll mode of DATE.  Disabling log file rolling.
+STATUS | wrapper  | 2012/08/20 16:28:28 | ETLPits service removed.
+WARN   | wrapper  | 2012/08/20 16:28:53 | wrapper.logfile must contain "YYYYMMDD" for a roll mode of DATE.  Disabling log file rolling.
+STATUS | wrapper  | 2012/08/20 16:28:53 | ETLPits service installed.
