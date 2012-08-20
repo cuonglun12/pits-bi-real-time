@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="constantes" class="pe.com.j2techcon.bi.etl.util.Constantes">
+		
+		<property name="paramCodeTipoAreaCliente" value="${param.code.tipo.area.cliente}"></property>
+		<property name="paramCodeTipoAreaClienteCentral" value="${param.code.tipo.area.cliente.central}"></property>
+		<property name="paramCodeTipoAreaClienteNoDefinido" value="${param.code.tipo.area.cliente.no.definido}"></property>
+		<property name="paramSerialTipoAreaClienteCentral" value="${param.serial.tipo.area.cliente.central}"></property>
+		<property name="paramSerialTipoAreaClienteNoDefinido" value="${param.serial.tipo.area.cliente.no.definido}"></property>
+		
+		<property name="paramCodeEstadoCargoDespacho" value="${param.code.estado.cargo.despacho}"></property>
+		<property name="paramCodeEstadoCargoDespachoDigitado" value="${param.code.estado.cargo.despacho.digitado}"></property>
+		<property name="paramCodeEstadoCargoDespachoRuta" value="${param.code.estado.cargo.despacho.ruta}"></property>
+		<property name="paramCodeEstadoCargoDespachoEntregado" value="${param.code.estado.cargo.despacho.entregado}"></property>
+		<property name="paramCodeEstadoCargoDespachoMotivado" value="${param.code.estado.cargo.despacho.motivado}"></property>
+		<property name="paramCodeEstadoCargoDespachoReenviado" value="${param.code.estado.cargo.despacho.reenviado}"></property>
+		<property name="paramCodeEstadoCargoDespachoFueraZona" value="${param.code.estado.cargo.despacho.fuera.zona}"></property>
+		<property name="paramCodeEstadoCargoDespachoPerdido" value="${param.code.estado.cargo.despacho.perdido}"></property>
+		<property name="paramCodeEstadoCargoDespachoAnulado" value="${param.code.estado.cargo.despacho.anulado}"></property>
+		<property name="paramCodeEstadoCargoDespachoNoDistribuido" value="${param.code.estado.cargo.despacho.no.distribuido}"></property>
+		<property name="paramCodeEstadoCargoDespachoRetenido" value="${param.code.estado.cargo.despacho.retenido}"></property>
+		<property name="paramCodeEstadoCargoDespachoSinFisico" value="${param.code.estado.cargo.despacho.sin.fisico}"></property>
+		<property name="paramCodeEstadoCargoDespachoProvincia" value="${param.code.estado.cargo.despacho.provincia}"></property>
+		<property name="paramCodeEstadoCargoDespachoSupervision" value="${param.code.estado.cargo.despacho.supervision}"></property>
+		<property name="paramCodeEstadoCargoDespachoRobo" value="${param.code.estado.cargo.despacho.robo}"></property>
+		<property name="paramCodeEstadoCargoDespachoNoDefinido" value="${param.code.estado.cargo.despacho.no.definido}"></property>
+		<property name="paramSerialEstadoCargoDespachoDigitado" value="${param.serial.estado.cargo.despacho.digitado}"></property>
+		<property name="paramSerialEstadoCargoDespachoRuta" value="${param.serial.estado.cargo.despacho.ruta}"></property>
+		<property name="paramSerialEstadoCargoDespachoEntregado" value="${param.serial.estado.cargo.despacho.entregado}"></property>
+		<property name="paramSerialEstadoCargoDespachoMotivado" value="${param.serial.estado.cargo.despacho.motivado}"></property>
+		<property name="paramSerialEstadoCargoDespachoReenviado" value="${param.serial.estado.cargo.despacho.reenviado}"></property>
+		<property name="paramSerialEstadoCargoDespachoFueraZona" value="${param.serial.estado.cargo.despacho.fuera.zona}"></property>
+		<property name="paramSerialEstadoCargoDespachoPerdido" value="${param.serial.estado.cargo.despacho.perdido}"></property>
+		<property name="paramSerialEstadoCargoDespachoAnulado" value="${param.serial.estado.cargo.despacho.anulado}"></property>
+		<property name="paramSerialEstadoCargoDespachoNoDistribuido" value="${param.serial.estado.cargo.despacho.no.distribuido}"></property>
+		<property name="paramSerialEstadoCargoDespachoRetenido" value="${param.serial.estado.cargo.despacho.retenido}"></property>
+		<property name="paramSerialEstadoCargoDespachoSinFisico" value="${param.serial.estado.cargo.despacho.sin.fisico}"></property>
+		<property name="paramSerialEstadoCargoDespachoProvincia" value="${param.serial.estado.cargo.despacho.provincia}"></property>
+		<property name="paramSerialEstadoCargoDespachoSupervision" value="${param.serial.estado.cargo.despacho.supervision}"></property>
+		<property name="paramSerialEstadoCargoDespachoRobo" value="${param.serial.estado.cargo.despacho.robo}"></property>
+		<property name="paramSerialEstadoCargoDespachoNoDefinido" value="${param.serial.estado.cargo.despacho.no.definido}"></property>
+		
+		<property name="paramCodeEstadoCargoDespachoVerificacion" value="${param.code.estado.cargo.despacho.verificacion}"></property>
+		<property name="paramCodeEstadoCargoDespachoVerificacionNoDefinido" value="${param.code.estado.cargo.despacho.verificacion.no.definido}"></property>
+		<property name="paramSerialEstadoCargoDespachoVerificacionNoDefinido" value="${param.serial.estado.cargo.despacho.verificacion.no.definido}"></property>
+		
+		<property name="paramCodeMotivoCargoDespacho" value="${param.code.motivo.cargo.despacho}"></property>
+		<property name="paramCodeMotivoCargoDespachoNoDefinido" value="${param.code.motivo.cargo.despacho.no.definido}"></property>
+		<property name="paramSerialMotivoCargoDespachoNoDefinido" value="${param.serial.motivo.cargo.despacho.no.definido}"></property>
+		
+		<property name="paramCodeEstadoCargo" value="${param.code.estado.cargo}"></property>
+		<property name="paramCodeEstadoCargoOrdenDigitado" value="${param.code.estado.cargo.orden.digitado}"></property>
+		<property name="paramCodeEstadoCargoOrdenClasificado" value="${param.code.estado.cargo.orden.clasificado}"></property>
+		<property name="paramCodeEstadoCargoOrdenRuta" value="${param.code.estado.cargo.orden.ruta}"></property>
+		<property name="paramCodeEstadoCargoOrdenEntregado" value="${param.code.estado.cargo.orden.entregado}"></property>
+		<property name="paramCodeEstadoCargoOrdenMotivado" value="${param.code.estado.cargo.orden.motivado}"></property>
+		<property name="paramCodeEstadoCargoOrdenReenviado" value="${param.code.estado.cargo.orden.reenviado}"></property>
+		<property name="paramCodeEstadoCargoOrdenFueraZona" value="${param.code.estado.cargo.orden.fuera.zona}"></property>
+		<property name="paramCodeEstadoCargoOrdenPerdido" value="${param.code.estado.cargo.orden.perdido}"></property>
+		<property name="paramCodeEstadoCargoOrdenAnulado" value="${param.code.estado.cargo.orden.anulado}"></property>
+		<property name="paramCodeEstadoCargoOrdenNoDistribuido" value="${param.code.estado.cargo.orden.no.distribuido}"></property>
+		<property name="paramCodeEstadoCargoOrdenRetenido" value="${param.code.estado.cargo.orden.retenido}"></property>
+		<property name="paramCodeEstadoCargoOrdenSinFisico" value="${param.code.estado.cargo.orden.sin.fisico}"></property>
+		<property name="paramCodeEstadoCargoOrdenProvincia" value="${param.code.estado.cargo.orden.provincia}"></property>
+		<property name="paramCodeEstadoCargoOrdenSupervision" value="${param.code.estado.cargo.orden.supervision}"></property>
+		<property name="paramCodeEstadoCargoOrdenRobo" value="${param.code.estado.cargo.orden.robo}"></property>
+		<property name="paramCodeEstadoCargoOrdenSiLlego" value="${param.code.estado.cargo.orden.si.llego}"></property>
+		<property name="paramCodeEstadoCargoOrdenRecepcionado" value="${param.code.estado.cargo.orden.recepcionado}"></property>
+		<property name="paramCodeEstadoCargoOrdenNoDefinido" value="${param.code.estado.cargo.orden.no.definido}"></property>
+		<property name="paramSerialEstadoCargoOrdenDigitado" value="${param.serial.estado.cargo.orden.digitado}"></property>
+		<property name="paramSerialEstadoCargoOrdenClasificado" value="${param.serial.estado.cargo.orden.clasificado}"></property>
+		<property name="paramSerialEstadoCargoOrdenRuta" value="${param.serial.estado.cargo.orden.ruta}"></property>
+		<property name="paramSerialEstadoCargoOrdenEntregado" value="${param.serial.estado.cargo.orden.entregado}"></property>
+		<property name="paramSerialEstadoCargoOrdenMotivado" value="${param.serial.estado.cargo.orden.motivado}"></property>
+		<property name="paramSerialEstadoCargoOrdenReenviado" value="${param.serial.estado.cargo.orden.reenviado}"></property>
+		<property name="paramSerialEstadoCargoOrdenFueraZona" value="${param.serial.estado.cargo.orden.fuera.zona}"></property>
+		<property name="paramSerialEstadoCargoOrdenPerdido" value="${param.serial.estado.cargo.orden.perdido}"></property>
+		<property name="paramSerialEstadoCargoOrdenAnulado" value="${param.serial.estado.cargo.orden.anulado}"></property>
+		<property name="paramSerialEstadoCargoOrdenNoDistribuido" value="${param.serial.estado.cargo.orden.no.distribuido}"></property>
+		<property name="paramSerialEstadoCargoOrdenRetenido" value="${param.serial.estado.cargo.orden.retenido}"></property>
+		<property name="paramSerialEstadoCargoOrdenSinFisico" value="${param.serial.estado.cargo.orden.sin.fisico}"></property>
+		<property name="paramSerialEstadoCargoOrdenProvincia" value="${param.serial.estado.cargo.orden.provincia}"></property>
+		<property name="paramSerialEstadoCargoOrdenSupervision" value="${param.serial.estado.cargo.orden.supervision}"></property>
+		<property name="paramSerialEstadoCargoOrdenRobo" value="${param.serial.estado.cargo.orden.robo}"></property>
+		<property name="paramSerialEstadoCargoOrdenSiLlego" value="${param.serial.estado.cargo.orden.si.llego}"></property>
+		<property name="paramSerialEstadoCargoOrdenRecepcionado" value="${param.serial.estado.cargo.orden.recepcionado}"></property>
+		<property name="paramSerialEstadoCargoOrdenNoDefinido" value="${param.serial.estado.cargo.orden.no.definido}"></property>
+
+
+		<property name="paramCodeMotivoCargo" value="${param.code.motivo.cargo}"></property>
+		<property name="paramCodeMotivoCargoNoDefinido" value="${param.code.motivo.cargo.no.definido}"></property>
+		<property name="paramSerialMotivoCargoNoDefinido" value="${param.serial.motivo.cargo.no.definido}"></property>
+		
+		<property name="paramCodeTipoIngresoCargo" value="${param.code.tipo.ingreso.cargo}"></property>
+		<property name="paramCodeTipoIngresoCargoDigitado" value="${param.code.tipo.ingreso.cargo.digitado}"></property>
+		<property name="paramCodeTipoIngresoCargoTransferido" value="${param.code.tipo.ingreso.cargo.transferido}"></property>
+		<property name="paramCodeTipoIngresoCargoNoDefinido" value="${param.code.tipo.ingreso.cargo.no.definido}"></property>
+		<property name="paramSerialTipoIngresoCargoDigitado" value="${param.serial.tipo.ingreso.cargo.digitado}"></property>
+		<property name="paramSerialTipoIngresoCargoTransferido" value="${param.serial.tipo.ingreso.cargo.transferido}"></property>
+		<property name="paramSerialTipoIngresoCargoNoDefinido" value="${param.serial.tipo.ingreso.cargo.no.definido}"></property>
+		
+		<property name="paramCodeCategoriaCliente" value="${param.code.categoria.cliente}"></property>
+		<property name="paramCodeCategoriaClienteNoDefinido" value="${param.code.categoria.cliente.no.definido}"></property>
+		<property name="paramSerialCategoriaClienteNoDefinido" value="${param.serial.categoria.cliente.no.definido}"></property>
+		
+		<property name="paramCodeTipoCliente" value="${param.code.tipo.cliente}"></property>
+		<property name="paramCodeTipoClienteJuridica" value="${param.code.tipo.cliente.juridica}"></property>
+		<property name="paramCodeTipoClienteNatural" value="${param.code.tipo.cliente.natural}"></property>
+		<property name="paramCodeTipoClienteEstatal" value="${param.code.tipo.cliente.estatal}"></property>
+		<property name="paramCodeTipoClienteNoDefinido" value="${param.code.tipo.cliente.no.definido}"></property>
+		<property name="paramSerialTipoClienteJuridica" value="${param.serial.tipo.cliente.juridica}"></property>
+		<property name="paramSerialTipoClienteNatural" value="${param.serial.tipo.cliente.natural}"></property>
+		<property name="paramSerialTipoClienteEstatal" value="${param.serial.tipo.cliente.estatal}"></property>
+		<property name="paramSerialTipoClienteNoDefinido" value="${param.serial.tipo.cliente.no.definido}"></property>
+		
+		<property name="paramCodeTipoCredito" value="${param.code.tipo.credito}"></property>
+		<property name="paramCodeTipoCreditoCredito" value="${param.code.tipo.credito.credito}"></property>
+		<property name="paramCodeTipoCreditoNoDefinido" value="${param.code.tipo.credito.no.definido}"></property>
+		<property name="paramSerialTipoCreditoCredito" value="${param.serial.tipo.credito.credito}"></property>
+		<property name="paramSerialTipoCreditoNoDefinido" value="${param.serial.tipo.credito.no.definido}"></property>
+				
+		<property name="paramCodeTipoDocumentoTrabajo" value="${param.code.tipo.documento.trabajo}"></property>
+		<property name="paramCodeTipoDocumentoTrabajoGuia" value="${param.code.tipo.documento.trabajo.guia}"></property>
+		<property name="paramCodeTipoDocumentoTrabajoNoDefinido" value="${param.code.tipo.documento.trabajo.no.definido}"></property>
+		<property name="paramSerialTipoDocumentoTrabajoGuia" value="${param.serial.tipo.documento.trabajo.guia}"></property>
+		<property name="paramSerialTipoDocumentoTrabajoNoDefinido" value="${param.serial.tipo.documento.trabajo.no.definido}"></property>
+		
+		<property name="paramCodeTipoFacturacion" value="${param.code.tipo.facturacion}"></property>
+		<property name="paramCodeTipoFacturacionFacturacion" value="${param.code.tipo.facturacion.facturacion}"></property>
+		<property name="paramCodeTipoFacturacionNoDefinido" value="${param.code.tipo.facturacion.no.definido}"></property>
+		<property name="paramSerialTipoFacturacionFacturacion" value="${param.serial.tipo.facturacion.facturacion}"></property>
+		<property name="paramSerialTipoFacturacionNoDefinido" value="${param.serial.tipo.facturacion.no.definido}"></property>
+		
+		<property name="paramCodeTipoCambio" value="${param.code.tipo.cambio}"></property>
+		
+		<property name="paramCodeEstadoCotizacion" value="${param.code.estado.cotizacion}"></property>
+		<property name="paramCodeEstadoCotizacionNormal" value="${param.code.estado.cotizacion.normal}"></property>
+		<property name="paramCodeEstadoCotizacionPlana" value="${param.code.estado.cotizacion.plana}"></property>
+		<property name="paramCodeEstadoCotizacionValijas" value="${param.code.estado.cotizacion.valijas}"></property>
+		<property name="paramCodeEstadoCotizacionUbigeos" value="${param.code.estado.cotizacion.ubigeos}"></property>
+		<property name="paramCodeEstadoCotizacionRangos" value="${param.code.estado.cotizacion.rangos}"></property>
+		<property name="paramCodeEstadoCotizacionGiroRecojo" value="${param.code.estado.cotizacion.giro.recojo}"></property>
+		<property name="paramCodeEstadoCotizacionNoDefinido" value="${param.code.estado.cotizacion.no.definido}"></property>
+		<property name="paramSerialEstadoCotizacionNormal" value="${param.serial.estado.cotizacion.normal}"></property>
+		<property name="paramSerialEstadoCotizacionPlana" value="${param.serial.estado.cotizacion.plana}"></property>
+		<property name="paramSerialEstadoCotizacionValijas" value="${param.serial.estado.cotizacion.valijas}"></property>
+		<property name="paramSerialEstadoCotizacionUbigeos" value="${param.serial.estado.cotizacion.ubigeos}"></property>
+		<property name="paramSerialEstadoCotizacionRangos" value="${param.serial.estado.cotizacion.rangos}"></property>
+		<property name="paramSerialEstadoCotizacionGiroRecojo" value="${param.serial.estado.cotizacion.giro.recojo}"></property>
+		<property name="paramSerialEstadoCotizacionNoDefinido" value="${param.serial.estado.cotizacion.no.definido}"></property>
+		
+		
+		<property name="paramCodeTipoNegocio" value="${param.code.tipo.negocio}"></property>
+		<property name="paramCodeTipoNegocioMensajeria" value="${param.code.tipo.negocio.mensajeria}"></property>
+		<property name="paramCodeTipoNegocioNoDefinido" value="${param.code.tipo.negocio.no.definido}"></property>
+		<property name="paramSerialTipoNegocioMensajeria" value="${param.serial.tipo.negocio.mensajeria}"></property>
+		<property name="paramSerialTipoNegocioNoDefinido" value="${param.serial.tipo.negocio.no.definido}"></property>
+		
+		<property name="paramCodeTipoServicio" value="${param.code.tipo.servicio}"></property>
+		<property name="paramCodeTipoServicioCorreo1Dia" value="${param.code.tipo.servicio.correo.1.dia}"></property>
+		<property name="paramCodeTipoServicioCorreo2Dias" value="${param.code.tipo.servicio.correo.2.dias}"></property>
+		<property name="paramCodeTipoServicioCorreo3Dias" value="${param.code.tipo.servicio.correo.3.dias}"></property>
+		<property name="paramCodeTipoServicioCorreo4Dias" value="${param.code.tipo.servicio.correo.4.dias}"></property>
+		<property name="paramCodeTipoServicioCorreo5Dias" value="${param.code.tipo.servicio.correo.5.dias}"></property>
+		<property name="paramCodeTipoServicioExpress25Dias" value="${param.code.tipo.servicio.express.2.5.dias}"></property>
+		<property name="paramCodeTipoServicioEconExp1530Dias" value="${param.code.tipo.servicio.econ.exp.15.30.dias}"></property>
+		<property name="paramCodeTipoServicioCorreo1530Dias" value="${param.code.tipo.servicio.correo.15.30.dias}"></property>
+		<property name="paramCodeTipoServicioCorreo4DiasAMas" value="${param.code.tipo.servicio.correo.4.dias.a.mas}"></property>
+		<property name="paramCodeTipoServicioVolanteoPersonalizado" value="${param.code.tipo.servicio.volanteo.personalizado}"></property>
+		<property name="paramCodeTipoServicioVolanteoSimple" value="${param.code.tipo.servicio.volanteo.simple}"></property>
+		<property name="paramCodeTipoServicioNoDefinido" value="${param.code.tipo.servicio.no.definido}"></property>
+		<property name="paramSerialTipoServicioCorreo1Dia" value="${param.serial.tipo.servicio.correo.1.dia}"></property>
+		<property name="paramSerialTipoServicioCorreo2Dias" value="${param.serial.tipo.servicio.correo.2.dias}"></property>
+		<property name="paramSerialTipoServicioCorreo3Dias" value="${param.serial.tipo.servicio.correo.3.dias}"></property>
+		<property name="paramSerialTipoServicioCorreo4Dias" value="${param.serial.tipo.servicio.correo.4.dias}"></property>
+		<property name="paramSerialTipoServicioCorreo5Dias" value="${param.serial.tipo.servicio.correo.5.dias}"></property>
+		<property name="paramSerialTipoServicioExpress25Dias" value="${param.serial.tipo.servicio.express.2.5.dias}"></property>
+		<property name="paramSerialTipoServicioEconExp1530Dias" value="${param.serial.tipo.servicio.econ.exp.15.30.dias}"></property>
+		<property name="paramSerialTipoServicioCorreo1530Dias" value="${param.serial.tipo.servicio.correo.15.30.dias}"></property>
+		<property name="paramSerialTipoServicioCorreo4DiasAMas" value="${param.serial.tipo.servicio.correo.4.dias.a.mas}"></property>
+		<property name="paramSerialTipoServicioVolanteoPersonalizado" value="${param.serial.tipo.servicio.volanteo.personalizado}"></property>
+		<property name="paramSerialTipoServicioVolanteoSimple" value="${param.serial.tipo.servicio.volanteo.simple}"></property>
+		<property name="paramSerialTipoServicioNoDefinido" value="${param.serial.tipo.servicio.no.definido}"></property>
+		
+		<property name="paramCodeTipoDocumento" value="${param.code.tipo.documento}"></property>
+		<property name="paramCodeTipoDocumentoRuc" value="${param.code.tipo.documento.ruc}"></property>
+		<property name="paramCodeTipoDocumentoDni" value="${param.code.tipo.documento.dni}"></property>
+		<property name="paramCodeTipoDocumentoNoDefinido" value="${param.code.tipo.documento.no.definido}"></property>
+		<property name="paramSerialTipoDocumentoRuc" value="${param.serial.tipo.documento.ruc}"></property>
+		<property name="paramSerialTipoDocumentoDni" value="${param.serial.tipo.documento.dni}"></property>
+		<property name="paramSerialTipoDocumentoNoDefinido" value="${param.serial.tipo.documento.no.definido}"></property>
+		
+		<property name="paramCodeEstadoDespacho" value="${param.code.estado.despacho}"></property>
+		<property name="paramCodeEstadoDespachoDespacho" value="${param.code.estado.despacho.despacho}"></property>
+		<property name="paramCodeEstadoDespachoRuta" value="${param.code.estado.despacho.ruta}"></property>
+		<property name="paramCodeEstadoDespachoCerrado" value="${param.code.estado.despacho.cerrado}"></property>
+		<property name="paramCodeEstadoDespachoGenerado" value="${param.code.estado.despacho.generado}"></property>
+		<property name="paramCodeEstadoDespachoPagado" value="${param.code.estado.despacho.pagado}"></property>
+		<property name="paramCodeEstadoDespachoAnulado" value="${param.code.estado.despacho.anulado}"></property>
+		<property name="paramCodeEstadoDespachoNoDefinido" value="${param.code.estado.despacho.no.definido}"></property>
+		<property name="paramSerialEstadoDespachoDespacho" value="${param.serial.estado.despacho.despacho}"></property>
+		<property name="paramSerialEstadoDespachoRuta" value="${param.serial.estado.despacho.ruta}"></property>
+		<property name="paramSerialEstadoDespachoCerrado" value="${param.serial.estado.despacho.cerrado}"></property>
+		<property name="paramSerialEstadoDespachoGenerado" value="${param.serial.estado.despacho.generado}"></property>
+		<property name="paramSerialEstadoDespachoPagado" value="${param.serial.estado.despacho.pagado}"></property>
+		<property name="paramSerialEstadoDespachoAnulado" value="${param.serial.estado.despacho.anulado}"></property>
+		<property name="paramSerialEstadoDespachoNoDefinido" value="${param.serial.estado.despacho.no.definido}"></property>
+		
+		<property name="paramCodeEstadoDespachoVerificacion" value="${param.code.estado.despacho.verificacion}"></property>
+		<property name="paramCodeEstadoDespachoVerificacionNoDefinido" value="${param.code.estado.despacho.verificacion.no.definido}"></property>
+		<property name="paramSerialEstadoDespachoVerificacionNoDefinido" value="${param.serial.estado.despacho.verificacion.no.definido}"></property>
+		
+		<property name="paramCodeTipoDespacho" value="${param.code.tipo.despacho}"></property>
+		<property name="paramCodeTipoDespachoNoDefinido" value="${param.code.tipo.despacho.no.definido}"></property>
+		<property name="paramSerialTipoDespachoNoDefinido" value="${param.serial.tipo.despacho.no.definido}"></property>
+		
+		<property name="paramCodeTipoRuta" value="${param.code.tipo.ruta}"></property>
+		<property name="paramCodeTipoRutaMensajeria" value="${param.code.tipo.ruta.mensajeria}"></property>
+		<property name="paramCodeTipoRutaCourier" value="${param.code.tipo.ruta.courier}"></property>
+		<property name="paramCodeTipoRutaRecojo" value="${param.code.tipo.ruta.recojo}"></property>
+		<property name="paramCodeTipoRutaNoDefinido" value="${param.code.tipo.ruta.no.definido}"></property>
+		<property name="paramSerialTipoRutaMensajeria" value="${param.serial.tipo.ruta.mensajeria}"></property>
+		<property name="paramSerialTipoRutaCourier" value="${param.serial.tipo.ruta.courier}"></property>
+		<property name="paramSerialTipoRutaRecojo" value="${param.serial.tipo.ruta.recojo}"></property>
+		<property name="paramSerialTipoRutaNoDefinido" value="${param.serial.tipo.ruta.no.definido}"></property>
+		
+		<property name="paramCodeCategoriaEmpleado" value="${param.code.categoria.empleado}"></property>
+		<property name="paramCodeCategoriaEmpleadoMensajero" value="${param.code.categoria.empleado.mensajero}"></property>
+		<property name="paramCodeCategoriaEmpleadoNoDefinido" value="${param.code.categoria.empleado.no.definido}"></property>
+		<property name="paramSerialCategoriaEmpleadoMensajero" value="${param.serial.categoria.empleado.mensajero}"></property>
+		<property name="paramSerialCategoriaEmpleadoNoDefinido" value="${param.serial.categoria.empleado.no.definido}"></property>
+		
+		<property name="paramCodeEstadoOrden" value="${param.code.estado.orden}"></property>
+		<property name="paramCodeEstadoOrdenGenerado" value="${param.code.estado.orden.generado}"></property>
+		<property name="paramCodeEstadoOrdenPendiente" value="${param.code.estado.orden.pendiente}"></property>
+		<property name="paramCodeEstadoOrdenCerrado" value="${param.code.estado.orden.cerrado}"></property>
+		<property name="paramCodeEstadoOrdenAnulado" value="${param.code.estado.orden.anulado}"></property>
+		<property name="paramCodeEstadoOrdenNoDefinido" value="${param.code.estado.orden.no.definido}"></property>
+		<property name="paramSerialEstadoOrdenGenerado" value="${param.serial.estado.orden.generado}"></property>
+		<property name="paramSerialEstadoOrdenPendiente" value="${param.serial.estado.orden.pendiente}"></property>
+		<property name="paramSerialEstadoOrdenCerrado" value="${param.serial.estado.orden.cerrado}"></property>
+		<property name="paramSerialEstadoOrdenAnulado" value="${param.serial.estado.orden.anulado}"></property>
+		<property name="paramSerialEstadoOrdenNoDefinido" value="${param.serial.estado.orden.no.definido}"></property>
+
+		<property name="paramCodeTipoIngreso" value="${param.code.tipo.ingreso}"></property>
+		
+		<property name="paramCodeTipoMoneda" value="${param.code.tipo.moneda}"></property>
+		<property name="paramCodeTipoMonedaNuevoSol" value="${param.code.tipo.moneda.nuevo.sol}"></property>
+		<property name="paramCodeTipoMonedaDolar" value="${param.code.tipo.moneda.dolar}"></property>
+		<property name="paramCodeTipoMonedaNoDefinido" value="${param.code.tipo.moneda.no.definido}"></property>
+		<property name="paramSerialTipoMonedaNuevoSol" value="${param.serial.tipo.moneda.nuevo.sol}"></property>
+		<property name="paramSerialTipoMonedaDolar" value="${param.serial.tipo.moneda.dolar}"></property>
+		<property name="paramSerialTipoMonedaNoDefinido" value="${param.serial.tipo.moneda.no.definido}"></property>
+		
+		<property name="paramCodeTipoPago" value="${param.code.tipo.pago}"></property>
+		<property name="paramCodeTipoPagoCredito" value="${param.code.tipo.pago.credito}"></property>
+		<property name="paramCodeTipoPagoContado" value="${param.code.tipo.pago.contado}"></property>
+		<property name="paramCodeTipoPagoCuotas" value="${param.code.tipo.pago.cuotas}"></property>
+		<property name="paramCodeTipoPagoPrepaid" value="${param.code.tipo.pago.prepaid}"></property>
+		<property name="paramCodeTipoPagoCollect" value="${param.code.tipo.pago.collect}"></property>
+		<property name="paramCodeTipoPagoNoDefinido" value="${param.code.tipo.pago.no.definido}"></property>
+		<property name="paramSerialTipoPagoCredito" value="${param.serial.tipo.pago.credito}"></property>
+		<property name="paramSerialTipoPagoContado" value="${param.serial.tipo.pago.contado}"></property>
+		<property name="paramSerialTipoPagoCuotas" value="${param.serial.tipo.pago.cuotas}"></property>
+		<property name="paramSerialTipoPagoPrepaid" value="${param.serial.tipo.pago.prepaid}"></property>
+		<property name="paramSerialTipoPagoCollect" value="${param.serial.tipo.pago.collect}"></property>
+		<property name="paramSerialTipoPagoNoDefinido" value="${param.serial.tipo.pago.no.definido}"></property>
+		
+		<property name="paramCodeTipoReparto" value="${param.code.tipo.reparto}"></property>
+		<property name="paramCodeTipoRepartoNoBajoPuerta" value="${param.code.tipo.reparto.no.bajo.puerta}"></property>
+		<property name="paramCodeTipoRepartoBajoPuerta" value="${param.code.tipo.reparto.bajo.puerta}"></property>
+		<property name="paramCodeTipoRepartoPorcentajeDeBajoPuerta" value="${param.code.tipo.reparto.porcentaje.de.bajo.puerta}"></property>
+		<property name="paramCodeTipoRepartoVolanteSinCargo" value="${param.code.tipo.reparto.volanteo.sin.cargo}"></property>
+		<property name="paramCodeTipoRepartoSinValor" value="${param.code.tipo.reparto.sin.valor}"></property>
+		<property name="paramCodeTipoReparto3DiasBajoPuerta" value="${param.code.tipo.reparto.3.dias.bajo.puerta}"></property>
+		<property name="paramCodeTipoReparto4DiasBajoPuerta" value="${param.code.tipo.reparto.4.dias.bajo.puerta}"></property>
+		<property name="paramCodeTipoRepartoNoDefinido" value="${param.code.tipo.reparto.no.definido}"></property>
+		<property name="paramSerialTipoRepartoNoBajoPuerta" value="${param.serial.tipo.reparto.no.bajo.puerta}"></property>
+		<property name="paramSerialTipoRepartoBajoPuerta" value="${param.serial.tipo.reparto.bajo.puerta}"></property>
+		<property name="paramSerialTipoRepartoPorcentajeDeBajoPuerta" value="${param.serial.tipo.reparto.porcentaje.de.bajo.puerta}"></property>
+		<property name="paramSerialTipoRepartoVolanteSinCargo" value="${param.serial.tipo.reparto.volanteo.sin.cargo}"></property>
+		<property name="paramSerialTipoRepartoSinValor" value="${param.serial.tipo.reparto.sin.valor}"></property>
+		<property name="paramSerialTipoReparto3DiasBajoPuerta" value="${param.serial.tipo.reparto.3.dias.bajo.puerta}"></property>
+		<property name="paramSerialTipoReparto4DiasBajoPuerta" value="${param.serial.tipo.reparto.4.dias.bajo.puerta}"></property>
+		<property name="paramSerialTipoRepartoNoDefinido" value="${param.serial.tipo.reparto.no.definido}"></property>
+		
+		<property name="paramCodeTipoProducto" value="${param.code.tipo.producto}"></property>
+		<property name="paramCodeTipoProductoDocumento" value="${param.code.tipo.producto.documento}"></property>
+		<property name="paramCodeTipoProductoMuestra" value="${param.code.tipo.producto.muestra}"></property>
+		<property name="paramCodeTipoProductoNoDefinido" value="${param.code.tipo.producto.no.definido}"></property>
+		<property name="paramSerialTipoProductoDocumento" value="${param.serial.tipo.producto.documento}"></property>
+		<property name="paramSerialTipoProductoMuestra" value="${param.serial.tipo.producto.muestra}"></property>
+		<property name="paramSerialTipoProductoNoDefinido" value="${param.serial.tipo.producto.no.definido}"></property>
+		
+		<property name="paramCodeTipoSede" value="${param.code.tipo.sede}"></property>
+		<property name="paramCodeTipoSedeNoDefinido" value="${param.code.tipo.sede.no.definido}"></property>
+		<property name="paramSerialTipoSedeNoDefinido" value="${param.serial.tipo.sede.no.definido}"></property>
+		
+		<property name="paramCodeUbigeoPais" value="${param.code.ubigeo.pais}"></property>
+		
+		<property name="paramCodeUbigeoDepartamento" value="${param.code.ubigeo.departamento}"></property>
+		
+		<property name="paramCodeUbigeoProvincia" value="${param.code.ubigeo.provincia}"></property>
+		
+		<property name="paramCodeUbigeoDistrito" value="${param.code.ubigeo.distrito}"></property>
+		<property name="paramCodeUbigeoDistritoNoDefinido" value="${param.code.ubigeo.distrito.no.definido}"></property>
+		<property name="paramSerialUbigeoDistritoNoDefinido" value="${param.serial.ubigeo.distrito.no.definido}"></property>
+
+		<property name="paramCodeEstadoFacturado" value="${param.code.estado.facturado}"></property>
+		<property name="paramCodeEstadoFacturadoSi" value="${param.code.estado.facturado.si}"></property>
+		<property name="paramCodeEstadoFacturadoNo" value="${param.code.estado.facturado.no}"></property>
+		<property name="paramSerialEstadoFacturadoSi" value="${param.serial.estado.facturado.si}"></property>
+		<property name="paramSerialEstadoFacturadoNo" value="${param.serial.estado.facturado.no}"></property>
+		
+		<property name="paramCodeTipoAmbito" value="${param.code.tipo.ambito}"></property>
+		<property name="paramCodeTipoAmbitoLocal" value="${param.code.tipo.ambito.local}"></property>
+		<property name="paramCodeTipoAmbitoNoDefinido" value="${param.code.tipo.ambito.no.definido}"></property>
+		<property name="paramSerialTipoAmbitoLocal" value="${param.serial.tipo.ambito.local}"></property>
+		<property name="paramSerialTipoAmbitoNoDefinido" value="${param.serial.tipo.ambito.no.definido}"></property>
+		
+		<property name="paramCodeEstadoLiquidacion" value="${param.code.estado.liquidacion}"></property>
+		<property name="paramCodeEstadoLiquidacionPendiente" value="${param.code.estado.liquidacion.pendiente}"></property>
+		<property name="paramCodeEstadoLiquidacionParcial" value="${param.code.estado.liquidacion.parcial}"></property>
+		<property name="paramCodeEstadoLiquidacionTotal" value="${param.code.estado.liquidacion.total}"></property>
+		<property name="paramSerialEstadoLiquidacionPendiente" value="${param.serial.estado.liquidacion.pendiente}"></property>
+		<property name="paramSerialEstadoLiquidacionParcial" value="${param.serial.estado.liquidacion.parcial}"></property>
+		<property name="paramSerialEstadoLiquidacionTotal" value="${param.serial.estado.liquidacion.total}"></property>
+		
+		<property name="paramCodeNoDefinido" value="${param.code.no.definido}"></property>
+
+		<property name="valueStringDefault" value="${value.string.default}"></property>
+		<property name="valueNumberDefault" value="${value.number.default}"></property>
+
+		<property name="stateRecordNew" value="${state.record.new}"></property>
+		<property name="stateRecordProcessed" value="${state.record.processed}"></property>
+		<property name="stateRecordInconsistent" value="${state.record.inconsistent}"></property>
+		
+		<property name="stateProcessStarted" value="${state.process.started}"></property>
+		<property name="stateProcessCompletedCorrectly" value="${state.process.completed.correctly}"></property>
+		<property name="stateProcessCompletedErrors" value="${state.process.completed.errors}"></property>
+		<property name="stateProcessCanceled" value="${state.process.canceled}"></property>
+		
+		<property name="typeProcessSimple" value="${type.process.simple}"></property>
+		<property name="typeProcessReProcess" value="${type.process.reprocess}"></property>
+		
+		<property name="loadProcessToGeneric" value="${load.process.to.generic}"></property>
+		<property name="loadProcessToDimensional" value="${load.process.to.dimensional}"></property>
+		
+		<property name="resultTransactionNoResult" value="${result.transaction.noresult}"></property>
+		
+		<property name="resultProcessStarted" value="${result.process.started}"></property>
+		<property name="resultProcessCompletedCorrectly" value="${result.process.completed.correctly}"></property>
+		<property name="resultProcessCompletedErrors" value="${result.process.completed.errors}"></property>
+
+		<property name="sizePage" value="${size.page}"></property>
+		
+		<property name="maxHoursProcess" value="${max.hours.process}"></property>
+		<property name="maxHoursFirstProcess" value="${max.hours.first.process}"></property>
+		<property name="timeExecuteUpdateTable" value="${time.execute.update.table}"></property>
+		
+		<property name="idTableGenericTAreaCliente" value="${id.table.generic.t_area_cliente}"></property>
+		<property name="idTableGenericTCargo" value="${id.table.generic.t_cargo}"></property>
+		<property name="idTableGenericTCargoDespacho" value="${id.table.generic.t_cargo_despacho}"></property>
+		<property name="idTableGenericTCliente" value="${id.table.generic.t_cliente}"></property>
+		<property name="idTableGenericTCotizacion" value="${id.table.generic.t_cotizacion}"></property>
+		<property name="idTableGenericTDespacho" value="${id.table.generic.t_despacho}"></property>
+		<property name="idTableGenericTEmpleado" value="${id.table.generic.t_empleado}"></property>
+		<property name="idTableGenericTEmpleadoCategoria" value="${id.table.generic.t_empleado_categoria}"></property>
+		<property name="idTableGenericTLiquidacion" value="${id.table.generic.t_liquidacion}"></property>
+		<property name="idTableGenericTOrden" value="${id.table.generic.t_orden}"></property>
+		<property name="idTableGenericTParametro" value="${id.table.generic.t_parametro}"></property>
+		<property name="idTableGenericTProducto" value="${id.table.generic.t_producto}"></property>
+		<property name="idTableGenericTSede" value="${id.table.generic.t_sede}"></property>
+		<property name="idTableGenericTServicio" value="${id.table.generic.t_servicio}"></property>
+		<property name="idTableGenericTUbigeo" value="${id.table.generic.t_ubigeo}"></property>
+		<property name="idTableGenericTZona" value="${id.table.generic.t_zona}"></property>
+		
+		<property name="idTableDimensionalDimCliente" value="${id.table.dimensional.dim_cliente}"></property>
+		<property name="idTableDimensionalDimEstado" value="${id.table.dimensional.dim_estado}"></property>
+		<property name="idTableDimensionalDimFacturado" value="${id.table.dimensional.dim_facturado}"></property>
+		<property name="idTableDimensionalDimMoneda" value="${id.table.dimensional.dim_moneda}"></property>
+		<property name="idTableDimensionalDimPersonal" value="${id.table.dimensional.dim_personal}"></property>
+		<property name="idTableDimensionalDimProducto" value="${id.table.dimensional.dim_producto}"></property>
+		<property name="idTableDimensionalDimSede" value="${id.table.dimensional.dim_sede}"></property>
+		<property name="idTableDimensionalDimServicio" value="${id.table.dimensional.dim_servicio}"></property>
+		<property name="idTableDimensionalDimTiempo" value="${id.table.dimensional.dim_tiempo}"></property>
+		<property name="idTableDimensionalDimTipoDocumento" value="${id.table.dimensional.dim_tipo_documento}"></property>
+		<property name="idTableDimensionalDimTipoPago" value="${id.table.dimensional.dim_tipo_pago}"></property>
+		<property name="idTableDimensionalDimTipoReparto" value="${id.table.dimensional.dim_tipo_reparto}"></property>
+		<property name="idTableDimensionalDimTipoRuta" value="${id.table.dimensional.dim_tipo_ruta}"></property>
+		<property name="idTableDimensionalDimUbigeo" value="${id.table.dimensional.dim_ubigeo}"></property>
+		<property name="idTableDimensionalDimZona" value="${id.table.dimensional.dim_zona}"></property>
+		<property name="idTableDimensionalFactCotizacion" value="${id.table.dimensional.fact_cotizacion}"></property>
+		<property name="idTableDimensionalFactDespacho" value="${id.table.dimensional.fact_despacho}"></property>
+		<property name="idTableDimensionalFactEnvio" value="${id.table.dimensional.fact_envio}"></property>
+		<property name="idTableDimensionalFactOrden" value="${id.table.dimensional.fact_orden}"></property>		
+		
+	</bean>
+
+
+</beans>
