@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 
 import pe.com.j2techcon.bi.etl.domain.generic.TAreaCliente;
@@ -78,6 +79,8 @@ public class TCotizacionProcess {
 	
 	private Constantes constantes;
 
+	static Logger log = Logger.getLogger(TCotizacionProcess.class);
+	
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -369,7 +372,7 @@ public class TCotizacionProcess {
 	}
 
 	public TCotizacionProcess(BeanFactory factory, int sizePage,
-			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
+			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -389,7 +392,7 @@ public class TCotizacionProcess {
 
 	}
 
-	public int startProcess() {
+	public int startProcess() throws Exception{
 		
 		tEmpleadoCategoriaManager = factory.getBean("tEmpleadoCategoriaManager", TEmpleadoCategoriaManager.class);
 		tAreaClienteManager = factory.getBean("tAreaClienteManager", TAreaClienteManager.class);
@@ -486,7 +489,7 @@ public class TCotizacionProcess {
 		return getResultProcess();
 	}
 
-	public void processRecordCotizacion() {
+	public void processRecordCotizacion() throws Exception{
 		
 		completeFieldCotizacion();
 		
@@ -527,7 +530,7 @@ public class TCotizacionProcess {
 		
 	}
 
-	public void completeFieldCotizacion() {
+	public void completeFieldCotizacion() throws Exception{
 
 		//Codido de la categoria del empleado: Por defecto se ingresa el valor 0
 		tCotizacion.setEmpCatId(0);
@@ -630,7 +633,7 @@ public class TCotizacionProcess {
 
 	}
 
-	public int insertRecordGenericCotizacion() {
+	public int insertRecordGenericCotizacion() throws Exception{
 		try {
 			resultTransaction = tCotizacionManager.insertSelective(tCotizacion);
 		} catch (Exception e) {
@@ -639,7 +642,7 @@ public class TCotizacionProcess {
 		return resultTransaction;
 	}
 
-	public int updateRecordGenericCotizacion() {
+	public int updateRecordGenericCotizacion() throws Exception{
 		try {
 			tCotizacionExample.clear();
 			tCotizacionExample.createCriteria().andCotiCodTipDocEqualTo(constantes.getParamSerialTipoDocumentoTrabajoNoDefinido());
@@ -652,7 +655,7 @@ public class TCotizacionProcess {
 		return resultTransaction;
 	}
 
-	public int deleteRecordGenericCotizacion() {
+	public int deleteRecordGenericCotizacion() throws Exception{
 		try {
 			tCotizacionExample.clear();
 			tCotizacionExample.createCriteria().andCotiCodTipDocEqualTo(constantes.getParamSerialTipoDocumentoTrabajoNoDefinido());
@@ -665,18 +668,14 @@ public class TCotizacionProcess {
 		return resultTransaction;
 	}
 
-	public void updateRecordOrigenCotizacion(String statusRecord) {
-		try {
-			String coSerie = tCotizaciones.getCoserie();
-			BigDecimal coNumero = tCotizaciones.getConumero();
-			tCotizaciones.clear();
-			tCotizaciones.setCoserie(coSerie);
-			tCotizaciones.setConumero(coNumero);
-			tCotizaciones.setBiCodIndCam(statusRecord);
-			tCotizacionesManager.updateByPrimaryKeySelective(tCotizaciones);
-		} catch (Exception e) {
-
-		}
+	public void updateRecordOrigenCotizacion(String statusRecord) throws Exception{
+		String coSerie = tCotizaciones.getCoserie();
+		BigDecimal coNumero = tCotizaciones.getConumero();
+		tCotizaciones.clear();
+		tCotizaciones.setCoserie(coSerie);
+		tCotizaciones.setConumero(coNumero);
+		tCotizaciones.setBiCodIndCam(statusRecord);
+		tCotizacionesManager.updateByPrimaryKeySelective(tCotizaciones);
 	}
 
 }

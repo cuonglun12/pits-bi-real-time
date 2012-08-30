@@ -6,25 +6,25 @@ import pe.com.j2techcon.bi.etl.domain.generic.TAreaCliente;
 import pe.com.j2techcon.bi.etl.domain.generic.TAreaClienteExample;
 
 public interface TAreaClienteMapper {
-    int countByExample(TAreaClienteExample example);
+    int countByExample(TAreaClienteExample example) throws Exception;
 
-    int deleteByExample(TAreaClienteExample example);
+    int deleteByExample(TAreaClienteExample example) throws Exception;
 
-    int deleteByPrimaryKey(Integer areCliId);
+    int deleteByPrimaryKey(Integer areCliId) throws Exception;
 
-    int insert(TAreaCliente record);
+    int insert(TAreaCliente record) throws Exception;
 
-    int insertSelective(TAreaCliente record);
+    int insertSelective(TAreaCliente record) throws Exception;
 
-    List<TAreaCliente> selectByExample(TAreaClienteExample example);
+    List<TAreaCliente> selectByExample(TAreaClienteExample example) throws Exception;
 
-    TAreaCliente selectByPrimaryKey(Integer areCliId);
+    TAreaCliente selectByPrimaryKey(Integer areCliId) throws Exception;
 
-    int updateByExampleSelective(@Param("record") TAreaCliente record, @Param("example") TAreaClienteExample example);
+    int updateByExampleSelective(@Param("record") TAreaCliente record, @Param("example") TAreaClienteExample example) throws Exception;
 
-    int updateByExample(@Param("record") TAreaCliente record, @Param("example") TAreaClienteExample example);
+    int updateByExample(@Param("record") TAreaCliente record, @Param("example") TAreaClienteExample example) throws Exception;
 
-    int updateByPrimaryKeySelective(TAreaCliente record);
+    int updateByPrimaryKeySelective(TAreaCliente record) throws Exception;
 
-    int updateByPrimaryKey(TAreaCliente record);
+    int updateByPrimaryKey(TAreaCliente record) throws Exception;
 }

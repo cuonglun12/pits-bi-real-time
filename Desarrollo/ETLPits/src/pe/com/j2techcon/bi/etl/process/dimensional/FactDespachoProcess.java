@@ -3,6 +3,7 @@ package pe.com.j2techcon.bi.etl.process.dimensional;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 
 import pe.com.j2techcon.bi.etl.logic.dimensional.DimTiempoManager;
@@ -65,6 +66,8 @@ public class FactDespachoProcess {
 	
 	private Constantes constantes;
 
+	static Logger log = Logger.getLogger(FactDespachoProcess.class);
+	
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -306,7 +309,7 @@ public class FactDespachoProcess {
 	}
 
 	public FactDespachoProcess(BeanFactory factory, int sizePage,
-			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
+			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -326,7 +329,7 @@ public class FactDespachoProcess {
 		
 	}
 
-	public int startProcess(){
+	public int startProcess()throws Exception{
 
 		tCargoDespachoManager = factory.getBean("tCargoDespachoManager", TCargoDespachoManager.class);
 		tDespachoManager = factory.getBean("tDespachoManager", TDespachoManager.class);
@@ -443,7 +446,7 @@ public class FactDespachoProcess {
 		return resultProcess;
 	}
 	
-	public void processRecordDespacho(){
+	public void processRecordDespacho()throws Exception{
 		
 		if(!tDespacho.getProcId().equals(process)){
 		
@@ -489,7 +492,7 @@ public class FactDespachoProcess {
 		}
 	}
 	
-	public void completeFieldDespacho(){
+	public void completeFieldDespacho()throws Exception{
 		factDespacho.setDespachoKey(tDespacho.getDespId());
 		factDespacho.setDespachoKeySede(tDespacho.getSedId());
 		factDespacho.setDespachoKeyZona(tDespacho.getZonId());
@@ -667,7 +670,7 @@ public class FactDespachoProcess {
 		factDespacho.setProcId(process);
 	}
 	
-	public int insertRecordDimensionalDespacho(){
+	public int insertRecordDimensionalDespacho()throws Exception{
 		try{
 			resultTransaction = factDespachoManager.insertSelective(factDespacho);
 		}catch(Exception e){
@@ -676,7 +679,7 @@ public class FactDespachoProcess {
 		return resultTransaction;
 	}
 	
-	public int updateRecordDimensionalDespacho(){
+	public int updateRecordDimensionalDespacho()throws Exception{
 		try{
 			resultTransaction = factDespachoManager.updateByPrimaryKeySelective(factDespacho);
 		}catch(Exception e){
@@ -685,7 +688,7 @@ public class FactDespachoProcess {
 		return resultTransaction;
 	}
 	
-	public int deleteRecordDimensionalDespacho(){
+	public int deleteRecordDimensionalDespacho()throws Exception{
 		try{
 			resultTransaction = factDespachoManager.deleteByPrimaryKey(factDespacho.getDespachoKey());
 		}catch(Exception e){
@@ -694,16 +697,12 @@ public class FactDespachoProcess {
 		return resultTransaction; 
 	}
 	
-	public void updateRecordGenericDespacho(String statusRecord){
-		try{
-			int idDespacho = tDespacho.getDespId();
-			tDespacho.clear();
-			tDespacho.setDespId(idDespacho);
-			tDespacho.setCodIndCam(statusRecord);
-			tDespacho.setProcId(process);
-			tDespachoManager.updateByPrimaryKeySelective(tDespacho);
-		}catch(Exception e){
-			
-		}
+	public void updateRecordGenericDespacho(String statusRecord)throws Exception{
+		int idDespacho = tDespacho.getDespId();
+		tDespacho.clear();
+		tDespacho.setDespId(idDespacho);
+		tDespacho.setCodIndCam(statusRecord);
+		tDespacho.setProcId(process);
+		tDespachoManager.updateByPrimaryKeySelective(tDespacho);
 	}
 }

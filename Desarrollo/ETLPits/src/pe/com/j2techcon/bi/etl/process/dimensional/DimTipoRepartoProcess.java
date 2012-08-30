@@ -3,6 +3,7 @@ package pe.com.j2techcon.bi.etl.process.dimensional;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import pe.com.j2techcon.bi.etl.logic.dimensional.DimTipoRepartoManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TParametroManager;
@@ -42,6 +43,8 @@ public class DimTipoRepartoProcess {
 	
 	private Constantes constantes;
 
+	static Logger log = Logger.getLogger(DimTipoRepartoProcess.class);
+	
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -203,7 +206,7 @@ public class DimTipoRepartoProcess {
 	}
 
 	public DimTipoRepartoProcess(BeanFactory factory, int sizePage,
-			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
+			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -223,7 +226,7 @@ public class DimTipoRepartoProcess {
 		
 	}
 
-	public int startProcess(){
+	public int startProcess()throws Exception{
 
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
 		dimTipoRepartoManager = factory.getBean("dimTipoRepartoManager", DimTipoRepartoManager.class);
@@ -279,7 +282,7 @@ public class DimTipoRepartoProcess {
 		return resultProcess;
 	}
 	
-	public void processRecordParametro(){
+	public void processRecordParametro()throws Exception{
 		
 		completeFieldTipoReparto();
 		
@@ -319,14 +322,14 @@ public class DimTipoRepartoProcess {
 		updateRecordGenericParametro(stateRecordGeneric);
 	}
 	
-	public void completeFieldTipoReparto(){
+	public void completeFieldTipoReparto()throws Exception{
 		dimTipoReparto.setTipoRepartoKey(tParametro.getParamId());
 		dimTipoReparto.setTipoRepartoCod(tParametro.getParamCod());
 		dimTipoReparto.setTipoRepartoDesc(tParametro.getParamDes());
 		dimTipoReparto.setProcId(process);
 	}
 	
-	public int insertRecordDimensionalTipoReparto(){
+	public int insertRecordDimensionalTipoReparto()throws Exception{
 		try{
 			resultTransaction = dimTipoRepartoManager.insertSelective(dimTipoReparto);
 		}catch(Exception e){
@@ -335,7 +338,7 @@ public class DimTipoRepartoProcess {
 		return resultTransaction;
 	}
 	
-	public int updateRecordDimensionalTipoReparto(){
+	public int updateRecordDimensionalTipoReparto()throws Exception{
 		try{
 			resultTransaction = dimTipoRepartoManager.updateByPrimaryKeySelective(dimTipoReparto);
 		}catch(Exception e){
@@ -344,7 +347,7 @@ public class DimTipoRepartoProcess {
 		return resultTransaction;
 	}
 	
-	public int deleteRecordDimensionalTipoReparto(){
+	public int deleteRecordDimensionalTipoReparto()throws Exception{
 		try{
 			resultTransaction = dimTipoRepartoManager.deleteByPrimaryKey(dimTipoReparto.getTipoRepartoKey());
 		}catch(Exception e){
@@ -353,16 +356,12 @@ public class DimTipoRepartoProcess {
 		return resultTransaction; 
 	}
 	
-	public void updateRecordGenericParametro(String statusRecord){
-		try{
-			int idParametro = tParametro.getParamId();
-			tParametro.clear();
-			tParametro.setParamId(idParametro);
-			tParametro.setCodIndCam(statusRecord);
-			tParametro.setProcId(process);
-			tParametroManager.updateByPrimaryKeySelective(tParametro);
-		}catch(Exception e){
-			
-		}
+	public void updateRecordGenericParametro(String statusRecord)throws Exception{
+		int idParametro = tParametro.getParamId();
+		tParametro.clear();
+		tParametro.setParamId(idParametro);
+		tParametro.setCodIndCam(statusRecord);
+		tParametro.setProcId(process);
+		tParametroManager.updateByPrimaryKeySelective(tParametro);
 	}
 }

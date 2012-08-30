@@ -6,25 +6,25 @@ import pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoReparto;
 import pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoRepartoExample;
 
 public interface DimTipoRepartoMapper {
-    int countByExample(DimTipoRepartoExample example);
+    int countByExample(DimTipoRepartoExample example) throws Exception;
 
-    int deleteByExample(DimTipoRepartoExample example);
+    int deleteByExample(DimTipoRepartoExample example) throws Exception;
 
-    int deleteByPrimaryKey(Integer tipoRepartoKey);
+    int deleteByPrimaryKey(Integer tipoRepartoKey) throws Exception;
 
-    int insert(DimTipoReparto record);
+    int insert(DimTipoReparto record) throws Exception;
 
-    int insertSelective(DimTipoReparto record);
+    int insertSelective(DimTipoReparto record) throws Exception;
 
-    List<DimTipoReparto> selectByExample(DimTipoRepartoExample example);
+    List<DimTipoReparto> selectByExample(DimTipoRepartoExample example) throws Exception;
 
-    DimTipoReparto selectByPrimaryKey(Integer tipoRepartoKey);
+    DimTipoReparto selectByPrimaryKey(Integer tipoRepartoKey) throws Exception;
 
-    int updateByExampleSelective(@Param("record") DimTipoReparto record, @Param("example") DimTipoRepartoExample example);
+    int updateByExampleSelective(@Param("record") DimTipoReparto record, @Param("example") DimTipoRepartoExample example) throws Exception;
 
-    int updateByExample(@Param("record") DimTipoReparto record, @Param("example") DimTipoRepartoExample example);
+    int updateByExample(@Param("record") DimTipoReparto record, @Param("example") DimTipoRepartoExample example) throws Exception;
 
-    int updateByPrimaryKeySelective(DimTipoReparto record);
+    int updateByPrimaryKeySelective(DimTipoReparto record) throws Exception;
 
-    int updateByPrimaryKey(DimTipoReparto record);
+    int updateByPrimaryKey(DimTipoReparto record) throws Exception;
 }

@@ -10,66 +10,66 @@ public class DimZonaManager {
 	
 	private DimZonaMapper dimZonaMapper;
 
-	public DimZonaMapper getDimZonaMapper() {
+	public DimZonaMapper getDimZonaMapper() throws Exception {
 		return dimZonaMapper;
 	}
 
-	public void setDimZonaMapper(DimZonaMapper dimZonaMapper) {
+	public void setDimZonaMapper(DimZonaMapper dimZonaMapper) throws Exception {
 		this.dimZonaMapper = dimZonaMapper;
 	}
 
 
-	public int countByExample(DimZonaExample example) {
+	public int countByExample(DimZonaExample example) throws Exception {
 		return dimZonaMapper.countByExample(example);
 	}
 
 
-	public int deleteByExample(DimZonaExample example) {
+	public int deleteByExample(DimZonaExample example) throws Exception {
 		return dimZonaMapper.deleteByExample(example);
 	}
 
 
-	public int deleteByPrimaryKey(Integer zonaKey) {
+	public int deleteByPrimaryKey(Integer zonaKey) throws Exception {
 		return dimZonaMapper.deleteByPrimaryKey(zonaKey);
 	}
 
 
-	public int insert(DimZona record) {
+	public int insert(DimZona record) throws Exception {
 		return dimZonaMapper.insert(record);
 	}
 
 
-	public int insertSelective(DimZona record) {
+	public int insertSelective(DimZona record) throws Exception {
 		return dimZonaMapper.insertSelective(record);
 	}
 
 
-	public List<DimZona> selectByExample(DimZonaExample example) {
+	public List<DimZona> selectByExample(DimZonaExample example) throws Exception {
 		return dimZonaMapper.selectByExample(example);
 	}
 
 
-	public DimZona selectByPrimaryKey(Integer zonaKey) {
+	public DimZona selectByPrimaryKey(Integer zonaKey) throws Exception {
 		return dimZonaMapper.selectByPrimaryKey(zonaKey);
 	}
 
 
-	public int updateByExampleSelective(DimZona record, DimZonaExample example) {
+	public int updateByExampleSelective(DimZona record, DimZonaExample example) throws Exception {
 		return dimZonaMapper.updateByExampleSelective(record, example);
 	}
 
 
-	public int updateByExample(DimZona record, DimZonaExample example) {
+	public int updateByExample(DimZona record, DimZonaExample example) throws Exception {
 		return dimZonaMapper.updateByExample(record, example);
 	}
 
 
-	public int updateByPrimaryKeySelective(DimZona record) {
+	public int updateByPrimaryKeySelective(DimZona record) throws Exception {
 		return dimZonaMapper.updateByPrimaryKeySelective(record);
 	}
 
 
-	public int updateByPrimaryKey(DimZona record) {
+	public int updateByPrimaryKey(DimZona record) throws Exception {
 		return dimZonaMapper.updateByPrimaryKey(record);
 	}
 

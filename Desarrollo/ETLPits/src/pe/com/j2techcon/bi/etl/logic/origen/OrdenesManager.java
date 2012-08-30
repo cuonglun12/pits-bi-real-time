@@ -10,55 +10,55 @@ public class OrdenesManager {
 
 	private OrdenesMapper ordenesMapper;
 	
-	public OrdenesMapper getOrdenesMapper() {
+	public OrdenesMapper getOrdenesMapper() throws Exception {
 		return ordenesMapper;
 	}
 
-	public void setOrdenesMapper(OrdenesMapper ordenesMapper) {
+	public void setOrdenesMapper(OrdenesMapper ordenesMapper) throws Exception {
 		this.ordenesMapper = ordenesMapper;
 	}
 
-	public int countByExample(OrdenesExample example) {
+	public int countByExample(OrdenesExample example) throws Exception {
 		return ordenesMapper.countByExample(example);
 	}
 
-	public int deleteByExample(OrdenesExample example) {
+	public int deleteByExample(OrdenesExample example) throws Exception {
 		return ordenesMapper.deleteByExample(example);
 	}
 
-	public int deleteByPrimaryKey(String serie, String orden) {
+	public int deleteByPrimaryKey(String serie, String orden) throws Exception {
 		return ordenesMapper.deleteByPrimaryKey(serie, orden);
 	}
 
-	public int insert(Ordenes record) {
+	public int insert(Ordenes record) throws Exception {
 		return ordenesMapper.insert(record);
 	}
 
-	public int insertSelective(Ordenes record) {
+	public int insertSelective(Ordenes record) throws Exception {
 		return ordenesMapper.insertSelective(record);
 	}
 
-	public List<Ordenes> selectByExample(OrdenesExample example) {
+	public List<Ordenes> selectByExample(OrdenesExample example) throws Exception {
 		return ordenesMapper.selectByExample(example);
 	}
 
-	public Ordenes selectByPrimaryKey(String serie, String orden) {
+	public Ordenes selectByPrimaryKey(String serie, String orden) throws Exception {
 		return ordenesMapper.selectByPrimaryKey(serie, orden);
 	}
 
-	public int updateByExampleSelective(Ordenes record, OrdenesExample example) {
+	public int updateByExampleSelective(Ordenes record, OrdenesExample example) throws Exception {
 		return ordenesMapper.updateByExampleSelective(record, example);
 	}
 
-	public int updateByExample(Ordenes record, OrdenesExample example) {
+	public int updateByExample(Ordenes record, OrdenesExample example) throws Exception {
 		return ordenesMapper.updateByExample(record, example);
 	}
 
-	public int updateByPrimaryKeySelective(Ordenes record) {
+	public int updateByPrimaryKeySelective(Ordenes record) throws Exception {
 		return ordenesMapper.updateByPrimaryKeySelective(record);
 	}
 
-	public int updateByPrimaryKey(Ordenes record) {
+	public int updateByPrimaryKey(Ordenes record) throws Exception {
 		return ordenesMapper.updateByPrimaryKey(record);
 	}
 

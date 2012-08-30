@@ -3,6 +3,7 @@ package pe.com.j2techcon.bi.etl.process.dimensional;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 
 import pe.com.j2techcon.bi.etl.logic.dimensional.DimPersonalManager;
@@ -56,6 +57,8 @@ public class DimPersonalProcess {
 	
 	private Constantes constantes;
 
+	static Logger log = Logger.getLogger(DimPersonalProcess.class);
+	
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -265,7 +268,7 @@ public class DimPersonalProcess {
 	}
 
 	public DimPersonalProcess(BeanFactory factory, int sizePage,
-			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
+			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -285,7 +288,7 @@ public class DimPersonalProcess {
 		
 	}
 
-	public int startProcess(){
+	public int startProcess()throws Exception{
 
 		tEmpleadoManager = factory.getBean("tEmpleadoManager", TEmpleadoManager.class);
 		tEmpleadoCategoriaManager = factory.getBean("tEmpleadoCategoriaManager", TEmpleadoCategoriaManager.class);
@@ -382,7 +385,7 @@ public class DimPersonalProcess {
 		return resultProcess;
 	}
 	
-	public void processRecordEmpleadoCategoria(){
+	public void processRecordEmpleadoCategoria()throws Exception{
 		
 		completeFieldEmpleadoCategoria();
 		
@@ -429,7 +432,7 @@ public class DimPersonalProcess {
 		}
 	}
 	
-	public void processRecordPersonal(){
+	public void processRecordPersonal()throws Exception{
 		completeFieldPersonal();
 		
 		if(updateRecordDimensionalPersonal() > constantes.getResultTransactionNoResult()){
@@ -442,7 +445,7 @@ public class DimPersonalProcess {
 		}
 	}
 	
-	public void completeFieldEmpleadoCategoria(){
+	public void completeFieldEmpleadoCategoria()throws Exception{
 		dimPersonal.setPersonalKey(tEmpleadoCategoria.getEmpCatId());
 		
 		dimPersonal.setPersonalCodigoCategoria(tEmpleadoCategoria.getEmpCatCodTip());
@@ -464,7 +467,7 @@ public class DimPersonalProcess {
 		dimPersonal.setProcId(process);
 	}
 	
-	public void completeFieldPersonal(){
+	public void completeFieldPersonal()throws Exception{
 		dimPersonalExample.createCriteria().andPersonalKeyEqualTo(tEmpleado.getEmpId());
 		dimPersonalExample.createCriteria().andProcIdNotEqualTo(process);
 		
@@ -474,7 +477,7 @@ public class DimPersonalProcess {
 		dimPersonal.setProcId(process);
 	}
 	
-	public int insertRecordDimensionalEmpleadoCategoria(){
+	public int insertRecordDimensionalEmpleadoCategoria()throws Exception{
 		try{
 			resultTransaction = dimPersonalManager.insertSelective(dimPersonal);
 		}catch(Exception e){
@@ -483,7 +486,7 @@ public class DimPersonalProcess {
 		return resultTransaction;
 	}
 	
-	public int updateRecordDimensionalEmpleadoCategoria(){
+	public int updateRecordDimensionalEmpleadoCategoria()throws Exception{
 		try{
 			resultTransaction = dimPersonalManager.updateByPrimaryKeySelective(dimPersonal);
 		}catch(Exception e){
@@ -492,7 +495,7 @@ public class DimPersonalProcess {
 		return resultTransaction;
 	}
 	
-	public int updateRecordDimensionalPersonal(){
+	public int updateRecordDimensionalPersonal()throws Exception{
 		try{
 			resultTransaction = dimPersonalManager.updateByExampleSelective(dimPersonal, dimPersonalExample);
 		}catch(Exception e){
@@ -501,7 +504,7 @@ public class DimPersonalProcess {
 		return resultTransaction;
 	}
 	
-	public int deleteRecordDimensionalEmpleadoCategoria(){
+	public int deleteRecordDimensionalEmpleadoCategoria()throws Exception{
 		try{
 			resultTransaction = dimPersonalManager.deleteByPrimaryKey(dimPersonal.getPersonalKey());
 		}catch(Exception e){
@@ -510,7 +513,7 @@ public class DimPersonalProcess {
 		return resultTransaction; 
 	}
 	
-	public int deleteRecordDimensionalPersonal(){
+	public int deleteRecordDimensionalPersonal()throws Exception{
 		try{
 			resultTransaction = dimPersonalManager.deleteByExample(dimPersonalExample);
 		}catch(Exception e){
@@ -519,29 +522,21 @@ public class DimPersonalProcess {
 		return resultTransaction; 
 	}
 	
-	public void updateRecordGenericEmpleadoCategoria(String statusRecord){
-		try{
-			int idEmpleadoCategoria = tEmpleadoCategoria.getEmpCatId();
-			tEmpleadoCategoria.clear();
-			tEmpleadoCategoria.setEmpCatId(idEmpleadoCategoria);
-			tEmpleadoCategoria.setCodIndCam(statusRecord);
-			tEmpleadoCategoria.setProcId(process);
-			tEmpleadoCategoriaManager.updateByPrimaryKeySelective(tEmpleadoCategoria);
-		}catch(Exception e){
-			
-		}
+	public void updateRecordGenericEmpleadoCategoria(String statusRecord)throws Exception{
+		int idEmpleadoCategoria = tEmpleadoCategoria.getEmpCatId();
+		tEmpleadoCategoria.clear();
+		tEmpleadoCategoria.setEmpCatId(idEmpleadoCategoria);
+		tEmpleadoCategoria.setCodIndCam(statusRecord);
+		tEmpleadoCategoria.setProcId(process);
+		tEmpleadoCategoriaManager.updateByPrimaryKeySelective(tEmpleadoCategoria);
 	}
 	
-	public void updateRecordGenericPersonal(String statusRecord){
-		try{
-			int idPersonal = tEmpleado.getEmpId();
-			tEmpleado.clear();
-			tEmpleado.setEmpId(idPersonal);
-			tEmpleado.setCodIndCam(statusRecord);
-			tEmpleado.setProcId(process);
-			tEmpleadoManager.updateByPrimaryKeySelective(tEmpleado);
-		}catch(Exception e){
-			
-		}
+	public void updateRecordGenericPersonal(String statusRecord)throws Exception{
+		int idPersonal = tEmpleado.getEmpId();
+		tEmpleado.clear();
+		tEmpleado.setEmpId(idPersonal);
+		tEmpleado.setCodIndCam(statusRecord);
+		tEmpleado.setProcId(process);
+		tEmpleadoManager.updateByPrimaryKeySelective(tEmpleado);
 	}
 }

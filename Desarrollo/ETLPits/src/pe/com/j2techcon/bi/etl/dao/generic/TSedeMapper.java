@@ -6,25 +6,25 @@ import pe.com.j2techcon.bi.etl.domain.generic.TSede;
 import pe.com.j2techcon.bi.etl.domain.generic.TSedeExample;
 
 public interface TSedeMapper {
-    int countByExample(TSedeExample example);
+    int countByExample(TSedeExample example) throws Exception;
 
-    int deleteByExample(TSedeExample example);
+    int deleteByExample(TSedeExample example) throws Exception;
 
-    int deleteByPrimaryKey(Integer sedId);
+    int deleteByPrimaryKey(Integer sedId) throws Exception;
 
-    int insert(TSede record);
+    int insert(TSede record) throws Exception;
 
-    int insertSelective(TSede record);
+    int insertSelective(TSede record) throws Exception;
 
-    List<TSede> selectByExample(TSedeExample example);
+    List<TSede> selectByExample(TSedeExample example) throws Exception;
 
-    TSede selectByPrimaryKey(Integer sedId);
+    TSede selectByPrimaryKey(Integer sedId) throws Exception;
 
-    int updateByExampleSelective(@Param("record") TSede record, @Param("example") TSedeExample example);
+    int updateByExampleSelective(@Param("record") TSede record, @Param("example") TSedeExample example) throws Exception;
 
-    int updateByExample(@Param("record") TSede record, @Param("example") TSedeExample example);
+    int updateByExample(@Param("record") TSede record, @Param("example") TSedeExample example) throws Exception;
 
-    int updateByPrimaryKeySelective(TSede record);
+    int updateByPrimaryKeySelective(TSede record) throws Exception;
 
-    int updateByPrimaryKey(TSede record);
+    int updateByPrimaryKey(TSede record) throws Exception;
 }

@@ -6,25 +6,25 @@ import pe.com.j2techcon.bi.etl.domain.dimensional.DimMoneda;
 import pe.com.j2techcon.bi.etl.domain.dimensional.DimMonedaExample;
 
 public interface DimMonedaMapper {
-    int countByExample(DimMonedaExample example);
+    int countByExample(DimMonedaExample example) throws Exception;
 
-    int deleteByExample(DimMonedaExample example);
+    int deleteByExample(DimMonedaExample example) throws Exception;
 
-    int deleteByPrimaryKey(Integer monedaKey);
+    int deleteByPrimaryKey(Integer monedaKey) throws Exception;
 
-    int insert(DimMoneda record);
+    int insert(DimMoneda record) throws Exception;
 
-    int insertSelective(DimMoneda record);
+    int insertSelective(DimMoneda record) throws Exception;
 
-    List<DimMoneda> selectByExample(DimMonedaExample example);
+    List<DimMoneda> selectByExample(DimMonedaExample example) throws Exception;
 
-    DimMoneda selectByPrimaryKey(Integer monedaKey);
+    DimMoneda selectByPrimaryKey(Integer monedaKey) throws Exception;
 
-    int updateByExampleSelective(@Param("record") DimMoneda record, @Param("example") DimMonedaExample example);
+    int updateByExampleSelective(@Param("record") DimMoneda record, @Param("example") DimMonedaExample example) throws Exception;
 
-    int updateByExample(@Param("record") DimMoneda record, @Param("example") DimMonedaExample example);
+    int updateByExample(@Param("record") DimMoneda record, @Param("example") DimMonedaExample example) throws Exception;
 
-    int updateByPrimaryKeySelective(DimMoneda record);
+    int updateByPrimaryKeySelective(DimMoneda record) throws Exception;
 
-    int updateByPrimaryKey(DimMoneda record);
+    int updateByPrimaryKey(DimMoneda record) throws Exception;
 }

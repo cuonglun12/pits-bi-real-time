@@ -6,25 +6,25 @@ import pe.com.j2techcon.bi.etl.domain.generic.TUbigeo;
 import pe.com.j2techcon.bi.etl.domain.generic.TUbigeoExample;
 
 public interface TUbigeoMapper {
-    int countByExample(TUbigeoExample example);
+    int countByExample(TUbigeoExample example) throws Exception;
 
-    int deleteByExample(TUbigeoExample example);
+    int deleteByExample(TUbigeoExample example) throws Exception;
 
-    int deleteByPrimaryKey(Integer ubiId);
+    int deleteByPrimaryKey(Integer ubiId) throws Exception;
 
-    int insert(TUbigeo record);
+    int insert(TUbigeo record) throws Exception;
 
-    int insertSelective(TUbigeo record);
+    int insertSelective(TUbigeo record) throws Exception;
 
-    List<TUbigeo> selectByExample(TUbigeoExample example);
+    List<TUbigeo> selectByExample(TUbigeoExample example) throws Exception;
 
-    TUbigeo selectByPrimaryKey(Integer ubiId);
+    TUbigeo selectByPrimaryKey(Integer ubiId) throws Exception;
 
-    int updateByExampleSelective(@Param("record") TUbigeo record, @Param("example") TUbigeoExample example);
+    int updateByExampleSelective(@Param("record") TUbigeo record, @Param("example") TUbigeoExample example) throws Exception;
 
-    int updateByExample(@Param("record") TUbigeo record, @Param("example") TUbigeoExample example);
+    int updateByExample(@Param("record") TUbigeo record, @Param("example") TUbigeoExample example) throws Exception;
 
-    int updateByPrimaryKeySelective(TUbigeo record);
+    int updateByPrimaryKeySelective(TUbigeo record) throws Exception;
 
-    int updateByPrimaryKey(TUbigeo record);
+    int updateByPrimaryKey(TUbigeo record) throws Exception;
 }

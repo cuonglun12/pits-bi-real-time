@@ -6,25 +6,25 @@ import pe.com.j2techcon.bi.etl.domain.origen.Sedesprov;
 import pe.com.j2techcon.bi.etl.domain.origen.SedesprovExample;
 
 public interface SedesprovMapper {
-    int countByExample(SedesprovExample example);
+    int countByExample(SedesprovExample example) throws Exception;
 
-    int deleteByExample(SedesprovExample example);
+    int deleteByExample(SedesprovExample example) throws Exception;
 
-    int deleteByPrimaryKey(String codsede);
+    int deleteByPrimaryKey(String codsede) throws Exception;
 
-    int insert(Sedesprov record);
+    int insert(Sedesprov record) throws Exception;
 
-    int insertSelective(Sedesprov record);
+    int insertSelective(Sedesprov record) throws Exception;
 
-    List<Sedesprov> selectByExample(SedesprovExample example);
+    List<Sedesprov> selectByExample(SedesprovExample example) throws Exception;
 
-    Sedesprov selectByPrimaryKey(String codsede);
+    Sedesprov selectByPrimaryKey(String codsede) throws Exception;
 
-    int updateByExampleSelective(@Param("record") Sedesprov record, @Param("example") SedesprovExample example);
+    int updateByExampleSelective(@Param("record") Sedesprov record, @Param("example") SedesprovExample example) throws Exception;
 
-    int updateByExample(@Param("record") Sedesprov record, @Param("example") SedesprovExample example);
+    int updateByExample(@Param("record") Sedesprov record, @Param("example") SedesprovExample example) throws Exception;
 
-    int updateByPrimaryKeySelective(Sedesprov record);
+    int updateByPrimaryKeySelective(Sedesprov record) throws Exception;
 
-    int updateByPrimaryKey(Sedesprov record);
+    int updateByPrimaryKey(Sedesprov record) throws Exception;
 }

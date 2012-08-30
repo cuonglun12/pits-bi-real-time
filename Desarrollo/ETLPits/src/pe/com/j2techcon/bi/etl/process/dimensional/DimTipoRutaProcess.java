@@ -3,6 +3,7 @@ package pe.com.j2techcon.bi.etl.process.dimensional;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import pe.com.j2techcon.bi.etl.logic.dimensional.DimTipoRutaManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TParametroManager;
@@ -42,6 +43,8 @@ public class DimTipoRutaProcess {
 	
 	private Constantes constantes;
 
+	static Logger log = Logger.getLogger(DimTipoRutaProcess.class);
+	
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -203,7 +206,7 @@ public class DimTipoRutaProcess {
 	}
 
 	public DimTipoRutaProcess(BeanFactory factory, int sizePage,
-			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
+			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -223,7 +226,7 @@ public class DimTipoRutaProcess {
 		
 	}
 
-	public int startProcess(){
+	public int startProcess()throws Exception{
 
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
 		dimTipoRutaManager = factory.getBean("dimTipoRutaManager", DimTipoRutaManager.class);
@@ -280,7 +283,7 @@ public class DimTipoRutaProcess {
 		return resultProcess;
 	}
 	
-	public void processRecordParametro(){
+	public void processRecordParametro()throws Exception{
 		
 		completeFieldTipoRuta();
 		
@@ -320,14 +323,14 @@ public class DimTipoRutaProcess {
 		updateRecordGenericParametro(stateRecordGeneric);
 	}
 	
-	public void completeFieldTipoRuta(){
+	public void completeFieldTipoRuta()throws Exception{
 		dimTipoRuta.setTipoRutaKey(tParametro.getParamId());
 		dimTipoRuta.setTipoRutaCod(tParametro.getParamCod());
 		dimTipoRuta.setTipoRutaDesc(tParametro.getParamDes());
 		dimTipoRuta.setProcId(process);
 	}
 	
-	public int insertRecordDimensionalTipoRuta(){
+	public int insertRecordDimensionalTipoRuta()throws Exception{
 		try{
 			resultTransaction = dimTipoRutaManager.insertSelective(dimTipoRuta);
 		}catch(Exception e){
@@ -336,7 +339,7 @@ public class DimTipoRutaProcess {
 		return resultTransaction;
 	}
 	
-	public int updateRecordDimensionalTipoRuta(){
+	public int updateRecordDimensionalTipoRuta()throws Exception{
 		try{
 			resultTransaction = dimTipoRutaManager.updateByPrimaryKeySelective(dimTipoRuta);
 		}catch(Exception e){
@@ -345,7 +348,7 @@ public class DimTipoRutaProcess {
 		return resultTransaction;
 	}
 	
-	public int deleteRecordDimensionalTipoRuta(){
+	public int deleteRecordDimensionalTipoRuta()throws Exception{
 		try{
 			resultTransaction = dimTipoRutaManager.deleteByPrimaryKey(dimTipoRuta.getTipoRutaKey());
 		}catch(Exception e){
@@ -354,16 +357,12 @@ public class DimTipoRutaProcess {
 		return resultTransaction; 
 	}
 	
-	public void updateRecordGenericParametro(String statusRecord){
-		try{
-			int idParametro = tParametro.getParamId();
-			tParametro.clear();
-			tParametro.setParamId(idParametro);
-			tParametro.setCodIndCam(statusRecord);
-			tParametro.setProcId(process);
-			tParametroManager.updateByPrimaryKeySelective(tParametro);
-		}catch(Exception e){
-			
-		}
+	public void updateRecordGenericParametro(String statusRecord)throws Exception{
+		int idParametro = tParametro.getParamId();
+		tParametro.clear();
+		tParametro.setParamId(idParametro);
+		tParametro.setCodIndCam(statusRecord);
+		tParametro.setProcId(process);
+		tParametroManager.updateByPrimaryKeySelective(tParametro);
 	}
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 
 import pe.com.j2techcon.bi.etl.domain.generic.TDespacho;
@@ -69,6 +70,8 @@ public class TDespachoProcess {
 	
 	private Constantes constantes;
 
+	static Logger log = Logger.getLogger(TDespachoProcess.class);
+	
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -329,7 +332,7 @@ public class TDespachoProcess {
 	}
 
 	public TDespachoProcess(BeanFactory factory, int sizePage,
-			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
+			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -349,7 +352,7 @@ public class TDespachoProcess {
 
 	}
 
-	public int startProcess() {
+	public int startProcess() throws Exception{
 		
 		tEmpleadoCategoriaManager = factory.getBean("tEmpleadoCategoriaManager", TEmpleadoCategoriaManager.class);
 		tSedeManager = factory.getBean("tSedeManager", TSedeManager.class);
@@ -432,7 +435,7 @@ public class TDespachoProcess {
 		return getResultProcess();
 	}
 
-	public void processRecordDespacho() {
+	public void processRecordDespacho() throws Exception{
 		
 		completeFieldDespacho();
 
@@ -472,7 +475,7 @@ public class TDespachoProcess {
 		updateRecordOrigenDespacho(stateRecordOrigen);	
 	}
 
-	public void completeFieldDespacho() {
+	public void completeFieldDespacho() throws Exception{
 
 		//Tipo de documento de trabajo
 		tDespacho.setDespCodTipDoc(constantes.getParamSerialTipoDocumentoTrabajoGuia());
@@ -567,7 +570,7 @@ public class TDespachoProcess {
 		tDespacho.setProcId(process);
 	}
 
-	public int insertRecordGenericDespacho() {
+	public int insertRecordGenericDespacho() throws Exception{
 		try {
 			resultTransaction = tDespachoManager.insertSelective(tDespacho);
 		} catch (Exception e) {
@@ -576,7 +579,7 @@ public class TDespachoProcess {
 		return resultTransaction;
 	}
 
-	public int updateRecordGenericDespacho() {
+	public int updateRecordGenericDespacho() throws Exception{
 		try {
 			tDespachoExample.clear();
 			tDespachoExample.createCriteria().andDespCodTipDocEqualTo(constantes.getParamSerialTipoDocumentoTrabajoGuia());
@@ -589,7 +592,7 @@ public class TDespachoProcess {
 		return resultTransaction;
 	}
 
-	public int deleteRecordGenericDespacho() {
+	public int deleteRecordGenericDespacho() throws Exception{
 		try {
 			tDespachoExample.clear();
 			tDespachoExample.createCriteria().andDespCodTipDocEqualTo(constantes.getParamSerialTipoDocumentoTrabajoGuia());
@@ -602,17 +605,13 @@ public class TDespachoProcess {
 		return resultTransaction;
 	}
 
-	public void updateRecordOrigenDespacho(String statusRecord) {
-		try {
-			String serieGuia = despacho.getSerieguia();
-			String numeroGuia = despacho.getNroguia();
-			despacho.clear();
-			despacho.setSerieguia(serieGuia);
-			despacho.setNroguia(numeroGuia);
-			despacho.setBiCodIndCam(statusRecord);
-			despachoManager.updateByPrimaryKeySelective(despacho);
-		} catch (Exception e) {
-
-		}
+	public void updateRecordOrigenDespacho(String statusRecord) throws Exception{
+		String serieGuia = despacho.getSerieguia();
+		String numeroGuia = despacho.getNroguia();
+		despacho.clear();
+		despacho.setSerieguia(serieGuia);
+		despacho.setNroguia(numeroGuia);
+		despacho.setBiCodIndCam(statusRecord);
+		despachoManager.updateByPrimaryKeySelective(despacho);
 	}
 }

@@ -6,25 +6,25 @@ import pe.com.j2techcon.bi.etl.domain.origen.Areacliente;
 import pe.com.j2techcon.bi.etl.domain.origen.AreaclienteExample;
 
 public interface AreaclienteMapper {
-    int countByExample(AreaclienteExample example);
+    int countByExample(AreaclienteExample example) throws Exception;
 
-    int deleteByExample(AreaclienteExample example);
+    int deleteByExample(AreaclienteExample example) throws Exception;
 
-    int deleteByPrimaryKey(@Param("codareacliente") String codareacliente, @Param("codcliente") String codcliente);
+    int deleteByPrimaryKey(@Param("codareacliente") String codareacliente, @Param("codcliente") String codcliente) throws Exception;
 
-    int insert(Areacliente record);
+    int insert(Areacliente record) throws Exception;
 
-    int insertSelective(Areacliente record);
+    int insertSelective(Areacliente record) throws Exception;
 
-    List<Areacliente> selectByExample(AreaclienteExample example);
+    List<Areacliente> selectByExample(AreaclienteExample example) throws Exception;
 
-    Areacliente selectByPrimaryKey(@Param("codareacliente") String codareacliente, @Param("codcliente") String codcliente);
+    Areacliente selectByPrimaryKey(@Param("codareacliente") String codareacliente, @Param("codcliente") String codcliente) throws Exception;
 
-    int updateByExampleSelective(@Param("record") Areacliente record, @Param("example") AreaclienteExample example);
+    int updateByExampleSelective(@Param("record") Areacliente record, @Param("example") AreaclienteExample example) throws Exception;
 
-    int updateByExample(@Param("record") Areacliente record, @Param("example") AreaclienteExample example);
+    int updateByExample(@Param("record") Areacliente record, @Param("example") AreaclienteExample example) throws Exception;
 
-    int updateByPrimaryKeySelective(Areacliente record);
+    int updateByPrimaryKeySelective(Areacliente record) throws Exception;
 
-    int updateByPrimaryKey(Areacliente record);
+    int updateByPrimaryKey(Areacliente record) throws Exception;
 }

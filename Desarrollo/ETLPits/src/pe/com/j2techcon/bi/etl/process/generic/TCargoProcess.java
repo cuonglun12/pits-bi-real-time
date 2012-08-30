@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 
 import pe.com.j2techcon.bi.etl.domain.generic.TCargo;
@@ -78,6 +79,8 @@ public class TCargoProcess {
 	
 	private Constantes constantes;
 
+	static Logger log = Logger.getLogger(TCargoProcess.class);
+	
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -375,7 +378,7 @@ public class TCargoProcess {
 	}
 
 	public TCargoProcess(BeanFactory factory, int sizePage, long dateTimeFrom,
-			long dateTimeUntil, String typeProcess, int process) {
+			long dateTimeUntil, String typeProcess, int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -395,7 +398,7 @@ public class TCargoProcess {
 
 	}
 
-	public int startProcess() {
+	public int startProcess() throws Exception{
 		
 		tProductoManager = factory.getBean("tProductoManager", TProductoManager.class);
 		tOrdenManager = factory.getBean("tOrdenManager", TOrdenManager.class);
@@ -488,7 +491,7 @@ public class TCargoProcess {
 		return getResultProcess();
 	}
 
-	public void processRecordCargo() {
+	public void processRecordCargo() throws Exception{
 		
 		completeFieldCargo();
 		//Identificamos si el detalle corresponde a una orden del negocio de mensajeria local
@@ -533,7 +536,7 @@ public class TCargoProcess {
 		}
 	}
 
-	public void completeFieldCargo() {
+	public void completeFieldCargo() throws Exception{
 
 		//Identificamos si el detalle corresponde a una orden del negocio de mensajeria local
 		//Id de la orden
@@ -642,7 +645,7 @@ public class TCargoProcess {
 		}
 	}
 
-	public int insertRecordGenericCargo() {
+	public int insertRecordGenericCargo() throws Exception{
 		try {
 			resultTransaction = tCargoManager.insertSelective(tCargo);
 		} catch (Exception e) {
@@ -651,7 +654,7 @@ public class TCargoProcess {
 		return resultTransaction;
 	}
 
-	public int updateRecordGenericCargo() {
+	public int updateRecordGenericCargo() throws Exception{
 		try {
 			tCargoExample.clear();
 			tCargoExample.createCriteria().andOrdCodTipDocEqualTo(constantes.getParamSerialTipoDocumentoTrabajoNoDefinido());
@@ -665,7 +668,7 @@ public class TCargoProcess {
 		return resultTransaction;
 	}
 
-	public int deleteRecordGenericCargo() {
+	public int deleteRecordGenericCargo() throws Exception{
 		try {
 			tCargoExample.clear();
 			tCargoExample.createCriteria().andOrdCodTipDocEqualTo(constantes.getParamSerialTipoDocumentoTrabajoNoDefinido());
@@ -679,23 +682,19 @@ public class TCargoProcess {
 		return resultTransaction;
 	}
 
-	public void updateRecordOrigenCargo(String statusRecord) {
-		try {
-			String serie = detordenes.getSerie();
-			String orden = detordenes.getOrden();
-			String correlativo = detordenes.getCorrelativo();
-			detordenes.clear();
-			detordenes.setSerie(serie);
-			detordenes.setOrden(orden);
-			detordenes.setCorrelativo(correlativo);
-			detordenes.setBiCodIndCam(statusRecord);
-			detordenesManager.updateByPrimaryKeySelective(detordenes);
-		} catch (Exception e) {
-
-		}
+	public void updateRecordOrigenCargo(String statusRecord) throws Exception{
+		String serie = detordenes.getSerie();
+		String orden = detordenes.getOrden();
+		String correlativo = detordenes.getCorrelativo();
+		detordenes.clear();
+		detordenes.setSerie(serie);
+		detordenes.setOrden(orden);
+		detordenes.setCorrelativo(correlativo);
+		detordenes.setBiCodIndCam(statusRecord);
+		detordenesManager.updateByPrimaryKeySelective(detordenes);
 	}
 	
-	public int getOrdId(String serie, String numero){
+	public int getOrdId(String serie, String numero)throws Exception{
 		int ordId = 0;
 		if(serie.equals(tOrden.getOrdSerieDoc()) && numero.equals(tOrden.getOrdNumDoc())){
 			ordId = tOrden.getOrdId();

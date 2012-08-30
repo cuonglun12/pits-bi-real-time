@@ -3,6 +3,7 @@ package pe.com.j2techcon.bi.etl.process.generic;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 
 import pe.com.j2techcon.bi.etl.domain.generic.TServicio;
@@ -43,6 +44,8 @@ public class TServicioProcess {
 	
 	private Constantes constantes;
 
+	static Logger log = Logger.getLogger(TServicioProcess.class);
+	
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -204,7 +207,7 @@ public class TServicioProcess {
 	}
 
 	public TServicioProcess(BeanFactory factory, int sizePage,
-			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
+			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -223,7 +226,7 @@ public class TServicioProcess {
 		stateRecordGeneric = constantes.getStateRecordNew();
 	}
 
-	public int startProcess() {
+	public int startProcess() throws Exception{
 		
 		tServicioManager = factory.getBean("tServicioManager",TServicioManager.class);
 		tServiciosManager = factory.getBean("tServiciosManager",TServiciosManager.class);
@@ -279,7 +282,7 @@ public class TServicioProcess {
 		return resultProcess;
 	}
 
-	public void processRecordServicio() {
+	public void processRecordServicio() throws Exception{
 		
 		completeFieldServicio();
 		
@@ -318,7 +321,7 @@ public class TServicioProcess {
 		updateRecordOrigenServicio(stateRecordOrigen);
 	}
 
-	public void completeFieldServicio() {
+	public void completeFieldServicio() throws Exception{
 
 		//Codigo del servicio
 		tServicio.setServCod(tServicios.getCodservicio());
@@ -351,7 +354,7 @@ public class TServicioProcess {
 
 	}
 
-	public int insertRecordGenericServicio() {
+	public int insertRecordGenericServicio() throws Exception{
 		try {
 			resultTransaction = tServicioManager.insertSelective(tServicio);
 		} catch (Exception e) {
@@ -360,7 +363,7 @@ public class TServicioProcess {
 		return resultTransaction;
 	}
 
-	public int updateRecordGenericServicio() {
+	public int updateRecordGenericServicio() throws Exception{
 		try {
 			tServicioExample.clear();
 			tServicioExample.createCriteria().andServCodEqualTo(tServicio.getServCod());	
@@ -371,7 +374,7 @@ public class TServicioProcess {
 		return resultTransaction;
 	}
 
-	public int deleteRecordGenericServicio() {
+	public int deleteRecordGenericServicio() throws Exception{
 		try {
 			tServicioExample.clear();
 			tServicioExample.createCriteria().andServCodEqualTo(tServicio.getServCod());	
@@ -382,16 +385,12 @@ public class TServicioProcess {
 		return resultTransaction;
 	}
 
-	public void updateRecordOrigenServicio(String statusRecord) {
-		try {
-			String codServicio = tServicios.getCodservicio();
-			tServicios.clear();
-			tServicios.setCodservicio(codServicio);
-			tServicios.setBiCodIndCam(statusRecord);
-			tServiciosManager.updateByPrimaryKeySelective(tServicios);
-		} catch (Exception e) {
-
-		}
+	public void updateRecordOrigenServicio(String statusRecord) throws Exception{
+		String codServicio = tServicios.getCodservicio();
+		tServicios.clear();
+		tServicios.setCodservicio(codServicio);
+		tServicios.setBiCodIndCam(statusRecord);
+		tServiciosManager.updateByPrimaryKeySelective(tServicios);
 	}
 
 }

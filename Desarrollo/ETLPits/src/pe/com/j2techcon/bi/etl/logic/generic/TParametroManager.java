@@ -10,56 +10,56 @@ public class TParametroManager {
 	
 	private TParametroMapper tParametroMapper;
 
-	public TParametroMapper gettParametroMapper() {
+	public TParametroMapper gettParametroMapper() throws Exception {
 		return tParametroMapper;
 	}
 
-	public void settParametroMapper(TParametroMapper tParametroMapper) {
+	public void settParametroMapper(TParametroMapper tParametroMapper) throws Exception {
 		this.tParametroMapper = tParametroMapper;
 	}
 
-	public int countByExample(TParametroExample example) {
+	public int countByExample(TParametroExample example) throws Exception {
 		return tParametroMapper.countByExample(example);
 	}
 
-	public int deleteByExample(TParametroExample example) {
+	public int deleteByExample(TParametroExample example) throws Exception {
 		return tParametroMapper.deleteByExample(example);
 	}
 
-	public int deleteByPrimaryKey(Integer paramId) {
+	public int deleteByPrimaryKey(Integer paramId) throws Exception {
 		return tParametroMapper.deleteByPrimaryKey(paramId);
 	}
 
-	public int insert(TParametro record) {
+	public int insert(TParametro record) throws Exception {
 		return tParametroMapper.insert(record);
 	}
 
-	public int insertSelective(TParametro record) {
+	public int insertSelective(TParametro record) throws Exception {
 		return tParametroMapper.insertSelective(record);
 	}
 
-	public List<TParametro> selectByExample(TParametroExample example) {
+	public List<TParametro> selectByExample(TParametroExample example) throws Exception {
 		return tParametroMapper.selectByExample(example);
 	}
 
-	public TParametro selectByPrimaryKey(Integer paramId) {
+	public TParametro selectByPrimaryKey(Integer paramId) throws Exception {
 		return tParametroMapper.selectByPrimaryKey(paramId);
 	}
 
 	public int updateByExampleSelective(TParametro record,
-			TParametroExample example) {
+			TParametroExample example) throws Exception {
 		return tParametroMapper.updateByExampleSelective(record, example);
 	}
 
-	public int updateByExample(TParametro record, TParametroExample example) {
+	public int updateByExample(TParametro record, TParametroExample example) throws Exception {
 		return tParametroMapper.updateByExample(record, example);
 	}
 
-	public int updateByPrimaryKeySelective(TParametro record) {
+	public int updateByPrimaryKeySelective(TParametro record) throws Exception {
 		return tParametroMapper.updateByPrimaryKeySelective(record);
 	}
 
-	public int updateByPrimaryKey(TParametro record) {
+	public int updateByPrimaryKey(TParametro record) throws Exception {
 		return tParametroMapper.updateByPrimaryKey(record);
 	}
 

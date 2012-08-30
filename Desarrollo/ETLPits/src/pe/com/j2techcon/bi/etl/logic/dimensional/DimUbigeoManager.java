@@ -10,56 +10,56 @@ public class DimUbigeoManager{
 
 	private DimUbigeoMapper dimUbigeoMapper;
 
-	public DimUbigeoMapper getDimUbigeoMapper() {
+	public DimUbigeoMapper getDimUbigeoMapper() throws Exception {
 		return dimUbigeoMapper;
 	}
 
-	public void setDimUbigeoMapper(DimUbigeoMapper dimUbigeoMapper) {
+	public void setDimUbigeoMapper(DimUbigeoMapper dimUbigeoMapper) throws Exception {
 		this.dimUbigeoMapper = dimUbigeoMapper;
 	}
 
-	public int countByExample(DimUbigeoExample example) {
+	public int countByExample(DimUbigeoExample example) throws Exception {
 		return dimUbigeoMapper.countByExample(example);
 	}
 
-	public int deleteByExample(DimUbigeoExample example) {
+	public int deleteByExample(DimUbigeoExample example) throws Exception {
 		return dimUbigeoMapper.deleteByExample(example);
 	}
 
-	public int deleteByPrimaryKey(Integer ubigeoKey) {
+	public int deleteByPrimaryKey(Integer ubigeoKey) throws Exception {
 		return dimUbigeoMapper.deleteByPrimaryKey(ubigeoKey);
 	}
 
-	public int insert(DimUbigeo record) {
+	public int insert(DimUbigeo record) throws Exception {
 		return dimUbigeoMapper.insert(record);
 	}
 
-	public int insertSelective(DimUbigeo record) {
+	public int insertSelective(DimUbigeo record) throws Exception {
 		return dimUbigeoMapper.insertSelective(record);
 	}
 
-	public List<DimUbigeo> selectByExample(DimUbigeoExample example) {
+	public List<DimUbigeo> selectByExample(DimUbigeoExample example) throws Exception {
 		return dimUbigeoMapper.selectByExample(example);
 	}
 
-	public DimUbigeo selectByPrimaryKey(Integer ubigeoKey) {
+	public DimUbigeo selectByPrimaryKey(Integer ubigeoKey) throws Exception {
 		return dimUbigeoMapper.selectByPrimaryKey(ubigeoKey);
 	}
 
 	public int updateByExampleSelective(DimUbigeo record,
-			DimUbigeoExample example) {
+			DimUbigeoExample example) throws Exception {
 		return dimUbigeoMapper.updateByExampleSelective(record, example);
 	}
 
-	public int updateByExample(DimUbigeo record, DimUbigeoExample example) {
+	public int updateByExample(DimUbigeo record, DimUbigeoExample example) throws Exception {
 		return dimUbigeoMapper.updateByExample(record, example);
 	}
 
-	public int updateByPrimaryKeySelective(DimUbigeo record) {
+	public int updateByPrimaryKeySelective(DimUbigeo record) throws Exception {
 		return dimUbigeoMapper.updateByPrimaryKeySelective(record);
 	}
 
-	public int updateByPrimaryKey(DimUbigeo record) {
+	public int updateByPrimaryKey(DimUbigeo record) throws Exception {
 		return dimUbigeoMapper.updateByPrimaryKey(record);
 	}
 

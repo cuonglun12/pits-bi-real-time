@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 
 import pe.com.j2techcon.bi.etl.domain.generic.TCliente;
@@ -53,6 +54,8 @@ public class TClienteProcess {
 	
 	private List<TParametro> lstParametro;
 
+	static Logger log = Logger.getLogger(TClienteProcess.class);
+	
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -246,7 +249,7 @@ public class TClienteProcess {
 	}
 
 	public TClienteProcess(BeanFactory factory, int sizePage,
-			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
+			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -266,7 +269,7 @@ public class TClienteProcess {
 
 	}
 
-	public int startProcess() {
+	public int startProcess() throws Exception{
 		
 		tParametroManager = factory.getBean("tParametroManager",TParametroManager.class);
 		tClienteManager = factory.getBean("tClienteManager",TClienteManager.class);
@@ -329,7 +332,7 @@ public class TClienteProcess {
 		return resultProcess;
 	}
 
-	public void processRecordCliente() {
+	public void processRecordCliente() throws Exception{
 		
 		completeFieldCliente();
 		
@@ -370,7 +373,7 @@ public class TClienteProcess {
 		
 	}
 
-	public void completeFieldCliente() {
+	public void completeFieldCliente() throws Exception{
 
 		//Tipo de cliente
 		if (constantes.getParamCodeTipoClienteJuridica().equals(cliente.getTipocliente())) {
@@ -460,7 +463,7 @@ public class TClienteProcess {
 
 	}
 
-	public int insertRecordGenericCliente() {
+	public int insertRecordGenericCliente() throws Exception{
 		try {
 			resultTransaction = tClienteManager.insertSelective(tCliente);
 		} catch (Exception e) {
@@ -469,7 +472,7 @@ public class TClienteProcess {
 		return resultTransaction;
 	}
 
-	public int updateRecordGenericCliente() {
+	public int updateRecordGenericCliente() throws Exception{
 		try {
 			tClienteExample.clear();
 			tClienteExample.createCriteria().andCliCodEqualTo(tCliente.getCliCod());	
@@ -480,7 +483,7 @@ public class TClienteProcess {
 		return resultTransaction;
 	}
 
-	public int deleteRecordGenericCliente() {
+	public int deleteRecordGenericCliente() throws Exception{
 		try {
 			tClienteExample.clear();
 			tClienteExample.createCriteria().andCliCodEqualTo(tCliente.getCliCod());
@@ -491,16 +494,12 @@ public class TClienteProcess {
 		return resultTransaction;
 	}
 
-	public void updateRecordOrigenCliente(String statusRecord) {
-		try {
-			String idCliente = cliente.getCodcliente();
-			cliente.clear();
-			cliente.setCodcliente(idCliente);
-			cliente.setBiCodIndCam(statusRecord);
-			clienteManager.updateByPrimaryKeySelective(cliente);
-		} catch (Exception e) {
-
-		}
+	public void updateRecordOrigenCliente(String statusRecord) throws Exception{
+		String idCliente = cliente.getCodcliente();
+		cliente.clear();
+		cliente.setCodcliente(idCliente);
+		cliente.setBiCodIndCam(statusRecord);
+		clienteManager.updateByPrimaryKeySelective(cliente);
 	}
 
 }

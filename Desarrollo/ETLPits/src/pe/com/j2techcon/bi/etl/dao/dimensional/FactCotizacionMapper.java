@@ -6,25 +6,25 @@ import pe.com.j2techcon.bi.etl.domain.dimensional.FactCotizacion;
 import pe.com.j2techcon.bi.etl.domain.dimensional.FactCotizacionExample;
 
 public interface FactCotizacionMapper {
-    int countByExample(FactCotizacionExample example);
+    int countByExample(FactCotizacionExample example) throws Exception;
 
-    int deleteByExample(FactCotizacionExample example);
+    int deleteByExample(FactCotizacionExample example) throws Exception;
 
-    int deleteByPrimaryKey(Integer cotizacionKey);
+    int deleteByPrimaryKey(Integer cotizacionKey) throws Exception;
 
-    int insert(FactCotizacion record);
+    int insert(FactCotizacion record) throws Exception;
 
-    int insertSelective(FactCotizacion record);
+    int insertSelective(FactCotizacion record) throws Exception;
 
-    List<FactCotizacion> selectByExample(FactCotizacionExample example);
+    List<FactCotizacion> selectByExample(FactCotizacionExample example) throws Exception;
 
-    FactCotizacion selectByPrimaryKey(Integer cotizacionKey);
+    FactCotizacion selectByPrimaryKey(Integer cotizacionKey) throws Exception;
 
-    int updateByExampleSelective(@Param("record") FactCotizacion record, @Param("example") FactCotizacionExample example);
+    int updateByExampleSelective(@Param("record") FactCotizacion record, @Param("example") FactCotizacionExample example) throws Exception;
 
-    int updateByExample(@Param("record") FactCotizacion record, @Param("example") FactCotizacionExample example);
+    int updateByExample(@Param("record") FactCotizacion record, @Param("example") FactCotizacionExample example) throws Exception;
 
-    int updateByPrimaryKeySelective(FactCotizacion record);
+    int updateByPrimaryKeySelective(FactCotizacion record) throws Exception;
 
-    int updateByPrimaryKey(FactCotizacion record);
+    int updateByPrimaryKey(FactCotizacion record) throws Exception;
 }

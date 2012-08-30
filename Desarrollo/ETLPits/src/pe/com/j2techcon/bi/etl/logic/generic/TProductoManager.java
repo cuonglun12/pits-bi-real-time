@@ -10,56 +10,56 @@ public class TProductoManager {
 	
 	private TProductoMapper tProductoMapper;
 
-	public TProductoMapper gettProductoMapper() {
+	public TProductoMapper gettProductoMapper() throws Exception {
 		return tProductoMapper;
 	}
 
-	public void settProductoMapper(TProductoMapper tProductoMapper) {
+	public void settProductoMapper(TProductoMapper tProductoMapper) throws Exception {
 		this.tProductoMapper = tProductoMapper;
 	}
 
-	public int countByExample(TProductoExample example) {
+	public int countByExample(TProductoExample example) throws Exception {
 		return tProductoMapper.countByExample(example);
 	}
 
-	public int deleteByExample(TProductoExample example) {
+	public int deleteByExample(TProductoExample example) throws Exception {
 		return tProductoMapper.deleteByExample(example);
 	}
 
-	public int deleteByPrimaryKey(Integer prodId) {
+	public int deleteByPrimaryKey(Integer prodId) throws Exception {
 		return tProductoMapper.deleteByPrimaryKey(prodId);
 	}
 
-	public int insert(TProducto record) {
+	public int insert(TProducto record) throws Exception {
 		return tProductoMapper.insert(record);
 	}
 
-	public int insertSelective(TProducto record) {
+	public int insertSelective(TProducto record) throws Exception {
 		return tProductoMapper.insertSelective(record);
 	}
 
-	public List<TProducto> selectByExample(TProductoExample example) {
+	public List<TProducto> selectByExample(TProductoExample example) throws Exception {
 		return tProductoMapper.selectByExample(example);
 	}
 
-	public TProducto selectByPrimaryKey(Integer prodId) {
+	public TProducto selectByPrimaryKey(Integer prodId) throws Exception {
 		return tProductoMapper.selectByPrimaryKey(prodId);
 	}
 
 	public int updateByExampleSelective(TProducto record,
-			TProductoExample example) {
+			TProductoExample example) throws Exception {
 		return tProductoMapper.updateByExampleSelective(record, example);
 	}
 
-	public int updateByExample(TProducto record, TProductoExample example) {
+	public int updateByExample(TProducto record, TProductoExample example) throws Exception {
 		return tProductoMapper.updateByExample(record, example);
 	}
 
-	public int updateByPrimaryKeySelective(TProducto record) {
+	public int updateByPrimaryKeySelective(TProducto record) throws Exception {
 		return tProductoMapper.updateByPrimaryKeySelective(record);
 	}
 
-	public int updateByPrimaryKey(TProducto record) {
+	public int updateByPrimaryKey(TProducto record) throws Exception {
 		return tProductoMapper.updateByPrimaryKey(record);
 	}
 

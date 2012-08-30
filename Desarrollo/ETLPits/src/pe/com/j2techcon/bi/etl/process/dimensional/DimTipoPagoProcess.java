@@ -3,6 +3,7 @@ package pe.com.j2techcon.bi.etl.process.dimensional;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import pe.com.j2techcon.bi.etl.logic.dimensional.DimTipoPagoManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TParametroManager;
@@ -42,6 +43,8 @@ public class DimTipoPagoProcess {
 	
 	private Constantes constantes;
 
+	static Logger log = Logger.getLogger(DimTipoPagoProcess.class);
+	
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -203,7 +206,7 @@ public class DimTipoPagoProcess {
 	}
 
 	public DimTipoPagoProcess(BeanFactory factory, int sizePage,
-			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
+			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -223,7 +226,7 @@ public class DimTipoPagoProcess {
 		
 	}
 
-	public int startProcess(){
+	public int startProcess()throws Exception{
 
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
 		dimTipoPagoManager = factory.getBean("dimTipoPagoManager", DimTipoPagoManager.class);
@@ -279,7 +282,7 @@ public class DimTipoPagoProcess {
 		return resultProcess;
 	}
 	
-	public void processRecordParametro(){
+	public void processRecordParametro()throws Exception{
 		
 		completeFieldTipoPago();
 		
@@ -319,14 +322,14 @@ public class DimTipoPagoProcess {
 		updateRecordGenericParametro(stateRecordGeneric);
 	}
 	
-	public void completeFieldTipoPago(){
+	public void completeFieldTipoPago()throws Exception{
 		dimTipoPago.setTipoPagoKey(tParametro.getParamId());
 		dimTipoPago.setTipoPagoCod(tParametro.getParamCod());
 		dimTipoPago.setTipoPagoDesc(tParametro.getParamDes());
 		dimTipoPago.setProcId(process);
 	}
 	
-	public int insertRecordDimensionalTipoPago(){
+	public int insertRecordDimensionalTipoPago()throws Exception{
 		try{
 			resultTransaction = dimTipoPagoManager.insertSelective(dimTipoPago);
 		}catch(Exception e){
@@ -335,7 +338,7 @@ public class DimTipoPagoProcess {
 		return resultTransaction;
 	}
 	
-	public int updateRecordDimensionalTipoPago(){
+	public int updateRecordDimensionalTipoPago()throws Exception{
 		try{
 			resultTransaction = dimTipoPagoManager.updateByPrimaryKeySelective(dimTipoPago);
 		}catch(Exception e){
@@ -344,7 +347,7 @@ public class DimTipoPagoProcess {
 		return resultTransaction;
 	}
 	
-	public int deleteRecordDimensionalTipoPago(){
+	public int deleteRecordDimensionalTipoPago()throws Exception{
 		try{
 			resultTransaction = dimTipoPagoManager.deleteByPrimaryKey(dimTipoPago.getTipoPagoKey());
 		}catch(Exception e){
@@ -353,16 +356,12 @@ public class DimTipoPagoProcess {
 		return resultTransaction; 
 	}
 	
-	public void updateRecordGenericParametro(String statusRecord){
-		try{
-			int idParametro = tParametro.getParamId();
-			tParametro.clear();
-			tParametro.setParamId(idParametro);
-			tParametro.setCodIndCam(statusRecord);
-			tParametro.setProcId(process);
-			tParametroManager.updateByPrimaryKeySelective(tParametro);
-		}catch(Exception e){
-			
-		}
+	public void updateRecordGenericParametro(String statusRecord)throws Exception{
+		int idParametro = tParametro.getParamId();
+		tParametro.clear();
+		tParametro.setParamId(idParametro);
+		tParametro.setCodIndCam(statusRecord);
+		tParametro.setProcId(process);
+		tParametroManager.updateByPrimaryKeySelective(tParametro);
 	}
 }

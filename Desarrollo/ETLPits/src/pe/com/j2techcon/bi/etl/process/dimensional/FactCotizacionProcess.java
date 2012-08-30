@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 
 import pe.com.j2techcon.bi.etl.logic.dimensional.DimTiempoManager;
@@ -76,6 +77,8 @@ public class FactCotizacionProcess {
 	
 	List<Integer> statesOrden;
 
+	static Logger log = Logger.getLogger(FactCotizacionProcess.class);
+	
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -349,7 +352,7 @@ public class FactCotizacionProcess {
 	}
 
 	public FactCotizacionProcess(BeanFactory factory, int sizePage,
-			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
+			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -369,7 +372,7 @@ public class FactCotizacionProcess {
 		
 	}
 
-	public int startProcess(){
+	public int startProcess()throws Exception{
 
 		tAreaClienteManager = factory.getBean("tAreaClienteManager", TAreaClienteManager.class);
 		tOrdenManager = factory.getBean("tOrdenManager", TOrdenManager.class);
@@ -495,7 +498,7 @@ public class FactCotizacionProcess {
 		return resultProcess;
 	}
 	
-	public void processRecordCotizacion(){
+	public void processRecordCotizacion()throws Exception{
 		
 		if(!tCotizacion.getProcId().equals(process)){
 		
@@ -541,7 +544,7 @@ public class FactCotizacionProcess {
 		}
 	}
 	
-	public void completeFieldCotizacion(){
+	public void completeFieldCotizacion()throws Exception{
 		factCotizacion.setCotizacionKey(tCotizacion.getCotiId());
 		factCotizacion.setCotizacionKeyClienteArea(tCotizacion.getAreCliId());
 		factCotizacion.setCotizacionKeyUbigeoCliente(tAreaClienteManager.selectByPrimaryKey(tCotizacion.getAreCliId()).getUbiId());
@@ -671,7 +674,7 @@ public class FactCotizacionProcess {
 		factCotizacion.setProcId(process);
 	}
 	
-	public int insertRecordDimensionalCotizacion(){
+	public int insertRecordDimensionalCotizacion()throws Exception{
 		try{
 			resultTransaction = factCotizacionManager.insertSelective(factCotizacion);
 		}catch(Exception e){
@@ -680,7 +683,7 @@ public class FactCotizacionProcess {
 		return resultTransaction;
 	}
 	
-	public int updateRecordDimensionalCotizacion(){
+	public int updateRecordDimensionalCotizacion()throws Exception{
 		try{
 			resultTransaction = factCotizacionManager.updateByPrimaryKeySelective(factCotizacion);
 		}catch(Exception e){
@@ -689,7 +692,7 @@ public class FactCotizacionProcess {
 		return resultTransaction;
 	}
 	
-	public int deleteRecordDimensionalCotizacion(){
+	public int deleteRecordDimensionalCotizacion()throws Exception{
 		try{
 			resultTransaction = factCotizacionManager.deleteByPrimaryKey(factCotizacion.getCotizacionKey());
 		}catch(Exception e){
@@ -698,16 +701,12 @@ public class FactCotizacionProcess {
 		return resultTransaction; 
 	}
 	
-	public void updateRecordGenericCotizacion(String statusRecord){
-		try{
-			int idCotizacion = tCotizacion.getCotiId();
-			tCotizacion.clear();
-			tCotizacion.setCotiId(idCotizacion);
-			tCotizacion.setCodIndCam(statusRecord);
-			tCotizacion.setProcId(process);
-			tCotizacionManager.updateByPrimaryKeySelective(tCotizacion);
-		}catch(Exception e){
-			
-		}
+	public void updateRecordGenericCotizacion(String statusRecord)throws Exception{
+		int idCotizacion = tCotizacion.getCotiId();
+		tCotizacion.clear();
+		tCotizacion.setCotiId(idCotizacion);
+		tCotizacion.setCodIndCam(statusRecord);
+		tCotizacion.setProcId(process);
+		tCotizacionManager.updateByPrimaryKeySelective(tCotizacion);
 	}
 }

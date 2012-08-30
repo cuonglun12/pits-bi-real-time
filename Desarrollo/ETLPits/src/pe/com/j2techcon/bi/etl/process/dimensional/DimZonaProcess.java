@@ -3,6 +3,7 @@ package pe.com.j2techcon.bi.etl.process.dimensional;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 
 import pe.com.j2techcon.bi.etl.logic.dimensional.DimZonaManager;
@@ -57,6 +58,8 @@ public class DimZonaProcess {
 	
 	private Constantes constantes;
 
+	static Logger log = Logger.getLogger(DimZonaProcess.class);
+	
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -266,7 +269,7 @@ public class DimZonaProcess {
 	}
 
 	public DimZonaProcess(BeanFactory factory, int sizePage,
-			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
+			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -286,7 +289,7 @@ public class DimZonaProcess {
 		
 	}
 
-	public int startProcess(){
+	public int startProcess()throws Exception{
 
 		tZonaManager = factory.getBean("tZonaManager", TZonaManager.class);
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
@@ -356,7 +359,7 @@ public class DimZonaProcess {
 		return resultProcess;
 	}
 	
-	public void processRecordZona(){
+	public void processRecordZona()throws Exception{
 		
 		completeFieldZona();
 		
@@ -396,7 +399,7 @@ public class DimZonaProcess {
 		updateRecordGenericZona(stateRecordGeneric);
 	}
 	
-	public void completeFieldZona(){
+	public void completeFieldZona()throws Exception{
 		dimZona.setZonaKey(tZona.getZonId());
 		
 		tUbigeo = tUbigeoManager.selectByPrimaryKey(tZona.getUbiId());
@@ -439,7 +442,7 @@ public class DimZonaProcess {
 		dimZona.setProcId(process);
 	}
 	
-	public int insertRecordDimensionalZona(){
+	public int insertRecordDimensionalZona()throws Exception{
 		try{
 			resultTransaction = dimZonaManager.insertSelective(dimZona);
 		}catch(Exception e){
@@ -448,7 +451,7 @@ public class DimZonaProcess {
 		return resultTransaction;
 	}
 	
-	public int updateRecordDimensionalZona(){
+	public int updateRecordDimensionalZona()throws Exception{
 		try{
 			resultTransaction = dimZonaManager.updateByPrimaryKeySelective(dimZona);
 		}catch(Exception e){
@@ -457,7 +460,7 @@ public class DimZonaProcess {
 		return resultTransaction;
 	}
 	
-	public int deleteRecordDimensionalZona(){
+	public int deleteRecordDimensionalZona()throws Exception{
 		try{
 			resultTransaction = dimZonaManager.deleteByPrimaryKey(dimZona.getZonaKey());
 		}catch(Exception e){
@@ -466,16 +469,12 @@ public class DimZonaProcess {
 		return resultTransaction; 
 	}
 	
-	public void updateRecordGenericZona(String statusRecord){
-		try{
-			int idZona = tZona.getZonId();
-			tZona.clear();
-			tZona.setZonId(idZona);
-			tZona.setCodIndCam(statusRecord);
-			tZona.setProcId(process);
-			tZonaManager.updateByPrimaryKeySelective(tZona);
-		}catch(Exception e){
-			
-		}
+	public void updateRecordGenericZona(String statusRecord)throws Exception{
+		int idZona = tZona.getZonId();
+		tZona.clear();
+		tZona.setZonId(idZona);
+		tZona.setCodIndCam(statusRecord);
+		tZona.setProcId(process);
+		tZonaManager.updateByPrimaryKeySelective(tZona);
 	}
 }

@@ -10,55 +10,55 @@ public class TUbigeoManager {
 	
 	private TUbigeoMapper tUbigeoMapper;
 
-	public TUbigeoMapper gettUbigeoMapper() {
+	public TUbigeoMapper gettUbigeoMapper() throws Exception {
 		return tUbigeoMapper;
 	}
 
-	public void settUbigeoMapper(TUbigeoMapper tUbigeoMapper) {
+	public void settUbigeoMapper(TUbigeoMapper tUbigeoMapper) throws Exception {
 		this.tUbigeoMapper = tUbigeoMapper;
 	}
 
-	public int countByExample(TUbigeoExample example) {
+	public int countByExample(TUbigeoExample example) throws Exception {
 		return tUbigeoMapper.countByExample(example);
 	}
 
-	public int deleteByExample(TUbigeoExample example) {
+	public int deleteByExample(TUbigeoExample example) throws Exception {
 		return tUbigeoMapper.deleteByExample(example);
 	}
 
-	public int deleteByPrimaryKey(Integer ubiId) {
+	public int deleteByPrimaryKey(Integer ubiId) throws Exception {
 		return tUbigeoMapper.deleteByPrimaryKey(ubiId);
 	}
 
-	public int insert(TUbigeo record) {
+	public int insert(TUbigeo record) throws Exception {
 		return tUbigeoMapper.insert(record);
 	}
 
-	public int insertSelective(TUbigeo record) {
+	public int insertSelective(TUbigeo record) throws Exception {
 		return tUbigeoMapper.insertSelective(record);
 	}
 
-	public List<TUbigeo> selectByExample(TUbigeoExample example) {
+	public List<TUbigeo> selectByExample(TUbigeoExample example) throws Exception {
 		return tUbigeoMapper.selectByExample(example);
 	}
 
-	public TUbigeo selectByPrimaryKey(Integer ubiId) {
+	public TUbigeo selectByPrimaryKey(Integer ubiId) throws Exception {
 		return tUbigeoMapper.selectByPrimaryKey(ubiId);
 	}
 
-	public int updateByExampleSelective(TUbigeo record, TUbigeoExample example) {
+	public int updateByExampleSelective(TUbigeo record, TUbigeoExample example) throws Exception {
 		return tUbigeoMapper.updateByExampleSelective(record, example);
 	}
 
-	public int updateByExample(TUbigeo record, TUbigeoExample example) {
+	public int updateByExample(TUbigeo record, TUbigeoExample example) throws Exception {
 		return tUbigeoMapper.updateByExample(record, example);
 	}
 
-	public int updateByPrimaryKeySelective(TUbigeo record) {
+	public int updateByPrimaryKeySelective(TUbigeo record) throws Exception {
 		return tUbigeoMapper.updateByPrimaryKeySelective(record);
 	}
 
-	public int updateByPrimaryKey(TUbigeo record) {
+	public int updateByPrimaryKey(TUbigeo record) throws Exception {
 		return tUbigeoMapper.updateByPrimaryKey(record);
 	}
 

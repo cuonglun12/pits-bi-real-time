@@ -10,55 +10,55 @@ public class ClienteManager {
 	
 	private ClienteMapper clienteMapper;
 
-	public ClienteMapper getClienteMapper() {
+	public ClienteMapper getClienteMapper() throws Exception {
 		return clienteMapper;
 	}
 
-	public void setClienteMapper(ClienteMapper clienteMapper) {
+	public void setClienteMapper(ClienteMapper clienteMapper) throws Exception {
 		this.clienteMapper = clienteMapper;
 	}
 
-	public int countByExample(ClienteExample example) {
+	public int countByExample(ClienteExample example) throws Exception {
 		return clienteMapper.countByExample(example);
 	}
 
-	public int deleteByExample(ClienteExample example) {
+	public int deleteByExample(ClienteExample example) throws Exception {
 		return clienteMapper.deleteByExample(example);
 	}
 
-	public int deleteByPrimaryKey(String codcliente) {
+	public int deleteByPrimaryKey(String codcliente) throws Exception {
 		return clienteMapper.deleteByPrimaryKey(codcliente);
 	}
 
-	public int insert(Cliente record) {
+	public int insert(Cliente record) throws Exception {
 		return clienteMapper.insert(record);
 	}
 
-	public int insertSelective(Cliente record) {
+	public int insertSelective(Cliente record) throws Exception {
 		return clienteMapper.insertSelective(record);
 	}
 
-	public List<Cliente> selectByExample(ClienteExample example) {
+	public List<Cliente> selectByExample(ClienteExample example) throws Exception {
 		return clienteMapper.selectByExample(example);
 	}
 
-	public Cliente selectByPrimaryKey(String codcliente) {
+	public Cliente selectByPrimaryKey(String codcliente) throws Exception {
 		return clienteMapper.selectByPrimaryKey(codcliente);
 	}
 
-	public int updateByExampleSelective(Cliente record, ClienteExample example) {
+	public int updateByExampleSelective(Cliente record, ClienteExample example) throws Exception {
 		return clienteMapper.updateByExampleSelective(record, example);
 	}
 
-	public int updateByExample(Cliente record, ClienteExample example) {
+	public int updateByExample(Cliente record, ClienteExample example) throws Exception {
 		return clienteMapper.updateByExample(record, example);
 	}
 
-	public int updateByPrimaryKeySelective(Cliente record) {
+	public int updateByPrimaryKeySelective(Cliente record) throws Exception {
 		return clienteMapper.updateByPrimaryKeySelective(record);
 	}
 
-	public int updateByPrimaryKey(Cliente record) {
+	public int updateByPrimaryKey(Cliente record) throws Exception {
 		return clienteMapper.updateByPrimaryKey(record);
 	}
 

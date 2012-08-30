@@ -6,25 +6,25 @@ import pe.com.j2techcon.bi.etl.domain.origen.TServicios;
 import pe.com.j2techcon.bi.etl.domain.origen.TServiciosExample;
 
 public interface TServiciosMapper {
-    int countByExample(TServiciosExample example);
+    int countByExample(TServiciosExample example) throws Exception;
 
-    int deleteByExample(TServiciosExample example);
+    int deleteByExample(TServiciosExample example) throws Exception;
 
-    int deleteByPrimaryKey(String codservicio);
+    int deleteByPrimaryKey(String codservicio) throws Exception;
 
-    int insert(TServicios record);
+    int insert(TServicios record) throws Exception;
 
-    int insertSelective(TServicios record);
+    int insertSelective(TServicios record) throws Exception;
 
-    List<TServicios> selectByExample(TServiciosExample example);
+    List<TServicios> selectByExample(TServiciosExample example) throws Exception;
 
-    TServicios selectByPrimaryKey(String codservicio);
+    TServicios selectByPrimaryKey(String codservicio) throws Exception;
 
-    int updateByExampleSelective(@Param("record") TServicios record, @Param("example") TServiciosExample example);
+    int updateByExampleSelective(@Param("record") TServicios record, @Param("example") TServiciosExample example) throws Exception;
 
-    int updateByExample(@Param("record") TServicios record, @Param("example") TServiciosExample example);
+    int updateByExample(@Param("record") TServicios record, @Param("example") TServiciosExample example) throws Exception;
 
-    int updateByPrimaryKeySelective(TServicios record);
+    int updateByPrimaryKeySelective(TServicios record) throws Exception;
 
-    int updateByPrimaryKey(TServicios record);
+    int updateByPrimaryKey(TServicios record) throws Exception;
 }

@@ -6,25 +6,25 @@ import pe.com.j2techcon.bi.etl.domain.dimensional.DimUbigeo;
 import pe.com.j2techcon.bi.etl.domain.dimensional.DimUbigeoExample;
 
 public interface DimUbigeoMapper {
-    int countByExample(DimUbigeoExample example);
+    int countByExample(DimUbigeoExample example) throws Exception;
 
-    int deleteByExample(DimUbigeoExample example);
+    int deleteByExample(DimUbigeoExample example) throws Exception;
 
-    int deleteByPrimaryKey(Integer ubigeoKey);
+    int deleteByPrimaryKey(Integer ubigeoKey) throws Exception;
 
-    int insert(DimUbigeo record);
+    int insert(DimUbigeo record) throws Exception;
 
-    int insertSelective(DimUbigeo record);
+    int insertSelective(DimUbigeo record) throws Exception;
 
-    List<DimUbigeo> selectByExample(DimUbigeoExample example);
+    List<DimUbigeo> selectByExample(DimUbigeoExample example) throws Exception;
 
-    DimUbigeo selectByPrimaryKey(Integer ubigeoKey);
+    DimUbigeo selectByPrimaryKey(Integer ubigeoKey) throws Exception;
 
-    int updateByExampleSelective(@Param("record") DimUbigeo record, @Param("example") DimUbigeoExample example);
+    int updateByExampleSelective(@Param("record") DimUbigeo record, @Param("example") DimUbigeoExample example) throws Exception;
 
-    int updateByExample(@Param("record") DimUbigeo record, @Param("example") DimUbigeoExample example);
+    int updateByExample(@Param("record") DimUbigeo record, @Param("example") DimUbigeoExample example) throws Exception;
 
-    int updateByPrimaryKeySelective(DimUbigeo record);
+    int updateByPrimaryKeySelective(DimUbigeo record) throws Exception;
 
-    int updateByPrimaryKey(DimUbigeo record);
+    int updateByPrimaryKey(DimUbigeo record) throws Exception;
 }

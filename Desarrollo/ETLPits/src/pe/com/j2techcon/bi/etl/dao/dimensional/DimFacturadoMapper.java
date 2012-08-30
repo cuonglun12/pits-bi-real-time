@@ -6,25 +6,25 @@ import pe.com.j2techcon.bi.etl.domain.dimensional.DimFacturado;
 import pe.com.j2techcon.bi.etl.domain.dimensional.DimFacturadoExample;
 
 public interface DimFacturadoMapper {
-    int countByExample(DimFacturadoExample example);
+    int countByExample(DimFacturadoExample example) throws Exception;
 
-    int deleteByExample(DimFacturadoExample example);
+    int deleteByExample(DimFacturadoExample example) throws Exception;
 
-    int deleteByPrimaryKey(Integer facturadoKey);
+    int deleteByPrimaryKey(Integer facturadoKey) throws Exception;
 
-    int insert(DimFacturado record);
+    int insert(DimFacturado record) throws Exception;
 
-    int insertSelective(DimFacturado record);
+    int insertSelective(DimFacturado record) throws Exception;
 
-    List<DimFacturado> selectByExample(DimFacturadoExample example);
+    List<DimFacturado> selectByExample(DimFacturadoExample example) throws Exception;
 
-    DimFacturado selectByPrimaryKey(Integer facturadoKey);
+    DimFacturado selectByPrimaryKey(Integer facturadoKey) throws Exception;
 
-    int updateByExampleSelective(@Param("record") DimFacturado record, @Param("example") DimFacturadoExample example);
+    int updateByExampleSelective(@Param("record") DimFacturado record, @Param("example") DimFacturadoExample example) throws Exception;
 
-    int updateByExample(@Param("record") DimFacturado record, @Param("example") DimFacturadoExample example);
+    int updateByExample(@Param("record") DimFacturado record, @Param("example") DimFacturadoExample example) throws Exception;
 
-    int updateByPrimaryKeySelective(DimFacturado record);
+    int updateByPrimaryKeySelective(DimFacturado record) throws Exception;
 
-    int updateByPrimaryKey(DimFacturado record);
+    int updateByPrimaryKey(DimFacturado record) throws Exception;
 }

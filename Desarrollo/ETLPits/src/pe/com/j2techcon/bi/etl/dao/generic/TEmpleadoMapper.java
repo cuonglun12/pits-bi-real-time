@@ -6,25 +6,25 @@ import pe.com.j2techcon.bi.etl.domain.generic.TEmpleado;
 import pe.com.j2techcon.bi.etl.domain.generic.TEmpleadoExample;
 
 public interface TEmpleadoMapper {
-    int countByExample(TEmpleadoExample example);
+    int countByExample(TEmpleadoExample example) throws Exception;
 
-    int deleteByExample(TEmpleadoExample example);
+    int deleteByExample(TEmpleadoExample example) throws Exception;
 
-    int deleteByPrimaryKey(Integer empId);
+    int deleteByPrimaryKey(Integer empId) throws Exception;
 
-    int insert(TEmpleado record);
+    int insert(TEmpleado record) throws Exception;
 
-    int insertSelective(TEmpleado record);
+    int insertSelective(TEmpleado record) throws Exception;
 
-    List<TEmpleado> selectByExample(TEmpleadoExample example);
+    List<TEmpleado> selectByExample(TEmpleadoExample example) throws Exception;
 
-    TEmpleado selectByPrimaryKey(Integer empId);
+    TEmpleado selectByPrimaryKey(Integer empId) throws Exception;
 
-    int updateByExampleSelective(@Param("record") TEmpleado record, @Param("example") TEmpleadoExample example);
+    int updateByExampleSelective(@Param("record") TEmpleado record, @Param("example") TEmpleadoExample example) throws Exception;
 
-    int updateByExample(@Param("record") TEmpleado record, @Param("example") TEmpleadoExample example);
+    int updateByExample(@Param("record") TEmpleado record, @Param("example") TEmpleadoExample example) throws Exception;
 
-    int updateByPrimaryKeySelective(TEmpleado record);
+    int updateByPrimaryKeySelective(TEmpleado record) throws Exception;
 
-    int updateByPrimaryKey(TEmpleado record);
+    int updateByPrimaryKey(TEmpleado record) throws Exception;
 }

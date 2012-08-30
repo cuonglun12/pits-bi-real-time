@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 
 import pe.com.j2techcon.bi.etl.domain.generic.TAreaCliente;
@@ -62,6 +63,8 @@ public class TAreaClienteProcess {
 	private List<TCliente> lstCliente;
 	private List<TAreaCliente> lstAreaCliente;
 
+	static Logger log = Logger.getLogger(TAreaClienteProcess.class);
+	
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -296,7 +299,7 @@ public class TAreaClienteProcess {
 
 	public TAreaClienteProcess(BeanFactory factory, int sizePage,
 			long dateTimeFrom, long dateTimeUntil, String typeProcess,
-			int process) {
+			int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -316,7 +319,7 @@ public class TAreaClienteProcess {
 
 	}
 
-	public int startProcess() {
+	public int startProcess() throws Exception{
 		
 		tParametroManager = factory.getBean("tParametroManager",TParametroManager.class);
 		tClienteManager = factory.getBean("tClienteManager",TClienteManager.class);
@@ -438,7 +441,7 @@ public class TAreaClienteProcess {
 		return resultProcess;
 	}
 
-	public void processRecordAreaCliente() {
+	public void processRecordAreaCliente() throws Exception{
 		
 		completeFieldAreaCliente();
 		
@@ -485,7 +488,7 @@ public class TAreaClienteProcess {
 		}
 	}
 
-	public void completeFieldAreaCliente() {
+	public void completeFieldAreaCliente() throws Exception{
 
 		//Id de cliente
 		tAreaCliente.setCliId(getCliId(areaCliente.getCodcliente()));
@@ -534,7 +537,7 @@ public class TAreaClienteProcess {
 		
 	}
 
-	public int insertRecordGenericAreaCliente() {
+	public int insertRecordGenericAreaCliente() throws Exception{
 		try {
 			resultTransaction = tAreaClienteManager.insertSelective(tAreaCliente);
 		} catch (Exception e) {
@@ -543,7 +546,7 @@ public class TAreaClienteProcess {
 		return resultTransaction;
 	}
 
-	public int updateRecordGenericAreaCliente() {
+	public int updateRecordGenericAreaCliente() throws Exception{
 		try {
 			tAreaClienteExample.clear();
 			tAreaClienteExample.createCriteria().andCliCodEqualTo(tAreaCliente.getCliCod());
@@ -555,7 +558,7 @@ public class TAreaClienteProcess {
 		return resultTransaction;
 	}
 
-	public int deleteRecordGenericAreaCliente() {
+	public int deleteRecordGenericAreaCliente() throws Exception{
 		try {
 			tAreaClienteExample.clear();
 			tAreaClienteExample.createCriteria().andCliCodEqualTo(tAreaCliente.getCliCod());
@@ -567,21 +570,17 @@ public class TAreaClienteProcess {
 		return resultTransaction;
 	}
 
-	public void updateRecordOrigenAreaCliente(String statusRecord) {
-		try {
-			String idCliente = areaCliente.getCodcliente();
-			String idAreaCliente = areaCliente.getCodareacliente();
-			areaCliente.clear();
-			areaCliente.setCodcliente(idCliente);
-			areaCliente.setCodareacliente(idAreaCliente);
-			areaCliente.setBiCodIndCam(statusRecord);
-			areaClienteManager.updateByPrimaryKeySelective(areaCliente);
-		} catch (Exception e) {
-
-		}
+	public void updateRecordOrigenAreaCliente(String statusRecord) throws Exception{
+		String idCliente = areaCliente.getCodcliente();
+		String idAreaCliente = areaCliente.getCodareacliente();
+		areaCliente.clear();
+		areaCliente.setCodcliente(idCliente);
+		areaCliente.setCodareacliente(idAreaCliente);
+		areaCliente.setBiCodIndCam(statusRecord);
+		areaClienteManager.updateByPrimaryKeySelective(areaCliente);
 	}
 	
-	public int getCliId(String codCliente){
+	public int getCliId(String codCliente)throws Exception{
 		int cliId = 0;
 		if(codCliente.equals(tCliente.getCliCod())){
 			cliId = tCliente.getCliId();

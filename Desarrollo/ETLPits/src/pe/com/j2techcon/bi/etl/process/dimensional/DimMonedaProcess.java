@@ -3,6 +3,7 @@ package pe.com.j2techcon.bi.etl.process.dimensional;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import pe.com.j2techcon.bi.etl.logic.dimensional.DimMonedaManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TParametroManager;
@@ -42,6 +43,8 @@ public class DimMonedaProcess {
 	
 	private Constantes constantes;
 
+	static Logger log = Logger.getLogger(DimMonedaProcess.class);
+	
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -203,7 +206,7 @@ public class DimMonedaProcess {
 	}
 
 	public DimMonedaProcess(BeanFactory factory, int sizePage,
-			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
+			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -223,7 +226,7 @@ public class DimMonedaProcess {
 		
 	}
 
-	public int startProcess(){
+	public int startProcess()throws Exception{
 
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
 		dimMonedaManager = factory.getBean("dimMonedaManager", DimMonedaManager.class);
@@ -280,7 +283,7 @@ public class DimMonedaProcess {
 		return resultProcess;
 	}
 	
-	public void processRecordParametro(){
+	public void processRecordParametro()throws Exception{
 		
 		completeFieldMoneda();
 		
@@ -320,14 +323,14 @@ public class DimMonedaProcess {
 		updateRecordGenericParametro(stateRecordGeneric);
 	}
 	
-	public void completeFieldMoneda(){
+	public void completeFieldMoneda()throws Exception{
 		dimMoneda.setMonedaKey(tParametro.getParamId());
 		dimMoneda.setMonedaCod(tParametro.getParamCod());
 		dimMoneda.setMonedaDesc(tParametro.getParamDes());
 		dimMoneda.setProcId(process);
 	}
 	
-	public int insertRecordDimensionalMoneda(){
+	public int insertRecordDimensionalMoneda()throws Exception{
 		try{
 			resultTransaction = dimMonedaManager.insertSelective(dimMoneda);
 		}catch(Exception e){
@@ -336,7 +339,7 @@ public class DimMonedaProcess {
 		return resultTransaction;
 	}
 	
-	public int updateRecordDimensionalMoneda(){
+	public int updateRecordDimensionalMoneda()throws Exception{
 		try{
 			resultTransaction = dimMonedaManager.updateByPrimaryKeySelective(dimMoneda);
 		}catch(Exception e){
@@ -345,7 +348,7 @@ public class DimMonedaProcess {
 		return resultTransaction;
 	}
 	
-	public int deleteRecordDimensionalMoneda(){
+	public int deleteRecordDimensionalMoneda()throws Exception{
 		try{
 			resultTransaction = dimMonedaManager.deleteByPrimaryKey(dimMoneda.getMonedaKey());
 		}catch(Exception e){
@@ -354,16 +357,12 @@ public class DimMonedaProcess {
 		return resultTransaction; 
 	}
 	
-	public void updateRecordGenericParametro(String statusRecord){
-		try{
-			int idParametro = tParametro.getParamId();
-			tParametro.clear();
-			tParametro.setParamId(idParametro);
-			tParametro.setCodIndCam(statusRecord);
-			tParametro.setProcId(process);
-			tParametroManager.updateByPrimaryKeySelective(tParametro);
-		}catch(Exception e){
-			
-		}
+	public void updateRecordGenericParametro(String statusRecord)throws Exception{
+		int idParametro = tParametro.getParamId();
+		tParametro.clear();
+		tParametro.setParamId(idParametro);
+		tParametro.setCodIndCam(statusRecord);
+		tParametro.setProcId(process);
+		tParametroManager.updateByPrimaryKeySelective(tParametro);
 	}
 }

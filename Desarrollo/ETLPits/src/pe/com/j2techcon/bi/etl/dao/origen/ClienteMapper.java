@@ -6,25 +6,25 @@ import pe.com.j2techcon.bi.etl.domain.origen.Cliente;
 import pe.com.j2techcon.bi.etl.domain.origen.ClienteExample;
 
 public interface ClienteMapper {
-    int countByExample(ClienteExample example);
+    int countByExample(ClienteExample example) throws Exception;
 
-    int deleteByExample(ClienteExample example);
+    int deleteByExample(ClienteExample example) throws Exception;
 
-    int deleteByPrimaryKey(String codcliente);
+    int deleteByPrimaryKey(String codcliente) throws Exception;
 
-    int insert(Cliente record);
+    int insert(Cliente record) throws Exception;
 
-    int insertSelective(Cliente record);
+    int insertSelective(Cliente record) throws Exception;
 
-    List<Cliente> selectByExample(ClienteExample example);
+    List<Cliente> selectByExample(ClienteExample example) throws Exception;
 
-    Cliente selectByPrimaryKey(String codcliente);
+    Cliente selectByPrimaryKey(String codcliente) throws Exception;
 
-    int updateByExampleSelective(@Param("record") Cliente record, @Param("example") ClienteExample example);
+    int updateByExampleSelective(@Param("record") Cliente record, @Param("example") ClienteExample example) throws Exception;
 
-    int updateByExample(@Param("record") Cliente record, @Param("example") ClienteExample example);
+    int updateByExample(@Param("record") Cliente record, @Param("example") ClienteExample example) throws Exception;
 
-    int updateByPrimaryKeySelective(Cliente record);
+    int updateByPrimaryKeySelective(Cliente record) throws Exception;
 
-    int updateByPrimaryKey(Cliente record);
+    int updateByPrimaryKey(Cliente record) throws Exception;
 }

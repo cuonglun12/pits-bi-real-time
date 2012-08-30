@@ -3,6 +3,7 @@ package pe.com.j2techcon.bi.etl.process.dimensional;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import pe.com.j2techcon.bi.etl.logic.dimensional.DimUbigeoManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TParametroManager;
@@ -49,6 +50,8 @@ public class DimUbigeoProcess {
 	
 	private Constantes constantes;
 
+	static Logger log = Logger.getLogger(DimUbigeoProcess.class);
+	
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -234,7 +237,7 @@ public class DimUbigeoProcess {
 	}
 
 	public DimUbigeoProcess(BeanFactory factory, int sizePage,
-			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
+			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -254,7 +257,7 @@ public class DimUbigeoProcess {
 		
 	}
 
-	public int startProcess(){
+	public int startProcess()throws Exception{
 
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
 		tUbigeoManager = factory.getBean("tUbigeoManager", TUbigeoManager.class);
@@ -317,7 +320,7 @@ public class DimUbigeoProcess {
 		return resultProcess;
 	}
 	
-	public void processRecordUbigeo(){
+	public void processRecordUbigeo()throws Exception{
 		
 		completeFieldUbigeo();
 		
@@ -357,7 +360,7 @@ public class DimUbigeoProcess {
 		updateRecordGenericUbigeo(stateRecordGeneric);
 	}
 	
-	public void completeFieldUbigeo(){
+	public void completeFieldUbigeo()throws Exception{
 		dimUbigeo.setUbigeoKey(tUbigeo.getProcId());
 		dimUbigeo.setUbigeoCodPais(tUbigeo.getUbiCodPais());
 		
@@ -380,7 +383,7 @@ public class DimUbigeoProcess {
 		dimUbigeo.setUbigeoDescDistrito(tParametro.getParamDes());
 	}
 	
-	public int insertRecordDimensionalUbigeo(){
+	public int insertRecordDimensionalUbigeo()throws Exception{
 		try{
 			resultTransaction = dimUbigeoManager.insertSelective(dimUbigeo);
 		}catch(Exception e){
@@ -389,7 +392,7 @@ public class DimUbigeoProcess {
 		return resultTransaction;
 	}
 	
-	public int updateRecordDimensionalUbigeo(){
+	public int updateRecordDimensionalUbigeo()throws Exception{
 		try{
 			resultTransaction = dimUbigeoManager.updateByPrimaryKeySelective(dimUbigeo);
 		}catch(Exception e){
@@ -398,7 +401,7 @@ public class DimUbigeoProcess {
 		return resultTransaction;
 	}
 	
-	public int deleteRecordDimensionalUbigeo(){
+	public int deleteRecordDimensionalUbigeo()throws Exception{
 		try{
 			resultTransaction = dimUbigeoManager.deleteByPrimaryKey(dimUbigeo.getUbigeoKey());
 		}catch(Exception e){
@@ -407,16 +410,12 @@ public class DimUbigeoProcess {
 		return resultTransaction; 
 	}
 	
-	public void updateRecordGenericUbigeo(String statusRecord){
-		try{
-			int idUbigeo = tUbigeo.getUbiId();
-			tUbigeo.clear();
-			tUbigeo.setUbiId(idUbigeo);
-			tUbigeo.setCodIndCam(statusRecord);
-			tUbigeo.setProcId(process);
-			tUbigeoManager.updateByPrimaryKeySelective(tUbigeo);
-		}catch(Exception e){
-			
-		}
+	public void updateRecordGenericUbigeo(String statusRecord)throws Exception{
+		int idUbigeo = tUbigeo.getUbiId();
+		tUbigeo.clear();
+		tUbigeo.setUbiId(idUbigeo);
+		tUbigeo.setCodIndCam(statusRecord);
+		tUbigeo.setProcId(process);
+		tUbigeoManager.updateByPrimaryKeySelective(tUbigeo);
 	}
 }

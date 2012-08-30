@@ -3,6 +3,7 @@ package pe.com.j2techcon.bi.etl.process.dimensional;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 
 import pe.com.j2techcon.bi.etl.logic.dimensional.DimServicioManager;
@@ -50,6 +51,8 @@ public class DimServicioProcess {
 	
 	private Constantes constantes;
 
+	static Logger log = Logger.getLogger(DimServicioProcess.class);
+	
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -235,7 +238,7 @@ public class DimServicioProcess {
 	}
 
 	public DimServicioProcess(BeanFactory factory, int sizePage,
-			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
+			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -255,7 +258,7 @@ public class DimServicioProcess {
 		
 	}
 
-	public int startProcess(){
+	public int startProcess()throws Exception{
 
 		tServicioManager = factory.getBean("tServicioManager", TServicioManager.class);
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
@@ -317,7 +320,7 @@ public class DimServicioProcess {
 		return resultProcess;
 	}
 	
-	public void processRecordServicio(){
+	public void processRecordServicio()throws Exception{
 		
 		completeFieldServicio();
 		
@@ -357,7 +360,7 @@ public class DimServicioProcess {
 		updateRecordGenericServicio(stateRecordGeneric);
 	}
 	
-	public void completeFieldServicio(){
+	public void completeFieldServicio()throws Exception{
 		dimServicio.setServicioKey(tServicio.getProcId());
 		dimServicio.setServicioCod(tServicio.getServCod());
 		
@@ -381,7 +384,7 @@ public class DimServicioProcess {
 		dimServicio.setProcId(process);
 	}
 	
-	public int insertRecordDimensionalServicio(){
+	public int insertRecordDimensionalServicio()throws Exception{
 		try{
 			resultTransaction = dimServicioManager.insertSelective(dimServicio);
 		}catch(Exception e){
@@ -390,7 +393,7 @@ public class DimServicioProcess {
 		return resultTransaction;
 	}
 	
-	public int updateRecordDimensionalServicio(){
+	public int updateRecordDimensionalServicio()throws Exception{
 		try{
 			resultTransaction = dimServicioManager.updateByPrimaryKeySelective(dimServicio);
 		}catch(Exception e){
@@ -399,7 +402,7 @@ public class DimServicioProcess {
 		return resultTransaction;
 	}
 	
-	public int deleteRecordDimensionalServicio(){
+	public int deleteRecordDimensionalServicio()throws Exception{
 		try{
 			resultTransaction = dimServicioManager.deleteByPrimaryKey(dimServicio.getServicioKey());
 		}catch(Exception e){
@@ -408,16 +411,12 @@ public class DimServicioProcess {
 		return resultTransaction; 
 	}
 	
-	public void updateRecordGenericServicio(String statusRecord){
-		try{
-			int idServicio = tServicio.getServId();
-			tServicio.clear();
-			tServicio.setServId(idServicio);
-			tServicio.setCodIndCam(statusRecord);
-			tServicio.setProcId(process);
-			tServicioManager.updateByPrimaryKeySelective(tServicio);
-		}catch(Exception e){
-			
-		}
+	public void updateRecordGenericServicio(String statusRecord)throws Exception{
+		int idServicio = tServicio.getServId();
+		tServicio.clear();
+		tServicio.setServId(idServicio);
+		tServicio.setCodIndCam(statusRecord);
+		tServicio.setProcId(process);
+		tServicioManager.updateByPrimaryKeySelective(tServicio);
 	}
 }

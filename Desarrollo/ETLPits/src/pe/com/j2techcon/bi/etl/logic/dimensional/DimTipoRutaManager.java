@@ -10,67 +10,67 @@ public class DimTipoRutaManager {
 	
 	private DimTipoRutaMapper dimTipoRutaMapper;
 
-	public DimTipoRutaMapper getDimTipoRutaMapper() {
+	public DimTipoRutaMapper getDimTipoRutaMapper() throws Exception {
 		return dimTipoRutaMapper;
 	}
 
-	public void setDimTipoRutaMapper(DimTipoRutaMapper dimTipoRutaMapper) {
+	public void setDimTipoRutaMapper(DimTipoRutaMapper dimTipoRutaMapper) throws Exception {
 		this.dimTipoRutaMapper = dimTipoRutaMapper;
 	}
 
 
-	public int countByExample(DimTipoRutaExample example) {
+	public int countByExample(DimTipoRutaExample example) throws Exception {
 		return dimTipoRutaMapper.countByExample(example);
 	}
 
 
-	public int deleteByExample(DimTipoRutaExample example) {
+	public int deleteByExample(DimTipoRutaExample example) throws Exception {
 		return dimTipoRutaMapper.deleteByExample(example);
 	}
 
 
-	public int deleteByPrimaryKey(Integer tipoRutaKey) {
+	public int deleteByPrimaryKey(Integer tipoRutaKey) throws Exception {
 		return dimTipoRutaMapper.deleteByPrimaryKey(tipoRutaKey);
 	}
 
 
-	public int insert(DimTipoRuta record) {
+	public int insert(DimTipoRuta record) throws Exception {
 		return dimTipoRutaMapper.insert(record);
 	}
 
 
-	public int insertSelective(DimTipoRuta record) {
+	public int insertSelective(DimTipoRuta record) throws Exception {
 		return dimTipoRutaMapper.insertSelective(record);
 	}
 
 
-	public List<DimTipoRuta> selectByExample(DimTipoRutaExample example) {
+	public List<DimTipoRuta> selectByExample(DimTipoRutaExample example) throws Exception {
 		return dimTipoRutaMapper.selectByExample(example);
 	}
 
 
-	public DimTipoRuta selectByPrimaryKey(Integer tipoRutaKey) {
+	public DimTipoRuta selectByPrimaryKey(Integer tipoRutaKey) throws Exception {
 		return dimTipoRutaMapper.selectByPrimaryKey(tipoRutaKey);
 	}
 
 
 	public int updateByExampleSelective(DimTipoRuta record,
-			DimTipoRutaExample example) {
+			DimTipoRutaExample example) throws Exception {
 		return dimTipoRutaMapper.updateByExampleSelective(record, example);
 	}
 
 
-	public int updateByExample(DimTipoRuta record, DimTipoRutaExample example) {
+	public int updateByExample(DimTipoRuta record, DimTipoRutaExample example) throws Exception {
 		return dimTipoRutaMapper.updateByExample(record, example);
 	}
 
 
-	public int updateByPrimaryKeySelective(DimTipoRuta record) {
+	public int updateByPrimaryKeySelective(DimTipoRuta record) throws Exception {
 		return dimTipoRutaMapper.updateByPrimaryKeySelective(record);
 	}
 
 
-	public int updateByPrimaryKey(DimTipoRuta record) {
+	public int updateByPrimaryKey(DimTipoRuta record) throws Exception {
 		return dimTipoRutaMapper.updateByPrimaryKey(record);
 	}
 

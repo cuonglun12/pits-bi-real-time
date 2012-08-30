@@ -10,67 +10,67 @@ public class DimClienteManager {
 
 	private DimClienteMapper dimClienteMapper;
 	
-	public DimClienteMapper getDimClienteMapper() {
+	public DimClienteMapper getDimClienteMapper() throws Exception {
 		return dimClienteMapper;
 	}
 
-	public void setDimClienteMapper(DimClienteMapper dimClienteMapper) {
+	public void setDimClienteMapper(DimClienteMapper dimClienteMapper) throws Exception {
 		this.dimClienteMapper = dimClienteMapper;
 	}
 
 
-	public int countByExample(DimClienteExample example) {
+	public int countByExample(DimClienteExample example) throws Exception {
 		return dimClienteMapper.countByExample(example);
 	}
 
 
-	public int deleteByExample(DimClienteExample example) {
+	public int deleteByExample(DimClienteExample example) throws Exception {
 		return dimClienteMapper.deleteByExample(example);
 	}
 
 
-	public int deleteByPrimaryKey(Integer clienteKey) {
+	public int deleteByPrimaryKey(Integer clienteKey) throws Exception {
 		return dimClienteMapper.deleteByPrimaryKey(clienteKey);
 	}
 
 
-	public int insert(DimCliente record) {
+	public int insert(DimCliente record) throws Exception {
 		return dimClienteMapper.insert(record);
 	}
 
 
-	public int insertSelective(DimCliente record) {
+	public int insertSelective(DimCliente record) throws Exception {
 		return dimClienteMapper.insertSelective(record);
 	}
 
 
-	public List<DimCliente> selectByExample(DimClienteExample example) {
+	public List<DimCliente> selectByExample(DimClienteExample example) throws Exception {
 		return dimClienteMapper.selectByExample(example);
 	}
 
 
-	public DimCliente selectByPrimaryKey(Integer clienteKey) {
+	public DimCliente selectByPrimaryKey(Integer clienteKey) throws Exception {
 		return dimClienteMapper.selectByPrimaryKey(clienteKey);
 	}
 
 
 	public int updateByExampleSelective(DimCliente record,
-			DimClienteExample example) {
+			DimClienteExample example) throws Exception {
 		return dimClienteMapper.updateByExampleSelective(record, example);
 	}
 
 
-	public int updateByExample(DimCliente record, DimClienteExample example) {
+	public int updateByExample(DimCliente record, DimClienteExample example) throws Exception {
 		return dimClienteMapper.updateByExample(record, example);
 	}
 
 
-	public int updateByPrimaryKeySelective(DimCliente record) {
+	public int updateByPrimaryKeySelective(DimCliente record) throws Exception {
 		return dimClienteMapper.updateByPrimaryKeySelective(record);
 	}
 
 
-	public int updateByPrimaryKey(DimCliente record) {
+	public int updateByPrimaryKey(DimCliente record) throws Exception {
 		return dimClienteMapper.updateByPrimaryKey(record);
 	}
 

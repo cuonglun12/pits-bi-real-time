@@ -365,6 +365,8 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="maxHoursProcess" value="${max.hours.process}"></property>
 		<property name="maxHoursFirstProcess" value="${max.hours.first.process}"></property>
 		<property name="timeExecuteUpdateTable" value="${time.execute.update.table}"></property>
+		<property name="timeExecuteDelayProcess" value="${time.execute.delay.process}"></property>
+		<property name="timeExecutePeriodProcess" value="${time.execute.period.process}"></property>
 		
 		<property name="idTableGenericTAreaCliente" value="${id.table.generic.t_area_cliente}"></property>
 		<property name="idTableGenericTCargo" value="${id.table.generic.t_cargo}"></property>

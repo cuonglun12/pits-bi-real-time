@@ -355,6 +355,8 @@ public class Constantes {
 	private int maxHoursProcess;
 	private int maxHoursFirstProcess;
 	private long timeExecuteUpdateTable;
+	private long timeExecuteDelayProcess;
+	private long timeExecutePeriodProcess;
 	
 	private int idTableGenericTAreaCliente;
 	private int idTableGenericTCargo;
@@ -2439,6 +2441,18 @@ public class Constantes {
 	}
 	public void setTimeExecuteUpdateTable(long timeExecuteUpdateTable) {
 		this.timeExecuteUpdateTable = timeExecuteUpdateTable;
+	}
+	public long getTimeExecuteDelayProcess() {
+		return timeExecuteDelayProcess;
+	}
+	public void setTimeExecuteDelayProcess(long timeExecuteDelayProcess) {
+		this.timeExecuteDelayProcess = timeExecuteDelayProcess;
+	}
+	public long getTimeExecutePeriodProcess() {
+		return timeExecutePeriodProcess;
+	}
+	public void setTimeExecutePeriodProcess(long timeExecutePeriodProcess) {
+		this.timeExecutePeriodProcess = timeExecutePeriodProcess;
 	}
 	public int getIdTableGenericTAreaCliente() {
 		return idTableGenericTAreaCliente;

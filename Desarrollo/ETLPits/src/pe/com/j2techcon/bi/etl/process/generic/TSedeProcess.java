@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 
 import pe.com.j2techcon.bi.etl.domain.generic.TParametro;
@@ -52,6 +53,8 @@ public class TSedeProcess {
 	private List<TParametro> lstParametro;
 	
 	private Constantes constantes;
+	
+	static Logger log = Logger.getLogger(TSedeProcess.class);
 	
 	public BeanFactory getFactory() {
 		return factory;
@@ -246,7 +249,7 @@ public class TSedeProcess {
 	}
 
 	public TSedeProcess(BeanFactory factory, int sizePage, long dateTimeFrom,
-			long dateTimeUntil, String typeProcess, int process) {
+			long dateTimeUntil, String typeProcess, int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -266,7 +269,7 @@ public class TSedeProcess {
 
 	}
 
-	public int startProcess() {
+	public int startProcess() throws Exception{
 		
 		sedesprovManager = factory.getBean("sedesprovManager",SedesprovManager.class);
 		tSedeManager = factory.getBean("tSedeManager",TSedeManager.class);
@@ -334,7 +337,7 @@ public class TSedeProcess {
 		return resultProcess;
 	}
 
-	public void processRecordSede() {
+	public void processRecordSede() throws Exception{
 		
 		completeFieldSede();
 		
@@ -375,7 +378,7 @@ public class TSedeProcess {
 		
 	}
 
-	public void completeFieldSede() {
+	public void completeFieldSede() throws Exception{
 
 		//Codigo de la sede
 		tSede.setSedCod(sedesprov.getCodsede());
@@ -416,7 +419,7 @@ public class TSedeProcess {
 
 	}
 
-	public int insertRecordGenericSede() {
+	public int insertRecordGenericSede() throws Exception{
 		try {
 			resultTransaction = tSedeManager.insertSelective(tSede);
 		} catch (Exception e) {
@@ -425,7 +428,7 @@ public class TSedeProcess {
 		return resultTransaction;
 	}
 
-	public int updateRecordGenericSede() {
+	public int updateRecordGenericSede() throws Exception{
 		try {
 			tSedeExample.clear();
 			tSedeExample.createCriteria().andSedCodEqualTo(tSede.getSedCod());	
@@ -436,7 +439,7 @@ public class TSedeProcess {
 		return resultTransaction;
 	}
 
-	public int deleteRecordGenericSede() {
+	public int deleteRecordGenericSede() throws Exception{
 		try {
 			tSedeExample.clear();
 			tSedeExample.createCriteria().andSedCodEqualTo(tSede.getSedCod());	
@@ -447,16 +450,12 @@ public class TSedeProcess {
 		return resultTransaction;
 	}
 
-	public void updateRecordOrigenSede(String statusRecord) {
-		try {
-			String codSede = sedesprov.getCodsede();
-			sedesprov.clear();
-			sedesprov.setCodsede(codSede);
-			sedesprov.setBiCodIndCam(statusRecord);
-			sedesprovManager.updateByPrimaryKeySelective(sedesprov);
-		} catch (Exception e) {
-
-		}
+	public void updateRecordOrigenSede(String statusRecord) throws Exception{
+		String codSede = sedesprov.getCodsede();
+		sedesprov.clear();
+		sedesprov.setCodsede(codSede);
+		sedesprov.setBiCodIndCam(statusRecord);
+		sedesprovManager.updateByPrimaryKeySelective(sedesprov);
 	}
 
 }

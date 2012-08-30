@@ -3,6 +3,7 @@ package pe.com.j2techcon.bi.etl.process.dimensional;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import pe.com.j2techcon.bi.etl.logic.dimensional.DimFacturadoManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TParametroManager;
@@ -42,6 +43,8 @@ public class DimFacturadoProcess {
 	
 	private Constantes constantes;
 
+	static Logger log = Logger.getLogger(DimFacturadoProcess.class);
+	
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -203,7 +206,7 @@ public class DimFacturadoProcess {
 	}
 
 	public DimFacturadoProcess(BeanFactory factory, int sizePage,
-			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
+			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -223,7 +226,7 @@ public class DimFacturadoProcess {
 		
 	}
 
-	public int startProcess(){
+	public int startProcess()throws Exception{
 
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
 		dimFacturadoManager = factory.getBean("dimFacturadoManager", DimFacturadoManager.class);
@@ -280,7 +283,7 @@ public class DimFacturadoProcess {
 		return resultProcess;
 	}
 	
-	public void processRecordParametro(){
+	public void processRecordParametro()throws Exception{
 		
 		completeFieldFacturado();
 		
@@ -320,14 +323,14 @@ public class DimFacturadoProcess {
 		updateRecordGenericParametro(stateRecordGeneric);
 	}
 	
-	public void completeFieldFacturado(){
+	public void completeFieldFacturado()throws Exception{
 		dimFacturado.setFacturadoKey(tParametro.getParamId());
 		dimFacturado.setFacturadoCod(tParametro.getParamCod());
 		dimFacturado.setFacturadoDesc(tParametro.getParamDes());
 		dimFacturado.setProcId(process);
 	}
 	
-	public int insertRecordDimensionalFacturado(){
+	public int insertRecordDimensionalFacturado()throws Exception{
 		try{
 			resultTransaction = dimFacturadoManager.insertSelective(dimFacturado);
 		}catch(Exception e){
@@ -336,7 +339,7 @@ public class DimFacturadoProcess {
 		return resultTransaction;
 	}
 	
-	public int updateRecordDimensionalFacturado(){
+	public int updateRecordDimensionalFacturado()throws Exception{
 		try{
 			resultTransaction = dimFacturadoManager.updateByPrimaryKeySelective(dimFacturado);
 		}catch(Exception e){
@@ -345,7 +348,7 @@ public class DimFacturadoProcess {
 		return resultTransaction;
 	}
 	
-	public int deleteRecordDimensionalFacturado(){
+	public int deleteRecordDimensionalFacturado()throws Exception{
 		try{
 			resultTransaction = dimFacturadoManager.deleteByPrimaryKey(dimFacturado.getFacturadoKey());
 		}catch(Exception e){
@@ -354,16 +357,12 @@ public class DimFacturadoProcess {
 		return resultTransaction; 
 	}
 	
-	public void updateRecordGenericParametro(String statusRecord){
-		try{
-			int idParametro = tParametro.getParamId();
-			tParametro.clear();
-			tParametro.setParamId(idParametro);
-			tParametro.setCodIndCam(statusRecord);
-			tParametro.setProcId(process);
-			tParametroManager.updateByPrimaryKeySelective(tParametro);
-		}catch(Exception e){
-			
-		}
+	public void updateRecordGenericParametro(String statusRecord)throws Exception{
+		int idParametro = tParametro.getParamId();
+		tParametro.clear();
+		tParametro.setParamId(idParametro);
+		tParametro.setCodIndCam(statusRecord);
+		tParametro.setProcId(process);
+		tParametroManager.updateByPrimaryKeySelective(tParametro);
 	}
 }

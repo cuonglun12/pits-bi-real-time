@@ -3,6 +3,7 @@ package pe.com.j2techcon.bi.etl.process.dimensional;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 
 import pe.com.j2techcon.bi.etl.logic.dimensional.DimTiempoManager;
@@ -72,6 +73,8 @@ public class FactOrdenProcess {
 	
 	private Constantes constantes;
 
+	static Logger log = Logger.getLogger(FactOrdenProcess.class);
+	
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -337,7 +340,7 @@ public class FactOrdenProcess {
 	}
 
 	public FactOrdenProcess(BeanFactory factory, int sizePage,
-			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
+			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -357,7 +360,7 @@ public class FactOrdenProcess {
 		
 	}
 
-	public int startProcess(){
+	public int startProcess()throws Exception{
 
 		tAreaClienteManager = factory.getBean("tAreaClienteManager", TAreaClienteManager.class);
 		tCargoManager = factory.getBean("tCargoManager", TCargoManager.class);
@@ -478,7 +481,7 @@ public class FactOrdenProcess {
 		return resultProcess;
 	}
 	
-	public void processRecordOrden(){
+	public void processRecordOrden()throws Exception{
 		
 		if(!tOrden.getProcId().equals(process)){
 		
@@ -524,7 +527,7 @@ public class FactOrdenProcess {
 		}
 	}
 	
-	public void completeFieldOrden(){
+	public void completeFieldOrden()throws Exception{
 		factOrden.setOrdenKey(tOrden.getOrdId());
 		factOrden.setOrdenKeyClienteArea(tOrden.getCodAreCli());
 		factOrden.setOrdenKeyUbigeoCliente(tAreaClienteManager.selectByPrimaryKey(tOrden.getCodAreCli()).getUbiId());
@@ -717,7 +720,7 @@ public class FactOrdenProcess {
 		factOrden.setProcId(process);
 	}
 	
-	public int insertRecordDimensionalOrden(){
+	public int insertRecordDimensionalOrden()throws Exception{
 		try{
 			resultTransaction = factOrdenManager.insertSelective(factOrden);
 		}catch(Exception e){
@@ -726,7 +729,7 @@ public class FactOrdenProcess {
 		return resultTransaction;
 	}
 	
-	public int updateRecordDimensionalOrden(){
+	public int updateRecordDimensionalOrden()throws Exception{
 		try{
 			resultTransaction = factOrdenManager.updateByPrimaryKeySelective(factOrden);
 		}catch(Exception e){
@@ -735,7 +738,7 @@ public class FactOrdenProcess {
 		return resultTransaction;
 	}
 	
-	public int deleteRecordDimensionalOrden(){
+	public int deleteRecordDimensionalOrden()throws Exception{
 		try{
 			resultTransaction = factOrdenManager.deleteByPrimaryKey(factOrden.getOrdenKey());
 		}catch(Exception e){
@@ -744,16 +747,12 @@ public class FactOrdenProcess {
 		return resultTransaction; 
 	}
 	
-	public void updateRecordGenericOrden(String statusRecord){
-		try{
-			int idOrden = tOrden.getOrdId();
-			tOrden.clear();
-			tOrden.setOrdId(idOrden);
-			tOrden.setCodIndCam(statusRecord);
-			tOrden.setProcId(process);
-			tOrdenManager.updateByPrimaryKeySelective(tOrden);
-		}catch(Exception e){
-			
-		}
+	public void updateRecordGenericOrden(String statusRecord)throws Exception{
+		int idOrden = tOrden.getOrdId();
+		tOrden.clear();
+		tOrden.setOrdId(idOrden);
+		tOrden.setCodIndCam(statusRecord);
+		tOrden.setProcId(process);
+		tOrdenManager.updateByPrimaryKeySelective(tOrden);
 	}
 }

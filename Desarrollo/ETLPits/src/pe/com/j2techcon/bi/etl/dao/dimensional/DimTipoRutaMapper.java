@@ -6,25 +6,25 @@ import pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoRuta;
 import pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoRutaExample;
 
 public interface DimTipoRutaMapper {
-    int countByExample(DimTipoRutaExample example);
+    int countByExample(DimTipoRutaExample example) throws Exception;
 
-    int deleteByExample(DimTipoRutaExample example);
+    int deleteByExample(DimTipoRutaExample example) throws Exception;
 
-    int deleteByPrimaryKey(Integer tipoRutaKey);
+    int deleteByPrimaryKey(Integer tipoRutaKey) throws Exception;
 
-    int insert(DimTipoRuta record);
+    int insert(DimTipoRuta record) throws Exception;
 
-    int insertSelective(DimTipoRuta record);
+    int insertSelective(DimTipoRuta record) throws Exception;
 
-    List<DimTipoRuta> selectByExample(DimTipoRutaExample example);
+    List<DimTipoRuta> selectByExample(DimTipoRutaExample example) throws Exception;
 
-    DimTipoRuta selectByPrimaryKey(Integer tipoRutaKey);
+    DimTipoRuta selectByPrimaryKey(Integer tipoRutaKey) throws Exception;
 
-    int updateByExampleSelective(@Param("record") DimTipoRuta record, @Param("example") DimTipoRutaExample example);
+    int updateByExampleSelective(@Param("record") DimTipoRuta record, @Param("example") DimTipoRutaExample example) throws Exception;
 
-    int updateByExample(@Param("record") DimTipoRuta record, @Param("example") DimTipoRutaExample example);
+    int updateByExample(@Param("record") DimTipoRuta record, @Param("example") DimTipoRutaExample example) throws Exception;
 
-    int updateByPrimaryKeySelective(DimTipoRuta record);
+    int updateByPrimaryKeySelective(DimTipoRuta record) throws Exception;
 
-    int updateByPrimaryKey(DimTipoRuta record);
+    int updateByPrimaryKey(DimTipoRuta record) throws Exception;
 }

@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 
 import pe.com.j2techcon.bi.etl.domain.generic.TProducto;
@@ -43,6 +44,8 @@ public class TProductoProcess {
 	private TProductosManager tProductosManager;
 	
 	private Constantes constantes;
+	
+	static Logger log = Logger.getLogger(TProductoProcess.class);
 	
 	public BeanFactory getFactory() {
 		return factory;
@@ -205,7 +208,7 @@ public class TProductoProcess {
 	}
 
 	public TProductoProcess(BeanFactory factory, int sizePage,
-			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
+			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -225,7 +228,7 @@ public class TProductoProcess {
 
 	}
 
-	public int startProcess() {
+	public int startProcess() throws Exception{
 		
 		tProductoManager = factory.getBean("tProductoManager",TProductoManager.class);
 		tProductosManager = factory.getBean("tProductosManager",TProductosManager.class);
@@ -277,7 +280,7 @@ public class TProductoProcess {
 		return resultProcess;
 	}
 
-	public void processRecordProducto() {
+	public void processRecordProducto() throws Exception{
 		
 		completeFieldProducto();
 		
@@ -318,7 +321,7 @@ public class TProductoProcess {
 		
 	}
 
-	public void completeFieldProducto() {
+	public void completeFieldProducto() throws Exception{
 
 		// Tipo de producto
 		if(constantes.getParamCodeTipoProductoDocumento().equals(tProductos.getTipoproducto())){
@@ -361,7 +364,7 @@ public class TProductoProcess {
 
 	}
 
-	public int insertRecordGenericProducto() {
+	public int insertRecordGenericProducto() throws Exception{
 		try {
 			resultTransaction = tProductoManager.insertSelective(tProducto);
 		} catch (Exception e) {
@@ -370,7 +373,7 @@ public class TProductoProcess {
 		return resultTransaction;
 	}
 
-	public int updateRecordGenericProducto() {
+	public int updateRecordGenericProducto() throws Exception{
 		try {
 			tProductoExample.clear();
 			tProductoExample.createCriteria().andProdCodEqualTo(tProducto.getProdCod());	
@@ -381,7 +384,7 @@ public class TProductoProcess {
 		return resultTransaction;
 	}
 
-	public int deleteRecordGenericProducto() {
+	public int deleteRecordGenericProducto() throws Exception{
 		try {
 			tProductoExample.clear();
 			tProductoExample.createCriteria().andProdCodEqualTo(tProducto.getProdCod());	
@@ -392,16 +395,12 @@ public class TProductoProcess {
 		return resultTransaction;
 	}
 
-	public void updateRecordOrigenProducto(String statusRecord) {
-		try {
-			String idProducto = tProductos.getCodproducto();
-			tProductos.clear();
-			tProductos.setCodproducto(idProducto);
-			tProductos.setBiCodIndCam(statusRecord);
-			tProductosManager.updateByPrimaryKeySelective(tProductos);
-		} catch (Exception e) {
-
-		}
+	public void updateRecordOrigenProducto(String statusRecord) throws Exception{
+		String idProducto = tProductos.getCodproducto();
+		tProductos.clear();
+		tProductos.setCodproducto(idProducto);
+		tProductos.setBiCodIndCam(statusRecord);
+		tProductosManager.updateByPrimaryKeySelective(tProductos);
 	}
 
 }

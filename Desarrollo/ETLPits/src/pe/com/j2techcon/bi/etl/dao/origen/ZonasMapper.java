@@ -6,25 +6,25 @@ import pe.com.j2techcon.bi.etl.domain.origen.Zonas;
 import pe.com.j2techcon.bi.etl.domain.origen.ZonasExample;
 
 public interface ZonasMapper {
-    int countByExample(ZonasExample example);
+    int countByExample(ZonasExample example) throws Exception;
 
-    int deleteByExample(ZonasExample example);
+    int deleteByExample(ZonasExample example) throws Exception;
 
-    int deleteByPrimaryKey(String codzona);
+    int deleteByPrimaryKey(String codzona) throws Exception;
 
-    int insert(Zonas record);
+    int insert(Zonas record) throws Exception;
 
-    int insertSelective(Zonas record);
+    int insertSelective(Zonas record) throws Exception;
 
-    List<Zonas> selectByExample(ZonasExample example);
+    List<Zonas> selectByExample(ZonasExample example) throws Exception;
 
-    Zonas selectByPrimaryKey(String codzona);
+    Zonas selectByPrimaryKey(String codzona) throws Exception;
 
-    int updateByExampleSelective(@Param("record") Zonas record, @Param("example") ZonasExample example);
+    int updateByExampleSelective(@Param("record") Zonas record, @Param("example") ZonasExample example) throws Exception;
 
-    int updateByExample(@Param("record") Zonas record, @Param("example") ZonasExample example);
+    int updateByExample(@Param("record") Zonas record, @Param("example") ZonasExample example) throws Exception;
 
-    int updateByPrimaryKeySelective(Zonas record);
+    int updateByPrimaryKeySelective(Zonas record) throws Exception;
 
-    int updateByPrimaryKey(Zonas record);
+    int updateByPrimaryKey(Zonas record) throws Exception;
 }

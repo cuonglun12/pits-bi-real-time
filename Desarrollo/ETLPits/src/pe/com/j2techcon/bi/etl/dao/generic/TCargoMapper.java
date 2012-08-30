@@ -6,25 +6,25 @@ import pe.com.j2techcon.bi.etl.domain.generic.TCargo;
 import pe.com.j2techcon.bi.etl.domain.generic.TCargoExample;
 
 public interface TCargoMapper {
-    int countByExample(TCargoExample example);
+    int countByExample(TCargoExample example) throws Exception;
 
-    int deleteByExample(TCargoExample example);
+    int deleteByExample(TCargoExample example) throws Exception;
 
-    int deleteByPrimaryKey(Integer cargId);
+    int deleteByPrimaryKey(Integer cargId) throws Exception;
 
-    int insert(TCargo record);
+    int insert(TCargo record) throws Exception;
 
-    int insertSelective(TCargo record);
+    int insertSelective(TCargo record) throws Exception;
 
-    List<TCargo> selectByExample(TCargoExample example);
+    List<TCargo> selectByExample(TCargoExample example) throws Exception;
 
-    TCargo selectByPrimaryKey(Integer cargId);
+    TCargo selectByPrimaryKey(Integer cargId) throws Exception;
 
-    int updateByExampleSelective(@Param("record") TCargo record, @Param("example") TCargoExample example);
+    int updateByExampleSelective(@Param("record") TCargo record, @Param("example") TCargoExample example) throws Exception;
 
-    int updateByExample(@Param("record") TCargo record, @Param("example") TCargoExample example);
+    int updateByExample(@Param("record") TCargo record, @Param("example") TCargoExample example) throws Exception;
 
-    int updateByPrimaryKeySelective(TCargo record);
+    int updateByPrimaryKeySelective(TCargo record) throws Exception;
 
-    int updateByPrimaryKey(TCargo record);
+    int updateByPrimaryKey(TCargo record) throws Exception;
 }

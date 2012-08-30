@@ -6,25 +6,25 @@ import pe.com.j2techcon.bi.etl.domain.dimensional.DimCliente;
 import pe.com.j2techcon.bi.etl.domain.dimensional.DimClienteExample;
 
 public interface DimClienteMapper {
-    int countByExample(DimClienteExample example);
+    int countByExample(DimClienteExample example) throws Exception;
 
-    int deleteByExample(DimClienteExample example);
+    int deleteByExample(DimClienteExample example) throws Exception;
 
-    int deleteByPrimaryKey(Integer clienteKey);
+    int deleteByPrimaryKey(Integer clienteKey) throws Exception;
 
-    int insert(DimCliente record);
+    int insert(DimCliente record) throws Exception;
 
-    int insertSelective(DimCliente record);
+    int insertSelective(DimCliente record) throws Exception;
 
-    List<DimCliente> selectByExample(DimClienteExample example);
+    List<DimCliente> selectByExample(DimClienteExample example) throws Exception;
 
-    DimCliente selectByPrimaryKey(Integer clienteKey);
+    DimCliente selectByPrimaryKey(Integer clienteKey) throws Exception;
 
-    int updateByExampleSelective(@Param("record") DimCliente record, @Param("example") DimClienteExample example);
+    int updateByExampleSelective(@Param("record") DimCliente record, @Param("example") DimClienteExample example) throws Exception;
 
-    int updateByExample(@Param("record") DimCliente record, @Param("example") DimClienteExample example);
+    int updateByExample(@Param("record") DimCliente record, @Param("example") DimClienteExample example) throws Exception;
 
-    int updateByPrimaryKeySelective(DimCliente record);
+    int updateByPrimaryKeySelective(DimCliente record) throws Exception;
 
-    int updateByPrimaryKey(DimCliente record);
+    int updateByPrimaryKey(DimCliente record) throws Exception;
 }

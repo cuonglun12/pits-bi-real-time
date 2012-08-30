@@ -10,64 +10,64 @@ public class TProcesoManager {
 
 	private TProcesoMapper tProcesoMapper;
 	
-	public TProcesoMapper gettProcesoMapper() {
+	public TProcesoMapper gettProcesoMapper() throws Exception {
 		return tProcesoMapper;
 	}
 
-	public void settProcesoMapper(TProcesoMapper tProcesoMapper) {
+	public void settProcesoMapper(TProcesoMapper tProcesoMapper) throws Exception {
 		this.tProcesoMapper = tProcesoMapper;
 	}
 
-	public int countByExample(TProcesoExample example) {
+	public int countByExample(TProcesoExample example) throws Exception {
 		return tProcesoMapper.countByExample(example);
 	}
 
-	public int deleteByExample(TProcesoExample example) {
+	public int deleteByExample(TProcesoExample example) throws Exception {
 		return tProcesoMapper.deleteByExample(example);
 	}
 
 
-	public int deleteByPrimaryKey(Integer procId) {
+	public int deleteByPrimaryKey(Integer procId) throws Exception {
 		return tProcesoMapper.deleteByPrimaryKey(procId);
 	}
 
 
-	public int insert(TProceso record) {
+	public int insert(TProceso record) throws Exception {
 		return tProcesoMapper.insert(record);
 	}
 
 
-	public int insertSelective(TProceso record) {
+	public int insertSelective(TProceso record) throws Exception {
 		return tProcesoMapper.insertSelective(record);
 	}
 
 
-	public List<TProceso> selectByExample(TProcesoExample example) {
+	public List<TProceso> selectByExample(TProcesoExample example) throws Exception {
 		return tProcesoMapper.selectByExample(example);
 	}
 
 
-	public TProceso selectByPrimaryKey(Integer procId) {
+	public TProceso selectByPrimaryKey(Integer procId) throws Exception {
 		return tProcesoMapper.selectByPrimaryKey(procId);
 	}
 
 
-	public int updateByExampleSelective(TProceso record, TProcesoExample example) {
+	public int updateByExampleSelective(TProceso record, TProcesoExample example) throws Exception {
 		return tProcesoMapper.updateByExampleSelective(record, example);
 	}
 
 
-	public int updateByExample(TProceso record, TProcesoExample example) {
+	public int updateByExample(TProceso record, TProcesoExample example) throws Exception {
 		return tProcesoMapper.updateByExample(record, example);
 	}
 
 
-	public int updateByPrimaryKeySelective(TProceso record) {
+	public int updateByPrimaryKeySelective(TProceso record) throws Exception {
 		return tProcesoMapper.updateByPrimaryKeySelective(record);
 	}
 
 
-	public int updateByPrimaryKey(TProceso record) {
+	public int updateByPrimaryKey(TProceso record) throws Exception {
 		return tProcesoMapper.updateByPrimaryKey(record);
 	}
 

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -73,10 +74,21 @@ public class TProcesoProcess {
 	
 	List<String> statesProceso;
 
-	public void start(){
+	static Logger log = Logger.getLogger(TProcesoProcess.class);
+	
+	public void start() throws Exception{
 		
 		factory = new ClassPathXmlApplicationContext("pe/com/j2techcon/bi/etl/resources/application-context.xml");
 		constantes = factory.getBean("constantes", Constantes.class);
+		
+		while(true){
+			java.lang.Thread.sleep(constantes.getTimeExecuteDelayProcess());
+			prepareProcess();
+			java.lang.Thread.sleep(constantes.getTimeExecutePeriodProcess());
+		}
+	}
+	
+	public void prepareProcess() throws Exception{
 		
 		sizePage = constantes.getSizePage();
 		typeProcess = constantes.getTypeProcessSimple();
@@ -103,14 +115,10 @@ public class TProcesoProcess {
 				if(isTheFirstProcess(tProceso.getProcId(), constantes.getLoadProcessToGeneric()) || isTheFirstProcess(tProceso.getProcId(), constantes.getLoadProcessToDimensional())){
 					if(getHoursAfterStartProcess(tProceso)>constantes.getMaxHoursFirstProcess()){
 						cancelProcess(tProceso.getProcId());
-					}else{
-						System.exit(0);
 					}
 				} else{
 					if(getHoursAfterStartProcess(tProceso)>constantes.getMaxHoursProcess()){
 						cancelProcess(tProceso.getProcId());
-					}else{
-						System.exit(0);
 					}
 				}
 			}
@@ -180,10 +188,9 @@ public class TProcesoProcess {
 
 			startProcess();
 		}
-		
 	}
 	
-	public TProceso getLastStartedProcess(){
+	public TProceso getLastStartedProcess()throws Exception{
 		
 		statesProceso.clear(); 
 		statesProceso.add(constantes.getStateProcessStarted());
@@ -195,14 +202,14 @@ public class TProcesoProcess {
 		
 		
 		try{
-		tProceso = tProcesoManager.selectByExample(tProcesoExample).get(0);
+			tProceso = tProcesoManager.selectByExample(tProcesoExample).get(0);
 		}catch(IndexOutOfBoundsException e){
 			tProceso.clear();
 		}
 		return tProceso;
 	}
 	
-	public TProceso getLastCompletedProcess(){
+	public TProceso getLastCompletedProcess()throws Exception{
 		
 		statesProceso.clear(); 
 		statesProceso.add(constantes.getStateProcessCompletedCorrectly());
@@ -220,14 +227,14 @@ public class TProcesoProcess {
 
 		
 		try{
-		tProceso = tProcesoManager.selectByExample(tProcesoExample).get(0);
+			tProceso = tProcesoManager.selectByExample(tProcesoExample).get(0);
 		}catch(IndexOutOfBoundsException e){
 			tProceso.clear();
 		}
 		return tProceso;
 	}
 	
-	public TProceso getLastProcess(){
+	public TProceso getLastProcess()throws Exception{
 
 		tProcesoExample.clear();
 		tProcesoExample.setOrderByClause("proc_id desc");
@@ -235,27 +242,27 @@ public class TProcesoProcess {
 
 		
 		try{
-		tProceso = tProcesoManager.selectByExample(tProcesoExample).get(0);
+			tProceso = tProcesoManager.selectByExample(tProcesoExample).get(0);
 		}catch(IndexOutOfBoundsException e){
 			tProceso.clear();
 		}
 		return tProceso;
 	}
 	
-	public TProcesoDetalle getLastDetProcess(){
+	public TProcesoDetalle getLastDetProcess()throws Exception{
 
 		tProcesoDetalleExample.clear();
 		tProcesoDetalleExample.setOrderByClause("proc_det_id desc");
 		tProcesoDetalleExample.setPaginationByClause(" limit 1 offset 0");
 		try{
-		tProcesoDetalle = tProcesoDetalleManager.selectByExample(tProcesoDetalleExample).get(0);
+			tProcesoDetalle = tProcesoDetalleManager.selectByExample(tProcesoDetalleExample).get(0);
 		}catch(IndexOutOfBoundsException e){
 			tProcesoDetalle.clear();
 		}
 		return tProcesoDetalle;
 	}
 	
-	public boolean isTheFirstProcess(int idProcess, String typeLoadProcess){
+	public boolean isTheFirstProcess(int idProcess, String typeLoadProcess)throws Exception{
 
 		statesProceso.clear(); 
 		statesProceso.add(constantes.getStateProcessCompletedCorrectly());
@@ -269,11 +276,11 @@ public class TProcesoProcess {
 		return tProcesoManager.countByExample(tProcesoExample)>0;
 	}
 	
-	public int getHoursAfterStartProcess(TProceso proceso){
+	public int getHoursAfterStartProcess(TProceso proceso)throws Exception{
 		return Util.getHoursAfterDate(proceso.getProcFecIni());
 	}
 	
-	public void startProcess(){
+	public void startProcess()throws Exception{
 		
 		insertProcess();
 		
@@ -708,7 +715,7 @@ public class TProcesoProcess {
 		}
 	}
 	
-	public void cancelProcess(int idProcess){
+	public void cancelProcess(int idProcess)throws Exception{
 		
 		tProceso.clear();
 		
@@ -735,7 +742,7 @@ public class TProcesoProcess {
 		tProcesoDetalleManager.updateByExampleSelective(tProcesoDetalle, tProcesoDetalleExample);
 	}
 	
-	public void insertProcess(){
+	public void insertProcess()throws Exception{
 		
 		tProceso.clear();
 		tProceso.setProcTip(typeLoadProcess);
@@ -751,7 +758,7 @@ public class TProcesoProcess {
 		tProcesoManager.insertSelective(tProceso);
 	}
 	
-	public void updateProcess(){
+	public void updateProcess()throws Exception{
 		tProceso.setProcNumRegTot(recordTotal);
 		tProceso.setProcNumRegPro(recordProcessed);
 		tProceso.setProcNumRegRec(recordRejected);
@@ -761,7 +768,7 @@ public class TProcesoProcess {
 		tProcesoManager.updateByPrimaryKeySelective(tProceso);
 	}
 	
-	public void insertDetProcess(int idTable){
+	public void insertDetProcess(int idTable)throws Exception{
 		tProcesoDetalle.clear();
 		tProcesoDetalle.setProcId(tProceso.getProcId());
 		tProcesoDetalle.setProcTip(typeLoadProcess);
@@ -774,12 +781,12 @@ public class TProcesoProcess {
 		tProcesoDetalleManager.insertSelective(tProcesoDetalle);
 	}
 	
-	public void updateDetProcess(){
+	public void updateDetProcess()throws Exception{
 		resultProcess = Integer.parseInt(tProcesoDetalle.getProcDetEst());
 		tProcesoDetalleManager.updateByPrimaryKeySelective(tProcesoDetalle);
 	}
 	
-	public void updateCountRegProcess(){
+	public void updateCountRegProcess()throws Exception{
 		recordTotal = recordTotal + tProcesoDetalle.getProcDetNumRegTot();
 		recordProcessed = recordProcessed + tProcesoDetalle.getProcDetNumRegPro();
 		recordRejected = recordRejected + tProcesoDetalle.getProcDetNumRegRec();

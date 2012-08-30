@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 
 import pe.com.j2techcon.bi.etl.domain.generic.TEmpleado;
@@ -54,6 +55,8 @@ public class TEmpleadoProcess {
 	
 	private Constantes constantes;
 
+	static Logger log = Logger.getLogger(TEmpleadoProcess.class);
+	
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -258,7 +261,7 @@ public class TEmpleadoProcess {
 	}
 
 	public TEmpleadoProcess(BeanFactory factory, int sizePage,
-			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
+			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -278,7 +281,7 @@ public class TEmpleadoProcess {
 
 	}
 
-	public int startProcess() {
+	public int startProcess() throws Exception{
 		
 		personalManager = factory.getBean("personalManager",PersonalManager.class);
 		tEmpleadoManager = factory.getBean("tEmpleadoManager",TEmpleadoManager.class);
@@ -391,7 +394,7 @@ public class TEmpleadoProcess {
 		return resultProcess;
 	}
 
-	public void processRecordEmpleado() {
+	public void processRecordEmpleado() throws Exception{
 		
 		completeFieldEmpleado();
 		
@@ -430,7 +433,7 @@ public class TEmpleadoProcess {
 		updateRecordOrigenEmpleado(stateRecordOrigen);
 	}
 
-	public void completeFieldEmpleado() {
+	public void completeFieldEmpleado() throws Exception{
 
 		//Codigo de cliente
 		tEmpleado.setEmpCod(personal.getCodigopersonal());
@@ -463,7 +466,7 @@ public class TEmpleadoProcess {
 
 	}
 
-	public int insertRecordGenericEmpleado() {
+	public int insertRecordGenericEmpleado() throws Exception{
 		try {
 			resultTransaction = tEmpleadoManager.insertSelective(tEmpleado);
 		} catch (Exception e) {
@@ -472,7 +475,7 @@ public class TEmpleadoProcess {
 		return resultTransaction;
 	}
 
-	public int updateRecordGenericEmpleado() {
+	public int updateRecordGenericEmpleado() throws Exception{
 		try {
 			tEmpleadoExample.clear();
 			tEmpleadoExample.createCriteria().andEmpCodEqualTo(tEmpleado.getEmpCod());
@@ -483,7 +486,7 @@ public class TEmpleadoProcess {
 		return resultTransaction;
 	}
 
-	public int deleteRecordGenericEmpleado() {
+	public int deleteRecordGenericEmpleado() throws Exception{
 		try {
 			tEmpleadoExample.clear();
 			tEmpleadoExample.createCriteria().andEmpCodEqualTo(tEmpleado.getEmpCod());
@@ -494,15 +497,11 @@ public class TEmpleadoProcess {
 		return resultTransaction;
 	}
 
-	public void updateRecordOrigenEmpleado(String statusRecord) {
-		try {
-			String codPersonal = personal.getCodigopersonal();
-			personal.clear();
-			personal.setCodigopersonal(codPersonal);
-			personal.setBiCodIndCam(statusRecord);
-			personalManager.updateByPrimaryKeySelective(personal);
-		} catch (Exception e) {
-
-		}
+	public void updateRecordOrigenEmpleado(String statusRecord) throws Exception{
+		String codPersonal = personal.getCodigopersonal();
+		personal.clear();
+		personal.setCodigopersonal(codPersonal);
+		personal.setBiCodIndCam(statusRecord);
+		personalManager.updateByPrimaryKeySelective(personal);
 	}
 }

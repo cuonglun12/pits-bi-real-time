@@ -3,6 +3,7 @@ package pe.com.j2techcon.bi.etl.process.dimensional;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 
 import pe.com.j2techcon.bi.etl.logic.dimensional.DimProductoManager;
@@ -50,6 +51,8 @@ public class DimProductoProcess {
 	
 	private Constantes constantes;
 
+	static Logger log = Logger.getLogger(DimProductoProcess.class);
+	
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -235,7 +238,7 @@ public class DimProductoProcess {
 	}
 
 	public DimProductoProcess(BeanFactory factory, int sizePage,
-			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
+			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -255,7 +258,7 @@ public class DimProductoProcess {
 		
 	}
 
-	public int startProcess(){
+	public int startProcess()throws Exception{
 
 		tProductoManager = factory.getBean("tProductoManager", TProductoManager.class);
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
@@ -318,7 +321,7 @@ public class DimProductoProcess {
 		return resultProcess;
 	}
 	
-	public void processRecordProducto(){
+	public void processRecordProducto()throws Exception{
 		
 		completeFieldProducto();
 		
@@ -358,7 +361,7 @@ public class DimProductoProcess {
 		updateRecordGenericProducto(stateRecordGeneric);
 	}
 	
-	public void completeFieldProducto(){
+	public void completeFieldProducto()throws Exception{
 		dimProducto.setProductoKey(tProducto.getProcId());
 		dimProducto.setProductoCod(tProducto.getProdCod());
 		
@@ -374,7 +377,7 @@ public class DimProductoProcess {
 		dimProducto.setProcId(process);
 	}
 	
-	public int insertRecordDimensionalProducto(){
+	public int insertRecordDimensionalProducto()throws Exception{
 		try{
 			resultTransaction = dimProductoManager.insertSelective(dimProducto);
 		}catch(Exception e){
@@ -383,7 +386,7 @@ public class DimProductoProcess {
 		return resultTransaction;
 	}
 	
-	public int updateRecordDimensionalProducto(){
+	public int updateRecordDimensionalProducto()throws Exception{
 		try{
 			resultTransaction = dimProductoManager.updateByPrimaryKeySelective(dimProducto);
 		}catch(Exception e){
@@ -392,7 +395,7 @@ public class DimProductoProcess {
 		return resultTransaction;
 	}
 	
-	public int deleteRecordDimensionalProducto(){
+	public int deleteRecordDimensionalProducto()throws Exception{
 		try{
 			resultTransaction = dimProductoManager.deleteByPrimaryKey(dimProducto.getProductoKey());
 		}catch(Exception e){
@@ -401,16 +404,12 @@ public class DimProductoProcess {
 		return resultTransaction; 
 	}
 	
-	public void updateRecordGenericProducto(String statusRecord){
-		try{
-			int idProducto = tProducto.getProcId();
-			tProducto.clear();
-			tProducto.setProcId(idProducto);
-			tProducto.setCodIndCam(statusRecord);
-			tProducto.setProcId(process);
-			tProductoManager.updateByPrimaryKeySelective(tProducto);
-		}catch(Exception e){
-			
-		}
+	public void updateRecordGenericProducto(String statusRecord)throws Exception{
+		int idProducto = tProducto.getProcId();
+		tProducto.clear();
+		tProducto.setProcId(idProducto);
+		tProducto.setCodIndCam(statusRecord);
+		tProducto.setProcId(process);
+		tProductoManager.updateByPrimaryKeySelective(tProducto);
 	}
 }

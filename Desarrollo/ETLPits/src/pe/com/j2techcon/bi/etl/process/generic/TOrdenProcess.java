@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 
 import pe.com.j2techcon.bi.etl.domain.generic.TAreaCliente;
@@ -94,6 +95,8 @@ public class TOrdenProcess {
 	private List<String> lstLista;
 	
 	private Constantes constantes;
+	
+	static Logger log = Logger.getLogger(TOrdenProcess.class);
 	
 	public BeanFactory getFactory() {
 		return factory;
@@ -459,7 +462,7 @@ public class TOrdenProcess {
 	}
 
 	public TOrdenProcess(BeanFactory factory, int sizePage,
-			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
+			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -479,7 +482,7 @@ public class TOrdenProcess {
 
 	}
 
-	public int startProcess() {
+	public int startProcess() throws Exception{
 		
 		tEmpleadoCategoriaManager = factory.getBean("tEmpleadoCategoriaManager", TEmpleadoCategoriaManager.class);
 		tAreaClienteManager = factory.getBean("tAreaClienteManager", TAreaClienteManager.class);
@@ -594,7 +597,7 @@ public class TOrdenProcess {
 		return getResultProcess();
 	}
 
-	public void processRecordOrden() {
+	public void processRecordOrden() throws Exception{
 		
 		completeFieldOrden();
 		
@@ -641,7 +644,7 @@ public class TOrdenProcess {
 		}		
 	}
 
-	public void completeFieldOrden() {
+	public void completeFieldOrden() throws Exception{
 
 		//Id de la cotizacion
 		tOrden.setCotiId(getCotiId(ordenes.getCoserie(), Integer.toString(ordenes.getConumero())));
@@ -799,7 +802,7 @@ public class TOrdenProcess {
 		}
 	}
 
-	public int insertRecordGenericOrden() {
+	public int insertRecordGenericOrden() throws Exception{
 		try {
 			resultTransaction = tOrdenManager.insertSelective(tOrden);
 		} catch (Exception e) {
@@ -808,7 +811,7 @@ public class TOrdenProcess {
 		return resultTransaction;
 	}
 
-	public int updateRecordGenericOrden() {
+	public int updateRecordGenericOrden() throws Exception{
 		try {
 			tOrdenExample.clear();
 			tOrdenExample.createCriteria().andOrdCodTipDocEqualTo(constantes.getParamSerialTipoDocumentoTrabajoNoDefinido());
@@ -821,7 +824,7 @@ public class TOrdenProcess {
 		return resultTransaction;
 	}
 
-	public int deleteRecordGenericOrden() {
+	public int deleteRecordGenericOrden() throws Exception{
 		try {
 			tOrdenExample.clear();
 			tOrdenExample.createCriteria().andOrdCodTipDocEqualTo(constantes.getParamSerialTipoDocumentoTrabajoNoDefinido());
@@ -834,21 +837,17 @@ public class TOrdenProcess {
 		return resultTransaction;
 	}
 
-	public void updateRecordOrigenOrden(String statusRecord) {
-		try {
-			String serie = ordenes.getSerie();
-			String orden = ordenes.getOrden();
-			ordenes.clear();
-			ordenes.setSerie(serie);
-			ordenes.setOrden(orden);
-			ordenes.setBiCodIndCam(statusRecord);
-			ordenesManager.updateByPrimaryKeySelective(ordenes);
-		} catch (Exception e) {
-
-		}
+	public void updateRecordOrigenOrden(String statusRecord) throws Exception{
+		String serie = ordenes.getSerie();
+		String orden = ordenes.getOrden();
+		ordenes.clear();
+		ordenes.setSerie(serie);
+		ordenes.setOrden(orden);
+		ordenes.setBiCodIndCam(statusRecord);
+		ordenesManager.updateByPrimaryKeySelective(ordenes);
 	}
 	
-	public int getCotiId(String serie, String numero){
+	public int getCotiId(String serie, String numero)throws Exception{
 		int cotiId = 0;
 		if(serie.equals(tCotizacion.getCotiSerieDoc()) && numero.equals(tCotizacion.getCotiNumDoc())){
 			cotiId = tCotizacion.getCotiId();

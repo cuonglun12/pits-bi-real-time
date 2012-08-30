@@ -6,25 +6,25 @@ import pe.com.j2techcon.bi.etl.domain.dimensional.DimPersonal;
 import pe.com.j2techcon.bi.etl.domain.dimensional.DimPersonalExample;
 
 public interface DimPersonalMapper {
-    int countByExample(DimPersonalExample example);
+    int countByExample(DimPersonalExample example) throws Exception;
 
-    int deleteByExample(DimPersonalExample example);
+    int deleteByExample(DimPersonalExample example) throws Exception;
 
-    int deleteByPrimaryKey(Integer personalKey);
+    int deleteByPrimaryKey(Integer personalKey) throws Exception;
 
-    int insert(DimPersonal record);
+    int insert(DimPersonal record) throws Exception;
 
-    int insertSelective(DimPersonal record);
+    int insertSelective(DimPersonal record) throws Exception;
 
-    List<DimPersonal> selectByExample(DimPersonalExample example);
+    List<DimPersonal> selectByExample(DimPersonalExample example) throws Exception;
 
-    DimPersonal selectByPrimaryKey(Integer personalKey);
+    DimPersonal selectByPrimaryKey(Integer personalKey) throws Exception;
 
-    int updateByExampleSelective(@Param("record") DimPersonal record, @Param("example") DimPersonalExample example);
+    int updateByExampleSelective(@Param("record") DimPersonal record, @Param("example") DimPersonalExample example) throws Exception;
 
-    int updateByExample(@Param("record") DimPersonal record, @Param("example") DimPersonalExample example);
+    int updateByExample(@Param("record") DimPersonal record, @Param("example") DimPersonalExample example) throws Exception;
 
-    int updateByPrimaryKeySelective(DimPersonal record);
+    int updateByPrimaryKeySelective(DimPersonal record) throws Exception;
 
-    int updateByPrimaryKey(DimPersonal record);
+    int updateByPrimaryKey(DimPersonal record) throws Exception;
 }

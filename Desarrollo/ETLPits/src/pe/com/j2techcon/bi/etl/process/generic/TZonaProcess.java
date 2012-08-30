@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 
 import pe.com.j2techcon.bi.etl.domain.generic.TParametro;
@@ -53,6 +54,8 @@ public class TZonaProcess {
 	
 	private Constantes constantes;
 
+	static Logger log = Logger.getLogger(TZonaProcess.class);
+	
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -246,7 +249,7 @@ public class TZonaProcess {
 	}
 
 	public TZonaProcess(BeanFactory factory, int sizePage, long dateTimeFrom,
-			long dateTimeUntil, String typeProcess, int process) {
+			long dateTimeUntil, String typeProcess, int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -265,7 +268,7 @@ public class TZonaProcess {
 		stateRecordGeneric = constantes.getStateRecordNew();
 	}
 
-	public int startProcess() {
+	public int startProcess() throws Exception{
 		
 		tParametroManager = factory.getBean("tParametroManager",TParametroManager.class);
 		zonasManager = factory.getBean("zonasManager",ZonasManager.class);
@@ -331,7 +334,7 @@ public class TZonaProcess {
 		return resultProcess;
 	}
 
-	public void processRecordZona() {
+	public void processRecordZona() throws Exception{
 		
 		completeFieldZona();
 		
@@ -372,7 +375,7 @@ public class TZonaProcess {
 		
 	}
 
-	public void completeFieldZona() {
+	public void completeFieldZona() throws Exception{
 
 		//Codigo de la zona
 		tZona.setZonCod(zonas.getCodzona());
@@ -411,7 +414,7 @@ public class TZonaProcess {
 
 	}
 
-	public int insertRecordGenericZona() {
+	public int insertRecordGenericZona() throws Exception{
 		try {
 			resultTransaction = tZonaManager.insertSelective(tZona);
 		} catch (Exception e) {
@@ -420,7 +423,7 @@ public class TZonaProcess {
 		return resultTransaction;
 	}
 
-	public int updateRecordGenericZona() {
+	public int updateRecordGenericZona() throws Exception{
 		try {
 			tZonaExample.clear();
 			tZonaExample.createCriteria().andZonCodEqualTo(tZona.getZonCod());	
@@ -431,7 +434,7 @@ public class TZonaProcess {
 		return resultTransaction;
 	}
 
-	public int deleteRecordGenericZona() {
+	public int deleteRecordGenericZona() throws Exception{
 		try {
 			tZonaExample.clear();
 			tZonaExample.createCriteria().andZonCodEqualTo(tZona.getZonCod());
@@ -442,16 +445,12 @@ public class TZonaProcess {
 		return resultTransaction;
 	}
 
-	public void updateRecordOrigenZona(String statusRecord) {
-		try {
-			String codZona = zonas.getCodzona();
-			zonas.clear();
-			zonas.setCodzona(codZona);
-			zonas.setBiCodIndCam(statusRecord);
-			zonasManager.updateByPrimaryKeySelective(zonas);
-		} catch (Exception e) {
-
-		}
+	public void updateRecordOrigenZona(String statusRecord) throws Exception{
+		String codZona = zonas.getCodzona();
+		zonas.clear();
+		zonas.setCodzona(codZona);
+		zonas.setBiCodIndCam(statusRecord);
+		zonasManager.updateByPrimaryKeySelective(zonas);
 	}
 
 }

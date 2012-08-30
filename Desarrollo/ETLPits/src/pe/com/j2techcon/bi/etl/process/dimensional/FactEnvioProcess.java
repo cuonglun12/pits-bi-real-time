@@ -3,6 +3,7 @@ package pe.com.j2techcon.bi.etl.process.dimensional;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 
 import pe.com.j2techcon.bi.etl.logic.dimensional.DimTiempoManager;
@@ -86,6 +87,8 @@ public class FactEnvioProcess {
 	
 	private Constantes constantes;
 
+	static Logger log = Logger.getLogger(FactEnvioProcess.class);
+	
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -399,7 +402,7 @@ public class FactEnvioProcess {
 	}
 
 	public FactEnvioProcess(BeanFactory factory, int sizePage,
-			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
+			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -419,7 +422,7 @@ public class FactEnvioProcess {
 		
 	}
 
-	public int startProcess(){
+	public int startProcess()throws Exception{
 
 		tAreaClienteManager = factory.getBean("tAreaClienteManager", TAreaClienteManager.class);
 		tDespachoManager = factory.getBean("tDespachoManager", TDespachoManager.class);
@@ -513,7 +516,7 @@ public class FactEnvioProcess {
 		return resultProcess;
 	}
 	
-	public void processRecordEnvio(){
+	public void processRecordEnvio()throws Exception{
 		
 		if(!tCargoDespacho.getProcId().equals(process)){
 		
@@ -559,7 +562,7 @@ public class FactEnvioProcess {
 		}
 	}
 	
-	public void completeFieldEnvio(){
+	public void completeFieldEnvio()throws Exception{
 		
 		tCargo = tCargoManager.selectByPrimaryKey(tCargoDespacho.getCargId());
 		tOrden = tOrdenManager.selectByPrimaryKey(tCargo.getOrdId());
@@ -729,7 +732,7 @@ public class FactEnvioProcess {
 		factEnvio.setProcId(process);
 	}
 	
-	public int insertRecordDimensionalEnvio(){
+	public int insertRecordDimensionalEnvio()throws Exception{
 		try{
 			resultTransaction = factEnvioManager.insertSelective(factEnvio);
 		}catch(Exception e){
@@ -738,7 +741,7 @@ public class FactEnvioProcess {
 		return resultTransaction;
 	}
 	
-	public int updateRecordDimensionalEnvio(){
+	public int updateRecordDimensionalEnvio()throws Exception{
 		try{
 			resultTransaction = factEnvioManager.updateByPrimaryKeySelective(factEnvio);
 		}catch(Exception e){
@@ -747,7 +750,7 @@ public class FactEnvioProcess {
 		return resultTransaction;
 	}
 	
-	public int deleteRecordDimensionalEnvio(){
+	public int deleteRecordDimensionalEnvio()throws Exception{
 		try{
 			resultTransaction = factEnvioManager.deleteByPrimaryKey(factEnvio.getEnvioKey());
 		}catch(Exception e){
@@ -756,16 +759,12 @@ public class FactEnvioProcess {
 		return resultTransaction; 
 	}
 	
-	public void updateRecordGenericEnvio(String statusRecord){
-		try{
-			int idEnvio = tCargoDespacho.getCarDespId();
-			tCargoDespacho.clear();
-			tCargoDespacho.setCarDespId(idEnvio);
-			tCargoDespacho.setCodIndCam(statusRecord);
-			tCargoDespacho.setProcId(process);
-			tCargoDespachoManager.updateByPrimaryKeySelective(tCargoDespacho);
-		}catch(Exception e){
-			
-		}
+	public void updateRecordGenericEnvio(String statusRecord)throws Exception{
+		int idEnvio = tCargoDespacho.getCarDespId();
+		tCargoDespacho.clear();
+		tCargoDespacho.setCarDespId(idEnvio);
+		tCargoDespacho.setCodIndCam(statusRecord);
+		tCargoDespacho.setProcId(process);
+		tCargoDespachoManager.updateByPrimaryKeySelective(tCargoDespacho);
 	}
 }

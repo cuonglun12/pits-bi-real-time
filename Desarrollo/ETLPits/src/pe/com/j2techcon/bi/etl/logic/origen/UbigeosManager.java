@@ -10,55 +10,55 @@ public class UbigeosManager {
 	
 	private UbigeosMapper ubigeosMapper;
 
-	public UbigeosMapper getUbigeosMapper() {
+	public UbigeosMapper getUbigeosMapper() throws Exception {
 		return ubigeosMapper;
 	}
 
-	public void setUbigeosMapper(UbigeosMapper ubigeosMapper) {
+	public void setUbigeosMapper(UbigeosMapper ubigeosMapper) throws Exception {
 		this.ubigeosMapper = ubigeosMapper;
 	}
 
-	public int countByExample(UbigeosExample example) {
+	public int countByExample(UbigeosExample example) throws Exception {
 		return ubigeosMapper.countByExample(example);
 	}
 
-	public int deleteByExample(UbigeosExample example) {
+	public int deleteByExample(UbigeosExample example) throws Exception {
 		return ubigeosMapper.deleteByExample(example);
 	}
 
-	public int deleteByPrimaryKey(String ubigeo) {
+	public int deleteByPrimaryKey(String ubigeo) throws Exception {
 		return ubigeosMapper.deleteByPrimaryKey(ubigeo);
 	}
 
-	public int insert(Ubigeos record) {
+	public int insert(Ubigeos record) throws Exception {
 		return ubigeosMapper.insert(record);
 	}
 
-	public int insertSelective(Ubigeos record) {
+	public int insertSelective(Ubigeos record) throws Exception {
 		return ubigeosMapper.insertSelective(record);
 	}
 
-	public List<Ubigeos> selectByExample(UbigeosExample example) {
+	public List<Ubigeos> selectByExample(UbigeosExample example) throws Exception {
 		return ubigeosMapper.selectByExample(example);
 	}
 
-	public Ubigeos selectByPrimaryKey(String ubigeo) {
+	public Ubigeos selectByPrimaryKey(String ubigeo) throws Exception {
 		return ubigeosMapper.selectByPrimaryKey(ubigeo);
 	}
 
-	public int updateByExampleSelective(Ubigeos record, UbigeosExample example) {
+	public int updateByExampleSelective(Ubigeos record, UbigeosExample example) throws Exception {
 		return ubigeosMapper.updateByExampleSelective(record, example);
 	}
 
-	public int updateByExample(Ubigeos record, UbigeosExample example) {
+	public int updateByExample(Ubigeos record, UbigeosExample example) throws Exception {
 		return ubigeosMapper.updateByExample(record, example);
 	}
 
-	public int updateByPrimaryKeySelective(Ubigeos record) {
+	public int updateByPrimaryKeySelective(Ubigeos record) throws Exception {
 		return ubigeosMapper.updateByPrimaryKeySelective(record);
 	}
 
-	public int updateByPrimaryKey(Ubigeos record) {
+	public int updateByPrimaryKey(Ubigeos record) throws Exception {
 		return ubigeosMapper.updateByPrimaryKey(record);
 	}
 

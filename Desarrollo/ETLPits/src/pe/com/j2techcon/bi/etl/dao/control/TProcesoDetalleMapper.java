@@ -6,25 +6,25 @@ import pe.com.j2techcon.bi.etl.domain.control.TProcesoDetalle;
 import pe.com.j2techcon.bi.etl.domain.control.TProcesoDetalleExample;
 
 public interface TProcesoDetalleMapper {
-    int countByExample(TProcesoDetalleExample example);
+    int countByExample(TProcesoDetalleExample example) throws Exception;
 
-    int deleteByExample(TProcesoDetalleExample example);
+    int deleteByExample(TProcesoDetalleExample example) throws Exception;
 
-    int deleteByPrimaryKey(Integer procDetId);
+    int deleteByPrimaryKey(Integer procDetId) throws Exception;
 
-    int insert(TProcesoDetalle record);
+    int insert(TProcesoDetalle record) throws Exception;
 
-    int insertSelective(TProcesoDetalle record);
+    int insertSelective(TProcesoDetalle record) throws Exception;
 
-    List<TProcesoDetalle> selectByExample(TProcesoDetalleExample example);
+    List<TProcesoDetalle> selectByExample(TProcesoDetalleExample example) throws Exception;
 
-    TProcesoDetalle selectByPrimaryKey(Integer procDetId);
+    TProcesoDetalle selectByPrimaryKey(Integer procDetId) throws Exception;
 
-    int updateByExampleSelective(@Param("record") TProcesoDetalle record, @Param("example") TProcesoDetalleExample example);
+    int updateByExampleSelective(@Param("record") TProcesoDetalle record, @Param("example") TProcesoDetalleExample example) throws Exception;
 
-    int updateByExample(@Param("record") TProcesoDetalle record, @Param("example") TProcesoDetalleExample example);
+    int updateByExample(@Param("record") TProcesoDetalle record, @Param("example") TProcesoDetalleExample example) throws Exception;
 
-    int updateByPrimaryKeySelective(TProcesoDetalle record);
+    int updateByPrimaryKeySelective(TProcesoDetalle record) throws Exception;
 
-    int updateByPrimaryKey(TProcesoDetalle record);
+    int updateByPrimaryKey(TProcesoDetalle record) throws Exception;
 }

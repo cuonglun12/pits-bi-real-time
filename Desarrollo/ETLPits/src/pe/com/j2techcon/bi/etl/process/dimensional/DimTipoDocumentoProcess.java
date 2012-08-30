@@ -3,6 +3,7 @@ package pe.com.j2techcon.bi.etl.process.dimensional;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import pe.com.j2techcon.bi.etl.logic.dimensional.DimTipoDocumentoManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TParametroManager;
@@ -42,6 +43,8 @@ public class DimTipoDocumentoProcess {
 	
 	private Constantes constantes;
 
+	static Logger log = Logger.getLogger(DimTipoDocumentoProcess.class);
+	
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -203,7 +206,7 @@ public class DimTipoDocumentoProcess {
 	}
 
 	public DimTipoDocumentoProcess(BeanFactory factory, int sizePage,
-			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
+			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -223,7 +226,7 @@ public class DimTipoDocumentoProcess {
 		
 	}
 
-	public int startProcess(){
+	public int startProcess()throws Exception{
 
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
 		dimTipoDocumentoManager = factory.getBean("dimTipoDocumentoManager", DimTipoDocumentoManager.class);
@@ -279,7 +282,7 @@ public class DimTipoDocumentoProcess {
 		return resultProcess;
 	}
 	
-	public void processRecordParametro(){
+	public void processRecordParametro()throws Exception{
 		
 		completeFieldTipoDocumento();
 		
@@ -319,14 +322,14 @@ public class DimTipoDocumentoProcess {
 		updateRecordGenericParametro(stateRecordGeneric);
 	}
 	
-	public void completeFieldTipoDocumento(){
+	public void completeFieldTipoDocumento()throws Exception{
 		dimTipoDocumento.setTipoDocumentoKey(tParametro.getParamId());
 		dimTipoDocumento.setTipoDocumentoCod(tParametro.getParamCod());
 		dimTipoDocumento.setTipoDocumentoDesc(tParametro.getParamDes());
 		dimTipoDocumento.setProcId(process);
 	}
 	
-	public int insertRecordDimensionalTipoDocumento(){
+	public int insertRecordDimensionalTipoDocumento()throws Exception{
 		try{
 			resultTransaction = dimTipoDocumentoManager.insertSelective(dimTipoDocumento);
 		}catch(Exception e){
@@ -335,7 +338,7 @@ public class DimTipoDocumentoProcess {
 		return resultTransaction;
 	}
 	
-	public int updateRecordDimensionalTipoDocumento(){
+	public int updateRecordDimensionalTipoDocumento()throws Exception{
 		try{
 			resultTransaction = dimTipoDocumentoManager.updateByPrimaryKeySelective(dimTipoDocumento);
 		}catch(Exception e){
@@ -344,7 +347,7 @@ public class DimTipoDocumentoProcess {
 		return resultTransaction;
 	}
 	
-	public int deleteRecordDimensionalTipoDocumento(){
+	public int deleteRecordDimensionalTipoDocumento()throws Exception{
 		try{
 			resultTransaction = dimTipoDocumentoManager.deleteByPrimaryKey(dimTipoDocumento.getTipoDocumentoKey());
 		}catch(Exception e){
@@ -353,16 +356,12 @@ public class DimTipoDocumentoProcess {
 		return resultTransaction; 
 	}
 	
-	public void updateRecordGenericParametro(String statusRecord){
-		try{
-			int idParametro = tParametro.getParamId();
-			tParametro.clear();
-			tParametro.setParamId(idParametro);
-			tParametro.setCodIndCam(statusRecord);
-			tParametro.setProcId(process);
-			tParametroManager.updateByPrimaryKeySelective(tParametro);
-		}catch(Exception e){
-			
-		}
+	public void updateRecordGenericParametro(String statusRecord)throws Exception{
+		int idParametro = tParametro.getParamId();
+		tParametro.clear();
+		tParametro.setParamId(idParametro);
+		tParametro.setCodIndCam(statusRecord);
+		tParametro.setProcId(process);
+		tParametroManager.updateByPrimaryKeySelective(tParametro);
 	}
 }

@@ -6,25 +6,25 @@ import pe.com.j2techcon.bi.etl.domain.generic.TServicio;
 import pe.com.j2techcon.bi.etl.domain.generic.TServicioExample;
 
 public interface TServicioMapper {
-    int countByExample(TServicioExample example);
+    int countByExample(TServicioExample example) throws Exception;
 
-    int deleteByExample(TServicioExample example);
+    int deleteByExample(TServicioExample example) throws Exception;
 
-    int deleteByPrimaryKey(Integer servId);
+    int deleteByPrimaryKey(Integer servId) throws Exception;
 
-    int insert(TServicio record);
+    int insert(TServicio record) throws Exception;
 
-    int insertSelective(TServicio record);
+    int insertSelective(TServicio record) throws Exception;
 
-    List<TServicio> selectByExample(TServicioExample example);
+    List<TServicio> selectByExample(TServicioExample example) throws Exception;
 
-    TServicio selectByPrimaryKey(Integer servId);
+    TServicio selectByPrimaryKey(Integer servId) throws Exception;
 
-    int updateByExampleSelective(@Param("record") TServicio record, @Param("example") TServicioExample example);
+    int updateByExampleSelective(@Param("record") TServicio record, @Param("example") TServicioExample example) throws Exception;
 
-    int updateByExample(@Param("record") TServicio record, @Param("example") TServicioExample example);
+    int updateByExample(@Param("record") TServicio record, @Param("example") TServicioExample example) throws Exception;
 
-    int updateByPrimaryKeySelective(TServicio record);
+    int updateByPrimaryKeySelective(TServicio record) throws Exception;
 
-    int updateByPrimaryKey(TServicio record);
+    int updateByPrimaryKey(TServicio record) throws Exception;
 }

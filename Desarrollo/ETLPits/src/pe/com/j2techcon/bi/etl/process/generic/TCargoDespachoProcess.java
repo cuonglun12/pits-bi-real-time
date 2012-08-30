@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 
 import pe.com.j2techcon.bi.etl.domain.generic.TCargo;
@@ -69,6 +70,8 @@ public class TCargoDespachoProcess {
 
 	private Constantes constantes;
 
+	static Logger log = Logger.getLogger(TCargoDespachoProcess.class);
+	
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -327,7 +330,7 @@ public class TCargoDespachoProcess {
 
 	public TCargoDespachoProcess(BeanFactory factory, int sizePage,
 			long dateTimeFrom, long dateTimeUntil, String typeProcess,
-			int process) {
+			int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -347,7 +350,7 @@ public class TCargoDespachoProcess {
 
 	}
 
-	public int startProcess() {
+	public int startProcess() throws Exception{
 		
 		tDespachoManager = factory.getBean("tDespachoManager", TDespachoManager.class);
 		detdespachoManager = factory.getBean("detdespachoManager", DetdespachoManager.class);
@@ -430,7 +433,7 @@ public class TCargoDespachoProcess {
 		return getResultProcess();
 	}
 
-	public void processRecordCargoDespacho() {
+	public void processRecordCargoDespacho() throws Exception{
 		
 		completeFieldCargoDespacho();
 		//Identificamos si el detalle corresponde a una orden del negocio de mensajeria local
@@ -476,7 +479,7 @@ public class TCargoDespachoProcess {
 		}
 	}
 
-	public void completeFieldCargoDespacho() {
+	public void completeFieldCargoDespacho() throws Exception{
 
 		//Id del Despacho
 		tCargoDespacho.setDespId(getDespId(detdespacho.getSerieguia(), detdespacho.getNroguia()));
@@ -574,7 +577,7 @@ public class TCargoDespachoProcess {
 		}
 	}
 
-	public int insertRecordGenericCargoDespacho() {
+	public int insertRecordGenericCargoDespacho() throws Exception{
 		try {
 			resultTransaction = tCargoDespachoManager.insertSelective(tCargoDespacho);
 		} catch (Exception e) {
@@ -583,7 +586,7 @@ public class TCargoDespachoProcess {
 		return resultTransaction;
 	}
 
-	public int updateRecordGenericCargoDespacho() {
+	public int updateRecordGenericCargoDespacho() throws Exception{
 		try {
 			tCargoDespachoExample.clear();
 			tCargoDespachoExample.createCriteria().andDespCodTipDocEqualTo(constantes.getParamSerialTipoDocumentoTrabajoGuia());
@@ -600,7 +603,7 @@ public class TCargoDespachoProcess {
 		return resultTransaction;
 	}
 
-	public int deleteRecordGenericCargoDespacho() {
+	public int deleteRecordGenericCargoDespacho() throws Exception{
 		try {
 			tCargoDespachoExample.clear();
 			tCargoDespachoExample.createCriteria().andDespCodTipDocEqualTo(constantes.getParamSerialTipoDocumentoTrabajoGuia());
@@ -617,28 +620,24 @@ public class TCargoDespachoProcess {
 		return resultTransaction;
 	}
 
-	public void updateRecordOrigenCargoDespacho(String statusRecord) {
-		try {
-			String serieGuia = detdespacho.getSerieguia();
-			String numeroGuia = detdespacho.getNroguia();
-			String serie = detdespacho.getSerie();
-			String orden = detdespacho.getOrden();
-			String correlativo = detdespacho.getCorrelativo();
-			
-			detdespacho.clear();
-			detdespacho.setSerieguia(serieGuia);
-			detdespacho.setNroguia(numeroGuia);
-			detdespacho.setSerie(serie);
-			detdespacho.setOrden(orden);
-			detdespacho.setCorrelativo(correlativo);
-			detdespacho.setBiCodIndCam(statusRecord);
-			detdespachoManager.updateByPrimaryKeySelective(detdespacho);
-		} catch (Exception e) {
-
-		}
+	public void updateRecordOrigenCargoDespacho(String statusRecord) throws Exception{
+		String serieGuia = detdespacho.getSerieguia();
+		String numeroGuia = detdespacho.getNroguia();
+		String serie = detdespacho.getSerie();
+		String orden = detdespacho.getOrden();
+		String correlativo = detdespacho.getCorrelativo();
+		
+		detdespacho.clear();
+		detdespacho.setSerieguia(serieGuia);
+		detdespacho.setNroguia(numeroGuia);
+		detdespacho.setSerie(serie);
+		detdespacho.setOrden(orden);
+		detdespacho.setCorrelativo(correlativo);
+		detdespacho.setBiCodIndCam(statusRecord);
+		detdespachoManager.updateByPrimaryKeySelective(detdespacho);
 	}
 	
-	public int getDespId(String serieGuia, String numeroGuia){
+	public int getDespId(String serieGuia, String numeroGuia)throws Exception{
 		int despId = 0;
 		if(serieGuia.equals(tDespacho.getDespSerieDoc()) && numeroGuia.equals(tDespacho.getDespNumeroDoc())){
 			despId = tDespacho.getDespId();

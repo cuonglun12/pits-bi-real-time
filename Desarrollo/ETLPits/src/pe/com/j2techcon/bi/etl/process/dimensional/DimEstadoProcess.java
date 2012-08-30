@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import pe.com.j2techcon.bi.etl.logic.dimensional.DimEstadoManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TParametroManager;
@@ -45,6 +46,8 @@ public class DimEstadoProcess {
 	
 	List<Integer> statesProceso;
 
+	static Logger log = Logger.getLogger(DimEstadoProcess.class);
+	
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -215,7 +218,7 @@ public class DimEstadoProcess {
 	}
 
 	public DimEstadoProcess(BeanFactory factory, int sizePage,
-			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
+			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -235,7 +238,7 @@ public class DimEstadoProcess {
 		
 	}
 
-	public int startProcess(){
+	public int startProcess()throws Exception{
 
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
 		dimEstadoManager = factory.getBean("dimEstadoManager", DimEstadoManager.class);
@@ -301,7 +304,7 @@ public class DimEstadoProcess {
 		return resultProcess;
 	}
 	
-	public void processRecordParametro(){
+	public void processRecordParametro()throws Exception{
 		
 		completeFieldEstado();
 		
@@ -341,14 +344,14 @@ public class DimEstadoProcess {
 		updateRecordGenericParametro(stateRecordGeneric);
 	}
 	
-	public void completeFieldEstado(){
+	public void completeFieldEstado()throws Exception{
 		dimEstado.setEstadoKey(tParametro.getParamId());
 		dimEstado.setEstadoCod(tParametro.getParamCod());
 		dimEstado.setEstadoDesc(tParametro.getParamDes());
 		dimEstado.setProcId(process);
 	}
 	
-	public int insertRecordDimensionalEstado(){
+	public int insertRecordDimensionalEstado()throws Exception{
 		try{
 			resultTransaction = dimEstadoManager.insertSelective(dimEstado);
 		}catch(Exception e){
@@ -357,7 +360,7 @@ public class DimEstadoProcess {
 		return resultTransaction;
 	}
 	
-	public int updateRecordDimensionalEstado(){
+	public int updateRecordDimensionalEstado()throws Exception{
 		try{
 			resultTransaction = dimEstadoManager.updateByPrimaryKeySelective(dimEstado);
 		}catch(Exception e){
@@ -366,7 +369,7 @@ public class DimEstadoProcess {
 		return resultTransaction;
 	}
 	
-	public int deleteRecordDimensionalEstado(){
+	public int deleteRecordDimensionalEstado()throws Exception{
 		try{
 			resultTransaction = dimEstadoManager.deleteByPrimaryKey(dimEstado.getEstadoKey());
 		}catch(Exception e){
@@ -375,16 +378,12 @@ public class DimEstadoProcess {
 		return resultTransaction; 
 	}
 	
-	public void updateRecordGenericParametro(String statusRecord){
-		try{
-			int idParametro = tParametro.getParamId();
-			tParametro.clear();
-			tParametro.setParamId(idParametro);
-			tParametro.setCodIndCam(statusRecord);
-			tParametro.setProcId(process);
-			tParametroManager.updateByPrimaryKeySelective(tParametro);
-		}catch(Exception e){
-			
-		}
+	public void updateRecordGenericParametro(String statusRecord)throws Exception{
+		int idParametro = tParametro.getParamId();
+		tParametro.clear();
+		tParametro.setParamId(idParametro);
+		tParametro.setCodIndCam(statusRecord);
+		tParametro.setProcId(process);
+		tParametroManager.updateByPrimaryKeySelective(tParametro);
 	}
 }

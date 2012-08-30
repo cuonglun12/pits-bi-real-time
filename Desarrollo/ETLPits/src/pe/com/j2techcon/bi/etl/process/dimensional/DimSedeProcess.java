@@ -3,6 +3,7 @@ package pe.com.j2techcon.bi.etl.process.dimensional;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 
 import pe.com.j2techcon.bi.etl.logic.dimensional.DimSedeManager;
@@ -57,6 +58,8 @@ public class DimSedeProcess {
 	
 	private Constantes constantes;
 
+	static Logger log = Logger.getLogger(DimSedeProcess.class);
+	
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -266,7 +269,7 @@ public class DimSedeProcess {
 	}
 
 	public DimSedeProcess(BeanFactory factory, int sizePage,
-			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
+			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) throws Exception{
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -286,7 +289,7 @@ public class DimSedeProcess {
 		
 	}
 
-	public int startProcess(){
+	public int startProcess()throws Exception{
 
 		tSedeManager = factory.getBean("tSedeManager", TSedeManager.class);
 		tParametroManager = factory.getBean("tParametroManager", TParametroManager.class);
@@ -356,7 +359,7 @@ public class DimSedeProcess {
 		return resultProcess;
 	}
 	
-	public void processRecordSede(){
+	public void processRecordSede()throws Exception{
 		
 		completeFieldSede();
 		
@@ -396,7 +399,7 @@ public class DimSedeProcess {
 		updateRecordGenericSede(stateRecordGeneric);
 	}
 	
-	public void completeFieldSede(){
+	public void completeFieldSede()throws Exception{
 		dimSede.setSedeKey(tSede.getProcId());
 		dimSede.setSedeCod(tSede.getSedCod());
 		
@@ -446,7 +449,7 @@ public class DimSedeProcess {
 		dimSede.setProcId(process);
 	}
 	
-	public int insertRecordDimensionalSede(){
+	public int insertRecordDimensionalSede()throws Exception{
 		try{
 			resultTransaction = dimSedeManager.insertSelective(dimSede);
 		}catch(Exception e){
@@ -455,7 +458,7 @@ public class DimSedeProcess {
 		return resultTransaction;
 	}
 	
-	public int updateRecordDimensionalSede(){
+	public int updateRecordDimensionalSede()throws Exception{
 		try{
 			resultTransaction = dimSedeManager.updateByPrimaryKeySelective(dimSede);
 		}catch(Exception e){
@@ -464,7 +467,7 @@ public class DimSedeProcess {
 		return resultTransaction;
 	}
 	
-	public int deleteRecordDimensionalSede(){
+	public int deleteRecordDimensionalSede()throws Exception{
 		try{
 			resultTransaction = dimSedeManager.deleteByPrimaryKey(dimSede.getSedeKey());
 		}catch(Exception e){
@@ -473,16 +476,12 @@ public class DimSedeProcess {
 		return resultTransaction; 
 	}
 	
-	public void updateRecordGenericSede(String statusRecord){
-		try{
-			int idSede = tSede.getSedId();
-			tSede.clear();
-			tSede.setSedId(idSede);
-			tSede.setCodIndCam(statusRecord);
-			tSede.setProcId(process);
-			tSedeManager.updateByPrimaryKeySelective(tSede);
-		}catch(Exception e){
-			
-		}
+	public void updateRecordGenericSede(String statusRecord)throws Exception{
+		int idSede = tSede.getSedId();
+		tSede.clear();
+		tSede.setSedId(idSede);
+		tSede.setCodIndCam(statusRecord);
+		tSede.setProcId(process);
+		tSedeManager.updateByPrimaryKeySelective(tSede);
 	}
 }

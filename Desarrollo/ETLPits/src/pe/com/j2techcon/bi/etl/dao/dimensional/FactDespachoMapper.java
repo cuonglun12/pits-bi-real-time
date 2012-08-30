@@ -6,25 +6,25 @@ import pe.com.j2techcon.bi.etl.domain.dimensional.FactDespacho;
 import pe.com.j2techcon.bi.etl.domain.dimensional.FactDespachoExample;
 
 public interface FactDespachoMapper {
-    int countByExample(FactDespachoExample example);
+    int countByExample(FactDespachoExample example) throws Exception;
 
-    int deleteByExample(FactDespachoExample example);
+    int deleteByExample(FactDespachoExample example) throws Exception;
 
-    int deleteByPrimaryKey(Integer despachoKey);
+    int deleteByPrimaryKey(Integer despachoKey) throws Exception;
 
-    int insert(FactDespacho record);
+    int insert(FactDespacho record) throws Exception;
 
-    int insertSelective(FactDespacho record);
+    int insertSelective(FactDespacho record) throws Exception;
 
-    List<FactDespacho> selectByExample(FactDespachoExample example);
+    List<FactDespacho> selectByExample(FactDespachoExample example) throws Exception;
 
-    FactDespacho selectByPrimaryKey(Integer despachoKey);
+    FactDespacho selectByPrimaryKey(Integer despachoKey) throws Exception;
 
-    int updateByExampleSelective(@Param("record") FactDespacho record, @Param("example") FactDespachoExample example);
+    int updateByExampleSelective(@Param("record") FactDespacho record, @Param("example") FactDespachoExample example) throws Exception;
 
-    int updateByExample(@Param("record") FactDespacho record, @Param("example") FactDespachoExample example);
+    int updateByExample(@Param("record") FactDespacho record, @Param("example") FactDespachoExample example) throws Exception;
 
-    int updateByPrimaryKeySelective(FactDespacho record);
+    int updateByPrimaryKeySelective(FactDespacho record) throws Exception;
 
-    int updateByPrimaryKey(FactDespacho record);
+    int updateByPrimaryKey(FactDespacho record) throws Exception;
 }

@@ -10,55 +10,55 @@ public class ZonasManager {
 	
 	private ZonasMapper zonasMapper;
 
-	public ZonasMapper getZonasMapper() {
+	public ZonasMapper getZonasMapper() throws Exception {
 		return zonasMapper;
 	}
 
-	public void setZonasMapper(ZonasMapper zonasMapper) {
+	public void setZonasMapper(ZonasMapper zonasMapper) throws Exception {
 		this.zonasMapper = zonasMapper;
 	}
 
-	public int countByExample(ZonasExample example) {
+	public int countByExample(ZonasExample example) throws Exception {
 		return zonasMapper.countByExample(example);
 	}
 
-	public int deleteByExample(ZonasExample example) {
+	public int deleteByExample(ZonasExample example) throws Exception {
 		return zonasMapper.deleteByExample(example);
 	}
 
-	public int deleteByPrimaryKey(String codzona) {
+	public int deleteByPrimaryKey(String codzona) throws Exception {
 		return zonasMapper.deleteByPrimaryKey(codzona);
 	}
 
-	public int insert(Zonas record) {
+	public int insert(Zonas record) throws Exception {
 		return zonasMapper.insert(record);
 	}
 
-	public int insertSelective(Zonas record) {
+	public int insertSelective(Zonas record) throws Exception {
 		return zonasMapper.insertSelective(record);
 	}
 
-	public List<Zonas> selectByExample(ZonasExample example) {
+	public List<Zonas> selectByExample(ZonasExample example) throws Exception {
 		return zonasMapper.selectByExample(example);
 	}
 
-	public Zonas selectByPrimaryKey(String codzona) {
+	public Zonas selectByPrimaryKey(String codzona) throws Exception {
 		return zonasMapper.selectByPrimaryKey(codzona);
 	}
 
-	public int updateByExampleSelective(Zonas record, ZonasExample example) {
+	public int updateByExampleSelective(Zonas record, ZonasExample example) throws Exception {
 		return zonasMapper.updateByExampleSelective(record, example);
 	}
 
-	public int updateByExample(Zonas record, ZonasExample example) {
+	public int updateByExample(Zonas record, ZonasExample example) throws Exception {
 		return zonasMapper.updateByExample(record, example);
 	}
 
-	public int updateByPrimaryKeySelective(Zonas record) {
+	public int updateByPrimaryKeySelective(Zonas record) throws Exception {
 		return zonasMapper.updateByPrimaryKeySelective(record);
 	}
 
-	public int updateByPrimaryKey(Zonas record) {
+	public int updateByPrimaryKey(Zonas record) throws Exception {
 		return zonasMapper.updateByPrimaryKey(record);
 	}
 

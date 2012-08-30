@@ -3,6 +3,7 @@ package pe.com.j2techcon.bi.etl.process.dimensional;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 
 import pe.com.j2techcon.bi.etl.logic.dimensional.DimClienteManager;
@@ -63,6 +64,8 @@ public class DimClienteProcess {
 	
 	private Constantes constantes;
 
+	static Logger log = Logger.getLogger(DimClienteProcess.class);
+	
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -296,7 +299,7 @@ public class DimClienteProcess {
 	}
 
 	public DimClienteProcess(BeanFactory factory, int sizePage,
-			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) {
+			long dateTimeFrom, long dateTimeUntil, String typeProcess, int process) throws Exception {
 		this.factory = factory;
 		this.sizePage = sizePage;
 		this.dateTimeFrom = dateTimeFrom;
@@ -316,7 +319,7 @@ public class DimClienteProcess {
 		
 	}
 
-	public int startProcess(){
+	public int startProcess() throws Exception{
 
 		tClienteManager = factory.getBean("tClienteManager", TClienteManager.class);
 		tAreaClienteManager = factory.getBean("tAreaClienteManager", TAreaClienteManager.class);
@@ -433,7 +436,7 @@ public class DimClienteProcess {
 		return resultProcess;
 	}
 	
-	public void processRecordAreaCliente(){
+	public void processRecordAreaCliente()throws Exception{
 		
 		completeFieldAreaCliente();
 		
@@ -480,7 +483,7 @@ public class DimClienteProcess {
 		}
 	}
 	
-	public void processRecordCliente(){
+	public void processRecordCliente()throws Exception{
 		completeFildCliente();
 		
 		if(updateRecordDimensionalCliente() > constantes.getResultTransactionNoResult()){
@@ -493,7 +496,7 @@ public class DimClienteProcess {
 		}
 	}
 	
-	public void completeFieldAreaCliente(){
+	public void completeFieldAreaCliente()throws Exception{
 		dimCliente.setClienteAreaKey(tAreaCliente.getAreCliId());
 		
 		tCliente = tClienteManager.selectByPrimaryKey(tAreaCliente.getCliId());
@@ -557,7 +560,7 @@ public class DimClienteProcess {
 		dimCliente.setProcId(process);
 	}
 	
-	public void completeFildCliente(){
+	public void completeFildCliente()throws Exception{
 		
 		dimClienteExample.createCriteria().andClienteKeyEqualTo(tCliente.getCliId());
 		dimClienteExample.createCriteria().andProcIdNotEqualTo(process);
@@ -613,7 +616,7 @@ public class DimClienteProcess {
 		dimCliente.setProcId(process);
 	}
 	
-	public int insertRecordDimensionalAreaCliente(){
+	public int insertRecordDimensionalAreaCliente()throws Exception{
 		try{
 			resultTransaction = dimClienteManager.insertSelective(dimCliente);
 		}catch(Exception e){
@@ -622,7 +625,7 @@ public class DimClienteProcess {
 		return resultTransaction;
 	}
 	
-	public int updateRecordDimensionalAreaCliente(){
+	public int updateRecordDimensionalAreaCliente()throws Exception{
 		try{
 			resultTransaction = dimClienteManager.updateByPrimaryKeySelective(dimCliente);
 		}catch(Exception e){
@@ -631,7 +634,7 @@ public class DimClienteProcess {
 		return resultTransaction;
 	}
 	
-	public int updateRecordDimensionalCliente(){
+	public int updateRecordDimensionalCliente()throws Exception{
 		try{
 			resultTransaction = dimClienteManager.updateByExampleSelective(dimCliente, dimClienteExample);
 		}catch(Exception e){
@@ -640,7 +643,7 @@ public class DimClienteProcess {
 		return resultTransaction;
 	}
 	
-	public int deleteRecordDimensionalAreaCliente(){
+	public int deleteRecordDimensionalAreaCliente()throws Exception{
 		try{
 			resultTransaction = dimClienteManager.deleteByPrimaryKey(dimCliente.getClienteKey());
 		}catch(Exception e){
@@ -649,7 +652,7 @@ public class DimClienteProcess {
 		return resultTransaction; 
 	}
 	
-	public int deleteRecordDimensionalCliente(){
+	public int deleteRecordDimensionalCliente()throws Exception{
 		try{
 			resultTransaction = dimClienteManager.deleteByExample(dimClienteExample);
 		}catch(Exception e){
@@ -658,29 +661,21 @@ public class DimClienteProcess {
 		return resultTransaction; 
 	}
 	
-	public void updateRecordGenericAreaCliente(String statusRecord){
-		try{
-			int idAreaCliente = tAreaCliente.getAreCliId();
-			tAreaCliente.clear();
-			tAreaCliente.setAreCliId(idAreaCliente);
-			tAreaCliente.setCodIndCam(statusRecord);
-			tAreaCliente.setProcId(process);
-			tAreaClienteManager.updateByPrimaryKeySelective(tAreaCliente);
-		}catch(Exception e){
-			
-		}
+	public void updateRecordGenericAreaCliente(String statusRecord)throws Exception{
+		int idAreaCliente = tAreaCliente.getAreCliId();
+		tAreaCliente.clear();
+		tAreaCliente.setAreCliId(idAreaCliente);
+		tAreaCliente.setCodIndCam(statusRecord);
+		tAreaCliente.setProcId(process);
+		tAreaClienteManager.updateByPrimaryKeySelective(tAreaCliente);
 	}
 	
-	public void updateRecordGenericCliente(String statusRecord){
-		try{
-			int idCliente = tCliente.getCliId();
-			tCliente.clear();
-			tCliente.setCliId(idCliente);
-			tCliente.setCodIndCam(statusRecord);
-			tCliente.setProcId(process);
-			tClienteManager.updateByPrimaryKeySelective(tCliente);
-		}catch(Exception e){
-			
-		}
+	public void updateRecordGenericCliente(String statusRecord)throws Exception{
+		int idCliente = tCliente.getCliId();
+		tCliente.clear();
+		tCliente.setCliId(idCliente);
+		tCliente.setCodIndCam(statusRecord);
+		tCliente.setProcId(process);
+		tClienteManager.updateByPrimaryKeySelective(tCliente);
 	}
 }

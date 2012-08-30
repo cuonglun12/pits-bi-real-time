@@ -6,25 +6,25 @@ import pe.com.j2techcon.bi.etl.domain.generic.TOrden;
 import pe.com.j2techcon.bi.etl.domain.generic.TOrdenExample;
 
 public interface TOrdenMapper {
-    int countByExample(TOrdenExample example);
+    int countByExample(TOrdenExample example) throws Exception;
 
-    int deleteByExample(TOrdenExample example);
+    int deleteByExample(TOrdenExample example) throws Exception;
 
-    int deleteByPrimaryKey(Integer ordId);
+    int deleteByPrimaryKey(Integer ordId) throws Exception;
 
-    int insert(TOrden record);
+    int insert(TOrden record) throws Exception;
 
-    int insertSelective(TOrden record);
+    int insertSelective(TOrden record) throws Exception;
 
-    List<TOrden> selectByExample(TOrdenExample example);
+    List<TOrden> selectByExample(TOrdenExample example) throws Exception;
 
-    TOrden selectByPrimaryKey(Integer ordId);
+    TOrden selectByPrimaryKey(Integer ordId) throws Exception;
 
-    int updateByExampleSelective(@Param("record") TOrden record, @Param("example") TOrdenExample example);
+    int updateByExampleSelective(@Param("record") TOrden record, @Param("example") TOrdenExample example) throws Exception;
 
-    int updateByExample(@Param("record") TOrden record, @Param("example") TOrdenExample example);
+    int updateByExample(@Param("record") TOrden record, @Param("example") TOrdenExample example) throws Exception;
 
-    int updateByPrimaryKeySelective(TOrden record);
+    int updateByPrimaryKeySelective(TOrden record) throws Exception;
 
-    int updateByPrimaryKey(TOrden record);
+    int updateByPrimaryKey(TOrden record) throws Exception;
 }

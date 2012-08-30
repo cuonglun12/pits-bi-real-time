@@ -10,55 +10,55 @@ public class TZonaManager {
 	
 	private TZonaMapper tZonaMapper;
 
-	public TZonaMapper gettZonaMapper() {
+	public TZonaMapper gettZonaMapper() throws Exception {
 		return tZonaMapper;
 	}
 
-	public void settZonaMapper(TZonaMapper tZonaMapper) {
+	public void settZonaMapper(TZonaMapper tZonaMapper) throws Exception {
 		this.tZonaMapper = tZonaMapper;
 	}
 
-	public int countByExample(TZonaExample example) {
+	public int countByExample(TZonaExample example) throws Exception {
 		return tZonaMapper.countByExample(example);
 	}
 
-	public int deleteByExample(TZonaExample example) {
+	public int deleteByExample(TZonaExample example) throws Exception {
 		return tZonaMapper.deleteByExample(example);
 	}
 
-	public int deleteByPrimaryKey(Integer zonId) {
+	public int deleteByPrimaryKey(Integer zonId) throws Exception {
 		return tZonaMapper.deleteByPrimaryKey(zonId);
 	}
 
-	public int insert(TZona record) {
+	public int insert(TZona record) throws Exception {
 		return tZonaMapper.insert(record);
 	}
 
-	public int insertSelective(TZona record) {
+	public int insertSelective(TZona record) throws Exception {
 		return tZonaMapper.insertSelective(record);
 	}
 
-	public List<TZona> selectByExample(TZonaExample example) {
+	public List<TZona> selectByExample(TZonaExample example) throws Exception {
 		return tZonaMapper.selectByExample(example);
 	}
 
-	public TZona selectByPrimaryKey(Integer zonId) {
+	public TZona selectByPrimaryKey(Integer zonId) throws Exception {
 		return tZonaMapper.selectByPrimaryKey(zonId);
 	}
 
-	public int updateByExampleSelective(TZona record, TZonaExample example) {
+	public int updateByExampleSelective(TZona record, TZonaExample example) throws Exception {
 		return tZonaMapper.updateByExampleSelective(record, example);
 	}
 
-	public int updateByExample(TZona record, TZonaExample example) {
+	public int updateByExample(TZona record, TZonaExample example) throws Exception {
 		return tZonaMapper.updateByExample(record, example);
 	}
 
-	public int updateByPrimaryKeySelective(TZona record) {
+	public int updateByPrimaryKeySelective(TZona record) throws Exception {
 		return tZonaMapper.updateByPrimaryKeySelective(record);
 	}
 
-	public int updateByPrimaryKey(TZona record) {
+	public int updateByPrimaryKey(TZona record) throws Exception {
 		return tZonaMapper.updateByPrimaryKey(record);
 	}
 

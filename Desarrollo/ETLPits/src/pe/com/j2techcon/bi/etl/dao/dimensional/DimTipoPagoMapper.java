@@ -6,25 +6,25 @@ import pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoPago;
 import pe.com.j2techcon.bi.etl.domain.dimensional.DimTipoPagoExample;
 
 public interface DimTipoPagoMapper {
-    int countByExample(DimTipoPagoExample example);
+    int countByExample(DimTipoPagoExample example) throws Exception;
 
-    int deleteByExample(DimTipoPagoExample example);
+    int deleteByExample(DimTipoPagoExample example) throws Exception;
 
-    int deleteByPrimaryKey(Integer tipoPagoKey);
+    int deleteByPrimaryKey(Integer tipoPagoKey) throws Exception;
 
-    int insert(DimTipoPago record);
+    int insert(DimTipoPago record) throws Exception;
 
-    int insertSelective(DimTipoPago record);
+    int insertSelective(DimTipoPago record) throws Exception;
 
-    List<DimTipoPago> selectByExample(DimTipoPagoExample example);
+    List<DimTipoPago> selectByExample(DimTipoPagoExample example) throws Exception;
 
-    DimTipoPago selectByPrimaryKey(Integer tipoPagoKey);
+    DimTipoPago selectByPrimaryKey(Integer tipoPagoKey) throws Exception;
 
-    int updateByExampleSelective(@Param("record") DimTipoPago record, @Param("example") DimTipoPagoExample example);
+    int updateByExampleSelective(@Param("record") DimTipoPago record, @Param("example") DimTipoPagoExample example) throws Exception;
 
-    int updateByExample(@Param("record") DimTipoPago record, @Param("example") DimTipoPagoExample example);
+    int updateByExample(@Param("record") DimTipoPago record, @Param("example") DimTipoPagoExample example) throws Exception;
 
-    int updateByPrimaryKeySelective(DimTipoPago record);
+    int updateByPrimaryKeySelective(DimTipoPago record) throws Exception;
 
-    int updateByPrimaryKey(DimTipoPago record);
+    int updateByPrimaryKey(DimTipoPago record) throws Exception;
 }
