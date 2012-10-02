@@ -139,7 +139,7 @@ $BODY$
 			bi_fec_num_cam = now()
 		WHERE
 			serieguia = OLD.serieguia
-			nroguia = OLD.nroguia;
+			AND nroguia = OLD.nroguia;
 		RETURN NULL;
 	END;
 $BODY$ LANGUAGE plpgsql;
@@ -166,7 +166,7 @@ $BODY$
 			bi_fec_num_cam = now()
 		WHERE
 			seriedevolucion = OLD.seriedevolucion
-			nrodevolucion = OLD.nrodevolucion;
+			AND nrodevolucion = OLD.nrodevolucion;
 		RETURN NULL;
 	END;
 $BODY$ LANGUAGE plpgsql;
@@ -180,7 +180,7 @@ $BODY$
 			bi_fec_num_cam = now()
 		WHERE
 			serie = OLD.serie
-			orden = OLD.orden;
+			AND orden = OLD.orden;
 		RETURN NULL;
 	END;
 $BODY$ LANGUAGE plpgsql;
