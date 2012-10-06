@@ -571,14 +571,41 @@ public class TCotizacionProcess {
 			tCotizacion.setCotiCodAmb(constantes.getParamSerialTipoAmbitoNoDefinido());
 		}
 		
-		//Tipo de servicio
-		tParametroExample.clear();
-		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeTipoServicio());
-		tParametroExample.createCriteria().andParamCodEqualTo(tCotizaciones.getCodservicio());
-		lstParametro = tParametroManager.selectByExample(tParametroExample);
-		if(lstParametro.size()>0){
-			tCotizacion.setCotiCodServ(lstParametro.get(0).getParamId());
+		//Codigo de servicio
+		//		tParametroExample.clear();
+		//		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeTipoServicio());
+		//		tParametroExample.createCriteria().andParamCodEqualTo(tCotizaciones.getCodservicio());
+		//		lstParametro = tParametroManager.selectByExample(tParametroExample);
+		//		if(lstParametro.size()>0){
+		//			tCotizacion.setCotiCodServ(lstParametro.get(0).getParamId());
+		//		}
+		
+		if(constantes.getParamCodeTipoServicioCorreo1Dia().equals(tCotizaciones.getCodservicio())){
+			tCotizacion.setCotiCodServ(constantes.getParamSerialTipoServicioCorreo1Dia());
+		}else if(constantes.getParamCodeTipoServicioCorreo2Dias().equals(tCotizaciones.getCodservicio())){
+			tCotizacion.setCotiCodServ(constantes.getParamSerialTipoServicioCorreo2Dias());
+		}else if(constantes.getParamCodeTipoServicioCorreo3Dias().equals(tCotizaciones.getCodservicio())){
+			tCotizacion.setCotiCodServ(constantes.getParamSerialTipoServicioCorreo3Dias());
+		}else if(constantes.getParamCodeTipoServicioCorreo4Dias().equals(tCotizaciones.getCodservicio())){
+			tCotizacion.setCotiCodServ(constantes.getParamSerialTipoServicioCorreo4Dias());
+		}else if(constantes.getParamCodeTipoServicioCorreo5Dias().equals(tCotizaciones.getCodservicio())){
+			tCotizacion.setCotiCodServ(constantes.getParamSerialTipoServicioCorreo5Dias());
+		}else if(constantes.getParamCodeTipoServicioExpress25Dias().equals(tCotizaciones.getCodservicio())){
+			tCotizacion.setCotiCodServ(constantes.getParamSerialTipoServicioExpress25Dias());
+		}else if(constantes.getParamCodeTipoServicioEconExp1530Dias().equals(tCotizaciones.getCodservicio())){
+			tCotizacion.setCotiCodServ(constantes.getParamSerialTipoServicioEconExp1530Dias());
+		}else if(constantes.getParamCodeTipoServicioCorreo1530Dias().equals(tCotizaciones.getCodservicio())){
+			tCotizacion.setCotiCodServ(constantes.getParamSerialTipoServicioCorreo1530Dias());
+		}else if(constantes.getParamCodeTipoServicioCorreo4DiasAMas().equals(tCotizaciones.getCodservicio())){
+			tCotizacion.setCotiCodServ(constantes.getParamSerialTipoServicioCorreo4DiasAMas());
+		}else if(constantes.getParamCodeTipoServicioVolanteoPersonalizado().equals(tCotizaciones.getCodservicio())){
+			tCotizacion.setCotiCodServ(constantes.getParamSerialTipoServicioVolanteoPersonalizado());
+		}else if(constantes.getParamCodeTipoServicioVolanteoSimple().equals(tCotizaciones.getCodservicio())){
+			tCotizacion.setCotiCodServ(constantes.getParamSerialTipoServicioVolanteoSimple());
+		}else {
+			tCotizacion.setCotiCodServ(constantes.getParamSerialTipoServicioNoDefinido());
 		}
+			
 
 		//Tipo de negocio
 		if(constantes.getParamCodeTipoNegocioMensajeria().equals(tCotizaciones.getCodnegocio())){

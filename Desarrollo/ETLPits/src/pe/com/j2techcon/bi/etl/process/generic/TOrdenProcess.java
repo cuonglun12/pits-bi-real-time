@@ -695,12 +695,38 @@ public class TOrdenProcess {
 				tOrden.setOrdCodTipRep(constantes.getParamSerialTipoRepartoNoDefinido());
 			}
 			
-			//Tipo de servicio
-			tServicioExample.clear();
-			tServicioExample.createCriteria().andServCodEqualTo(ordenes.getCodservicio());
-			lstServicio = tServicioManager.selectByExample(tServicioExample);
-			if(lstServicio.size()>0){
-				tOrden.setServId(lstServicio.get(0).getServId());
+			//Codigo de servicio
+			//			tServicioExample.clear();
+			//			tServicioExample.createCriteria().andServCodEqualTo(ordenes.getCodservicio());
+			//			lstServicio = tServicioManager.selectByExample(tServicioExample);
+			//			if(lstServicio.size()>0){
+			//				tOrden.setServId(lstServicio.get(0).getServId());
+			//			}
+			
+			if(constantes.getParamCodeTipoServicioCorreo1Dia().equals(ordenes.getCodservicio())){
+				tOrden.setServId(constantes.getParamSerialTipoServicioCorreo1Dia());
+			}else if(constantes.getParamCodeTipoServicioCorreo2Dias().equals(ordenes.getCodservicio())){
+				tOrden.setServId(constantes.getParamSerialTipoServicioCorreo2Dias());
+			}else if(constantes.getParamCodeTipoServicioCorreo3Dias().equals(ordenes.getCodservicio())){
+				tOrden.setServId(constantes.getParamSerialTipoServicioCorreo3Dias());
+			}else if(constantes.getParamCodeTipoServicioCorreo4Dias().equals(ordenes.getCodservicio())){
+				tOrden.setServId(constantes.getParamSerialTipoServicioCorreo4Dias());
+			}else if(constantes.getParamCodeTipoServicioCorreo5Dias().equals(ordenes.getCodservicio())){
+				tOrden.setServId(constantes.getParamSerialTipoServicioCorreo5Dias());
+			}else if(constantes.getParamCodeTipoServicioExpress25Dias().equals(ordenes.getCodservicio())){
+				tOrden.setServId(constantes.getParamSerialTipoServicioExpress25Dias());
+			}else if(constantes.getParamCodeTipoServicioEconExp1530Dias().equals(ordenes.getCodservicio())){
+				tOrden.setServId(constantes.getParamSerialTipoServicioEconExp1530Dias());
+			}else if(constantes.getParamCodeTipoServicioCorreo1530Dias().equals(ordenes.getCodservicio())){
+				tOrden.setServId(constantes.getParamSerialTipoServicioCorreo1530Dias());
+			}else if(constantes.getParamCodeTipoServicioCorreo4DiasAMas().equals(ordenes.getCodservicio())){
+				tOrden.setServId(constantes.getParamSerialTipoServicioCorreo4DiasAMas());
+			}else if(constantes.getParamCodeTipoServicioVolanteoPersonalizado().equals(ordenes.getCodservicio())){
+				tOrden.setServId(constantes.getParamSerialTipoServicioVolanteoPersonalizado());
+			}else if(constantes.getParamCodeTipoServicioVolanteoSimple().equals(ordenes.getCodservicio())){
+				tOrden.setServId(constantes.getParamSerialTipoServicioVolanteoSimple());
+			}else {
+				tOrden.setServId(constantes.getParamSerialTipoServicioNoDefinido());
 			}
 			
 			//Codigo del producto
