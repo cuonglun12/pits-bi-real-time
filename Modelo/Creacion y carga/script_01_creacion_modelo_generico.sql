@@ -12,6 +12,8 @@ drop index IDX_ARE_CLI_00;
 
 drop table T_AREA_CLIENTE;
 
+drop index IDX_CARG_10;
+
 drop index IDX_CARG_09;
 
 drop index IDX_CARG_08;
@@ -74,6 +76,8 @@ drop index IDX_CLI_00;
 
 drop table T_CLIENTE;
 
+drop index IDX_COTI_11;
+
 drop index IDX_COTI_10;
 
 drop index IDX_COTI_09;
@@ -97,6 +101,8 @@ drop index IDX_COTI_01;
 drop index IDX_COTI_00;
 
 drop table T_COTIZACION;
+
+drop index IDX_DESP_11;
 
 drop index IDX_DESP_10;
 
@@ -153,6 +159,8 @@ drop index IDX_LIQ_01;
 drop index IDX_LIQ_00;
 
 drop table T_LIQUIDACION;
+
+drop index IDX_ORD_15;
 
 drop index IDX_ORD_14;
 
@@ -305,6 +313,7 @@ create table T_CARGO (
    ORD_SERIE_DOC        VARCHAR(6)           not null default '-',
    ORD_NUM_DOC          VARCHAR(10)          not null default '-',
    CARG_CORR            INT4                 not null default 0,
+   CARG_COD_COMP        VARCHAR(50)          not null default '-',
    ORD_ID               INT4                 not null default 0,
    ZON_ID               INT4                 not null default 0,
    ZON_ID_NEW           INT4                 not null default 0,
@@ -395,6 +404,13 @@ CARG_FEC_DES
 /*==============================================================*/
 create  index IDX_CARG_09 on T_CARGO (
 CARG_FEC_REC
+);
+
+/*==============================================================*/
+/* Index: IDX_CARG_10                                           */
+/*==============================================================*/
+create  index IDX_CARG_10 on T_CARGO (
+CARG_COD_COMP
 );
 
 /*==============================================================*/
@@ -599,6 +615,7 @@ create table T_COTIZACION (
    COTI_COD_TIP_DOC     INT4                 not null default 50,
    COTI_SERIE_DOC       VARCHAR(6)           not null default '-',
    COTI_NUM_DOC         VARCHAR(10)          not null default '-',
+   COTI_COD_COMP        VARCHAR(50)          not null default '-',
    COTI_COD_EST         INT4                 not null default 60,
    COTI_FEC_APRO        DATE                 not null default '1900-01-01',
    COTI_FEC_INI         DATE                 not null default '1900-01-01',
@@ -689,6 +706,13 @@ PROD_ID
 );
 
 /*==============================================================*/
+/* Index: IDX_COTI_11                                           */
+/*==============================================================*/
+create  index IDX_COTI_11 on T_COTIZACION (
+COTI_COD_COMP
+);
+
+/*==============================================================*/
 /* Table: T_DESPACHO                                            */
 /*==============================================================*/
 create table T_DESPACHO (
@@ -696,6 +720,7 @@ create table T_DESPACHO (
    DESP_COD_TIP_DOC     INT4                 not null default 50,
    DESP_SERIE_DOC       VARCHAR(6)           not null default '-',
    DESP_NUMERO_DOC      VARCHAR(10)          not null default '-',
+   DESP_COD_COMP        VARCHAR(50)          not null default '-',
    SED_ID               INT4                 not null default 0,
    ZON_ID               INT4                 not null default 0,
    EMP_CAT_ID           INT4                 not null default 0,
@@ -791,6 +816,13 @@ DESP_FEC_RET_PRO
 /*==============================================================*/
 create  index IDX_DESP_10 on T_DESPACHO (
 DESP_FEC_RET_REA
+);
+
+/*==============================================================*/
+/* Index: IDX_DESP_11                                           */
+/*==============================================================*/
+create  index IDX_DESP_11 on T_DESPACHO (
+DESP_COD_COMP
 );
 
 /*==============================================================*/
@@ -960,6 +992,7 @@ create table T_ORDEN (
    ORD_COD_TIP_DOC      INT4                 not null default 50,
    ORD_SERIE_DOC        VARCHAR(6)           not null default '-',
    ORD_NUM_DOC          VARCHAR(10)          not null default '-',
+   ORD_COD_COMP         VARCHAR(50)          not null default '-',
    ORD_TIP_CAMBIO       NUMERIC(6,3)         not null default 1,
    ORD_CNT_CARGOS       INT4                 not null default 0,
    ORD_IND_FAC          INT4                 not null default 0,
@@ -1086,6 +1119,13 @@ ORD_NUM_DOC
 /*==============================================================*/
 create  index IDX_ORD_14 on T_ORDEN (
 ORD_FEC_FAC
+);
+
+/*==============================================================*/
+/* Index: IDX_ORD_15                                           */
+/*==============================================================*/
+create  index IDX_ORD_15 on T_ORDEN (
+ORD_COD_COMP
 );
 
 /*==============================================================*/

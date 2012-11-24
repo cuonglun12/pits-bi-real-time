@@ -11,7 +11,7 @@ CREATE OR REPLACE FUNCTION bi_proc_update_t_cotizaciones()
 $BODY$
 	BEGIN
 		UPDATE t_cotizaciones
-		SET bi_fec_num_cam = now()
+		SET bi_fec_num_cam = now(), bi_cod_ind_cam = '2'
 		WHERE
 			coserie = OLD.coserie
 			AND conumero = OLD.conumero;
@@ -77,7 +77,7 @@ $BODY$
 	BEGIN
 		UPDATE areacliente
 		SET
-			bi_fec_num_cam = now()
+			bi_fec_num_cam = now(), bi_cod_ind_cam = '2'
 		WHERE
 			codcliente = OLD.codcliente
 			AND codareacliente = OLD.codareacliente;
@@ -91,7 +91,7 @@ $BODY$
 	BEGIN
 		UPDATE detordenes
 		SET
-			bi_fec_num_cam = now()
+			bi_fec_num_cam = now(), bi_cod_ind_cam = '2'
 		WHERE
 			serie = OLD.serie
 			AND orden = OLD.orden
@@ -106,7 +106,7 @@ $BODY$
 	BEGIN
 		UPDATE detdespacho
 		SET
-			bi_fec_num_cam = now()
+			bi_fec_num_cam = now(), bi_cod_ind_cam = '2'
 		WHERE
 			serieguia = OLD.serieguia
 			AND nroguia = OLD.nroguia
@@ -123,7 +123,7 @@ $BODY$
 	BEGIN
 		UPDATE cliente
 		SET
-			bi_fec_num_cam = now()
+			bi_fec_num_cam = now(), bi_cod_ind_cam = '2'
 		WHERE
 			codcliente = OLD.codcliente;
 		RETURN NULL;
@@ -136,7 +136,7 @@ $BODY$
 	BEGIN
 		UPDATE despacho
 		SET
-			bi_fec_num_cam = now()
+			bi_fec_num_cam = now(), bi_cod_ind_cam = '2'
 		WHERE
 			serieguia = OLD.serieguia
 			AND nroguia = OLD.nroguia;
@@ -150,7 +150,7 @@ $BODY$
 	BEGIN
 		UPDATE personal
 		SET
-			bi_fec_num_cam = now()
+			bi_fec_num_cam = now(), bi_cod_ind_cam = '2'
 		WHERE
 			codigopersonal = OLD.codigopersonal;
 		RETURN NULL;
@@ -163,7 +163,7 @@ $BODY$
 	BEGIN
 		UPDATE t_liquidacion
 		SET
-			bi_fec_num_cam = now()
+			bi_fec_num_cam = now(), bi_cod_ind_cam = '2'
 		WHERE
 			seriedevolucion = OLD.seriedevolucion
 			AND nrodevolucion = OLD.nrodevolucion;
@@ -177,7 +177,7 @@ $BODY$
 	BEGIN
 		UPDATE ordenes
 		SET
-			bi_fec_num_cam = now()
+			bi_fec_num_cam = now(), bi_cod_ind_cam = '2'
 		WHERE
 			serie = OLD.serie
 			AND orden = OLD.orden;
@@ -191,7 +191,7 @@ $BODY$
 	BEGIN
 		UPDATE t_productos
 		SET
-			bi_fec_num_cam = now()
+			bi_fec_num_cam = now(), bi_cod_ind_cam = '2'
 		WHERE
 			codproducto = OLD.codproducto;
 		RETURN NULL;
@@ -204,7 +204,7 @@ $BODY$
 	BEGIN
 		UPDATE sedesprov
 		SET
-			bi_fec_num_cam = now()
+			bi_fec_num_cam = now(), bi_cod_ind_cam = '2'
 		WHERE
 			codsede = OLD.codsede;
 		RETURN NULL;
@@ -217,7 +217,7 @@ $BODY$
 	BEGIN
 		UPDATE t_servicios
 		SET
-			bi_fec_num_cam = now()
+			bi_fec_num_cam = now(), bi_cod_ind_cam = '2'
 		WHERE
 			codservicio = OLD.codservicio;
 		RETURN NULL;
@@ -230,7 +230,7 @@ $BODY$
 	BEGIN
 		UPDATE ubigeos
 		SET
-			bi_fec_num_cam = now()
+			bi_fec_num_cam = now(), bi_cod_ind_cam = '2'
 		WHERE
 			ubigeo = OLD.ubigeo;
 		RETURN NULL;
@@ -243,7 +243,7 @@ $BODY$
 	BEGIN
 		UPDATE zonas
 		SET
-			bi_fec_num_cam = now()
+			bi_fec_num_cam = now(), bi_cod_ind_cam = '2'
 		WHERE
 			codzona = OLD.codzona;
 		RETURN NULL;
