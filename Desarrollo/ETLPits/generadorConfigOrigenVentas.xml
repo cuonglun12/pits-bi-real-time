@@ -19,7 +19,7 @@
 		<javaModelGenerator targetPackage="pe.com.j2techcon.bi.etl.domain.origen"
 			targetProject="ETLPits">
 			<property name="enableSubPackages" value="true" />
-			<property name="trimStrings" value="true" />
+			<property name="trimStrings" value="false" />
 		</javaModelGenerator>
 
 		<sqlMapGenerator targetPackage="pe.com.j2techcon.bi.etl.dao.sqlmap.origen"
