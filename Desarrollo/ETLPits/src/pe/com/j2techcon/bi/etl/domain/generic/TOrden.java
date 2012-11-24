@@ -28,6 +28,8 @@ public class TOrden {
 
     private String ordNumDoc;
 
+    private String ordCodComp;
+
     private BigDecimal ordTipCambio;
 
     private Integer ordCntCargos;
@@ -158,6 +160,14 @@ public class TOrden {
 
     public void setOrdNumDoc(String ordNumDoc) {
         this.ordNumDoc = ordNumDoc == null ? null : ordNumDoc.trim();
+    }
+
+    public String getOrdCodComp() {
+        return ordCodComp;
+    }
+
+    public void setOrdCodComp(String ordCodComp) {
+        this.ordCodComp = ordCodComp == null ? null : ordCodComp.trim();
     }
 
     public BigDecimal getOrdTipCambio() {
@@ -304,7 +314,39 @@ public class TOrden {
         this.procId = procId;
     }
     
-    public void clear(){}
+    public void clear(){
+    	ordId=null;
+    	cotiId=null;
+    	codAreCli=null;
+    	empCatId=null;
+    	ordCodTipRep=null;
+    	servId=null;
+    	prodId=null;
+    	ordCodTipPag=null;
+    	ordCodTipMon=null;
+    	ordCodTipDoc=null;
+    	ordSerieDoc=null;
+    	ordNumDoc=null;
+    	ordCodComp=null;
+    	ordTipCambio=null;
+    	ordCntCargos=null;
+    	ordIndFac=null;
+    	ordFecIni=null;
+    	ordFecVen=null;
+    	ordFecCie=null;
+    	ordFecDev=null;
+    	ordFecLiq=null;
+    	ordFecFac=null;
+    	ordImporte=null;
+    	ordDescuento=null;
+    	ordVenta=null;
+    	ordIgv=null;
+    	ordTotal=null;
+    	ordCodEst=null;
+    	fecNumCam=null;
+    	codIndCam=null;
+    	procId=null;
+    }
 
 	@Override
 	public String toString() {
@@ -314,13 +356,14 @@ public class TOrden {
 				+ ", ordCodTipPag=" + ordCodTipPag + ", ordCodTipMon="
 				+ ordCodTipMon + ", ordCodTipDoc=" + ordCodTipDoc
 				+ ", ordSerieDoc=" + ordSerieDoc + ", ordNumDoc=" + ordNumDoc
-				+ ", ordTipCambio=" + ordTipCambio + ", ordCntCargos="
-				+ ordCntCargos + ", ordIndFac=" + ordIndFac + ", ordFecIni="
-				+ ordFecIni + ", ordFecVen=" + ordFecVen + ", ordFecCie="
-				+ ordFecCie + ", ordFecDev=" + ordFecDev + ", ordFecLiq="
-				+ ordFecLiq + ", ordFecFac=" + ordFecFac + ", ordImporte="
-				+ ordImporte + ", ordDescuento=" + ordDescuento + ", ordVenta="
-				+ ordVenta + ", ordIgv=" + ordIgv + ", ordTotal=" + ordTotal
+				+ ", ordCodComp=" + ordCodComp + ", ordTipCambio="
+				+ ordTipCambio + ", ordCntCargos=" + ordCntCargos
+				+ ", ordIndFac=" + ordIndFac + ", ordFecIni=" + ordFecIni
+				+ ", ordFecVen=" + ordFecVen + ", ordFecCie=" + ordFecCie
+				+ ", ordFecDev=" + ordFecDev + ", ordFecLiq=" + ordFecLiq
+				+ ", ordFecFac=" + ordFecFac + ", ordImporte=" + ordImporte
+				+ ", ordDescuento=" + ordDescuento + ", ordVenta=" + ordVenta
+				+ ", ordIgv=" + ordIgv + ", ordTotal=" + ordTotal
 				+ ", ordCodEst=" + ordCodEst + ", fecNumCam=" + fecNumCam
 				+ ", codIndCam=" + codIndCam + ", procId=" + procId + "]";
 	}

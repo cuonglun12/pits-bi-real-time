@@ -244,10 +244,7 @@ public class TServicioProcess {
 			tServiciosExample.clear();
 			
 			//Se trabajara solo con las ordenes del negocio de mensajeria local
-			tServiciosExample.createCriteria().andCodambitoEqualTo(constantes.getParamCodeTipoAmbitoLocal());
-			tServiciosExample.createCriteria().andCodnegocioEqualTo(constantes.getParamCodeTipoNegocioMensajeria());
-			tServiciosExample.createCriteria().andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom));
-			tServiciosExample.createCriteria().andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil));
+			tServiciosExample.createCriteria().andCodambitoEqualTo(constantes.getParamCodeTipoAmbitoLocal()).andCodnegocioEqualTo(constantes.getParamCodeTipoNegocioMensajeria()).andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom)).andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil));
 			tServiciosExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
 
 			List<TServicios> lstServicios = tServiciosManager.selectByExample(tServiciosExample);

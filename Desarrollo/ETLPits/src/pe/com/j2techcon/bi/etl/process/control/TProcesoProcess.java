@@ -216,10 +216,11 @@ public class TProcesoProcess {
 		statesProceso.add(constantes.getStateProcessCompletedErrors());
 		
 		tProcesoExample.clear();
-		tProcesoExample.createCriteria().andProcEstIn(statesProceso);
 		
 		if(!typeLoadProcess.equals(constantes.getValueStringDefault())){
-			tProcesoExample.createCriteria().andProcTipEqualTo(typeLoadProcess);
+			tProcesoExample.createCriteria().andProcEstIn(statesProceso).andProcTipEqualTo(typeLoadProcess);
+		}else{
+			tProcesoExample.createCriteria().andProcEstIn(statesProceso);
 		}
 		
 		tProcesoExample.setOrderByClause("proc_id desc");
@@ -269,9 +270,7 @@ public class TProcesoProcess {
 		statesProceso.add(constantes.getStateProcessCompletedErrors());
 		
 		tProcesoExample.clear();
-		tProcesoExample.createCriteria().andProcIdLessThan(idProcess);
-		tProcesoExample.createCriteria().andProcTipEqualTo(typeLoadProcess);
-		tProcesoExample.createCriteria().andProcEstIn(statesProceso);
+		tProcesoExample.createCriteria().andProcIdLessThan(idProcess).andProcTipEqualTo(typeLoadProcess).andProcEstIn(statesProceso);
 		
 		return tProcesoManager.countByExample(tProcesoExample)>0;
 	}
@@ -736,8 +735,7 @@ public class TProcesoProcess {
 		statesProceso.clear(); 
 		statesProceso.add(constantes.getStateProcessCompletedCorrectly());
 		statesProceso.add(constantes.getStateProcessCompletedErrors());
-		tProcesoDetalleExample.createCriteria().andProcDetEstNotIn(statesProceso);
-		tProcesoDetalleExample.createCriteria().andProcIdEqualTo(idProcess);
+		tProcesoDetalleExample.createCriteria().andProcDetEstNotIn(statesProceso).andProcIdEqualTo(idProcess);
 		
 		tProcesoDetalleManager.updateByExampleSelective(tProcesoDetalle, tProcesoDetalleExample);
 	}

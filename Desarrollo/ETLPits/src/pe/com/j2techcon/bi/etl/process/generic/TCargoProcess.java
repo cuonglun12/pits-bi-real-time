@@ -1,8 +1,10 @@
 package pe.com.j2techcon.bi.etl.process.generic;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
@@ -71,311 +73,21 @@ public class TCargoProcess {
 	private TCargoManager tCargoManager;
 	private TZonaManager tZonaManager;
 	
+	private Map<String,Integer> mpZona;
+	private Map<String,Integer> mpTipoIngreso;
+	private Map<String,Integer> mpEstadoCargo;
+	private Map<String,Integer> mpOrden;
+	
 	private List<TParametro> lstParametro;
 	private List<TProducto> lstProducto;
 	private List<String> lstLista;
 	private List<TOrden> lstOrden;
 	private List<TZona> lstZona;
+	private List<String> lstOrdenes;
 	
 	private Constantes constantes;
 
 	static Logger log = Logger.getLogger(TCargoProcess.class);
-	
-	public BeanFactory getFactory() {
-		return factory;
-	}
-
-	public void setFactory(BeanFactory factory) {
-		this.factory = factory;
-	}
-
-	public int getSizePage() {
-		return sizePage;
-	}
-
-	public void setSizePage(int sizePage) {
-		this.sizePage = sizePage;
-	}
-
-	public long getDateTimeFrom() {
-		return dateTimeFrom;
-	}
-
-	public void setDateTimeFrom(long dateTimeFrom) {
-		this.dateTimeFrom = dateTimeFrom;
-	}
-
-	public long getDateTimeUntil() {
-		return dateTimeUntil;
-	}
-
-	public void setDateTimeUntil(long dateTimeUntil) {
-		this.dateTimeUntil = dateTimeUntil;
-	}
-
-	public String getTypeProcess() {
-		return typeProcess;
-	}
-
-	public void setTypeProcess(String typeProcess) {
-		this.typeProcess = typeProcess;
-	}
-
-	public int getProcess() {
-		return process;
-	}
-
-	public void setProcess(int process) {
-		this.process = process;
-	}
-
-	public int getRecordTotal() {
-		return recordTotal;
-	}
-
-	public void setRecordTotal(int recordTotal) {
-		this.recordTotal = recordTotal;
-	}
-
-	public int getRecordProcessed() {
-		return recordProcessed;
-	}
-
-	public void setRecordProcessed(int recordProcessed) {
-		this.recordProcessed = recordProcessed;
-	}
-
-	public int getRecordRejected() {
-		return recordRejected;
-	}
-
-	public void setRecordRejected(int recordRejected) {
-		this.recordRejected = recordRejected;
-	}
-
-	public int getResultProcess() {
-		return resultProcess;
-	}
-
-	public void setResultProcess(int resultProcess) {
-		this.resultProcess = resultProcess;
-	}
-
-	public int getResultTransaction() {
-		return resultTransaction;
-	}
-
-	public void setResultTransaction(int resultTransaction) {
-		this.resultTransaction = resultTransaction;
-	}
-
-	public String getStateRecordOrigen() {
-		return stateRecordOrigen;
-	}
-
-	public void setStateRecordOrigen(String stateRecordOrigen) {
-		this.stateRecordOrigen = stateRecordOrigen;
-	}
-
-	public String getStateRecordGeneric() {
-		return stateRecordGeneric;
-	}
-
-	public void setStateRecordGeneric(String stateRecordGeneric) {
-		this.stateRecordGeneric = stateRecordGeneric;
-	}
-
-	public TParametro gettParametro() {
-		return tParametro;
-	}
-
-	public void settParametro(TParametro tParametro) {
-		this.tParametro = tParametro;
-	}
-
-	public TParametroExample gettParametroExample() {
-		return tParametroExample;
-	}
-
-	public void settParametroExample(TParametroExample tParametroExample) {
-		this.tParametroExample = tParametroExample;
-	}
-
-	public TProducto gettProducto() {
-		return tProducto;
-	}
-
-	public void settProducto(TProducto tProducto) {
-		this.tProducto = tProducto;
-	}
-
-	public TProductoExample gettProductoExample() {
-		return tProductoExample;
-	}
-
-	public void settProductoExample(TProductoExample tProductoExample) {
-		this.tProductoExample = tProductoExample;
-	}
-
-	public TOrden gettOrden() {
-		return tOrden;
-	}
-
-	public void settOrden(TOrden tOrden) {
-		this.tOrden = tOrden;
-	}
-
-	public TOrdenExample gettOrdenExample() {
-		return tOrdenExample;
-	}
-
-	public void settOrdenExample(TOrdenExample tOrdenExample) {
-		this.tOrdenExample = tOrdenExample;
-	}
-
-	public TZona gettZona() {
-		return tZona;
-	}
-
-	public void settZona(TZona tZona) {
-		this.tZona = tZona;
-	}
-
-	public TZonaExample gettZonaExample() {
-		return tZonaExample;
-	}
-
-	public void settZonaExample(TZonaExample tZonaExample) {
-		this.tZonaExample = tZonaExample;
-	}
-
-	public Detordenes getDetordenes() {
-		return detordenes;
-	}
-
-	public void setDetordenes(Detordenes detordenes) {
-		this.detordenes = detordenes;
-	}
-
-	public DetordenesExample getDetordenesExample() {
-		return detordenesExample;
-	}
-
-	public void setDetordenesExample(DetordenesExample detordenesExample) {
-		this.detordenesExample = detordenesExample;
-	}
-
-	public TCargo gettCargo() {
-		return tCargo;
-	}
-
-	public void settCargo(TCargo tCargo) {
-		this.tCargo = tCargo;
-	}
-
-	public TCargoExample gettCargoExample() {
-		return tCargoExample;
-	}
-
-	public void settCargoExample(TCargoExample tCargoExample) {
-		this.tCargoExample = tCargoExample;
-	}
-
-	public TParametroManager gettParametroManager() {
-		return tParametroManager;
-	}
-
-	public void settParametroManager(TParametroManager tParametroManager) {
-		this.tParametroManager = tParametroManager;
-	}
-
-	public TProductoManager gettProductoManager() {
-		return tProductoManager;
-	}
-
-	public void settProductoManager(TProductoManager tProductoManager) {
-		this.tProductoManager = tProductoManager;
-	}
-
-	public TOrdenManager gettOrdenManager() {
-		return tOrdenManager;
-	}
-
-	public void settOrdenManager(TOrdenManager tOrdenManager) {
-		this.tOrdenManager = tOrdenManager;
-	}
-
-	public DetordenesManager getDetordenesManager() {
-		return detordenesManager;
-	}
-
-	public void setDetordenesManager(DetordenesManager detordenesManager) {
-		this.detordenesManager = detordenesManager;
-	}
-
-	public TCargoManager gettCargoManager() {
-		return tCargoManager;
-	}
-
-	public void settCargoManager(TCargoManager tCargoManager) {
-		this.tCargoManager = tCargoManager;
-	}
-
-	public TZonaManager gettZonaManager() {
-		return tZonaManager;
-	}
-
-	public void settZonaManager(TZonaManager tZonaManager) {
-		this.tZonaManager = tZonaManager;
-	}
-
-	public List<TParametro> getLstParametro() {
-		return lstParametro;
-	}
-
-	public void setLstParametro(List<TParametro> lstParametro) {
-		this.lstParametro = lstParametro;
-	}
-
-	public List<TProducto> getLstProducto() {
-		return lstProducto;
-	}
-
-	public void setLstProducto(List<TProducto> lstProducto) {
-		this.lstProducto = lstProducto;
-	}
-
-	public List<String> getLstLista() {
-		return lstLista;
-	}
-
-	public void setLstLista(List<String> lstLista) {
-		this.lstLista = lstLista;
-	}
-
-	public List<TOrden> getLstOrden() {
-		return lstOrden;
-	}
-
-	public void setLstOrden(List<TOrden> lstOrden) {
-		this.lstOrden = lstOrden;
-	}
-
-	public List<TZona> getLstZona() {
-		return lstZona;
-	}
-
-	public void setLstZona(List<TZona> lstZona) {
-		this.lstZona = lstZona;
-	}
-
-	public Constantes getConstantes() {
-		return constantes;
-	}
-
-	public void setConstantes(Constantes constantes) {
-		this.constantes = constantes;
-	}
 
 	public TCargoProcess(BeanFactory factory, int sizePage, long dateTimeFrom,
 			long dateTimeUntil, String typeProcess, int process) throws Exception{
@@ -430,26 +142,78 @@ public class TCargoProcess {
 		lstLista = new ArrayList<String>();
 		lstOrden = new ArrayList<TOrden>();
 		lstZona = new ArrayList<TZona>();
+
+		mpZona = new HashMap<String, Integer>();
+		lstZona = tZonaManager.selectByExample(null);
+		for (Iterator<TZona> iterator = lstZona.iterator(); iterator.hasNext();) {
+			tZona = iterator.next();
+			mpZona.put(tZona.getZonCod(), tZona.getZonId());
+		}
 		
-		int offset = 0;
+		mpTipoIngreso = new HashMap<String, Integer>();
+		tParametroExample.clear();
+		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeTipoIngreso());
+		lstParametro = tParametroManager.selectByExample(tParametroExample);
+		for (Iterator<TParametro> iterator = lstParametro.iterator(); iterator.hasNext();) {
+			tParametro = iterator.next();
+			mpTipoIngreso.put(tParametro.getParamCod(),tParametro.getParamId());
+		}
+		
+		mpEstadoCargo = new HashMap<String, Integer>();
+		tParametroExample.clear();
+		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCargo());
+		lstParametro = tParametroManager.selectByExample(tParametroExample);
+		for (Iterator<TParametro> iterator = lstParametro.iterator(); iterator.hasNext();) {
+			tParametro = iterator.next();
+			mpEstadoCargo.put(tParametro.getParamCod(),tParametro.getParamId());
+		}
+		
+		mpOrden = new HashMap<String, Integer>();
+		
+		List<String> lstStateRecord = new ArrayList<String>();
+		lstStateRecord.add(constantes.getStateRecordNew());
+		lstStateRecord.add(constantes.getStateRecordUpdated());
+		
+		//int offset = 0;
+		
+		List<Detordenes> lstCargo = new ArrayList<Detordenes>();
 		
 		while (true) {
 
 			detordenesExample.clear();
-			detordenesExample.createCriteria().andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom));
-			detordenesExample.createCriteria().andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil));
-			detordenesExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
+			detordenesExample.createCriteria().andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom)).andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil)).andBiCodIndCamIn(lstStateRecord);
+			//detordenesExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
+			detordenesExample.setPaginationByClause(" limit " + constantes.getSizePage());
 			
-			List<Detordenes> lstCargo = detordenesManager.selectByExample(detordenesExample);
+			lstCargo = detordenesManager.selectByExample(detordenesExample);
 
 			if (lstCargo.size() > 0) {
+				
+				mpOrden.clear();
+				lstOrdenes = Util.getStringListFromObjectList(lstCargo,"serie-orden","-");
+				
+				if(lstOrdenes.size()>0){
+					tOrdenExample.clear();
+					tOrdenExample.createCriteria().andOrdCodCompIn(lstOrdenes);
+					lstOrden = tOrdenManager.selectByExample(tOrdenExample);
+					for (Iterator<TOrden> iterator = lstOrden.iterator(); iterator.hasNext();) {
+						tOrden = iterator.next();
+						mpOrden.put(tOrden.getOrdCodComp(),tOrden.getOrdId());
+					}
+				}
+				
 				for (Iterator<Detordenes> iterator = lstCargo.iterator(); iterator.hasNext();) {
 					detordenes = iterator.next();
 					tCargo.clear();
 					processRecordCargo();
 				}
-				offset = offset + constantes.getSizePage();
+				lstCargo.clear();
+				//offset = offset + constantes.getSizePage();
 			} else {
+				
+				lstStateRecord.clear();
+				lstCargo.clear();
+				
 				tParametro.clear();
 				tParametroExample.clear();
 
@@ -472,9 +236,14 @@ public class TCargoProcess {
 				lstProducto.clear();
 				lstLista.clear();
 				lstOrden.clear();
+				lstOrdenes.clear();
 				lstZona.clear();
+				
+				mpEstadoCargo.clear();
+				mpTipoIngreso.clear();
+				mpZona.clear();
+				mpOrden.clear();
 
-				offset = 0;
 				break;
 			}
 		}
@@ -494,8 +263,8 @@ public class TCargoProcess {
 	public void processRecordCargo() throws Exception{
 		
 		completeFieldCargo();
-		//Identificamos si el detalle corresponde a una orden del negocio de mensajeria local
-		if(tOrden.getOrdId() != 0){
+
+		if(tCargo.getOrdId() != null){
 			if(typeProcess.equals(constantes.getTypeProcessSimple())){
 				if(tCargo.getCodIndCam().equals(constantes.getStateRecordNew())){
 					if(insertRecordGenericCargo()> constantes.getResultTransactionNoResult()){
@@ -538,108 +307,50 @@ public class TCargoProcess {
 
 	public void completeFieldCargo() throws Exception{
 
-		//Identificamos si el detalle corresponde a una orden del negocio de mensajeria local
-		//Id de la orden
-		tCargo.setOrdId(getOrdId(detordenes.getSerie(), detordenes.getOrden()));
-		
-		if(tCargo.getOrdId() != 0){
-			//Id de la orden
+		tCargo.setOrdId(getOrdId(detordenes.getSerie() + "-" + detordenes.getOrden()));
+
+		if(tCargo.getOrdId() != null){
+
 			tCargo.setOrdCodTipDoc(constantes.getParamSerialTipoDocumentoTrabajoNoDefinido());
 			tCargo.setOrdSerieDoc(detordenes.getSerie());
 			tCargo.setOrdNumDoc(detordenes.getOrden());
-			
-			//Correlativo
 			tCargo.setCargCorr(Integer.parseInt(detordenes.getCorrelativo()));
-			
-			//Zona
-			if(detordenes.getCodzona() != null && detordenes.getCodzona().length()>0){
-				tZonaExample.clear();
-				tZonaExample.createCriteria().andZonCodEqualTo(detordenes.getCodzona());
-				lstZona = tZonaManager.selectByExample(tZonaExample);
-				if(lstZona.size()>0){
-					tCargo.setZonId(lstZona.get(0).getZonId());
-				}
-			}
-			
-			//Zona (new): Por defecto 0
+			tCargo.setCargCodComp(detordenes.getSerie() + "-" + detordenes.getOrden() + "-" + Integer.parseInt(detordenes.getCorrelativo()));
+
+			tCargo.setZonId(mpZona.get(detordenes.getCodzona()));
+
 			tCargo.setZonIdNew(0);
-			
-			//Motivo: Valor por defecto
+
 			tCargo.setCargCodMov(constantes.getParamSerialMotivoCargoNoDefinido());
-			
-			//Tipo de ingreso
-			if(constantes.getParamCodeTipoIngresoCargoDigitado().equals(detordenes.getTipoingreso())){
-				tCargo.setCargCodTipIng(constantes.getParamSerialTipoIngresoCargoDigitado());
-			}else if(constantes.getParamCodeTipoIngresoCargoDigitado().equals(detordenes.getTipoingreso())){
-				tCargo.setCargCodTipIng(constantes.getParamSerialTipoIngresoCargoTransferido());
-			}else{
+
+			tCargo.setCargCodTipIng(mpTipoIngreso.get(detordenes.getTipoingreso()));
+			if(tCargo.getCargCodTipIng() == null){
 				tCargo.setCargCodTipIng(constantes.getParamSerialTipoIngresoCargoNoDefinido());
 			}
-			
-			//Fechas
+
 			tCargo.setCargFecDes(detordenes.getFecDescargo());
 			tCargo.setCargFecRec(detordenes.getFecrecepcion());
-			
-			//Destinatario
+
 			tCargo.setCargDestinatario(detordenes.getDestinatario());
-			
-			//Direccion
+
 			tCargo.setCargDir(detordenes.getDireccion());
-			
-			//Referencia
+
 			tCargo.setCargRef(detordenes.getReferencia());
-			
-			//Nueva direccion
+
 			tCargo.setCargNewDir(detordenes.getNuevadireccion());
-			
-			//Nueva referencia
+
 			tCargo.setCargNewRef(detordenes.getNuevareferencia());
-			
-			//Estado
-			if(constantes.getParamCodeEstadoCargoOrdenDigitado().equals(detordenes.getCodestado())){
-				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenDigitado());
-			} else if(constantes.getParamCodeEstadoCargoOrdenClasificado().equals(detordenes.getCodestado())){
-				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenClasificado());
-			} else if(constantes.getParamCodeEstadoCargoOrdenRuta().equals(detordenes.getCodestado())){
-				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenRuta());
-			} else if(constantes.getParamCodeEstadoCargoOrdenEntregado().equals(detordenes.getCodestado())){
-				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenEntregado());
-			} else if(constantes.getParamCodeEstadoCargoOrdenMotivado().equals(detordenes.getCodestado())){
-				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenMotivado());
-			} else if(constantes.getParamCodeEstadoCargoOrdenReenviado().equals(detordenes.getCodestado())){
-				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenReenviado());
-			} else if(constantes.getParamCodeEstadoCargoOrdenFueraZona().equals(detordenes.getCodestado())){
-				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenFueraZona());
-			} else if(constantes.getParamCodeEstadoCargoOrdenPerdido().equals(detordenes.getCodestado())){
-				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenPerdido());
-			} else if(constantes.getParamCodeEstadoCargoOrdenAnulado().equals(detordenes.getCodestado())){
-				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenAnulado());
-			} else if(constantes.getParamCodeEstadoCargoOrdenNoDistribuido().equals(detordenes.getCodestado())){
-				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenNoDistribuido());
-			} else if(constantes.getParamCodeEstadoCargoOrdenRetenido().equals(detordenes.getCodestado())){
-				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenRetenido());
-			} else if(constantes.getParamCodeEstadoCargoOrdenSinFisico().equals(detordenes.getCodestado())){
-				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenSinFisico());
-			} else if(constantes.getParamCodeEstadoCargoOrdenProvincia().equals(detordenes.getCodestado())){
-				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenProvincia());
-			} else if(constantes.getParamCodeEstadoCargoOrdenSupervision().equals(detordenes.getCodestado())){
-				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenSupervision());
-			} else if(constantes.getParamCodeEstadoCargoOrdenRobo().equals(detordenes.getCodestado())){
-				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenRobo());
-			} else if(constantes.getParamCodeEstadoCargoOrdenSiLlego().equals(detordenes.getCodestado())){
-				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenSiLlego());
-			} else if(constantes.getParamCodeEstadoCargoOrdenRecepcionado().equals(detordenes.getCodestado())){
-				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenRecepcionado());
-			} else {
+
+			tCargo.setCargCodEst(mpEstadoCargo.get(detordenes.getCodestado()));
+			if(tCargo.getCargCodEst() == null){
 				tCargo.setCargCodEst(constantes.getParamSerialEstadoCargoOrdenNoDefinido());
 			}
-			
-			//Campos de control
+
 			tCargo.setFecNumCam(Util.getCurrentDateTimeAsLong());
 			if(constantes.getStateRecordNew().equals(detordenes.getBiCodIndCam())){
 				tCargo.setCodIndCam(constantes.getStateRecordNew());
 			}else{
-				tCargo.setCodIndCam(constantes.getStateRecordProcessed());
+				tCargo.setCodIndCam(constantes.getStateRecordUpdated());
 			}
 			tCargo.setProcId(process);
 		}
@@ -657,10 +368,13 @@ public class TCargoProcess {
 	public int updateRecordGenericCargo() throws Exception{
 		try {
 			tCargoExample.clear();
-			tCargoExample.createCriteria().andOrdCodTipDocEqualTo(constantes.getParamSerialTipoDocumentoTrabajoNoDefinido());
-			tCargoExample.createCriteria().andOrdSerieDocEqualTo(tCargo.getOrdSerieDoc());
-			tCargoExample.createCriteria().andOrdNumDocEqualTo(tCargo.getOrdNumDoc());
-			tCargoExample.createCriteria().andCargCorrEqualTo(tCargo.getCargCorr());
+			tCargoExample.createCriteria().andOrdCodTipDocEqualTo(constantes.getParamSerialTipoDocumentoTrabajoNoDefinido()).andOrdSerieDocEqualTo(tCargo.getOrdSerieDoc()).andOrdNumDocEqualTo(tCargo.getOrdNumDoc()).andCargCorrEqualTo(tCargo.getCargCorr());
+			
+			tCargo.setOrdCodTipDoc(null);
+			tCargo.setOrdSerieDoc(null);
+			tCargo.setOrdNumDoc(null);
+			tCargo.setCargCorr(null);
+			
 			resultTransaction = tCargoManager.updateByExampleSelective(tCargo, tCargoExample);	
 		} catch (Exception e) {
 			resultTransaction = constantes.getResultTransactionNoResult();
@@ -671,10 +385,7 @@ public class TCargoProcess {
 	public int deleteRecordGenericCargo() throws Exception{
 		try {
 			tCargoExample.clear();
-			tCargoExample.createCriteria().andOrdCodTipDocEqualTo(constantes.getParamSerialTipoDocumentoTrabajoNoDefinido());
-			tCargoExample.createCriteria().andOrdSerieDocEqualTo(tCargo.getOrdSerieDoc());
-			tCargoExample.createCriteria().andOrdNumDocEqualTo(tCargo.getOrdNumDoc());
-			tCargoExample.createCriteria().andCargCorrEqualTo(tCargo.getCargCorr());
+			tCargoExample.createCriteria().andOrdCodTipDocEqualTo(constantes.getParamSerialTipoDocumentoTrabajoNoDefinido()).andOrdSerieDocEqualTo(tCargo.getOrdSerieDoc()).andOrdNumDocEqualTo(tCargo.getOrdNumDoc()).andCargCorrEqualTo(tCargo.getCargCorr());
 			resultTransaction = tCargoManager.deleteByExample(tCargoExample);
 		} catch (Exception e) {
 			resultTransaction = constantes.getResultTransactionNoResult();
@@ -691,25 +402,431 @@ public class TCargoProcess {
 		detordenes.setOrden(orden);
 		detordenes.setCorrelativo(correlativo);
 		detordenes.setBiCodIndCam(statusRecord);
+		//detordenes.setBiFecNumCam(Util.getCurrentDateTime());
 		detordenesManager.updateByPrimaryKeySelective(detordenes);
 	}
 	
-	public int getOrdId(String serie, String numero)throws Exception{
-		int ordId = 0;
-		if(serie.equals(tOrden.getOrdSerieDoc()) && numero.equals(tOrden.getOrdNumDoc())){
-			ordId = tOrden.getOrdId();
-		}else{
-			tOrdenExample.clear();
-			tOrdenExample.createCriteria().andOrdSerieDocEqualTo(serie);
-			tOrdenExample.createCriteria().andOrdNumDocEqualTo(numero);
-			lstOrden = tOrdenManager.selectByExample(tOrdenExample);
-			if(lstOrden.size()>0){
-				tOrden = lstOrden.get(0);
-				ordId = tOrden.getOrdId();
-			}
-		}
-		
-		return ordId;
+	public Integer getOrdId(String key)throws Exception{
+		return mpOrden.get(key);
 	}
 
+	
+	public BeanFactory getFactory() {
+		return factory;
+	}
+
+	
+	public void setFactory(BeanFactory factory) {
+		this.factory = factory;
+	}
+
+	
+	public int getSizePage() {
+		return sizePage;
+	}
+
+	
+	public void setSizePage(int sizePage) {
+		this.sizePage = sizePage;
+	}
+
+	
+	public long getDateTimeFrom() {
+		return dateTimeFrom;
+	}
+
+	
+	public void setDateTimeFrom(long dateTimeFrom) {
+		this.dateTimeFrom = dateTimeFrom;
+	}
+
+	
+	public long getDateTimeUntil() {
+		return dateTimeUntil;
+	}
+
+	
+	public void setDateTimeUntil(long dateTimeUntil) {
+		this.dateTimeUntil = dateTimeUntil;
+	}
+
+	
+	public String getTypeProcess() {
+		return typeProcess;
+	}
+
+	
+	public void setTypeProcess(String typeProcess) {
+		this.typeProcess = typeProcess;
+	}
+
+	
+	public int getProcess() {
+		return process;
+	}
+
+	
+	public void setProcess(int process) {
+		this.process = process;
+	}
+
+	
+	public int getRecordTotal() {
+		return recordTotal;
+	}
+
+	
+	public void setRecordTotal(int recordTotal) {
+		this.recordTotal = recordTotal;
+	}
+
+	
+	public int getRecordProcessed() {
+		return recordProcessed;
+	}
+
+	
+	public void setRecordProcessed(int recordProcessed) {
+		this.recordProcessed = recordProcessed;
+	}
+
+	
+	public int getRecordRejected() {
+		return recordRejected;
+	}
+
+	
+	public void setRecordRejected(int recordRejected) {
+		this.recordRejected = recordRejected;
+	}
+
+	
+	public int getResultProcess() {
+		return resultProcess;
+	}
+
+	
+	public void setResultProcess(int resultProcess) {
+		this.resultProcess = resultProcess;
+	}
+
+	
+	public int getResultTransaction() {
+		return resultTransaction;
+	}
+
+	
+	public void setResultTransaction(int resultTransaction) {
+		this.resultTransaction = resultTransaction;
+	}
+
+	
+	public String getStateRecordOrigen() {
+		return stateRecordOrigen;
+	}
+
+	
+	public void setStateRecordOrigen(String stateRecordOrigen) {
+		this.stateRecordOrigen = stateRecordOrigen;
+	}
+
+	
+	public String getStateRecordGeneric() {
+		return stateRecordGeneric;
+	}
+
+	
+	public void setStateRecordGeneric(String stateRecordGeneric) {
+		this.stateRecordGeneric = stateRecordGeneric;
+	}
+
+	
+	public TParametro gettParametro() {
+		return tParametro;
+	}
+
+	
+	public void settParametro(TParametro tParametro) {
+		this.tParametro = tParametro;
+	}
+
+	
+	public TParametroExample gettParametroExample() {
+		return tParametroExample;
+	}
+
+	
+	public void settParametroExample(TParametroExample tParametroExample) {
+		this.tParametroExample = tParametroExample;
+	}
+
+	
+	public TProducto gettProducto() {
+		return tProducto;
+	}
+
+	
+	public void settProducto(TProducto tProducto) {
+		this.tProducto = tProducto;
+	}
+
+	
+	public TProductoExample gettProductoExample() {
+		return tProductoExample;
+	}
+
+	
+	public void settProductoExample(TProductoExample tProductoExample) {
+		this.tProductoExample = tProductoExample;
+	}
+
+	
+	public TOrden gettOrden() {
+		return tOrden;
+	}
+
+	
+	public void settOrden(TOrden tOrden) {
+		this.tOrden = tOrden;
+	}
+
+	
+	public TOrdenExample gettOrdenExample() {
+		return tOrdenExample;
+	}
+
+	
+	public void settOrdenExample(TOrdenExample tOrdenExample) {
+		this.tOrdenExample = tOrdenExample;
+	}
+
+	
+	public TZona gettZona() {
+		return tZona;
+	}
+
+	
+	public void settZona(TZona tZona) {
+		this.tZona = tZona;
+	}
+
+	
+	public TZonaExample gettZonaExample() {
+		return tZonaExample;
+	}
+
+	
+	public void settZonaExample(TZonaExample tZonaExample) {
+		this.tZonaExample = tZonaExample;
+	}
+
+	
+	public Detordenes getDetordenes() {
+		return detordenes;
+	}
+
+	
+	public void setDetordenes(Detordenes detordenes) {
+		this.detordenes = detordenes;
+	}
+
+	
+	public DetordenesExample getDetordenesExample() {
+		return detordenesExample;
+	}
+
+	
+	public void setDetordenesExample(DetordenesExample detordenesExample) {
+		this.detordenesExample = detordenesExample;
+	}
+
+	
+	public TCargo gettCargo() {
+		return tCargo;
+	}
+
+	
+	public void settCargo(TCargo tCargo) {
+		this.tCargo = tCargo;
+	}
+
+	
+	public TCargoExample gettCargoExample() {
+		return tCargoExample;
+	}
+
+	
+	public void settCargoExample(TCargoExample tCargoExample) {
+		this.tCargoExample = tCargoExample;
+	}
+
+	
+	public TParametroManager gettParametroManager() {
+		return tParametroManager;
+	}
+
+	
+	public void settParametroManager(TParametroManager tParametroManager) {
+		this.tParametroManager = tParametroManager;
+	}
+
+	
+	public TProductoManager gettProductoManager() {
+		return tProductoManager;
+	}
+
+	
+	public void settProductoManager(TProductoManager tProductoManager) {
+		this.tProductoManager = tProductoManager;
+	}
+
+	
+	public TOrdenManager gettOrdenManager() {
+		return tOrdenManager;
+	}
+
+	
+	public void settOrdenManager(TOrdenManager tOrdenManager) {
+		this.tOrdenManager = tOrdenManager;
+	}
+
+	
+	public DetordenesManager getDetordenesManager() {
+		return detordenesManager;
+	}
+
+	
+	public void setDetordenesManager(DetordenesManager detordenesManager) {
+		this.detordenesManager = detordenesManager;
+	}
+
+	
+	public TCargoManager gettCargoManager() {
+		return tCargoManager;
+	}
+
+	
+	public void settCargoManager(TCargoManager tCargoManager) {
+		this.tCargoManager = tCargoManager;
+	}
+
+	
+	public TZonaManager gettZonaManager() {
+		return tZonaManager;
+	}
+
+	
+	public void settZonaManager(TZonaManager tZonaManager) {
+		this.tZonaManager = tZonaManager;
+	}
+
+	
+	public Map<String, Integer> getMpZona() {
+		return mpZona;
+	}
+
+	
+	public void setMpZona(Map<String, Integer> mpZona) {
+		this.mpZona = mpZona;
+	}
+
+	
+	public Map<String, Integer> getMpTipoIngreso() {
+		return mpTipoIngreso;
+	}
+
+	
+	public void setMpTipoIngreso(Map<String, Integer> mpTipoIngreso) {
+		this.mpTipoIngreso = mpTipoIngreso;
+	}
+
+	
+	public Map<String, Integer> getMpEstadoCargo() {
+		return mpEstadoCargo;
+	}
+
+	
+	public void setMpEstadoCargo(Map<String, Integer> mpEstadoCargo) {
+		this.mpEstadoCargo = mpEstadoCargo;
+	}
+
+	
+	public Map<String, Integer> getMpOrden() {
+		return mpOrden;
+	}
+
+	
+	public void setMpOrden(Map<String, Integer> mpOrden) {
+		this.mpOrden = mpOrden;
+	}
+
+	
+	public List<TParametro> getLstParametro() {
+		return lstParametro;
+	}
+
+	
+	public void setLstParametro(List<TParametro> lstParametro) {
+		this.lstParametro = lstParametro;
+	}
+
+	
+	public List<TProducto> getLstProducto() {
+		return lstProducto;
+	}
+
+	
+	public void setLstProducto(List<TProducto> lstProducto) {
+		this.lstProducto = lstProducto;
+	}
+
+	
+	public List<String> getLstLista() {
+		return lstLista;
+	}
+
+	
+	public void setLstLista(List<String> lstLista) {
+		this.lstLista = lstLista;
+	}
+
+	
+	public List<TOrden> getLstOrden() {
+		return lstOrden;
+	}
+
+	
+	public void setLstOrden(List<TOrden> lstOrden) {
+		this.lstOrden = lstOrden;
+	}
+
+	
+	public List<TZona> getLstZona() {
+		return lstZona;
+	}
+
+	
+	public void setLstZona(List<TZona> lstZona) {
+		this.lstZona = lstZona;
+	}
+
+	
+	public List<String> getLstOrdenes() {
+		return lstOrdenes;
+	}
+
+	
+	public void setLstOrdenes(List<String> lstOrdenes) {
+		this.lstOrdenes = lstOrdenes;
+	}
+
+	
+	public Constantes getConstantes() {
+		return constantes;
+	}
+
+	
+	public void setConstantes(Constantes constantes) {
+		this.constantes = constantes;
+	}
 }

@@ -52,7 +52,7 @@ public class Areacliente {
     }
 
     public void setCodareacliente(String codareacliente) {
-        this.codareacliente = codareacliente == null ? null : codareacliente.trim();
+        this.codareacliente = codareacliente;
     }
 
     public String getCodcliente() {
@@ -60,7 +60,7 @@ public class Areacliente {
     }
 
     public void setCodcliente(String codcliente) {
-        this.codcliente = codcliente == null ? null : codcliente.trim();
+        this.codcliente = codcliente;
     }
 
     public String getRuc() {
@@ -68,7 +68,7 @@ public class Areacliente {
     }
 
     public void setRuc(String ruc) {
-        this.ruc = ruc == null ? null : ruc.trim();
+        this.ruc = ruc;
     }
 
     public String getAreacliente() {
@@ -76,7 +76,7 @@ public class Areacliente {
     }
 
     public void setAreacliente(String areacliente) {
-        this.areacliente = areacliente == null ? null : areacliente.trim();
+        this.areacliente = areacliente;
     }
 
     public String getDireccion() {
@@ -84,7 +84,7 @@ public class Areacliente {
     }
 
     public void setDireccion(String direccion) {
-        this.direccion = direccion == null ? null : direccion.trim();
+        this.direccion = direccion;
     }
 
     public String getUbigeo() {
@@ -92,7 +92,7 @@ public class Areacliente {
     }
 
     public void setUbigeo(String ubigeo) {
-        this.ubigeo = ubigeo == null ? null : ubigeo.trim();
+        this.ubigeo = ubigeo;
     }
 
     public String getCodpais() {
@@ -100,7 +100,7 @@ public class Areacliente {
     }
 
     public void setCodpais(String codpais) {
-        this.codpais = codpais == null ? null : codpais.trim();
+        this.codpais = codpais;
     }
 
     public String getTelefono() {
@@ -108,7 +108,7 @@ public class Areacliente {
     }
 
     public void setTelefono(String telefono) {
-        this.telefono = telefono == null ? null : telefono.trim();
+        this.telefono = telefono;
     }
 
     public String getMovil() {
@@ -116,7 +116,7 @@ public class Areacliente {
     }
 
     public void setMovil(String movil) {
-        this.movil = movil == null ? null : movil.trim();
+        this.movil = movil;
     }
 
     public String getEmail() {
@@ -124,7 +124,7 @@ public class Areacliente {
     }
 
     public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
+        this.email = email;
     }
 
     public String getCodejecutiva() {
@@ -132,7 +132,7 @@ public class Areacliente {
     }
 
     public void setCodejecutiva(String codejecutiva) {
-        this.codejecutiva = codejecutiva == null ? null : codejecutiva.trim();
+        this.codejecutiva = codejecutiva;
     }
 
     public String getObservacion() {
@@ -140,7 +140,7 @@ public class Areacliente {
     }
 
     public void setObservacion(String observacion) {
-        this.observacion = observacion == null ? null : observacion.trim();
+        this.observacion = observacion;
     }
 
     public String getUsuario() {
@@ -148,7 +148,7 @@ public class Areacliente {
     }
 
     public void setUsuario(String usuario) {
-        this.usuario = usuario == null ? null : usuario.trim();
+        this.usuario = usuario;
     }
 
     public Date getFecha() {
@@ -164,7 +164,7 @@ public class Areacliente {
     }
 
     public void setUsuariomod(String usuariomod) {
-        this.usuariomod = usuariomod == null ? null : usuariomod.trim();
+        this.usuariomod = usuariomod;
     }
 
     public Date getFechamod() {
@@ -188,7 +188,7 @@ public class Areacliente {
     }
 
     public void setContacto(String contacto) {
-        this.contacto = contacto == null ? null : contacto.trim();
+        this.contacto = contacto;
     }
 
     public String getAreacontacto() {
@@ -196,7 +196,7 @@ public class Areacliente {
     }
 
     public void setAreacontacto(String areacontacto) {
-        this.areacontacto = areacontacto == null ? null : areacontacto.trim();
+        this.areacontacto = areacontacto;
     }
 
     public String getPreorden() {
@@ -204,7 +204,7 @@ public class Areacliente {
     }
 
     public void setPreorden(String preorden) {
-        this.preorden = preorden == null ? null : preorden.trim();
+        this.preorden = preorden;
     }
 
     public Date getBiFecNumCam() {
@@ -220,7 +220,7 @@ public class Areacliente {
     }
 
     public void setBiCodIndCam(String biCodIndCam) {
-        this.biCodIndCam = biCodIndCam == null ? null : biCodIndCam.trim();
+        this.biCodIndCam = biCodIndCam;
     }
 
     public void clear(){

@@ -1,25 +1,18 @@
 package test;
 
-import java.util.Date;
-import java.util.GregorianCalendar;
+
 import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import pe.com.j2techcon.bi.etl.domain.generic.TCliente;
+import pe.com.j2techcon.bi.etl.domain.origen.Sedesprov;
+import pe.com.j2techcon.bi.etl.domain.origen.SedesprovExample;
+import pe.com.j2techcon.bi.etl.logic.generic.TClienteManager;
+import pe.com.j2techcon.bi.etl.logic.origen.SedesprovManager;
 
-import pe.com.j2techcon.bi.etl.domain.control.TProceso;
-import pe.com.j2techcon.bi.etl.domain.control.TProcesoExample;
-import pe.com.j2techcon.bi.etl.domain.dimensional.DimEstado;
-import pe.com.j2techcon.bi.etl.domain.dimensional.DimEstadoExample;
-import pe.com.j2techcon.bi.etl.domain.generic.TOrden;
-import pe.com.j2techcon.bi.etl.domain.generic.TOrdenExample;
-import pe.com.j2techcon.bi.etl.domain.generic.TParametro;
-import pe.com.j2techcon.bi.etl.domain.generic.TParametroExample;
-import pe.com.j2techcon.bi.etl.logic.control.TProcesoManager;
-import pe.com.j2techcon.bi.etl.logic.dimensional.DimEstadoManager;
-import pe.com.j2techcon.bi.etl.logic.generic.TOrdenManager;
-import pe.com.j2techcon.bi.etl.logic.generic.TParametroManager;
+
 
 
 public class TestETL {
@@ -56,7 +49,7 @@ public class TestETL {
 //	}
 	
 	public static void main(String[] args) {
-		BeanFactory factory = new ClassPathXmlApplicationContext("application-context.xml");
+		BeanFactory factory = new ClassPathXmlApplicationContext("pe/com/j2techcon/bi/etl/resources/application-context.xml");
 /*		TProcesoManager manager = factory.getBean("tProcesoManager", TProcesoManager.class);
 		TProcesoExample example = new TProcesoExample();
 		example.createCriteria().andProcCntRegXBloqueIsNotNull();
@@ -75,16 +68,33 @@ public class TestETL {
 			System.out.println(tParametro.toString());
 		}*/
 		
-		TOrdenManager manager = factory.getBean("tOrdenManager", TOrdenManager.class);
-		TOrdenExample example = new TOrdenExample();
-		example.createCriteria().andCodAreCliIsNotNull();
-		List<TOrden> lst = manager.selectByExample(example);
-		for (Iterator<TOrden> iterator = lst.iterator(); iterator.hasNext();) {
-			TOrden tOrden = iterator.next();
+		SedesprovManager manager = factory.getBean("sedesprovManager",SedesprovManager.class);
+		SedesprovExample example = new SedesprovExample();
+		example.createCriteria().andNomsedeLike("%PUCALLPA%");
+		List<Sedesprov> lst;
+
+		
+		while(true){
 			
-			Date dateDefault = new GregorianCalendar(1900,0,1).getTime();
-			System.out.println(dateDefault.compareTo(tOrden.getOrdFecIni()));
+			try {
+				lst = manager.selectByExample(example);
+				for (Iterator<Sedesprov> iterator = lst.iterator(); iterator.hasNext();) {
+					Sedesprov sede = iterator.next();
+					System.out.println(sede.getCodsede() + "-" + sede.getNomsede());
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			try {
+				java.lang.Thread.sleep(4000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		
 
 	}
 

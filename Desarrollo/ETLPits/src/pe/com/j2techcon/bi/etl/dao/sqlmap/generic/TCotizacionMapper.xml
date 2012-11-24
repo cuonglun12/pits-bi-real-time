@@ -12,6 +12,7 @@
     <result column="coti_cod_tip_doc" property="cotiCodTipDoc" jdbcType="INTEGER" />
     <result column="coti_serie_doc" property="cotiSerieDoc" jdbcType="VARCHAR" />
     <result column="coti_num_doc" property="cotiNumDoc" jdbcType="VARCHAR" />
+    <result column="coti_cod_comp" property="cotiCodComp" jdbcType="VARCHAR" />
     <result column="coti_cod_est" property="cotiCodEst" jdbcType="INTEGER" />
     <result column="coti_fec_apro" property="cotiFecApro" jdbcType="DATE" />
     <result column="coti_fec_ini" property="cotiFecIni" jdbcType="DATE" />
@@ -80,8 +81,8 @@
   </sql>
   <sql id="Base_Column_List" >
     coti_id, emp_cat_id, are_cli_id, prod_id, coti_cod_amb, coti_cod_serv, coti_cod_neg, 
-    coti_cod_tip_doc, coti_serie_doc, coti_num_doc, coti_cod_est, coti_fec_apro, coti_fec_ini, 
-    coti_fec_fin, fec_num_cam, cod_ind_cam, proc_id
+    coti_cod_tip_doc, coti_serie_doc, coti_num_doc, coti_cod_comp, coti_cod_est, coti_fec_apro, 
+    coti_fec_ini, coti_fec_fin, fec_num_cam, cod_ind_cam, proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCotizacionExample" >
     select
@@ -120,15 +121,17 @@
     insert into t_cotizacion (coti_id, emp_cat_id, are_cli_id, 
       prod_id, coti_cod_amb, coti_cod_serv, 
       coti_cod_neg, coti_cod_tip_doc, coti_serie_doc, 
-      coti_num_doc, coti_cod_est, coti_fec_apro, 
-      coti_fec_ini, coti_fec_fin, fec_num_cam, 
-      cod_ind_cam, proc_id)
+      coti_num_doc, coti_cod_comp, coti_cod_est, 
+      coti_fec_apro, coti_fec_ini, coti_fec_fin, 
+      fec_num_cam, cod_ind_cam, proc_id
+      )
     values (#{cotiId,jdbcType=INTEGER}, #{empCatId,jdbcType=INTEGER}, #{areCliId,jdbcType=INTEGER}, 
       #{prodId,jdbcType=INTEGER}, #{cotiCodAmb,jdbcType=INTEGER}, #{cotiCodServ,jdbcType=INTEGER}, 
       #{cotiCodNeg,jdbcType=INTEGER}, #{cotiCodTipDoc,jdbcType=INTEGER}, #{cotiSerieDoc,jdbcType=VARCHAR}, 
-      #{cotiNumDoc,jdbcType=VARCHAR}, #{cotiCodEst,jdbcType=INTEGER}, #{cotiFecApro,jdbcType=DATE}, 
-      #{cotiFecIni,jdbcType=DATE}, #{cotiFecFin,jdbcType=DATE}, #{fecNumCam,jdbcType=BIGINT}, 
-      #{codIndCam,jdbcType=CHAR}, #{procId,jdbcType=INTEGER})
+      #{cotiNumDoc,jdbcType=VARCHAR}, #{cotiCodComp,jdbcType=VARCHAR}, #{cotiCodEst,jdbcType=INTEGER}, 
+      #{cotiFecApro,jdbcType=DATE}, #{cotiFecIni,jdbcType=DATE}, #{cotiFecFin,jdbcType=DATE}, 
+      #{fecNumCam,jdbcType=BIGINT}, #{codIndCam,jdbcType=CHAR}, #{procId,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCotizacion" >
     insert into t_cotizacion
@@ -162,6 +165,9 @@
       </if>
       <if test="cotiNumDoc != null" >
         coti_num_doc,
+      </if>
+      <if test="cotiCodComp != null" >
+        coti_cod_comp,
       </if>
       <if test="cotiCodEst != null" >
         coti_cod_est,
@@ -215,6 +221,9 @@
       </if>
       <if test="cotiNumDoc != null" >
         #{cotiNumDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="cotiCodComp != null" >
+        #{cotiCodComp,jdbcType=VARCHAR},
       </if>
       <if test="cotiCodEst != null" >
         #{cotiCodEst,jdbcType=INTEGER},
@@ -278,6 +287,9 @@
       <if test="record.cotiNumDoc != null" >
         coti_num_doc = #{record.cotiNumDoc,jdbcType=VARCHAR},
       </if>
+      <if test="record.cotiCodComp != null" >
+        coti_cod_comp = #{record.cotiCodComp,jdbcType=VARCHAR},
+      </if>
       <if test="record.cotiCodEst != null" >
         coti_cod_est = #{record.cotiCodEst,jdbcType=INTEGER},
       </if>
@@ -316,6 +328,7 @@
       coti_cod_tip_doc = #{record.cotiCodTipDoc,jdbcType=INTEGER},
       coti_serie_doc = #{record.cotiSerieDoc,jdbcType=VARCHAR},
       coti_num_doc = #{record.cotiNumDoc,jdbcType=VARCHAR},
+      coti_cod_comp = #{record.cotiCodComp,jdbcType=VARCHAR},
       coti_cod_est = #{record.cotiCodEst,jdbcType=INTEGER},
       coti_fec_apro = #{record.cotiFecApro,jdbcType=DATE},
       coti_fec_ini = #{record.cotiFecIni,jdbcType=DATE},
@@ -357,6 +370,9 @@
       <if test="cotiNumDoc != null" >
         coti_num_doc = #{cotiNumDoc,jdbcType=VARCHAR},
       </if>
+      <if test="cotiCodComp != null" >
+        coti_cod_comp = #{cotiCodComp,jdbcType=VARCHAR},
+      </if>
       <if test="cotiCodEst != null" >
         coti_cod_est = #{cotiCodEst,jdbcType=INTEGER},
       </if>
@@ -392,6 +408,7 @@
       coti_cod_tip_doc = #{cotiCodTipDoc,jdbcType=INTEGER},
       coti_serie_doc = #{cotiSerieDoc,jdbcType=VARCHAR},
       coti_num_doc = #{cotiNumDoc,jdbcType=VARCHAR},
+      coti_cod_comp = #{cotiCodComp,jdbcType=VARCHAR},
       coti_cod_est = #{cotiCodEst,jdbcType=INTEGER},
       coti_fec_apro = #{cotiFecApro,jdbcType=DATE},
       coti_fec_ini = #{cotiFecIni,jdbcType=DATE},

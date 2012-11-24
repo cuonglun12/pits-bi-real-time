@@ -2,9 +2,14 @@ package pe.com.j2techcon.bi.etl.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Iterator;
+import java.util.List;
+
+import org.apache.commons.beanutils.BeanUtils;
 
 public class Util {
 	
@@ -199,4 +204,37 @@ public class Util {
 		return (dateTime.compareTo(anotherDateTime)<0);
 	}
 	
+	public static List<String> getStringListFromObjectList(List<?> list, String propertys, String separator){
+		List<String> result = new ArrayList<String>();
+		String[] lstPropertys = propertys.split(separator);
+		for (Iterator<?> iterator = list.iterator(); iterator.hasNext();) {
+			try{
+				if(lstPropertys.length==1){
+					result.add(BeanUtils.getProperty(iterator.next(), propertys));
+				}else{
+					String item = "";
+					Object obj = iterator.next();
+					for (int i = 0; i < lstPropertys.length; i++) {
+						if(i==0){
+							item = BeanUtils.getProperty(obj, lstPropertys[i]); 
+						}else{
+							item = item + separator + BeanUtils.getProperty(obj, lstPropertys[i]);
+						}
+					}
+					result.add(item);
+				}
+			} catch(Exception e){}
+		}
+		return result;
+	}
+	
+	public static List<Integer> getIntegerListFromObjectList(List<?> list, String property){
+		List<Integer> result = new ArrayList<Integer>();
+		for (Iterator<?> iterator = list.iterator(); iterator.hasNext();) {
+			try{
+				result.add(Integer.parseInt(BeanUtils.getProperty(iterator.next(), property)));
+			} catch(Exception e){}
+		}
+		return result;
+	}
 }

@@ -1,5 +1,6 @@
 package pe.com.j2techcon.bi.etl.process.dimensional;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import pe.com.j2techcon.bi.etl.logic.generic.TEmpleadoCategoriaManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TEmpleadoManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TParametroManager;
 import pe.com.j2techcon.bi.etl.util.Constantes;
+import pe.com.j2techcon.bi.etl.util.Util;
 import pe.com.j2techcon.bi.etl.domain.dimensional.DimPersonal;
 import pe.com.j2techcon.bi.etl.domain.dimensional.DimPersonalExample;
 import pe.com.j2techcon.bi.etl.domain.generic.TEmpleado;
@@ -307,42 +309,50 @@ public class DimPersonalProcess {
 		dimPersonal = new DimPersonal();
 		dimPersonalExample = new DimPersonalExample();
 
-		int offset = 0;
+		List<String> lstStateRecord = new ArrayList<String>();
+		lstStateRecord.add(constantes.getStateRecordNew());
+		lstStateRecord.add(constantes.getStateRecordUpdated());
+		
+		//int offset = 0;
+		
+		List<TEmpleadoCategoria> lstEmpleadoCategoria = new ArrayList<TEmpleadoCategoria>();
 		
 		while(true) {
 			
 			tEmpleadoCategoriaExample.clear();
 			
-			tEmpleadoCategoriaExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom);
-			tEmpleadoCategoriaExample.createCriteria().andFecNumCamLessThan(dateTimeUntil);
+			tEmpleadoCategoriaExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom).andFecNumCamLessThan(dateTimeUntil).andCodIndCamIn(lstStateRecord);
+			//tEmpleadoCategoriaExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
+			tEmpleadoCategoriaExample.setPaginationByClause(" limit " + constantes.getSizePage());
 			
-			tEmpleadoCategoriaExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
-			List<TEmpleadoCategoria> lstEmpleadoCategoria = tEmpleadoCategoriaManager.selectByExample(tEmpleadoCategoriaExample);
+			lstEmpleadoCategoria = tEmpleadoCategoriaManager.selectByExample(tEmpleadoCategoriaExample);
 			if(lstEmpleadoCategoria.size()>0){
 				for (Iterator<TEmpleadoCategoria> iterator = lstEmpleadoCategoria.iterator(); iterator.hasNext();) {
 					tEmpleadoCategoria = iterator.next();
 					dimPersonal.clear();
 					processRecordEmpleadoCategoria();
 				}
-				offset = offset + constantes.getSizePage();
+				lstEmpleadoCategoria.clear();
+				//offset = offset + constantes.getSizePage();
 			}else{
-				
 				lstEmpleadoCategoria.clear();
 				tEmpleadoExample.clear();
-				offset = 0;
+				//offset = 0;
 				break;
 			}
 		}
+		
+		List<TEmpleado> lstEmpleado = new ArrayList<TEmpleado>();
 		
 		while(true) {
 			
 			tEmpleadoExample.clear();
 
-			tEmpleadoExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom);
-			tEmpleadoExample.createCriteria().andFecNumCamLessThan(dateTimeUntil);
+			tEmpleadoExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom).andFecNumCamLessThan(dateTimeUntil).andCodIndCamIn(lstStateRecord);
+			//tEmpleadoExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
+			tEmpleadoExample.setPaginationByClause(" limit " + constantes.getSizePage());
 			
-			tEmpleadoExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
-			List<TEmpleado> lstEmpleado = tEmpleadoManager.selectByExample(tEmpleadoExample);
+			lstEmpleado = tEmpleadoManager.selectByExample(tEmpleadoExample);
 			if(lstEmpleado.size()>0){
 				for (Iterator<TEmpleado> iterator = lstEmpleado.iterator(); iterator.hasNext();) {
 					tEmpleado = iterator.next();
@@ -350,11 +360,13 @@ public class DimPersonalProcess {
 					dimPersonalExample.clear();
 					processRecordPersonal();
 				}
-				offset = offset + constantes.getSizePage();
+				lstEmpleado.clear();
+				//offset = offset + constantes.getSizePage();
 			}
 			else {
 				
 				lstEmpleado.clear();
+				lstEmpleadoCategoria.clear();
 				
 				tEmpleado.clear();
 				tEmpleadoExample.clear();
@@ -368,7 +380,6 @@ public class DimPersonalProcess {
 				dimPersonal.clear();
 				dimPersonalExample.clear();
 				
-				offset = 0;
 				break;
 			}
 		}
@@ -468,8 +479,7 @@ public class DimPersonalProcess {
 	}
 	
 	public void completeFieldPersonal()throws Exception{
-		dimPersonalExample.createCriteria().andPersonalKeyEqualTo(tEmpleado.getEmpId());
-		dimPersonalExample.createCriteria().andProcIdNotEqualTo(process);
+		dimPersonalExample.createCriteria().andPersonalKeyEqualTo(tEmpleado.getEmpId()).andProcIdNotEqualTo(process);
 		
 		dimPersonal.setPersonalCodigo(tEmpleado.getEmpCod());
 		dimPersonal.setPersonalNombre(tEmpleado.getEmpDesApePat() + " " + tEmpleado.getEmpDesApeMat() + " " + tEmpleado.getEmpDesNom());
@@ -536,6 +546,7 @@ public class DimPersonalProcess {
 		tEmpleado.clear();
 		tEmpleado.setEmpId(idPersonal);
 		tEmpleado.setCodIndCam(statusRecord);
+		tEmpleado.setFecNumCam(Util.getCurrentDateTimeAsLong());
 		tEmpleado.setProcId(process);
 		tEmpleadoManager.updateByPrimaryKeySelective(tEmpleado);
 	}

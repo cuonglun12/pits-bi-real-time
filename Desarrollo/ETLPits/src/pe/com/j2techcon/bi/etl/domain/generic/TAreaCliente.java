@@ -1,115 +1,115 @@
 package pe.com.j2techcon.bi.etl.domain.generic;
 
 public class TAreaCliente {
-	private Integer areCliId;
+    private Integer areCliId;
 
-	private Integer cliId;
+    private Integer cliId;
 
-	private Integer areCliCodTip;
+    private Integer areCliCodTip;
 
-	private Integer ubiId;
+    private Integer ubiId;
 
-	private String areCliDes;
+    private String areCliDes;
 
-	private String areCliDesDir;
+    private String areCliDesDir;
 
-	private String cliCod;
+    private String cliCod;
 
-	private String areCliCod;
+    private String areCliCod;
 
-	private Long fecNumCam;
+    private Long fecNumCam;
 
-	private String codIndCam;
+    private String codIndCam;
 
-	private Integer procId;
+    private Integer procId;
 
-	public Integer getAreCliId() {
-		return areCliId;
-	}
+    public Integer getAreCliId() {
+        return areCliId;
+    }
 
-	public void setAreCliId(Integer areCliId) {
-		this.areCliId = areCliId;
-	}
+    public void setAreCliId(Integer areCliId) {
+        this.areCliId = areCliId;
+    }
 
-	public Integer getCliId() {
-		return cliId;
-	}
+    public Integer getCliId() {
+        return cliId;
+    }
 
-	public void setCliId(Integer cliId) {
-		this.cliId = cliId;
-	}
+    public void setCliId(Integer cliId) {
+        this.cliId = cliId;
+    }
 
-	public Integer getAreCliCodTip() {
-		return areCliCodTip;
-	}
+    public Integer getAreCliCodTip() {
+        return areCliCodTip;
+    }
 
-	public void setAreCliCodTip(Integer areCliCodTip) {
-		this.areCliCodTip = areCliCodTip;
-	}
+    public void setAreCliCodTip(Integer areCliCodTip) {
+        this.areCliCodTip = areCliCodTip;
+    }
 
-	public Integer getUbiId() {
-		return ubiId;
-	}
+    public Integer getUbiId() {
+        return ubiId;
+    }
 
-	public void setUbiId(Integer ubiId) {
-		this.ubiId = ubiId;
-	}
+    public void setUbiId(Integer ubiId) {
+        this.ubiId = ubiId;
+    }
 
-	public String getAreCliDes() {
-		return areCliDes;
-	}
+    public String getAreCliDes() {
+        return areCliDes;
+    }
 
-	public void setAreCliDes(String areCliDes) {
-		this.areCliDes = areCliDes == null ? null : areCliDes.trim();
-	}
+    public void setAreCliDes(String areCliDes) {
+        this.areCliDes = areCliDes == null ? null : areCliDes.trim();
+    }
 
-	public String getAreCliDesDir() {
-		return areCliDesDir;
-	}
+    public String getAreCliDesDir() {
+        return areCliDesDir;
+    }
 
-	public void setAreCliDesDir(String areCliDesDir) {
-		this.areCliDesDir = areCliDesDir == null ? null : areCliDesDir.trim();
-	}
+    public void setAreCliDesDir(String areCliDesDir) {
+        this.areCliDesDir = areCliDesDir == null ? null : areCliDesDir.trim();
+    }
 
-	public String getCliCod() {
-		return cliCod;
-	}
+    public String getCliCod() {
+        return cliCod;
+    }
 
-	public void setCliCod(String cliCod) {
-		this.cliCod = cliCod == null ? null : cliCod.trim();
-	}
+    public void setCliCod(String cliCod) {
+        this.cliCod = cliCod == null ? null : cliCod.trim();
+    }
 
-	public String getAreCliCod() {
-		return areCliCod;
-	}
+    public String getAreCliCod() {
+        return areCliCod;
+    }
 
-	public void setAreCliCod(String areCliCod) {
-		this.areCliCod = areCliCod == null ? null : areCliCod.trim();
-	}
+    public void setAreCliCod(String areCliCod) {
+        this.areCliCod = areCliCod == null ? null : areCliCod.trim();
+    }
 
-	public Long getFecNumCam() {
-		return fecNumCam;
-	}
+    public Long getFecNumCam() {
+        return fecNumCam;
+    }
 
-	public void setFecNumCam(Long fecNumCam) {
-		this.fecNumCam = fecNumCam;
-	}
+    public void setFecNumCam(Long fecNumCam) {
+        this.fecNumCam = fecNumCam;
+    }
 
-	public String getCodIndCam() {
-		return codIndCam;
-	}
+    public String getCodIndCam() {
+        return codIndCam;
+    }
 
-	public void setCodIndCam(String codIndCam) {
-		this.codIndCam = codIndCam == null ? null : codIndCam.trim();
-	}
+    public void setCodIndCam(String codIndCam) {
+        this.codIndCam = codIndCam == null ? null : codIndCam.trim();
+    }
 
-	public Integer getProcId() {
-		return procId;
-	}
+    public Integer getProcId() {
+        return procId;
+    }
 
-	public void setProcId(Integer procId) {
-		this.procId = procId;
-	}
+    public void setProcId(Integer procId) {
+        this.procId = procId;
+    }
 
 	public void clear() {
 		areCliId = null;

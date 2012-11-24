@@ -1,16 +1,22 @@
 package pe.com.j2techcon.bi.etl.process.generic;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 
+import pe.com.j2techcon.bi.etl.domain.generic.TParametro;
+import pe.com.j2techcon.bi.etl.domain.generic.TParametroExample;
 import pe.com.j2techcon.bi.etl.domain.generic.TProducto;
 import pe.com.j2techcon.bi.etl.domain.generic.TProductoExample;
 import pe.com.j2techcon.bi.etl.domain.origen.TProductos;
 import pe.com.j2techcon.bi.etl.domain.origen.TProductosExample;
+import pe.com.j2techcon.bi.etl.logic.generic.TParametroManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TProductoManager;
 import pe.com.j2techcon.bi.etl.logic.origen.TProductosManager;
 import pe.com.j2techcon.bi.etl.util.Constantes;
@@ -40,13 +46,23 @@ public class TProductoProcess {
 	private TProductos tProductos;
 	private TProductosExample tProductosExample;
 	
+	private TParametro tParametro;
+	private TParametroExample tParametroExample;
+	
 	private TProductoManager tProductoManager;
 	private TProductosManager tProductosManager;
+	private TParametroManager tParametroManager;
+	
+	private List<TParametro> lstParametro;
+	
+	private Map<String,Integer> mpTipoProducto;
+	private Map<String,Integer> mpTipoAmbito;
+	private Map<String,Integer> mpTipoNegocio;
 	
 	private Constantes constantes;
 	
 	static Logger log = Logger.getLogger(TProductoProcess.class);
-	
+
 	public BeanFactory getFactory() {
 		return factory;
 	}
@@ -183,6 +199,22 @@ public class TProductoProcess {
 		this.tProductosExample = tProductosExample;
 	}
 
+	public TParametro gettParametro() {
+		return tParametro;
+	}
+
+	public void settParametro(TParametro tParametro) {
+		this.tParametro = tParametro;
+	}
+
+	public TParametroExample gettParametroExample() {
+		return tParametroExample;
+	}
+
+	public void settParametroExample(TParametroExample tParametroExample) {
+		this.tParametroExample = tParametroExample;
+	}
+
 	public TProductoManager gettProductoManager() {
 		return tProductoManager;
 	}
@@ -197,6 +229,46 @@ public class TProductoProcess {
 
 	public void settProductosManager(TProductosManager tProductosManager) {
 		this.tProductosManager = tProductosManager;
+	}
+
+	public TParametroManager gettParametroManager() {
+		return tParametroManager;
+	}
+
+	public void settParametroManager(TParametroManager tParametroManager) {
+		this.tParametroManager = tParametroManager;
+	}
+
+	public List<TParametro> getLstParametro() {
+		return lstParametro;
+	}
+
+	public void setLstParametro(List<TParametro> lstParametro) {
+		this.lstParametro = lstParametro;
+	}
+
+	public Map<String, Integer> getMpTipoProducto() {
+		return mpTipoProducto;
+	}
+
+	public void setMpTipoProducto(Map<String, Integer> mpTipoProducto) {
+		this.mpTipoProducto = mpTipoProducto;
+	}
+
+	public Map<String, Integer> getMpTipoAmbito() {
+		return mpTipoAmbito;
+	}
+
+	public void setMpTipoAmbito(Map<String, Integer> mpTipoAmbito) {
+		this.mpTipoAmbito = mpTipoAmbito;
+	}
+
+	public Map<String, Integer> getMpTipoNegocio() {
+		return mpTipoNegocio;
+	}
+
+	public void setMpTipoNegocio(Map<String, Integer> mpTipoNegocio) {
+		this.mpTipoNegocio = mpTipoNegocio;
 	}
 
 	public Constantes getConstantes() {
@@ -232,23 +304,63 @@ public class TProductoProcess {
 		
 		tProductoManager = factory.getBean("tProductoManager",TProductoManager.class);
 		tProductosManager = factory.getBean("tProductosManager",TProductosManager.class);
+		tParametroManager = factory.getBean("tParametroManager",TParametroManager.class);
 		
 		tProducto = new TProducto();
 		tProductoExample = new TProductoExample();
 		
 		tProductos = new TProductos();
 		tProductosExample = new TProductosExample();
+		
+		tParametro = new TParametro();
+		tParametroExample = new TParametroExample();
+		
+		lstParametro = new ArrayList<TParametro>();
+		
+		mpTipoProducto = new HashMap<String, Integer>();
+		tParametroExample.clear();
+		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeTipoProducto());
+		lstParametro = tParametroManager.selectByExample(tParametroExample);
+		for (Iterator<TParametro> iterator = lstParametro.iterator(); iterator.hasNext();) {
+			tParametro = iterator.next();
+			mpTipoProducto.put(tParametro.getParamCod(),tParametro.getParamId());
+		}
+		
+		mpTipoAmbito = new HashMap<String, Integer>();
+		tParametroExample.clear();
+		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeTipoAmbito());
+		lstParametro = tParametroManager.selectByExample(tParametroExample);
+		for (Iterator<TParametro> iterator = lstParametro.iterator(); iterator.hasNext();) {
+			tParametro = iterator.next();
+			mpTipoAmbito.put(tParametro.getParamCod(),tParametro.getParamId());
+		}
+		
+		mpTipoNegocio = new HashMap<String, Integer>();
+		tParametroExample.clear();
+		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeTipoNegocio());
+		lstParametro = tParametroManager.selectByExample(tParametroExample);
+		for (Iterator<TParametro> iterator = lstParametro.iterator(); iterator.hasNext();) {
+			tParametro = iterator.next();
+			mpTipoNegocio.put(tParametro.getParamCod(),tParametro.getParamId());
+		}
+		
+		List<String> lstStateRecord = new ArrayList<String>();
+		lstStateRecord.add(constantes.getStateRecordNew());
+		lstStateRecord.add(constantes.getStateRecordUpdated());
 
-		int offset = 0;
-
+		//int offset = 0;
+		
+		List<TProductos> lstProductos = new ArrayList<TProductos>();
+		
 		while (true) {
 
 			tProductosExample.clear();
-			tProductosExample.createCriteria().andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom));
-			tProductosExample.createCriteria().andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil));
-			tProductosExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
 			
-			List<TProductos> lstProductos = tProductosManager.selectByExample(tProductosExample);
+			tProductosExample.createCriteria().andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom)).andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil)).andBiCodIndCamIn(lstStateRecord);
+			//tProductosExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
+			tProductosExample.setPaginationByClause(" limit " + constantes.getSizePage());
+			
+			lstProductos = tProductosManager.selectByExample(tProductosExample);
 
 			if (lstProductos.size() > 0) {
 				for (Iterator<TProductos> iterator = lstProductos.iterator(); iterator.hasNext();) {
@@ -256,15 +368,28 @@ public class TProductoProcess {
 					tProducto.clear();
 					processRecordProducto();
 				}
-				offset = offset + constantes.getSizePage();
+				lstProductos.clear();
+				//offset = offset + constantes.getSizePage();
 			} else {
+				
+				lstStateRecord.clear();
+				
 				tProductos.clear();
 				tProductosExample.clear();
 
 				tProducto.clear();
 				tProductoExample.clear();
-
-				offset = 0;
+				
+				tParametro.clear();
+				tParametroExample.clear();
+				
+				lstProductos.clear();
+				lstParametro.clear();
+				
+				mpTipoAmbito.clear();
+				mpTipoNegocio.clear();
+				mpTipoProducto.clear();
+				
 				break;
 			}
 		}
@@ -323,42 +448,30 @@ public class TProductoProcess {
 
 	public void completeFieldProducto() throws Exception{
 
-		// Tipo de producto
-		if(constantes.getParamCodeTipoProductoDocumento().equals(tProductos.getTipoproducto())){
-			tProducto.setProdCodTip(constantes.getParamSerialTipoProductoDocumento());
-		}
-		else if (constantes.getParamCodeTipoProductoMuestra().equals(tProductos.getTipoproducto())){
-			tProducto.setProdCodTip(constantes.getParamSerialTipoProductoMuestra());
-		}
-		else{
+		tProducto.setProdCodTip(mpTipoProducto.get(tProductos.getTipoproducto()));
+		if(tProducto.getProdCodTip() == null){
 			tProducto.setProdCodTip(constantes.getParamSerialTipoProductoNoDefinido());
 		}
 		
-		//Tipo de ambito
-		if(constantes.getParamCodeTipoAmbitoLocal().equals(tProductos.getCodambito())){
-			tProducto.setProdCodAmb(constantes.getParamSerialTipoAmbitoLocal());
-		}else{
+		tProducto.setProdCodAmb(mpTipoAmbito.get(tProductos.getCodambito()));
+		if(tProducto.getProdCodAmb() == null){
 			tProducto.setProdCodAmb(constantes.getParamSerialTipoAmbitoNoDefinido());
 		}
 		
-		//Tipo de negocio
-		if(constantes.getParamCodeTipoNegocioMensajeria().equals(tProductos.getCodnegocio())){
-			tProducto.setProdCodNeg(constantes.getParamSerialTipoNegocioMensajeria());
-		}else{
+		tProducto.setProdCodNeg(mpTipoNegocio.get(tProductos.getCodnegocio()));
+		if(tProducto.getProdCodNeg() == null){
 			tProducto.setProdCodNeg(constantes.getParamSerialTipoNegocioNoDefinido());
 		}
-		
-		//Datos generales del producto
+
 		tProducto.setProdCod(tProductos.getCodproducto());
 		tProducto.setProdDes(tProductos.getProducto());
 		tProducto.setProdPre(new BigDecimal(0));
 		
-		//Campos de control
 		tProducto.setFecNumCam(Util.getCurrentDateTimeAsLong());
 		if(constantes.getStateRecordNew().equals(tProductos.getBiCodIndCam())){
 			tProducto.setCodIndCam(constantes.getStateRecordNew());
 		}else{
-			tProducto.setCodIndCam(constantes.getStateRecordProcessed());
+			tProducto.setCodIndCam(constantes.getStateRecordUpdated());
 		}
 		tProducto.setProcId(process);
 
@@ -376,7 +489,8 @@ public class TProductoProcess {
 	public int updateRecordGenericProducto() throws Exception{
 		try {
 			tProductoExample.clear();
-			tProductoExample.createCriteria().andProdCodEqualTo(tProducto.getProdCod());	
+			tProductoExample.createCriteria().andProdCodEqualTo(tProducto.getProdCod());
+			tProducto.setProdCod(null);
 			resultTransaction = tProductoManager.updateByExampleSelective(tProducto, tProductoExample);	
 		} catch (Exception e) {
 			resultTransaction = constantes.getResultTransactionNoResult();
@@ -400,6 +514,7 @@ public class TProductoProcess {
 		tProductos.clear();
 		tProductos.setCodproducto(idProducto);
 		tProductos.setBiCodIndCam(statusRecord);
+		//tProductos.setBiFecNumCam(Util.getCurrentDateTime());
 		tProductosManager.updateByPrimaryKeySelective(tProductos);
 	}
 

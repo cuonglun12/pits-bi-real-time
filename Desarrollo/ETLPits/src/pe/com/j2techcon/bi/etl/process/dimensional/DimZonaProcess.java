@@ -1,5 +1,6 @@
 package pe.com.j2techcon.bi.etl.process.dimensional;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import pe.com.j2techcon.bi.etl.logic.generic.TZonaManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TParametroManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TUbigeoManager;
 import pe.com.j2techcon.bi.etl.util.Constantes;
+import pe.com.j2techcon.bi.etl.util.Util;
 import pe.com.j2techcon.bi.etl.domain.dimensional.DimZona;
 import pe.com.j2techcon.bi.etl.domain.dimensional.DimZonaExample;
 import pe.com.j2techcon.bi.etl.domain.generic.TZona;
@@ -307,27 +309,35 @@ public class DimZonaProcess {
 		
 		tUbigeo = new TUbigeo();
 		tUbigeoExample = new TUbigeoExample();
+		
+		List<String> lstStateRecord = new ArrayList<String>();
+		lstStateRecord.add(constantes.getStateRecordNew());
+		lstStateRecord.add(constantes.getStateRecordUpdated());
 
-		int offset = 0;
+		//int offset = 0;
+		
+		List<TZona> lstZona = new ArrayList<TZona>();
 		
 		while(true) {
 			
 			tZonaExample.clear();
 
-			tZonaExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom);
-			tZonaExample.createCriteria().andFecNumCamLessThan(dateTimeUntil);	
+			tZonaExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom).andFecNumCamLessThan(dateTimeUntil).andCodIndCamIn(lstStateRecord);
+			//tZonaExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
+			tZonaExample.setPaginationByClause(" limit " + constantes.getSizePage());
 			
-			tZonaExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
-			List<TZona> lstZona = tZonaManager.selectByExample(tZonaExample);
+			lstZona = tZonaManager.selectByExample(tZonaExample);
 			if(lstZona.size()>0){
 				for (Iterator<TZona> iterator = lstZona.iterator(); iterator.hasNext();) {
 					tZona = iterator.next();
 					dimZona.clear();
 					processRecordZona();
 				}
-				offset = offset + constantes.getSizePage();
+				lstZona.clear();
+				//offset = offset + constantes.getSizePage();
 			}else{
 				
+				lstStateRecord.clear();
 				lstZona.clear();
 				
 				tZona.clear();
@@ -341,8 +351,7 @@ public class DimZonaProcess {
 				
 				tUbigeo.clear();
 				tUbigeoExample.clear();
-				
-				offset = 0;
+
 				break;
 			}
 		}
@@ -474,6 +483,7 @@ public class DimZonaProcess {
 		tZona.clear();
 		tZona.setZonId(idZona);
 		tZona.setCodIndCam(statusRecord);
+		tZona.setFecNumCam(Util.getCurrentDateTimeAsLong());
 		tZona.setProcId(process);
 		tZonaManager.updateByPrimaryKeySelective(tZona);
 	}

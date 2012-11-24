@@ -9,7 +9,7 @@ import java.util.List;
 public class TDespachoExample {
 	
 	protected String paginationByClause;
-
+	
     protected String orderByClause;
 
     protected boolean distinct;
@@ -402,6 +402,76 @@ public class TDespachoExample {
 
         public Criteria andDespNumeroDocNotBetween(String value1, String value2) {
             addCriterion("desp_numero_doc not between", value1, value2, "despNumeroDoc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespCodCompIsNull() {
+            addCriterion("desp_cod_comp is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespCodCompIsNotNull() {
+            addCriterion("desp_cod_comp is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespCodCompEqualTo(String value) {
+            addCriterion("desp_cod_comp =", value, "despCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespCodCompNotEqualTo(String value) {
+            addCriterion("desp_cod_comp <>", value, "despCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespCodCompGreaterThan(String value) {
+            addCriterion("desp_cod_comp >", value, "despCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespCodCompGreaterThanOrEqualTo(String value) {
+            addCriterion("desp_cod_comp >=", value, "despCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespCodCompLessThan(String value) {
+            addCriterion("desp_cod_comp <", value, "despCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespCodCompLessThanOrEqualTo(String value) {
+            addCriterion("desp_cod_comp <=", value, "despCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespCodCompLike(String value) {
+            addCriterion("desp_cod_comp like", value, "despCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespCodCompNotLike(String value) {
+            addCriterion("desp_cod_comp not like", value, "despCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespCodCompIn(List<String> values) {
+            addCriterion("desp_cod_comp in", values, "despCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespCodCompNotIn(List<String> values) {
+            addCriterion("desp_cod_comp not in", values, "despCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespCodCompBetween(String value1, String value2) {
+            addCriterion("desp_cod_comp between", value1, value2, "despCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andDespCodCompNotBetween(String value1, String value2) {
+            addCriterion("desp_cod_comp not between", value1, value2, "despCodComp");
             return (Criteria) this;
         }
 

@@ -34,7 +34,7 @@ public class Ubigeos {
     }
 
     public void setUbigeo(String ubigeo) {
-        this.ubigeo = ubigeo == null ? null : ubigeo.trim();
+        this.ubigeo = ubigeo;
     }
 
     public String getCoddepa() {
@@ -42,7 +42,7 @@ public class Ubigeos {
     }
 
     public void setCoddepa(String coddepa) {
-        this.coddepa = coddepa == null ? null : coddepa.trim();
+        this.coddepa = coddepa;
     }
 
     public String getCodprov() {
@@ -50,7 +50,7 @@ public class Ubigeos {
     }
 
     public void setCodprov(String codprov) {
-        this.codprov = codprov == null ? null : codprov.trim();
+        this.codprov = codprov;
     }
 
     public String getCodpos() {
@@ -58,7 +58,7 @@ public class Ubigeos {
     }
 
     public void setCodpos(String codpos) {
-        this.codpos = codpos == null ? null : codpos.trim();
+        this.codpos = codpos;
     }
 
     public String getDepartamento() {
@@ -66,7 +66,7 @@ public class Ubigeos {
     }
 
     public void setDepartamento(String departamento) {
-        this.departamento = departamento == null ? null : departamento.trim();
+        this.departamento = departamento;
     }
 
     public String getProvincia() {
@@ -74,7 +74,7 @@ public class Ubigeos {
     }
 
     public void setProvincia(String provincia) {
-        this.provincia = provincia == null ? null : provincia.trim();
+        this.provincia = provincia;
     }
 
     public String getDistrito() {
@@ -82,7 +82,7 @@ public class Ubigeos {
     }
 
     public void setDistrito(String distrito) {
-        this.distrito = distrito == null ? null : distrito.trim();
+        this.distrito = distrito;
     }
 
     public String getNombre() {
@@ -90,7 +90,7 @@ public class Ubigeos {
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre == null ? null : nombre.trim();
+        this.nombre = nombre;
     }
 
     public Short getFlagprov() {
@@ -106,7 +106,7 @@ public class Ubigeos {
     }
 
     public void setCodpostal(String codpostal) {
-        this.codpostal = codpostal == null ? null : codpostal.trim();
+        this.codpostal = codpostal;
     }
 
     public String getCodzona() {
@@ -114,7 +114,7 @@ public class Ubigeos {
     }
 
     public void setCodzona(String codzona) {
-        this.codzona = codzona == null ? null : codzona.trim();
+        this.codzona = codzona;
     }
 
     public Date getBiFecNumCam() {
@@ -130,7 +130,7 @@ public class Ubigeos {
     }
 
     public void setBiCodIndCam(String biCodIndCam) {
-        this.biCodIndCam = biCodIndCam == null ? null : biCodIndCam.trim();
+        this.biCodIndCam = biCodIndCam;
     }
     
     public void clear(){

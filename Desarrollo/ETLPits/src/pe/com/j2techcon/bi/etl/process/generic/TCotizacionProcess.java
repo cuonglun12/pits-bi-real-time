@@ -2,8 +2,10 @@ package pe.com.j2techcon.bi.etl.process.generic;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
@@ -71,6 +73,13 @@ public class TCotizacionProcess {
 	private TProductoManager tProductoManager;
 	private TCotizacionesManager tCotizacionesManager;
 	private TCotizacionManager tCotizacionManager;
+	
+	private Map<String,Integer> mpAreaCliente;
+	private Map<String,Integer> mpProducto;
+	private Map<String,Integer> mpTipoAmbito;
+	private Map<String,Integer> mpTipoServicio;
+	private Map<String,Integer> mpTipoNegocio;
+	private Map<String,Integer> mpEstadoCotizacion;
 	
 	private List<TParametro> lstParametro;
 	private List<TAreaCliente> lstAreaCliente;
@@ -331,6 +340,54 @@ public class TCotizacionProcess {
 		this.tCotizacionManager = tCotizacionManager;
 	}
 
+	public Map<String, Integer> getMpAreaCliente() {
+		return mpAreaCliente;
+	}
+
+	public void setMpAreaCliente(Map<String, Integer> mpAreaCliente) {
+		this.mpAreaCliente = mpAreaCliente;
+	}
+
+	public Map<String, Integer> getMpProducto() {
+		return mpProducto;
+	}
+
+	public void setMpProducto(Map<String, Integer> mpProducto) {
+		this.mpProducto = mpProducto;
+	}
+
+	public Map<String, Integer> getMpTipoAmbito() {
+		return mpTipoAmbito;
+	}
+
+	public void setMpTipoAmbito(Map<String, Integer> mpTipoAmbito) {
+		this.mpTipoAmbito = mpTipoAmbito;
+	}
+
+	public Map<String, Integer> getMpTipoServicio() {
+		return mpTipoServicio;
+	}
+
+	public void setMpTipoServicio(Map<String, Integer> mpTipoServicio) {
+		this.mpTipoServicio = mpTipoServicio;
+	}
+
+	public Map<String, Integer> getMpTipoNegocio() {
+		return mpTipoNegocio;
+	}
+
+	public void setMpTipoNegocio(Map<String, Integer> mpTipoNegocio) {
+		this.mpTipoNegocio = mpTipoNegocio;
+	}
+
+	public Map<String, Integer> getMpEstadoCotizacion() {
+		return mpEstadoCotizacion;
+	}
+
+	public void setMpEstadoCotizacion(Map<String, Integer> mpEstadoCotizacion) {
+		this.mpEstadoCotizacion = mpEstadoCotizacion;
+	}
+
 	public List<TParametro> getLstParametro() {
 		return lstParametro;
 	}
@@ -424,21 +481,74 @@ public class TCotizacionProcess {
 		lstProducto = new ArrayList<TProducto>();
 		lstLista = new ArrayList<String>();
 		
-		int offset = 0;
+		mpAreaCliente = new HashMap<String, Integer>();
+		lstAreaCliente = tAreaClienteManager.selectByExample(null);
+		for (Iterator<TAreaCliente> iterator = lstAreaCliente.iterator(); iterator.hasNext();) {
+			tAreaCliente = iterator.next();
+			mpAreaCliente.put(tAreaCliente.getCliCod() + "-" + tAreaCliente.getAreCliCod(), tAreaCliente.getAreCliId());
+			
+		}
+		
+		mpEstadoCotizacion = new HashMap<String, Integer>();
+		tParametroExample.clear();
+		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeEstadoCotizacion());
+		lstParametro = tParametroManager.selectByExample(tParametroExample);
+		for (Iterator<TParametro> iterator = lstParametro.iterator(); iterator.hasNext();) {
+			tParametro = iterator.next();
+			mpEstadoCotizacion.put(tParametro.getParamCod(),tParametro.getParamId());
+		}
+		
+		mpProducto = new HashMap<String, Integer>();
+		lstProducto = tProductoManager.selectByExample(null);
+		for (Iterator<TProducto> iterator = lstProducto.iterator(); iterator.hasNext();) {
+			tProducto = iterator.next();
+			mpProducto.put(tProducto.getProdCod(), tProducto.getProcId());
+		}
+		
+		mpTipoAmbito = new HashMap<String, Integer>();
+		tParametroExample.clear();
+		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeTipoAmbito());
+		lstParametro = tParametroManager.selectByExample(tParametroExample);
+		for (Iterator<TParametro> iterator = lstParametro.iterator(); iterator.hasNext();) {
+			tParametro = iterator.next();
+			mpTipoAmbito.put(tParametro.getParamCod(),tParametro.getParamId());
+		}
+		
+		mpTipoNegocio = new HashMap<String, Integer>();
+		tParametroExample.clear();
+		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeTipoNegocio());
+		lstParametro = tParametroManager.selectByExample(tParametroExample);
+		for (Iterator<TParametro> iterator = lstParametro.iterator(); iterator.hasNext();) {
+			tParametro = iterator.next();
+			mpTipoNegocio.put(tParametro.getParamCod(),tParametro.getParamId());
+		}
+		
+		mpTipoServicio = new HashMap<String, Integer>();
+		tParametroExample.clear();
+		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeTipoServicio());
+		lstParametro = tParametroManager.selectByExample(tParametroExample);
+		for (Iterator<TParametro> iterator = lstParametro.iterator(); iterator.hasNext();) {
+			tParametro = iterator.next();
+			mpTipoServicio.put(tParametro.getParamCod(),tParametro.getParamId());
+		}
+		
+		List<String> lstStateRecord = new ArrayList<String>();
+		lstStateRecord.add(constantes.getStateRecordNew());
+		lstStateRecord.add(constantes.getStateRecordUpdated());
+		
+		//int offset = 0;
+		
+		List<TCotizaciones> lstCotizacion = new ArrayList<TCotizaciones>();
 		
 		while (true) {
 
 			tCotizacionesExample.clear();
 
-			//Se trabajara solo con las cotizaciones del negocio de mensajeria local
-			tCotizacionesExample.createCriteria().andCodambitoEqualTo(constantes.getParamCodeTipoAmbitoLocal());
-			tCotizacionesExample.createCriteria().andCodnegocioEqualTo(constantes.getParamCodeTipoNegocioMensajeria());
-			tCotizacionesExample.createCriteria().andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom));
-			tCotizacionesExample.createCriteria().andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil));
+			tCotizacionesExample.createCriteria().andCodambitoEqualTo(constantes.getParamCodeTipoAmbitoLocal()).andCodnegocioEqualTo(constantes.getParamCodeTipoNegocioMensajeria()).andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom)).andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil)).andBiCodIndCamIn(lstStateRecord);
+			//tCotizacionesExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
+			tCotizacionesExample.setPaginationByClause(" limit " + constantes.getSizePage());
 			
-			tCotizacionesExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
-			
-			List<TCotizaciones> lstCotizacion = tCotizacionesManager.selectByExample(tCotizacionesExample);
+			lstCotizacion = tCotizacionesManager.selectByExample(tCotizacionesExample);
 
 			if (lstCotizacion.size() > 0) {
 				for (Iterator<TCotizaciones> iterator = lstCotizacion.iterator(); iterator.hasNext();) {
@@ -446,9 +556,13 @@ public class TCotizacionProcess {
 					tCotizacion.clear();
 					processRecordCotizacion();
 				}
-				offset = offset + constantes.getSizePage();
+				lstCotizacion.clear();
+				//offset = offset + constantes.getSizePage();
 			} else {
-
+				
+				lstStateRecord.clear();
+				lstCotizacion.clear();
+				
 				tParametro.clear();
 				tParametroExample.clear();
 
@@ -466,13 +580,19 @@ public class TCotizacionProcess {
 
 				tCotizacion.clear();
 				tCotizacionExample.clear();
+				
+				mpAreaCliente.clear();
+				mpEstadoCotizacion.clear();
+				mpProducto.clear();
+				mpTipoAmbito.clear();
+				mpTipoNegocio.clear();
+				mpTipoServicio.clear();
 
 				lstParametro.clear();
 				lstAreaCliente.clear();
 				lstProducto.clear();
 				lstLista.clear();
 
-				offset = 0;
 				break;
 			}
 		}
@@ -532,129 +652,50 @@ public class TCotizacionProcess {
 
 	public void completeFieldCotizacion() throws Exception{
 
-		//Codido de la categoria del empleado: Por defecto se ingresa el valor 0
 		tCotizacion.setEmpCatId(0);
 		
-		//Codigo del area del cliente
-		lstLista.clear();
-		lstLista.add(tCotizaciones.getCodareacliente());
-		lstLista.add(constantes.getValueStringDefault());
-		
-		tAreaClienteExample.clear();
-		tAreaClienteExample.createCriteria().andCliCodEqualTo(tCotizaciones.getCodcliente());
-		tAreaClienteExample.createCriteria().andAreCliCodIn(lstLista);
-		lstAreaCliente = tAreaClienteManager.selectByExample(tAreaClienteExample);
-		if(lstAreaCliente.size()>0){
-			if(lstAreaCliente.size()>1){
-				if(!constantes.getValueStringDefault().equals(lstAreaCliente.get(0).getAreCliCod())){
-					tCotizacion.setAreCliId(lstAreaCliente.get(0).getAreCliId());
-				}else{
-					tCotizacion.setAreCliId(lstAreaCliente.get(1).getAreCliId());
-				}
-			}else{
-				tCotizacion.setAreCliId(lstAreaCliente.get(0).getAreCliId());
-			}
+		tCotizacion.setAreCliId(mpAreaCliente.get(tCotizaciones.getCodcliente() + "-" + tCotizaciones.getCodareacliente()));
+		if(tCotizacion.getAreCliId() == null){
+			tCotizacion.setAreCliId(mpAreaCliente.get(tCotizaciones.getCodcliente() + "-" + constantes.getValueStringDefault()));
 		}
+
+		tCotizacion.setProdId(mpProducto.get(tCotizaciones.getCodproducto()));
 		
-		//Codigo del producto
-		tProductoExample.clear();
-		tProductoExample.createCriteria().andProdCodEqualTo(tCotizaciones.getCodproducto());
-		lstProducto = tProductoManager.selectByExample(tProductoExample);
-		if(lstProducto.size()>0){
-			tCotizacion.setProdId(lstProducto.get(0).getProdId());
-		}
-		
-		//Tipo de ambito
-		if(constantes.getParamCodeTipoAmbitoLocal().equals(tCotizaciones.getCodambito())){
-			tCotizacion.setCotiCodAmb(constantes.getParamSerialTipoAmbitoLocal());
-		}else{
+		tCotizacion.setCotiCodAmb(mpTipoAmbito.get(tCotizaciones.getCodambito()));
+		if(tCotizacion.getCotiCodAmb() == null){
 			tCotizacion.setCotiCodAmb(constantes.getParamSerialTipoAmbitoNoDefinido());
 		}
 		
-		//Codigo de servicio
-		//		tParametroExample.clear();
-		//		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeTipoServicio());
-		//		tParametroExample.createCriteria().andParamCodEqualTo(tCotizaciones.getCodservicio());
-		//		lstParametro = tParametroManager.selectByExample(tParametroExample);
-		//		if(lstParametro.size()>0){
-		//			tCotizacion.setCotiCodServ(lstParametro.get(0).getParamId());
-		//		}
-		
-		if(constantes.getParamCodeTipoServicioCorreo1Dia().equals(tCotizaciones.getCodservicio())){
-			tCotizacion.setCotiCodServ(constantes.getParamSerialTipoServicioCorreo1Dia());
-		}else if(constantes.getParamCodeTipoServicioCorreo2Dias().equals(tCotizaciones.getCodservicio())){
-			tCotizacion.setCotiCodServ(constantes.getParamSerialTipoServicioCorreo2Dias());
-		}else if(constantes.getParamCodeTipoServicioCorreo3Dias().equals(tCotizaciones.getCodservicio())){
-			tCotizacion.setCotiCodServ(constantes.getParamSerialTipoServicioCorreo3Dias());
-		}else if(constantes.getParamCodeTipoServicioCorreo4Dias().equals(tCotizaciones.getCodservicio())){
-			tCotizacion.setCotiCodServ(constantes.getParamSerialTipoServicioCorreo4Dias());
-		}else if(constantes.getParamCodeTipoServicioCorreo5Dias().equals(tCotizaciones.getCodservicio())){
-			tCotizacion.setCotiCodServ(constantes.getParamSerialTipoServicioCorreo5Dias());
-		}else if(constantes.getParamCodeTipoServicioExpress25Dias().equals(tCotizaciones.getCodservicio())){
-			tCotizacion.setCotiCodServ(constantes.getParamSerialTipoServicioExpress25Dias());
-		}else if(constantes.getParamCodeTipoServicioEconExp1530Dias().equals(tCotizaciones.getCodservicio())){
-			tCotizacion.setCotiCodServ(constantes.getParamSerialTipoServicioEconExp1530Dias());
-		}else if(constantes.getParamCodeTipoServicioCorreo1530Dias().equals(tCotizaciones.getCodservicio())){
-			tCotizacion.setCotiCodServ(constantes.getParamSerialTipoServicioCorreo1530Dias());
-		}else if(constantes.getParamCodeTipoServicioCorreo4DiasAMas().equals(tCotizaciones.getCodservicio())){
-			tCotizacion.setCotiCodServ(constantes.getParamSerialTipoServicioCorreo4DiasAMas());
-		}else if(constantes.getParamCodeTipoServicioVolanteoPersonalizado().equals(tCotizaciones.getCodservicio())){
-			tCotizacion.setCotiCodServ(constantes.getParamSerialTipoServicioVolanteoPersonalizado());
-		}else if(constantes.getParamCodeTipoServicioVolanteoSimple().equals(tCotizaciones.getCodservicio())){
-			tCotizacion.setCotiCodServ(constantes.getParamSerialTipoServicioVolanteoSimple());
-		}else {
+		tCotizacion.setCotiCodServ(mpTipoServicio.get(tCotizaciones.getCodservicio()));
+		if(tCotizacion.getCotiCodServ() == null){
 			tCotizacion.setCotiCodServ(constantes.getParamSerialTipoServicioNoDefinido());
 		}
 			
-
-		//Tipo de negocio
-		if(constantes.getParamCodeTipoNegocioMensajeria().equals(tCotizaciones.getCodnegocio())){
-			tCotizacion.setCotiCodNeg(constantes.getParamSerialTipoNegocioMensajeria());
-		}else{
+		tCotizacion.setCotiCodNeg(mpTipoNegocio.get(tCotizaciones.getCodnegocio()));
+		if(tCotizacion.getCotiCodNeg() == null){
 			tCotizacion.setCotiCodNeg(constantes.getParamSerialTipoNegocioNoDefinido());
 		}
-		
-		//Tipo de documento de trabajo: Por defecto se colocara no definido
+
 		tCotizacion.setCotiCodTipDoc(constantes.getParamSerialTipoDocumentoTrabajoNoDefinido());
-		
-		//Datos generales
+
 		tCotizacion.setCotiSerieDoc(tCotizaciones.getCoserie());
 		tCotizacion.setCotiNumDoc(tCotizaciones.getConumero().toString());
-		
-		//Estado de la cotizacion
-		if(constantes.getParamCodeEstadoCotizacionNormal().equals(tCotizaciones.getEstado().toString())){
-			tCotizacion.setCotiCodEst(constantes.getParamSerialEstadoCotizacionNormal());
-		}
-		else if(constantes.getParamCodeEstadoCotizacionPlana().equals(tCotizaciones.getEstado().toString())){
-			tCotizacion.setCotiCodEst(constantes.getParamSerialEstadoCotizacionPlana());
-		}
-		else if(constantes.getParamCodeEstadoCotizacionValijas().equals(tCotizaciones.getEstado().toString())){
-			tCotizacion.setCotiCodEst(constantes.getParamSerialEstadoCotizacionValijas());
-		}
-		else if(constantes.getParamCodeEstadoCotizacionUbigeos().equals(tCotizaciones.getEstado().toString())){
-			tCotizacion.setCotiCodEst(constantes.getParamSerialEstadoCotizacionUbigeos());
-		}
-		else if(constantes.getParamCodeEstadoCotizacionRangos().equals(tCotizaciones.getEstado().toString())){
-			tCotizacion.setCotiCodEst(constantes.getParamSerialEstadoCotizacionRangos());
-		}
-		else if(constantes.getParamCodeEstadoCotizacionGiroRecojo().equals(tCotizaciones.getEstado().toString())){
-			tCotizacion.setCotiCodEst(constantes.getParamSerialEstadoCotizacionGiroRecojo());
-		}
-		else{
+		tCotizacion.setCotiCodComp(tCotizaciones.getCoserie() + "-" + tCotizaciones.getConumero().toString());
+
+		tCotizacion.setCotiCodEst(mpEstadoCotizacion.get(tCotizaciones.getEstado().toString()));
+		if(tCotizacion.getCotiCodEst() == null){
 			tCotizacion.setCotiCodEst(constantes.getParamSerialEstadoCotizacionNoDefinido());
 		}
-		
-		//Fechas
+
 		tCotizacion.setCotiFecApro(tCotizaciones.getFechaaprueba());
 		tCotizacion.setCotiFecIni(tCotizaciones.getFecha());
 		tCotizacion.setCotiFecFin(tCotizaciones.getFechaanula());
-		
-		//Campos de control
+
 		tCotizacion.setFecNumCam(Util.getCurrentDateTimeAsLong());
 		if(constantes.getStateRecordNew().equals(tCotizaciones.getBiCodIndCam())){
 			tCotizacion.setCodIndCam(constantes.getStateRecordNew());
 		}else{
-			tCotizacion.setCodIndCam(constantes.getStateRecordProcessed());
+			tCotizacion.setCodIndCam(constantes.getStateRecordUpdated());
 		}
 		tCotizacion.setProcId(process);
 
@@ -672,12 +713,16 @@ public class TCotizacionProcess {
 	public int updateRecordGenericCotizacion() throws Exception{
 		try {
 			tCotizacionExample.clear();
-			tCotizacionExample.createCriteria().andCotiCodTipDocEqualTo(constantes.getParamSerialTipoDocumentoTrabajoNoDefinido());
-			tCotizacionExample.createCriteria().andCotiSerieDocEqualTo(tCotizacion.getCotiSerieDoc());
-			tCotizacionExample.createCriteria().andCotiNumDocEqualTo(tCotizacion.getCotiNumDoc());
+			tCotizacionExample.createCriteria().andCotiCodTipDocEqualTo(constantes.getParamSerialTipoDocumentoTrabajoNoDefinido()).andCotiSerieDocEqualTo(tCotizacion.getCotiSerieDoc()).andCotiNumDocEqualTo(tCotizacion.getCotiNumDoc());
+			
+			tCotizacion.setCotiCodTipDoc(null);
+			tCotizacion.setCotiSerieDoc(null);
+			tCotizacion.setCotiNumDoc(null);
+			
 			resultTransaction = tCotizacionManager.updateByExampleSelective(tCotizacion, tCotizacionExample);	
 		} catch (Exception e) {
 			resultTransaction = constantes.getResultTransactionNoResult();
+			e.printStackTrace();
 		}
 		return resultTransaction;
 	}
@@ -685,9 +730,7 @@ public class TCotizacionProcess {
 	public int deleteRecordGenericCotizacion() throws Exception{
 		try {
 			tCotizacionExample.clear();
-			tCotizacionExample.createCriteria().andCotiCodTipDocEqualTo(constantes.getParamSerialTipoDocumentoTrabajoNoDefinido());
-			tCotizacionExample.createCriteria().andCotiSerieDocEqualTo(tCotizacion.getCotiSerieDoc());
-			tCotizacionExample.createCriteria().andCotiNumDocEqualTo(tCotizacion.getCotiNumDoc());
+			tCotizacionExample.createCriteria().andCotiCodTipDocEqualTo(constantes.getParamSerialTipoDocumentoTrabajoNoDefinido()).andCotiSerieDocEqualTo(tCotizacion.getCotiSerieDoc()).andCotiNumDocEqualTo(tCotizacion.getCotiNumDoc());
 			resultTransaction = tCotizacionManager.deleteByExample(tCotizacionExample);
 		} catch (Exception e) {
 			resultTransaction = constantes.getResultTransactionNoResult();
@@ -702,6 +745,7 @@ public class TCotizacionProcess {
 		tCotizaciones.setCoserie(coSerie);
 		tCotizaciones.setConumero(coNumero);
 		tCotizaciones.setBiCodIndCam(statusRecord);
+		//tCotizaciones.setBiFecNumCam(Util.getCurrentDateTime());
 		tCotizacionesManager.updateByPrimaryKeySelective(tCotizaciones);
 	}
 

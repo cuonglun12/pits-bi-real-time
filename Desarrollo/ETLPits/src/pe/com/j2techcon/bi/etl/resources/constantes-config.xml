@@ -340,6 +340,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="valueNumberDefault" value="${value.number.default}"></property>
 
 		<property name="stateRecordNew" value="${state.record.new}"></property>
+		<property name="stateRecordUpdated" value="${state.record.updated}"></property>
 		<property name="stateRecordProcessed" value="${state.record.processed}"></property>
 		<property name="stateRecordInconsistent" value="${state.record.inconsistent}"></property>
 		

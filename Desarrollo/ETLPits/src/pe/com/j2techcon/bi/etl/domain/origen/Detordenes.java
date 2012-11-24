@@ -239,7 +239,7 @@ public class Detordenes {
     }
 
     public void setSerie(String serie) {
-        this.serie = serie == null ? null : serie.trim();
+        this.serie = serie;
     }
 
     public String getOrden() {
@@ -247,7 +247,7 @@ public class Detordenes {
     }
 
     public void setOrden(String orden) {
-        this.orden = orden == null ? null : orden.trim();
+        this.orden = orden;
     }
 
     public String getCorrelativo() {
@@ -255,7 +255,7 @@ public class Detordenes {
     }
 
     public void setCorrelativo(String correlativo) {
-        this.correlativo = correlativo == null ? null : correlativo.trim();
+        this.correlativo = correlativo;
     }
 
     public String getTipoingreso() {
@@ -263,7 +263,7 @@ public class Detordenes {
     }
 
     public void setTipoingreso(String tipoingreso) {
-        this.tipoingreso = tipoingreso == null ? null : tipoingreso.trim();
+        this.tipoingreso = tipoingreso;
     }
 
     public String getUserDigitacion() {
@@ -271,7 +271,7 @@ public class Detordenes {
     }
 
     public void setUserDigitacion(String userDigitacion) {
-        this.userDigitacion = userDigitacion == null ? null : userDigitacion.trim();
+        this.userDigitacion = userDigitacion;
     }
 
     public String getPreorden() {
@@ -279,7 +279,7 @@ public class Detordenes {
     }
 
     public void setPreorden(String preorden) {
-        this.preorden = preorden == null ? null : preorden.trim();
+        this.preorden = preorden;
     }
 
     public String getCodcliente() {
@@ -287,7 +287,7 @@ public class Detordenes {
     }
 
     public void setCodcliente(String codcliente) {
-        this.codcliente = codcliente == null ? null : codcliente.trim();
+        this.codcliente = codcliente;
     }
 
     public String getCodareacliente() {
@@ -295,7 +295,7 @@ public class Detordenes {
     }
 
     public void setCodareacliente(String codareacliente) {
-        this.codareacliente = codareacliente == null ? null : codareacliente.trim();
+        this.codareacliente = codareacliente;
     }
 
     public String getEmpresa() {
@@ -303,7 +303,7 @@ public class Detordenes {
     }
 
     public void setEmpresa(String empresa) {
-        this.empresa = empresa == null ? null : empresa.trim();
+        this.empresa = empresa;
     }
 
     public String getLlaveempresa() {
@@ -311,7 +311,7 @@ public class Detordenes {
     }
 
     public void setLlaveempresa(String llaveempresa) {
-        this.llaveempresa = llaveempresa == null ? null : llaveempresa.trim();
+        this.llaveempresa = llaveempresa;
     }
 
     public String getDestinatario() {
@@ -319,7 +319,7 @@ public class Detordenes {
     }
 
     public void setDestinatario(String destinatario) {
-        this.destinatario = destinatario == null ? null : destinatario.trim();
+        this.destinatario = destinatario;
     }
 
     public String getLlavedestina() {
@@ -327,7 +327,7 @@ public class Detordenes {
     }
 
     public void setLlavedestina(String llavedestina) {
-        this.llavedestina = llavedestina == null ? null : llavedestina.trim();
+        this.llavedestina = llavedestina;
     }
 
     public String getCargo() {
@@ -335,7 +335,7 @@ public class Detordenes {
     }
 
     public void setCargo(String cargo) {
-        this.cargo = cargo == null ? null : cargo.trim();
+        this.cargo = cargo;
     }
 
     public String getDireccion() {
@@ -343,7 +343,7 @@ public class Detordenes {
     }
 
     public void setDireccion(String direccion) {
-        this.direccion = direccion == null ? null : direccion.trim();
+        this.direccion = direccion;
     }
 
     public String getDistrito() {
@@ -351,7 +351,7 @@ public class Detordenes {
     }
 
     public void setDistrito(String distrito) {
-        this.distrito = distrito == null ? null : distrito.trim();
+        this.distrito = distrito;
     }
 
     public String getReferencia() {
@@ -359,7 +359,7 @@ public class Detordenes {
     }
 
     public void setReferencia(String referencia) {
-        this.referencia = referencia == null ? null : referencia.trim();
+        this.referencia = referencia;
     }
 
     public String getCodpostal() {
@@ -367,7 +367,7 @@ public class Detordenes {
     }
 
     public void setCodpostal(String codpostal) {
-        this.codpostal = codpostal == null ? null : codpostal.trim();
+        this.codpostal = codpostal;
     }
 
     public String getUbigeo() {
@@ -375,7 +375,7 @@ public class Detordenes {
     }
 
     public void setUbigeo(String ubigeo) {
-        this.ubigeo = ubigeo == null ? null : ubigeo.trim();
+        this.ubigeo = ubigeo;
     }
 
     public String getCodzona() {
@@ -383,7 +383,7 @@ public class Detordenes {
     }
 
     public void setCodzona(String codzona) {
-        this.codzona = codzona == null ? null : codzona.trim();
+        this.codzona = codzona;
     }
 
     public String getCuadrante() {
@@ -391,7 +391,7 @@ public class Detordenes {
     }
 
     public void setCuadrante(String cuadrante) {
-        this.cuadrante = cuadrante == null ? null : cuadrante.trim();
+        this.cuadrante = cuadrante;
     }
 
     public String getNuevadireccion() {
@@ -399,7 +399,7 @@ public class Detordenes {
     }
 
     public void setNuevadireccion(String nuevadireccion) {
-        this.nuevadireccion = nuevadireccion == null ? null : nuevadireccion.trim();
+        this.nuevadireccion = nuevadireccion;
     }
 
     public String getNuevareferencia() {
@@ -407,7 +407,7 @@ public class Detordenes {
     }
 
     public void setNuevareferencia(String nuevareferencia) {
-        this.nuevareferencia = nuevareferencia == null ? null : nuevareferencia.trim();
+        this.nuevareferencia = nuevareferencia;
     }
 
     public String getNuevocodpostal() {
@@ -415,7 +415,7 @@ public class Detordenes {
     }
 
     public void setNuevocodpostal(String nuevocodpostal) {
-        this.nuevocodpostal = nuevocodpostal == null ? null : nuevocodpostal.trim();
+        this.nuevocodpostal = nuevocodpostal;
     }
 
     public String getNuevoubigeo() {
@@ -423,7 +423,7 @@ public class Detordenes {
     }
 
     public void setNuevoubigeo(String nuevoubigeo) {
-        this.nuevoubigeo = nuevoubigeo == null ? null : nuevoubigeo.trim();
+        this.nuevoubigeo = nuevoubigeo;
     }
 
     public String getLlave() {
@@ -431,7 +431,7 @@ public class Detordenes {
     }
 
     public void setLlave(String llave) {
-        this.llave = llave == null ? null : llave.trim();
+        this.llave = llave;
     }
 
     public String getCodigo() {
@@ -439,7 +439,7 @@ public class Detordenes {
     }
 
     public void setCodigo(String codigo) {
-        this.codigo = codigo == null ? null : codigo.trim();
+        this.codigo = codigo;
     }
 
     public String getCodigo1() {
@@ -447,7 +447,7 @@ public class Detordenes {
     }
 
     public void setCodigo1(String codigo1) {
-        this.codigo1 = codigo1 == null ? null : codigo1.trim();
+        this.codigo1 = codigo1;
     }
 
     public String getCodigo2() {
@@ -455,7 +455,7 @@ public class Detordenes {
     }
 
     public void setCodigo2(String codigo2) {
-        this.codigo2 = codigo2 == null ? null : codigo2.trim();
+        this.codigo2 = codigo2;
     }
 
     public String getCodigo3() {
@@ -463,7 +463,7 @@ public class Detordenes {
     }
 
     public void setCodigo3(String codigo3) {
-        this.codigo3 = codigo3 == null ? null : codigo3.trim();
+        this.codigo3 = codigo3;
     }
 
     public String getCodigo4() {
@@ -471,7 +471,7 @@ public class Detordenes {
     }
 
     public void setCodigo4(String codigo4) {
-        this.codigo4 = codigo4 == null ? null : codigo4.trim();
+        this.codigo4 = codigo4;
     }
 
     public String getCodigo5() {
@@ -479,7 +479,7 @@ public class Detordenes {
     }
 
     public void setCodigo5(String codigo5) {
-        this.codigo5 = codigo5 == null ? null : codigo5.trim();
+        this.codigo5 = codigo5;
     }
 
     public String getCodigo6() {
@@ -487,7 +487,7 @@ public class Detordenes {
     }
 
     public void setCodigo6(String codigo6) {
-        this.codigo6 = codigo6 == null ? null : codigo6.trim();
+        this.codigo6 = codigo6;
     }
 
     public String getCodestado() {
@@ -495,7 +495,7 @@ public class Detordenes {
     }
 
     public void setCodestado(String codestado) {
-        this.codestado = codestado == null ? null : codestado.trim();
+        this.codestado = codestado;
     }
 
     public String getCodmotivo() {
@@ -503,7 +503,7 @@ public class Detordenes {
     }
 
     public void setCodmotivo(String codmotivo) {
-        this.codmotivo = codmotivo == null ? null : codmotivo.trim();
+        this.codmotivo = codmotivo;
     }
 
     public String getCodestadodesc() {
@@ -511,7 +511,7 @@ public class Detordenes {
     }
 
     public void setCodestadodesc(String codestadodesc) {
-        this.codestadodesc = codestadodesc == null ? null : codestadodesc.trim();
+        this.codestadodesc = codestadodesc;
     }
 
     public String getCodmotivodesc() {
@@ -519,7 +519,7 @@ public class Detordenes {
     }
 
     public void setCodmotivodesc(String codmotivodesc) {
-        this.codmotivodesc = codmotivodesc == null ? null : codmotivodesc.trim();
+        this.codmotivodesc = codmotivodesc;
     }
 
     public String getCodestadoant() {
@@ -527,7 +527,7 @@ public class Detordenes {
     }
 
     public void setCodestadoant(String codestadoant) {
-        this.codestadoant = codestadoant == null ? null : codestadoant.trim();
+        this.codestadoant = codestadoant;
     }
 
     public String getCodmotivoant() {
@@ -535,7 +535,7 @@ public class Detordenes {
     }
 
     public void setCodmotivoant(String codmotivoant) {
-        this.codmotivoant = codmotivoant == null ? null : codmotivoant.trim();
+        this.codmotivoant = codmotivoant;
     }
 
     public String getCodestadocli() {
@@ -543,7 +543,7 @@ public class Detordenes {
     }
 
     public void setCodestadocli(String codestadocli) {
-        this.codestadocli = codestadocli == null ? null : codestadocli.trim();
+        this.codestadocli = codestadocli;
     }
 
     public String getCodmotivocli() {
@@ -551,7 +551,7 @@ public class Detordenes {
     }
 
     public void setCodmotivocli(String codmotivocli) {
-        this.codmotivocli = codmotivocli == null ? null : codmotivocli.trim();
+        this.codmotivocli = codmotivocli;
     }
 
     public Date getFecDigitacion() {
@@ -575,7 +575,7 @@ public class Detordenes {
     }
 
     public void setUserDigitacionmod(String userDigitacionmod) {
-        this.userDigitacionmod = userDigitacionmod == null ? null : userDigitacionmod.trim();
+        this.userDigitacionmod = userDigitacionmod;
     }
 
     public Date getFecDigitacionmod() {
@@ -599,7 +599,7 @@ public class Detordenes {
     }
 
     public void setUserDescargo(String userDescargo) {
-        this.userDescargo = userDescargo == null ? null : userDescargo.trim();
+        this.userDescargo = userDescargo;
     }
 
     public Date getFecDescargo() {
@@ -631,7 +631,7 @@ public class Detordenes {
     }
 
     public void setNroguia(String nroguia) {
-        this.nroguia = nroguia == null ? null : nroguia.trim();
+        this.nroguia = nroguia;
     }
 
     public Short getAjuste() {
@@ -655,7 +655,7 @@ public class Detordenes {
     }
 
     public void setNroliquidacion(String nroliquidacion) {
-        this.nroliquidacion = nroliquidacion == null ? null : nroliquidacion.trim();
+        this.nroliquidacion = nroliquidacion;
     }
 
     public String getRecepcion() {
@@ -663,7 +663,7 @@ public class Detordenes {
     }
 
     public void setRecepcion(String recepcion) {
-        this.recepcion = recepcion == null ? null : recepcion.trim();
+        this.recepcion = recepcion;
     }
 
     public String getRecepcionDni() {
@@ -671,7 +671,7 @@ public class Detordenes {
     }
 
     public void setRecepcionDni(String recepcionDni) {
-        this.recepcionDni = recepcionDni == null ? null : recepcionDni.trim();
+        this.recepcionDni = recepcionDni;
     }
 
     public String getParentesco() {
@@ -679,7 +679,7 @@ public class Detordenes {
     }
 
     public void setParentesco(String parentesco) {
-        this.parentesco = parentesco == null ? null : parentesco.trim();
+        this.parentesco = parentesco;
     }
 
     public String getColorcasa() {
@@ -687,7 +687,7 @@ public class Detordenes {
     }
 
     public void setColorcasa(String colorcasa) {
-        this.colorcasa = colorcasa == null ? null : colorcasa.trim();
+        this.colorcasa = colorcasa;
     }
 
     public String getPuerta() {
@@ -695,7 +695,7 @@ public class Detordenes {
     }
 
     public void setPuerta(String puerta) {
-        this.puerta = puerta == null ? null : puerta.trim();
+        this.puerta = puerta;
     }
 
     public String getNropisos() {
@@ -703,7 +703,7 @@ public class Detordenes {
     }
 
     public void setNropisos(String nropisos) {
-        this.nropisos = nropisos == null ? null : nropisos.trim();
+        this.nropisos = nropisos;
     }
 
     public String getSuministro() {
@@ -711,7 +711,7 @@ public class Detordenes {
     }
 
     public void setSuministro(String suministro) {
-        this.suministro = suministro == null ? null : suministro.trim();
+        this.suministro = suministro;
     }
 
     public String getTelefono() {
@@ -719,7 +719,7 @@ public class Detordenes {
     }
 
     public void setTelefono(String telefono) {
-        this.telefono = telefono == null ? null : telefono.trim();
+        this.telefono = telefono;
     }
 
     public String getVentana() {
@@ -727,7 +727,7 @@ public class Detordenes {
     }
 
     public void setVentana(String ventana) {
-        this.ventana = ventana == null ? null : ventana.trim();
+        this.ventana = ventana;
     }
 
     public String getTipoviv() {
@@ -735,7 +735,7 @@ public class Detordenes {
     }
 
     public void setTipoviv(String tipoviv) {
-        this.tipoviv = tipoviv == null ? null : tipoviv.trim();
+        this.tipoviv = tipoviv;
     }
 
     public String getVecinoizq() {
@@ -743,7 +743,7 @@ public class Detordenes {
     }
 
     public void setVecinoizq(String vecinoizq) {
-        this.vecinoizq = vecinoizq == null ? null : vecinoizq.trim();
+        this.vecinoizq = vecinoizq;
     }
 
     public String getVecinoder() {
@@ -751,7 +751,7 @@ public class Detordenes {
     }
 
     public void setVecinoder(String vecinoder) {
-        this.vecinoder = vecinoder == null ? null : vecinoder.trim();
+        this.vecinoder = vecinoder;
     }
 
     public String getMaterial() {
@@ -759,7 +759,7 @@ public class Detordenes {
     }
 
     public void setMaterial(String material) {
-        this.material = material == null ? null : material.trim();
+        this.material = material;
     }
 
     public String getEstadoviv() {
@@ -767,7 +767,7 @@ public class Detordenes {
     }
 
     public void setEstadoviv(String estadoviv) {
-        this.estadoviv = estadoviv == null ? null : estadoviv.trim();
+        this.estadoviv = estadoviv;
     }
 
     public String getRejacolor() {
@@ -775,7 +775,7 @@ public class Detordenes {
     }
 
     public void setRejacolor(String rejacolor) {
-        this.rejacolor = rejacolor == null ? null : rejacolor.trim();
+        this.rejacolor = rejacolor;
     }
 
     public String getLocald() {
@@ -783,7 +783,7 @@ public class Detordenes {
     }
 
     public void setLocald(String locald) {
-        this.locald = locald == null ? null : locald.trim();
+        this.locald = locald;
     }
 
     public String getImagen() {
@@ -791,7 +791,7 @@ public class Detordenes {
     }
 
     public void setImagen(String imagen) {
-        this.imagen = imagen == null ? null : imagen.trim();
+        this.imagen = imagen;
     }
 
     public String getUserScaneo() {
@@ -799,7 +799,7 @@ public class Detordenes {
     }
 
     public void setUserScaneo(String userScaneo) {
-        this.userScaneo = userScaneo == null ? null : userScaneo.trim();
+        this.userScaneo = userScaneo;
     }
 
     public Date getFecScaneo() {
@@ -839,7 +839,7 @@ public class Detordenes {
     }
 
     public void setOficina(String oficina) {
-        this.oficina = oficina == null ? null : oficina.trim();
+        this.oficina = oficina;
     }
 
     public String getMoneda() {
@@ -847,7 +847,7 @@ public class Detordenes {
     }
 
     public void setMoneda(String moneda) {
-        this.moneda = moneda == null ? null : moneda.trim();
+        this.moneda = moneda;
     }
 
     public String getCoordinado() {
@@ -855,7 +855,7 @@ public class Detordenes {
     }
 
     public void setCoordinado(String coordinado) {
-        this.coordinado = coordinado == null ? null : coordinado.trim();
+        this.coordinado = coordinado;
     }
 
     public Date getFechaCoor() {
@@ -871,7 +871,7 @@ public class Detordenes {
     }
 
     public void setUserCoor(String userCoor) {
-        this.userCoor = userCoor == null ? null : userCoor.trim();
+        this.userCoor = userCoor;
     }
 
     public String getObservacion() {
@@ -879,7 +879,7 @@ public class Detordenes {
     }
 
     public void setObservacion(String observacion) {
-        this.observacion = observacion == null ? null : observacion.trim();
+        this.observacion = observacion;
     }
 
     public Integer getNropiezas() {
@@ -911,7 +911,7 @@ public class Detordenes {
     }
 
     public void setCargoagente(String cargoagente) {
-        this.cargoagente = cargoagente == null ? null : cargoagente.trim();
+        this.cargoagente = cargoagente;
     }
 
     public Integer getNrocargoagente() {
@@ -927,7 +927,7 @@ public class Detordenes {
     }
 
     public void setCodenvio(String codenvio) {
-        this.codenvio = codenvio == null ? null : codenvio.trim();
+        this.codenvio = codenvio;
     }
 
     public BigDecimal getAncho() {
@@ -983,7 +983,7 @@ public class Detordenes {
     }
 
     public void setRuc(String ruc) {
-        this.ruc = ruc == null ? null : ruc.trim();
+        this.ruc = ruc;
     }
 
     public String getDni() {
@@ -991,7 +991,7 @@ public class Detordenes {
     }
 
     public void setDni(String dni) {
-        this.dni = dni == null ? null : dni.trim();
+        this.dni = dni;
     }
 
     public Short getFlagdescargo() {
@@ -1007,7 +1007,7 @@ public class Detordenes {
     }
 
     public void setNuevodistrito(String nuevodistrito) {
-        this.nuevodistrito = nuevodistrito == null ? null : nuevodistrito.trim();
+        this.nuevodistrito = nuevodistrito;
     }
 
     public String getSerieliquidacion() {
@@ -1015,7 +1015,7 @@ public class Detordenes {
     }
 
     public void setSerieliquidacion(String serieliquidacion) {
-        this.serieliquidacion = serieliquidacion == null ? null : serieliquidacion.trim();
+        this.serieliquidacion = serieliquidacion;
     }
 
     public String getSerieguia() {
@@ -1023,7 +1023,7 @@ public class Detordenes {
     }
 
     public void setSerieguia(String serieguia) {
-        this.serieguia = serieguia == null ? null : serieguia.trim();
+        this.serieguia = serieguia;
     }
 
     public String getUserCuadre() {
@@ -1031,7 +1031,7 @@ public class Detordenes {
     }
 
     public void setUserCuadre(String userCuadre) {
-        this.userCuadre = userCuadre == null ? null : userCuadre.trim();
+        this.userCuadre = userCuadre;
     }
 
     public Date getFechaCuadre() {
@@ -1047,7 +1047,7 @@ public class Detordenes {
     }
 
     public void setEstCuadre(String estCuadre) {
-        this.estCuadre = estCuadre == null ? null : estCuadre.trim();
+        this.estCuadre = estCuadre;
     }
 
     public String getFlagCoor() {
@@ -1055,7 +1055,7 @@ public class Detordenes {
     }
 
     public void setFlagCoor(String flagCoor) {
-        this.flagCoor = flagCoor == null ? null : flagCoor.trim();
+        this.flagCoor = flagCoor;
     }
 
     public String getUseruarioCoor() {
@@ -1063,7 +1063,7 @@ public class Detordenes {
     }
 
     public void setUseruarioCoor(String useruarioCoor) {
-        this.useruarioCoor = useruarioCoor == null ? null : useruarioCoor.trim();
+        this.useruarioCoor = useruarioCoor;
     }
 
     public Date getFechaCoordinacion() {
@@ -1079,7 +1079,7 @@ public class Detordenes {
     }
 
     public void setSerieguiasol(String serieguiasol) {
-        this.serieguiasol = serieguiasol == null ? null : serieguiasol.trim();
+        this.serieguiasol = serieguiasol;
     }
 
     public String getNroguiasol() {
@@ -1087,7 +1087,7 @@ public class Detordenes {
     }
 
     public void setNroguiasol(String nroguiasol) {
-        this.nroguiasol = nroguiasol == null ? null : nroguiasol.trim();
+        this.nroguiasol = nroguiasol;
     }
 
     public String getImagenFtp() {
@@ -1095,7 +1095,7 @@ public class Detordenes {
     }
 
     public void setImagenFtp(String imagenFtp) {
-        this.imagenFtp = imagenFtp == null ? null : imagenFtp.trim();
+        this.imagenFtp = imagenFtp;
     }
 
     public String getUsuarioFtp() {
@@ -1103,7 +1103,7 @@ public class Detordenes {
     }
 
     public void setUsuarioFtp(String usuarioFtp) {
-        this.usuarioFtp = usuarioFtp == null ? null : usuarioFtp.trim();
+        this.usuarioFtp = usuarioFtp;
     }
 
     public Date getFechaFtp() {
@@ -1119,7 +1119,7 @@ public class Detordenes {
     }
 
     public void setUsuarioWs(String usuarioWs) {
-        this.usuarioWs = usuarioWs == null ? null : usuarioWs.trim();
+        this.usuarioWs = usuarioWs;
     }
 
     public String getUsuarioCoordina() {
@@ -1127,7 +1127,7 @@ public class Detordenes {
     }
 
     public void setUsuarioCoordina(String usuarioCoordina) {
-        this.usuarioCoordina = usuarioCoordina == null ? null : usuarioCoordina.trim();
+        this.usuarioCoordina = usuarioCoordina;
     }
 
     public Date getFechaCoordina() {
@@ -1151,7 +1151,7 @@ public class Detordenes {
     }
 
     public void setBiCodIndCam(String biCodIndCam) {
-        this.biCodIndCam = biCodIndCam == null ? null : biCodIndCam.trim();
+        this.biCodIndCam = biCodIndCam;
     }
     
     public void clear(){

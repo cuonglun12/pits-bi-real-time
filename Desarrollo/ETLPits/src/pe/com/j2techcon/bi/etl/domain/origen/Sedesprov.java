@@ -38,7 +38,7 @@ public class Sedesprov {
     }
 
     public void setCodsede(String codsede) {
-        this.codsede = codsede == null ? null : codsede.trim();
+        this.codsede = codsede;
     }
 
     public String getNomsede() {
@@ -46,7 +46,7 @@ public class Sedesprov {
     }
 
     public void setNomsede(String nomsede) {
-        this.nomsede = nomsede == null ? null : nomsede.trim();
+        this.nomsede = nomsede;
     }
 
     public String getDireccion() {
@@ -54,7 +54,7 @@ public class Sedesprov {
     }
 
     public void setDireccion(String direccion) {
-        this.direccion = direccion == null ? null : direccion.trim();
+        this.direccion = direccion;
     }
 
     public String getUbigeo() {
@@ -62,7 +62,7 @@ public class Sedesprov {
     }
 
     public void setUbigeo(String ubigeo) {
-        this.ubigeo = ubigeo == null ? null : ubigeo.trim();
+        this.ubigeo = ubigeo;
     }
 
     public String getCiudad() {
@@ -70,7 +70,7 @@ public class Sedesprov {
     }
 
     public void setCiudad(String ciudad) {
-        this.ciudad = ciudad == null ? null : ciudad.trim();
+        this.ciudad = ciudad;
     }
 
     public String getUrl() {
@@ -78,7 +78,7 @@ public class Sedesprov {
     }
 
     public void setUrl(String url) {
-        this.url = url == null ? null : url.trim();
+        this.url = url;
     }
 
     public Short getEstado() {
@@ -94,7 +94,7 @@ public class Sedesprov {
     }
 
     public void setAliasSede(String aliasSede) {
-        this.aliasSede = aliasSede == null ? null : aliasSede.trim();
+        this.aliasSede = aliasSede;
     }
 
     public String getIpSede() {
@@ -102,7 +102,7 @@ public class Sedesprov {
     }
 
     public void setIpSede(String ipSede) {
-        this.ipSede = ipSede == null ? null : ipSede.trim();
+        this.ipSede = ipSede;
     }
 
     public String getNroMaqReg() {
@@ -110,7 +110,7 @@ public class Sedesprov {
     }
 
     public void setNroMaqReg(String nroMaqReg) {
-        this.nroMaqReg = nroMaqReg == null ? null : nroMaqReg.trim();
+        this.nroMaqReg = nroMaqReg;
     }
 
     public String getNroAutorizacion() {
@@ -118,7 +118,7 @@ public class Sedesprov {
     }
 
     public void setNroAutorizacion(String nroAutorizacion) {
-        this.nroAutorizacion = nroAutorizacion == null ? null : nroAutorizacion.trim();
+        this.nroAutorizacion = nroAutorizacion;
     }
 
     public Short getTipo() {
@@ -150,7 +150,7 @@ public class Sedesprov {
     }
 
     public void setBiCodIndCam(String biCodIndCam) {
-        this.biCodIndCam = biCodIndCam == null ? null : biCodIndCam.trim();
+        this.biCodIndCam = biCodIndCam;
     }
     
     public void clear(){

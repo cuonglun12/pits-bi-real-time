@@ -1,8 +1,10 @@
 package pe.com.j2techcon.bi.etl.process.generic;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
@@ -51,6 +53,8 @@ public class TSedeProcess {
 	private TParametroManager tParametroManager;
 	
 	private List<TParametro> lstParametro;
+	
+	private Map<String,Integer> mpUbigeo;
 	
 	private Constantes constantes;
 	
@@ -240,6 +244,14 @@ public class TSedeProcess {
 		this.lstParametro = lstParametro;
 	}
 
+	public Map<String, Integer> getMpUbigeo() {
+		return mpUbigeo;
+	}
+
+	public void setMpUbigeo(Map<String, Integer> mpUbigeo) {
+		this.mpUbigeo = mpUbigeo;
+	}
+
 	public Constantes getConstantes() {
 		return constantes;
 	}
@@ -286,18 +298,32 @@ public class TSedeProcess {
 		
 		lstParametro = new ArrayList<TParametro>();
 		
-		int offset = 0;
+		mpUbigeo = new HashMap<String, Integer>();
+		tParametroExample.clear();
+		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeUbigeoDistrito());
+		lstParametro = tParametroManager.selectByExample(tParametroExample);
+		for (Iterator<TParametro> iterator = lstParametro.iterator(); iterator.hasNext();) {
+			tParametro = iterator.next();
+			mpUbigeo.put(tParametro.getParamCod(),tParametro.getParamId());
+		}
+		
+		List<String> lstStateRecord = new ArrayList<String>();
+		lstStateRecord.add(constantes.getStateRecordNew());
+		lstStateRecord.add(constantes.getStateRecordUpdated());
+		
+		//int offset = 0;
+		
+		List<Sedesprov> lstSedes = new ArrayList<Sedesprov>();
 		
 		while (true) {
 
 			sedesprovExample.clear();
 
-			sedesprovExample.createCriteria().andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom));
-			sedesprovExample.createCriteria().andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil));
-
-			sedesprovExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
+			sedesprovExample.createCriteria().andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom)).andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil)).andBiCodIndCamIn(lstStateRecord);
+			//sedesprovExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
+			sedesprovExample.setPaginationByClause(" limit " + constantes.getSizePage());
 			
-			List<Sedesprov> lstSedes = sedesprovManager.selectByExample(sedesprovExample);
+			lstSedes = sedesprovManager.selectByExample(sedesprovExample);
 
 			if (lstSedes.size() > 0) {
 				for (Iterator<Sedesprov> iterator = lstSedes.iterator(); iterator.hasNext();) {
@@ -305,9 +331,12 @@ public class TSedeProcess {
 					tSede.clear();
 					processRecordSede();
 				}
-				offset = offset + constantes.getSizePage();
+				lstSedes.clear();
+				//offset = offset + constantes.getSizePage();
 			} else {
 
+				lstStateRecord.clear();
+				
 				lstSedes.clear();
 
 				sedesprov.clear();
@@ -319,9 +348,10 @@ public class TSedeProcess {
 				tParametro.clear();
 				tParametroExample.clear();
 				
+				mpUbigeo.clear();
+				
 				lstParametro.clear();
 
-				offset = 0;
 				break;
 			}
 		}
@@ -380,40 +410,26 @@ public class TSedeProcess {
 
 	public void completeFieldSede() throws Exception{
 
-		//Codigo de la sede
 		tSede.setSedCod(sedesprov.getCodsede());
 		
-		//Ubicacion de la sede
-		
-		
-		//Ubicacion
 		if(sedesprov.getUbigeo() != null && sedesprov.getUbigeo().length()>0){
-			tParametroExample.clear();
-			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeUbigeoDistrito());
-			tParametroExample.createCriteria().andParamCodEqualTo(sedesprov.getUbigeo());
-			
-			lstParametro = tParametroManager.selectByExample(tParametroExample);
-			if(lstParametro.size()>0){
-				tSede.setUbiId(lstParametro.get(0).getParamId());
-			}else{
+			tSede.setUbiId(mpUbigeo.get(sedesprov.getUbigeo()));
+			if(tSede.getUbiId() == null){
 				tSede.setUbiId(constantes.getParamSerialUbigeoDistritoNoDefinido());
 			}
 		}else{
 			tSede.setUbiId(constantes.getParamSerialUbigeoDistritoNoDefinido());
 		}
 		
-		//Tipo de Sede: Valor por defecto
 		tSede.setSedCodTip(constantes.getParamSerialTipoSedeNoDefinido());
 		
-		//Descripcion
 		tSede.setSedDes(sedesprov.getNomsede());
 		
-		//Campos de control
 		tSede.setFecNumCam(Util.getCurrentDateTimeAsLong());
 		if(constantes.getStateRecordNew().equals(sedesprov.getBiCodIndCam())){
 			tSede.setCodIndCam(constantes.getStateRecordNew());
 		}else{
-			tSede.setCodIndCam(constantes.getStateRecordProcessed());
+			tSede.setCodIndCam(constantes.getStateRecordUpdated());
 		}
 		tSede.setProcId(process);
 
@@ -431,7 +447,8 @@ public class TSedeProcess {
 	public int updateRecordGenericSede() throws Exception{
 		try {
 			tSedeExample.clear();
-			tSedeExample.createCriteria().andSedCodEqualTo(tSede.getSedCod());	
+			tSedeExample.createCriteria().andSedCodEqualTo(tSede.getSedCod());
+			tSede.setSedCod(null);
 			resultTransaction = tSedeManager.updateByExampleSelective(tSede, tSedeExample);	
 		} catch (Exception e) {
 			resultTransaction = constantes.getResultTransactionNoResult();
@@ -455,6 +472,7 @@ public class TSedeProcess {
 		sedesprov.clear();
 		sedesprov.setCodsede(codSede);
 		sedesprov.setBiCodIndCam(statusRecord);
+		//sedesprov.setBiFecNumCam(Util.getCurrentDateTime());
 		sedesprovManager.updateByPrimaryKeySelective(sedesprov);
 	}
 

@@ -14,6 +14,7 @@
     <result column="ord_cod_tip_doc" property="ordCodTipDoc" jdbcType="INTEGER" />
     <result column="ord_serie_doc" property="ordSerieDoc" jdbcType="VARCHAR" />
     <result column="ord_num_doc" property="ordNumDoc" jdbcType="VARCHAR" />
+    <result column="ord_cod_comp" property="ordCodComp" jdbcType="VARCHAR" />
     <result column="ord_tip_cambio" property="ordTipCambio" jdbcType="NUMERIC" />
     <result column="ord_cnt_cargos" property="ordCntCargos" jdbcType="INTEGER" />
     <result column="ord_ind_fac" property="ordIndFac" jdbcType="INTEGER" />
@@ -93,10 +94,10 @@
   </sql>
   <sql id="Base_Column_List" >
     ord_id, coti_id, cod_are_cli, emp_cat_id, ord_cod_tip_rep, serv_id, prod_id, ord_cod_tip_pag, 
-    ord_cod_tip_mon, ord_cod_tip_doc, ord_serie_doc, ord_num_doc, ord_tip_cambio, ord_cnt_cargos, 
-    ord_ind_fac, ord_fec_ini, ord_fec_ven, ord_fec_cie, ord_fec_dev, ord_fec_liq, ord_fec_fac, 
-    ord_importe, ord_descuento, ord_venta, ord_igv, ord_total, ord_cod_est, fec_num_cam, 
-    cod_ind_cam, proc_id
+    ord_cod_tip_mon, ord_cod_tip_doc, ord_serie_doc, ord_num_doc, ord_cod_comp, ord_tip_cambio, 
+    ord_cnt_cargos, ord_ind_fac, ord_fec_ini, ord_fec_ven, ord_fec_cie, ord_fec_dev, 
+    ord_fec_liq, ord_fec_fac, ord_importe, ord_descuento, ord_venta, ord_igv, ord_total, 
+    ord_cod_est, fec_num_cam, cod_ind_cam, proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TOrdenExample" >
     select
@@ -107,7 +108,7 @@
     from t_orden
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
-    </if>    
+    </if>
     <if test="whereBetweenFields != null" >
       ${whereBetweenFields}
     </if>
@@ -139,24 +140,24 @@
       emp_cat_id, ord_cod_tip_rep, serv_id, 
       prod_id, ord_cod_tip_pag, ord_cod_tip_mon, 
       ord_cod_tip_doc, ord_serie_doc, ord_num_doc, 
-      ord_tip_cambio, ord_cnt_cargos, ord_ind_fac, 
-      ord_fec_ini, ord_fec_ven, ord_fec_cie, 
-      ord_fec_dev, ord_fec_liq, ord_fec_fac, 
-      ord_importe, ord_descuento, ord_venta, 
-      ord_igv, ord_total, ord_cod_est, 
-      fec_num_cam, cod_ind_cam, proc_id
-      )
+      ord_cod_comp, ord_tip_cambio, ord_cnt_cargos, 
+      ord_ind_fac, ord_fec_ini, ord_fec_ven, 
+      ord_fec_cie, ord_fec_dev, ord_fec_liq, 
+      ord_fec_fac, ord_importe, ord_descuento, 
+      ord_venta, ord_igv, ord_total, 
+      ord_cod_est, fec_num_cam, cod_ind_cam, 
+      proc_id)
     values (#{ordId,jdbcType=INTEGER}, #{cotiId,jdbcType=INTEGER}, #{codAreCli,jdbcType=INTEGER}, 
       #{empCatId,jdbcType=INTEGER}, #{ordCodTipRep,jdbcType=INTEGER}, #{servId,jdbcType=INTEGER}, 
       #{prodId,jdbcType=INTEGER}, #{ordCodTipPag,jdbcType=INTEGER}, #{ordCodTipMon,jdbcType=INTEGER}, 
       #{ordCodTipDoc,jdbcType=INTEGER}, #{ordSerieDoc,jdbcType=VARCHAR}, #{ordNumDoc,jdbcType=VARCHAR}, 
-      #{ordTipCambio,jdbcType=NUMERIC}, #{ordCntCargos,jdbcType=INTEGER}, #{ordIndFac,jdbcType=INTEGER}, 
-      #{ordFecIni,jdbcType=DATE}, #{ordFecVen,jdbcType=DATE}, #{ordFecCie,jdbcType=DATE}, 
-      #{ordFecDev,jdbcType=DATE}, #{ordFecLiq,jdbcType=DATE}, #{ordFecFac,jdbcType=DATE}, 
-      #{ordImporte,jdbcType=NUMERIC}, #{ordDescuento,jdbcType=NUMERIC}, #{ordVenta,jdbcType=NUMERIC}, 
-      #{ordIgv,jdbcType=NUMERIC}, #{ordTotal,jdbcType=NUMERIC}, #{ordCodEst,jdbcType=INTEGER}, 
-      #{fecNumCam,jdbcType=BIGINT}, #{codIndCam,jdbcType=CHAR}, #{procId,jdbcType=INTEGER}
-      )
+      #{ordCodComp,jdbcType=VARCHAR}, #{ordTipCambio,jdbcType=NUMERIC}, #{ordCntCargos,jdbcType=INTEGER}, 
+      #{ordIndFac,jdbcType=INTEGER}, #{ordFecIni,jdbcType=DATE}, #{ordFecVen,jdbcType=DATE}, 
+      #{ordFecCie,jdbcType=DATE}, #{ordFecDev,jdbcType=DATE}, #{ordFecLiq,jdbcType=DATE}, 
+      #{ordFecFac,jdbcType=DATE}, #{ordImporte,jdbcType=NUMERIC}, #{ordDescuento,jdbcType=NUMERIC}, 
+      #{ordVenta,jdbcType=NUMERIC}, #{ordIgv,jdbcType=NUMERIC}, #{ordTotal,jdbcType=NUMERIC}, 
+      #{ordCodEst,jdbcType=INTEGER}, #{fecNumCam,jdbcType=BIGINT}, #{codIndCam,jdbcType=CHAR}, 
+      #{procId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TOrden" >
     insert into t_orden
@@ -196,6 +197,9 @@
       </if>
       <if test="ordNumDoc != null" >
         ord_num_doc,
+      </if>
+      <if test="ordCodComp != null" >
+        ord_cod_comp,
       </if>
       <if test="ordTipCambio != null" >
         ord_tip_cambio,
@@ -288,6 +292,9 @@
       </if>
       <if test="ordNumDoc != null" >
         #{ordNumDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="ordCodComp != null" >
+        #{ordCodComp,jdbcType=VARCHAR},
       </if>
       <if test="ordTipCambio != null" >
         #{ordTipCambio,jdbcType=NUMERIC},
@@ -390,6 +397,9 @@
       <if test="record.ordNumDoc != null" >
         ord_num_doc = #{record.ordNumDoc,jdbcType=VARCHAR},
       </if>
+      <if test="record.ordCodComp != null" >
+        ord_cod_comp = #{record.ordCodComp,jdbcType=VARCHAR},
+      </if>
       <if test="record.ordTipCambio != null" >
         ord_tip_cambio = #{record.ordTipCambio,jdbcType=NUMERIC},
       </if>
@@ -463,6 +473,7 @@
       ord_cod_tip_doc = #{record.ordCodTipDoc,jdbcType=INTEGER},
       ord_serie_doc = #{record.ordSerieDoc,jdbcType=VARCHAR},
       ord_num_doc = #{record.ordNumDoc,jdbcType=VARCHAR},
+      ord_cod_comp = #{record.ordCodComp,jdbcType=VARCHAR},
       ord_tip_cambio = #{record.ordTipCambio,jdbcType=NUMERIC},
       ord_cnt_cargos = #{record.ordCntCargos,jdbcType=INTEGER},
       ord_ind_fac = #{record.ordIndFac,jdbcType=INTEGER},
@@ -520,6 +531,9 @@
       </if>
       <if test="ordNumDoc != null" >
         ord_num_doc = #{ordNumDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="ordCodComp != null" >
+        ord_cod_comp = #{ordCodComp,jdbcType=VARCHAR},
       </if>
       <if test="ordTipCambio != null" >
         ord_tip_cambio = #{ordTipCambio,jdbcType=NUMERIC},
@@ -591,6 +605,7 @@
       ord_cod_tip_doc = #{ordCodTipDoc,jdbcType=INTEGER},
       ord_serie_doc = #{ordSerieDoc,jdbcType=VARCHAR},
       ord_num_doc = #{ordNumDoc,jdbcType=VARCHAR},
+      ord_cod_comp = #{ordCodComp,jdbcType=VARCHAR},
       ord_tip_cambio = #{ordTipCambio,jdbcType=NUMERIC},
       ord_cnt_cargos = #{ordCntCargos,jdbcType=INTEGER},
       ord_ind_fac = #{ordIndFac,jdbcType=INTEGER},

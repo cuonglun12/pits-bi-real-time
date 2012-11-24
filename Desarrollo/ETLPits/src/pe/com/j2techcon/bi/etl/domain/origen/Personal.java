@@ -123,7 +123,7 @@ public class Personal {
     }
 
     public void setCodigopersonal(String codigopersonal) {
-        this.codigopersonal = codigopersonal == null ? null : codigopersonal.trim();
+        this.codigopersonal = codigopersonal;
     }
 
     public String getUsuario() {
@@ -131,7 +131,7 @@ public class Personal {
     }
 
     public void setUsuario(String usuario) {
-        this.usuario = usuario == null ? null : usuario.trim();
+        this.usuario = usuario;
     }
 
     public String getTipopers() {
@@ -139,7 +139,7 @@ public class Personal {
     }
 
     public void setTipopers(String tipopers) {
-        this.tipopers = tipopers == null ? null : tipopers.trim();
+        this.tipopers = tipopers;
     }
 
     public String getCodtipo() {
@@ -147,7 +147,7 @@ public class Personal {
     }
 
     public void setCodtipo(String codtipo) {
-        this.codtipo = codtipo == null ? null : codtipo.trim();
+        this.codtipo = codtipo;
     }
 
     public String getCoddepartamento() {
@@ -155,7 +155,7 @@ public class Personal {
     }
 
     public void setCoddepartamento(String coddepartamento) {
-        this.coddepartamento = coddepartamento == null ? null : coddepartamento.trim();
+        this.coddepartamento = coddepartamento;
     }
 
     public String getCodbanco() {
@@ -163,7 +163,7 @@ public class Personal {
     }
 
     public void setCodbanco(String codbanco) {
-        this.codbanco = codbanco == null ? null : codbanco.trim();
+        this.codbanco = codbanco;
     }
 
     public String getTipopago() {
@@ -171,7 +171,7 @@ public class Personal {
     }
 
     public void setTipopago(String tipopago) {
-        this.tipopago = tipopago == null ? null : tipopago.trim();
+        this.tipopago = tipopago;
     }
 
     public String getNombre() {
@@ -179,7 +179,7 @@ public class Personal {
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre == null ? null : nombre.trim();
+        this.nombre = nombre;
     }
 
     public String getAppaterno() {
@@ -187,7 +187,7 @@ public class Personal {
     }
 
     public void setAppaterno(String appaterno) {
-        this.appaterno = appaterno == null ? null : appaterno.trim();
+        this.appaterno = appaterno;
     }
 
     public String getApmaterno() {
@@ -195,7 +195,7 @@ public class Personal {
     }
 
     public void setApmaterno(String apmaterno) {
-        this.apmaterno = apmaterno == null ? null : apmaterno.trim();
+        this.apmaterno = apmaterno;
     }
 
     public String getNombres() {
@@ -203,7 +203,7 @@ public class Personal {
     }
 
     public void setNombres(String nombres) {
-        this.nombres = nombres == null ? null : nombres.trim();
+        this.nombres = nombres;
     }
 
     public String getDireccion() {
@@ -211,7 +211,7 @@ public class Personal {
     }
 
     public void setDireccion(String direccion) {
-        this.direccion = direccion == null ? null : direccion.trim();
+        this.direccion = direccion;
     }
 
     public String getUbigeo() {
@@ -219,7 +219,7 @@ public class Personal {
     }
 
     public void setUbigeo(String ubigeo) {
-        this.ubigeo = ubigeo == null ? null : ubigeo.trim();
+        this.ubigeo = ubigeo;
     }
 
     public String getUbigeonac() {
@@ -227,7 +227,7 @@ public class Personal {
     }
 
     public void setUbigeonac(String ubigeonac) {
-        this.ubigeonac = ubigeonac == null ? null : ubigeonac.trim();
+        this.ubigeonac = ubigeonac;
     }
 
     public Date getFechanac() {
@@ -243,7 +243,7 @@ public class Personal {
     }
 
     public void setEstadocivil(String estadocivil) {
-        this.estadocivil = estadocivil == null ? null : estadocivil.trim();
+        this.estadocivil = estadocivil;
     }
 
     public String getDni() {
@@ -251,7 +251,7 @@ public class Personal {
     }
 
     public void setDni(String dni) {
-        this.dni = dni == null ? null : dni.trim();
+        this.dni = dni;
     }
 
     public String getLmilitar() {
@@ -259,7 +259,7 @@ public class Personal {
     }
 
     public void setLmilitar(String lmilitar) {
-        this.lmilitar = lmilitar == null ? null : lmilitar.trim();
+        this.lmilitar = lmilitar;
     }
 
     public String getNroafp() {
@@ -267,7 +267,7 @@ public class Personal {
     }
 
     public void setNroafp(String nroafp) {
-        this.nroafp = nroafp == null ? null : nroafp.trim();
+        this.nroafp = nroafp;
     }
 
     public String getNroruc() {
@@ -275,7 +275,7 @@ public class Personal {
     }
 
     public void setNroruc(String nroruc) {
-        this.nroruc = nroruc == null ? null : nroruc.trim();
+        this.nroruc = nroruc;
     }
 
     public String getNrocuenta() {
@@ -283,7 +283,7 @@ public class Personal {
     }
 
     public void setNrocuenta(String nrocuenta) {
-        this.nrocuenta = nrocuenta == null ? null : nrocuenta.trim();
+        this.nrocuenta = nrocuenta;
     }
 
     public String getNroessalud() {
@@ -291,7 +291,7 @@ public class Personal {
     }
 
     public void setNroessalud(String nroessalud) {
-        this.nroessalud = nroessalud == null ? null : nroessalud.trim();
+        this.nroessalud = nroessalud;
     }
 
     public String getTelefono() {
@@ -299,7 +299,7 @@ public class Personal {
     }
 
     public void setTelefono(String telefono) {
-        this.telefono = telefono == null ? null : telefono.trim();
+        this.telefono = telefono;
     }
 
     public String getCorreo() {
@@ -307,7 +307,7 @@ public class Personal {
     }
 
     public void setCorreo(String correo) {
-        this.correo = correo == null ? null : correo.trim();
+        this.correo = correo;
     }
 
     public String getEstadopersonal() {
@@ -315,7 +315,7 @@ public class Personal {
     }
 
     public void setEstadopersonal(String estadopersonal) {
-        this.estadopersonal = estadopersonal == null ? null : estadopersonal.trim();
+        this.estadopersonal = estadopersonal;
     }
 
     public String getRecomendo() {
@@ -323,7 +323,7 @@ public class Personal {
     }
 
     public void setRecomendo(String recomendo) {
-        this.recomendo = recomendo == null ? null : recomendo.trim();
+        this.recomendo = recomendo;
     }
 
     public String getPassword() {
@@ -331,7 +331,7 @@ public class Personal {
     }
 
     public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+        this.password = password;
     }
 
     public BigDecimal getMonto() {
@@ -347,7 +347,7 @@ public class Personal {
     }
 
     public void setUsuarioingeso(String usuarioingeso) {
-        this.usuarioingeso = usuarioingeso == null ? null : usuarioingeso.trim();
+        this.usuarioingeso = usuarioingeso;
     }
 
     public Date getFechaingreso() {
@@ -363,7 +363,7 @@ public class Personal {
     }
 
     public void setUsuariomod(String usuariomod) {
-        this.usuariomod = usuariomod == null ? null : usuariomod.trim();
+        this.usuariomod = usuariomod;
     }
 
     public Date getFechamod() {
@@ -387,7 +387,7 @@ public class Personal {
     }
 
     public void setHoraentrada(String horaentrada) {
-        this.horaentrada = horaentrada == null ? null : horaentrada.trim();
+        this.horaentrada = horaentrada;
     }
 
     public BigDecimal getTarifaUrbanacc() {
@@ -411,7 +411,7 @@ public class Personal {
     }
 
     public void setCodempresa(String codempresa) {
-        this.codempresa = codempresa == null ? null : codempresa.trim();
+        this.codempresa = codempresa;
     }
 
     public String getCodzona() {
@@ -419,7 +419,7 @@ public class Personal {
     }
 
     public void setCodzona(String codzona) {
-        this.codzona = codzona == null ? null : codzona.trim();
+        this.codzona = codzona;
     }
 
     public BigDecimal getTarifaPerifericacc() {
@@ -459,7 +459,7 @@ public class Personal {
     }
 
     public void setSexo(String sexo) {
-        this.sexo = sexo == null ? null : sexo.trim();
+        this.sexo = sexo;
     }
 
     public String getCorreoEmpresa() {
@@ -467,7 +467,7 @@ public class Personal {
     }
 
     public void setCorreoEmpresa(String correoEmpresa) {
-        this.correoEmpresa = correoEmpresa == null ? null : correoEmpresa.trim();
+        this.correoEmpresa = correoEmpresa;
     }
 
     public String getEmpresa() {
@@ -475,7 +475,7 @@ public class Personal {
     }
 
     public void setEmpresa(String empresa) {
-        this.empresa = empresa == null ? null : empresa.trim();
+        this.empresa = empresa;
     }
 
     public String getDirempresa() {
@@ -483,7 +483,7 @@ public class Personal {
     }
 
     public void setDirempresa(String dirempresa) {
-        this.dirempresa = dirempresa == null ? null : dirempresa.trim();
+        this.dirempresa = dirempresa;
     }
 
     public String getRucempresa() {
@@ -491,7 +491,7 @@ public class Personal {
     }
 
     public void setRucempresa(String rucempresa) {
-        this.rucempresa = rucempresa == null ? null : rucempresa.trim();
+        this.rucempresa = rucempresa;
     }
 
     public String getTelefono2() {
@@ -499,7 +499,7 @@ public class Personal {
     }
 
     public void setTelefono2(String telefono2) {
-        this.telefono2 = telefono2 == null ? null : telefono2.trim();
+        this.telefono2 = telefono2;
     }
 
     public String getCorreo2() {
@@ -507,7 +507,7 @@ public class Personal {
     }
 
     public void setCorreo2(String correo2) {
-        this.correo2 = correo2 == null ? null : correo2.trim();
+        this.correo2 = correo2;
     }
 
     public String getCoddestino() {
@@ -515,7 +515,7 @@ public class Personal {
     }
 
     public void setCoddestino(String coddestino) {
-        this.coddestino = coddestino == null ? null : coddestino.trim();
+        this.coddestino = coddestino;
     }
 
     public String getCodigojefedirecto() {
@@ -523,7 +523,7 @@ public class Personal {
     }
 
     public void setCodigojefedirecto(String codigojefedirecto) {
-        this.codigojefedirecto = codigojefedirecto == null ? null : codigojefedirecto.trim();
+        this.codigojefedirecto = codigojefedirecto;
     }
 
     public String getZonaBono() {
@@ -531,7 +531,7 @@ public class Personal {
     }
 
     public void setZonaBono(String zonaBono) {
-        this.zonaBono = zonaBono == null ? null : zonaBono.trim();
+        this.zonaBono = zonaBono;
     }
 
     public String getCodventa() {
@@ -539,7 +539,7 @@ public class Personal {
     }
 
     public void setCodventa(String codventa) {
-        this.codventa = codventa == null ? null : codventa.trim();
+        this.codventa = codventa;
     }
 
     public String getCodsede() {
@@ -547,7 +547,7 @@ public class Personal {
     }
 
     public void setCodsede(String codsede) {
-        this.codsede = codsede == null ? null : codsede.trim();
+        this.codsede = codsede;
     }
 
     public String getTipoComprobante() {
@@ -555,7 +555,7 @@ public class Personal {
     }
 
     public void setTipoComprobante(String tipoComprobante) {
-        this.tipoComprobante = tipoComprobante == null ? null : tipoComprobante.trim();
+        this.tipoComprobante = tipoComprobante;
     }
 
     public Date getBiFecNumCam() {
@@ -571,7 +571,7 @@ public class Personal {
     }
 
     public void setBiCodIndCam(String biCodIndCam) {
-        this.biCodIndCam = biCodIndCam == null ? null : biCodIndCam.trim();
+        this.biCodIndCam = biCodIndCam;
     }
     
     public void clear(){

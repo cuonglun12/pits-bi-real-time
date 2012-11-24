@@ -1,8 +1,10 @@
 package pe.com.j2techcon.bi.etl.process.generic;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
@@ -47,10 +49,13 @@ public class TZonaProcess {
 	private TZonaExample tZonaExample;
 	
 	private TParametroManager tParametroManager;
+	
 	private ZonasManager zonasManager;
 	private TZonaManager tZonaManager;
 	
 	private List<TParametro> lstParametro;
+	
+	private Map<String,Integer> mpUbigeo;
 	
 	private Constantes constantes;
 
@@ -248,6 +253,14 @@ public class TZonaProcess {
 		this.constantes = constantes;
 	}
 
+	public Map<String, Integer> getMpUbigeo() {
+		return mpUbigeo;
+	}
+
+	public void setMpUbigeo(Map<String, Integer> mpUbigeo) {
+		this.mpUbigeo = mpUbigeo;
+	}
+
 	public TZonaProcess(BeanFactory factory, int sizePage, long dateTimeFrom,
 			long dateTimeUntil, String typeProcess, int process) throws Exception{
 		this.factory = factory;
@@ -284,17 +297,32 @@ public class TZonaProcess {
 		tZonaExample = new TZonaExample();
 		
 		lstParametro = new ArrayList<TParametro>();
+		
+		mpUbigeo = new HashMap<String, Integer>();
+		tParametroExample.clear();
+		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeUbigeoDistrito());
+		lstParametro = tParametroManager.selectByExample(tParametroExample);
+		for (Iterator<TParametro> iterator = lstParametro.iterator(); iterator.hasNext();) {
+			tParametro = iterator.next();
+			mpUbigeo.put(tParametro.getParamCod(),tParametro.getParamId());
+		}
+		
+		List<String> lstStateRecord = new ArrayList<String>();
+		lstStateRecord.add(constantes.getStateRecordNew());
+		lstStateRecord.add(constantes.getStateRecordUpdated());
 
-		int offset = 0;
+		//int offset = 0;
+		
+		List<Zonas> lstZonas = new ArrayList<Zonas>();
 
 		while (true) {
 
 			zonasExample.clear();
-			zonasExample.createCriteria().andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom));
-			zonasExample.createCriteria().andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil));
-			zonasExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
+			zonasExample.createCriteria().andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom)).andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil)).andBiCodIndCamIn(lstStateRecord);
+			//zonasExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
+			zonasExample.setPaginationByClause(" limit " + constantes.getSizePage());
 			
-			List<Zonas> lstZonas = zonasManager.selectByExample(zonasExample);
+			lstZonas = zonasManager.selectByExample(zonasExample);
 
 			if (lstZonas.size() > 0) {
 				for (Iterator<Zonas> iterator = lstZonas.iterator(); iterator.hasNext();) {
@@ -302,9 +330,12 @@ public class TZonaProcess {
 					tZona.clear();
 					processRecordZona();
 				}
-				offset = offset + constantes.getSizePage();
+				lstZonas.clear();
+				//offset = offset + constantes.getSizePage();
 			} else {
 
+				lstStateRecord.clear();
+				
 				lstZonas.clear();
 
 				zonas.clear();
@@ -315,10 +346,11 @@ public class TZonaProcess {
 				
 				tParametro.clear();
 				tParametroExample.clear();
+				
+				mpUbigeo.clear();
 
 				lstParametro.clear();
 
-				offset = 0;
 				break;
 			}
 		}
@@ -377,38 +409,26 @@ public class TZonaProcess {
 
 	public void completeFieldZona() throws Exception{
 
-		//Codigo de la zona
 		tZona.setZonCod(zonas.getCodzona());
 		
-		//Ubigeo
 		if(zonas.getUbigeo() != null && zonas.getUbigeo().length()>0){
-			tParametroExample.clear();
-			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeUbigeoDistrito());
-			tParametroExample.createCriteria().andParamCodEqualTo(zonas.getUbigeo());
-			
-			lstParametro = tParametroManager.selectByExample(tParametroExample);
-			if(lstParametro.size()>0){
-				tZona.setUbiId(lstParametro.get(0).getParamId());
-			}else{
+			tZona.setUbiId(mpUbigeo.get(zonas.getUbigeo()));
+			if(tZona.getUbiId() == null){
 				tZona.setUbiId(constantes.getParamSerialUbigeoDistritoNoDefinido());
 			}
 		}else{
 			tZona.setUbiId(constantes.getParamSerialUbigeoDistritoNoDefinido());
 		}
 		
-		//Descripcion de la zona
 		tZona.setZonDes(zonas.getDescripcion());
 		
-		//Codigo postal
 		tZona.setZonCodPostal(zonas.getCodpostal());
 
-		
-		//Campos de control
 		tZona.setFecNumCam(Util.getCurrentDateTimeAsLong());
 		if(constantes.getStateRecordNew().equals(zonas.getBiCodIndCam())){
 			tZona.setCodIndCam(constantes.getStateRecordNew());
 		}else{
-			tZona.setCodIndCam(constantes.getStateRecordProcessed());
+			tZona.setCodIndCam(constantes.getStateRecordUpdated());
 		}
 		tZona.setProcId(process);
 
@@ -427,6 +447,7 @@ public class TZonaProcess {
 		try {
 			tZonaExample.clear();
 			tZonaExample.createCriteria().andZonCodEqualTo(tZona.getZonCod());	
+			tZona.setZonCod(null);
 			resultTransaction = tZonaManager.updateByExampleSelective(tZona, tZonaExample);	
 		} catch (Exception e) {
 			resultTransaction = constantes.getResultTransactionNoResult();
@@ -450,6 +471,7 @@ public class TZonaProcess {
 		zonas.clear();
 		zonas.setCodzona(codZona);
 		zonas.setBiCodIndCam(statusRecord);
+		//zonas.setBiFecNumCam(Util.getCurrentDateTime());
 		zonasManager.updateByPrimaryKeySelective(zonas);
 	}
 

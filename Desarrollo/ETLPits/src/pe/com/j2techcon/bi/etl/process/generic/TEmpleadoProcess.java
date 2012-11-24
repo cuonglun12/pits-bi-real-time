@@ -299,17 +299,22 @@ public class TEmpleadoProcess {
 		lstEmpleado = new ArrayList<TEmpleado>();
 		lstEmpleadoCategoria = new ArrayList<TEmpleadoCategoria>();
 		
-		int offset = 0;
+		List<String> lstStateRecord = new ArrayList<String>();
+		lstStateRecord.add(constantes.getStateRecordNew());
+		lstStateRecord.add(constantes.getStateRecordUpdated());
+		
+		//int offset = 0;
+		
+		List<Personal> lstPersonal = new ArrayList<Personal>();
 		
 		while (true) {
 
 			personalExample.clear();
-			personalExample.createCriteria().andCodtipoEqualTo(constantes.getParamCodeCategoriaEmpleadoMensajero());
-			personalExample.createCriteria().andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom));
-			personalExample.createCriteria().andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil));
-			personalExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
+			personalExample.createCriteria().andCodtipoEqualTo(constantes.getParamCodeCategoriaEmpleadoMensajero()).andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom)).andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil)).andBiCodIndCamIn(lstStateRecord);
+			//personalExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
+			personalExample.setPaginationByClause(" limit " + constantes.getSizePage());
 			
-			List<Personal> lstPersonal = personalManager.selectByExample(personalExample);
+			lstPersonal = personalManager.selectByExample(personalExample);
 
 			if (lstPersonal.size() > 0) {
 				for (Iterator<Personal> iterator = lstPersonal.iterator(); iterator.hasNext();) {
@@ -319,8 +324,13 @@ public class TEmpleadoProcess {
 					
 					processRecordEmpleado();
 				}
-				offset = offset + constantes.getSizePage();
+				lstPersonal.clear();
+				//offset = offset + constantes.getSizePage();
 			} else {
+				
+				lstStateRecord.clear();
+				lstPersonal.clear();
+				
 				personal.clear();
 				personalExample.clear();
 
@@ -333,7 +343,6 @@ public class TEmpleadoProcess {
 				lstEmpleado.clear();
 				lstEmpleadoCategoria.clear();
 
-				offset = 0;
 				break;
 			}
 		}
@@ -460,7 +469,7 @@ public class TEmpleadoProcess {
 		if(constantes.getStateRecordNew().equals(personal.getBiCodIndCam())){
 			tEmpleado.setCodIndCam(constantes.getStateRecordNew());
 		}else{
-			tEmpleado.setCodIndCam(constantes.getStateRecordProcessed());
+			tEmpleado.setCodIndCam(constantes.getStateRecordUpdated());
 		}
 		tEmpleado.setProcId(process);
 
@@ -479,6 +488,7 @@ public class TEmpleadoProcess {
 		try {
 			tEmpleadoExample.clear();
 			tEmpleadoExample.createCriteria().andEmpCodEqualTo(tEmpleado.getEmpCod());
+			tEmpleado.setEmpCod(null);
 			resultTransaction = tEmpleadoManager.updateByExampleSelective(tEmpleado, tEmpleadoExample);	
 		} catch (Exception e) {
 			resultTransaction = constantes.getResultTransactionNoResult();
@@ -502,6 +512,7 @@ public class TEmpleadoProcess {
 		personal.clear();
 		personal.setCodigopersonal(codPersonal);
 		personal.setBiCodIndCam(statusRecord);
+		//personal.setBiFecNumCam(Util.getCurrentDateTime());
 		personalManager.updateByPrimaryKeySelective(personal);
 	}
 }

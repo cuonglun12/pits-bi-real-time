@@ -47,7 +47,7 @@ public class Zonas {
     }
 
     public void setCodzona(String codzona) {
-        this.codzona = codzona == null ? null : codzona.trim();
+        this.codzona = codzona;
     }
 
     public String getCodpostal() {
@@ -55,7 +55,7 @@ public class Zonas {
     }
 
     public void setCodpostal(String codpostal) {
-        this.codpostal = codpostal == null ? null : codpostal.trim();
+        this.codpostal = codpostal;
     }
 
     public String getCodclasificador() {
@@ -63,7 +63,7 @@ public class Zonas {
     }
 
     public void setCodclasificador(String codclasificador) {
-        this.codclasificador = codclasificador == null ? null : codclasificador.trim();
+        this.codclasificador = codclasificador;
     }
 
     public String getBonozona() {
@@ -71,7 +71,7 @@ public class Zonas {
     }
 
     public void setBonozona(String bonozona) {
-        this.bonozona = bonozona == null ? null : bonozona.trim();
+        this.bonozona = bonozona;
     }
 
     public String getDescripcion() {
@@ -79,7 +79,7 @@ public class Zonas {
     }
 
     public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion == null ? null : descripcion.trim();
+        this.descripcion = descripcion;
     }
 
     public BigDecimal getPasaje() {
@@ -111,7 +111,7 @@ public class Zonas {
     }
 
     public void setUsuariomod(String usuariomod) {
-        this.usuariomod = usuariomod == null ? null : usuariomod.trim();
+        this.usuariomod = usuariomod;
     }
 
     public Date getFechamod() {
@@ -135,7 +135,7 @@ public class Zonas {
     }
 
     public void setUsuario(String usuario) {
-        this.usuario = usuario == null ? null : usuario.trim();
+        this.usuario = usuario;
     }
 
     public BigDecimal getBono() {
@@ -159,7 +159,7 @@ public class Zonas {
     }
 
     public void setUbigeo(String ubigeo) {
-        this.ubigeo = ubigeo == null ? null : ubigeo.trim();
+        this.ubigeo = ubigeo;
     }
 
     public String getTipozona() {
@@ -167,7 +167,7 @@ public class Zonas {
     }
 
     public void setTipozona(String tipozona) {
-        this.tipozona = tipozona == null ? null : tipozona.trim();
+        this.tipozona = tipozona;
     }
 
     public Short getCantidad() {
@@ -191,7 +191,7 @@ public class Zonas {
     }
 
     public void setBiCodIndCam(String biCodIndCam) {
-        this.biCodIndCam = biCodIndCam == null ? null : biCodIndCam.trim();
+        this.biCodIndCam = biCodIndCam;
     }
     
     public void clear(){

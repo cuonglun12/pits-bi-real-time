@@ -203,7 +203,7 @@ public class Ordenes {
     }
 
     public void setSerie(String serie) {
-        this.serie = serie == null ? null : serie.trim();
+        this.serie = serie;
     }
 
     public String getOrden() {
@@ -211,7 +211,7 @@ public class Ordenes {
     }
 
     public void setOrden(String orden) {
-        this.orden = orden == null ? null : orden.trim();
+        this.orden = orden;
     }
 
     public String getPreorden() {
@@ -219,7 +219,7 @@ public class Ordenes {
     }
 
     public void setPreorden(String preorden) {
-        this.preorden = preorden == null ? null : preorden.trim();
+        this.preorden = preorden;
     }
 
     public String getCodcliente() {
@@ -227,7 +227,7 @@ public class Ordenes {
     }
 
     public void setCodcliente(String codcliente) {
-        this.codcliente = codcliente == null ? null : codcliente.trim();
+        this.codcliente = codcliente;
     }
 
     public String getCodareacliente() {
@@ -235,7 +235,7 @@ public class Ordenes {
     }
 
     public void setCodareacliente(String codareacliente) {
-        this.codareacliente = codareacliente == null ? null : codareacliente.trim();
+        this.codareacliente = codareacliente;
     }
 
     public String getCodambito() {
@@ -243,7 +243,7 @@ public class Ordenes {
     }
 
     public void setCodambito(String codambito) {
-        this.codambito = codambito == null ? null : codambito.trim();
+        this.codambito = codambito;
     }
 
     public String getCodnegocio() {
@@ -251,7 +251,7 @@ public class Ordenes {
     }
 
     public void setCodnegocio(String codnegocio) {
-        this.codnegocio = codnegocio == null ? null : codnegocio.trim();
+        this.codnegocio = codnegocio;
     }
 
     public String getCodservicio() {
@@ -259,7 +259,7 @@ public class Ordenes {
     }
 
     public void setCodservicio(String codservicio) {
-        this.codservicio = codservicio == null ? null : codservicio.trim();
+        this.codservicio = codservicio;
     }
 
     public String getCodproducto() {
@@ -267,7 +267,7 @@ public class Ordenes {
     }
 
     public void setCodproducto(String codproducto) {
-        this.codproducto = codproducto == null ? null : codproducto.trim();
+        this.codproducto = codproducto;
     }
 
     public String getCodtiporeparto() {
@@ -275,7 +275,7 @@ public class Ordenes {
     }
 
     public void setCodtiporeparto(String codtiporeparto) {
-        this.codtiporeparto = codtiporeparto == null ? null : codtiporeparto.trim();
+        this.codtiporeparto = codtiporeparto;
     }
 
     public Long getCntAdmision() {
@@ -339,7 +339,7 @@ public class Ordenes {
     }
 
     public void setEstadoorden(String estadoorden) {
-        this.estadoorden = estadoorden == null ? null : estadoorden.trim();
+        this.estadoorden = estadoorden;
     }
 
     public String getEstadoout() {
@@ -347,7 +347,7 @@ public class Ordenes {
     }
 
     public void setEstadoout(String estadoout) {
-        this.estadoout = estadoout == null ? null : estadoout.trim();
+        this.estadoout = estadoout;
     }
 
     public Short getBloqueo() {
@@ -387,7 +387,7 @@ public class Ordenes {
     }
 
     public void setNroliquidacion(String nroliquidacion) {
-        this.nroliquidacion = nroliquidacion == null ? null : nroliquidacion.trim();
+        this.nroliquidacion = nroliquidacion;
     }
 
     public String getUsuario() {
@@ -395,7 +395,7 @@ public class Ordenes {
     }
 
     public void setUsuario(String usuario) {
-        this.usuario = usuario == null ? null : usuario.trim();
+        this.usuario = usuario;
     }
 
     public Date getFecha() {
@@ -411,7 +411,7 @@ public class Ordenes {
     }
 
     public void setUsuariomod(String usuariomod) {
-        this.usuariomod = usuariomod == null ? null : usuariomod.trim();
+        this.usuariomod = usuariomod;
     }
 
     public Date getFechamod() {
@@ -427,7 +427,7 @@ public class Ordenes {
     }
 
     public void setCodejecutiva(String codejecutiva) {
-        this.codejecutiva = codejecutiva == null ? null : codejecutiva.trim();
+        this.codejecutiva = codejecutiva;
     }
 
     public String getGlosa() {
@@ -435,7 +435,7 @@ public class Ordenes {
     }
 
     public void setGlosa(String glosa) {
-        this.glosa = glosa == null ? null : glosa.trim();
+        this.glosa = glosa;
     }
 
     public Short getFacturado() {
@@ -451,7 +451,7 @@ public class Ordenes {
     }
 
     public void setFacSerie(String facSerie) {
-        this.facSerie = facSerie == null ? null : facSerie.trim();
+        this.facSerie = facSerie;
     }
 
     public String getEeccSerie() {
@@ -459,7 +459,7 @@ public class Ordenes {
     }
 
     public void setEeccSerie(String eeccSerie) {
-        this.eeccSerie = eeccSerie == null ? null : eeccSerie.trim();
+        this.eeccSerie = eeccSerie;
     }
 
     public String getEeccNumero() {
@@ -467,7 +467,7 @@ public class Ordenes {
     }
 
     public void setEeccNumero(String eeccNumero) {
-        this.eeccNumero = eeccNumero == null ? null : eeccNumero.trim();
+        this.eeccNumero = eeccNumero;
     }
 
     public BigDecimal getImporte() {
@@ -515,7 +515,7 @@ public class Ordenes {
     }
 
     public void setCoserie(String coserie) {
-        this.coserie = coserie == null ? null : coserie.trim();
+        this.coserie = coserie;
     }
 
     public Integer getConumero() {
@@ -531,7 +531,7 @@ public class Ordenes {
     }
 
     public void setCodtipooperador(String codtipooperador) {
-        this.codtipooperador = codtipooperador == null ? null : codtipooperador.trim();
+        this.codtipooperador = codtipooperador;
     }
 
     public String getSeoperador() {
@@ -539,7 +539,7 @@ public class Ordenes {
     }
 
     public void setSeoperador(String seoperador) {
-        this.seoperador = seoperador == null ? null : seoperador.trim();
+        this.seoperador = seoperador;
     }
 
     public BigDecimal getTarifaUrbana() {
@@ -587,7 +587,7 @@ public class Ordenes {
     }
 
     public void setMoneda(String moneda) {
-        this.moneda = moneda == null ? null : moneda.trim();
+        this.moneda = moneda;
     }
 
     public BigDecimal getTipoCambio() {
@@ -611,7 +611,7 @@ public class Ordenes {
     }
 
     public void setTipodocumento(String tipodocumento) {
-        this.tipodocumento = tipodocumento == null ? null : tipodocumento.trim();
+        this.tipodocumento = tipodocumento;
     }
 
     public String getObservacion() {
@@ -619,7 +619,7 @@ public class Ordenes {
     }
 
     public void setObservacion(String observacion) {
-        this.observacion = observacion == null ? null : observacion.trim();
+        this.observacion = observacion;
     }
 
     public String getGrupo() {
@@ -627,7 +627,7 @@ public class Ordenes {
     }
 
     public void setGrupo(String grupo) {
-        this.grupo = grupo == null ? null : grupo.trim();
+        this.grupo = grupo;
     }
 
     public String getCodorigen() {
@@ -635,7 +635,7 @@ public class Ordenes {
     }
 
     public void setCodorigen(String codorigen) {
-        this.codorigen = codorigen == null ? null : codorigen.trim();
+        this.codorigen = codorigen;
     }
 
     public String getCodzona() {
@@ -643,7 +643,7 @@ public class Ordenes {
     }
 
     public void setCodzona(String codzona) {
-        this.codzona = codzona == null ? null : codzona.trim();
+        this.codzona = codzona;
     }
 
     public BigDecimal getImportePlus() {
@@ -707,7 +707,7 @@ public class Ordenes {
     }
 
     public void setUsuarioRecojo(String usuarioRecojo) {
-        this.usuarioRecojo = usuarioRecojo == null ? null : usuarioRecojo.trim();
+        this.usuarioRecojo = usuarioRecojo;
     }
 
     public Date getFechaRecojo() {
@@ -739,7 +739,7 @@ public class Ordenes {
     }
 
     public void setCiudadOrigen(String ciudadOrigen) {
-        this.ciudadOrigen = ciudadOrigen == null ? null : ciudadOrigen.trim();
+        this.ciudadOrigen = ciudadOrigen;
     }
 
     public String getCiudadDestino() {
@@ -747,7 +747,7 @@ public class Ordenes {
     }
 
     public void setCiudadDestino(String ciudadDestino) {
-        this.ciudadDestino = ciudadDestino == null ? null : ciudadDestino.trim();
+        this.ciudadDestino = ciudadDestino;
     }
 
     public BigDecimal getValorDeclarado() {
@@ -763,7 +763,7 @@ public class Ordenes {
     }
 
     public void setPrioridad(String prioridad) {
-        this.prioridad = prioridad == null ? null : prioridad.trim();
+        this.prioridad = prioridad;
     }
 
     public String getNrooperador() {
@@ -771,7 +771,7 @@ public class Ordenes {
     }
 
     public void setNrooperador(String nrooperador) {
-        this.nrooperador = nrooperador == null ? null : nrooperador.trim();
+        this.nrooperador = nrooperador;
     }
 
     public String getCodrecojo() {
@@ -779,7 +779,7 @@ public class Ordenes {
     }
 
     public void setCodrecojo(String codrecojo) {
-        this.codrecojo = codrecojo == null ? null : codrecojo.trim();
+        this.codrecojo = codrecojo;
     }
 
     public String getCodConformidad() {
@@ -787,7 +787,7 @@ public class Ordenes {
     }
 
     public void setCodConformidad(String codConformidad) {
-        this.codConformidad = codConformidad == null ? null : codConformidad.trim();
+        this.codConformidad = codConformidad;
     }
 
     public String getObsConformidad() {
@@ -795,7 +795,7 @@ public class Ordenes {
     }
 
     public void setObsConformidad(String obsConformidad) {
-        this.obsConformidad = obsConformidad == null ? null : obsConformidad.trim();
+        this.obsConformidad = obsConformidad;
     }
 
     public String getUsuConformidad() {
@@ -803,7 +803,7 @@ public class Ordenes {
     }
 
     public void setUsuConformidad(String usuConformidad) {
-        this.usuConformidad = usuConformidad == null ? null : usuConformidad.trim();
+        this.usuConformidad = usuConformidad;
     }
 
     public Date getFecConformidad() {
@@ -827,7 +827,7 @@ public class Ordenes {
     }
 
     public void setUsusarioActiva(String ususarioActiva) {
-        this.ususarioActiva = ususarioActiva == null ? null : ususarioActiva.trim();
+        this.ususarioActiva = ususarioActiva;
     }
 
     public Date getFechaActiva() {
@@ -843,7 +843,7 @@ public class Ordenes {
     }
 
     public void settTransporte(String tTransporte) {
-        this.tTransporte = tTransporte == null ? null : tTransporte.trim();
+        this.tTransporte = tTransporte;
     }
 
     public String getSerieDevc() {
@@ -851,7 +851,7 @@ public class Ordenes {
     }
 
     public void setSerieDevc(String serieDevc) {
-        this.serieDevc = serieDevc == null ? null : serieDevc.trim();
+        this.serieDevc = serieDevc;
     }
 
     public String getNroDevc() {
@@ -859,7 +859,7 @@ public class Ordenes {
     }
 
     public void setNroDevc(String nroDevc) {
-        this.nroDevc = nroDevc == null ? null : nroDevc.trim();
+        this.nroDevc = nroDevc;
     }
 
     public String getEstadoDevc() {
@@ -867,7 +867,7 @@ public class Ordenes {
     }
 
     public void setEstadoDevc(String estadoDevc) {
-        this.estadoDevc = estadoDevc == null ? null : estadoDevc.trim();
+        this.estadoDevc = estadoDevc;
     }
 
     public String getObservacion2() {
@@ -875,7 +875,7 @@ public class Ordenes {
     }
 
     public void setObservacion2(String observacion2) {
-        this.observacion2 = observacion2 == null ? null : observacion2.trim();
+        this.observacion2 = observacion2;
     }
 
     public String getSerieguiasol() {
@@ -883,7 +883,7 @@ public class Ordenes {
     }
 
     public void setSerieguiasol(String serieguiasol) {
-        this.serieguiasol = serieguiasol == null ? null : serieguiasol.trim();
+        this.serieguiasol = serieguiasol;
     }
 
     public String getNroguiasol() {
@@ -891,7 +891,7 @@ public class Ordenes {
     }
 
     public void setNroguiasol(String nroguiasol) {
-        this.nroguiasol = nroguiasol == null ? null : nroguiasol.trim();
+        this.nroguiasol = nroguiasol;
     }
 
     public Short getFlagTipoOrden() {
@@ -907,7 +907,7 @@ public class Ordenes {
     }
 
     public void setCodigo(String codigo) {
-        this.codigo = codigo == null ? null : codigo.trim();
+        this.codigo = codigo;
     }
 
     public Short getCntM3() {
@@ -923,7 +923,7 @@ public class Ordenes {
     }
 
     public void setTipoUnidad(String tipoUnidad) {
-        this.tipoUnidad = tipoUnidad == null ? null : tipoUnidad.trim();
+        this.tipoUnidad = tipoUnidad;
     }
 
     public String getCodSubServicio() {
@@ -931,7 +931,7 @@ public class Ordenes {
     }
 
     public void setCodSubServicio(String codSubServicio) {
-        this.codSubServicio = codSubServicio == null ? null : codSubServicio.trim();
+        this.codSubServicio = codSubServicio;
     }
 
     public String getUsuarioAnula() {
@@ -939,7 +939,7 @@ public class Ordenes {
     }
 
     public void setUsuarioAnula(String usuarioAnula) {
-        this.usuarioAnula = usuarioAnula == null ? null : usuarioAnula.trim();
+        this.usuarioAnula = usuarioAnula;
     }
 
     public Date getFechaAnula() {
@@ -955,7 +955,7 @@ public class Ordenes {
     }
 
     public void setObsAnula(String obsAnula) {
-        this.obsAnula = obsAnula == null ? null : obsAnula.trim();
+        this.obsAnula = obsAnula;
     }
 
     public Date getBiFecNumCam() {
@@ -971,7 +971,7 @@ public class Ordenes {
     }
 
     public void setBiCodIndCam(String biCodIndCam) {
-        this.biCodIndCam = biCodIndCam == null ? null : biCodIndCam.trim();
+        this.biCodIndCam = biCodIndCam;
     }
     
     public void clear(){

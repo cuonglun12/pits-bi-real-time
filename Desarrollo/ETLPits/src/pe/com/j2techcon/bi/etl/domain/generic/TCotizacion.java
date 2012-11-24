@@ -23,6 +23,8 @@ public class TCotizacion {
 
     private String cotiNumDoc;
 
+    private String cotiCodComp;
+
     private Integer cotiCodEst;
 
     private Date cotiFecApro;
@@ -117,6 +119,14 @@ public class TCotizacion {
         this.cotiNumDoc = cotiNumDoc == null ? null : cotiNumDoc.trim();
     }
 
+    public String getCotiCodComp() {
+        return cotiCodComp;
+    }
+
+    public void setCotiCodComp(String cotiCodComp) {
+        this.cotiCodComp = cotiCodComp == null ? null : cotiCodComp.trim();
+    }
+
     public Integer getCotiCodEst() {
         return cotiCodEst;
     }
@@ -184,6 +194,7 @@ public class TCotizacion {
     	cotiCodTipDoc=null;
     	cotiSerieDoc=null;
     	cotiNumDoc=null;
+    	cotiCodComp=null;
     	cotiCodEst=null;
     	cotiFecApro=null;
     	cotiFecIni=null;
@@ -200,9 +211,10 @@ public class TCotizacion {
 				+ ", cotiCodAmb=" + cotiCodAmb + ", cotiCodServ=" + cotiCodServ
 				+ ", cotiCodNeg=" + cotiCodNeg + ", cotiCodTipDoc="
 				+ cotiCodTipDoc + ", cotiSerieDoc=" + cotiSerieDoc
-				+ ", cotiNumDoc=" + cotiNumDoc + ", cotiCodEst=" + cotiCodEst
-				+ ", cotiFecApro=" + cotiFecApro + ", cotiFecIni=" + cotiFecIni
-				+ ", cotiFecFin=" + cotiFecFin + ", fecNumCam=" + fecNumCam
-				+ ", codIndCam=" + codIndCam + ", procId=" + procId + "]";
+				+ ", cotiNumDoc=" + cotiNumDoc + ", cotiCodComp=" + cotiCodComp
+				+ ", cotiCodEst=" + cotiCodEst + ", cotiFecApro=" + cotiFecApro
+				+ ", cotiFecIni=" + cotiFecIni + ", cotiFecFin=" + cotiFecFin
+				+ ", fecNumCam=" + fecNumCam + ", codIndCam=" + codIndCam
+				+ ", procId=" + procId + "]";
 	}
 }

@@ -6,6 +6,7 @@
     <result column="desp_cod_tip_doc" property="despCodTipDoc" jdbcType="INTEGER" />
     <result column="desp_serie_doc" property="despSerieDoc" jdbcType="VARCHAR" />
     <result column="desp_numero_doc" property="despNumeroDoc" jdbcType="VARCHAR" />
+    <result column="desp_cod_comp" property="despCodComp" jdbcType="VARCHAR" />
     <result column="sed_id" property="sedId" jdbcType="INTEGER" />
     <result column="zon_id" property="zonId" jdbcType="INTEGER" />
     <result column="emp_cat_id" property="empCatId" jdbcType="INTEGER" />
@@ -81,9 +82,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    desp_id, desp_cod_tip_doc, desp_serie_doc, desp_numero_doc, sed_id, zon_id, emp_cat_id, 
-    desp_cod_tip, desp_cod_tip_rut, desp_cod_ver, desp_mon_pasaje, desp_cnt_cargos, desp_fec_sal, 
-    desp_fec_ret_pro, desp_fec_ret_rea, desp_cod_est, fec_num_cam, cod_ind_cam, proc_id
+    desp_id, desp_cod_tip_doc, desp_serie_doc, desp_numero_doc, desp_cod_comp, sed_id, 
+    zon_id, emp_cat_id, desp_cod_tip, desp_cod_tip_rut, desp_cod_ver, desp_mon_pasaje, 
+    desp_cnt_cargos, desp_fec_sal, desp_fec_ret_pro, desp_fec_ret_rea, desp_cod_est, 
+    fec_num_cam, cod_ind_cam, proc_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TDespachoExample" >
     select
@@ -120,19 +122,19 @@
   </delete>
   <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TDespacho" >
     insert into t_despacho (desp_id, desp_cod_tip_doc, desp_serie_doc, 
-      desp_numero_doc, sed_id, zon_id, 
-      emp_cat_id, desp_cod_tip, desp_cod_tip_rut, 
-      desp_cod_ver, desp_mon_pasaje, desp_cnt_cargos, 
-      desp_fec_sal, desp_fec_ret_pro, desp_fec_ret_rea, 
-      desp_cod_est, fec_num_cam, cod_ind_cam, 
-      proc_id)
+      desp_numero_doc, desp_cod_comp, sed_id, 
+      zon_id, emp_cat_id, desp_cod_tip, 
+      desp_cod_tip_rut, desp_cod_ver, desp_mon_pasaje, 
+      desp_cnt_cargos, desp_fec_sal, desp_fec_ret_pro, 
+      desp_fec_ret_rea, desp_cod_est, fec_num_cam, 
+      cod_ind_cam, proc_id)
     values (#{despId,jdbcType=INTEGER}, #{despCodTipDoc,jdbcType=INTEGER}, #{despSerieDoc,jdbcType=VARCHAR}, 
-      #{despNumeroDoc,jdbcType=VARCHAR}, #{sedId,jdbcType=INTEGER}, #{zonId,jdbcType=INTEGER}, 
-      #{empCatId,jdbcType=INTEGER}, #{despCodTip,jdbcType=INTEGER}, #{despCodTipRut,jdbcType=INTEGER}, 
-      #{despCodVer,jdbcType=INTEGER}, #{despMonPasaje,jdbcType=NUMERIC}, #{despCntCargos,jdbcType=INTEGER}, 
-      #{despFecSal,jdbcType=DATE}, #{despFecRetPro,jdbcType=DATE}, #{despFecRetRea,jdbcType=DATE}, 
-      #{despCodEst,jdbcType=INTEGER}, #{fecNumCam,jdbcType=BIGINT}, #{codIndCam,jdbcType=CHAR}, 
-      #{procId,jdbcType=INTEGER})
+      #{despNumeroDoc,jdbcType=VARCHAR}, #{despCodComp,jdbcType=VARCHAR}, #{sedId,jdbcType=INTEGER}, 
+      #{zonId,jdbcType=INTEGER}, #{empCatId,jdbcType=INTEGER}, #{despCodTip,jdbcType=INTEGER}, 
+      #{despCodTipRut,jdbcType=INTEGER}, #{despCodVer,jdbcType=INTEGER}, #{despMonPasaje,jdbcType=NUMERIC}, 
+      #{despCntCargos,jdbcType=INTEGER}, #{despFecSal,jdbcType=DATE}, #{despFecRetPro,jdbcType=DATE}, 
+      #{despFecRetRea,jdbcType=DATE}, #{despCodEst,jdbcType=INTEGER}, #{fecNumCam,jdbcType=BIGINT}, 
+      #{codIndCam,jdbcType=CHAR}, #{procId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TDespacho" >
     insert into t_despacho
@@ -148,6 +150,9 @@
       </if>
       <if test="despNumeroDoc != null" >
         desp_numero_doc,
+      </if>
+      <if test="despCodComp != null" >
+        desp_cod_comp,
       </if>
       <if test="sedId != null" >
         sed_id,
@@ -207,6 +212,9 @@
       </if>
       <if test="despNumeroDoc != null" >
         #{despNumeroDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="despCodComp != null" >
+        #{despCodComp,jdbcType=VARCHAR},
       </if>
       <if test="sedId != null" >
         #{sedId,jdbcType=INTEGER},
@@ -276,6 +284,9 @@
       <if test="record.despNumeroDoc != null" >
         desp_numero_doc = #{record.despNumeroDoc,jdbcType=VARCHAR},
       </if>
+      <if test="record.despCodComp != null" >
+        desp_cod_comp = #{record.despCodComp,jdbcType=VARCHAR},
+      </if>
       <if test="record.sedId != null" >
         sed_id = #{record.sedId,jdbcType=INTEGER},
       </if>
@@ -332,6 +343,7 @@
       desp_cod_tip_doc = #{record.despCodTipDoc,jdbcType=INTEGER},
       desp_serie_doc = #{record.despSerieDoc,jdbcType=VARCHAR},
       desp_numero_doc = #{record.despNumeroDoc,jdbcType=VARCHAR},
+      desp_cod_comp = #{record.despCodComp,jdbcType=VARCHAR},
       sed_id = #{record.sedId,jdbcType=INTEGER},
       zon_id = #{record.zonId,jdbcType=INTEGER},
       emp_cat_id = #{record.empCatId,jdbcType=INTEGER},
@@ -362,6 +374,9 @@
       </if>
       <if test="despNumeroDoc != null" >
         desp_numero_doc = #{despNumeroDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="despCodComp != null" >
+        desp_cod_comp = #{despCodComp,jdbcType=VARCHAR},
       </if>
       <if test="sedId != null" >
         sed_id = #{sedId,jdbcType=INTEGER},
@@ -416,6 +431,7 @@
     set desp_cod_tip_doc = #{despCodTipDoc,jdbcType=INTEGER},
       desp_serie_doc = #{despSerieDoc,jdbcType=VARCHAR},
       desp_numero_doc = #{despNumeroDoc,jdbcType=VARCHAR},
+      desp_cod_comp = #{despCodComp,jdbcType=VARCHAR},
       sed_id = #{sedId,jdbcType=INTEGER},
       zon_id = #{zonId,jdbcType=INTEGER},
       emp_cat_id = #{empCatId,jdbcType=INTEGER},

@@ -8,7 +8,7 @@ import java.util.List;
 public class TCargoExample {
 	
 	protected String paginationByClause;
-
+	
     protected String orderByClause;
 
     protected boolean distinct;
@@ -19,10 +19,11 @@ public class TCargoExample {
         oredCriteria = new ArrayList<Criteria>();
     }
 
-    public String getPaginationByClause() {
+	public String getPaginationByClause() {
 		return paginationByClause;
 	}
 
+	
 	public void setPaginationByClause(String paginationByClause) {
 		this.paginationByClause = paginationByClause;
 	}
@@ -461,6 +462,76 @@ public class TCargoExample {
 
         public Criteria andCargCorrNotBetween(Integer value1, Integer value2) {
             addCriterion("carg_corr not between", value1, value2, "cargCorr");
+            return (Criteria) this;
+        }
+
+        public Criteria andCargCodCompIsNull() {
+            addCriterion("carg_cod_comp is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCargCodCompIsNotNull() {
+            addCriterion("carg_cod_comp is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCargCodCompEqualTo(String value) {
+            addCriterion("carg_cod_comp =", value, "cargCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCargCodCompNotEqualTo(String value) {
+            addCriterion("carg_cod_comp <>", value, "cargCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCargCodCompGreaterThan(String value) {
+            addCriterion("carg_cod_comp >", value, "cargCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCargCodCompGreaterThanOrEqualTo(String value) {
+            addCriterion("carg_cod_comp >=", value, "cargCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCargCodCompLessThan(String value) {
+            addCriterion("carg_cod_comp <", value, "cargCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCargCodCompLessThanOrEqualTo(String value) {
+            addCriterion("carg_cod_comp <=", value, "cargCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCargCodCompLike(String value) {
+            addCriterion("carg_cod_comp like", value, "cargCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCargCodCompNotLike(String value) {
+            addCriterion("carg_cod_comp not like", value, "cargCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCargCodCompIn(List<String> values) {
+            addCriterion("carg_cod_comp in", values, "cargCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCargCodCompNotIn(List<String> values) {
+            addCriterion("carg_cod_comp not in", values, "cargCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCargCodCompBetween(String value1, String value2) {
+            addCriterion("carg_cod_comp between", value1, value2, "cargCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCargCodCompNotBetween(String value1, String value2) {
+            addCriterion("carg_cod_comp not between", value1, value2, "cargCodComp");
             return (Criteria) this;
         }
 

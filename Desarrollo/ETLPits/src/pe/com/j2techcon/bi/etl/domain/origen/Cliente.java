@@ -95,7 +95,7 @@ public class Cliente {
     }
 
     public void setCodcliente(String codcliente) {
-        this.codcliente = codcliente == null ? null : codcliente.trim();
+        this.codcliente = codcliente;
     }
 
     public String getRuc() {
@@ -103,7 +103,7 @@ public class Cliente {
     }
 
     public void setRuc(String ruc) {
-        this.ruc = ruc == null ? null : ruc.trim();
+        this.ruc = ruc;
     }
 
     public String getCliente() {
@@ -111,7 +111,7 @@ public class Cliente {
     }
 
     public void setCliente(String cliente) {
-        this.cliente = cliente == null ? null : cliente.trim();
+        this.cliente = cliente;
     }
 
     public String getTipocliente() {
@@ -119,7 +119,7 @@ public class Cliente {
     }
 
     public void setTipocliente(String tipocliente) {
-        this.tipocliente = tipocliente == null ? null : tipocliente.trim();
+        this.tipocliente = tipocliente;
     }
 
     public String getRubro() {
@@ -127,7 +127,7 @@ public class Cliente {
     }
 
     public void setRubro(String rubro) {
-        this.rubro = rubro == null ? null : rubro.trim();
+        this.rubro = rubro;
     }
 
     public String getAlias() {
@@ -135,7 +135,7 @@ public class Cliente {
     }
 
     public void setAlias(String alias) {
-        this.alias = alias == null ? null : alias.trim();
+        this.alias = alias;
     }
 
     public String getDireccion() {
@@ -143,7 +143,7 @@ public class Cliente {
     }
 
     public void setDireccion(String direccion) {
-        this.direccion = direccion == null ? null : direccion.trim();
+        this.direccion = direccion;
     }
 
     public String getUbigeo() {
@@ -151,7 +151,7 @@ public class Cliente {
     }
 
     public void setUbigeo(String ubigeo) {
-        this.ubigeo = ubigeo == null ? null : ubigeo.trim();
+        this.ubigeo = ubigeo;
     }
 
     public String getCodpais() {
@@ -159,7 +159,7 @@ public class Cliente {
     }
 
     public void setCodpais(String codpais) {
-        this.codpais = codpais == null ? null : codpais.trim();
+        this.codpais = codpais;
     }
 
     public String getTelefono() {
@@ -167,7 +167,7 @@ public class Cliente {
     }
 
     public void setTelefono(String telefono) {
-        this.telefono = telefono == null ? null : telefono.trim();
+        this.telefono = telefono;
     }
 
     public String getMovil() {
@@ -175,7 +175,7 @@ public class Cliente {
     }
 
     public void setMovil(String movil) {
-        this.movil = movil == null ? null : movil.trim();
+        this.movil = movil;
     }
 
     public String getLim() {
@@ -183,7 +183,7 @@ public class Cliente {
     }
 
     public void setLim(String lim) {
-        this.lim = lim == null ? null : lim.trim();
+        this.lim = lim;
     }
 
     public String getCodejecutiva() {
@@ -191,7 +191,7 @@ public class Cliente {
     }
 
     public void setCodejecutiva(String codejecutiva) {
-        this.codejecutiva = codejecutiva == null ? null : codejecutiva.trim();
+        this.codejecutiva = codejecutiva;
     }
 
     public String getEmail() {
@@ -199,7 +199,7 @@ public class Cliente {
     }
 
     public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
+        this.email = email;
     }
 
     public String getTipoCredito() {
@@ -207,7 +207,7 @@ public class Cliente {
     }
 
     public void setTipoCredito(String tipoCredito) {
-        this.tipoCredito = tipoCredito == null ? null : tipoCredito.trim();
+        this.tipoCredito = tipoCredito;
     }
 
     public String getTipoFacturacion() {
@@ -215,7 +215,7 @@ public class Cliente {
     }
 
     public void setTipoFacturacion(String tipoFacturacion) {
-        this.tipoFacturacion = tipoFacturacion == null ? null : tipoFacturacion.trim();
+        this.tipoFacturacion = tipoFacturacion;
     }
 
     public String getUsuario() {
@@ -223,7 +223,7 @@ public class Cliente {
     }
 
     public void setUsuario(String usuario) {
-        this.usuario = usuario == null ? null : usuario.trim();
+        this.usuario = usuario;
     }
 
     public Date getFecha() {
@@ -247,7 +247,7 @@ public class Cliente {
     }
 
     public void setUsuariomod(String usuariomod) {
-        this.usuariomod = usuariomod == null ? null : usuariomod.trim();
+        this.usuariomod = usuariomod;
     }
 
     public String getPeriodoFac() {
@@ -255,7 +255,7 @@ public class Cliente {
     }
 
     public void setPeriodoFac(String periodoFac) {
-        this.periodoFac = periodoFac == null ? null : periodoFac.trim();
+        this.periodoFac = periodoFac;
     }
 
     public Integer getDiasCredito() {
@@ -311,7 +311,7 @@ public class Cliente {
     }
 
     public void setObservacion(String observacion) {
-        this.observacion = observacion == null ? null : observacion.trim();
+        this.observacion = observacion;
     }
 
     public Date getFechaInicioCredito() {
@@ -335,7 +335,7 @@ public class Cliente {
     }
 
     public void setTipoDocumento(String tipoDocumento) {
-        this.tipoDocumento = tipoDocumento == null ? null : tipoDocumento.trim();
+        this.tipoDocumento = tipoDocumento;
     }
 
     public String getReferencia() {
@@ -343,7 +343,7 @@ public class Cliente {
     }
 
     public void setReferencia(String referencia) {
-        this.referencia = referencia == null ? null : referencia.trim();
+        this.referencia = referencia;
     }
 
     public String getTelefono1() {
@@ -351,7 +351,7 @@ public class Cliente {
     }
 
     public void setTelefono1(String telefono1) {
-        this.telefono1 = telefono1 == null ? null : telefono1.trim();
+        this.telefono1 = telefono1;
     }
 
     public String getCodEncuesta() {
@@ -359,7 +359,7 @@ public class Cliente {
     }
 
     public void setCodEncuesta(String codEncuesta) {
-        this.codEncuesta = codEncuesta == null ? null : codEncuesta.trim();
+        this.codEncuesta = codEncuesta;
     }
 
     public Long gethPactada() {
@@ -399,7 +399,7 @@ public class Cliente {
     }
 
     public void setEmail2(String email2) {
-        this.email2 = email2 == null ? null : email2.trim();
+        this.email2 = email2;
     }
 
     public String getClasifica() {
@@ -407,7 +407,7 @@ public class Cliente {
     }
 
     public void setClasifica(String clasifica) {
-        this.clasifica = clasifica == null ? null : clasifica.trim();
+        this.clasifica = clasifica;
     }
 
     public String getCodempresa() {
@@ -415,7 +415,7 @@ public class Cliente {
     }
 
     public void setCodempresa(String codempresa) {
-        this.codempresa = codempresa == null ? null : codempresa.trim();
+        this.codempresa = codempresa;
     }
 
     public Date getBiFecNumCam() {
@@ -431,7 +431,7 @@ public class Cliente {
     }
 
     public void setBiCodIndCam(String biCodIndCam) {
-        this.biCodIndCam = biCodIndCam == null ? null : biCodIndCam.trim();
+        this.biCodIndCam = biCodIndCam;
     }
     
     public void clear(){

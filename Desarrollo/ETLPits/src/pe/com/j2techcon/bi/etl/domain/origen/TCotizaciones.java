@@ -207,7 +207,7 @@ public class TCotizaciones {
     }
 
     public void setCoserie(String coserie) {
-        this.coserie = coserie == null ? null : coserie.trim();
+        this.coserie = coserie;
     }
 
     public BigDecimal getConumero() {
@@ -223,7 +223,7 @@ public class TCotizaciones {
     }
 
     public void setRucDni(String rucDni) {
-        this.rucDni = rucDni == null ? null : rucDni.trim();
+        this.rucDni = rucDni;
     }
 
     public String getContacto() {
@@ -231,7 +231,7 @@ public class TCotizaciones {
     }
 
     public void setContacto(String contacto) {
-        this.contacto = contacto == null ? null : contacto.trim();
+        this.contacto = contacto;
     }
 
     public String getDireccion() {
@@ -239,7 +239,7 @@ public class TCotizaciones {
     }
 
     public void setDireccion(String direccion) {
-        this.direccion = direccion == null ? null : direccion.trim();
+        this.direccion = direccion;
     }
 
     public String getEmail() {
@@ -247,7 +247,7 @@ public class TCotizaciones {
     }
 
     public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
+        this.email = email;
     }
 
     public String getCodpaiscontacto() {
@@ -255,7 +255,7 @@ public class TCotizaciones {
     }
 
     public void setCodpaiscontacto(String codpaiscontacto) {
-        this.codpaiscontacto = codpaiscontacto == null ? null : codpaiscontacto.trim();
+        this.codpaiscontacto = codpaiscontacto;
     }
 
     public String getUbigeo() {
@@ -263,7 +263,7 @@ public class TCotizaciones {
     }
 
     public void setUbigeo(String ubigeo) {
-        this.ubigeo = ubigeo == null ? null : ubigeo.trim();
+        this.ubigeo = ubigeo;
     }
 
     public String getCodpostal() {
@@ -271,7 +271,7 @@ public class TCotizaciones {
     }
 
     public void setCodpostal(String codpostal) {
-        this.codpostal = codpostal == null ? null : codpostal.trim();
+        this.codpostal = codpostal;
     }
 
     public String getTelefono() {
@@ -279,7 +279,7 @@ public class TCotizaciones {
     }
 
     public void setTelefono(String telefono) {
-        this.telefono = telefono == null ? null : telefono.trim();
+        this.telefono = telefono;
     }
 
     public String getAnexo() {
@@ -287,7 +287,7 @@ public class TCotizaciones {
     }
 
     public void setAnexo(String anexo) {
-        this.anexo = anexo == null ? null : anexo.trim();
+        this.anexo = anexo;
     }
 
     public String getCelular() {
@@ -295,7 +295,7 @@ public class TCotizaciones {
     }
 
     public void setCelular(String celular) {
-        this.celular = celular == null ? null : celular.trim();
+        this.celular = celular;
     }
 
     public String getAreacontacto() {
@@ -303,7 +303,7 @@ public class TCotizaciones {
     }
 
     public void setAreacontacto(String areacontacto) {
-        this.areacontacto = areacontacto == null ? null : areacontacto.trim();
+        this.areacontacto = areacontacto;
     }
 
     public String getCodtipoentrega() {
@@ -311,7 +311,7 @@ public class TCotizaciones {
     }
 
     public void setCodtipoentrega(String codtipoentrega) {
-        this.codtipoentrega = codtipoentrega == null ? null : codtipoentrega.trim();
+        this.codtipoentrega = codtipoentrega;
     }
 
     public String getCargocontacto() {
@@ -319,7 +319,7 @@ public class TCotizaciones {
     }
 
     public void setCargocontacto(String cargocontacto) {
-        this.cargocontacto = cargocontacto == null ? null : cargocontacto.trim();
+        this.cargocontacto = cargocontacto;
     }
 
     public String getFax() {
@@ -327,7 +327,7 @@ public class TCotizaciones {
     }
 
     public void setFax(String fax) {
-        this.fax = fax == null ? null : fax.trim();
+        this.fax = fax;
     }
 
     public String getCodpaisorigen() {
@@ -335,7 +335,7 @@ public class TCotizaciones {
     }
 
     public void setCodpaisorigen(String codpaisorigen) {
-        this.codpaisorigen = codpaisorigen == null ? null : codpaisorigen.trim();
+        this.codpaisorigen = codpaisorigen;
     }
 
     public String getCiudadorigen() {
@@ -343,7 +343,7 @@ public class TCotizaciones {
     }
 
     public void setCiudadorigen(String ciudadorigen) {
-        this.ciudadorigen = ciudadorigen == null ? null : ciudadorigen.trim();
+        this.ciudadorigen = ciudadorigen;
     }
 
     public String getPuertoorigen() {
@@ -351,7 +351,7 @@ public class TCotizaciones {
     }
 
     public void setPuertoorigen(String puertoorigen) {
-        this.puertoorigen = puertoorigen == null ? null : puertoorigen.trim();
+        this.puertoorigen = puertoorigen;
     }
 
     public String getObsorigen() {
@@ -359,7 +359,7 @@ public class TCotizaciones {
     }
 
     public void setObsorigen(String obsorigen) {
-        this.obsorigen = obsorigen == null ? null : obsorigen.trim();
+        this.obsorigen = obsorigen;
     }
 
     public String getTransporteorigen() {
@@ -367,7 +367,7 @@ public class TCotizaciones {
     }
 
     public void setTransporteorigen(String transporteorigen) {
-        this.transporteorigen = transporteorigen == null ? null : transporteorigen.trim();
+        this.transporteorigen = transporteorigen;
     }
 
     public String getCodpaisdestino() {
@@ -375,7 +375,7 @@ public class TCotizaciones {
     }
 
     public void setCodpaisdestino(String codpaisdestino) {
-        this.codpaisdestino = codpaisdestino == null ? null : codpaisdestino.trim();
+        this.codpaisdestino = codpaisdestino;
     }
 
     public String getCiudaddestino() {
@@ -383,7 +383,7 @@ public class TCotizaciones {
     }
 
     public void setCiudaddestino(String ciudaddestino) {
-        this.ciudaddestino = ciudaddestino == null ? null : ciudaddestino.trim();
+        this.ciudaddestino = ciudaddestino;
     }
 
     public String getPuertodestino() {
@@ -391,7 +391,7 @@ public class TCotizaciones {
     }
 
     public void setPuertodestino(String puertodestino) {
-        this.puertodestino = puertodestino == null ? null : puertodestino.trim();
+        this.puertodestino = puertodestino;
     }
 
     public String getTransportedestino() {
@@ -399,7 +399,7 @@ public class TCotizaciones {
     }
 
     public void setTransportedestino(String transportedestino) {
-        this.transportedestino = transportedestino == null ? null : transportedestino.trim();
+        this.transportedestino = transportedestino;
     }
 
     public String getObsdestino() {
@@ -407,7 +407,7 @@ public class TCotizaciones {
     }
 
     public void setObsdestino(String obsdestino) {
-        this.obsdestino = obsdestino == null ? null : obsdestino.trim();
+        this.obsdestino = obsdestino;
     }
 
     public String getObscotizacion() {
@@ -415,7 +415,7 @@ public class TCotizaciones {
     }
 
     public void setObscotizacion(String obscotizacion) {
-        this.obscotizacion = obscotizacion == null ? null : obscotizacion.trim();
+        this.obscotizacion = obscotizacion;
     }
 
     public String getCodnegocio() {
@@ -423,7 +423,7 @@ public class TCotizaciones {
     }
 
     public void setCodnegocio(String codnegocio) {
-        this.codnegocio = codnegocio == null ? null : codnegocio.trim();
+        this.codnegocio = codnegocio;
     }
 
     public String getCodambito() {
@@ -431,7 +431,7 @@ public class TCotizaciones {
     }
 
     public void setCodambito(String codambito) {
-        this.codambito = codambito == null ? null : codambito.trim();
+        this.codambito = codambito;
     }
 
     public String getCodservicio() {
@@ -439,7 +439,7 @@ public class TCotizaciones {
     }
 
     public void setCodservicio(String codservicio) {
-        this.codservicio = codservicio == null ? null : codservicio.trim();
+        this.codservicio = codservicio;
     }
 
     public String getCodproducto() {
@@ -447,7 +447,7 @@ public class TCotizaciones {
     }
 
     public void setCodproducto(String codproducto) {
-        this.codproducto = codproducto == null ? null : codproducto.trim();
+        this.codproducto = codproducto;
     }
 
     public BigDecimal getPeso() {
@@ -519,7 +519,7 @@ public class TCotizaciones {
     }
 
     public void setMoneda(String moneda) {
-        this.moneda = moneda == null ? null : moneda.trim();
+        this.moneda = moneda;
     }
 
     public BigDecimal getMontopagar() {
@@ -599,7 +599,7 @@ public class TCotizaciones {
     }
 
     public void setUnidadmedida(String unidadmedida) {
-        this.unidadmedida = unidadmedida == null ? null : unidadmedida.trim();
+        this.unidadmedida = unidadmedida;
     }
 
     public BigDecimal getLargo() {
@@ -647,7 +647,7 @@ public class TCotizaciones {
     }
 
     public void setReserie(String reserie) {
-        this.reserie = reserie == null ? null : reserie.trim();
+        this.reserie = reserie;
     }
 
     public Integer getRenumro() {
@@ -663,7 +663,7 @@ public class TCotizaciones {
     }
 
     public void setTipoproducto(String tipoproducto) {
-        this.tipoproducto = tipoproducto == null ? null : tipoproducto.trim();
+        this.tipoproducto = tipoproducto;
     }
 
     public String getRutaimagen() {
@@ -671,7 +671,7 @@ public class TCotizaciones {
     }
 
     public void setRutaimagen(String rutaimagen) {
-        this.rutaimagen = rutaimagen == null ? null : rutaimagen.trim();
+        this.rutaimagen = rutaimagen;
     }
 
     public String getProducto() {
@@ -679,7 +679,7 @@ public class TCotizaciones {
     }
 
     public void setProducto(String producto) {
-        this.producto = producto == null ? null : producto.trim();
+        this.producto = producto;
     }
 
     public String getObsproducto() {
@@ -687,7 +687,7 @@ public class TCotizaciones {
     }
 
     public void setObsproducto(String obsproducto) {
-        this.obsproducto = obsproducto == null ? null : obsproducto.trim();
+        this.obsproducto = obsproducto;
     }
 
     public String getCodencuesta() {
@@ -695,7 +695,7 @@ public class TCotizaciones {
     }
 
     public void setCodencuesta(String codencuesta) {
-        this.codencuesta = codencuesta == null ? null : codencuesta.trim();
+        this.codencuesta = codencuesta;
     }
 
     public String getImo() {
@@ -703,7 +703,7 @@ public class TCotizaciones {
     }
 
     public void setImo(String imo) {
-        this.imo = imo == null ? null : imo.trim();
+        this.imo = imo;
     }
 
     public String getUmm() {
@@ -711,7 +711,7 @@ public class TCotizaciones {
     }
 
     public void setUmm(String umm) {
-        this.umm = umm == null ? null : umm.trim();
+        this.umm = umm;
     }
 
     public String getSerie() {
@@ -719,7 +719,7 @@ public class TCotizaciones {
     }
 
     public void setSerie(String serie) {
-        this.serie = serie == null ? null : serie.trim();
+        this.serie = serie;
     }
 
     public String getOrden() {
@@ -727,7 +727,7 @@ public class TCotizaciones {
     }
 
     public void setOrden(String orden) {
-        this.orden = orden == null ? null : orden.trim();
+        this.orden = orden;
     }
 
     public Short getEstado() {
@@ -743,7 +743,7 @@ public class TCotizaciones {
     }
 
     public void setEmpresa(String empresa) {
-        this.empresa = empresa == null ? null : empresa.trim();
+        this.empresa = empresa;
     }
 
     public String getUsuario() {
@@ -751,7 +751,7 @@ public class TCotizaciones {
     }
 
     public void setUsuario(String usuario) {
-        this.usuario = usuario == null ? null : usuario.trim();
+        this.usuario = usuario;
     }
 
     public Date getFecha() {
@@ -767,7 +767,7 @@ public class TCotizaciones {
     }
 
     public void setUsuariomod(String usuariomod) {
-        this.usuariomod = usuariomod == null ? null : usuariomod.trim();
+        this.usuariomod = usuariomod;
     }
 
     public Date getFechamod() {
@@ -783,7 +783,7 @@ public class TCotizaciones {
     }
 
     public void setMotivoanulacion(String motivoanulacion) {
-        this.motivoanulacion = motivoanulacion == null ? null : motivoanulacion.trim();
+        this.motivoanulacion = motivoanulacion;
     }
 
     public String getCodcliente() {
@@ -791,7 +791,7 @@ public class TCotizaciones {
     }
 
     public void setCodcliente(String codcliente) {
-        this.codcliente = codcliente == null ? null : codcliente.trim();
+        this.codcliente = codcliente;
     }
 
     public String getCodareacliente() {
@@ -799,7 +799,7 @@ public class TCotizaciones {
     }
 
     public void setCodareacliente(String codareacliente) {
-        this.codareacliente = codareacliente == null ? null : codareacliente.trim();
+        this.codareacliente = codareacliente;
     }
 
     public Short getTipocotizacion() {
@@ -823,7 +823,7 @@ public class TCotizaciones {
     }
 
     public void setUsuarioanula(String usuarioanula) {
-        this.usuarioanula = usuarioanula == null ? null : usuarioanula.trim();
+        this.usuarioanula = usuarioanula;
     }
 
     public String getUsuarioaprueba() {
@@ -831,7 +831,7 @@ public class TCotizaciones {
     }
 
     public void setUsuarioaprueba(String usuarioaprueba) {
-        this.usuarioaprueba = usuarioaprueba == null ? null : usuarioaprueba.trim();
+        this.usuarioaprueba = usuarioaprueba;
     }
 
     public Date getFechaaprueba() {
@@ -847,7 +847,7 @@ public class TCotizaciones {
     }
 
     public void setCodzona(String codzona) {
-        this.codzona = codzona == null ? null : codzona.trim();
+        this.codzona = codzona;
     }
 
     public String getSubservicios() {
@@ -855,7 +855,7 @@ public class TCotizaciones {
     }
 
     public void setSubservicios(String subservicios) {
-        this.subservicios = subservicios == null ? null : subservicios.trim();
+        this.subservicios = subservicios;
     }
 
     public String getPplano() {
@@ -863,7 +863,7 @@ public class TCotizaciones {
     }
 
     public void setPplano(String pplano) {
-        this.pplano = pplano == null ? null : pplano.trim();
+        this.pplano = pplano;
     }
 
     public String getPreal() {
@@ -871,7 +871,7 @@ public class TCotizaciones {
     }
 
     public void setPreal(String preal) {
-        this.preal = preal == null ? null : preal.trim();
+        this.preal = preal;
     }
 
     public String getCodDestino() {
@@ -879,7 +879,7 @@ public class TCotizaciones {
     }
 
     public void setCodDestino(String codDestino) {
-        this.codDestino = codDestino == null ? null : codDestino.trim();
+        this.codDestino = codDestino;
     }
 
     public String gettTransporte() {
@@ -887,7 +887,7 @@ public class TCotizaciones {
     }
 
     public void settTransporte(String tTransporte) {
-        this.tTransporte = tTransporte == null ? null : tTransporte.trim();
+        this.tTransporte = tTransporte;
     }
 
     public BigDecimal getPreciokadic() {
@@ -935,7 +935,7 @@ public class TCotizaciones {
     }
 
     public void setRecojo(String recojo) {
-        this.recojo = recojo == null ? null : recojo.trim();
+        this.recojo = recojo;
     }
 
     public String getUbigeoOrigen() {
@@ -943,7 +943,7 @@ public class TCotizaciones {
     }
 
     public void setUbigeoOrigen(String ubigeoOrigen) {
-        this.ubigeoOrigen = ubigeoOrigen == null ? null : ubigeoOrigen.trim();
+        this.ubigeoOrigen = ubigeoOrigen;
     }
 
     public String getUbigeoDestino() {
@@ -951,7 +951,7 @@ public class TCotizaciones {
     }
 
     public void setUbigeoDestino(String ubigeoDestino) {
-        this.ubigeoDestino = ubigeoDestino == null ? null : ubigeoDestino.trim();
+        this.ubigeoDestino = ubigeoDestino;
     }
 
     public String getCodunidad() {
@@ -959,7 +959,7 @@ public class TCotizaciones {
     }
 
     public void setCodunidad(String codunidad) {
-        this.codunidad = codunidad == null ? null : codunidad.trim();
+        this.codunidad = codunidad;
     }
 
     public String getDesServicio() {
@@ -967,7 +967,7 @@ public class TCotizaciones {
     }
 
     public void setDesServicio(String desServicio) {
-        this.desServicio = desServicio == null ? null : desServicio.trim();
+        this.desServicio = desServicio;
     }
 
     public String getZonal() {
@@ -975,7 +975,7 @@ public class TCotizaciones {
     }
 
     public void setZonal(String zonal) {
-        this.zonal = zonal == null ? null : zonal.trim();
+        this.zonal = zonal;
     }
 
     public Date getBiFecNumCam() {
@@ -991,7 +991,7 @@ public class TCotizaciones {
     }
 
     public void setBiCodIndCam(String biCodIndCam) {
-        this.biCodIndCam = biCodIndCam == null ? null : biCodIndCam.trim();
+        this.biCodIndCam = biCodIndCam;
     }
     
     public void clear(){

@@ -1,5 +1,6 @@
 package pe.com.j2techcon.bi.etl.process.dimensional;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import pe.com.j2techcon.bi.etl.logic.generic.TClienteManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TParametroManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TUbigeoManager;
 import pe.com.j2techcon.bi.etl.util.Constantes;
+import pe.com.j2techcon.bi.etl.util.Util;
 import pe.com.j2techcon.bi.etl.domain.dimensional.DimCliente;
 import pe.com.j2techcon.bi.etl.domain.dimensional.DimClienteExample;
 import pe.com.j2techcon.bi.etl.domain.generic.TCliente;
@@ -342,24 +344,31 @@ public class DimClienteProcess {
 		dimCliente = new DimCliente();
 		dimClienteExample = new DimClienteExample();
 		
-		int offset = 0;
+		List<String> lstStateRecord = new ArrayList<String>();
+		lstStateRecord.add(constantes.getStateRecordNew());
+		lstStateRecord.add(constantes.getStateRecordUpdated());
+		
+		//int offset = 0;
+		
+		List<TAreaCliente> lstAreaCliente = new ArrayList<TAreaCliente>();
 		
 		while(true) {
 			
 			tAreaClienteExample.clear();
 			
-			tAreaClienteExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom);
-			tAreaClienteExample.createCriteria().andFecNumCamLessThan(dateTimeUntil);
+			tAreaClienteExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom).andFecNumCamLessThan(dateTimeUntil).andCodIndCamIn(lstStateRecord);
+			//tAreaClienteExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
+			tAreaClienteExample.setPaginationByClause(" limit " + constantes.getSizePage());
 			
-			tAreaClienteExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
-			List<TAreaCliente> lstAreaCliente = tAreaClienteManager.selectByExample(tAreaClienteExample);
+			lstAreaCliente = tAreaClienteManager.selectByExample(tAreaClienteExample);
 			if(lstAreaCliente.size()>0){
 				for (Iterator<TAreaCliente> iterator = lstAreaCliente.iterator(); iterator.hasNext();) {
 					tAreaCliente = iterator.next();
 					dimCliente.clear();
 					processRecordAreaCliente();
 				}
-				offset = offset + constantes.getSizePage();
+				lstAreaCliente.clear();
+				//offset = offset + constantes.getSizePage();
 			}else{
 				lstAreaCliente.clear();
 				
@@ -378,21 +387,21 @@ public class DimClienteProcess {
 				dimCliente.clear();
 				dimClienteExample.clear();
 				
-				offset = 0;
 				break;
 			}
 		}
+		
+		List<TCliente> lstCliente = new ArrayList<TCliente>();
 		
 		while(true) {
 			
 			tClienteExample.clear();
 			
-			tClienteExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom);
-			tClienteExample.createCriteria().andFecNumCamLessThan(dateTimeUntil);
+			tClienteExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom).andFecNumCamLessThan(dateTimeUntil).andCodIndCamIn(lstStateRecord);
+			//tClienteExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
+			tClienteExample.setPaginationByClause(" limit " + constantes.getSizePage());
 			
-			
-			tClienteExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
-			List<TCliente> lstCliente = tClienteManager.selectByExample(tClienteExample);
+			lstCliente = tClienteManager.selectByExample(tClienteExample);
 			if(lstCliente.size()>0){
 				for (Iterator<TCliente> iterator = lstCliente.iterator(); iterator.hasNext();) {
 					tCliente = iterator.next();
@@ -400,8 +409,11 @@ public class DimClienteProcess {
 					dimClienteExample.clear();
 					processRecordCliente();
 				}
-				offset = offset + constantes.getSizePage();
+				lstCliente.clear();
+				//offset = offset + constantes.getSizePage();
 			}else{
+				
+				lstStateRecord.clear();
 				lstCliente.clear();
 				
 				tCliente.clear();
@@ -419,7 +431,6 @@ public class DimClienteProcess {
 				dimCliente.clear();
 				dimClienteExample.clear();
 				
-				offset = 0;
 				break;
 			}
 		}
@@ -562,8 +573,7 @@ public class DimClienteProcess {
 	
 	public void completeFildCliente()throws Exception{
 		
-		dimClienteExample.createCriteria().andClienteKeyEqualTo(tCliente.getCliId());
-		dimClienteExample.createCriteria().andProcIdNotEqualTo(process);
+		dimClienteExample.createCriteria().andClienteKeyEqualTo(tCliente.getCliId()).andProcIdNotEqualTo(process);
 		
 		dimCliente.setClienteKey(tCliente.getCliId());
 
@@ -666,6 +676,7 @@ public class DimClienteProcess {
 		tAreaCliente.clear();
 		tAreaCliente.setAreCliId(idAreaCliente);
 		tAreaCliente.setCodIndCam(statusRecord);
+		tAreaCliente.setFecNumCam(Util.getCurrentDateTimeAsLong());
 		tAreaCliente.setProcId(process);
 		tAreaClienteManager.updateByPrimaryKeySelective(tAreaCliente);
 	}
@@ -675,6 +686,7 @@ public class DimClienteProcess {
 		tCliente.clear();
 		tCliente.setCliId(idCliente);
 		tCliente.setCodIndCam(statusRecord);
+		tCliente.setFecNumCam(Util.getCurrentDateTimeAsLong());
 		tCliente.setProcId(process);
 		tClienteManager.updateByPrimaryKeySelective(tCliente);
 	}

@@ -7,6 +7,7 @@
     <result column="ord_serie_doc" property="ordSerieDoc" jdbcType="VARCHAR" />
     <result column="ord_num_doc" property="ordNumDoc" jdbcType="VARCHAR" />
     <result column="carg_corr" property="cargCorr" jdbcType="INTEGER" />
+    <result column="carg_cod_comp" property="cargCodComp" jdbcType="VARCHAR" />
     <result column="ord_id" property="ordId" jdbcType="INTEGER" />
     <result column="zon_id" property="zonId" jdbcType="INTEGER" />
     <result column="zon_id_new" property="zonIdNew" jdbcType="INTEGER" />
@@ -83,8 +84,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    carg_id, ord_cod_tip_doc, ord_serie_doc, ord_num_doc, carg_corr, ord_id, zon_id, 
-    zon_id_new, carg_cod_mov, carg_cod_tip_ing, carg_fec_des, carg_fec_rec, carg_destinatario, 
+    carg_id, ord_cod_tip_doc, ord_serie_doc, ord_num_doc, carg_corr, carg_cod_comp, ord_id, 
+    zon_id, zon_id_new, carg_cod_mov, carg_cod_tip_ing, carg_fec_des, carg_fec_rec, carg_destinatario, 
     carg_dir, carg_ref, carg_new_dir, carg_new_ref, carg_cod_est, fec_num_cam, cod_ind_cam, 
     proc_id
   </sql>
@@ -123,21 +124,21 @@
   </delete>
   <insert id="insert" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCargo" >
     insert into t_cargo (carg_id, ord_cod_tip_doc, ord_serie_doc, 
-      ord_num_doc, carg_corr, ord_id, 
-      zon_id, zon_id_new, carg_cod_mov, 
-      carg_cod_tip_ing, carg_fec_des, carg_fec_rec, 
-      carg_destinatario, carg_dir, carg_ref, 
-      carg_new_dir, carg_new_ref, carg_cod_est, 
-      fec_num_cam, cod_ind_cam, proc_id
-      )
+      ord_num_doc, carg_corr, carg_cod_comp, 
+      ord_id, zon_id, zon_id_new, 
+      carg_cod_mov, carg_cod_tip_ing, carg_fec_des, 
+      carg_fec_rec, carg_destinatario, carg_dir, 
+      carg_ref, carg_new_dir, carg_new_ref, 
+      carg_cod_est, fec_num_cam, cod_ind_cam, 
+      proc_id)
     values (#{cargId,jdbcType=INTEGER}, #{ordCodTipDoc,jdbcType=INTEGER}, #{ordSerieDoc,jdbcType=VARCHAR}, 
-      #{ordNumDoc,jdbcType=VARCHAR}, #{cargCorr,jdbcType=INTEGER}, #{ordId,jdbcType=INTEGER}, 
-      #{zonId,jdbcType=INTEGER}, #{zonIdNew,jdbcType=INTEGER}, #{cargCodMov,jdbcType=INTEGER}, 
-      #{cargCodTipIng,jdbcType=INTEGER}, #{cargFecDes,jdbcType=DATE}, #{cargFecRec,jdbcType=DATE}, 
-      #{cargDestinatario,jdbcType=VARCHAR}, #{cargDir,jdbcType=VARCHAR}, #{cargRef,jdbcType=VARCHAR}, 
-      #{cargNewDir,jdbcType=VARCHAR}, #{cargNewRef,jdbcType=VARCHAR}, #{cargCodEst,jdbcType=INTEGER}, 
-      #{fecNumCam,jdbcType=BIGINT}, #{codIndCam,jdbcType=CHAR}, #{procId,jdbcType=INTEGER}
-      )
+      #{ordNumDoc,jdbcType=VARCHAR}, #{cargCorr,jdbcType=INTEGER}, #{cargCodComp,jdbcType=VARCHAR}, 
+      #{ordId,jdbcType=INTEGER}, #{zonId,jdbcType=INTEGER}, #{zonIdNew,jdbcType=INTEGER}, 
+      #{cargCodMov,jdbcType=INTEGER}, #{cargCodTipIng,jdbcType=INTEGER}, #{cargFecDes,jdbcType=DATE}, 
+      #{cargFecRec,jdbcType=DATE}, #{cargDestinatario,jdbcType=VARCHAR}, #{cargDir,jdbcType=VARCHAR}, 
+      #{cargRef,jdbcType=VARCHAR}, #{cargNewDir,jdbcType=VARCHAR}, #{cargNewRef,jdbcType=VARCHAR}, 
+      #{cargCodEst,jdbcType=INTEGER}, #{fecNumCam,jdbcType=BIGINT}, #{codIndCam,jdbcType=CHAR}, 
+      #{procId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="pe.com.j2techcon.bi.etl.domain.generic.TCargo" >
     insert into t_cargo
@@ -156,6 +157,9 @@
       </if>
       <if test="cargCorr != null" >
         carg_corr,
+      </if>
+      <if test="cargCodComp != null" >
+        carg_cod_comp,
       </if>
       <if test="ordId != null" >
         ord_id,
@@ -221,6 +225,9 @@
       </if>
       <if test="cargCorr != null" >
         #{cargCorr,jdbcType=INTEGER},
+      </if>
+      <if test="cargCodComp != null" >
+        #{cargCodComp,jdbcType=VARCHAR},
       </if>
       <if test="ordId != null" >
         #{ordId,jdbcType=INTEGER},
@@ -296,6 +303,9 @@
       <if test="record.cargCorr != null" >
         carg_corr = #{record.cargCorr,jdbcType=INTEGER},
       </if>
+      <if test="record.cargCodComp != null" >
+        carg_cod_comp = #{record.cargCodComp,jdbcType=VARCHAR},
+      </if>
       <if test="record.ordId != null" >
         ord_id = #{record.ordId,jdbcType=INTEGER},
       </if>
@@ -356,6 +366,7 @@
       ord_serie_doc = #{record.ordSerieDoc,jdbcType=VARCHAR},
       ord_num_doc = #{record.ordNumDoc,jdbcType=VARCHAR},
       carg_corr = #{record.cargCorr,jdbcType=INTEGER},
+      carg_cod_comp = #{record.cargCodComp,jdbcType=VARCHAR},
       ord_id = #{record.ordId,jdbcType=INTEGER},
       zon_id = #{record.zonId,jdbcType=INTEGER},
       zon_id_new = #{record.zonIdNew,jdbcType=INTEGER},
@@ -390,6 +401,9 @@
       </if>
       <if test="cargCorr != null" >
         carg_corr = #{cargCorr,jdbcType=INTEGER},
+      </if>
+      <if test="cargCodComp != null" >
+        carg_cod_comp = #{cargCodComp,jdbcType=VARCHAR},
       </if>
       <if test="ordId != null" >
         ord_id = #{ordId,jdbcType=INTEGER},
@@ -448,6 +462,7 @@
       ord_serie_doc = #{ordSerieDoc,jdbcType=VARCHAR},
       ord_num_doc = #{ordNumDoc,jdbcType=VARCHAR},
       carg_corr = #{cargCorr,jdbcType=INTEGER},
+      carg_cod_comp = #{cargCodComp,jdbcType=VARCHAR},
       ord_id = #{ordId,jdbcType=INTEGER},
       zon_id = #{zonId,jdbcType=INTEGER},
       zon_id_new = #{zonIdNew,jdbcType=INTEGER},

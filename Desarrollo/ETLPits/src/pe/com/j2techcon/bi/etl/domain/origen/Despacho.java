@@ -105,7 +105,7 @@ public class Despacho {
     }
 
     public void setSerieguia(String serieguia) {
-        this.serieguia = serieguia == null ? null : serieguia.trim();
+        this.serieguia = serieguia;
     }
 
     public String getNroguia() {
@@ -113,7 +113,7 @@ public class Despacho {
     }
 
     public void setNroguia(String nroguia) {
-        this.nroguia = nroguia == null ? null : nroguia.trim();
+        this.nroguia = nroguia;
     }
 
     public Date getFecsalida() {
@@ -137,7 +137,7 @@ public class Despacho {
     }
 
     public void setCodmensajero(String codmensajero) {
-        this.codmensajero = codmensajero == null ? null : codmensajero.trim();
+        this.codmensajero = codmensajero;
     }
 
     public BigDecimal getPasaje() {
@@ -209,7 +209,7 @@ public class Despacho {
     }
 
     public void setObservacion(String observacion) {
-        this.observacion = observacion == null ? null : observacion.trim();
+        this.observacion = observacion;
     }
 
     public String getTiporuta() {
@@ -217,7 +217,7 @@ public class Despacho {
     }
 
     public void setTiporuta(String tiporuta) {
-        this.tiporuta = tiporuta == null ? null : tiporuta.trim();
+        this.tiporuta = tiporuta;
     }
 
     public BigDecimal getMonto() {
@@ -233,7 +233,7 @@ public class Despacho {
     }
 
     public void setCodestadoguia(String codestadoguia) {
-        this.codestadoguia = codestadoguia == null ? null : codestadoguia.trim();
+        this.codestadoguia = codestadoguia;
     }
 
     public String getEstadoveri() {
@@ -241,7 +241,7 @@ public class Despacho {
     }
 
     public void setEstadoveri(String estadoveri) {
-        this.estadoveri = estadoveri == null ? null : estadoveri.trim();
+        this.estadoveri = estadoveri;
     }
 
     public String getUsuariodesp() {
@@ -249,7 +249,7 @@ public class Despacho {
     }
 
     public void setUsuariodesp(String usuariodesp) {
-        this.usuariodesp = usuariodesp == null ? null : usuariodesp.trim();
+        this.usuariodesp = usuariodesp;
     }
 
     public Date getFechadesp() {
@@ -265,7 +265,7 @@ public class Despacho {
     }
 
     public void setUsuariocierre(String usuariocierre) {
-        this.usuariocierre = usuariocierre == null ? null : usuariocierre.trim();
+        this.usuariocierre = usuariocierre;
     }
 
     public Date getFechacierre() {
@@ -281,7 +281,7 @@ public class Despacho {
     }
 
     public void setCodtipopago(String codtipopago) {
-        this.codtipopago = codtipopago == null ? null : codtipopago.trim();
+        this.codtipopago = codtipopago;
     }
 
     public String getHoraretorno() {
@@ -289,7 +289,7 @@ public class Despacho {
     }
 
     public void setHoraretorno(String horaretorno) {
-        this.horaretorno = horaretorno == null ? null : horaretorno.trim();
+        this.horaretorno = horaretorno;
     }
 
     public String getCodzona() {
@@ -297,7 +297,7 @@ public class Despacho {
     }
 
     public void setCodzona(String codzona) {
-        this.codzona = codzona == null ? null : codzona.trim();
+        this.codzona = codzona;
     }
 
     public String getUserasigna() {
@@ -305,7 +305,7 @@ public class Despacho {
     }
 
     public void setUserasigna(String userasigna) {
-        this.userasigna = userasigna == null ? null : userasigna.trim();
+        this.userasigna = userasigna;
     }
 
     public Date getFecasigna() {
@@ -321,7 +321,7 @@ public class Despacho {
     }
 
     public void setCodorigen(String codorigen) {
-        this.codorigen = codorigen == null ? null : codorigen.trim();
+        this.codorigen = codorigen;
     }
 
     public String getCodsede() {
@@ -329,7 +329,7 @@ public class Despacho {
     }
 
     public void setCodsede(String codsede) {
-        this.codsede = codsede == null ? null : codsede.trim();
+        this.codsede = codsede;
     }
 
     public Short getTipofi() {
@@ -345,7 +345,7 @@ public class Despacho {
     }
 
     public void setUsuarioflete(String usuarioflete) {
-        this.usuarioflete = usuarioflete == null ? null : usuarioflete.trim();
+        this.usuarioflete = usuarioflete;
     }
 
     public Date getFechaflete() {
@@ -369,7 +369,7 @@ public class Despacho {
     }
 
     public void setFlete(String flete) {
-        this.flete = flete == null ? null : flete.trim();
+        this.flete = flete;
     }
 
     public Date getHorasalida() {
@@ -393,7 +393,7 @@ public class Despacho {
     }
 
     public void setUsuariomod(String usuariomod) {
-        this.usuariomod = usuariomod == null ? null : usuariomod.trim();
+        this.usuariomod = usuariomod;
     }
 
     public Date getFechamod() {
@@ -409,7 +409,7 @@ public class Despacho {
     }
 
     public void setCodplanilla(String codplanilla) {
-        this.codplanilla = codplanilla == null ? null : codplanilla.trim();
+        this.codplanilla = codplanilla;
     }
 
     public String getBrevete() {
@@ -417,7 +417,7 @@ public class Despacho {
     }
 
     public void setBrevete(String brevete) {
-        this.brevete = brevete == null ? null : brevete.trim();
+        this.brevete = brevete;
     }
 
     public String getCodAyudante() {
@@ -425,7 +425,7 @@ public class Despacho {
     }
 
     public void setCodAyudante(String codAyudante) {
-        this.codAyudante = codAyudante == null ? null : codAyudante.trim();
+        this.codAyudante = codAyudante;
     }
 
     public String getCodUnidad() {
@@ -433,7 +433,7 @@ public class Despacho {
     }
 
     public void setCodUnidad(String codUnidad) {
-        this.codUnidad = codUnidad == null ? null : codUnidad.trim();
+        this.codUnidad = codUnidad;
     }
 
     public String getPlaca() {
@@ -441,7 +441,7 @@ public class Despacho {
     }
 
     public void setPlaca(String placa) {
-        this.placa = placa == null ? null : placa.trim();
+        this.placa = placa;
     }
 
     public String getDesUnidad() {
@@ -449,7 +449,7 @@ public class Despacho {
     }
 
     public void setDesUnidad(String desUnidad) {
-        this.desUnidad = desUnidad == null ? null : desUnidad.trim();
+        this.desUnidad = desUnidad;
     }
 
     public Short getCodTrackingGuia() {
@@ -481,7 +481,7 @@ public class Despacho {
     }
 
     public void setBiCodIndCam(String biCodIndCam) {
-        this.biCodIndCam = biCodIndCam == null ? null : biCodIndCam.trim();
+        this.biCodIndCam = biCodIndCam;
     }
 
     public void clear(){

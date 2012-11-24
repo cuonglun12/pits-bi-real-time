@@ -22,7 +22,7 @@ public class TTipopersonal {
     }
 
     public void setCodtipopersonal(String codtipopersonal) {
-        this.codtipopersonal = codtipopersonal == null ? null : codtipopersonal.trim();
+        this.codtipopersonal = codtipopersonal;
     }
 
     public String getTipopersonal() {
@@ -30,7 +30,7 @@ public class TTipopersonal {
     }
 
     public void setTipopersonal(String tipopersonal) {
-        this.tipopersonal = tipopersonal == null ? null : tipopersonal.trim();
+        this.tipopersonal = tipopersonal;
     }
 
     public String getUsuario() {
@@ -38,7 +38,7 @@ public class TTipopersonal {
     }
 
     public void setUsuario(String usuario) {
-        this.usuario = usuario == null ? null : usuario.trim();
+        this.usuario = usuario;
     }
 
     public Date getFecha() {
@@ -54,7 +54,7 @@ public class TTipopersonal {
     }
 
     public void setUsuariomod(String usuariomod) {
-        this.usuariomod = usuariomod == null ? null : usuariomod.trim();
+        this.usuariomod = usuariomod;
     }
 
     public Date getFechamod() {

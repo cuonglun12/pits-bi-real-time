@@ -1,5 +1,6 @@
 package pe.com.j2techcon.bi.etl.process.dimensional;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import pe.com.j2techcon.bi.etl.logic.generic.TSedeManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TParametroManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TUbigeoManager;
 import pe.com.j2techcon.bi.etl.util.Constantes;
+import pe.com.j2techcon.bi.etl.util.Util;
 import pe.com.j2techcon.bi.etl.domain.dimensional.DimSede;
 import pe.com.j2techcon.bi.etl.domain.dimensional.DimSedeExample;
 import pe.com.j2techcon.bi.etl.domain.generic.TSede;
@@ -307,27 +309,35 @@ public class DimSedeProcess {
 		
 		tUbigeo = new TUbigeo();
 		tUbigeoExample = new TUbigeoExample();
+		
+		List<String> lstStateRecord = new ArrayList<String>();
+		lstStateRecord.add(constantes.getStateRecordNew());
+		lstStateRecord.add(constantes.getStateRecordUpdated());
 
-		int offset = 0;
+		//int offset = 0;
+		
+		List<TSede> lstSede = new ArrayList<TSede>();
 		
 		while(true) {
 			
 			tSedeExample.clear();
 
-			tSedeExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom);
-			tSedeExample.createCriteria().andFecNumCamLessThan(dateTimeUntil);	
+			tSedeExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom).andFecNumCamLessThan(dateTimeUntil).andCodIndCamIn(lstStateRecord);
+			//tSedeExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
+			tSedeExample.setPaginationByClause(" limit " + constantes.getSizePage());
 			
-			tSedeExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
-			List<TSede> lstSede = tSedeManager.selectByExample(tSedeExample);
+			lstSede = tSedeManager.selectByExample(tSedeExample);
 			if(lstSede.size()>0){
 				for (Iterator<TSede> iterator = lstSede.iterator(); iterator.hasNext();) {
 					tSede = iterator.next();
 					dimSede.clear();
 					processRecordSede();
 				}
-				offset = offset + constantes.getSizePage();
+				lstSede.clear();
+				//offset = offset + constantes.getSizePage();
 			}else{
 				
+				lstStateRecord.clear();
 				lstSede.clear();
 				
 				tSede.clear();
@@ -341,8 +351,7 @@ public class DimSedeProcess {
 				
 				tUbigeo.clear();
 				tUbigeoExample.clear();
-				
-				offset = 0;
+
 				break;
 			}
 		}
@@ -481,6 +490,7 @@ public class DimSedeProcess {
 		tSede.clear();
 		tSede.setSedId(idSede);
 		tSede.setCodIndCam(statusRecord);
+		tSede.setFecNumCam(Util.getCurrentDateTimeAsLong());
 		tSede.setProcId(process);
 		tSedeManager.updateByPrimaryKeySelective(tSede);
 	}

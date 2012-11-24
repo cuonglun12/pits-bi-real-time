@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import com.sun.org.apache.xerces.internal.impl.dv.xs.YearDV;
 
@@ -209,17 +211,60 @@ public class Test {
 //			}
 //		}
 		
-		BigDecimal a = new BigDecimal("123223.42424");
-		System.out.println(a.toString());
+//		BigDecimal a = new BigDecimal("123223.42424");
+//		System.out.println(a.toString());
+//		
+//		String x = null;
+//		if(x!= null && x.length()>0){
+//			System.out.println(x);
+//		}
+//		x = "123";
+//		if( x!= null && x.length()>0){
+//			System.out.println(x);
+//		}
 		
-		String x = null;
-		if(x!= null && x.length()>0){
-			System.out.println(x);
+		List<TParametro> x = new ArrayList<TParametro>();
+		
+		TParametro 	p1 = new TParametro();
+		p1.setParamId(1);
+		p1.setParamCod("uno");
+		x.add(p1);
+		
+		TParametro 	p2 = new TParametro();
+		p2.setParamId(2);
+		p2.setParamCod("dos");
+		x.add(p2);
+		
+		TParametro 	p3 = new TParametro();
+		p3.setParamId(3);
+		p3.setParamCod("tres");
+		x.add(p3);
+		
+		TParametro 	p4 = new TParametro();
+		p4.setParamId(4);
+		p4.setParamCod("cuatro");
+		x.add(p4);
+		
+		List<String> y = new ArrayList<String>();
+		y = Util.getStringListFromObjectList(x,"paramId","-");
+		
+		for (Iterator<String> iterator = y.iterator(); iterator.hasNext();) {
+			System.out.println(iterator.next().toString());
+			
 		}
-		x = "123";
-		if( x!= null && x.length()>0){
-			System.out.println(x);
-		}
+		
+		Integer x1 = 0;
+		Map<String,Integer> mpCotizacion = new HashMap<String, Integer>();
+		mpCotizacion.put("x", 1);
+		
+		x1 = mpCotizacion.get("c");
+		
+		System.out.println("x1 = " + x1);
+		
+		
+		//String a = "x|y";
+		//String[] propertys = a.split("|");
+		//for
 
 	}
 

@@ -43,7 +43,7 @@ public class TServicios {
     }
 
     public void setCodservicio(String codservicio) {
-        this.codservicio = codservicio == null ? null : codservicio.trim();
+        this.codservicio = codservicio;
     }
 
     public String getServicio() {
@@ -51,7 +51,7 @@ public class TServicios {
     }
 
     public void setServicio(String servicio) {
-        this.servicio = servicio == null ? null : servicio.trim();
+        this.servicio = servicio;
     }
 
     public String getCodnegocio() {
@@ -59,7 +59,7 @@ public class TServicios {
     }
 
     public void setCodnegocio(String codnegocio) {
-        this.codnegocio = codnegocio == null ? null : codnegocio.trim();
+        this.codnegocio = codnegocio;
     }
 
     public String getCodambito() {
@@ -67,7 +67,7 @@ public class TServicios {
     }
 
     public void setCodambito(String codambito) {
-        this.codambito = codambito == null ? null : codambito.trim();
+        this.codambito = codambito;
     }
 
     public Short getEstado() {
@@ -99,7 +99,7 @@ public class TServicios {
     }
 
     public void setUsuario(String usuario) {
-        this.usuario = usuario == null ? null : usuario.trim();
+        this.usuario = usuario;
     }
 
     public Date getFechamod() {
@@ -115,7 +115,7 @@ public class TServicios {
     }
 
     public void setUsuariomod(String usuariomod) {
-        this.usuariomod = usuariomod == null ? null : usuariomod.trim();
+        this.usuariomod = usuariomod;
     }
 
     public String getTiposervicio() {
@@ -123,7 +123,7 @@ public class TServicios {
     }
 
     public void setTiposervicio(String tiposervicio) {
-        this.tiposervicio = tiposervicio == null ? null : tiposervicio.trim();
+        this.tiposervicio = tiposervicio;
     }
 
     public String getObs() {
@@ -131,7 +131,7 @@ public class TServicios {
     }
 
     public void setObs(String obs) {
-        this.obs = obs == null ? null : obs.trim();
+        this.obs = obs;
     }
 
     public BigDecimal getPrecioPeriferia() {
@@ -171,7 +171,7 @@ public class TServicios {
     }
 
     public void setBiCodIndCam(String biCodIndCam) {
-        this.biCodIndCam = biCodIndCam == null ? null : biCodIndCam.trim();
+        this.biCodIndCam = biCodIndCam;
     }
     
     public void clear(){

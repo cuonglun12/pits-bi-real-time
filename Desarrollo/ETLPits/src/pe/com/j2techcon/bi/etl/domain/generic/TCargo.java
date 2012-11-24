@@ -13,6 +13,8 @@ public class TCargo {
 
     private Integer cargCorr;
 
+    private String cargCodComp;
+
     private Integer ordId;
 
     private Integer zonId;
@@ -83,6 +85,14 @@ public class TCargo {
 
     public void setCargCorr(Integer cargCorr) {
         this.cargCorr = cargCorr;
+    }
+
+    public String getCargCodComp() {
+        return cargCodComp;
+    }
+
+    public void setCargCodComp(String cargCodComp) {
+        this.cargCodComp = cargCodComp == null ? null : cargCodComp.trim();
     }
 
     public Integer getOrdId() {
@@ -212,43 +222,78 @@ public class TCargo {
     public void setProcId(Integer procId) {
         this.procId = procId;
     }
-    
-    public void clear(){
-        cargId = null;
-        ordCodTipDoc = null;
-        ordSerieDoc = null;
-        ordNumDoc = null;
-        cargCorr = null;
-        ordId = null;
-        zonId = null;
-        zonIdNew = null;
-        cargCodMov = null;
-        cargCodTipIng = null;
-        cargFecDes = null;
-        cargFecRec = null;
-        cargDestinatario = null;
-        cargDir = null;
-        cargRef = null;
-        cargNewDir = null;
-        cargNewRef = null;
-        cargCodEst = null;
-        fecNumCam = null;
-        codIndCam = null;
-        procId = null;
-    }
-
+	
+	public void clear() {
+		cargId = null;
+		ordCodTipDoc = null;
+		ordSerieDoc = null;
+		ordNumDoc = null;
+		cargCorr = null;
+		cargCodComp = null;
+		ordId = null;
+		zonId = null;
+		zonIdNew = null;
+		cargCodMov = null;
+		cargCodTipIng = null;
+		cargFecDes = null;
+		cargFecRec = null;
+		cargDestinatario = null;
+		cargDir = null;
+		cargRef = null;
+		cargNewDir = null;
+		cargNewRef = null;
+		cargCodEst = null;
+		fecNumCam = null;
+		codIndCam = null;
+		procId = null;
+	}
+	
 	@Override
 	public String toString() {
-		return "TCargo [cargId=" + cargId + ", ordCodTipDoc=" + ordCodTipDoc
-				+ ", ordSerieDoc=" + ordSerieDoc + ", ordNumDoc=" + ordNumDoc
-				+ ", cargCorr=" + cargCorr + ", ordId=" + ordId + ", zonId="
-				+ zonId + ", zonIdNew=" + zonIdNew + ", cargCodMov="
-				+ cargCodMov + ", cargCodTipIng=" + cargCodTipIng
-				+ ", cargFecDes=" + cargFecDes + ", cargFecRec=" + cargFecRec
-				+ ", cargDestinatario=" + cargDestinatario + ", cargDir="
-				+ cargDir + ", cargRef=" + cargRef + ", cargNewDir="
-				+ cargNewDir + ", cargNewRef=" + cargNewRef + ", cargCodEst="
-				+ cargCodEst + ", fecNumCam=" + fecNumCam + ", codIndCam="
-				+ codIndCam + ", procId=" + procId + "]";
+		return "TCargo [cargId="
+				+ cargId
+				+ ", ordCodTipDoc="
+				+ ordCodTipDoc
+				+ ", ordSerieDoc="
+				+ ordSerieDoc
+				+ ", ordNumDoc="
+				+ ordNumDoc
+				+ ", cargCorr="
+				+ cargCorr
+				+ ", cargCodComp="
+				+ cargCodComp
+				+ ", ordId="
+				+ ordId
+				+ ", zonId="
+				+ zonId
+				+ ", zonIdNew="
+				+ zonIdNew
+				+ ", cargCodMov="
+				+ cargCodMov
+				+ ", cargCodTipIng="
+				+ cargCodTipIng
+				+ ", cargFecDes="
+				+ cargFecDes
+				+ ", cargFecRec="
+				+ cargFecRec
+				+ ", cargDestinatario="
+				+ cargDestinatario
+				+ ", cargDir="
+				+ cargDir
+				+ ", cargRef="
+				+ cargRef
+				+ ", cargNewDir="
+				+ cargNewDir
+				+ ", cargNewRef="
+				+ cargNewRef
+				+ ", cargCodEst="
+				+ cargCodEst
+				+ ", fecNumCam="
+				+ fecNumCam
+				+ ", codIndCam="
+				+ codIndCam
+				+ ", procId="
+				+ procId
+				+ "]";
 	}
 }

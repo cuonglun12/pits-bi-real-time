@@ -1,5 +1,6 @@
 package pe.com.j2techcon.bi.etl.process.dimensional;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import pe.com.j2techcon.bi.etl.logic.dimensional.DimProductoManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TProductoManager;
 import pe.com.j2techcon.bi.etl.logic.generic.TParametroManager;
 import pe.com.j2techcon.bi.etl.util.Constantes;
+import pe.com.j2techcon.bi.etl.util.Util;
 import pe.com.j2techcon.bi.etl.domain.dimensional.DimProducto;
 import pe.com.j2techcon.bi.etl.domain.dimensional.DimProductoExample;
 import pe.com.j2techcon.bi.etl.domain.generic.TProducto;
@@ -272,27 +274,35 @@ public class DimProductoProcess {
 		
 		dimProducto = new DimProducto();
 		dimProductoExample = new DimProductoExample();
+		
+		List<String> lstStateRecord = new ArrayList<String>();
+		lstStateRecord.add(constantes.getStateRecordNew());
+		lstStateRecord.add(constantes.getStateRecordUpdated());
 
-		int offset = 0;
+		//int offset = 0;
+		
+		List<TProducto> lstProducto = new ArrayList<TProducto>();
 		
 		while(true) {
 			
 			tProductoExample.clear();
 
-			tProductoExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom);
-			tProductoExample.createCriteria().andFecNumCamLessThan(dateTimeUntil);			
+			tProductoExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom).andFecNumCamLessThan(dateTimeUntil).andCodIndCamIn(lstStateRecord);
+			//tProductoExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
+			tProductoExample.setPaginationByClause(" limit " + constantes.getSizePage());
 			
-			tProductoExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
-			List<TProducto> lstProducto = tProductoManager.selectByExample(tProductoExample);
+			lstProducto = tProductoManager.selectByExample(tProductoExample);
 			if(lstProducto.size()>0){
 				for (Iterator<TProducto> iterator = lstProducto.iterator(); iterator.hasNext();) {
 					tProducto = iterator.next();
 					dimProducto.clear();
 					processRecordProducto();
 				}
-				offset = offset + constantes.getSizePage();
+				lstProducto.clear();
+				//offset = offset + constantes.getSizePage();
 			}else{
 				
+				lstStateRecord.clear();
 				lstProducto.clear();
 				
 				tProducto.clear();
@@ -304,7 +314,6 @@ public class DimProductoProcess {
 				dimProducto.clear();
 				dimProductoExample.clear();
 				
-				offset = 0;
 				break;
 			}
 		}
@@ -409,6 +418,7 @@ public class DimProductoProcess {
 		tProducto.clear();
 		tProducto.setProcId(idProducto);
 		tProducto.setCodIndCam(statusRecord);
+		tProducto.setFecNumCam(Util.getCurrentDateTimeAsLong());
 		tProducto.setProcId(process);
 		tProductoManager.updateByPrimaryKeySelective(tProducto);
 	}

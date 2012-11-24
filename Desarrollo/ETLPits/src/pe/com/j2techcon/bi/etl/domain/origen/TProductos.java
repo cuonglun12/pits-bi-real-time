@@ -36,7 +36,7 @@ public class TProductos {
     }
 
     public void setCodproducto(String codproducto) {
-        this.codproducto = codproducto == null ? null : codproducto.trim();
+        this.codproducto = codproducto;
     }
 
     public String getProducto() {
@@ -44,7 +44,7 @@ public class TProductos {
     }
 
     public void setProducto(String producto) {
-        this.producto = producto == null ? null : producto.trim();
+        this.producto = producto;
     }
 
     public String getCodnegocio() {
@@ -52,7 +52,7 @@ public class TProductos {
     }
 
     public void setCodnegocio(String codnegocio) {
-        this.codnegocio = codnegocio == null ? null : codnegocio.trim();
+        this.codnegocio = codnegocio;
     }
 
     public String getCodambito() {
@@ -60,7 +60,7 @@ public class TProductos {
     }
 
     public void setCodambito(String codambito) {
-        this.codambito = codambito == null ? null : codambito.trim();
+        this.codambito = codambito;
     }
 
     public Short getEstado() {
@@ -76,7 +76,7 @@ public class TProductos {
     }
 
     public void setUsuario(String usuario) {
-        this.usuario = usuario == null ? null : usuario.trim();
+        this.usuario = usuario;
     }
 
     public String getUsuariomod() {
@@ -84,7 +84,7 @@ public class TProductos {
     }
 
     public void setUsuariomod(String usuariomod) {
-        this.usuariomod = usuariomod == null ? null : usuariomod.trim();
+        this.usuariomod = usuariomod;
     }
 
     public String getCodcliente() {
@@ -92,7 +92,7 @@ public class TProductos {
     }
 
     public void setCodcliente(String codcliente) {
-        this.codcliente = codcliente == null ? null : codcliente.trim();
+        this.codcliente = codcliente;
     }
 
     public String getTipoproducto() {
@@ -100,7 +100,7 @@ public class TProductos {
     }
 
     public void setTipoproducto(String tipoproducto) {
-        this.tipoproducto = tipoproducto == null ? null : tipoproducto.trim();
+        this.tipoproducto = tipoproducto;
     }
 
     public Date getFecha() {
@@ -124,7 +124,7 @@ public class TProductos {
     }
 
     public void setObs(String obs) {
-        this.obs = obs == null ? null : obs.trim();
+        this.obs = obs;
     }
 
     public Date getBiFecNumCam() {
@@ -140,7 +140,7 @@ public class TProductos {
     }
 
     public void setBiCodIndCam(String biCodIndCam) {
-        this.biCodIndCam = biCodIndCam == null ? null : biCodIndCam.trim();
+        this.biCodIndCam = biCodIndCam;
     }
     
     public void clear(){

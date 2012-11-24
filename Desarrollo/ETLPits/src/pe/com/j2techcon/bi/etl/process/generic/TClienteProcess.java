@@ -1,8 +1,10 @@
 package pe.com.j2techcon.bi.etl.process.generic;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
@@ -49,6 +51,12 @@ public class TClienteProcess {
 	private TParametroManager tParametroManager;
 	private TClienteManager tClienteManager;
 	private ClienteManager clienteManager;
+	
+	private Map<String,Integer> mpTipoCliente;
+	private Map<String,Integer> mpTipoDocumento;
+	private Map<String,Integer> mpTipoFacturacion;
+	private Map<String,Integer> mpTipoCredito;
+	private Map<String,Integer> mpUbigeo;
 
 	private Constantes constantes;
 	
@@ -232,6 +240,46 @@ public class TClienteProcess {
 		this.clienteManager = clienteManager;
 	}
 
+	public Map<String, Integer> getMpTipoCliente() {
+		return mpTipoCliente;
+	}
+
+	public void setMpTipoCliente(Map<String, Integer> mpTipoCliente) {
+		this.mpTipoCliente = mpTipoCliente;
+	}
+
+	public Map<String, Integer> getMpTipoDocumento() {
+		return mpTipoDocumento;
+	}
+
+	public void setMpTipoDocumento(Map<String, Integer> mpTipoDocumento) {
+		this.mpTipoDocumento = mpTipoDocumento;
+	}
+
+	public Map<String, Integer> getMpTipoFacturacion() {
+		return mpTipoFacturacion;
+	}
+
+	public void setMpTipoFacturacion(Map<String, Integer> mpTipoFacturacion) {
+		this.mpTipoFacturacion = mpTipoFacturacion;
+	}
+
+	public Map<String, Integer> getMpTipoCredito() {
+		return mpTipoCredito;
+	}
+
+	public void setMpTipoCredito(Map<String, Integer> mpTipoCredito) {
+		this.mpTipoCredito = mpTipoCredito;
+	}
+
+	public Map<String, Integer> getMpUbigeo() {
+		return mpUbigeo;
+	}
+
+	public void setMpUbigeo(Map<String, Integer> mpUbigeo) {
+		this.mpUbigeo = mpUbigeo;
+	}
+
 	public Constantes getConstantes() {
 		return constantes;
 	}
@@ -286,16 +334,67 @@ public class TClienteProcess {
 		
 		lstParametro = new ArrayList<TParametro>();
 
-		int offset = 0;
+		mpTipoCliente = new HashMap<String, Integer>();
+		tParametroExample.clear();
+		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeTipoCliente());
+		lstParametro = tParametroManager.selectByExample(tParametroExample);
+		for (Iterator<TParametro> iterator = lstParametro.iterator(); iterator.hasNext();) {
+			tParametro = iterator.next();
+			mpTipoCliente.put(tParametro.getParamCod(),tParametro.getParamId());
+		}
+		
+		mpTipoDocumento = new HashMap<String, Integer>();
+		tParametroExample.clear();
+		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeTipoDocumento());
+		lstParametro = tParametroManager.selectByExample(tParametroExample);
+		for (Iterator<TParametro> iterator = lstParametro.iterator(); iterator.hasNext();) {
+			tParametro = iterator.next();
+			mpTipoDocumento.put(tParametro.getParamCod(),tParametro.getParamId());
+		}
+		
+		mpTipoFacturacion = new HashMap<String, Integer>();
+		tParametroExample.clear();
+		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeTipoFacturacion());
+		lstParametro = tParametroManager.selectByExample(tParametroExample);
+		for (Iterator<TParametro> iterator = lstParametro.iterator(); iterator.hasNext();) {
+			tParametro = iterator.next();
+			mpTipoFacturacion.put(tParametro.getParamCod(),tParametro.getParamId());
+		}
+		
+		mpTipoCredito = new HashMap<String, Integer>();
+		tParametroExample.clear();
+		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeTipoCredito());
+		lstParametro = tParametroManager.selectByExample(tParametroExample);
+		for (Iterator<TParametro> iterator = lstParametro.iterator(); iterator.hasNext();) {
+			tParametro = iterator.next();
+			mpTipoCredito.put(tParametro.getParamCod(),tParametro.getParamId());
+		}
+		
+		mpUbigeo = new HashMap<String, Integer>();
+		tParametroExample.clear();
+		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeUbigeoDistrito());
+		lstParametro = tParametroManager.selectByExample(tParametroExample);
+		for (Iterator<TParametro> iterator = lstParametro.iterator(); iterator.hasNext();) {
+			tParametro = iterator.next();
+			mpUbigeo.put(tParametro.getParamCod(),tParametro.getParamId());
+		}
+
+		List<String> lstStateRecord = new ArrayList<String>();
+		lstStateRecord.add(constantes.getStateRecordNew());
+		lstStateRecord.add(constantes.getStateRecordUpdated());
+		
+		//int offset = 0;
+		
+		List<Cliente> lstCliente = new ArrayList<Cliente>();
 
 		while (true) {
 			
 			clienteExample.clear();
-			clienteExample.createCriteria().andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom));
-			clienteExample.createCriteria().andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil));
-			clienteExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
+			clienteExample.createCriteria().andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom)).andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil)).andBiCodIndCamIn(lstStateRecord);
+			//clienteExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
+			clienteExample.setPaginationByClause(" limit " + constantes.getSizePage());
 			
-			List<Cliente> lstCliente = clienteManager.selectByExample(clienteExample);
+			lstCliente = clienteManager.selectByExample(clienteExample);
 
 			if (lstCliente.size() > 0) {
 				for (Iterator<Cliente> iterator = lstCliente.iterator(); iterator.hasNext();) {
@@ -303,8 +402,13 @@ public class TClienteProcess {
 					tCliente.clear();
 					processRecordCliente();
 				}
-				offset = offset + constantes.getSizePage();
+				lstCliente.clear();
+				//offset = offset + constantes.getSizePage();
 			} else {
+				
+				lstStateRecord.clear();
+				lstCliente.clear();
+				
 				tParametro.clear();
 				tParametroExample.clear();
 
@@ -314,9 +418,14 @@ public class TClienteProcess {
 				tCliente.clear();
 				tClienteExample.clear();
 				
+				mpTipoCliente.clear();
+				mpTipoCredito.clear();
+				mpTipoDocumento.clear();
+				mpTipoFacturacion.clear();
+				mpUbigeo.clear();
+				
 				lstParametro.clear();
-
-				offset = 0;
+				
 				break;
 			}
 		}
@@ -375,21 +484,13 @@ public class TClienteProcess {
 
 	public void completeFieldCliente() throws Exception{
 
-		//Tipo de cliente
-		if (constantes.getParamCodeTipoClienteJuridica().equals(cliente.getTipocliente())) {
-			tCliente.setCliCodTip(constantes.getParamSerialTipoClienteJuridica());
-		} else if (constantes.getParamCodeTipoClienteNatural().equals(cliente.getTipocliente())) {
-			tCliente.setCliCodTip(constantes.getParamSerialTipoClienteNatural());
-		} else if (constantes.getParamCodeTipoClienteEstatal().equals(cliente.getTipocliente())) {
-			tCliente.setCliCodTip(constantes.getParamSerialTipoClienteEstatal());
-		} else {
+		tCliente.setCliCodTip(mpTipoCliente.get(cliente.getTipocliente()));
+		if(tCliente.getCliCodTip() == null){
 			tCliente.setCliCodTip(constantes.getParamSerialTipoClienteNoDefinido());
 		}
 
-		//Categoria del cliente (valor por defecto)
 		tCliente.setCliCodCat(constantes.getParamSerialCategoriaClienteNoDefinido());
 
-		//Tipo de documento (si longitud es 11=RUC, 8=DNI, Otro)
 		if (cliente.getRuc() != null) {
 			if (cliente.getRuc().trim().length() == 11) {
 				tCliente.setCliCodTipDoc(constantes.getParamSerialTipoDocumentoRuc());
@@ -402,62 +503,45 @@ public class TClienteProcess {
 			tCliente.setCliCodTipDoc(constantes.getParamSerialTipoDocumentoNoDefinido());
 		}
 
-		//Numero de documento
 		tCliente.setCliNumTipDoc(cliente.getRuc());
 
-		//Razon Social (+ nombre, paterno, materno)
 		tCliente.setCliDesRazSoc(cliente.getCliente());
 		tCliente.setCliDesNom(constantes.getValueStringDefault());
 		tCliente.setCliDesApePat(constantes.getValueStringDefault());
 		tCliente.setCliDesApeMat(constantes.getValueStringDefault());
 
-		//Tipo de facturacion
-		if (constantes.getParamCodeTipoFacturacionFacturacion().equals(cliente.getTipoFacturacion())) {
-			tCliente.setCliCodTipFac(constantes.getParamSerialTipoFacturacionFacturacion());
-		} else {
+		tCliente.setCliCodTipFac(mpTipoFacturacion.get(cliente.getTipoFacturacion()));
+		if(tCliente.getCliCodTipFac() == null){
 			tCliente.setCliCodTipFac(constantes.getParamSerialTipoFacturacionNoDefinido());
 		}
 
-		// Tipo de credito
-		if (constantes.getParamCodeTipoCreditoCredito().equals(cliente.getTipoCredito())) {
-			tCliente.setCliCodTipCre(constantes.getParamSerialTipoCreditoCredito());
-		} else {
+		tCliente.setCliCodTipCre(mpTipoCredito.get(cliente.getTipoCredito()));
+		if(tCliente.getCliCodTipCre() == null){
 			tCliente.setCliCodTipCre(constantes.getParamSerialTipoCreditoNoDefinido());
 		}
 		
-		//Ubicacion
 		if(cliente.getUbigeo() != null && cliente.getUbigeo().length()>0){
-			tParametroExample.clear();
-			tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeUbigeoDistrito());
-			tParametroExample.createCriteria().andParamCodEqualTo(cliente.getUbigeo());
-			lstParametro = tParametroManager.selectByExample(tParametroExample);
-			if(lstParametro.size()>0){
-				tCliente.setUbiId(lstParametro.get(0).getParamId());
-			}else{
+			tCliente.setUbiId(mpUbigeo.get(cliente.getUbigeo()));
+			if(tCliente.getUbiId() == null){
 				tCliente.setUbiId(constantes.getParamSerialUbigeoDistritoNoDefinido());
 			}
 		}else{
 			tCliente.setUbiId(constantes.getParamSerialUbigeoDistritoNoDefinido());
 		}
-		
-		//Codigo del cliente
+
 		tCliente.setCliCod(cliente.getCodcliente());
 		
-		//Numero de telefono
 		tCliente.setCliNumTel(cliente.getTelefono());
 		
-		//Correo electronico
 		tCliente.setCliDesCor(cliente.getEmail());
 		
-		//Direccion
 		tCliente.setCliDesDir(cliente.getDireccion());
 		
-		//Campos de control
 		tCliente.setFecNumCam(Util.getCurrentDateTimeAsLong());
 		if(constantes.getStateRecordNew().equals(cliente.getBiCodIndCam())){
 			tCliente.setCodIndCam(constantes.getStateRecordNew());
 		}else{
-			tCliente.setCodIndCam(constantes.getStateRecordProcessed());
+			tCliente.setCodIndCam(constantes.getStateRecordUpdated());
 		}
 		tCliente.setProcId(process);
 
@@ -476,6 +560,7 @@ public class TClienteProcess {
 		try {
 			tClienteExample.clear();
 			tClienteExample.createCriteria().andCliCodEqualTo(tCliente.getCliCod());	
+			tCliente.setCliCod(null);
 			resultTransaction = tClienteManager.updateByExampleSelective(tCliente, tClienteExample);	
 		} catch (Exception e) {
 			resultTransaction = constantes.getResultTransactionNoResult();
@@ -499,6 +584,7 @@ public class TClienteProcess {
 		cliente.clear();
 		cliente.setCodcliente(idCliente);
 		cliente.setBiCodIndCam(statusRecord);
+		//cliente.setBiFecNumCam(Util.getCurrentDateTime());
 		clienteManager.updateByPrimaryKeySelective(cliente);
 	}
 

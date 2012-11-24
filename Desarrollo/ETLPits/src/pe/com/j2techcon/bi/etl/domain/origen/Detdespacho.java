@@ -52,7 +52,7 @@ public class Detdespacho {
     }
 
     public void setSerieguia(String serieguia) {
-        this.serieguia = serieguia == null ? null : serieguia.trim();
+        this.serieguia = serieguia;
     }
 
     public String getNroguia() {
@@ -60,7 +60,7 @@ public class Detdespacho {
     }
 
     public void setNroguia(String nroguia) {
-        this.nroguia = nroguia == null ? null : nroguia.trim();
+        this.nroguia = nroguia;
     }
 
     public String getSerie() {
@@ -68,7 +68,7 @@ public class Detdespacho {
     }
 
     public void setSerie(String serie) {
-        this.serie = serie == null ? null : serie.trim();
+        this.serie = serie;
     }
 
     public String getOrden() {
@@ -76,7 +76,7 @@ public class Detdespacho {
     }
 
     public void setOrden(String orden) {
-        this.orden = orden == null ? null : orden.trim();
+        this.orden = orden;
     }
 
     public String getCorrelativo() {
@@ -84,7 +84,7 @@ public class Detdespacho {
     }
 
     public void setCorrelativo(String correlativo) {
-        this.correlativo = correlativo == null ? null : correlativo.trim();
+        this.correlativo = correlativo;
     }
 
     public String getCodorigen() {
@@ -92,7 +92,7 @@ public class Detdespacho {
     }
 
     public void setCodorigen(String codorigen) {
-        this.codorigen = codorigen == null ? null : codorigen.trim();
+        this.codorigen = codorigen;
     }
 
     public String getCodsede() {
@@ -100,7 +100,7 @@ public class Detdespacho {
     }
 
     public void setCodsede(String codsede) {
-        this.codsede = codsede == null ? null : codsede.trim();
+        this.codsede = codsede;
     }
 
     public String getCodclienteb() {
@@ -108,7 +108,7 @@ public class Detdespacho {
     }
 
     public void setCodclienteb(String codclienteb) {
-        this.codclienteb = codclienteb == null ? null : codclienteb.trim();
+        this.codclienteb = codclienteb;
     }
 
     public String getEstacion() {
@@ -116,7 +116,7 @@ public class Detdespacho {
     }
 
     public void setEstacion(String estacion) {
-        this.estacion = estacion == null ? null : estacion.trim();
+        this.estacion = estacion;
     }
 
     public String getContador() {
@@ -124,7 +124,7 @@ public class Detdespacho {
     }
 
     public void setContador(String contador) {
-        this.contador = contador == null ? null : contador.trim();
+        this.contador = contador;
     }
 
     public Short getVolante() {
@@ -140,7 +140,7 @@ public class Detdespacho {
     }
 
     public void setCodzona(String codzona) {
-        this.codzona = codzona == null ? null : codzona.trim();
+        this.codzona = codzona;
     }
 
     public String getCodestado() {
@@ -148,7 +148,7 @@ public class Detdespacho {
     }
 
     public void setCodestado(String codestado) {
-        this.codestado = codestado == null ? null : codestado.trim();
+        this.codestado = codestado;
     }
 
     public String getCodmotivo() {
@@ -156,7 +156,7 @@ public class Detdespacho {
     }
 
     public void setCodmotivo(String codmotivo) {
-        this.codmotivo = codmotivo == null ? null : codmotivo.trim();
+        this.codmotivo = codmotivo;
     }
 
     public String getEstadoveri() {
@@ -164,7 +164,7 @@ public class Detdespacho {
     }
 
     public void setEstadoveri(String estadoveri) {
-        this.estadoveri = estadoveri == null ? null : estadoveri.trim();
+        this.estadoveri = estadoveri;
     }
 
     public Date getFecasignado() {
@@ -180,7 +180,7 @@ public class Detdespacho {
     }
 
     public void setUserCla(String userCla) {
-        this.userCla = userCla == null ? null : userCla.trim();
+        this.userCla = userCla;
     }
 
     public Date getFecCla() {
@@ -196,7 +196,7 @@ public class Detdespacho {
     }
 
     public void setUserRecep(String userRecep) {
-        this.userRecep = userRecep == null ? null : userRecep.trim();
+        this.userRecep = userRecep;
     }
 
     public Date getFecRecep() {
@@ -220,7 +220,7 @@ public class Detdespacho {
     }
 
     public void setBiCodIndCam(String biCodIndCam) {
-        this.biCodIndCam = biCodIndCam == null ? null : biCodIndCam.trim();
+        this.biCodIndCam = biCodIndCam;
     }
 
     public void clear(){

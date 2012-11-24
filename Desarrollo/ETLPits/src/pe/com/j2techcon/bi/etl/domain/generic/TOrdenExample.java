@@ -896,6 +896,76 @@ public class TOrdenExample {
             return (Criteria) this;
         }
 
+        public Criteria andOrdCodCompIsNull() {
+            addCriterion("ord_cod_comp is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdCodCompIsNotNull() {
+            addCriterion("ord_cod_comp is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdCodCompEqualTo(String value) {
+            addCriterion("ord_cod_comp =", value, "ordCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdCodCompNotEqualTo(String value) {
+            addCriterion("ord_cod_comp <>", value, "ordCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdCodCompGreaterThan(String value) {
+            addCriterion("ord_cod_comp >", value, "ordCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdCodCompGreaterThanOrEqualTo(String value) {
+            addCriterion("ord_cod_comp >=", value, "ordCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdCodCompLessThan(String value) {
+            addCriterion("ord_cod_comp <", value, "ordCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdCodCompLessThanOrEqualTo(String value) {
+            addCriterion("ord_cod_comp <=", value, "ordCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdCodCompLike(String value) {
+            addCriterion("ord_cod_comp like", value, "ordCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdCodCompNotLike(String value) {
+            addCriterion("ord_cod_comp not like", value, "ordCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdCodCompIn(List<String> values) {
+            addCriterion("ord_cod_comp in", values, "ordCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdCodCompNotIn(List<String> values) {
+            addCriterion("ord_cod_comp not in", values, "ordCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdCodCompBetween(String value1, String value2) {
+            addCriterion("ord_cod_comp between", value1, value2, "ordCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdCodCompNotBetween(String value1, String value2) {
+            addCriterion("ord_cod_comp not between", value1, value2, "ordCodComp");
+            return (Criteria) this;
+        }
+
         public Criteria andOrdTipCambioIsNull() {
             addCriterion("ord_tip_cambio is null");
             return (Criteria) this;

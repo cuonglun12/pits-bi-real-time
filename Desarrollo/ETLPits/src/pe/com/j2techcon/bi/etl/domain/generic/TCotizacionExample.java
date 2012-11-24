@@ -764,6 +764,76 @@ public class TCotizacionExample {
             return (Criteria) this;
         }
 
+        public Criteria andCotiCodCompIsNull() {
+            addCriterion("coti_cod_comp is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCotiCodCompIsNotNull() {
+            addCriterion("coti_cod_comp is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCotiCodCompEqualTo(String value) {
+            addCriterion("coti_cod_comp =", value, "cotiCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCotiCodCompNotEqualTo(String value) {
+            addCriterion("coti_cod_comp <>", value, "cotiCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCotiCodCompGreaterThan(String value) {
+            addCriterion("coti_cod_comp >", value, "cotiCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCotiCodCompGreaterThanOrEqualTo(String value) {
+            addCriterion("coti_cod_comp >=", value, "cotiCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCotiCodCompLessThan(String value) {
+            addCriterion("coti_cod_comp <", value, "cotiCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCotiCodCompLessThanOrEqualTo(String value) {
+            addCriterion("coti_cod_comp <=", value, "cotiCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCotiCodCompLike(String value) {
+            addCriterion("coti_cod_comp like", value, "cotiCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCotiCodCompNotLike(String value) {
+            addCriterion("coti_cod_comp not like", value, "cotiCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCotiCodCompIn(List<String> values) {
+            addCriterion("coti_cod_comp in", values, "cotiCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCotiCodCompNotIn(List<String> values) {
+            addCriterion("coti_cod_comp not in", values, "cotiCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCotiCodCompBetween(String value1, String value2) {
+            addCriterion("coti_cod_comp between", value1, value2, "cotiCodComp");
+            return (Criteria) this;
+        }
+
+        public Criteria andCotiCodCompNotBetween(String value1, String value2) {
+            addCriterion("coti_cod_comp not between", value1, value2, "cotiCodComp");
+            return (Criteria) this;
+        }
+
         public Criteria andCotiCodEstIsNull() {
             addCriterion("coti_cod_est is null");
             return (Criteria) this;

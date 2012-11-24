@@ -1,8 +1,10 @@
 package pe.com.j2techcon.bi.etl.process.generic;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
@@ -57,245 +59,19 @@ public class TAreaClienteProcess {
 	private TAreaClienteManager tAreaClienteManager;
 	private AreaclienteManager areaClienteManager;
 	
+	private Map<String,Integer> mpUbigeo;
+	
 	private Constantes constantes;
+	
+	private Map<String, Integer> mpCliente;
 	
 	private List<TParametro> lstParametro;
 	private List<TCliente> lstCliente;
 	private List<TAreaCliente> lstAreaCliente;
+	
+	private List<String> lstClientes;
 
 	static Logger log = Logger.getLogger(TAreaClienteProcess.class);
-	
-	public BeanFactory getFactory() {
-		return factory;
-	}
-
-	public void setFactory(BeanFactory factory) {
-		this.factory = factory;
-	}
-
-	public int getSizePage() {
-		return sizePage;
-	}
-
-	public void setSizePage(int sizePage) {
-		this.sizePage = sizePage;
-	}
-
-	public long getDateTimeFrom() {
-		return dateTimeFrom;
-	}
-
-	public void setDateTimeFrom(long dateTimeFrom) {
-		this.dateTimeFrom = dateTimeFrom;
-	}
-
-	public long getDateTimeUntil() {
-		return dateTimeUntil;
-	}
-
-	public void setDateTimeUntil(long dateTimeUntil) {
-		this.dateTimeUntil = dateTimeUntil;
-	}
-
-	public String getTypeProcess() {
-		return typeProcess;
-	}
-
-	public void setTypeProcess(String typeProcess) {
-		this.typeProcess = typeProcess;
-	}
-
-	public int getProcess() {
-		return process;
-	}
-
-	public void setProcess(int process) {
-		this.process = process;
-	}
-
-	public int getRecordTotal() {
-		return recordTotal;
-	}
-
-	public void setRecordTotal(int recordTotal) {
-		this.recordTotal = recordTotal;
-	}
-
-	public int getRecordProcessed() {
-		return recordProcessed;
-	}
-
-	public void setRecordProcessed(int recordProcessed) {
-		this.recordProcessed = recordProcessed;
-	}
-
-	public int getRecordRejected() {
-		return recordRejected;
-	}
-
-	public void setRecordRejected(int recordRejected) {
-		this.recordRejected = recordRejected;
-	}
-
-	public int getResultProcess() {
-		return resultProcess;
-	}
-
-	public void setResultProcess(int resultProcess) {
-		this.resultProcess = resultProcess;
-	}
-
-	public int getResultTransaction() {
-		return resultTransaction;
-	}
-
-	public void setResultTransaction(int resultTransaction) {
-		this.resultTransaction = resultTransaction;
-	}
-
-	public String getStateRecordOrigen() {
-		return stateRecordOrigen;
-	}
-
-	public void setStateRecordOrigen(String stateRecordOrigen) {
-		this.stateRecordOrigen = stateRecordOrigen;
-	}
-
-	public String getStateRecordGeneric() {
-		return stateRecordGeneric;
-	}
-
-	public void setStateRecordGeneric(String stateRecordGeneric) {
-		this.stateRecordGeneric = stateRecordGeneric;
-	}
-
-	public TParametro gettParametro() {
-		return tParametro;
-	}
-
-	public void settParametro(TParametro tParametro) {
-		this.tParametro = tParametro;
-	}
-
-	public TParametroExample gettParametroExample() {
-		return tParametroExample;
-	}
-
-	public void settParametroExample(TParametroExample tParametroExample) {
-		this.tParametroExample = tParametroExample;
-	}
-
-	public TCliente gettCliente() {
-		return tCliente;
-	}
-
-	public void settCliente(TCliente tCliente) {
-		this.tCliente = tCliente;
-	}
-
-	public TClienteExample gettClienteExample() {
-		return tClienteExample;
-	}
-
-	public void settClienteExample(TClienteExample tClienteExample) {
-		this.tClienteExample = tClienteExample;
-	}
-
-	public Areacliente getAreaCliente() {
-		return areaCliente;
-	}
-
-	public void setAreaCliente(Areacliente areaCliente) {
-		this.areaCliente = areaCliente;
-	}
-
-	public AreaclienteExample getAreaClienteExample() {
-		return areaClienteExample;
-	}
-
-	public void setAreaClienteExample(AreaclienteExample areaClienteExample) {
-		this.areaClienteExample = areaClienteExample;
-	}
-
-	public TAreaCliente gettAreaCliente() {
-		return tAreaCliente;
-	}
-
-	public void settAreaCliente(TAreaCliente tAreaCliente) {
-		this.tAreaCliente = tAreaCliente;
-	}
-
-	public TAreaClienteExample gettAreaClienteExample() {
-		return tAreaClienteExample;
-	}
-
-	public void settAreaClienteExample(TAreaClienteExample tAreaClienteExample) {
-		this.tAreaClienteExample = tAreaClienteExample;
-	}
-
-	public TParametroManager gettParametroManager() {
-		return tParametroManager;
-	}
-
-	public void settParametroManager(TParametroManager tParametroManager) {
-		this.tParametroManager = tParametroManager;
-	}
-
-	public TClienteManager gettClienteManager() {
-		return tClienteManager;
-	}
-
-	public void settClienteManager(TClienteManager tClienteManager) {
-		this.tClienteManager = tClienteManager;
-	}
-
-	public TAreaClienteManager gettAreaClienteManager() {
-		return tAreaClienteManager;
-	}
-
-	public void settAreaClienteManager(TAreaClienteManager tAreaClienteManager) {
-		this.tAreaClienteManager = tAreaClienteManager;
-	}
-
-	public AreaclienteManager getAreaClienteManager() {
-		return areaClienteManager;
-	}
-
-	public void setAreaClienteManager(AreaclienteManager areaClienteManager) {
-		this.areaClienteManager = areaClienteManager;
-	}
-
-	public Constantes getConstantes() {
-		return constantes;
-	}
-
-	public void setConstantes(Constantes constantes) {
-		this.constantes = constantes;
-	}
-
-	public List<TParametro> getLstParametro() {
-		return lstParametro;
-	}
-
-	public void setLstParametro(List<TParametro> lstParametro) {
-		this.lstParametro = lstParametro;
-	}
-
-	public List<TCliente> getLstCliente() {
-		return lstCliente;
-	}
-
-	public void setLstCliente(List<TCliente> lstCliente) {
-		this.lstCliente = lstCliente;
-	}
-
-	public List<TAreaCliente> getLstAreaCliente() {
-		return lstAreaCliente;
-	}
-
-	public void setLstAreaCliente(List<TAreaCliente> lstAreaCliente) {
-		this.lstAreaCliente = lstAreaCliente;
-	}
 
 	public TAreaClienteProcess(BeanFactory factory, int sizePage,
 			long dateTimeFrom, long dateTimeUntil, String typeProcess,
@@ -341,26 +117,56 @@ public class TAreaClienteProcess {
 		lstParametro = new ArrayList<TParametro>();
 		lstCliente = new ArrayList<TCliente>();
 		lstAreaCliente = new ArrayList<TAreaCliente>();
+		
+		mpUbigeo = new HashMap<String, Integer>();
+		tParametroExample.clear();
+		tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeUbigeoDistrito());
+		lstParametro = tParametroManager.selectByExample(tParametroExample);
+		for (Iterator<TParametro> iterator = lstParametro.iterator(); iterator.hasNext();) {
+			tParametro = iterator.next();
+			mpUbigeo.put(tParametro.getParamCod(),tParametro.getParamId());
+		}
+		
+		mpCliente = new HashMap<String, Integer>();
+		lstCliente = tClienteManager.selectByExample(null);
+		for (Iterator<TCliente> iterator = lstCliente.iterator(); iterator.hasNext();) {
+			tCliente = iterator.next();
+			mpCliente.put(tCliente.getCliCod(), tCliente.getCliId());
+			
+		}
 
-		int offset = 0;
+		List<String> lstStateRecord = new ArrayList<String>();
+		lstStateRecord.add(constantes.getStateRecordNew());
+		lstStateRecord.add(constantes.getStateRecordUpdated());
+		
+		//int offset = 0;
+		
+		List<Areacliente> lstAreaClienteOrigen = new ArrayList<Areacliente>();
 
 		while (true) {
 
 			areaClienteExample.clear();
-			areaClienteExample.createCriteria().andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom));
-			areaClienteExample.createCriteria().andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil));
-			areaClienteExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
+			areaClienteExample.createCriteria().andBiFecNumCamGreaterThanOrEqualTo(Util.getDateTimeLongAsDate(dateTimeFrom)).andBiFecNumCamLessThan(Util.getDateTimeLongAsDate(dateTimeUntil)).andBiCodIndCamIn(lstStateRecord);
+			//areaClienteExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
+			areaClienteExample.setPaginationByClause(" limit " + constantes.getSizePage());
 			
-			List<Areacliente> lstAreaCliente = areaClienteManager.selectByExample(areaClienteExample);
+			lstAreaClienteOrigen = areaClienteManager.selectByExample(areaClienteExample);
 
-			if (lstAreaCliente.size() > 0) {
-				for (Iterator<Areacliente> iterator = lstAreaCliente.iterator(); iterator.hasNext();) {
+			if (lstAreaClienteOrigen.size() > 0) {
+				for (Iterator<Areacliente> iterator = lstAreaClienteOrigen.iterator(); iterator.hasNext();) {
 					areaCliente = iterator.next();
 					tAreaCliente.clear();
 					processRecordAreaCliente();
 				}
-				offset = offset + constantes.getSizePage();
+				lstAreaClienteOrigen.clear();
+				//offset = offset + constantes.getSizePage();
 			} else {
+				
+				lstStateRecord.clear();
+				
+				mpCliente.clear();
+				mpUbigeo.clear();
+				
 				tParametro.clear();
 				tParametroExample.clear();
 				
@@ -375,9 +181,8 @@ public class TAreaClienteProcess {
 				
 				lstParametro.clear();
 				lstCliente.clear();
-				lstAreaCliente.clear();
+				lstAreaClienteOrigen.clear();
 
-				offset = 0;
 				break;
 			}
 		}
@@ -446,7 +251,7 @@ public class TAreaClienteProcess {
 		completeFieldAreaCliente();
 		
 		//Verificamos la existencia del Cliente
-		if(tAreaCliente.getCliId() != 0){
+		if(tAreaCliente.getCliId() != null){
 			if(typeProcess.equals(constantes.getTypeProcessSimple())){
 				if(tAreaCliente.getCodIndCam().equals(constantes.getStateRecordNew())){
 					if(insertRecordGenericAreaCliente()> constantes.getResultTransactionNoResult()){
@@ -493,20 +298,14 @@ public class TAreaClienteProcess {
 		//Id de cliente
 		tAreaCliente.setCliId(getCliId(areaCliente.getCodcliente()));
 		
-		if(tAreaCliente.getCliId() != 0){
+		if(tAreaCliente.getCliId() != null){
 			//Tipo de area del cliente: Se le asigna a todos el tipo CENTRAL
 			tAreaCliente.setAreCliCodTip(constantes.getParamSerialTipoAreaClienteCentral());
 			
 			//Ubicacion
 			if(areaCliente.getUbigeo() != null && areaCliente.getUbigeo().length()>0){
-				tParametroExample.clear();
-				tParametroExample.createCriteria().andParamCodTipEqualTo(constantes.getParamCodeUbigeoDistrito());
-				tParametroExample.createCriteria().andParamCodEqualTo(areaCliente.getUbigeo());
-				
-				lstParametro = tParametroManager.selectByExample(tParametroExample);
-				if(lstParametro.size()>0){
-					tAreaCliente.setUbiId(lstParametro.get(0).getParamId());
-				}else{
+				tAreaCliente.setUbiId(mpUbigeo.get(areaCliente.getUbigeo()));
+				if(tAreaCliente.getUbiId() == null){
 					tAreaCliente.setUbiId(constantes.getParamSerialUbigeoDistritoNoDefinido());
 				}
 			}else{
@@ -530,7 +329,7 @@ public class TAreaClienteProcess {
 			if(constantes.getStateRecordNew().equals(areaCliente.getBiCodIndCam())){
 				tAreaCliente.setCodIndCam(constantes.getStateRecordNew());
 			}else{
-				tAreaCliente.setCodIndCam(constantes.getStateRecordProcessed());
+				tAreaCliente.setCodIndCam(constantes.getStateRecordUpdated());
 			}
 			tAreaCliente.setProcId(process);
 		}
@@ -549,8 +348,9 @@ public class TAreaClienteProcess {
 	public int updateRecordGenericAreaCliente() throws Exception{
 		try {
 			tAreaClienteExample.clear();
-			tAreaClienteExample.createCriteria().andCliCodEqualTo(tAreaCliente.getCliCod());
-			tAreaClienteExample.createCriteria().andAreCliCodEqualTo(tAreaCliente.getAreCliCod());	
+			tAreaClienteExample.createCriteria().andCliCodEqualTo(tAreaCliente.getCliCod()).andAreCliCodEqualTo(tAreaCliente.getAreCliCod());
+			tAreaCliente.setCliCod(null);
+			tAreaCliente.setAreCliCod(null);
 			resultTransaction = tAreaClienteManager.updateByExampleSelective(tAreaCliente, tAreaClienteExample);	
 		} catch (Exception e) {
 			resultTransaction = constantes.getResultTransactionNoResult();
@@ -561,8 +361,7 @@ public class TAreaClienteProcess {
 	public int deleteRecordGenericAreaCliente() throws Exception{
 		try {
 			tAreaClienteExample.clear();
-			tAreaClienteExample.createCriteria().andCliCodEqualTo(tAreaCliente.getCliCod());
-			tAreaClienteExample.createCriteria().andAreCliCodEqualTo(tAreaCliente.getAreCliCod());
+			tAreaClienteExample.createCriteria().andCliCodEqualTo(tAreaCliente.getCliCod()).andAreCliCodEqualTo(tAreaCliente.getAreCliCod());
 			resultTransaction = tAreaClienteManager.deleteByExample(tAreaClienteExample);
 		} catch (Exception e) {
 			resultTransaction = constantes.getResultTransactionNoResult();
@@ -577,23 +376,331 @@ public class TAreaClienteProcess {
 		areaCliente.setCodcliente(idCliente);
 		areaCliente.setCodareacliente(idAreaCliente);
 		areaCliente.setBiCodIndCam(statusRecord);
+		//areaCliente.setBiFecNumCam(Util.getCurrentDateTime());
 		areaClienteManager.updateByPrimaryKeySelective(areaCliente);
 	}
 	
-	public int getCliId(String codCliente)throws Exception{
-		int cliId = 0;
-		if(codCliente.equals(tCliente.getCliCod())){
-			cliId = tCliente.getCliId();
-		}else{
-			tClienteExample.clear();
-			tClienteExample.createCriteria().andCliCodEqualTo(codCliente);
-			lstCliente = tClienteManager.selectByExample(tClienteExample);
-			if(lstCliente.size()>0){
-				tCliente = lstCliente.get(0);
-				cliId = tCliente.getCliId();
-			}
-		}
-		
-		return cliId;
+	public Integer getCliId(String codCliente)throws Exception{
+		return mpCliente.get(codCliente);
+	}
+
+	
+	public BeanFactory getFactory() {
+		return factory;
+	}
+
+	
+	public void setFactory(BeanFactory factory) {
+		this.factory = factory;
+	}
+
+	
+	public int getSizePage() {
+		return sizePage;
+	}
+
+	
+	public void setSizePage(int sizePage) {
+		this.sizePage = sizePage;
+	}
+
+	
+	public long getDateTimeFrom() {
+		return dateTimeFrom;
+	}
+
+	
+	public void setDateTimeFrom(long dateTimeFrom) {
+		this.dateTimeFrom = dateTimeFrom;
+	}
+
+	
+	public long getDateTimeUntil() {
+		return dateTimeUntil;
+	}
+
+	
+	public void setDateTimeUntil(long dateTimeUntil) {
+		this.dateTimeUntil = dateTimeUntil;
+	}
+
+	
+	public String getTypeProcess() {
+		return typeProcess;
+	}
+
+	
+	public void setTypeProcess(String typeProcess) {
+		this.typeProcess = typeProcess;
+	}
+
+	
+	public int getProcess() {
+		return process;
+	}
+
+	
+	public void setProcess(int process) {
+		this.process = process;
+	}
+
+	
+	public int getRecordTotal() {
+		return recordTotal;
+	}
+
+	
+	public void setRecordTotal(int recordTotal) {
+		this.recordTotal = recordTotal;
+	}
+
+	
+	public int getRecordProcessed() {
+		return recordProcessed;
+	}
+
+	
+	public void setRecordProcessed(int recordProcessed) {
+		this.recordProcessed = recordProcessed;
+	}
+
+	
+	public int getRecordRejected() {
+		return recordRejected;
+	}
+
+	
+	public void setRecordRejected(int recordRejected) {
+		this.recordRejected = recordRejected;
+	}
+
+	
+	public int getResultProcess() {
+		return resultProcess;
+	}
+
+	
+	public void setResultProcess(int resultProcess) {
+		this.resultProcess = resultProcess;
+	}
+
+	
+	public int getResultTransaction() {
+		return resultTransaction;
+	}
+
+	
+	public void setResultTransaction(int resultTransaction) {
+		this.resultTransaction = resultTransaction;
+	}
+
+	
+	public String getStateRecordOrigen() {
+		return stateRecordOrigen;
+	}
+
+	
+	public void setStateRecordOrigen(String stateRecordOrigen) {
+		this.stateRecordOrigen = stateRecordOrigen;
+	}
+
+	
+	public String getStateRecordGeneric() {
+		return stateRecordGeneric;
+	}
+
+	
+	public void setStateRecordGeneric(String stateRecordGeneric) {
+		this.stateRecordGeneric = stateRecordGeneric;
+	}
+
+	
+	public TParametro gettParametro() {
+		return tParametro;
+	}
+
+	
+	public void settParametro(TParametro tParametro) {
+		this.tParametro = tParametro;
+	}
+
+	
+	public TParametroExample gettParametroExample() {
+		return tParametroExample;
+	}
+
+	
+	public void settParametroExample(TParametroExample tParametroExample) {
+		this.tParametroExample = tParametroExample;
+	}
+
+	
+	public TCliente gettCliente() {
+		return tCliente;
+	}
+
+	
+	public void settCliente(TCliente tCliente) {
+		this.tCliente = tCliente;
+	}
+
+	
+	public TClienteExample gettClienteExample() {
+		return tClienteExample;
+	}
+
+	
+	public void settClienteExample(TClienteExample tClienteExample) {
+		this.tClienteExample = tClienteExample;
+	}
+
+	
+	public Areacliente getAreaCliente() {
+		return areaCliente;
+	}
+
+	
+	public void setAreaCliente(Areacliente areaCliente) {
+		this.areaCliente = areaCliente;
+	}
+
+	
+	public AreaclienteExample getAreaClienteExample() {
+		return areaClienteExample;
+	}
+
+	
+	public void setAreaClienteExample(AreaclienteExample areaClienteExample) {
+		this.areaClienteExample = areaClienteExample;
+	}
+
+	
+	public TAreaCliente gettAreaCliente() {
+		return tAreaCliente;
+	}
+
+	
+	public void settAreaCliente(TAreaCliente tAreaCliente) {
+		this.tAreaCliente = tAreaCliente;
+	}
+
+	
+	public TAreaClienteExample gettAreaClienteExample() {
+		return tAreaClienteExample;
+	}
+
+	
+	public void settAreaClienteExample(TAreaClienteExample tAreaClienteExample) {
+		this.tAreaClienteExample = tAreaClienteExample;
+	}
+
+	
+	public TParametroManager gettParametroManager() {
+		return tParametroManager;
+	}
+
+	
+	public void settParametroManager(TParametroManager tParametroManager) {
+		this.tParametroManager = tParametroManager;
+	}
+
+	
+	public TClienteManager gettClienteManager() {
+		return tClienteManager;
+	}
+
+	
+	public void settClienteManager(TClienteManager tClienteManager) {
+		this.tClienteManager = tClienteManager;
+	}
+
+	
+	public TAreaClienteManager gettAreaClienteManager() {
+		return tAreaClienteManager;
+	}
+
+	
+	public void settAreaClienteManager(TAreaClienteManager tAreaClienteManager) {
+		this.tAreaClienteManager = tAreaClienteManager;
+	}
+
+	
+	public AreaclienteManager getAreaClienteManager() {
+		return areaClienteManager;
+	}
+
+	
+	public void setAreaClienteManager(AreaclienteManager areaClienteManager) {
+		this.areaClienteManager = areaClienteManager;
+	}
+
+	
+	public Map<String, Integer> getMpUbigeo() {
+		return mpUbigeo;
+	}
+
+	
+	public void setMpUbigeo(Map<String, Integer> mpUbigeo) {
+		this.mpUbigeo = mpUbigeo;
+	}
+
+	
+	public Constantes getConstantes() {
+		return constantes;
+	}
+
+	
+	public void setConstantes(Constantes constantes) {
+		this.constantes = constantes;
+	}
+
+	
+	public Map<String, Integer> getMpCliente() {
+		return mpCliente;
+	}
+
+	
+	public void setMpCliente(Map<String, Integer> mpCliente) {
+		this.mpCliente = mpCliente;
+	}
+
+	
+	public List<TParametro> getLstParametro() {
+		return lstParametro;
+	}
+
+	
+	public void setLstParametro(List<TParametro> lstParametro) {
+		this.lstParametro = lstParametro;
+	}
+
+	
+	public List<TCliente> getLstCliente() {
+		return lstCliente;
+	}
+
+	
+	public void setLstCliente(List<TCliente> lstCliente) {
+		this.lstCliente = lstCliente;
+	}
+
+	
+	public List<TAreaCliente> getLstAreaCliente() {
+		return lstAreaCliente;
+	}
+
+	
+	public void setLstAreaCliente(List<TAreaCliente> lstAreaCliente) {
+		this.lstAreaCliente = lstAreaCliente;
+	}
+
+	
+	public List<String> getLstClientes() {
+		return lstClientes;
+	}
+
+	
+	public void setLstClientes(List<String> lstClientes) {
+		this.lstClientes = lstClientes;
 	}
 }

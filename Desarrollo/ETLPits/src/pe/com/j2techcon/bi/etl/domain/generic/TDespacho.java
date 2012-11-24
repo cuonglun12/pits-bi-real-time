@@ -12,6 +12,8 @@ public class TDespacho {
 
     private String despNumeroDoc;
 
+    private String despCodComp;
+
     private Integer sedId;
 
     private Integer zonId;
@@ -72,6 +74,14 @@ public class TDespacho {
 
     public void setDespNumeroDoc(String despNumeroDoc) {
         this.despNumeroDoc = despNumeroDoc == null ? null : despNumeroDoc.trim();
+    }
+
+    public String getDespCodComp() {
+        return despCodComp;
+    }
+
+    public void setDespCodComp(String despCodComp) {
+        this.despCodComp = despCodComp == null ? null : despCodComp.trim();
     }
 
     public Integer getSedId() {
@@ -199,6 +209,7 @@ public class TDespacho {
     	despCodTipDoc = null;
     	despSerieDoc = null;
     	despNumeroDoc = null;
+    	despCodComp = null;
     	sedId = null;
     	zonId = null;
     	empCatId = null;
@@ -220,16 +231,15 @@ public class TDespacho {
 	public String toString() {
 		return "TDespacho [despId=" + despId + ", despCodTipDoc="
 				+ despCodTipDoc + ", despSerieDoc=" + despSerieDoc
-				+ ", despNumeroDoc=" + despNumeroDoc + ", sedId=" + sedId
-				+ ", zonId=" + zonId + ", empCatId=" + empCatId
-				+ ", despCodTip=" + despCodTip + ", despCodTipRut="
-				+ despCodTipRut + ", despCodVer=" + despCodVer
-				+ ", despMonPasaje=" + despMonPasaje + ", despCntCargos="
-				+ despCntCargos + ", despFecSal=" + despFecSal
-				+ ", despFecRetPro=" + despFecRetPro + ", despFecRetRea="
-				+ despFecRetRea + ", despCodEst=" + despCodEst + ", fecNumCam="
-				+ fecNumCam + ", codIndCam=" + codIndCam + ", procId=" + procId
-				+ "]";
+				+ ", despNumeroDoc=" + despNumeroDoc + ", despCodComp="
+				+ despCodComp + ", sedId=" + sedId + ", zonId=" + zonId
+				+ ", empCatId=" + empCatId + ", despCodTip=" + despCodTip
+				+ ", despCodTipRut=" + despCodTipRut + ", despCodVer="
+				+ despCodVer + ", despMonPasaje=" + despMonPasaje
+				+ ", despCntCargos=" + despCntCargos + ", despFecSal="
+				+ despFecSal + ", despFecRetPro=" + despFecRetPro
+				+ ", despFecRetRea=" + despFecRetRea + ", despCodEst="
+				+ despCodEst + ", fecNumCam=" + fecNumCam + ", codIndCam="
+				+ codIndCam + ", procId=" + procId + "]";
 	}
-    
 }

@@ -256,17 +256,13 @@ public class DimEstadoProcess {
 		while(true) {
 			
 			tParametroExample.clear();
-			
-			tParametroExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom);
-			tParametroExample.createCriteria().andFecNumCamLessThan(dateTimeUntil);
-			
 			statesProceso.clear(); 
 			statesProceso.add(constantes.getParamCodeEstadoCotizacion());
 			statesProceso.add(constantes.getParamCodeEstadoOrden());
 			statesProceso.add(constantes.getParamCodeEstadoDespacho());
 			statesProceso.add(constantes.getParamCodeEstadoCargoDespacho());
 			
-			tParametroExample.createCriteria().andParamCodTipIn(statesProceso);
+			tParametroExample.createCriteria().andFecNumCamGreaterThanOrEqualTo(dateTimeFrom).andFecNumCamLessThan(dateTimeUntil).andParamCodTipIn(statesProceso);
 			
 			tParametroExample.setPaginationByClause(" limit " + constantes.getSizePage() + " offset " + offset);
 			List<TParametro> lstParametro = tParametroManager.selectByExample(tParametroExample);
